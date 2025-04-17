@@ -51,6 +51,7 @@ __all__ = [
     'ConnectionOrder',
     'ConnectionProject',
     'ConnectionRedundancy',
+    'ConnectionRouteAggregationTimeouts',
     'ConnectionZSide',
     'ConnectionZSideAccessPoint',
     'ConnectionZSideAccessPointAccount',
@@ -73,6 +74,25 @@ __all__ = [
     'NetworkNotification',
     'NetworkOperation',
     'NetworkProject',
+    'PrecisionTimeServiceAccount',
+    'PrecisionTimeServiceChangeLog',
+    'PrecisionTimeServiceConnection',
+    'PrecisionTimeServiceIpv4',
+    'PrecisionTimeServiceNtpAdvancedConfiguration',
+    'PrecisionTimeServiceOrder',
+    'PrecisionTimeServicePackage',
+    'PrecisionTimeServicePrecisionTimePrice',
+    'PrecisionTimeServicePrecisionTimePriceCharge',
+    'PrecisionTimeServiceProject',
+    'PrecisionTimeServicePtpAdvancedConfiguration',
+    'PrecisionTimeServiceTimeouts',
+    'RouteAggregationChange',
+    'RouteAggregationChangeLog',
+    'RouteAggregationProject',
+    'RouteAggregationRuleChange',
+    'RouteAggregationRuleChangeLog',
+    'RouteAggregationRuleTimeouts',
+    'RouteAggregationTimeouts',
     'RouteFilterChange',
     'RouteFilterChangeLog',
     'RouteFilterProject',
@@ -127,8 +147,16 @@ __all__ = [
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice',
+    'StreamAttachmentTimeouts',
     'StreamChangeLog',
     'StreamProject',
+    'StreamSubscriptionChangeLog',
+    'StreamSubscriptionEventSelector',
+    'StreamSubscriptionMetricSelector',
+    'StreamSubscriptionSink',
+    'StreamSubscriptionSinkCredential',
+    'StreamSubscriptionSinkSettings',
+    'StreamSubscriptionTimeouts',
     'StreamTimeouts',
     'GetCloudRouterAccountResult',
     'GetCloudRouterChangeLogResult',
@@ -175,6 +203,8 @@ __all__ = [
     'GetConnectionOrderResult',
     'GetConnectionProjectResult',
     'GetConnectionRedundancyResult',
+    'GetConnectionRouteAggregationsDataResult',
+    'GetConnectionRouteAggregationsPaginationResult',
     'GetConnectionRouteFiltersDataResult',
     'GetConnectionRouteFiltersPaginationResult',
     'GetConnectionZSideResult',
@@ -282,6 +312,48 @@ __all__ = [
     'GetPortsDatumOperationResult',
     'GetPortsDatumRedundancyResult',
     'GetPortsFilterResult',
+    'GetPrecisionTimeServiceAccountResult',
+    'GetPrecisionTimeServiceChangeLogResult',
+    'GetPrecisionTimeServiceConnectionResult',
+    'GetPrecisionTimeServiceIpv4Result',
+    'GetPrecisionTimeServiceNtpAdvancedConfigurationResult',
+    'GetPrecisionTimeServiceOrderResult',
+    'GetPrecisionTimeServicePackageResult',
+    'GetPrecisionTimeServicePrecisionTimePriceResult',
+    'GetPrecisionTimeServicePrecisionTimePriceChargeResult',
+    'GetPrecisionTimeServiceProjectResult',
+    'GetPrecisionTimeServicePtpAdvancedConfigurationResult',
+    'GetPrecisionTimeServicesDataResult',
+    'GetPrecisionTimeServicesDataAccountResult',
+    'GetPrecisionTimeServicesDataChangeLogResult',
+    'GetPrecisionTimeServicesDataConnectionResult',
+    'GetPrecisionTimeServicesDataIpv4Result',
+    'GetPrecisionTimeServicesDataNtpAdvancedConfigurationResult',
+    'GetPrecisionTimeServicesDataOrderResult',
+    'GetPrecisionTimeServicesDataPackageResult',
+    'GetPrecisionTimeServicesDataPrecisionTimePriceResult',
+    'GetPrecisionTimeServicesDataPrecisionTimePriceChargeResult',
+    'GetPrecisionTimeServicesDataProjectResult',
+    'GetPrecisionTimeServicesDataPtpAdvancedConfigurationResult',
+    'GetPrecisionTimeServicesFilterResult',
+    'GetPrecisionTimeServicesPaginationResult',
+    'GetPrecisionTimeServicesSortResult',
+    'GetRouteAggregationChangeResult',
+    'GetRouteAggregationChangeLogResult',
+    'GetRouteAggregationProjectResult',
+    'GetRouteAggregationRuleChangeResult',
+    'GetRouteAggregationRuleChangeLogResult',
+    'GetRouteAggregationRulesDataResult',
+    'GetRouteAggregationRulesDataChangeResult',
+    'GetRouteAggregationRulesDataChangeLogResult',
+    'GetRouteAggregationRulesPaginationResult',
+    'GetRouteAggregationsDataResult',
+    'GetRouteAggregationsDataChangeResult',
+    'GetRouteAggregationsDataChangeLogResult',
+    'GetRouteAggregationsDataProjectResult',
+    'GetRouteAggregationsFilterResult',
+    'GetRouteAggregationsPaginationResult',
+    'GetRouteAggregationsSortResult',
     'GetRouteFilterChangeResult',
     'GetRouteFilterChangeLogResult',
     'GetRouteFilterProjectResult',
@@ -393,8 +465,26 @@ __all__ = [
     'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceResult',
     'GetServiceTokensFilterResult',
     'GetServiceTokensPaginationResult',
+    'GetStreamAttachmentsDataResult',
+    'GetStreamAttachmentsFilterResult',
+    'GetStreamAttachmentsPaginationResult',
+    'GetStreamAttachmentsSortResult',
     'GetStreamChangeLogResult',
     'GetStreamProjectResult',
+    'GetStreamSubscriptionChangeLogResult',
+    'GetStreamSubscriptionEventSelectorResult',
+    'GetStreamSubscriptionMetricSelectorResult',
+    'GetStreamSubscriptionSinkResult',
+    'GetStreamSubscriptionSinkCredentialResult',
+    'GetStreamSubscriptionSinkSettingsResult',
+    'GetStreamSubscriptionsDataResult',
+    'GetStreamSubscriptionsDataChangeLogResult',
+    'GetStreamSubscriptionsDataEventSelectorResult',
+    'GetStreamSubscriptionsDataMetricSelectorResult',
+    'GetStreamSubscriptionsDataSinkResult',
+    'GetStreamSubscriptionsDataSinkCredentialResult',
+    'GetStreamSubscriptionsDataSinkSettingsResult',
+    'GetStreamSubscriptionsPaginationResult',
     'GetStreamsDataResult',
     'GetStreamsDataChangeLogResult',
     'GetStreamsDataProjectResult',
@@ -2758,6 +2848,61 @@ class ConnectionRedundancy(dict):
 
 
 @pulumi.output_type
+class ConnectionRouteAggregationTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class ConnectionZSide(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4256,6 +4401,1557 @@ class NetworkProject(dict):
         Customer project identifier
         """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountName":
+            suggest = "account_name"
+        elif key == "accountNumber":
+            suggest = "account_number"
+        elif key == "globalCustId":
+            suggest = "global_cust_id"
+        elif key == "globalOrgId":
+            suggest = "global_org_id"
+        elif key == "globalOrganizationName":
+            suggest = "global_organization_name"
+        elif key == "orgId":
+            suggest = "org_id"
+        elif key == "organizationName":
+            suggest = "organization_name"
+        elif key == "resellerAccountName":
+            suggest = "reseller_account_name"
+        elif key == "resellerAccountNumber":
+            suggest = "reseller_account_number"
+        elif key == "resellerOrgId":
+            suggest = "reseller_org_id"
+        elif key == "resellerUcmId":
+            suggest = "reseller_ucm_id"
+        elif key == "ucmId":
+            suggest = "ucm_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServiceAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServiceAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServiceAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_name: Optional[str] = None,
+                 account_number: Optional[int] = None,
+                 global_cust_id: Optional[str] = None,
+                 global_org_id: Optional[str] = None,
+                 global_organization_name: Optional[str] = None,
+                 org_id: Optional[int] = None,
+                 organization_name: Optional[str] = None,
+                 reseller_account_name: Optional[str] = None,
+                 reseller_account_number: Optional[int] = None,
+                 reseller_org_id: Optional[int] = None,
+                 reseller_ucm_id: Optional[str] = None,
+                 ucm_id: Optional[str] = None):
+        """
+        :param str account_name: Account Name
+        :param int account_number: Equinix Account Number
+        :param str global_cust_id: Global Customer Id
+        :param str global_org_id: Customer organization naidentifierme
+        :param str global_organization_name: Global organization name
+        :param int org_id: Customer organization identifier
+        :param str organization_name: Customer organization name
+        :param str reseller_account_name: Reseller account name
+        :param int reseller_account_number: Reseller account number
+        :param int reseller_org_id: Reseller customer organization identifier
+        :param str reseller_ucm_id: Reseller account ucmId
+        :param str ucm_id: Global organization name
+        """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+        if global_cust_id is not None:
+            pulumi.set(__self__, "global_cust_id", global_cust_id)
+        if global_org_id is not None:
+            pulumi.set(__self__, "global_org_id", global_org_id)
+        if global_organization_name is not None:
+            pulumi.set(__self__, "global_organization_name", global_organization_name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+        if reseller_account_name is not None:
+            pulumi.set(__self__, "reseller_account_name", reseller_account_name)
+        if reseller_account_number is not None:
+            pulumi.set(__self__, "reseller_account_number", reseller_account_number)
+        if reseller_org_id is not None:
+            pulumi.set(__self__, "reseller_org_id", reseller_org_id)
+        if reseller_ucm_id is not None:
+            pulumi.set(__self__, "reseller_ucm_id", reseller_ucm_id)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[str]:
+        """
+        Account Name
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[int]:
+        """
+        Equinix Account Number
+        """
+        return pulumi.get(self, "account_number")
+
+    @property
+    @pulumi.getter(name="globalCustId")
+    def global_cust_id(self) -> Optional[str]:
+        """
+        Global Customer Id
+        """
+        return pulumi.get(self, "global_cust_id")
+
+    @property
+    @pulumi.getter(name="globalOrgId")
+    def global_org_id(self) -> Optional[str]:
+        """
+        Customer organization naidentifierme
+        """
+        return pulumi.get(self, "global_org_id")
+
+    @property
+    @pulumi.getter(name="globalOrganizationName")
+    def global_organization_name(self) -> Optional[str]:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "global_organization_name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[int]:
+        """
+        Customer organization identifier
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[str]:
+        """
+        Customer organization name
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="resellerAccountName")
+    def reseller_account_name(self) -> Optional[str]:
+        """
+        Reseller account name
+        """
+        return pulumi.get(self, "reseller_account_name")
+
+    @property
+    @pulumi.getter(name="resellerAccountNumber")
+    def reseller_account_number(self) -> Optional[int]:
+        """
+        Reseller account number
+        """
+        return pulumi.get(self, "reseller_account_number")
+
+    @property
+    @pulumi.getter(name="resellerOrgId")
+    def reseller_org_id(self) -> Optional[int]:
+        """
+        Reseller customer organization identifier
+        """
+        return pulumi.get(self, "reseller_org_id")
+
+    @property
+    @pulumi.getter(name="resellerUcmId")
+    def reseller_ucm_id(self) -> Optional[str]:
+        """
+        Reseller account ucmId
+        """
+        return pulumi.get(self, "reseller_ucm_id")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[str]:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "ucm_id")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServiceChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServiceChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServiceChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: User name of creator of the route aggregation resource
+        :param str created_by_email: Email of creator of the route aggregation resource
+        :param str created_by_full_name: Legal name of creator of the route aggregation resource
+        :param str created_date_time: Creation time of the route aggregation resource
+        :param str deleted_by: User name of deleter of the route aggregation resource
+        :param str deleted_by_email: Email of deleter of the route aggregation resource
+        :param str deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param str deleted_date_time: Deletion time of the route aggregation resource
+        :param str updated_by: User name of last updater of the route aggregation resource
+        :param str updated_by_email: Email of last updater of the route aggregation resource
+        :param str updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param str updated_date_time: Last update time of the route aggregation resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceConnection(dict):
+    def __init__(__self__, *,
+                 uuid: str,
+                 href: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str uuid: Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        :param str href: Link to the Equinix Fabric Connection associated with the Precision Time Service
+        :param str type: Type of the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        Link to the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultGateway":
+            suggest = "default_gateway"
+        elif key == "networkMask":
+            suggest = "network_mask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServiceIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServiceIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServiceIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_gateway: str,
+                 network_mask: str,
+                 primary: str,
+                 secondary: str):
+        """
+        :param str default_gateway: IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        :param str network_mask: IPv4 address that defines the range of consecutive subnets in the network.
+        :param str primary: IPv4 address for the Primary Timing Master Server.
+        :param str secondary: IPv4 address for the Secondary Timing Master Server.
+        """
+        pulumi.set(__self__, "default_gateway", default_gateway)
+        pulumi.set(__self__, "network_mask", network_mask)
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "secondary", secondary)
+
+    @property
+    @pulumi.getter(name="defaultGateway")
+    def default_gateway(self) -> str:
+        """
+        IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        """
+        return pulumi.get(self, "default_gateway")
+
+    @property
+    @pulumi.getter(name="networkMask")
+    def network_mask(self) -> str:
+        """
+        IPv4 address that defines the range of consecutive subnets in the network.
+        """
+        return pulumi.get(self, "network_mask")
+
+    @property
+    @pulumi.getter
+    def primary(self) -> str:
+        """
+        IPv4 address for the Primary Timing Master Server.
+        """
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter
+    def secondary(self) -> str:
+        """
+        IPv4 address for the Secondary Timing Master Server.
+        """
+        return pulumi.get(self, "secondary")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceNtpAdvancedConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyNumber":
+            suggest = "key_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServiceNtpAdvancedConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServiceNtpAdvancedConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServiceNtpAdvancedConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 key_number: Optional[int] = None,
+                 type: Optional[str] = None):
+        """
+        :param str key: The plaintext authentication key. For ASCII type, the key\\
+               \\ must contain printable ASCII characters, range 10-20 characters. For\\
+               \\ HEX type, range should be 10-40 characters
+        :param int key_number: The authentication Key ID
+        :param str type: md5 Authentication type
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if key_number is not None:
+            pulumi.set(__self__, "key_number", key_number)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The plaintext authentication key. For ASCII type, the key\\
+        \\ must contain printable ASCII characters, range 10-20 characters. For\\
+        \\ HEX type, range should be 10-40 characters
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="keyNumber")
+    def key_number(self) -> Optional[int]:
+        """
+        The authentication Key ID
+        """
+        return pulumi.get(self, "key_number")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        md5 Authentication type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerReferenceNumber":
+            suggest = "customer_reference_number"
+        elif key == "orderNumber":
+            suggest = "order_number"
+        elif key == "purchaseOrderNumber":
+            suggest = "purchase_order_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServiceOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServiceOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServiceOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_reference_number: Optional[str] = None,
+                 order_number: Optional[str] = None,
+                 purchase_order_number: Optional[str] = None):
+        """
+        :param str customer_reference_number: Customer reference number
+        :param str order_number: Order reference number
+        :param str purchase_order_number: Purchase order number
+        """
+        if customer_reference_number is not None:
+            pulumi.set(__self__, "customer_reference_number", customer_reference_number)
+        if order_number is not None:
+            pulumi.set(__self__, "order_number", order_number)
+        if purchase_order_number is not None:
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+
+    @property
+    @pulumi.getter(name="customerReferenceNumber")
+    def customer_reference_number(self) -> Optional[str]:
+        """
+        Customer reference number
+        """
+        return pulumi.get(self, "customer_reference_number")
+
+    @property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> Optional[str]:
+        """
+        Order reference number
+        """
+        return pulumi.get(self, "order_number")
+
+    @property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> Optional[str]:
+        """
+        Purchase order number
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+
+@pulumi.output_type
+class PrecisionTimeServicePackage(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 href: Optional[str] = None):
+        """
+        :param str code: Time Precision Package Code for the desired billing package
+        :param str href: Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        pulumi.set(__self__, "code", code)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Time Precision Package Code for the desired billing package
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class PrecisionTimeServicePrecisionTimePrice(dict):
+    def __init__(__self__, *,
+                 charges: Optional[Sequence['outputs.PrecisionTimeServicePrecisionTimePriceCharge']] = None,
+                 currency: Optional[str] = None):
+        """
+        :param Sequence['PrecisionTimeServicePrecisionTimePriceChargeArgs'] charges: offering price charge
+        :param str currency: Offering price currency
+        """
+        if charges is not None:
+            pulumi.set(__self__, "charges", charges)
+        if currency is not None:
+            pulumi.set(__self__, "currency", currency)
+
+    @property
+    @pulumi.getter
+    def charges(self) -> Optional[Sequence['outputs.PrecisionTimeServicePrecisionTimePriceCharge']]:
+        """
+        offering price charge
+        """
+        return pulumi.get(self, "charges")
+
+    @property
+    @pulumi.getter
+    def currency(self) -> Optional[str]:
+        """
+        Offering price currency
+        """
+        return pulumi.get(self, "currency")
+
+
+@pulumi.output_type
+class PrecisionTimeServicePrecisionTimePriceCharge(dict):
+    def __init__(__self__, *,
+                 price: Optional[float] = None,
+                 type: Optional[str] = None):
+        """
+        :param float price: Offering price
+        :param str type: Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        if price is not None:
+            pulumi.set(__self__, "price", price)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def price(self) -> Optional[float]:
+        """
+        Offering price
+        """
+        return pulumi.get(self, "price")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServiceProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServiceProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServiceProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: Optional[str] = None):
+        """
+        :param str project_id: Equinix Subscriber-assigned project ID
+        """
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class PrecisionTimeServicePtpAdvancedConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grantTime":
+            suggest = "grant_time"
+        elif key == "logAnnounceInterval":
+            suggest = "log_announce_interval"
+        elif key == "logDelayReqInterval":
+            suggest = "log_delay_req_interval"
+        elif key == "logSyncInterval":
+            suggest = "log_sync_interval"
+        elif key == "timeScale":
+            suggest = "time_scale"
+        elif key == "transportMode":
+            suggest = "transport_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServicePtpAdvancedConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServicePtpAdvancedConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServicePtpAdvancedConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: Optional[int] = None,
+                 grant_time: Optional[int] = None,
+                 log_announce_interval: Optional[int] = None,
+                 log_delay_req_interval: Optional[int] = None,
+                 log_sync_interval: Optional[int] = None,
+                 priority1: Optional[int] = None,
+                 priority2: Optional[int] = None,
+                 time_scale: Optional[str] = None,
+                 transport_mode: Optional[str] = None):
+        """
+        :param int domain: The PTP domain value
+        :param int grant_time: Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        :param int log_announce_interval: Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        :param int log_delay_req_interval: Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int log_sync_interval: Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int priority1: The priority1 value determines the best primary clock, Lower value indicates higher priority
+        :param int priority2: The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        :param str time_scale: Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        :param str transport_mode: ptp transport mode
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if grant_time is not None:
+            pulumi.set(__self__, "grant_time", grant_time)
+        if log_announce_interval is not None:
+            pulumi.set(__self__, "log_announce_interval", log_announce_interval)
+        if log_delay_req_interval is not None:
+            pulumi.set(__self__, "log_delay_req_interval", log_delay_req_interval)
+        if log_sync_interval is not None:
+            pulumi.set(__self__, "log_sync_interval", log_sync_interval)
+        if priority1 is not None:
+            pulumi.set(__self__, "priority1", priority1)
+        if priority2 is not None:
+            pulumi.set(__self__, "priority2", priority2)
+        if time_scale is not None:
+            pulumi.set(__self__, "time_scale", time_scale)
+        if transport_mode is not None:
+            pulumi.set(__self__, "transport_mode", transport_mode)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[int]:
+        """
+        The PTP domain value
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="grantTime")
+    def grant_time(self) -> Optional[int]:
+        """
+        Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        """
+        return pulumi.get(self, "grant_time")
+
+    @property
+    @pulumi.getter(name="logAnnounceInterval")
+    def log_announce_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        """
+        return pulumi.get(self, "log_announce_interval")
+
+    @property
+    @pulumi.getter(name="logDelayReqInterval")
+    def log_delay_req_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_delay_req_interval")
+
+    @property
+    @pulumi.getter(name="logSyncInterval")
+    def log_sync_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_sync_interval")
+
+    @property
+    @pulumi.getter
+    def priority1(self) -> Optional[int]:
+        """
+        The priority1 value determines the best primary clock, Lower value indicates higher priority
+        """
+        return pulumi.get(self, "priority1")
+
+    @property
+    @pulumi.getter
+    def priority2(self) -> Optional[int]:
+        """
+        The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        """
+        return pulumi.get(self, "priority2")
+
+    @property
+    @pulumi.getter(name="timeScale")
+    def time_scale(self) -> Optional[str]:
+        """
+        Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        """
+        return pulumi.get(self, "time_scale")
+
+    @property
+    @pulumi.getter(name="transportMode")
+    def transport_mode(self) -> Optional[str]:
+        """
+        ptp transport mode
+        """
+        return pulumi.get(self, "transport_mode")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class RouteAggregationChange(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str type: Equinix defined Route Aggregation Change Type
+        :param str uuid: Equinix-assigned unique id for a change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class RouteAggregationChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteAggregationChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteAggregationChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteAggregationChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: User name of creator of the route aggregation resource
+        :param str created_by_email: Email of creator of the route aggregation resource
+        :param str created_by_full_name: Legal name of creator of the route aggregation resource
+        :param str created_date_time: Creation time of the route aggregation resource
+        :param str deleted_by: User name of deleter of the route aggregation resource
+        :param str deleted_by_email: Email of deleter of the route aggregation resource
+        :param str deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param str deleted_date_time: Deletion time of the route aggregation resource
+        :param str updated_by: User name of last updater of the route aggregation resource
+        :param str updated_by_email: Email of last updater of the route aggregation resource
+        :param str updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param str updated_date_time: Last update time of the route aggregation resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class RouteAggregationProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteAggregationProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteAggregationProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteAggregationProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class RouteAggregationRuleChange(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str,
+                 href: Optional[str] = None):
+        """
+        :param str type: Equinix defined Route Aggregation Change Type
+        :param str uuid: Equinix-assigned unique id for a change
+        :param str href: Equinix auto generated URI to the route aggregation change
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class RouteAggregationRuleChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteAggregationRuleChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteAggregationRuleChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteAggregationRuleChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class RouteAggregationRuleTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class RouteAggregationTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -8907,6 +10603,61 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice(di
 
 
 @pulumi.output_type
+class StreamAttachmentTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class StreamChangeLog(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9129,6 +10880,611 @@ class StreamProject(dict):
         Equinix Subscriber-assigned project ID
         """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class StreamSubscriptionChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSubscriptionChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSubscriptionChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSubscriptionChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class StreamSubscriptionEventSelector(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str],
+                 excepts: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] includes: List of events to include
+        :param Sequence[str] excepts: List of events to exclude
+        """
+        pulumi.set(__self__, "includes", includes)
+        if excepts is not None:
+            pulumi.set(__self__, "excepts", excepts)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of events to include
+        """
+        return pulumi.get(self, "includes")
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Optional[Sequence[str]]:
+        """
+        List of events to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+
+@pulumi.output_type
+class StreamSubscriptionMetricSelector(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str],
+                 excepts: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        :param Sequence[str] excepts: List of metrics to exclude
+        """
+        pulumi.set(__self__, "includes", includes)
+        if excepts is not None:
+            pulumi.set(__self__, "excepts", excepts)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Optional[Sequence[str]]:
+        """
+        List of metrics to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+
+@pulumi.output_type
+class StreamSubscriptionSink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchEnabled":
+            suggest = "batch_enabled"
+        elif key == "batchSizeMax":
+            suggest = "batch_size_max"
+        elif key == "batchWaitTimeMax":
+            suggest = "batch_wait_time_max"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSubscriptionSink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSubscriptionSink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSubscriptionSink.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 batch_enabled: Optional[bool] = None,
+                 batch_size_max: Optional[int] = None,
+                 batch_wait_time_max: Optional[int] = None,
+                 credential: Optional['outputs.StreamSubscriptionSinkCredential'] = None,
+                 host: Optional[str] = None,
+                 settings: Optional['outputs.StreamSubscriptionSinkSettings'] = None,
+                 uri: Optional[str] = None):
+        """
+        :param str type: Type of the subscriber
+        :param bool batch_enabled: Boolean switch enabling batch delivery of data
+        :param int batch_size_max: Maximum size of the batch delivery if enabled
+        :param int batch_wait_time_max: Maximum time to wait for batch delivery if enabled
+        :param 'StreamSubscriptionSinkCredentialArgs' credential: Access details for the specified sink type
+        :param str host: Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        :param 'StreamSubscriptionSinkSettingsArgs' settings: Stream subscription sink settings
+        :param str uri: Publicly reachable http endpoint destination for data stream
+        """
+        pulumi.set(__self__, "type", type)
+        if batch_enabled is not None:
+            pulumi.set(__self__, "batch_enabled", batch_enabled)
+        if batch_size_max is not None:
+            pulumi.set(__self__, "batch_size_max", batch_size_max)
+        if batch_wait_time_max is not None:
+            pulumi.set(__self__, "batch_wait_time_max", batch_wait_time_max)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the subscriber
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="batchEnabled")
+    def batch_enabled(self) -> Optional[bool]:
+        """
+        Boolean switch enabling batch delivery of data
+        """
+        return pulumi.get(self, "batch_enabled")
+
+    @property
+    @pulumi.getter(name="batchSizeMax")
+    def batch_size_max(self) -> Optional[int]:
+        """
+        Maximum size of the batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_size_max")
+
+    @property
+    @pulumi.getter(name="batchWaitTimeMax")
+    def batch_wait_time_max(self) -> Optional[int]:
+        """
+        Maximum time to wait for batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_wait_time_max")
+
+    @property
+    @pulumi.getter
+    def credential(self) -> Optional['outputs.StreamSubscriptionSinkCredential']:
+        """
+        Access details for the specified sink type
+        """
+        return pulumi.get(self, "credential")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional['outputs.StreamSubscriptionSinkSettings']:
+        """
+        Stream subscription sink settings
+        """
+        return pulumi.get(self, "settings")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        Publicly reachable http endpoint destination for data stream
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class StreamSubscriptionSinkCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "apiKey":
+            suggest = "api_key"
+        elif key == "integrationKey":
+            suggest = "integration_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSubscriptionSinkCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSubscriptionSinkCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSubscriptionSinkCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 access_token: Optional[str] = None,
+                 api_key: Optional[str] = None,
+                 integration_key: Optional[str] = None,
+                 password: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str type: Type of the credential being passed
+        :param str access_token: Passed as Authorization header value
+        :param str api_key: Passed as Authorization header value
+        :param str integration_key: Passed as Authorization header value
+        :param str password: Passed as Authorization header value
+        :param str username: Passed as Authorization header value
+        """
+        pulumi.set(__self__, "type", type)
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if integration_key is not None:
+            pulumi.set(__self__, "integration_key", integration_key)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the credential being passed
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[str]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[str]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> Optional[str]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "integration_key")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class StreamSubscriptionSinkSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationKey":
+            suggest = "application_key"
+        elif key == "eventIndex":
+            suggest = "event_index"
+        elif key == "eventUri":
+            suggest = "event_uri"
+        elif key == "metricIndex":
+            suggest = "metric_index"
+        elif key == "metricUri":
+            suggest = "metric_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSubscriptionSinkSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSubscriptionSinkSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSubscriptionSinkSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 application_key: Optional[str] = None,
+                 event_index: Optional[str] = None,
+                 event_uri: Optional[str] = None,
+                 metric_index: Optional[str] = None,
+                 metric_uri: Optional[str] = None,
+                 source: Optional[str] = None):
+        if application_key is not None:
+            pulumi.set(__self__, "application_key", application_key)
+        if event_index is not None:
+            pulumi.set(__self__, "event_index", event_index)
+        if event_uri is not None:
+            pulumi.set(__self__, "event_uri", event_uri)
+        if metric_index is not None:
+            pulumi.set(__self__, "metric_index", metric_index)
+        if metric_uri is not None:
+            pulumi.set(__self__, "metric_uri", metric_uri)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="applicationKey")
+    def application_key(self) -> Optional[str]:
+        return pulumi.get(self, "application_key")
+
+    @property
+    @pulumi.getter(name="eventIndex")
+    def event_index(self) -> Optional[str]:
+        return pulumi.get(self, "event_index")
+
+    @property
+    @pulumi.getter(name="eventUri")
+    def event_uri(self) -> Optional[str]:
+        return pulumi.get(self, "event_uri")
+
+    @property
+    @pulumi.getter(name="metricIndex")
+    def metric_index(self) -> Optional[str]:
+        return pulumi.get(self, "metric_index")
+
+    @property
+    @pulumi.getter(name="metricUri")
+    def metric_uri(self) -> Optional[str]:
+        return pulumi.get(self, "metric_uri")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class StreamSubscriptionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -11684,6 +14040,141 @@ class GetConnectionRedundancyResult(dict):
         Connection priority in redundancy group - PRIMARY, SECONDARY
         """
         return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class GetConnectionRouteAggregationsDataResult(dict):
+    def __init__(__self__, *,
+                 attachment_status: str,
+                 connection_id: str,
+                 href: str,
+                 route_aggregation_id: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str attachment_status: Status of the Route Aggregation Policy attachment lifecycle
+        :param str connection_id: UUID of the Connection to attach this Route Aggregation to
+        :param str href: URI to the attached Route Aggregation Policy on the Connection
+        :param str route_aggregation_id: UUID of the Route Aggregation to attach this Connection to
+        :param str type: Route Aggregation Type. One of ["BGP*IPv4*PREFIX_AGGREGATION"]
+        :param str uuid: Equinix Assigned ID for Route Aggregation Policy
+        """
+        pulumi.set(__self__, "attachment_status", attachment_status)
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "route_aggregation_id", route_aggregation_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="attachmentStatus")
+    def attachment_status(self) -> str:
+        """
+        Status of the Route Aggregation Policy attachment lifecycle
+        """
+        return pulumi.get(self, "attachment_status")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> str:
+        """
+        UUID of the Connection to attach this Route Aggregation to
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        URI to the attached Route Aggregation Policy on the Connection
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter(name="routeAggregationId")
+    def route_aggregation_id(self) -> str:
+        """
+        UUID of the Route Aggregation to attach this Connection to
+        """
+        return pulumi.get(self, "route_aggregation_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Route Aggregation Type. One of ["BGP*IPv4*PREFIX_AGGREGATION"]
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix Assigned ID for Route Aggregation Policy
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetConnectionRouteAggregationsPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of connection route aggregations available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of connection route aggregations available to the user making the request
+        """
+        return pulumi.get(self, "total")
 
 
 @pulumi.output_type
@@ -17806,6 +20297,2838 @@ class GetPortsFilterResult(dict):
         Query Parameter to Get Ports By Name
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServiceAccountResult(dict):
+    def __init__(__self__, *,
+                 account_name: str,
+                 account_number: int,
+                 global_cust_id: str,
+                 global_org_id: str,
+                 global_organization_name: str,
+                 org_id: int,
+                 organization_name: str,
+                 reseller_account_name: str,
+                 reseller_account_number: int,
+                 reseller_org_id: int,
+                 reseller_ucm_id: str,
+                 ucm_id: str):
+        """
+        :param str account_name: Account Name
+        :param int account_number: Equinix Account Number
+        :param str global_cust_id: Global Customer Id
+        :param str global_org_id: Customer organization naidentifierme
+        :param str global_organization_name: Global organization name
+        :param int org_id: Customer organization identifier
+        :param str organization_name: Customer organization name
+        :param str reseller_account_name: Reseller account name
+        :param int reseller_account_number: Reseller account number
+        :param int reseller_org_id: Reseller customer organization identifier
+        :param str reseller_ucm_id: Reseller account ucmId
+        :param str ucm_id: Global organization name
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "global_cust_id", global_cust_id)
+        pulumi.set(__self__, "global_org_id", global_org_id)
+        pulumi.set(__self__, "global_organization_name", global_organization_name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "reseller_account_name", reseller_account_name)
+        pulumi.set(__self__, "reseller_account_number", reseller_account_number)
+        pulumi.set(__self__, "reseller_org_id", reseller_org_id)
+        pulumi.set(__self__, "reseller_ucm_id", reseller_ucm_id)
+        pulumi.set(__self__, "ucm_id", ucm_id)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        Account Name
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> int:
+        """
+        Equinix Account Number
+        """
+        return pulumi.get(self, "account_number")
+
+    @property
+    @pulumi.getter(name="globalCustId")
+    def global_cust_id(self) -> str:
+        """
+        Global Customer Id
+        """
+        return pulumi.get(self, "global_cust_id")
+
+    @property
+    @pulumi.getter(name="globalOrgId")
+    def global_org_id(self) -> str:
+        """
+        Customer organization naidentifierme
+        """
+        return pulumi.get(self, "global_org_id")
+
+    @property
+    @pulumi.getter(name="globalOrganizationName")
+    def global_organization_name(self) -> str:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "global_organization_name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> int:
+        """
+        Customer organization identifier
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> str:
+        """
+        Customer organization name
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="resellerAccountName")
+    def reseller_account_name(self) -> str:
+        """
+        Reseller account name
+        """
+        return pulumi.get(self, "reseller_account_name")
+
+    @property
+    @pulumi.getter(name="resellerAccountNumber")
+    def reseller_account_number(self) -> int:
+        """
+        Reseller account number
+        """
+        return pulumi.get(self, "reseller_account_number")
+
+    @property
+    @pulumi.getter(name="resellerOrgId")
+    def reseller_org_id(self) -> int:
+        """
+        Reseller customer organization identifier
+        """
+        return pulumi.get(self, "reseller_org_id")
+
+    @property
+    @pulumi.getter(name="resellerUcmId")
+    def reseller_ucm_id(self) -> str:
+        """
+        Reseller account ucmId
+        """
+        return pulumi.get(self, "reseller_ucm_id")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> str:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "ucm_id")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServiceChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the route aggregation resource
+        :param str created_by_email: Email of creator of the route aggregation resource
+        :param str created_by_full_name: Legal name of creator of the route aggregation resource
+        :param str created_date_time: Creation time of the route aggregation resource
+        :param str deleted_by: User name of deleter of the route aggregation resource
+        :param str deleted_by_email: Email of deleter of the route aggregation resource
+        :param str deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param str deleted_date_time: Deletion time of the route aggregation resource
+        :param str updated_by: User name of last updater of the route aggregation resource
+        :param str updated_by_email: Email of last updater of the route aggregation resource
+        :param str updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param str updated_date_time: Last update time of the route aggregation resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServiceConnectionResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: Link to the Equinix Fabric Connection associated with the Precision Time Service
+        :param str type: Type of the Equinix Fabric Connection associated with the Precision Time Service
+        :param str uuid: Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Link to the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServiceIpv4Result(dict):
+    def __init__(__self__, *,
+                 default_gateway: str,
+                 network_mask: str,
+                 primary: str,
+                 secondary: str):
+        """
+        :param str default_gateway: IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        :param str network_mask: IPv4 address that defines the range of consecutive subnets in the network.
+        :param str primary: IPv4 address for the Primary Timing Master Server.
+        :param str secondary: IPv4 address for the Secondary Timing Master Server.
+        """
+        pulumi.set(__self__, "default_gateway", default_gateway)
+        pulumi.set(__self__, "network_mask", network_mask)
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "secondary", secondary)
+
+    @property
+    @pulumi.getter(name="defaultGateway")
+    def default_gateway(self) -> str:
+        """
+        IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        """
+        return pulumi.get(self, "default_gateway")
+
+    @property
+    @pulumi.getter(name="networkMask")
+    def network_mask(self) -> str:
+        """
+        IPv4 address that defines the range of consecutive subnets in the network.
+        """
+        return pulumi.get(self, "network_mask")
+
+    @property
+    @pulumi.getter
+    def primary(self) -> str:
+        """
+        IPv4 address for the Primary Timing Master Server.
+        """
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter
+    def secondary(self) -> str:
+        """
+        IPv4 address for the Secondary Timing Master Server.
+        """
+        return pulumi.get(self, "secondary")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServiceNtpAdvancedConfigurationResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 key_number: Optional[int] = None,
+                 type: Optional[str] = None):
+        """
+        :param str key: The plaintext authentication key. For ASCII type, the key\\
+               \\ must contain printable ASCII characters, range 10-20 characters. For\\
+               \\ HEX type, range should be 10-40 characters
+        :param int key_number: The authentication Key ID
+        :param str type: md5 Authentication type
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if key_number is not None:
+            pulumi.set(__self__, "key_number", key_number)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The plaintext authentication key. For ASCII type, the key\\
+        \\ must contain printable ASCII characters, range 10-20 characters. For\\
+        \\ HEX type, range should be 10-40 characters
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="keyNumber")
+    def key_number(self) -> Optional[int]:
+        """
+        The authentication Key ID
+        """
+        return pulumi.get(self, "key_number")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        md5 Authentication type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServiceOrderResult(dict):
+    def __init__(__self__, *,
+                 customer_reference_number: str,
+                 order_number: str,
+                 purchase_order_number: str):
+        """
+        :param str customer_reference_number: Customer reference number
+        :param str order_number: Order reference number
+        :param str purchase_order_number: Purchase order number
+        """
+        pulumi.set(__self__, "customer_reference_number", customer_reference_number)
+        pulumi.set(__self__, "order_number", order_number)
+        pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+
+    @property
+    @pulumi.getter(name="customerReferenceNumber")
+    def customer_reference_number(self) -> str:
+        """
+        Customer reference number
+        """
+        return pulumi.get(self, "customer_reference_number")
+
+    @property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> str:
+        """
+        Order reference number
+        """
+        return pulumi.get(self, "order_number")
+
+    @property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> str:
+        """
+        Purchase order number
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicePackageResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 href: str):
+        """
+        :param str code: Time Precision Package Code for the desired billing package
+        :param str href: Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "href", href)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Time Precision Package Code for the desired billing package
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicePrecisionTimePriceResult(dict):
+    def __init__(__self__, *,
+                 charges: Sequence['outputs.GetPrecisionTimeServicePrecisionTimePriceChargeResult'],
+                 currency: str):
+        """
+        :param Sequence['GetPrecisionTimeServicePrecisionTimePriceChargeArgs'] charges: offering price charge
+        :param str currency: Offering price currency
+        """
+        pulumi.set(__self__, "charges", charges)
+        pulumi.set(__self__, "currency", currency)
+
+    @property
+    @pulumi.getter
+    def charges(self) -> Sequence['outputs.GetPrecisionTimeServicePrecisionTimePriceChargeResult']:
+        """
+        offering price charge
+        """
+        return pulumi.get(self, "charges")
+
+    @property
+    @pulumi.getter
+    def currency(self) -> str:
+        """
+        Offering price currency
+        """
+        return pulumi.get(self, "currency")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicePrecisionTimePriceChargeResult(dict):
+    def __init__(__self__, *,
+                 price: float,
+                 type: str):
+        """
+        :param float price: Offering price
+        :param str type: Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        pulumi.set(__self__, "price", price)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def price(self) -> float:
+        """
+        Offering price
+        """
+        return pulumi.get(self, "price")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServiceProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicePtpAdvancedConfigurationResult(dict):
+    def __init__(__self__, *,
+                 domain: Optional[int] = None,
+                 grant_time: Optional[int] = None,
+                 log_announce_interval: Optional[int] = None,
+                 log_delay_req_interval: Optional[int] = None,
+                 log_sync_interval: Optional[int] = None,
+                 priority1: Optional[int] = None,
+                 priority2: Optional[int] = None,
+                 time_scale: Optional[str] = None,
+                 transport_mode: Optional[str] = None):
+        """
+        :param int domain: The PTP domain value
+        :param int grant_time: Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        :param int log_announce_interval: Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        :param int log_delay_req_interval: Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int log_sync_interval: Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int priority1: The priority1 value determines the best primary clock, Lower value indicates higher priority
+        :param int priority2: The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        :param str time_scale: Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        :param str transport_mode: ptp transport mode
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if grant_time is not None:
+            pulumi.set(__self__, "grant_time", grant_time)
+        if log_announce_interval is not None:
+            pulumi.set(__self__, "log_announce_interval", log_announce_interval)
+        if log_delay_req_interval is not None:
+            pulumi.set(__self__, "log_delay_req_interval", log_delay_req_interval)
+        if log_sync_interval is not None:
+            pulumi.set(__self__, "log_sync_interval", log_sync_interval)
+        if priority1 is not None:
+            pulumi.set(__self__, "priority1", priority1)
+        if priority2 is not None:
+            pulumi.set(__self__, "priority2", priority2)
+        if time_scale is not None:
+            pulumi.set(__self__, "time_scale", time_scale)
+        if transport_mode is not None:
+            pulumi.set(__self__, "transport_mode", transport_mode)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[int]:
+        """
+        The PTP domain value
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="grantTime")
+    def grant_time(self) -> Optional[int]:
+        """
+        Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        """
+        return pulumi.get(self, "grant_time")
+
+    @property
+    @pulumi.getter(name="logAnnounceInterval")
+    def log_announce_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        """
+        return pulumi.get(self, "log_announce_interval")
+
+    @property
+    @pulumi.getter(name="logDelayReqInterval")
+    def log_delay_req_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_delay_req_interval")
+
+    @property
+    @pulumi.getter(name="logSyncInterval")
+    def log_sync_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_sync_interval")
+
+    @property
+    @pulumi.getter
+    def priority1(self) -> Optional[int]:
+        """
+        The priority1 value determines the best primary clock, Lower value indicates higher priority
+        """
+        return pulumi.get(self, "priority1")
+
+    @property
+    @pulumi.getter
+    def priority2(self) -> Optional[int]:
+        """
+        The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        """
+        return pulumi.get(self, "priority2")
+
+    @property
+    @pulumi.getter(name="timeScale")
+    def time_scale(self) -> Optional[str]:
+        """
+        Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        """
+        return pulumi.get(self, "time_scale")
+
+    @property
+    @pulumi.getter(name="transportMode")
+    def transport_mode(self) -> Optional[str]:
+        """
+        ptp transport mode
+        """
+        return pulumi.get(self, "transport_mode")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataResult(dict):
+    def __init__(__self__, *,
+                 account: 'outputs.GetPrecisionTimeServicesDataAccountResult',
+                 change_log: 'outputs.GetPrecisionTimeServicesDataChangeLogResult',
+                 connections: Sequence['outputs.GetPrecisionTimeServicesDataConnectionResult'],
+                 href: str,
+                 ipv4: 'outputs.GetPrecisionTimeServicesDataIpv4Result',
+                 name: str,
+                 order: 'outputs.GetPrecisionTimeServicesDataOrderResult',
+                 package: 'outputs.GetPrecisionTimeServicesDataPackageResult',
+                 precision_time_price: 'outputs.GetPrecisionTimeServicesDataPrecisionTimePriceResult',
+                 state: str,
+                 type: str,
+                 uuid: str,
+                 ntp_advanced_configurations: Optional[Sequence['outputs.GetPrecisionTimeServicesDataNtpAdvancedConfigurationResult']] = None,
+                 project: Optional['outputs.GetPrecisionTimeServicesDataProjectResult'] = None,
+                 ptp_advanced_configuration: Optional['outputs.GetPrecisionTimeServicesDataPtpAdvancedConfigurationResult'] = None):
+        """
+        :param 'GetPrecisionTimeServicesDataAccountArgs' account: Equinix User Account associated with Precision Time Service
+        :param 'GetPrecisionTimeServicesDataChangeLogArgs' change_log: Details of the last change on the route aggregation resource
+        :param Sequence['GetPrecisionTimeServicesDataConnectionArgs'] connections: An array of objects with unique identifiers of connections.
+        :param str href: Equinix generated Portal link for the created Precision Time Service
+        :param 'GetPrecisionTimeServicesDataIpv4Args' ipv4: An object that has Network IP Configurations for Timing Master Servers.
+        :param str name: Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
+        :param 'GetPrecisionTimeServicesDataOrderArgs' order: Precision Time Order
+        :param 'GetPrecisionTimeServicesDataPackageArgs' package: Precision Time Service Package Details
+        :param 'GetPrecisionTimeServicesDataPrecisionTimePriceArgs' precision_time_price: Precision Time Service Price
+        :param str state: Indicator of the state of this Precision Time Service
+        :param str type: Choose type of Precision Time Service
+        :param str uuid: Equinix generated id for the Precision Time Service
+        :param Sequence['GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs'] ntp_advanced_configurations: NTP Advanced configuration
+        :param 'GetPrecisionTimeServicesDataProjectArgs' project: Equinix Project attribute object
+        :param 'GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs' ptp_advanced_configuration: PTP Advanced Configuration
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "connections", connections)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "package", package)
+        pulumi.set(__self__, "precision_time_price", precision_time_price)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if ntp_advanced_configurations is not None:
+            pulumi.set(__self__, "ntp_advanced_configurations", ntp_advanced_configurations)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if ptp_advanced_configuration is not None:
+            pulumi.set(__self__, "ptp_advanced_configuration", ptp_advanced_configuration)
+
+    @property
+    @pulumi.getter
+    def account(self) -> 'outputs.GetPrecisionTimeServicesDataAccountResult':
+        """
+        Equinix User Account associated with Precision Time Service
+        """
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetPrecisionTimeServicesDataChangeLogResult':
+        """
+        Details of the last change on the route aggregation resource
+        """
+        return pulumi.get(self, "change_log")
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.GetPrecisionTimeServicesDataConnectionResult']:
+        """
+        An array of objects with unique identifiers of connections.
+        """
+        return pulumi.get(self, "connections")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix generated Portal link for the created Precision Time Service
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> 'outputs.GetPrecisionTimeServicesDataIpv4Result':
+        """
+        An object that has Network IP Configurations for Timing Master Servers.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def order(self) -> 'outputs.GetPrecisionTimeServicesDataOrderResult':
+        """
+        Precision Time Order
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def package(self) -> 'outputs.GetPrecisionTimeServicesDataPackageResult':
+        """
+        Precision Time Service Package Details
+        """
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter(name="precisionTimePrice")
+    def precision_time_price(self) -> 'outputs.GetPrecisionTimeServicesDataPrecisionTimePriceResult':
+        """
+        Precision Time Service Price
+        """
+        return pulumi.get(self, "precision_time_price")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Indicator of the state of this Precision Time Service
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Choose type of Precision Time Service
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix generated id for the Precision Time Service
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="ntpAdvancedConfigurations")
+    def ntp_advanced_configurations(self) -> Optional[Sequence['outputs.GetPrecisionTimeServicesDataNtpAdvancedConfigurationResult']]:
+        """
+        NTP Advanced configuration
+        """
+        return pulumi.get(self, "ntp_advanced_configurations")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional['outputs.GetPrecisionTimeServicesDataProjectResult']:
+        """
+        Equinix Project attribute object
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="ptpAdvancedConfiguration")
+    def ptp_advanced_configuration(self) -> Optional['outputs.GetPrecisionTimeServicesDataPtpAdvancedConfigurationResult']:
+        """
+        PTP Advanced Configuration
+        """
+        return pulumi.get(self, "ptp_advanced_configuration")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataAccountResult(dict):
+    def __init__(__self__, *,
+                 account_name: str,
+                 account_number: int,
+                 global_cust_id: str,
+                 global_org_id: str,
+                 global_organization_name: str,
+                 org_id: int,
+                 organization_name: str,
+                 reseller_account_name: str,
+                 reseller_account_number: int,
+                 reseller_org_id: int,
+                 reseller_ucm_id: str,
+                 ucm_id: str):
+        """
+        :param str account_name: Account Name
+        :param int account_number: Equinix Account Number
+        :param str global_cust_id: Global Customer Id
+        :param str global_org_id: Customer organization naidentifierme
+        :param str global_organization_name: Global organization name
+        :param int org_id: Customer organization identifier
+        :param str organization_name: Customer organization name
+        :param str reseller_account_name: Reseller account name
+        :param int reseller_account_number: Reseller account number
+        :param int reseller_org_id: Reseller customer organization identifier
+        :param str reseller_ucm_id: Reseller account ucmId
+        :param str ucm_id: Global organization name
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "global_cust_id", global_cust_id)
+        pulumi.set(__self__, "global_org_id", global_org_id)
+        pulumi.set(__self__, "global_organization_name", global_organization_name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "reseller_account_name", reseller_account_name)
+        pulumi.set(__self__, "reseller_account_number", reseller_account_number)
+        pulumi.set(__self__, "reseller_org_id", reseller_org_id)
+        pulumi.set(__self__, "reseller_ucm_id", reseller_ucm_id)
+        pulumi.set(__self__, "ucm_id", ucm_id)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        Account Name
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> int:
+        """
+        Equinix Account Number
+        """
+        return pulumi.get(self, "account_number")
+
+    @property
+    @pulumi.getter(name="globalCustId")
+    def global_cust_id(self) -> str:
+        """
+        Global Customer Id
+        """
+        return pulumi.get(self, "global_cust_id")
+
+    @property
+    @pulumi.getter(name="globalOrgId")
+    def global_org_id(self) -> str:
+        """
+        Customer organization naidentifierme
+        """
+        return pulumi.get(self, "global_org_id")
+
+    @property
+    @pulumi.getter(name="globalOrganizationName")
+    def global_organization_name(self) -> str:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "global_organization_name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> int:
+        """
+        Customer organization identifier
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> str:
+        """
+        Customer organization name
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="resellerAccountName")
+    def reseller_account_name(self) -> str:
+        """
+        Reseller account name
+        """
+        return pulumi.get(self, "reseller_account_name")
+
+    @property
+    @pulumi.getter(name="resellerAccountNumber")
+    def reseller_account_number(self) -> int:
+        """
+        Reseller account number
+        """
+        return pulumi.get(self, "reseller_account_number")
+
+    @property
+    @pulumi.getter(name="resellerOrgId")
+    def reseller_org_id(self) -> int:
+        """
+        Reseller customer organization identifier
+        """
+        return pulumi.get(self, "reseller_org_id")
+
+    @property
+    @pulumi.getter(name="resellerUcmId")
+    def reseller_ucm_id(self) -> str:
+        """
+        Reseller account ucmId
+        """
+        return pulumi.get(self, "reseller_ucm_id")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> str:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "ucm_id")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the route aggregation resource
+        :param str created_by_email: Email of creator of the route aggregation resource
+        :param str created_by_full_name: Legal name of creator of the route aggregation resource
+        :param str created_date_time: Creation time of the route aggregation resource
+        :param str deleted_by: User name of deleter of the route aggregation resource
+        :param str deleted_by_email: Email of deleter of the route aggregation resource
+        :param str deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param str deleted_date_time: Deletion time of the route aggregation resource
+        :param str updated_by: User name of last updater of the route aggregation resource
+        :param str updated_by_email: Email of last updater of the route aggregation resource
+        :param str updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param str updated_date_time: Last update time of the route aggregation resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataConnectionResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: Link to the Equinix Fabric Connection associated with the Precision Time Service
+        :param str type: Type of the Equinix Fabric Connection associated with the Precision Time Service
+        :param str uuid: Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Link to the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataIpv4Result(dict):
+    def __init__(__self__, *,
+                 default_gateway: str,
+                 network_mask: str,
+                 primary: str,
+                 secondary: str):
+        """
+        :param str default_gateway: IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        :param str network_mask: IPv4 address that defines the range of consecutive subnets in the network.
+        :param str primary: IPv4 address for the Primary Timing Master Server.
+        :param str secondary: IPv4 address for the Secondary Timing Master Server.
+        """
+        pulumi.set(__self__, "default_gateway", default_gateway)
+        pulumi.set(__self__, "network_mask", network_mask)
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "secondary", secondary)
+
+    @property
+    @pulumi.getter(name="defaultGateway")
+    def default_gateway(self) -> str:
+        """
+        IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        """
+        return pulumi.get(self, "default_gateway")
+
+    @property
+    @pulumi.getter(name="networkMask")
+    def network_mask(self) -> str:
+        """
+        IPv4 address that defines the range of consecutive subnets in the network.
+        """
+        return pulumi.get(self, "network_mask")
+
+    @property
+    @pulumi.getter
+    def primary(self) -> str:
+        """
+        IPv4 address for the Primary Timing Master Server.
+        """
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter
+    def secondary(self) -> str:
+        """
+        IPv4 address for the Secondary Timing Master Server.
+        """
+        return pulumi.get(self, "secondary")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataNtpAdvancedConfigurationResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 key_number: Optional[int] = None,
+                 type: Optional[str] = None):
+        """
+        :param str key: The plaintext authentication key. For ASCII type, the key\\
+               \\ must contain printable ASCII characters, range 10-20 characters. For\\
+               \\ HEX type, range should be 10-40 characters
+        :param int key_number: The authentication Key ID
+        :param str type: md5 Authentication type
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if key_number is not None:
+            pulumi.set(__self__, "key_number", key_number)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The plaintext authentication key. For ASCII type, the key\\
+        \\ must contain printable ASCII characters, range 10-20 characters. For\\
+        \\ HEX type, range should be 10-40 characters
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="keyNumber")
+    def key_number(self) -> Optional[int]:
+        """
+        The authentication Key ID
+        """
+        return pulumi.get(self, "key_number")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        md5 Authentication type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataOrderResult(dict):
+    def __init__(__self__, *,
+                 customer_reference_number: str,
+                 order_number: str,
+                 purchase_order_number: str):
+        """
+        :param str customer_reference_number: Customer reference number
+        :param str order_number: Order reference number
+        :param str purchase_order_number: Purchase order number
+        """
+        pulumi.set(__self__, "customer_reference_number", customer_reference_number)
+        pulumi.set(__self__, "order_number", order_number)
+        pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+
+    @property
+    @pulumi.getter(name="customerReferenceNumber")
+    def customer_reference_number(self) -> str:
+        """
+        Customer reference number
+        """
+        return pulumi.get(self, "customer_reference_number")
+
+    @property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> str:
+        """
+        Order reference number
+        """
+        return pulumi.get(self, "order_number")
+
+    @property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> str:
+        """
+        Purchase order number
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataPackageResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 href: str):
+        """
+        :param str code: Time Precision Package Code for the desired billing package
+        :param str href: Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "href", href)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Time Precision Package Code for the desired billing package
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataPrecisionTimePriceResult(dict):
+    def __init__(__self__, *,
+                 charges: Sequence['outputs.GetPrecisionTimeServicesDataPrecisionTimePriceChargeResult'],
+                 currency: str):
+        """
+        :param Sequence['GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs'] charges: offering price charge
+        :param str currency: Offering price currency
+        """
+        pulumi.set(__self__, "charges", charges)
+        pulumi.set(__self__, "currency", currency)
+
+    @property
+    @pulumi.getter
+    def charges(self) -> Sequence['outputs.GetPrecisionTimeServicesDataPrecisionTimePriceChargeResult']:
+        """
+        offering price charge
+        """
+        return pulumi.get(self, "charges")
+
+    @property
+    @pulumi.getter
+    def currency(self) -> str:
+        """
+        Offering price currency
+        """
+        return pulumi.get(self, "currency")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataPrecisionTimePriceChargeResult(dict):
+    def __init__(__self__, *,
+                 price: float,
+                 type: str):
+        """
+        :param float price: Offering price
+        :param str type: Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        pulumi.set(__self__, "price", price)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def price(self) -> float:
+        """
+        Offering price
+        """
+        return pulumi.get(self, "price")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataPtpAdvancedConfigurationResult(dict):
+    def __init__(__self__, *,
+                 domain: Optional[int] = None,
+                 grant_time: Optional[int] = None,
+                 log_announce_interval: Optional[int] = None,
+                 log_delay_req_interval: Optional[int] = None,
+                 log_sync_interval: Optional[int] = None,
+                 priority1: Optional[int] = None,
+                 priority2: Optional[int] = None,
+                 time_scale: Optional[str] = None,
+                 transport_mode: Optional[str] = None):
+        """
+        :param int domain: The PTP domain value
+        :param int grant_time: Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        :param int log_announce_interval: Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        :param int log_delay_req_interval: Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int log_sync_interval: Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int priority1: The priority1 value determines the best primary clock, Lower value indicates higher priority
+        :param int priority2: The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        :param str time_scale: Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        :param str transport_mode: ptp transport mode
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if grant_time is not None:
+            pulumi.set(__self__, "grant_time", grant_time)
+        if log_announce_interval is not None:
+            pulumi.set(__self__, "log_announce_interval", log_announce_interval)
+        if log_delay_req_interval is not None:
+            pulumi.set(__self__, "log_delay_req_interval", log_delay_req_interval)
+        if log_sync_interval is not None:
+            pulumi.set(__self__, "log_sync_interval", log_sync_interval)
+        if priority1 is not None:
+            pulumi.set(__self__, "priority1", priority1)
+        if priority2 is not None:
+            pulumi.set(__self__, "priority2", priority2)
+        if time_scale is not None:
+            pulumi.set(__self__, "time_scale", time_scale)
+        if transport_mode is not None:
+            pulumi.set(__self__, "transport_mode", transport_mode)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[int]:
+        """
+        The PTP domain value
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="grantTime")
+    def grant_time(self) -> Optional[int]:
+        """
+        Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        """
+        return pulumi.get(self, "grant_time")
+
+    @property
+    @pulumi.getter(name="logAnnounceInterval")
+    def log_announce_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        """
+        return pulumi.get(self, "log_announce_interval")
+
+    @property
+    @pulumi.getter(name="logDelayReqInterval")
+    def log_delay_req_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_delay_req_interval")
+
+    @property
+    @pulumi.getter(name="logSyncInterval")
+    def log_sync_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_sync_interval")
+
+    @property
+    @pulumi.getter
+    def priority1(self) -> Optional[int]:
+        """
+        The priority1 value determines the best primary clock, Lower value indicates higher priority
+        """
+        return pulumi.get(self, "priority1")
+
+    @property
+    @pulumi.getter
+    def priority2(self) -> Optional[int]:
+        """
+        The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        """
+        return pulumi.get(self, "priority2")
+
+    @property
+    @pulumi.getter(name="timeScale")
+    def time_scale(self) -> Optional[str]:
+        """
+        Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        """
+        return pulumi.get(self, "time_scale")
+
+    @property
+    @pulumi.getter(name="transportMode")
+    def transport_mode(self) -> Optional[str]:
+        """
+        ptp transport mode
+        """
+        return pulumi.get(self, "transport_mode")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str],
+                 or_: Optional[bool] = None):
+        """
+        :param str operator: Operation applied to the values of the filter
+        :param str property: Property to apply the filter to
+        :param Sequence[str] values: List of values to apply the operation to for the specified property
+        :param bool or_: Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+        if or_ is not None:
+            pulumi.set(__self__, "or_", or_)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operation applied to the values of the filter
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of values to apply the operation to for the specified property
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="or")
+    def or_(self) -> Optional[bool]:
+        """
+        Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        return pulumi.get(self, "or_")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Property to apply the filter to
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 offset: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param int offset: Index of the first item returned in the response. The default is 0
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetRouteAggregationChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str type: Equinix defined Route Aggregation Change Type
+        :param str uuid: Equinix-assigned unique id for a change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteAggregationChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the route aggregation resource
+        :param str created_by_email: Email of creator of the route aggregation resource
+        :param str created_by_full_name: Legal name of creator of the route aggregation resource
+        :param str created_date_time: Creation time of the route aggregation resource
+        :param str deleted_by: User name of deleter of the route aggregation resource
+        :param str deleted_by_email: Email of deleter of the route aggregation resource
+        :param str deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param str deleted_date_time: Deletion time of the route aggregation resource
+        :param str updated_by: User name of last updater of the route aggregation resource
+        :param str updated_by_email: Email of last updater of the route aggregation resource
+        :param str updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param str updated_date_time: Last update time of the route aggregation resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteAggregationProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetRouteAggregationRuleChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str type: Equinix defined Route Aggregation Change Type
+        :param str uuid: Equinix-assigned unique id for a change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteAggregationRuleChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteAggregationRulesDataResult(dict):
+    def __init__(__self__, *,
+                 change: 'outputs.GetRouteAggregationRulesDataChangeResult',
+                 change_log: 'outputs.GetRouteAggregationRulesDataChangeLogResult',
+                 href: str,
+                 name: str,
+                 prefix: str,
+                 route_aggregation_id: str,
+                 state: str,
+                 type: str,
+                 uuid: str,
+                 description: Optional[str] = None):
+        """
+        :param 'GetRouteAggregationRulesDataChangeArgs' change: Current state of latest route aggregation rule change
+        :param 'GetRouteAggregationRulesDataChangeLogArgs' change_log: Details of the last change on the stream resource
+        :param str href: Equinix auto generated URI to the route aggregation rule resource
+        :param str name: Customer provided name of the route aggregation rule
+        :param str prefix: Customer-provided route aggregation rule prefix
+        :param str route_aggregation_id: UUID of the Route Aggregation to apply this Rule to
+        :param str state: Value representing provisioning status for the route aggregation rule resource
+        :param str type: Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+        :param str uuid: Equinix-assigned unique id for the route aggregation rule resource
+        :param str description: Customer-provided route aggregation rule description
+        """
+        pulumi.set(__self__, "change", change)
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "route_aggregation_id", route_aggregation_id)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def change(self) -> 'outputs.GetRouteAggregationRulesDataChangeResult':
+        """
+        Current state of latest route aggregation rule change
+        """
+        return pulumi.get(self, "change")
+
+    @property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetRouteAggregationRulesDataChangeLogResult':
+        """
+        Details of the last change on the stream resource
+        """
+        return pulumi.get(self, "change_log")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the route aggregation rule resource
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Customer provided name of the route aggregation rule
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Customer-provided route aggregation rule prefix
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter(name="routeAggregationId")
+    def route_aggregation_id(self) -> str:
+        """
+        UUID of the Route Aggregation to apply this Rule to
+        """
+        return pulumi.get(self, "route_aggregation_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Value representing provisioning status for the route aggregation rule resource
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for the route aggregation rule resource
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Customer-provided route aggregation rule description
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetRouteAggregationRulesDataChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str type: Equinix defined Route Aggregation Change Type
+        :param str uuid: Equinix-assigned unique id for a change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteAggregationRulesDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteAggregationRulesPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of route agrgegation rules available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of route agrgegation rules available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetRouteAggregationsDataResult(dict):
+    def __init__(__self__, *,
+                 change: 'outputs.GetRouteAggregationsDataChangeResult',
+                 change_log: 'outputs.GetRouteAggregationsDataChangeLogResult',
+                 connections_count: int,
+                 description: str,
+                 href: str,
+                 name: str,
+                 project: 'outputs.GetRouteAggregationsDataProjectResult',
+                 rules_count: int,
+                 state: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param 'GetRouteAggregationsDataChangeArgs' change: Current state of latest Route Aggregation change
+        :param 'GetRouteAggregationsDataChangeLogArgs' change_log: Details of the last change on the route aggregation resource
+        :param int connections_count: Number of Connections attached to route aggregation
+        :param str description: Customer-provided route aggregation description
+        :param str href: Equinix auto generated URI to the route aggregation resource
+        :param str name: Customer provided name of the route aggregation
+        :param 'GetRouteAggregationsDataProjectArgs' project: Equinix Project attribute object
+        :param int rules_count: Number of Rules attached to route aggregation
+        :param str state: Value representing provisioning status for the route aggregation resource
+        :param str type: Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+        :param str uuid: Equinix-assigned unique id for the route aggregation resource
+        """
+        pulumi.set(__self__, "change", change)
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "connections_count", connections_count)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "rules_count", rules_count)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def change(self) -> 'outputs.GetRouteAggregationsDataChangeResult':
+        """
+        Current state of latest Route Aggregation change
+        """
+        return pulumi.get(self, "change")
+
+    @property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetRouteAggregationsDataChangeLogResult':
+        """
+        Details of the last change on the route aggregation resource
+        """
+        return pulumi.get(self, "change_log")
+
+    @property
+    @pulumi.getter(name="connectionsCount")
+    def connections_count(self) -> int:
+        """
+        Number of Connections attached to route aggregation
+        """
+        return pulumi.get(self, "connections_count")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Customer-provided route aggregation description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the route aggregation resource
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Customer provided name of the route aggregation
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> 'outputs.GetRouteAggregationsDataProjectResult':
+        """
+        Equinix Project attribute object
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="rulesCount")
+    def rules_count(self) -> int:
+        """
+        Number of Rules attached to route aggregation
+        """
+        return pulumi.get(self, "rules_count")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Value representing provisioning status for the route aggregation resource
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for the route aggregation resource
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteAggregationsDataChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str type: Equinix defined Route Aggregation Change Type
+        :param str uuid: Equinix-assigned unique id for a change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetRouteAggregationsDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the route aggregation resource
+        :param str created_by_email: Email of creator of the route aggregation resource
+        :param str created_by_full_name: Legal name of creator of the route aggregation resource
+        :param str created_date_time: Creation time of the route aggregation resource
+        :param str deleted_by: User name of deleter of the route aggregation resource
+        :param str deleted_by_email: Email of deleter of the route aggregation resource
+        :param str deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param str deleted_date_time: Deletion time of the route aggregation resource
+        :param str updated_by: User name of last updater of the route aggregation resource
+        :param str updated_by_email: Email of last updater of the route aggregation resource
+        :param str updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param str updated_date_time: Last update time of the route aggregation resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteAggregationsDataProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetRouteAggregationsFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        :param str property: possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetRouteAggregationsPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of route aggregations available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of route aggregations available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetRouteAggregationsSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        """
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type
@@ -25357,6 +30680,211 @@ class GetServiceTokensPaginationResult(dict):
 
 
 @pulumi.output_type
+class GetStreamAttachmentsDataResult(dict):
+    def __init__(__self__, *,
+                 attachment_status: str,
+                 href: str,
+                 metrics_enabled: bool,
+                 type: str,
+                 uuid: str):
+        """
+        :param str attachment_status: Value representing status for the stream attachment
+        :param str href: Equinix auto generated URI to the stream attachment in Equinix Portal
+        :param bool metrics_enabled: Boolean value indicating enablement of metrics for this asset stream attachment
+        :param str type: Equinix defined type for the asset stream attachment
+        :param str uuid: Equinix-assigned unique id for the stream attachment
+        """
+        pulumi.set(__self__, "attachment_status", attachment_status)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "metrics_enabled", metrics_enabled)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="attachmentStatus")
+    def attachment_status(self) -> str:
+        """
+        Value representing status for the stream attachment
+        """
+        return pulumi.get(self, "attachment_status")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix auto generated URI to the stream attachment in Equinix Portal
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter(name="metricsEnabled")
+    def metrics_enabled(self) -> bool:
+        """
+        Boolean value indicating enablement of metrics for this asset stream attachment
+        """
+        return pulumi.get(self, "metrics_enabled")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Equinix defined type for the asset stream attachment
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned unique id for the stream attachment
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetStreamAttachmentsFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str],
+                 or_: Optional[bool] = None):
+        """
+        :param str operator: Operation applied to the values of the filter
+        :param str property: Property to apply the filter to
+        :param Sequence[str] values: List of values to apply the operation to for the specified property
+        :param bool or_: Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+        if or_ is not None:
+            pulumi.set(__self__, "or_", or_)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operation applied to the values of the filter
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of values to apply the operation to for the specified property
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter(name="or")
+    def or_(self) -> Optional[bool]:
+        """
+        Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        return pulumi.get(self, "or_")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Property to apply the filter to
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetStreamAttachmentsPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of streams available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of streams available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetStreamAttachmentsSortResult(dict):
+    def __init__(__self__, *,
+                 direction: str,
+                 property: str):
+        """
+        :param str direction: The sorting direction of the property chosen. ASC or DESC
+        :param str property: The field name the sorting is performed on
+        """
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> str:
+        """
+        The sorting direction of the property chosen. ASC or DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The field name the sorting is performed on
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
 class GetStreamChangeLogResult(dict):
     def __init__(__self__, *,
                  created_by: str,
@@ -25511,6 +31039,1068 @@ class GetStreamProjectResult(dict):
         Equinix Subscriber-assigned project ID
         """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionEventSelectorResult(dict):
+    def __init__(__self__, *,
+                 excepts: Sequence[str],
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] excepts: List of events to exclude
+        :param Sequence[str] includes: List of events to include
+        """
+        pulumi.set(__self__, "excepts", excepts)
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Sequence[str]:
+        """
+        List of events to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of events to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionMetricSelectorResult(dict):
+    def __init__(__self__, *,
+                 excepts: Sequence[str],
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] excepts: List of metrics to exclude
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "excepts", excepts)
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Sequence[str]:
+        """
+        List of metrics to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionSinkResult(dict):
+    def __init__(__self__, *,
+                 batch_enabled: bool,
+                 batch_size_max: int,
+                 batch_wait_time_max: int,
+                 credential: 'outputs.GetStreamSubscriptionSinkCredentialResult',
+                 host: str,
+                 settings: 'outputs.GetStreamSubscriptionSinkSettingsResult',
+                 type: str,
+                 uri: str):
+        """
+        :param bool batch_enabled: Boolean switch enabling batch delivery of data
+        :param int batch_size_max: Maximum size of the batch delivery if enabled
+        :param int batch_wait_time_max: Maximum time to wait for batch delivery if enabled
+        :param 'GetStreamSubscriptionSinkCredentialArgs' credential: Access details for the specified sink type
+        :param str host: Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        :param 'GetStreamSubscriptionSinkSettingsArgs' settings: Stream subscription sink settings
+        :param str type: Type of the subscriber
+        :param str uri: Publicly reachable http endpoint destination for data stream
+        """
+        pulumi.set(__self__, "batch_enabled", batch_enabled)
+        pulumi.set(__self__, "batch_size_max", batch_size_max)
+        pulumi.set(__self__, "batch_wait_time_max", batch_wait_time_max)
+        pulumi.set(__self__, "credential", credential)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "settings", settings)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="batchEnabled")
+    def batch_enabled(self) -> bool:
+        """
+        Boolean switch enabling batch delivery of data
+        """
+        return pulumi.get(self, "batch_enabled")
+
+    @property
+    @pulumi.getter(name="batchSizeMax")
+    def batch_size_max(self) -> int:
+        """
+        Maximum size of the batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_size_max")
+
+    @property
+    @pulumi.getter(name="batchWaitTimeMax")
+    def batch_wait_time_max(self) -> int:
+        """
+        Maximum time to wait for batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_wait_time_max")
+
+    @property
+    @pulumi.getter
+    def credential(self) -> 'outputs.GetStreamSubscriptionSinkCredentialResult':
+        """
+        Access details for the specified sink type
+        """
+        return pulumi.get(self, "credential")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> 'outputs.GetStreamSubscriptionSinkSettingsResult':
+        """
+        Stream subscription sink settings
+        """
+        return pulumi.get(self, "settings")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the subscriber
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Publicly reachable http endpoint destination for data stream
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionSinkCredentialResult(dict):
+    def __init__(__self__, *,
+                 access_token: str,
+                 api_key: str,
+                 integration_key: str,
+                 password: str,
+                 type: str,
+                 username: str):
+        """
+        :param str access_token: Passed as Authorization header value
+        :param str api_key: Passed as Authorization header value
+        :param str integration_key: Passed as Authorization header value
+        :param str password: Passed as Authorization header value
+        :param str type: Type of the credential being passed
+        :param str username: Passed as Authorization header value
+        """
+        pulumi.set(__self__, "access_token", access_token)
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "integration_key", integration_key)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "integration_key")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the credential being passed
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionSinkSettingsResult(dict):
+    def __init__(__self__, *,
+                 access_token: str,
+                 api_key: str,
+                 integration_key: str,
+                 password: str,
+                 type: str,
+                 username: str):
+        """
+        :param str access_token: Passed as Authorization header value
+        :param str api_key: Passed as Authorization header value
+        :param str integration_key: Passed as Authorization header value
+        :param str password: Passed as Authorization header value
+        :param str type: Type of the stream subscription request
+        :param str username: Passed as Authorization header value
+        """
+        pulumi.set(__self__, "access_token", access_token)
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "integration_key", integration_key)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "integration_key")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the stream subscription request
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsDataResult(dict):
+    def __init__(__self__, *,
+                 change_log: 'outputs.GetStreamSubscriptionsDataChangeLogResult',
+                 description: str,
+                 enabled: bool,
+                 event_selector: 'outputs.GetStreamSubscriptionsDataEventSelectorResult',
+                 href: str,
+                 metric_selector: 'outputs.GetStreamSubscriptionsDataMetricSelectorResult',
+                 name: str,
+                 sink: 'outputs.GetStreamSubscriptionsDataSinkResult',
+                 state: str,
+                 type: str,
+                 uuid: str):
+        """
+        :param 'GetStreamSubscriptionsDataChangeLogArgs' change_log: Details of the last change on the stream resource
+        :param str description: Customer-provided stream subscription description
+        :param bool enabled: Stream subscription enabled status
+        :param 'GetStreamSubscriptionsDataEventSelectorArgs' event_selector: Lists of events to be included/excluded on the stream subscription
+        :param str href: Equinix assigned URI of the stream subscription resource
+        :param 'GetStreamSubscriptionsDataMetricSelectorArgs' metric_selector: Lists of metrics to be included/excluded on the stream subscription
+        :param str name: Customer-provided stream subscription name
+        :param 'GetStreamSubscriptionsDataSinkArgs' sink: The details of the subscriber to the Equinix Stream
+        :param str state: Value representing provisioning status for the stream resource
+        :param str type: Type of the stream subscription request
+        :param str uuid: Equinix assigned unique identifier of the stream subscription resource
+        """
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "event_selector", event_selector)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "metric_selector", metric_selector)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "sink", sink)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetStreamSubscriptionsDataChangeLogResult':
+        """
+        Details of the last change on the stream resource
+        """
+        return pulumi.get(self, "change_log")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Customer-provided stream subscription description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Stream subscription enabled status
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="eventSelector")
+    def event_selector(self) -> 'outputs.GetStreamSubscriptionsDataEventSelectorResult':
+        """
+        Lists of events to be included/excluded on the stream subscription
+        """
+        return pulumi.get(self, "event_selector")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix assigned URI of the stream subscription resource
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter(name="metricSelector")
+    def metric_selector(self) -> 'outputs.GetStreamSubscriptionsDataMetricSelectorResult':
+        """
+        Lists of metrics to be included/excluded on the stream subscription
+        """
+        return pulumi.get(self, "metric_selector")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Customer-provided stream subscription name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def sink(self) -> 'outputs.GetStreamSubscriptionsDataSinkResult':
+        """
+        The details of the subscriber to the Equinix Stream
+        """
+        return pulumi.get(self, "sink")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Value representing provisioning status for the stream resource
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the stream subscription request
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix assigned unique identifier of the stream subscription resource
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsDataEventSelectorResult(dict):
+    def __init__(__self__, *,
+                 excepts: Sequence[str],
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] excepts: List of events to exclude
+        :param Sequence[str] includes: List of events to include
+        """
+        pulumi.set(__self__, "excepts", excepts)
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Sequence[str]:
+        """
+        List of events to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of events to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsDataMetricSelectorResult(dict):
+    def __init__(__self__, *,
+                 excepts: Sequence[str],
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] excepts: List of metrics to exclude
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "excepts", excepts)
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Sequence[str]:
+        """
+        List of metrics to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsDataSinkResult(dict):
+    def __init__(__self__, *,
+                 batch_enabled: bool,
+                 batch_size_max: int,
+                 batch_wait_time_max: int,
+                 credential: 'outputs.GetStreamSubscriptionsDataSinkCredentialResult',
+                 host: str,
+                 settings: 'outputs.GetStreamSubscriptionsDataSinkSettingsResult',
+                 type: str,
+                 uri: str):
+        """
+        :param bool batch_enabled: Boolean switch enabling batch delivery of data
+        :param int batch_size_max: Maximum size of the batch delivery if enabled
+        :param int batch_wait_time_max: Maximum time to wait for batch delivery if enabled
+        :param 'GetStreamSubscriptionsDataSinkCredentialArgs' credential: Access details for the specified sink type
+        :param str host: Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        :param 'GetStreamSubscriptionsDataSinkSettingsArgs' settings: Stream subscription sink settings
+        :param str type: Type of the subscriber
+        :param str uri: Publicly reachable http endpoint destination for data stream
+        """
+        pulumi.set(__self__, "batch_enabled", batch_enabled)
+        pulumi.set(__self__, "batch_size_max", batch_size_max)
+        pulumi.set(__self__, "batch_wait_time_max", batch_wait_time_max)
+        pulumi.set(__self__, "credential", credential)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "settings", settings)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="batchEnabled")
+    def batch_enabled(self) -> bool:
+        """
+        Boolean switch enabling batch delivery of data
+        """
+        return pulumi.get(self, "batch_enabled")
+
+    @property
+    @pulumi.getter(name="batchSizeMax")
+    def batch_size_max(self) -> int:
+        """
+        Maximum size of the batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_size_max")
+
+    @property
+    @pulumi.getter(name="batchWaitTimeMax")
+    def batch_wait_time_max(self) -> int:
+        """
+        Maximum time to wait for batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_wait_time_max")
+
+    @property
+    @pulumi.getter
+    def credential(self) -> 'outputs.GetStreamSubscriptionsDataSinkCredentialResult':
+        """
+        Access details for the specified sink type
+        """
+        return pulumi.get(self, "credential")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> 'outputs.GetStreamSubscriptionsDataSinkSettingsResult':
+        """
+        Stream subscription sink settings
+        """
+        return pulumi.get(self, "settings")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the subscriber
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Publicly reachable http endpoint destination for data stream
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsDataSinkCredentialResult(dict):
+    def __init__(__self__, *,
+                 access_token: str,
+                 api_key: str,
+                 integration_key: str,
+                 password: str,
+                 type: str,
+                 username: str):
+        """
+        :param str access_token: Passed as Authorization header value
+        :param str api_key: Passed as Authorization header value
+        :param str integration_key: Passed as Authorization header value
+        :param str password: Passed as Authorization header value
+        :param str type: Type of the credential being passed
+        :param str username: Passed as Authorization header value
+        """
+        pulumi.set(__self__, "access_token", access_token)
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "integration_key", integration_key)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "integration_key")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the credential being passed
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsDataSinkSettingsResult(dict):
+    def __init__(__self__, *,
+                 access_token: str,
+                 api_key: str,
+                 integration_key: str,
+                 password: str,
+                 type: str,
+                 username: str):
+        """
+        :param str access_token: Passed as Authorization header value
+        :param str api_key: Passed as Authorization header value
+        :param str integration_key: Passed as Authorization header value
+        :param str password: Passed as Authorization header value
+        :param str username: Passed as Authorization header value
+        """
+        pulumi.set(__self__, "access_token", access_token)
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "integration_key", integration_key)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "integration_key")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetStreamSubscriptionsPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of streams available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of streams available to the user making the request
+        """
+        return pulumi.get(self, "total")
 
 
 @pulumi.output_type

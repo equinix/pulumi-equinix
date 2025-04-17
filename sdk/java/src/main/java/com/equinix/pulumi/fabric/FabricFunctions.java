@@ -10,6 +10,10 @@ import com.equinix.pulumi.fabric.inputs.GetCloudRoutersArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRoutersPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteAggregationArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteAggregationPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteAggregationsArgs;
+import com.equinix.pulumi.fabric.inputs.GetConnectionRouteAggregationsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFilterArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFilterPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFiltersArgs;
@@ -30,6 +34,18 @@ import com.equinix.pulumi.fabric.inputs.GetPortArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortsArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortsPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServiceArgs;
+import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServicePlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServicesArgs;
+import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServicesPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRuleArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRulePlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRulesArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRulesPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationsArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetRouteFilterArgs;
 import com.equinix.pulumi.fabric.inputs.GetRouteFilterPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetRouteFilterRuleArgs;
@@ -49,12 +65,22 @@ import com.equinix.pulumi.fabric.inputs.GetServiceTokenPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokensArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokensPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAttachmentArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAttachmentPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAttachmentsArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAttachmentsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamSubscriptionArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamSubscriptionPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamSubscriptionsArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamSubscriptionsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamsArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamsPlainArgs;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
+import com.equinix.pulumi.fabric.outputs.GetConnectionRouteAggregationResult;
+import com.equinix.pulumi.fabric.outputs.GetConnectionRouteAggregationsResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFilterResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFiltersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsResult;
@@ -65,6 +91,12 @@ import com.equinix.pulumi.fabric.outputs.GetNetworkResult;
 import com.equinix.pulumi.fabric.outputs.GetNetworksResult;
 import com.equinix.pulumi.fabric.outputs.GetPortResult;
 import com.equinix.pulumi.fabric.outputs.GetPortsResult;
+import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceResult;
+import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServicesResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteAggregationResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRuleResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRulesResult;
+import com.equinix.pulumi.fabric.outputs.GetRouteAggregationsResult;
 import com.equinix.pulumi.fabric.outputs.GetRouteFilterResult;
 import com.equinix.pulumi.fabric.outputs.GetRouteFilterRuleResult;
 import com.equinix.pulumi.fabric.outputs.GetRouteFilterRulesResult;
@@ -74,7 +106,11 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfileResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceTokenResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceTokensResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamAttachmentResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamAttachmentsResult;
 import com.equinix.pulumi.fabric.outputs.GetStreamResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamSubscriptionResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamSubscriptionsResult;
 import com.equinix.pulumi.fabric.outputs.GetStreamsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -723,6 +759,486 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteAggregation(GetConnectionRouteAggregationArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .connectionId("<connection_id>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteAggregationId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.id()));
+     *         ctx.export("connectionRouteAggregationConnectionId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.connectionId()));
+     *         ctx.export("connectionRouteAggregationType", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.type()));
+     *         ctx.export("connectionRouteAggregationAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteAggregationResult> getConnectionRouteAggregation(GetConnectionRouteAggregationArgs args) {
+        return getConnectionRouteAggregation(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteAggregation(GetConnectionRouteAggregationArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .connectionId("<connection_id>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteAggregationId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.id()));
+     *         ctx.export("connectionRouteAggregationConnectionId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.connectionId()));
+     *         ctx.export("connectionRouteAggregationType", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.type()));
+     *         ctx.export("connectionRouteAggregationAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteAggregationResult> getConnectionRouteAggregationPlain(GetConnectionRouteAggregationPlainArgs args) {
+        return getConnectionRouteAggregationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteAggregation(GetConnectionRouteAggregationArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .connectionId("<connection_id>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteAggregationId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.id()));
+     *         ctx.export("connectionRouteAggregationConnectionId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.connectionId()));
+     *         ctx.export("connectionRouteAggregationType", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.type()));
+     *         ctx.export("connectionRouteAggregationAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteAggregationResult> getConnectionRouteAggregation(GetConnectionRouteAggregationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteAggregation:getConnectionRouteAggregation", TypeShape.of(GetConnectionRouteAggregationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteAggregation(GetConnectionRouteAggregationArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .connectionId("<connection_id>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteAggregationId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.id()));
+     *         ctx.export("connectionRouteAggregationConnectionId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.connectionId()));
+     *         ctx.export("connectionRouteAggregationType", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.type()));
+     *         ctx.export("connectionRouteAggregationAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteAggregationResult> getConnectionRouteAggregation(GetConnectionRouteAggregationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteAggregation:getConnectionRouteAggregation", TypeShape.of(GetConnectionRouteAggregationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicy = FabricFunctions.getConnectionRouteAggregation(GetConnectionRouteAggregationArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .connectionId("<connection_id>")
+     *             .build());
+     * 
+     *         ctx.export("connectionRouteAggregationId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.id()));
+     *         ctx.export("connectionRouteAggregationConnectionId", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.connectionId()));
+     *         ctx.export("connectionRouteAggregationType", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.type()));
+     *         ctx.export("connectionRouteAggregationAttachmentStatus", attachedPolicy.applyValue(getConnectionRouteAggregationResult -> getConnectionRouteAggregationResult.attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteAggregationResult> getConnectionRouteAggregationPlain(GetConnectionRouteAggregationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getConnectionRouteAggregation:getConnectionRouteAggregation", TypeShape.of(GetConnectionRouteAggregationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicies = FabricFunctions.getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs.builder()
+     *             .connectionId("connection_id")
+     *             .build());
+     * 
+     *         ctx.export("connectionFirstRouteAggregationUuid", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].uuid()));
+     *         ctx.export("connectionFirstRouteAggregationType", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].type()));
+     *         ctx.export("connectionFirstRouteAggregationAttachmentStatus", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteAggregationsResult> getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs args) {
+        return getConnectionRouteAggregations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicies = FabricFunctions.getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs.builder()
+     *             .connectionId("connection_id")
+     *             .build());
+     * 
+     *         ctx.export("connectionFirstRouteAggregationUuid", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].uuid()));
+     *         ctx.export("connectionFirstRouteAggregationType", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].type()));
+     *         ctx.export("connectionFirstRouteAggregationAttachmentStatus", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteAggregationsResult> getConnectionRouteAggregationsPlain(GetConnectionRouteAggregationsPlainArgs args) {
+        return getConnectionRouteAggregationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicies = FabricFunctions.getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs.builder()
+     *             .connectionId("connection_id")
+     *             .build());
+     * 
+     *         ctx.export("connectionFirstRouteAggregationUuid", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].uuid()));
+     *         ctx.export("connectionFirstRouteAggregationType", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].type()));
+     *         ctx.export("connectionFirstRouteAggregationAttachmentStatus", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteAggregationsResult> getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteAggregations:getConnectionRouteAggregations", TypeShape.of(GetConnectionRouteAggregationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicies = FabricFunctions.getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs.builder()
+     *             .connectionId("connection_id")
+     *             .build());
+     * 
+     *         ctx.export("connectionFirstRouteAggregationUuid", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].uuid()));
+     *         ctx.export("connectionFirstRouteAggregationType", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].type()));
+     *         ctx.export("connectionFirstRouteAggregationAttachmentStatus", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionRouteAggregationsResult> getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getConnectionRouteAggregations:getConnectionRouteAggregations", TypeShape.of(GetConnectionRouteAggregationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionRouteAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachedPolicies = FabricFunctions.getConnectionRouteAggregations(GetConnectionRouteAggregationsArgs.builder()
+     *             .connectionId("connection_id")
+     *             .build());
+     * 
+     *         ctx.export("connectionFirstRouteAggregationUuid", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].uuid()));
+     *         ctx.export("connectionFirstRouteAggregationType", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].type()));
+     *         ctx.export("connectionFirstRouteAggregationAttachmentStatus", attachedPolicies.applyValue(getConnectionRouteAggregationsResult -> getConnectionRouteAggregationsResult.datas()[0].attachmentStatus()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionRouteAggregationsResult> getConnectionRouteAggregationsPlain(GetConnectionRouteAggregationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getConnectionRouteAggregations:getConnectionRouteAggregations", TypeShape.of(GetConnectionRouteAggregationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
@@ -2538,6 +3054,1374 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPrecisionTimeServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ept-test = FabricFunctions.getPrecisionTimeService(GetPrecisionTimeServiceArgs.builder()
+     *             .eptServiceId("<ept_service_id")
+     *             .build());
+     * 
+     *         ctx.export("eptServiceId", ept_test.id());
+     *         ctx.export("eptServiceName", ept_test.name());
+     *         ctx.export("eptServiceState", ept_test.state());
+     *         ctx.export("eptServiceType", ept_test.type());
+     *         ctx.export("eptServiceIpv4", ept_test.ipv4());
+     *         ctx.export("eptServiceConnection", equinix_fabric_precision_time_service.ptp().connections());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrecisionTimeServiceResult> getPrecisionTimeService(GetPrecisionTimeServiceArgs args) {
+        return getPrecisionTimeService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPrecisionTimeServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ept-test = FabricFunctions.getPrecisionTimeService(GetPrecisionTimeServiceArgs.builder()
+     *             .eptServiceId("<ept_service_id")
+     *             .build());
+     * 
+     *         ctx.export("eptServiceId", ept_test.id());
+     *         ctx.export("eptServiceName", ept_test.name());
+     *         ctx.export("eptServiceState", ept_test.state());
+     *         ctx.export("eptServiceType", ept_test.type());
+     *         ctx.export("eptServiceIpv4", ept_test.ipv4());
+     *         ctx.export("eptServiceConnection", equinix_fabric_precision_time_service.ptp().connections());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPrecisionTimeServiceResult> getPrecisionTimeServicePlain(GetPrecisionTimeServicePlainArgs args) {
+        return getPrecisionTimeServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPrecisionTimeServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ept-test = FabricFunctions.getPrecisionTimeService(GetPrecisionTimeServiceArgs.builder()
+     *             .eptServiceId("<ept_service_id")
+     *             .build());
+     * 
+     *         ctx.export("eptServiceId", ept_test.id());
+     *         ctx.export("eptServiceName", ept_test.name());
+     *         ctx.export("eptServiceState", ept_test.state());
+     *         ctx.export("eptServiceType", ept_test.type());
+     *         ctx.export("eptServiceIpv4", ept_test.ipv4());
+     *         ctx.export("eptServiceConnection", equinix_fabric_precision_time_service.ptp().connections());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrecisionTimeServiceResult> getPrecisionTimeService(GetPrecisionTimeServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getPrecisionTimeService:getPrecisionTimeService", TypeShape.of(GetPrecisionTimeServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPrecisionTimeServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ept-test = FabricFunctions.getPrecisionTimeService(GetPrecisionTimeServiceArgs.builder()
+     *             .eptServiceId("<ept_service_id")
+     *             .build());
+     * 
+     *         ctx.export("eptServiceId", ept_test.id());
+     *         ctx.export("eptServiceName", ept_test.name());
+     *         ctx.export("eptServiceState", ept_test.state());
+     *         ctx.export("eptServiceType", ept_test.type());
+     *         ctx.export("eptServiceIpv4", ept_test.ipv4());
+     *         ctx.export("eptServiceConnection", equinix_fabric_precision_time_service.ptp().connections());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrecisionTimeServiceResult> getPrecisionTimeService(GetPrecisionTimeServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getPrecisionTimeService:getPrecisionTimeService", TypeShape.of(GetPrecisionTimeServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPrecisionTimeServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ept-test = FabricFunctions.getPrecisionTimeService(GetPrecisionTimeServiceArgs.builder()
+     *             .eptServiceId("<ept_service_id")
+     *             .build());
+     * 
+     *         ctx.export("eptServiceId", ept_test.id());
+     *         ctx.export("eptServiceName", ept_test.name());
+     *         ctx.export("eptServiceState", ept_test.state());
+     *         ctx.export("eptServiceType", ept_test.type());
+     *         ctx.export("eptServiceIpv4", ept_test.ipv4());
+     *         ctx.export("eptServiceConnection", equinix_fabric_precision_time_service.ptp().connections());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPrecisionTimeServiceResult> getPrecisionTimeServicePlain(GetPrecisionTimeServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getPrecisionTimeService:getPrecisionTimeService", TypeShape.of(GetPrecisionTimeServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * 
+     */
+    public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices() {
+        return getPrecisionTimeServices(GetPrecisionTimeServicesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * 
+     */
+    public static CompletableFuture<GetPrecisionTimeServicesResult> getPrecisionTimeServicesPlain() {
+        return getPrecisionTimeServicesPlain(GetPrecisionTimeServicesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * 
+     */
+    public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices(GetPrecisionTimeServicesArgs args) {
+        return getPrecisionTimeServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * 
+     */
+    public static CompletableFuture<GetPrecisionTimeServicesResult> getPrecisionTimeServicesPlain(GetPrecisionTimeServicesPlainArgs args) {
+        return getPrecisionTimeServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * 
+     */
+    public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices(GetPrecisionTimeServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices", TypeShape.of(GetPrecisionTimeServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * 
+     */
+    public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices(GetPrecisionTimeServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices", TypeShape.of(GetPrecisionTimeServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * 
+     */
+    public static CompletableFuture<GetPrecisionTimeServicesResult> getPrecisionTimeServicesPlain(GetPrecisionTimeServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices", TypeShape.of(GetPrecisionTimeServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregation(GetRouteAggregationArgs.builder()
+     *             .uuid("<uuid_of_route_aggregation>")
+     *             .build());
+     * 
+     *         ctx.export("id", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.id()));
+     *         ctx.export("type", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.type()));
+     *         ctx.export("state", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.state()));
+     *         ctx.export("connectionsCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.connectionsCount()));
+     *         ctx.export("rulesCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationResult> getRouteAggregation(GetRouteAggregationArgs args) {
+        return getRouteAggregation(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregation(GetRouteAggregationArgs.builder()
+     *             .uuid("<uuid_of_route_aggregation>")
+     *             .build());
+     * 
+     *         ctx.export("id", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.id()));
+     *         ctx.export("type", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.type()));
+     *         ctx.export("state", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.state()));
+     *         ctx.export("connectionsCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.connectionsCount()));
+     *         ctx.export("rulesCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationResult> getRouteAggregationPlain(GetRouteAggregationPlainArgs args) {
+        return getRouteAggregationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregation(GetRouteAggregationArgs.builder()
+     *             .uuid("<uuid_of_route_aggregation>")
+     *             .build());
+     * 
+     *         ctx.export("id", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.id()));
+     *         ctx.export("type", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.type()));
+     *         ctx.export("state", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.state()));
+     *         ctx.export("connectionsCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.connectionsCount()));
+     *         ctx.export("rulesCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationResult> getRouteAggregation(GetRouteAggregationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregation:getRouteAggregation", TypeShape.of(GetRouteAggregationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregation(GetRouteAggregationArgs.builder()
+     *             .uuid("<uuid_of_route_aggregation>")
+     *             .build());
+     * 
+     *         ctx.export("id", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.id()));
+     *         ctx.export("type", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.type()));
+     *         ctx.export("state", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.state()));
+     *         ctx.export("connectionsCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.connectionsCount()));
+     *         ctx.export("rulesCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationResult> getRouteAggregation(GetRouteAggregationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregation:getRouteAggregation", TypeShape.of(GetRouteAggregationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregation(GetRouteAggregationArgs.builder()
+     *             .uuid("<uuid_of_route_aggregation>")
+     *             .build());
+     * 
+     *         ctx.export("id", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.id()));
+     *         ctx.export("type", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.type()));
+     *         ctx.export("state", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.state()));
+     *         ctx.export("connectionsCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.connectionsCount()));
+     *         ctx.export("rulesCount", raPolicy.applyValue(getRouteAggregationResult -> getRouteAggregationResult.rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationResult> getRouteAggregationPlain(GetRouteAggregationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteAggregation:getRouteAggregation", TypeShape.of(GetRouteAggregationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRule = FabricFunctions.getRouteAggregationRule(GetRouteAggregationRuleArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .routeAggregationRuleId("<route_aggregation_rule_id>")
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.name()));
+     *         ctx.export("routeAggregationRuleDescription", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.description()));
+     *         ctx.export("routeAggregationRuleType", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.type()));
+     *         ctx.export("routeAggregationRulePrefix", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.prefix()));
+     *         ctx.export("routeAggregationRuleState", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationRuleResult> getRouteAggregationRule(GetRouteAggregationRuleArgs args) {
+        return getRouteAggregationRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRule = FabricFunctions.getRouteAggregationRule(GetRouteAggregationRuleArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .routeAggregationRuleId("<route_aggregation_rule_id>")
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.name()));
+     *         ctx.export("routeAggregationRuleDescription", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.description()));
+     *         ctx.export("routeAggregationRuleType", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.type()));
+     *         ctx.export("routeAggregationRulePrefix", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.prefix()));
+     *         ctx.export("routeAggregationRuleState", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationRuleResult> getRouteAggregationRulePlain(GetRouteAggregationRulePlainArgs args) {
+        return getRouteAggregationRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRule = FabricFunctions.getRouteAggregationRule(GetRouteAggregationRuleArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .routeAggregationRuleId("<route_aggregation_rule_id>")
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.name()));
+     *         ctx.export("routeAggregationRuleDescription", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.description()));
+     *         ctx.export("routeAggregationRuleType", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.type()));
+     *         ctx.export("routeAggregationRulePrefix", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.prefix()));
+     *         ctx.export("routeAggregationRuleState", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationRuleResult> getRouteAggregationRule(GetRouteAggregationRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregationRule:getRouteAggregationRule", TypeShape.of(GetRouteAggregationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRule = FabricFunctions.getRouteAggregationRule(GetRouteAggregationRuleArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .routeAggregationRuleId("<route_aggregation_rule_id>")
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.name()));
+     *         ctx.export("routeAggregationRuleDescription", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.description()));
+     *         ctx.export("routeAggregationRuleType", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.type()));
+     *         ctx.export("routeAggregationRulePrefix", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.prefix()));
+     *         ctx.export("routeAggregationRuleState", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationRuleResult> getRouteAggregationRule(GetRouteAggregationRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregationRule:getRouteAggregationRule", TypeShape.of(GetRouteAggregationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRule = FabricFunctions.getRouteAggregationRule(GetRouteAggregationRuleArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .routeAggregationRuleId("<route_aggregation_rule_id>")
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.name()));
+     *         ctx.export("routeAggregationRuleDescription", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.description()));
+     *         ctx.export("routeAggregationRuleType", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.type()));
+     *         ctx.export("routeAggregationRulePrefix", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.prefix()));
+     *         ctx.export("routeAggregationRuleState", raRule.applyValue(getRouteAggregationRuleResult -> getRouteAggregationRuleResult.state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationRuleResult> getRouteAggregationRulePlain(GetRouteAggregationRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteAggregationRule:getRouteAggregationRule", TypeShape.of(GetRouteAggregationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRules = FabricFunctions.getRouteAggregationRules(GetRouteAggregationRulesArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .pagination(GetRouteAggregationRulesPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].name()));
+     *         ctx.export("routeAggregationRuleDescription", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].description()));
+     *         ctx.export("routeAggregationRulePrefix", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].prefix()));
+     *         ctx.export("routeAggregationRuleState", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationRulesResult> getRouteAggregationRules(GetRouteAggregationRulesArgs args) {
+        return getRouteAggregationRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRules = FabricFunctions.getRouteAggregationRules(GetRouteAggregationRulesArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .pagination(GetRouteAggregationRulesPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].name()));
+     *         ctx.export("routeAggregationRuleDescription", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].description()));
+     *         ctx.export("routeAggregationRulePrefix", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].prefix()));
+     *         ctx.export("routeAggregationRuleState", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationRulesResult> getRouteAggregationRulesPlain(GetRouteAggregationRulesPlainArgs args) {
+        return getRouteAggregationRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRules = FabricFunctions.getRouteAggregationRules(GetRouteAggregationRulesArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .pagination(GetRouteAggregationRulesPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].name()));
+     *         ctx.export("routeAggregationRuleDescription", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].description()));
+     *         ctx.export("routeAggregationRulePrefix", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].prefix()));
+     *         ctx.export("routeAggregationRuleState", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationRulesResult> getRouteAggregationRules(GetRouteAggregationRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregationRules:getRouteAggregationRules", TypeShape.of(GetRouteAggregationRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRules = FabricFunctions.getRouteAggregationRules(GetRouteAggregationRulesArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .pagination(GetRouteAggregationRulesPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].name()));
+     *         ctx.export("routeAggregationRuleDescription", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].description()));
+     *         ctx.export("routeAggregationRulePrefix", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].prefix()));
+     *         ctx.export("routeAggregationRuleState", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationRulesResult> getRouteAggregationRules(GetRouteAggregationRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregationRules:getRouteAggregationRules", TypeShape.of(GetRouteAggregationRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
+     * Additional Documentation:
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raRules = FabricFunctions.getRouteAggregationRules(GetRouteAggregationRulesArgs.builder()
+     *             .routeAggregationId("<route_aggregation_id>")
+     *             .pagination(GetRouteAggregationRulesPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("routeAggregationRuleName", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].name()));
+     *         ctx.export("routeAggregationRuleDescription", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].description()));
+     *         ctx.export("routeAggregationRulePrefix", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].prefix()));
+     *         ctx.export("routeAggregationRuleState", raRules.applyValue(getRouteAggregationRulesResult -> getRouteAggregationRulesResult.datas()[0].state()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationRulesResult> getRouteAggregationRulesPlain(GetRouteAggregationRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteAggregationRules:getRouteAggregationRules", TypeShape.of(GetRouteAggregationRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsFilterArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregations(GetRouteAggregationsArgs.builder()
+     *             .filter(GetRouteAggregationsFilterArgs.builder()
+     *                 .property("/project/projectId")
+     *                 .operator("=")
+     *                 .values("<route_aggregation_project_id>")
+     *                 .build())
+     *             .pagination(GetRouteAggregationsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRouteAggregationName", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].name()));
+     *         ctx.export("firstRouteAggregationDescription", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].description()));
+     *         ctx.export("firstRouteAggregationConnectionsCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].connectionsCount()));
+     *         ctx.export("firstRouteAggregationRulesCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationsResult> getRouteAggregations(GetRouteAggregationsArgs args) {
+        return getRouteAggregations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsFilterArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregations(GetRouteAggregationsArgs.builder()
+     *             .filter(GetRouteAggregationsFilterArgs.builder()
+     *                 .property("/project/projectId")
+     *                 .operator("=")
+     *                 .values("<route_aggregation_project_id>")
+     *                 .build())
+     *             .pagination(GetRouteAggregationsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRouteAggregationName", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].name()));
+     *         ctx.export("firstRouteAggregationDescription", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].description()));
+     *         ctx.export("firstRouteAggregationConnectionsCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].connectionsCount()));
+     *         ctx.export("firstRouteAggregationRulesCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationsResult> getRouteAggregationsPlain(GetRouteAggregationsPlainArgs args) {
+        return getRouteAggregationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsFilterArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregations(GetRouteAggregationsArgs.builder()
+     *             .filter(GetRouteAggregationsFilterArgs.builder()
+     *                 .property("/project/projectId")
+     *                 .operator("=")
+     *                 .values("<route_aggregation_project_id>")
+     *                 .build())
+     *             .pagination(GetRouteAggregationsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRouteAggregationName", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].name()));
+     *         ctx.export("firstRouteAggregationDescription", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].description()));
+     *         ctx.export("firstRouteAggregationConnectionsCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].connectionsCount()));
+     *         ctx.export("firstRouteAggregationRulesCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationsResult> getRouteAggregations(GetRouteAggregationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregations:getRouteAggregations", TypeShape.of(GetRouteAggregationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsFilterArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregations(GetRouteAggregationsArgs.builder()
+     *             .filter(GetRouteAggregationsFilterArgs.builder()
+     *                 .property("/project/projectId")
+     *                 .operator("=")
+     *                 .values("<route_aggregation_project_id>")
+     *                 .build())
+     *             .pagination(GetRouteAggregationsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRouteAggregationName", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].name()));
+     *         ctx.export("firstRouteAggregationDescription", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].description()));
+     *         ctx.export("firstRouteAggregationConnectionsCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].connectionsCount()));
+     *         ctx.export("firstRouteAggregationRulesCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteAggregationsResult> getRouteAggregations(GetRouteAggregationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRouteAggregations:getRouteAggregations", TypeShape.of(GetRouteAggregationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsFilterArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetRouteAggregationsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var raPolicy = FabricFunctions.getRouteAggregations(GetRouteAggregationsArgs.builder()
+     *             .filter(GetRouteAggregationsFilterArgs.builder()
+     *                 .property("/project/projectId")
+     *                 .operator("=")
+     *                 .values("<route_aggregation_project_id>")
+     *                 .build())
+     *             .pagination(GetRouteAggregationsPaginationArgs.builder()
+     *                 .limit(2)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firstRouteAggregationName", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].name()));
+     *         ctx.export("firstRouteAggregationDescription", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].description()));
+     *         ctx.export("firstRouteAggregationConnectionsCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].connectionsCount()));
+     *         ctx.export("firstRouteAggregationRulesCount", raPolicy.applyValue(getRouteAggregationsResult -> getRouteAggregationsResult.datas()[0].rulesCount()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRouteAggregationsResult> getRouteAggregationsPlain(GetRouteAggregationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRouteAggregations:getRouteAggregations", TypeShape.of(GetRouteAggregationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
@@ -4903,6 +6787,1031 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetStreamResult> getStreamPlain(GetStreamPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getStream:getStream", TypeShape.of(GetStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamAttachment(GetStreamAttachmentArgs.builder()
+     *             .asset("<asset_group>")
+     *             .assetId("<id_of_the_asset_being_attached>")
+     *             .streamId("<id_of_the_stream_asset_is_being_attached_to>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAttachmentResult> getStreamAttachment(GetStreamAttachmentArgs args) {
+        return getStreamAttachment(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamAttachment(GetStreamAttachmentArgs.builder()
+     *             .asset("<asset_group>")
+     *             .assetId("<id_of_the_asset_being_attached>")
+     *             .streamId("<id_of_the_stream_asset_is_being_attached_to>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAttachmentResult> getStreamAttachmentPlain(GetStreamAttachmentPlainArgs args) {
+        return getStreamAttachmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamAttachment(GetStreamAttachmentArgs.builder()
+     *             .asset("<asset_group>")
+     *             .assetId("<id_of_the_asset_being_attached>")
+     *             .streamId("<id_of_the_stream_asset_is_being_attached_to>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAttachmentResult> getStreamAttachment(GetStreamAttachmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAttachment:getStreamAttachment", TypeShape.of(GetStreamAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamAttachment(GetStreamAttachmentArgs.builder()
+     *             .asset("<asset_group>")
+     *             .assetId("<id_of_the_asset_being_attached>")
+     *             .streamId("<id_of_the_stream_asset_is_being_attached_to>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAttachmentResult> getStreamAttachment(GetStreamAttachmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAttachment:getStreamAttachment", TypeShape.of(GetStreamAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamAttachment(GetStreamAttachmentArgs.builder()
+     *             .asset("<asset_group>")
+     *             .assetId("<id_of_the_asset_being_attached>")
+     *             .streamId("<id_of_the_stream_asset_is_being_attached_to>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAttachmentResult> getStreamAttachmentPlain(GetStreamAttachmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStreamAttachment:getStreamAttachment", TypeShape.of(GetStreamAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamAttachments(GetStreamAttachmentsArgs.builder()
+     *             .filters(GetStreamAttachmentsFilterArgs.builder()
+     *                 .operator("=")
+     *                 .property("<filter_property>")
+     *                 .values("<list_of_values_to_filter>")
+     *                 .build())
+     *             .pagination(GetStreamAttachmentsPaginationArgs.builder()
+     *                 .limit(100)
+     *                 .offset(0)
+     *                 .build())
+     *             .sorts(GetStreamAttachmentsSortArgs.builder()
+     *                 .direction("<DESC|ASC>")
+     *                 .property("/uuid")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAttachmentsResult> getStreamAttachments(GetStreamAttachmentsArgs args) {
+        return getStreamAttachments(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamAttachments(GetStreamAttachmentsArgs.builder()
+     *             .filters(GetStreamAttachmentsFilterArgs.builder()
+     *                 .operator("=")
+     *                 .property("<filter_property>")
+     *                 .values("<list_of_values_to_filter>")
+     *                 .build())
+     *             .pagination(GetStreamAttachmentsPaginationArgs.builder()
+     *                 .limit(100)
+     *                 .offset(0)
+     *                 .build())
+     *             .sorts(GetStreamAttachmentsSortArgs.builder()
+     *                 .direction("<DESC|ASC>")
+     *                 .property("/uuid")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAttachmentsResult> getStreamAttachmentsPlain(GetStreamAttachmentsPlainArgs args) {
+        return getStreamAttachmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamAttachments(GetStreamAttachmentsArgs.builder()
+     *             .filters(GetStreamAttachmentsFilterArgs.builder()
+     *                 .operator("=")
+     *                 .property("<filter_property>")
+     *                 .values("<list_of_values_to_filter>")
+     *                 .build())
+     *             .pagination(GetStreamAttachmentsPaginationArgs.builder()
+     *                 .limit(100)
+     *                 .offset(0)
+     *                 .build())
+     *             .sorts(GetStreamAttachmentsSortArgs.builder()
+     *                 .direction("<DESC|ASC>")
+     *                 .property("/uuid")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAttachmentsResult> getStreamAttachments(GetStreamAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAttachments:getStreamAttachments", TypeShape.of(GetStreamAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamAttachments(GetStreamAttachmentsArgs.builder()
+     *             .filters(GetStreamAttachmentsFilterArgs.builder()
+     *                 .operator("=")
+     *                 .property("<filter_property>")
+     *                 .values("<list_of_values_to_filter>")
+     *                 .build())
+     *             .pagination(GetStreamAttachmentsPaginationArgs.builder()
+     *                 .limit(100)
+     *                 .offset(0)
+     *                 .build())
+     *             .sorts(GetStreamAttachmentsSortArgs.builder()
+     *                 .direction("<DESC|ASC>")
+     *                 .property("/uuid")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAttachmentsResult> getStreamAttachments(GetStreamAttachmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAttachments:getStreamAttachments", TypeShape.of(GetStreamAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAttachmentsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamAttachments(GetStreamAttachmentsArgs.builder()
+     *             .filters(GetStreamAttachmentsFilterArgs.builder()
+     *                 .operator("=")
+     *                 .property("<filter_property>")
+     *                 .values("<list_of_values_to_filter>")
+     *                 .build())
+     *             .pagination(GetStreamAttachmentsPaginationArgs.builder()
+     *                 .limit(100)
+     *                 .offset(0)
+     *                 .build())
+     *             .sorts(GetStreamAttachmentsSortArgs.builder()
+     *                 .direction("<DESC|ASC>")
+     *                 .property("/uuid")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAttachmentsResult> getStreamAttachmentsPlain(GetStreamAttachmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStreamAttachments:getStreamAttachments", TypeShape.of(GetStreamAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamSubscription(GetStreamSubscriptionArgs.builder()
+     *             .streamId("<stream_id>")
+     *             .subscriptionId("<subscription_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamSubscriptionResult> getStreamSubscription(GetStreamSubscriptionArgs args) {
+        return getStreamSubscription(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamSubscription(GetStreamSubscriptionArgs.builder()
+     *             .streamId("<stream_id>")
+     *             .subscriptionId("<subscription_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamSubscriptionResult> getStreamSubscriptionPlain(GetStreamSubscriptionPlainArgs args) {
+        return getStreamSubscriptionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamSubscription(GetStreamSubscriptionArgs.builder()
+     *             .streamId("<stream_id>")
+     *             .subscriptionId("<subscription_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamSubscriptionResult> getStreamSubscription(GetStreamSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamSubscription:getStreamSubscription", TypeShape.of(GetStreamSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamSubscription(GetStreamSubscriptionArgs.builder()
+     *             .streamId("<stream_id>")
+     *             .subscriptionId("<subscription_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamSubscriptionResult> getStreamSubscription(GetStreamSubscriptionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamSubscription:getStreamSubscription", TypeShape.of(GetStreamSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byIds = FabricFunctions.getStreamSubscription(GetStreamSubscriptionArgs.builder()
+     *             .streamId("<stream_id>")
+     *             .subscriptionId("<subscription_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamSubscriptionResult> getStreamSubscriptionPlain(GetStreamSubscriptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStreamSubscription:getStreamSubscription", TypeShape.of(GetStreamSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamSubscriptions(GetStreamSubscriptionsArgs.builder()
+     *             .pagination(GetStreamSubscriptionsPaginationArgs.builder()
+     *                 .limit(10)
+     *                 .offset(0)
+     *                 .build())
+     *             .streamId("<stream_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamSubscriptionsResult> getStreamSubscriptions(GetStreamSubscriptionsArgs args) {
+        return getStreamSubscriptions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamSubscriptions(GetStreamSubscriptionsArgs.builder()
+     *             .pagination(GetStreamSubscriptionsPaginationArgs.builder()
+     *                 .limit(10)
+     *                 .offset(0)
+     *                 .build())
+     *             .streamId("<stream_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamSubscriptionsResult> getStreamSubscriptionsPlain(GetStreamSubscriptionsPlainArgs args) {
+        return getStreamSubscriptionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamSubscriptions(GetStreamSubscriptionsArgs.builder()
+     *             .pagination(GetStreamSubscriptionsPaginationArgs.builder()
+     *                 .limit(10)
+     *                 .offset(0)
+     *                 .build())
+     *             .streamId("<stream_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamSubscriptionsResult> getStreamSubscriptions(GetStreamSubscriptionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamSubscriptions:getStreamSubscriptions", TypeShape.of(GetStreamSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamSubscriptions(GetStreamSubscriptionsArgs.builder()
+     *             .pagination(GetStreamSubscriptionsPaginationArgs.builder()
+     *                 .limit(10)
+     *                 .offset(0)
+     *                 .build())
+     *             .streamId("<stream_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamSubscriptionsResult> getStreamSubscriptions(GetStreamSubscriptionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamSubscriptions:getStreamSubscriptions", TypeShape.of(GetStreamSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamSubscriptionsPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = FabricFunctions.getStreamSubscriptions(GetStreamSubscriptionsArgs.builder()
+     *             .pagination(GetStreamSubscriptionsPaginationArgs.builder()
+     *                 .limit(10)
+     *                 .offset(0)
+     *                 .build())
+     *             .streamId("<stream_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamSubscriptionsResult> getStreamSubscriptionsPlain(GetStreamSubscriptionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStreamSubscriptions:getStreamSubscriptions", TypeShape.of(GetStreamSubscriptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details

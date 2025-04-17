@@ -672,6 +672,25 @@ export namespace fabric {
         priority: string;
     }
 
+    export interface ConnectionRouteAggregationTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
     export interface ConnectionZSide {
         /**
          * Point of access details
@@ -1909,6 +1928,56 @@ export namespace fabric {
          * Connection priority in redundancy group - PRIMARY, SECONDARY
          */
         priority: string;
+    }
+
+    export interface GetConnectionRouteAggregationsData {
+        /**
+         * Status of the Route Aggregation Policy attachment lifecycle
+         */
+        attachmentStatus: string;
+        /**
+         * UUID of the Connection to attach this Route Aggregation to
+         */
+        connectionId: string;
+        /**
+         * URI to the attached Route Aggregation Policy on the Connection
+         */
+        href: string;
+        /**
+         * UUID of the Route Aggregation to attach this Connection to
+         */
+        routeAggregationId: string;
+        /**
+         * Route Aggregation Type. One of ["BGP*IPv4*PREFIX_AGGREGATION"]
+         */
+        type: string;
+        /**
+         * Equinix Assigned ID for Route Aggregation Policy
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionRouteAggregationsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of connection route aggregations available to the user making the request
+         */
+        total: number;
     }
 
     export interface GetConnectionRouteFiltersData {
@@ -4142,6 +4211,1044 @@ export namespace fabric {
          * Query Parameter to Get Ports By Name
          */
         name: string;
+    }
+
+    export interface GetPrecisionTimeServiceAccount {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Equinix Account Number
+         */
+        accountNumber: number;
+        /**
+         * Global Customer Id
+         */
+        globalCustId: string;
+        /**
+         * Customer organization naidentifierme
+         */
+        globalOrgId: string;
+        /**
+         * Global organization name
+         */
+        globalOrganizationName: string;
+        /**
+         * Customer organization identifier
+         */
+        orgId: number;
+        /**
+         * Customer organization name
+         */
+        organizationName: string;
+        /**
+         * Reseller account name
+         */
+        resellerAccountName: string;
+        /**
+         * Reseller account number
+         */
+        resellerAccountNumber: number;
+        /**
+         * Reseller customer organization identifier
+         */
+        resellerOrgId: number;
+        /**
+         * Reseller account ucmId
+         */
+        resellerUcmId: string;
+        /**
+         * Global organization name
+         */
+        ucmId: string;
+    }
+
+    export interface GetPrecisionTimeServiceChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetPrecisionTimeServiceConnection {
+        /**
+         * Link to the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        href: string;
+        /**
+         * Type of the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        type: string;
+        /**
+         * Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+         */
+        uuid: string;
+    }
+
+    export interface GetPrecisionTimeServiceIpv4 {
+        /**
+         * IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+         */
+        defaultGateway: string;
+        /**
+         * IPv4 address that defines the range of consecutive subnets in the network.
+         */
+        networkMask: string;
+        /**
+         * IPv4 address for the Primary Timing Master Server.
+         */
+        primary: string;
+        /**
+         * IPv4 address for the Secondary Timing Master Server.
+         */
+        secondary: string;
+    }
+
+    export interface GetPrecisionTimeServiceNtpAdvancedConfiguration {
+        /**
+         * The plaintext authentication key. For ASCII type, the key\
+         * \ must contain printable ASCII characters, range 10-20 characters. For\
+         * \ HEX type, range should be 10-40 characters
+         */
+        key?: string;
+        /**
+         * The authentication Key ID
+         */
+        keyNumber?: number;
+        /**
+         * md5 Authentication type
+         */
+        type?: string;
+    }
+
+    export interface GetPrecisionTimeServiceOrder {
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber: string;
+        /**
+         * Order reference number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+    }
+
+    export interface GetPrecisionTimeServicePackage {
+        /**
+         * Time Precision Package Code for the desired billing package
+         */
+        code: string;
+        /**
+         * Time Precision Package HREF link to corresponding resource in Equinix Portal
+         */
+        href: string;
+    }
+
+    export interface GetPrecisionTimeServicePrecisionTimePrice {
+        /**
+         * offering price charge
+         */
+        charges: outputs.fabric.GetPrecisionTimeServicePrecisionTimePriceCharge[];
+        /**
+         * Offering price currency
+         */
+        currency: string;
+    }
+
+    export interface GetPrecisionTimeServicePrecisionTimePriceCharge {
+        /**
+         * Offering price
+         */
+        price: number;
+        /**
+         * Price charge type; MONTHLY*RECURRING, NON*RECURRING
+         */
+        type: string;
+    }
+
+    export interface GetPrecisionTimeServiceProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetPrecisionTimeServicePtpAdvancedConfiguration {
+        /**
+         * The PTP domain value
+         */
+        domain?: number;
+        /**
+         * Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+         */
+        grantTime?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+         */
+        logAnnounceInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logDelayReqInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logSyncInterval?: number;
+        /**
+         * The priority1 value determines the best primary clock, Lower value indicates higher priority
+         */
+        priority1?: number;
+        /**
+         * The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+         */
+        priority2?: number;
+        /**
+         * Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+         */
+        timeScale?: string;
+        /**
+         * ptp transport mode
+         */
+        transportMode?: string;
+    }
+
+    export interface GetPrecisionTimeServicesData {
+        /**
+         * Equinix User Account associated with Precision Time Service
+         */
+        account: outputs.fabric.GetPrecisionTimeServicesDataAccount;
+        /**
+         * Details of the last change on the route aggregation resource
+         */
+        changeLog: outputs.fabric.GetPrecisionTimeServicesDataChangeLog;
+        /**
+         * An array of objects with unique identifiers of connections.
+         */
+        connections: outputs.fabric.GetPrecisionTimeServicesDataConnection[];
+        /**
+         * Equinix generated Portal link for the created Precision Time Service
+         */
+        href: string;
+        /**
+         * An object that has Network IP Configurations for Timing Master Servers.
+         */
+        ipv4: outputs.fabric.GetPrecisionTimeServicesDataIpv4;
+        /**
+         * Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
+         */
+        name: string;
+        /**
+         * NTP Advanced configuration
+         */
+        ntpAdvancedConfigurations?: outputs.fabric.GetPrecisionTimeServicesDataNtpAdvancedConfiguration[];
+        /**
+         * Precision Time Order
+         */
+        order: outputs.fabric.GetPrecisionTimeServicesDataOrder;
+        /**
+         * Precision Time Service Package Details
+         */
+        package: outputs.fabric.GetPrecisionTimeServicesDataPackage;
+        /**
+         * Precision Time Service Price
+         */
+        precisionTimePrice: outputs.fabric.GetPrecisionTimeServicesDataPrecisionTimePrice;
+        /**
+         * Equinix Project attribute object
+         */
+        project?: outputs.fabric.GetPrecisionTimeServicesDataProject;
+        /**
+         * PTP Advanced Configuration
+         */
+        ptpAdvancedConfiguration?: outputs.fabric.GetPrecisionTimeServicesDataPtpAdvancedConfiguration;
+        /**
+         * Indicator of the state of this Precision Time Service
+         */
+        state: string;
+        /**
+         * Choose type of Precision Time Service
+         */
+        type: string;
+        /**
+         * Equinix generated id for the Precision Time Service
+         */
+        uuid: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataAccount {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Equinix Account Number
+         */
+        accountNumber: number;
+        /**
+         * Global Customer Id
+         */
+        globalCustId: string;
+        /**
+         * Customer organization naidentifierme
+         */
+        globalOrgId: string;
+        /**
+         * Global organization name
+         */
+        globalOrganizationName: string;
+        /**
+         * Customer organization identifier
+         */
+        orgId: number;
+        /**
+         * Customer organization name
+         */
+        organizationName: string;
+        /**
+         * Reseller account name
+         */
+        resellerAccountName: string;
+        /**
+         * Reseller account number
+         */
+        resellerAccountNumber: number;
+        /**
+         * Reseller customer organization identifier
+         */
+        resellerOrgId: number;
+        /**
+         * Reseller account ucmId
+         */
+        resellerUcmId: string;
+        /**
+         * Global organization name
+         */
+        ucmId: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataConnection {
+        /**
+         * Link to the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        href: string;
+        /**
+         * Type of the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        type: string;
+        /**
+         * Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+         */
+        uuid: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataIpv4 {
+        /**
+         * IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+         */
+        defaultGateway: string;
+        /**
+         * IPv4 address that defines the range of consecutive subnets in the network.
+         */
+        networkMask: string;
+        /**
+         * IPv4 address for the Primary Timing Master Server.
+         */
+        primary: string;
+        /**
+         * IPv4 address for the Secondary Timing Master Server.
+         */
+        secondary: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataNtpAdvancedConfiguration {
+        /**
+         * The plaintext authentication key. For ASCII type, the key\
+         * \ must contain printable ASCII characters, range 10-20 characters. For\
+         * \ HEX type, range should be 10-40 characters
+         */
+        key?: string;
+        /**
+         * The authentication Key ID
+         */
+        keyNumber?: number;
+        /**
+         * md5 Authentication type
+         */
+        type?: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataOrder {
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber: string;
+        /**
+         * Order reference number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataPackage {
+        /**
+         * Time Precision Package Code for the desired billing package
+         */
+        code: string;
+        /**
+         * Time Precision Package HREF link to corresponding resource in Equinix Portal
+         */
+        href: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataPrecisionTimePrice {
+        /**
+         * offering price charge
+         */
+        charges: outputs.fabric.GetPrecisionTimeServicesDataPrecisionTimePriceCharge[];
+        /**
+         * Offering price currency
+         */
+        currency: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataPrecisionTimePriceCharge {
+        /**
+         * Offering price
+         */
+        price: number;
+        /**
+         * Price charge type; MONTHLY*RECURRING, NON*RECURRING
+         */
+        type: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataPtpAdvancedConfiguration {
+        /**
+         * The PTP domain value
+         */
+        domain?: number;
+        /**
+         * Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+         */
+        grantTime?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+         */
+        logAnnounceInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logDelayReqInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logSyncInterval?: number;
+        /**
+         * The priority1 value determines the best primary clock, Lower value indicates higher priority
+         */
+        priority1?: number;
+        /**
+         * The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+         */
+        priority2?: number;
+        /**
+         * Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+         */
+        timeScale?: string;
+        /**
+         * ptp transport mode
+         */
+        transportMode?: string;
+    }
+
+    export interface GetPrecisionTimeServicesFilter {
+        /**
+         * Operation applied to the values of the filter
+         */
+        operator: string;
+        /**
+         * Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+         */
+        or?: boolean;
+        /**
+         * Property to apply the filter to
+         */
+        property: string;
+        /**
+         * List of values to apply the operation to for the specified property
+         */
+        values: string[];
+    }
+
+    export interface GetPrecisionTimeServicesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+    }
+
+    export interface GetPrecisionTimeServicesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+         */
+        property?: string;
+    }
+
+    export interface GetRouteAggregationChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href: string;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteAggregationChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteAggregationProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetRouteAggregationRuleChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href: string;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteAggregationRuleChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteAggregationRulesData {
+        /**
+         * Current state of latest route aggregation rule change
+         */
+        change: outputs.fabric.GetRouteAggregationRulesDataChange;
+        /**
+         * Details of the last change on the stream resource
+         */
+        changeLog: outputs.fabric.GetRouteAggregationRulesDataChangeLog;
+        /**
+         * Customer-provided route aggregation rule description
+         */
+        description?: string;
+        /**
+         * Equinix auto generated URI to the route aggregation rule resource
+         */
+        href: string;
+        /**
+         * Customer provided name of the route aggregation rule
+         */
+        name: string;
+        /**
+         * Customer-provided route aggregation rule prefix
+         */
+        prefix: string;
+        /**
+         * UUID of the Route Aggregation to apply this Rule to
+         */
+        routeAggregationId: string;
+        /**
+         * Value representing provisioning status for the route aggregation rule resource
+         */
+        state: string;
+        /**
+         * Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for the route aggregation rule resource
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteAggregationRulesDataChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href: string;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteAggregationRulesDataChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteAggregationRulesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of route agrgegation rules available to the user making the request
+         */
+        total: number;
+    }
+
+    export interface GetRouteAggregationsData {
+        /**
+         * Current state of latest Route Aggregation change
+         */
+        change: outputs.fabric.GetRouteAggregationsDataChange;
+        /**
+         * Details of the last change on the route aggregation resource
+         */
+        changeLog: outputs.fabric.GetRouteAggregationsDataChangeLog;
+        /**
+         * Number of Connections attached to route aggregation
+         */
+        connectionsCount: number;
+        /**
+         * Customer-provided route aggregation description
+         */
+        description: string;
+        /**
+         * Equinix auto generated URI to the route aggregation resource
+         */
+        href: string;
+        /**
+         * Customer provided name of the route aggregation
+         */
+        name: string;
+        /**
+         * Equinix Project attribute object
+         */
+        project: outputs.fabric.GetRouteAggregationsDataProject;
+        /**
+         * Number of Rules attached to route aggregation
+         */
+        rulesCount: number;
+        /**
+         * Value representing provisioning status for the route aggregation resource
+         */
+        state: string;
+        /**
+         * Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for the route aggregation resource
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteAggregationsDataChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href: string;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: string;
+    }
+
+    export interface GetRouteAggregationsDataChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetRouteAggregationsDataProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetRouteAggregationsFilter {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+         */
+        operator: string;
+        /**
+         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetRouteAggregationsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of route aggregations available to the user making the request
+         */
+        total: number;
+    }
+
+    export interface GetRouteAggregationsSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         */
+        property?: string;
     }
 
     export interface GetRouteFilterChange {
@@ -6891,6 +7998,82 @@ export namespace fabric {
         total: number;
     }
 
+    export interface GetStreamAttachmentsData {
+        /**
+         * Value representing status for the stream attachment
+         */
+        attachmentStatus: string;
+        /**
+         * Equinix auto generated URI to the stream attachment in Equinix Portal
+         */
+        href: string;
+        /**
+         * Boolean value indicating enablement of metrics for this asset stream attachment
+         */
+        metricsEnabled: boolean;
+        /**
+         * Equinix defined type for the asset stream attachment
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for the stream attachment
+         */
+        uuid: string;
+    }
+
+    export interface GetStreamAttachmentsFilter {
+        /**
+         * Operation applied to the values of the filter
+         */
+        operator: string;
+        /**
+         * Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+         */
+        or?: boolean;
+        /**
+         * Property to apply the filter to
+         */
+        property: string;
+        /**
+         * List of values to apply the operation to for the specified property
+         */
+        values: string[];
+    }
+
+    export interface GetStreamAttachmentsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total: number;
+    }
+
+    export interface GetStreamAttachmentsSort {
+        /**
+         * The sorting direction of the property chosen. ASC or DESC
+         */
+        direction: string;
+        /**
+         * The field name the sorting is performed on
+         */
+        property: string;
+    }
+
     export interface GetStreamChangeLog {
         /**
          * User name of creator of the stream resource
@@ -6947,6 +8130,397 @@ export namespace fabric {
          * Equinix Subscriber-assigned project ID
          */
         projectId: string;
+    }
+
+    export interface GetStreamSubscriptionChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetStreamSubscriptionEventSelector {
+        /**
+         * List of events to exclude
+         */
+        excepts: string[];
+        /**
+         * List of events to include
+         */
+        includes: string[];
+    }
+
+    export interface GetStreamSubscriptionMetricSelector {
+        /**
+         * List of metrics to exclude
+         */
+        excepts: string[];
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
+    export interface GetStreamSubscriptionSink {
+        /**
+         * Boolean switch enabling batch delivery of data
+         */
+        batchEnabled: boolean;
+        /**
+         * Maximum size of the batch delivery if enabled
+         */
+        batchSizeMax: number;
+        /**
+         * Maximum time to wait for batch delivery if enabled
+         */
+        batchWaitTimeMax: number;
+        /**
+         * Access details for the specified sink type
+         */
+        credential: outputs.fabric.GetStreamSubscriptionSinkCredential;
+        /**
+         * Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+         */
+        host: string;
+        /**
+         * Stream subscription sink settings
+         */
+        settings: outputs.fabric.GetStreamSubscriptionSinkSettings;
+        /**
+         * Type of the subscriber
+         */
+        type: string;
+        /**
+         * Publicly reachable http endpoint destination for data stream
+         */
+        uri: string;
+    }
+
+    export interface GetStreamSubscriptionSinkCredential {
+        /**
+         * Passed as Authorization header value
+         */
+        accessToken: string;
+        /**
+         * Passed as Authorization header value
+         */
+        apiKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        integrationKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        password: string;
+        /**
+         * Type of the credential being passed
+         */
+        type: string;
+        /**
+         * Passed as Authorization header value
+         */
+        username: string;
+    }
+
+    export interface GetStreamSubscriptionSinkSettings {
+        /**
+         * Passed as Authorization header value
+         */
+        accessToken: string;
+        /**
+         * Passed as Authorization header value
+         */
+        apiKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        integrationKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        password: string;
+        /**
+         * Type of the stream subscription request
+         */
+        type: string;
+        /**
+         * Passed as Authorization header value
+         */
+        username: string;
+    }
+
+    export interface GetStreamSubscriptionsData {
+        /**
+         * Details of the last change on the stream resource
+         */
+        changeLog: outputs.fabric.GetStreamSubscriptionsDataChangeLog;
+        /**
+         * Customer-provided stream subscription description
+         */
+        description: string;
+        /**
+         * Stream subscription enabled status
+         */
+        enabled: boolean;
+        /**
+         * Lists of events to be included/excluded on the stream subscription
+         */
+        eventSelector: outputs.fabric.GetStreamSubscriptionsDataEventSelector;
+        /**
+         * Equinix assigned URI of the stream subscription resource
+         */
+        href: string;
+        /**
+         * Lists of metrics to be included/excluded on the stream subscription
+         */
+        metricSelector: outputs.fabric.GetStreamSubscriptionsDataMetricSelector;
+        /**
+         * Customer-provided stream subscription name
+         */
+        name: string;
+        /**
+         * The details of the subscriber to the Equinix Stream
+         */
+        sink: outputs.fabric.GetStreamSubscriptionsDataSink;
+        /**
+         * Value representing provisioning status for the stream resource
+         */
+        state: string;
+        /**
+         * Type of the stream subscription request
+         */
+        type: string;
+        /**
+         * Equinix assigned unique identifier of the stream subscription resource
+         */
+        uuid: string;
+    }
+
+    export interface GetStreamSubscriptionsDataChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetStreamSubscriptionsDataEventSelector {
+        /**
+         * List of events to exclude
+         */
+        excepts: string[];
+        /**
+         * List of events to include
+         */
+        includes: string[];
+    }
+
+    export interface GetStreamSubscriptionsDataMetricSelector {
+        /**
+         * List of metrics to exclude
+         */
+        excepts: string[];
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
+    export interface GetStreamSubscriptionsDataSink {
+        /**
+         * Boolean switch enabling batch delivery of data
+         */
+        batchEnabled: boolean;
+        /**
+         * Maximum size of the batch delivery if enabled
+         */
+        batchSizeMax: number;
+        /**
+         * Maximum time to wait for batch delivery if enabled
+         */
+        batchWaitTimeMax: number;
+        /**
+         * Access details for the specified sink type
+         */
+        credential: outputs.fabric.GetStreamSubscriptionsDataSinkCredential;
+        /**
+         * Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+         */
+        host: string;
+        /**
+         * Stream subscription sink settings
+         */
+        settings: outputs.fabric.GetStreamSubscriptionsDataSinkSettings;
+        /**
+         * Type of the subscriber
+         */
+        type: string;
+        /**
+         * Publicly reachable http endpoint destination for data stream
+         */
+        uri: string;
+    }
+
+    export interface GetStreamSubscriptionsDataSinkCredential {
+        /**
+         * Passed as Authorization header value
+         */
+        accessToken: string;
+        /**
+         * Passed as Authorization header value
+         */
+        apiKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        integrationKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        password: string;
+        /**
+         * Type of the credential being passed
+         */
+        type: string;
+        /**
+         * Passed as Authorization header value
+         */
+        username: string;
+    }
+
+    export interface GetStreamSubscriptionsDataSinkSettings {
+        /**
+         * Passed as Authorization header value
+         */
+        accessToken: string;
+        /**
+         * Passed as Authorization header value
+         */
+        apiKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        integrationKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        password: string;
+        type: string;
+        /**
+         * Passed as Authorization header value
+         */
+        username: string;
+    }
+
+    export interface GetStreamSubscriptionsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total: number;
     }
 
     export interface GetStreamsData {
@@ -7186,6 +8760,449 @@ export namespace fabric {
          * Customer project identifier
          */
         projectId: string;
+    }
+
+    export interface PrecisionTimeServiceAccount {
+        /**
+         * Account Name
+         */
+        accountName: string;
+        /**
+         * Equinix Account Number
+         */
+        accountNumber: number;
+        /**
+         * Global Customer Id
+         */
+        globalCustId: string;
+        /**
+         * Customer organization naidentifierme
+         */
+        globalOrgId: string;
+        /**
+         * Global organization name
+         */
+        globalOrganizationName: string;
+        /**
+         * Customer organization identifier
+         */
+        orgId: number;
+        /**
+         * Customer organization name
+         */
+        organizationName: string;
+        /**
+         * Reseller account name
+         */
+        resellerAccountName: string;
+        /**
+         * Reseller account number
+         */
+        resellerAccountNumber: number;
+        /**
+         * Reseller customer organization identifier
+         */
+        resellerOrgId: number;
+        /**
+         * Reseller account ucmId
+         */
+        resellerUcmId: string;
+        /**
+         * Global organization name
+         */
+        ucmId: string;
+    }
+
+    export interface PrecisionTimeServiceChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface PrecisionTimeServiceConnection {
+        /**
+         * Link to the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        href: string;
+        /**
+         * Type of the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        type: string;
+        /**
+         * Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+         */
+        uuid: string;
+    }
+
+    export interface PrecisionTimeServiceIpv4 {
+        /**
+         * IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+         */
+        defaultGateway: string;
+        /**
+         * IPv4 address that defines the range of consecutive subnets in the network.
+         */
+        networkMask: string;
+        /**
+         * IPv4 address for the Primary Timing Master Server.
+         */
+        primary: string;
+        /**
+         * IPv4 address for the Secondary Timing Master Server.
+         */
+        secondary: string;
+    }
+
+    export interface PrecisionTimeServiceNtpAdvancedConfiguration {
+        /**
+         * The plaintext authentication key. For ASCII type, the key\
+         * \ must contain printable ASCII characters, range 10-20 characters. For\
+         * \ HEX type, range should be 10-40 characters
+         */
+        key?: string;
+        /**
+         * The authentication Key ID
+         */
+        keyNumber?: number;
+        /**
+         * md5 Authentication type
+         */
+        type?: string;
+    }
+
+    export interface PrecisionTimeServiceOrder {
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber: string;
+        /**
+         * Order reference number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+    }
+
+    export interface PrecisionTimeServicePackage {
+        /**
+         * Time Precision Package Code for the desired billing package
+         */
+        code: string;
+        /**
+         * Time Precision Package HREF link to corresponding resource in Equinix Portal
+         */
+        href: string;
+    }
+
+    export interface PrecisionTimeServicePrecisionTimePrice {
+        /**
+         * offering price charge
+         */
+        charges: outputs.fabric.PrecisionTimeServicePrecisionTimePriceCharge[];
+        /**
+         * Offering price currency
+         */
+        currency: string;
+    }
+
+    export interface PrecisionTimeServicePrecisionTimePriceCharge {
+        /**
+         * Offering price
+         */
+        price: number;
+        /**
+         * Price charge type; MONTHLY*RECURRING, NON*RECURRING
+         */
+        type: string;
+    }
+
+    export interface PrecisionTimeServiceProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface PrecisionTimeServicePtpAdvancedConfiguration {
+        /**
+         * The PTP domain value
+         */
+        domain?: number;
+        /**
+         * Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+         */
+        grantTime?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+         */
+        logAnnounceInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logDelayReqInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logSyncInterval?: number;
+        /**
+         * The priority1 value determines the best primary clock, Lower value indicates higher priority
+         */
+        priority1?: number;
+        /**
+         * The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+         */
+        priority2?: number;
+        /**
+         * Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+         */
+        timeScale?: string;
+        /**
+         * ptp transport mode
+         */
+        transportMode?: string;
+    }
+
+    export interface PrecisionTimeServiceTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
+    export interface RouteAggregationChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href: string;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: string;
+    }
+
+    export interface RouteAggregationChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface RouteAggregationProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface RouteAggregationRuleChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href: string;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: string;
+    }
+
+    export interface RouteAggregationRuleChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface RouteAggregationRuleTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
+    export interface RouteAggregationTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
     }
 
     export interface RouteFilterChange {
@@ -8466,6 +10483,25 @@ export namespace fabric {
         uuid: string;
     }
 
+    export interface StreamAttachmentTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
     export interface StreamChangeLog {
         /**
          * User name of creator of the stream resource
@@ -8522,6 +10558,169 @@ export namespace fabric {
          * Equinix Subscriber-assigned project ID
          */
         projectId: string;
+    }
+
+    export interface StreamSubscriptionChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface StreamSubscriptionEventSelector {
+        /**
+         * List of events to exclude
+         */
+        excepts: string[];
+        /**
+         * List of events to include
+         */
+        includes: string[];
+    }
+
+    export interface StreamSubscriptionMetricSelector {
+        /**
+         * List of metrics to exclude
+         */
+        excepts: string[];
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
+    export interface StreamSubscriptionSink {
+        /**
+         * Boolean switch enabling batch delivery of data
+         */
+        batchEnabled: boolean;
+        /**
+         * Maximum size of the batch delivery if enabled
+         */
+        batchSizeMax: number;
+        /**
+         * Maximum time to wait for batch delivery if enabled
+         */
+        batchWaitTimeMax: number;
+        /**
+         * Access details for the specified sink type
+         */
+        credential: outputs.fabric.StreamSubscriptionSinkCredential;
+        /**
+         * Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+         */
+        host: string;
+        /**
+         * Stream subscription sink settings
+         */
+        settings: outputs.fabric.StreamSubscriptionSinkSettings;
+        /**
+         * Type of the subscriber
+         */
+        type: string;
+        /**
+         * Publicly reachable http endpoint destination for data stream
+         */
+        uri: string;
+    }
+
+    export interface StreamSubscriptionSinkCredential {
+        /**
+         * Passed as Authorization header value
+         */
+        accessToken: string;
+        /**
+         * Passed as Authorization header value
+         */
+        apiKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        integrationKey: string;
+        /**
+         * Passed as Authorization header value
+         */
+        password: string;
+        /**
+         * Type of the credential being passed
+         */
+        type: string;
+        /**
+         * Passed as Authorization header value
+         */
+        username: string;
+    }
+
+    export interface StreamSubscriptionSinkSettings {
+        applicationKey: string;
+        eventIndex: string;
+        eventUri: string;
+        metricIndex: string;
+        metricUri: string;
+        source: string;
+    }
+
+    export interface StreamSubscriptionTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
     }
 
     export interface StreamTimeouts {

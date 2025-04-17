@@ -78,7 +78,7 @@ public class App {
 ```yaml
 resources:
   policyAttachment:
-    type: equinix:FabricConnectionRouteAggregation
+    type: equinix:fabricConnectionRouteAggregation
     name: policy_attachment
     properties:
       routeAggregationId: <route_aggregation_id>

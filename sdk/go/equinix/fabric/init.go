@@ -25,10 +25,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudRouter{}
 	case "equinix:fabric/connection:Connection":
 		r = &Connection{}
+	case "equinix:fabric/connectionRouteAggregation:ConnectionRouteAggregation":
+		r = &ConnectionRouteAggregation{}
 	case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
 		r = &ConnectionRouteFilter{}
 	case "equinix:fabric/network:Network":
 		r = &Network{}
+	case "equinix:fabric/precisionTimeService:PrecisionTimeService":
+		r = &PrecisionTimeService{}
+	case "equinix:fabric/routeAggregation:RouteAggregation":
+		r = &RouteAggregation{}
+	case "equinix:fabric/routeAggregationRule:RouteAggregationRule":
+		r = &RouteAggregationRule{}
 	case "equinix:fabric/routeFilter:RouteFilter":
 		r = &RouteFilter{}
 	case "equinix:fabric/routeFilterRule:RouteFilterRule":
@@ -41,6 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceToken{}
 	case "equinix:fabric/stream:Stream":
 		r = &Stream{}
+	case "equinix:fabric/streamAttachment:StreamAttachment":
+		r = &StreamAttachment{}
+	case "equinix:fabric/streamSubscription:StreamSubscription":
+		r = &StreamSubscription{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -66,12 +78,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"equinix",
+		"fabric/connectionRouteAggregation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
 		"fabric/connectionRouteFilter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"fabric/network",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/precisionTimeService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/routeAggregation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/routeAggregationRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -102,6 +134,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"fabric/stream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/streamAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/streamSubscription",
 		&module{version},
 	)
 }

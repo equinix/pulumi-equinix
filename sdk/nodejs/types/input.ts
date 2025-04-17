@@ -672,6 +672,25 @@ export namespace fabric {
         priority?: pulumi.Input<string>;
     }
 
+    export interface ConnectionRouteAggregationTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
     export interface ConnectionZSide {
         /**
          * Point of access details
@@ -1076,6 +1095,52 @@ export namespace fabric {
         property?: pulumi.Input<string>;
     }
 
+    export interface GetConnectionRouteAggregationsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of connection route aggregations available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetConnectionRouteAggregationsPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of connection route aggregations available to the user making the request
+         */
+        total?: pulumi.Input<number>;
+    }
+
     export interface GetConnectionsFilter {
         /**
          * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
@@ -1298,6 +1363,358 @@ export namespace fabric {
          * Query Parameter to Get Ports By Name
          */
         name: pulumi.Input<string>;
+    }
+
+    export interface GetPrecisionTimeServiceNtpAdvancedConfiguration {
+        /**
+         * The plaintext authentication key. For ASCII type, the key\
+         * \ must contain printable ASCII characters, range 10-20 characters. For\
+         * \ HEX type, range should be 10-40 characters
+         */
+        key?: string;
+        /**
+         * The authentication Key ID
+         */
+        keyNumber?: number;
+        /**
+         * md5 Authentication type
+         */
+        type?: string;
+    }
+
+    export interface GetPrecisionTimeServiceNtpAdvancedConfigurationArgs {
+        /**
+         * The plaintext authentication key. For ASCII type, the key\
+         * \ must contain printable ASCII characters, range 10-20 characters. For\
+         * \ HEX type, range should be 10-40 characters
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The authentication Key ID
+         */
+        keyNumber?: pulumi.Input<number>;
+        /**
+         * md5 Authentication type
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface GetPrecisionTimeServiceProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetPrecisionTimeServiceProjectArgs {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface GetPrecisionTimeServicePtpAdvancedConfiguration {
+        /**
+         * The PTP domain value
+         */
+        domain?: number;
+        /**
+         * Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+         */
+        grantTime?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+         */
+        logAnnounceInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logDelayReqInterval?: number;
+        /**
+         * Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logSyncInterval?: number;
+        /**
+         * The priority1 value determines the best primary clock, Lower value indicates higher priority
+         */
+        priority1?: number;
+        /**
+         * The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+         */
+        priority2?: number;
+        /**
+         * Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+         */
+        timeScale?: string;
+        /**
+         * ptp transport mode
+         */
+        transportMode?: string;
+    }
+
+    export interface GetPrecisionTimeServicePtpAdvancedConfigurationArgs {
+        /**
+         * The PTP domain value
+         */
+        domain?: pulumi.Input<number>;
+        /**
+         * Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+         */
+        grantTime?: pulumi.Input<number>;
+        /**
+         * Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+         */
+        logAnnounceInterval?: pulumi.Input<number>;
+        /**
+         * Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logDelayReqInterval?: pulumi.Input<number>;
+        /**
+         * Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logSyncInterval?: pulumi.Input<number>;
+        /**
+         * The priority1 value determines the best primary clock, Lower value indicates higher priority
+         */
+        priority1?: pulumi.Input<number>;
+        /**
+         * The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+         */
+        priority2?: pulumi.Input<number>;
+        /**
+         * Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+         */
+        timeScale?: pulumi.Input<string>;
+        /**
+         * ptp transport mode
+         */
+        transportMode?: pulumi.Input<string>;
+    }
+
+    export interface GetPrecisionTimeServicesFilter {
+        /**
+         * Operation applied to the values of the filter
+         */
+        operator: string;
+        /**
+         * Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+         */
+        or?: boolean;
+        /**
+         * Property to apply the filter to
+         */
+        property: string;
+        /**
+         * List of values to apply the operation to for the specified property
+         */
+        values: string[];
+    }
+
+    export interface GetPrecisionTimeServicesFilterArgs {
+        /**
+         * Operation applied to the values of the filter
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+         */
+        or?: pulumi.Input<boolean>;
+        /**
+         * Property to apply the filter to
+         */
+        property: pulumi.Input<string>;
+        /**
+         * List of values to apply the operation to for the specified property
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetPrecisionTimeServicesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+    }
+
+    export interface GetPrecisionTimeServicesPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+    }
+
+    export interface GetPrecisionTimeServicesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+         */
+        property?: string;
+    }
+
+    export interface GetPrecisionTimeServicesSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+         */
+        property?: pulumi.Input<string>;
+    }
+
+    export interface GetRouteAggregationRulesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of route agrgegation rules available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetRouteAggregationRulesPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of route agrgegation rules available to the user making the request
+         */
+        total?: pulumi.Input<number>;
+    }
+
+    export interface GetRouteAggregationsFilter {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+         */
+        operator: string;
+        /**
+         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetRouteAggregationsFilterArgs {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRouteAggregationsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of route aggregations available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetRouteAggregationsPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of route aggregations available to the user making the request
+         */
+        total?: pulumi.Input<number>;
+    }
+
+    export interface GetRouteAggregationsSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         */
+        property?: string;
+    }
+
+    export interface GetRouteAggregationsSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         */
+        property?: pulumi.Input<string>;
     }
 
     export interface GetRouteFiltersFilter {
@@ -1548,6 +1965,158 @@ export namespace fabric {
         total?: pulumi.Input<number>;
     }
 
+    export interface GetStreamAttachmentsFilter {
+        /**
+         * Operation applied to the values of the filter
+         */
+        operator: string;
+        /**
+         * Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+         */
+        or?: boolean;
+        /**
+         * Property to apply the filter to
+         */
+        property: string;
+        /**
+         * List of values to apply the operation to for the specified property
+         */
+        values: string[];
+    }
+
+    export interface GetStreamAttachmentsFilterArgs {
+        /**
+         * Operation applied to the values of the filter
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+         */
+        or?: pulumi.Input<boolean>;
+        /**
+         * Property to apply the filter to
+         */
+        property: pulumi.Input<string>;
+        /**
+         * List of values to apply the operation to for the specified property
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetStreamAttachmentsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetStreamAttachmentsPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total?: pulumi.Input<number>;
+    }
+
+    export interface GetStreamAttachmentsSort {
+        /**
+         * The sorting direction of the property chosen. ASC or DESC
+         */
+        direction: string;
+        /**
+         * The field name the sorting is performed on
+         */
+        property: string;
+    }
+
+    export interface GetStreamAttachmentsSortArgs {
+        /**
+         * The sorting direction of the property chosen. ASC or DESC
+         */
+        direction: pulumi.Input<string>;
+        /**
+         * The field name the sorting is performed on
+         */
+        property: pulumi.Input<string>;
+    }
+
+    export interface GetStreamSubscriptionsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetStreamSubscriptionsPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of streams available to the user making the request
+         */
+        total?: pulumi.Input<number>;
+    }
+
     export interface GetStreamsPagination {
         /**
          * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
@@ -1707,6 +2276,449 @@ export namespace fabric {
          * Customer project identifier
          */
         projectId: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceAccount {
+        /**
+         * Account Name
+         */
+        accountName?: pulumi.Input<string>;
+        /**
+         * Equinix Account Number
+         */
+        accountNumber?: pulumi.Input<number>;
+        /**
+         * Global Customer Id
+         */
+        globalCustId?: pulumi.Input<string>;
+        /**
+         * Customer organization naidentifierme
+         */
+        globalOrgId?: pulumi.Input<string>;
+        /**
+         * Global organization name
+         */
+        globalOrganizationName?: pulumi.Input<string>;
+        /**
+         * Customer organization identifier
+         */
+        orgId?: pulumi.Input<number>;
+        /**
+         * Customer organization name
+         */
+        organizationName?: pulumi.Input<string>;
+        /**
+         * Reseller account name
+         */
+        resellerAccountName?: pulumi.Input<string>;
+        /**
+         * Reseller account number
+         */
+        resellerAccountNumber?: pulumi.Input<number>;
+        /**
+         * Reseller customer organization identifier
+         */
+        resellerOrgId?: pulumi.Input<number>;
+        /**
+         * Reseller account ucmId
+         */
+        resellerUcmId?: pulumi.Input<string>;
+        /**
+         * Global organization name
+         */
+        ucmId?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceConnection {
+        /**
+         * Link to the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Type of the Equinix Fabric Connection associated with the Precision Time Service
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceIpv4 {
+        /**
+         * IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+         */
+        defaultGateway: pulumi.Input<string>;
+        /**
+         * IPv4 address that defines the range of consecutive subnets in the network.
+         */
+        networkMask: pulumi.Input<string>;
+        /**
+         * IPv4 address for the Primary Timing Master Server.
+         */
+        primary: pulumi.Input<string>;
+        /**
+         * IPv4 address for the Secondary Timing Master Server.
+         */
+        secondary: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceNtpAdvancedConfiguration {
+        /**
+         * The plaintext authentication key. For ASCII type, the key\
+         * \ must contain printable ASCII characters, range 10-20 characters. For\
+         * \ HEX type, range should be 10-40 characters
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The authentication Key ID
+         */
+        keyNumber?: pulumi.Input<number>;
+        /**
+         * md5 Authentication type
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceOrder {
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber?: pulumi.Input<string>;
+        /**
+         * Order reference number
+         */
+        orderNumber?: pulumi.Input<string>;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServicePackage {
+        /**
+         * Time Precision Package Code for the desired billing package
+         */
+        code: pulumi.Input<string>;
+        /**
+         * Time Precision Package HREF link to corresponding resource in Equinix Portal
+         */
+        href?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServicePrecisionTimePrice {
+        /**
+         * offering price charge
+         */
+        charges?: pulumi.Input<pulumi.Input<inputs.fabric.PrecisionTimeServicePrecisionTimePriceCharge>[]>;
+        /**
+         * Offering price currency
+         */
+        currency?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServicePrecisionTimePriceCharge {
+        /**
+         * Offering price
+         */
+        price?: pulumi.Input<number>;
+        /**
+         * Price charge type; MONTHLY*RECURRING, NON*RECURRING
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServicePtpAdvancedConfiguration {
+        /**
+         * The PTP domain value
+         */
+        domain?: pulumi.Input<number>;
+        /**
+         * Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+         */
+        grantTime?: pulumi.Input<number>;
+        /**
+         * Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+         */
+        logAnnounceInterval?: pulumi.Input<number>;
+        /**
+         * Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logDelayReqInterval?: pulumi.Input<number>;
+        /**
+         * Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+         */
+        logSyncInterval?: pulumi.Input<number>;
+        /**
+         * The priority1 value determines the best primary clock, Lower value indicates higher priority
+         */
+        priority1?: pulumi.Input<number>;
+        /**
+         * The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+         */
+        priority2?: pulumi.Input<number>;
+        /**
+         * Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+         */
+        timeScale?: pulumi.Input<string>;
+        /**
+         * ptp transport mode
+         */
+        transportMode?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
+    export interface RouteAggregationChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href: pulumi.Input<string>;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface RouteAggregationChangeLog {
+        /**
+         * User name of creator of the route aggregation resource
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Email of creator of the route aggregation resource
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of creator of the route aggregation resource
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Creation time of the route aggregation resource
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * User name of deleter of the route aggregation resource
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Email of deleter of the route aggregation resource
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of deleter of the route aggregation resource
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deletion time of the route aggregation resource
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * User name of last updater of the route aggregation resource
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Email of last updater of the route aggregation resource
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of last updater of the route aggregation resource
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Last update time of the route aggregation resource
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface RouteAggregationProject {
+        /**
+         * Equinix Subscriber-assigned project ID
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface RouteAggregationRuleChange {
+        /**
+         * Equinix auto generated URI to the route aggregation change
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Equinix defined Route Aggregation Change Type
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Equinix-assigned unique id for a change
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface RouteAggregationRuleChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface RouteAggregationRuleTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
+    export interface RouteAggregationTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
     }
 
     export interface RouteFilterChange {
@@ -2987,6 +3999,25 @@ export namespace fabric {
         uuid: pulumi.Input<string>;
     }
 
+    export interface StreamAttachmentTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
     export interface StreamChangeLog {
         /**
          * User name of creator of the stream resource
@@ -3043,6 +4074,169 @@ export namespace fabric {
          * Equinix Subscriber-assigned project ID
          */
         projectId: pulumi.Input<string>;
+    }
+
+    export interface StreamSubscriptionChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface StreamSubscriptionEventSelector {
+        /**
+         * List of events to exclude
+         */
+        excepts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of events to include
+         */
+        includes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface StreamSubscriptionMetricSelector {
+        /**
+         * List of metrics to exclude
+         */
+        excepts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of metrics to include
+         */
+        includes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface StreamSubscriptionSink {
+        /**
+         * Boolean switch enabling batch delivery of data
+         */
+        batchEnabled?: pulumi.Input<boolean>;
+        /**
+         * Maximum size of the batch delivery if enabled
+         */
+        batchSizeMax?: pulumi.Input<number>;
+        /**
+         * Maximum time to wait for batch delivery if enabled
+         */
+        batchWaitTimeMax?: pulumi.Input<number>;
+        /**
+         * Access details for the specified sink type
+         */
+        credential?: pulumi.Input<inputs.fabric.StreamSubscriptionSinkCredential>;
+        /**
+         * Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * Stream subscription sink settings
+         */
+        settings?: pulumi.Input<inputs.fabric.StreamSubscriptionSinkSettings>;
+        /**
+         * Type of the subscriber
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Publicly reachable http endpoint destination for data stream
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface StreamSubscriptionSinkCredential {
+        /**
+         * Passed as Authorization header value
+         */
+        accessToken?: pulumi.Input<string>;
+        /**
+         * Passed as Authorization header value
+         */
+        apiKey?: pulumi.Input<string>;
+        /**
+         * Passed as Authorization header value
+         */
+        integrationKey?: pulumi.Input<string>;
+        /**
+         * Passed as Authorization header value
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * Type of the credential being passed
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Passed as Authorization header value
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface StreamSubscriptionSinkSettings {
+        applicationKey?: pulumi.Input<string>;
+        eventIndex?: pulumi.Input<string>;
+        eventUri?: pulumi.Input<string>;
+        metricIndex?: pulumi.Input<string>;
+        metricUri?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+    }
+
+    export interface StreamSubscriptionTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
     }
 
     export interface StreamTimeouts {

@@ -158,11 +158,29 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_stream": {
 				Tok: makeEquinixResource(fabricMod, "Stream"),
 			},
+			"equinix_fabric_stream_attachment": {
+				Tok: makeEquinixResource(fabricMod, "StreamAttachment"),
+			},
+			"equinix_fabric_stream_subscription": {
+				Tok: makeEquinixResource(fabricMod, "StreamSubscription"),
+			},
 			"equinix_fabric_route_filter": {
 				Tok: makeEquinixResource(fabricMod, "RouteFilter"),
 			},
 			"equinix_fabric_route_filter_rule": {
 				Tok: makeEquinixResource(fabricMod, "RouteFilterRule"),
+			},
+			"equinix_fabric_route_aggregation": {
+				Tok: makeEquinixResource(fabricMod, "RouteAggregation"),
+			},
+			"equinix_fabric_route_aggregation_rule": {
+				Tok: makeEquinixResource(fabricMod, "RouteAggregationRule"),
+			},
+			"equinix_fabric_connection_route_aggregation": {
+				Tok: makeEquinixResource(fabricMod, "ConnectionRouteAggregation"),
+			},
+			"equinix_fabric_precision_time_service": {
+				Tok: makeEquinixResource(fabricMod, "PrecisionTimeService"),
 			},
 			"equinix_fabric_connection": {
 				Tok: makeEquinixResource(fabricMod, "Connection"),
@@ -1190,6 +1208,18 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_streams": {
 				Tok: makeEquinixDataSource(fabricMod, "Streams"),
 			},
+			"equinix_fabric_stream_attachment": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamAttachment"),
+			},
+			"equinix_fabric_stream_attachments": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamAttachments"),
+			},
+			"equinix_fabric_stream_subscription": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamSubscription"),
+			},
+			"equinix_fabric_stream_subscriptions": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamSubscriptions"),
+			},
 			"equinix_fabric_connection_route_filter": {
 				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilter"),
 			},
@@ -1207,6 +1237,30 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_fabric_route_filter_rules": {
 				Tok: makeEquinixDataSource(fabricMod, "RouteFilterRules"),
+			},
+			"equinix_fabric_route_aggregation": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteAggregation"),
+			},
+			"equinix_fabric_route_aggregations": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteAggregations"),
+			},
+			"equinix_fabric_route_aggregation_rule": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteAggregationRule"),
+			},
+			"equinix_fabric_route_aggregation_rules": {
+				Tok: makeEquinixDataSource(fabricMod, "RouteAggregationRules"),
+			},
+			"equinix_fabric_connection_route_aggregation": {
+				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteAggregation"),
+			},
+			"equinix_fabric_connection_route_aggregations": {
+				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteAggregations"),
+			},
+			"equinix_fabric_precision_time_service": {
+				Tok: makeEquinixDataSource(fabricMod, "PrecisionTimeService"),
+			},
+			"equinix_fabric_precision_time_services": {
+				Tok: makeEquinixDataSource(fabricMod, "PrecisionTimeServices"),
 			},
 			"equinix_fabric_connection": {
 				Tok: makeEquinixDataSource(fabricMod, "Connection"),

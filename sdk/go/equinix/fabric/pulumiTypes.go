@@ -6086,6 +6086,200 @@ func (o ConnectionRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionRouteAggregationTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// ConnectionRouteAggregationTimeoutsInput is an input type that accepts ConnectionRouteAggregationTimeoutsArgs and ConnectionRouteAggregationTimeoutsOutput values.
+// You can construct a concrete instance of `ConnectionRouteAggregationTimeoutsInput` via:
+//
+//	ConnectionRouteAggregationTimeoutsArgs{...}
+type ConnectionRouteAggregationTimeoutsInput interface {
+	pulumi.Input
+
+	ToConnectionRouteAggregationTimeoutsOutput() ConnectionRouteAggregationTimeoutsOutput
+	ToConnectionRouteAggregationTimeoutsOutputWithContext(context.Context) ConnectionRouteAggregationTimeoutsOutput
+}
+
+type ConnectionRouteAggregationTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (ConnectionRouteAggregationTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionRouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (i ConnectionRouteAggregationTimeoutsArgs) ToConnectionRouteAggregationTimeoutsOutput() ConnectionRouteAggregationTimeoutsOutput {
+	return i.ToConnectionRouteAggregationTimeoutsOutputWithContext(context.Background())
+}
+
+func (i ConnectionRouteAggregationTimeoutsArgs) ToConnectionRouteAggregationTimeoutsOutputWithContext(ctx context.Context) ConnectionRouteAggregationTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionRouteAggregationTimeoutsOutput)
+}
+
+func (i ConnectionRouteAggregationTimeoutsArgs) ToConnectionRouteAggregationTimeoutsPtrOutput() ConnectionRouteAggregationTimeoutsPtrOutput {
+	return i.ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionRouteAggregationTimeoutsArgs) ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) ConnectionRouteAggregationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionRouteAggregationTimeoutsOutput).ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(ctx)
+}
+
+// ConnectionRouteAggregationTimeoutsPtrInput is an input type that accepts ConnectionRouteAggregationTimeoutsArgs, ConnectionRouteAggregationTimeoutsPtr and ConnectionRouteAggregationTimeoutsPtrOutput values.
+// You can construct a concrete instance of `ConnectionRouteAggregationTimeoutsPtrInput` via:
+//
+//	        ConnectionRouteAggregationTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionRouteAggregationTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionRouteAggregationTimeoutsPtrOutput() ConnectionRouteAggregationTimeoutsPtrOutput
+	ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(context.Context) ConnectionRouteAggregationTimeoutsPtrOutput
+}
+
+type connectionRouteAggregationTimeoutsPtrType ConnectionRouteAggregationTimeoutsArgs
+
+func ConnectionRouteAggregationTimeoutsPtr(v *ConnectionRouteAggregationTimeoutsArgs) ConnectionRouteAggregationTimeoutsPtrInput {
+	return (*connectionRouteAggregationTimeoutsPtrType)(v)
+}
+
+func (*connectionRouteAggregationTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionRouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (i *connectionRouteAggregationTimeoutsPtrType) ToConnectionRouteAggregationTimeoutsPtrOutput() ConnectionRouteAggregationTimeoutsPtrOutput {
+	return i.ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionRouteAggregationTimeoutsPtrType) ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) ConnectionRouteAggregationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionRouteAggregationTimeoutsPtrOutput)
+}
+
+type ConnectionRouteAggregationTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionRouteAggregationTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionRouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (o ConnectionRouteAggregationTimeoutsOutput) ToConnectionRouteAggregationTimeoutsOutput() ConnectionRouteAggregationTimeoutsOutput {
+	return o
+}
+
+func (o ConnectionRouteAggregationTimeoutsOutput) ToConnectionRouteAggregationTimeoutsOutputWithContext(ctx context.Context) ConnectionRouteAggregationTimeoutsOutput {
+	return o
+}
+
+func (o ConnectionRouteAggregationTimeoutsOutput) ToConnectionRouteAggregationTimeoutsPtrOutput() ConnectionRouteAggregationTimeoutsPtrOutput {
+	return o.ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionRouteAggregationTimeoutsOutput) ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) ConnectionRouteAggregationTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionRouteAggregationTimeouts) *ConnectionRouteAggregationTimeouts {
+		return &v
+	}).(ConnectionRouteAggregationTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ConnectionRouteAggregationTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionRouteAggregationTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ConnectionRouteAggregationTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionRouteAggregationTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ConnectionRouteAggregationTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionRouteAggregationTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ConnectionRouteAggregationTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionRouteAggregationTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionRouteAggregationTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionRouteAggregationTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionRouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (o ConnectionRouteAggregationTimeoutsPtrOutput) ToConnectionRouteAggregationTimeoutsPtrOutput() ConnectionRouteAggregationTimeoutsPtrOutput {
+	return o
+}
+
+func (o ConnectionRouteAggregationTimeoutsPtrOutput) ToConnectionRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) ConnectionRouteAggregationTimeoutsPtrOutput {
+	return o
+}
+
+func (o ConnectionRouteAggregationTimeoutsPtrOutput) Elem() ConnectionRouteAggregationTimeoutsOutput {
+	return o.ApplyT(func(v *ConnectionRouteAggregationTimeouts) ConnectionRouteAggregationTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionRouteAggregationTimeouts
+		return ret
+	}).(ConnectionRouteAggregationTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ConnectionRouteAggregationTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionRouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ConnectionRouteAggregationTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionRouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ConnectionRouteAggregationTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionRouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ConnectionRouteAggregationTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionRouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionZSide struct {
 	// Point of access details
 	AccessPoint *ConnectionZSideAccessPoint `pulumi:"accessPoint"`
@@ -10281,6 +10475,3910 @@ func (o NetworkProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceAccount struct {
+	// Account Name
+	AccountName *string `pulumi:"accountName"`
+	// Equinix Account Number
+	AccountNumber *int `pulumi:"accountNumber"`
+	// Global Customer Id
+	GlobalCustId *string `pulumi:"globalCustId"`
+	// Customer organization naidentifierme
+	GlobalOrgId *string `pulumi:"globalOrgId"`
+	// Global organization name
+	GlobalOrganizationName *string `pulumi:"globalOrganizationName"`
+	// Customer organization identifier
+	OrgId *int `pulumi:"orgId"`
+	// Customer organization name
+	OrganizationName *string `pulumi:"organizationName"`
+	// Reseller account name
+	ResellerAccountName *string `pulumi:"resellerAccountName"`
+	// Reseller account number
+	ResellerAccountNumber *int `pulumi:"resellerAccountNumber"`
+	// Reseller customer organization identifier
+	ResellerOrgId *int `pulumi:"resellerOrgId"`
+	// Reseller account ucmId
+	ResellerUcmId *string `pulumi:"resellerUcmId"`
+	// Global organization name
+	UcmId *string `pulumi:"ucmId"`
+}
+
+// PrecisionTimeServiceAccountInput is an input type that accepts PrecisionTimeServiceAccountArgs and PrecisionTimeServiceAccountOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceAccountInput` via:
+//
+//	PrecisionTimeServiceAccountArgs{...}
+type PrecisionTimeServiceAccountInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceAccountOutput() PrecisionTimeServiceAccountOutput
+	ToPrecisionTimeServiceAccountOutputWithContext(context.Context) PrecisionTimeServiceAccountOutput
+}
+
+type PrecisionTimeServiceAccountArgs struct {
+	// Account Name
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// Equinix Account Number
+	AccountNumber pulumi.IntPtrInput `pulumi:"accountNumber"`
+	// Global Customer Id
+	GlobalCustId pulumi.StringPtrInput `pulumi:"globalCustId"`
+	// Customer organization naidentifierme
+	GlobalOrgId pulumi.StringPtrInput `pulumi:"globalOrgId"`
+	// Global organization name
+	GlobalOrganizationName pulumi.StringPtrInput `pulumi:"globalOrganizationName"`
+	// Customer organization identifier
+	OrgId pulumi.IntPtrInput `pulumi:"orgId"`
+	// Customer organization name
+	OrganizationName pulumi.StringPtrInput `pulumi:"organizationName"`
+	// Reseller account name
+	ResellerAccountName pulumi.StringPtrInput `pulumi:"resellerAccountName"`
+	// Reseller account number
+	ResellerAccountNumber pulumi.IntPtrInput `pulumi:"resellerAccountNumber"`
+	// Reseller customer organization identifier
+	ResellerOrgId pulumi.IntPtrInput `pulumi:"resellerOrgId"`
+	// Reseller account ucmId
+	ResellerUcmId pulumi.StringPtrInput `pulumi:"resellerUcmId"`
+	// Global organization name
+	UcmId pulumi.StringPtrInput `pulumi:"ucmId"`
+}
+
+func (PrecisionTimeServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceAccount)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceAccountArgs) ToPrecisionTimeServiceAccountOutput() PrecisionTimeServiceAccountOutput {
+	return i.ToPrecisionTimeServiceAccountOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceAccountArgs) ToPrecisionTimeServiceAccountOutputWithContext(ctx context.Context) PrecisionTimeServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceAccountOutput)
+}
+
+func (i PrecisionTimeServiceAccountArgs) ToPrecisionTimeServiceAccountPtrOutput() PrecisionTimeServiceAccountPtrOutput {
+	return i.ToPrecisionTimeServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceAccountArgs) ToPrecisionTimeServiceAccountPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceAccountOutput).ToPrecisionTimeServiceAccountPtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServiceAccountPtrInput is an input type that accepts PrecisionTimeServiceAccountArgs, PrecisionTimeServiceAccountPtr and PrecisionTimeServiceAccountPtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceAccountPtrInput` via:
+//
+//	        PrecisionTimeServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceAccountPtrOutput() PrecisionTimeServiceAccountPtrOutput
+	ToPrecisionTimeServiceAccountPtrOutputWithContext(context.Context) PrecisionTimeServiceAccountPtrOutput
+}
+
+type precisionTimeServiceAccountPtrType PrecisionTimeServiceAccountArgs
+
+func PrecisionTimeServiceAccountPtr(v *PrecisionTimeServiceAccountArgs) PrecisionTimeServiceAccountPtrInput {
+	return (*precisionTimeServiceAccountPtrType)(v)
+}
+
+func (*precisionTimeServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceAccount)(nil)).Elem()
+}
+
+func (i *precisionTimeServiceAccountPtrType) ToPrecisionTimeServiceAccountPtrOutput() PrecisionTimeServiceAccountPtrOutput {
+	return i.ToPrecisionTimeServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServiceAccountPtrType) ToPrecisionTimeServiceAccountPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceAccountPtrOutput)
+}
+
+type PrecisionTimeServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceAccount)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceAccountOutput) ToPrecisionTimeServiceAccountOutput() PrecisionTimeServiceAccountOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceAccountOutput) ToPrecisionTimeServiceAccountOutputWithContext(ctx context.Context) PrecisionTimeServiceAccountOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceAccountOutput) ToPrecisionTimeServiceAccountPtrOutput() PrecisionTimeServiceAccountPtrOutput {
+	return o.ToPrecisionTimeServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServiceAccountOutput) ToPrecisionTimeServiceAccountPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServiceAccount) *PrecisionTimeServiceAccount {
+		return &v
+	}).(PrecisionTimeServiceAccountPtrOutput)
+}
+
+// Account Name
+func (o PrecisionTimeServiceAccountOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// Equinix Account Number
+func (o PrecisionTimeServiceAccountOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *int { return v.AccountNumber }).(pulumi.IntPtrOutput)
+}
+
+// Global Customer Id
+func (o PrecisionTimeServiceAccountOutput) GlobalCustId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.GlobalCustId }).(pulumi.StringPtrOutput)
+}
+
+// Customer organization naidentifierme
+func (o PrecisionTimeServiceAccountOutput) GlobalOrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.GlobalOrgId }).(pulumi.StringPtrOutput)
+}
+
+// Global organization name
+func (o PrecisionTimeServiceAccountOutput) GlobalOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.GlobalOrganizationName }).(pulumi.StringPtrOutput)
+}
+
+// Customer organization identifier
+func (o PrecisionTimeServiceAccountOutput) OrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *int { return v.OrgId }).(pulumi.IntPtrOutput)
+}
+
+// Customer organization name
+func (o PrecisionTimeServiceAccountOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
+}
+
+// Reseller account name
+func (o PrecisionTimeServiceAccountOutput) ResellerAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.ResellerAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Reseller account number
+func (o PrecisionTimeServiceAccountOutput) ResellerAccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *int { return v.ResellerAccountNumber }).(pulumi.IntPtrOutput)
+}
+
+// Reseller customer organization identifier
+func (o PrecisionTimeServiceAccountOutput) ResellerOrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *int { return v.ResellerOrgId }).(pulumi.IntPtrOutput)
+}
+
+// Reseller account ucmId
+func (o PrecisionTimeServiceAccountOutput) ResellerUcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.ResellerUcmId }).(pulumi.StringPtrOutput)
+}
+
+// Global organization name
+func (o PrecisionTimeServiceAccountOutput) UcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceAccount) *string { return v.UcmId }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceAccount)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceAccountPtrOutput) ToPrecisionTimeServiceAccountPtrOutput() PrecisionTimeServiceAccountPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceAccountPtrOutput) ToPrecisionTimeServiceAccountPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceAccountPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceAccountPtrOutput) Elem() PrecisionTimeServiceAccountOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) PrecisionTimeServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServiceAccount
+		return ret
+	}).(PrecisionTimeServiceAccountOutput)
+}
+
+// Account Name
+func (o PrecisionTimeServiceAccountPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix Account Number
+func (o PrecisionTimeServiceAccountPtrOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AccountNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// Global Customer Id
+func (o PrecisionTimeServiceAccountPtrOutput) GlobalCustId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalCustId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer organization naidentifierme
+func (o PrecisionTimeServiceAccountPtrOutput) GlobalOrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Global organization name
+func (o PrecisionTimeServiceAccountPtrOutput) GlobalOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer organization identifier
+func (o PrecisionTimeServiceAccountPtrOutput) OrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Customer organization name
+func (o PrecisionTimeServiceAccountPtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reseller account name
+func (o PrecisionTimeServiceAccountPtrOutput) ResellerAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResellerAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reseller account number
+func (o PrecisionTimeServiceAccountPtrOutput) ResellerAccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResellerAccountNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// Reseller customer organization identifier
+func (o PrecisionTimeServiceAccountPtrOutput) ResellerOrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResellerOrgId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Reseller account ucmId
+func (o PrecisionTimeServiceAccountPtrOutput) ResellerUcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResellerUcmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Global organization name
+func (o PrecisionTimeServiceAccountPtrOutput) UcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UcmId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceChangeLog struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy *string `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// PrecisionTimeServiceChangeLogInput is an input type that accepts PrecisionTimeServiceChangeLogArgs and PrecisionTimeServiceChangeLogOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceChangeLogInput` via:
+//
+//	PrecisionTimeServiceChangeLogArgs{...}
+type PrecisionTimeServiceChangeLogInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceChangeLogOutput() PrecisionTimeServiceChangeLogOutput
+	ToPrecisionTimeServiceChangeLogOutputWithContext(context.Context) PrecisionTimeServiceChangeLogOutput
+}
+
+type PrecisionTimeServiceChangeLogArgs struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (PrecisionTimeServiceChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceChangeLog)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceChangeLogArgs) ToPrecisionTimeServiceChangeLogOutput() PrecisionTimeServiceChangeLogOutput {
+	return i.ToPrecisionTimeServiceChangeLogOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceChangeLogArgs) ToPrecisionTimeServiceChangeLogOutputWithContext(ctx context.Context) PrecisionTimeServiceChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceChangeLogOutput)
+}
+
+func (i PrecisionTimeServiceChangeLogArgs) ToPrecisionTimeServiceChangeLogPtrOutput() PrecisionTimeServiceChangeLogPtrOutput {
+	return i.ToPrecisionTimeServiceChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceChangeLogArgs) ToPrecisionTimeServiceChangeLogPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceChangeLogOutput).ToPrecisionTimeServiceChangeLogPtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServiceChangeLogPtrInput is an input type that accepts PrecisionTimeServiceChangeLogArgs, PrecisionTimeServiceChangeLogPtr and PrecisionTimeServiceChangeLogPtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceChangeLogPtrInput` via:
+//
+//	        PrecisionTimeServiceChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServiceChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceChangeLogPtrOutput() PrecisionTimeServiceChangeLogPtrOutput
+	ToPrecisionTimeServiceChangeLogPtrOutputWithContext(context.Context) PrecisionTimeServiceChangeLogPtrOutput
+}
+
+type precisionTimeServiceChangeLogPtrType PrecisionTimeServiceChangeLogArgs
+
+func PrecisionTimeServiceChangeLogPtr(v *PrecisionTimeServiceChangeLogArgs) PrecisionTimeServiceChangeLogPtrInput {
+	return (*precisionTimeServiceChangeLogPtrType)(v)
+}
+
+func (*precisionTimeServiceChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceChangeLog)(nil)).Elem()
+}
+
+func (i *precisionTimeServiceChangeLogPtrType) ToPrecisionTimeServiceChangeLogPtrOutput() PrecisionTimeServiceChangeLogPtrOutput {
+	return i.ToPrecisionTimeServiceChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServiceChangeLogPtrType) ToPrecisionTimeServiceChangeLogPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceChangeLogPtrOutput)
+}
+
+type PrecisionTimeServiceChangeLogOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceChangeLog)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceChangeLogOutput) ToPrecisionTimeServiceChangeLogOutput() PrecisionTimeServiceChangeLogOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceChangeLogOutput) ToPrecisionTimeServiceChangeLogOutputWithContext(ctx context.Context) PrecisionTimeServiceChangeLogOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceChangeLogOutput) ToPrecisionTimeServiceChangeLogPtrOutput() PrecisionTimeServiceChangeLogPtrOutput {
+	return o.ToPrecisionTimeServiceChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServiceChangeLogOutput) ToPrecisionTimeServiceChangeLogPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServiceChangeLog) *PrecisionTimeServiceChangeLog {
+		return &v
+	}).(PrecisionTimeServiceChangeLogPtrOutput)
+}
+
+// User name of creator of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceChangeLog)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceChangeLogPtrOutput) ToPrecisionTimeServiceChangeLogPtrOutput() PrecisionTimeServiceChangeLogPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceChangeLogPtrOutput) ToPrecisionTimeServiceChangeLogPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceChangeLogPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceChangeLogPtrOutput) Elem() PrecisionTimeServiceChangeLogOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) PrecisionTimeServiceChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServiceChangeLog
+		return ret
+	}).(PrecisionTimeServiceChangeLogOutput)
+}
+
+// User name of creator of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o PrecisionTimeServiceChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceConnection struct {
+	// Link to the Equinix Fabric Connection associated with the Precision Time Service
+	Href *string `pulumi:"href"`
+	// Type of the Equinix Fabric Connection associated with the Precision Time Service
+	Type *string `pulumi:"type"`
+	// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+	Uuid string `pulumi:"uuid"`
+}
+
+// PrecisionTimeServiceConnectionInput is an input type that accepts PrecisionTimeServiceConnectionArgs and PrecisionTimeServiceConnectionOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceConnectionInput` via:
+//
+//	PrecisionTimeServiceConnectionArgs{...}
+type PrecisionTimeServiceConnectionInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceConnectionOutput() PrecisionTimeServiceConnectionOutput
+	ToPrecisionTimeServiceConnectionOutputWithContext(context.Context) PrecisionTimeServiceConnectionOutput
+}
+
+type PrecisionTimeServiceConnectionArgs struct {
+	// Link to the Equinix Fabric Connection associated with the Precision Time Service
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Type of the Equinix Fabric Connection associated with the Precision Time Service
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (PrecisionTimeServiceConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceConnectionArgs) ToPrecisionTimeServiceConnectionOutput() PrecisionTimeServiceConnectionOutput {
+	return i.ToPrecisionTimeServiceConnectionOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceConnectionArgs) ToPrecisionTimeServiceConnectionOutputWithContext(ctx context.Context) PrecisionTimeServiceConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceConnectionOutput)
+}
+
+// PrecisionTimeServiceConnectionArrayInput is an input type that accepts PrecisionTimeServiceConnectionArray and PrecisionTimeServiceConnectionArrayOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceConnectionArrayInput` via:
+//
+//	PrecisionTimeServiceConnectionArray{ PrecisionTimeServiceConnectionArgs{...} }
+type PrecisionTimeServiceConnectionArrayInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceConnectionArrayOutput() PrecisionTimeServiceConnectionArrayOutput
+	ToPrecisionTimeServiceConnectionArrayOutputWithContext(context.Context) PrecisionTimeServiceConnectionArrayOutput
+}
+
+type PrecisionTimeServiceConnectionArray []PrecisionTimeServiceConnectionInput
+
+func (PrecisionTimeServiceConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceConnectionArray) ToPrecisionTimeServiceConnectionArrayOutput() PrecisionTimeServiceConnectionArrayOutput {
+	return i.ToPrecisionTimeServiceConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceConnectionArray) ToPrecisionTimeServiceConnectionArrayOutputWithContext(ctx context.Context) PrecisionTimeServiceConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceConnectionArrayOutput)
+}
+
+type PrecisionTimeServiceConnectionOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceConnectionOutput) ToPrecisionTimeServiceConnectionOutput() PrecisionTimeServiceConnectionOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceConnectionOutput) ToPrecisionTimeServiceConnectionOutputWithContext(ctx context.Context) PrecisionTimeServiceConnectionOutput {
+	return o
+}
+
+// Link to the Equinix Fabric Connection associated with the Precision Time Service
+func (o PrecisionTimeServiceConnectionOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceConnection) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Type of the Equinix Fabric Connection associated with the Precision Time Service
+func (o PrecisionTimeServiceConnectionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceConnection) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+func (o PrecisionTimeServiceConnectionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceConnection) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type PrecisionTimeServiceConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceConnectionArrayOutput) ToPrecisionTimeServiceConnectionArrayOutput() PrecisionTimeServiceConnectionArrayOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceConnectionArrayOutput) ToPrecisionTimeServiceConnectionArrayOutputWithContext(ctx context.Context) PrecisionTimeServiceConnectionArrayOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceConnectionArrayOutput) Index(i pulumi.IntInput) PrecisionTimeServiceConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrecisionTimeServiceConnection {
+		return vs[0].([]PrecisionTimeServiceConnection)[vs[1].(int)]
+	}).(PrecisionTimeServiceConnectionOutput)
+}
+
+type PrecisionTimeServiceIpv4 struct {
+	// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+	DefaultGateway string `pulumi:"defaultGateway"`
+	// IPv4 address that defines the range of consecutive subnets in the network.
+	NetworkMask string `pulumi:"networkMask"`
+	// IPv4 address for the Primary Timing Master Server.
+	Primary string `pulumi:"primary"`
+	// IPv4 address for the Secondary Timing Master Server.
+	Secondary string `pulumi:"secondary"`
+}
+
+// PrecisionTimeServiceIpv4Input is an input type that accepts PrecisionTimeServiceIpv4Args and PrecisionTimeServiceIpv4Output values.
+// You can construct a concrete instance of `PrecisionTimeServiceIpv4Input` via:
+//
+//	PrecisionTimeServiceIpv4Args{...}
+type PrecisionTimeServiceIpv4Input interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceIpv4Output() PrecisionTimeServiceIpv4Output
+	ToPrecisionTimeServiceIpv4OutputWithContext(context.Context) PrecisionTimeServiceIpv4Output
+}
+
+type PrecisionTimeServiceIpv4Args struct {
+	// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+	DefaultGateway pulumi.StringInput `pulumi:"defaultGateway"`
+	// IPv4 address that defines the range of consecutive subnets in the network.
+	NetworkMask pulumi.StringInput `pulumi:"networkMask"`
+	// IPv4 address for the Primary Timing Master Server.
+	Primary pulumi.StringInput `pulumi:"primary"`
+	// IPv4 address for the Secondary Timing Master Server.
+	Secondary pulumi.StringInput `pulumi:"secondary"`
+}
+
+func (PrecisionTimeServiceIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceIpv4)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceIpv4Args) ToPrecisionTimeServiceIpv4Output() PrecisionTimeServiceIpv4Output {
+	return i.ToPrecisionTimeServiceIpv4OutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceIpv4Args) ToPrecisionTimeServiceIpv4OutputWithContext(ctx context.Context) PrecisionTimeServiceIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceIpv4Output)
+}
+
+func (i PrecisionTimeServiceIpv4Args) ToPrecisionTimeServiceIpv4PtrOutput() PrecisionTimeServiceIpv4PtrOutput {
+	return i.ToPrecisionTimeServiceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceIpv4Args) ToPrecisionTimeServiceIpv4PtrOutputWithContext(ctx context.Context) PrecisionTimeServiceIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceIpv4Output).ToPrecisionTimeServiceIpv4PtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServiceIpv4PtrInput is an input type that accepts PrecisionTimeServiceIpv4Args, PrecisionTimeServiceIpv4Ptr and PrecisionTimeServiceIpv4PtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceIpv4PtrInput` via:
+//
+//	        PrecisionTimeServiceIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServiceIpv4PtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceIpv4PtrOutput() PrecisionTimeServiceIpv4PtrOutput
+	ToPrecisionTimeServiceIpv4PtrOutputWithContext(context.Context) PrecisionTimeServiceIpv4PtrOutput
+}
+
+type precisionTimeServiceIpv4PtrType PrecisionTimeServiceIpv4Args
+
+func PrecisionTimeServiceIpv4Ptr(v *PrecisionTimeServiceIpv4Args) PrecisionTimeServiceIpv4PtrInput {
+	return (*precisionTimeServiceIpv4PtrType)(v)
+}
+
+func (*precisionTimeServiceIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceIpv4)(nil)).Elem()
+}
+
+func (i *precisionTimeServiceIpv4PtrType) ToPrecisionTimeServiceIpv4PtrOutput() PrecisionTimeServiceIpv4PtrOutput {
+	return i.ToPrecisionTimeServiceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServiceIpv4PtrType) ToPrecisionTimeServiceIpv4PtrOutputWithContext(ctx context.Context) PrecisionTimeServiceIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceIpv4PtrOutput)
+}
+
+type PrecisionTimeServiceIpv4Output struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceIpv4)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceIpv4Output) ToPrecisionTimeServiceIpv4Output() PrecisionTimeServiceIpv4Output {
+	return o
+}
+
+func (o PrecisionTimeServiceIpv4Output) ToPrecisionTimeServiceIpv4OutputWithContext(ctx context.Context) PrecisionTimeServiceIpv4Output {
+	return o
+}
+
+func (o PrecisionTimeServiceIpv4Output) ToPrecisionTimeServiceIpv4PtrOutput() PrecisionTimeServiceIpv4PtrOutput {
+	return o.ToPrecisionTimeServiceIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServiceIpv4Output) ToPrecisionTimeServiceIpv4PtrOutputWithContext(ctx context.Context) PrecisionTimeServiceIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServiceIpv4) *PrecisionTimeServiceIpv4 {
+		return &v
+	}).(PrecisionTimeServiceIpv4PtrOutput)
+}
+
+// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+func (o PrecisionTimeServiceIpv4Output) DefaultGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceIpv4) string { return v.DefaultGateway }).(pulumi.StringOutput)
+}
+
+// IPv4 address that defines the range of consecutive subnets in the network.
+func (o PrecisionTimeServiceIpv4Output) NetworkMask() pulumi.StringOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceIpv4) string { return v.NetworkMask }).(pulumi.StringOutput)
+}
+
+// IPv4 address for the Primary Timing Master Server.
+func (o PrecisionTimeServiceIpv4Output) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceIpv4) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+// IPv4 address for the Secondary Timing Master Server.
+func (o PrecisionTimeServiceIpv4Output) Secondary() pulumi.StringOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceIpv4) string { return v.Secondary }).(pulumi.StringOutput)
+}
+
+type PrecisionTimeServiceIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceIpv4)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceIpv4PtrOutput) ToPrecisionTimeServiceIpv4PtrOutput() PrecisionTimeServiceIpv4PtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceIpv4PtrOutput) ToPrecisionTimeServiceIpv4PtrOutputWithContext(ctx context.Context) PrecisionTimeServiceIpv4PtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceIpv4PtrOutput) Elem() PrecisionTimeServiceIpv4Output {
+	return o.ApplyT(func(v *PrecisionTimeServiceIpv4) PrecisionTimeServiceIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServiceIpv4
+		return ret
+	}).(PrecisionTimeServiceIpv4Output)
+}
+
+// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+func (o PrecisionTimeServiceIpv4PtrOutput) DefaultGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultGateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv4 address that defines the range of consecutive subnets in the network.
+func (o PrecisionTimeServiceIpv4PtrOutput) NetworkMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkMask
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv4 address for the Primary Timing Master Server.
+func (o PrecisionTimeServiceIpv4PtrOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Primary
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv4 address for the Secondary Timing Master Server.
+func (o PrecisionTimeServiceIpv4PtrOutput) Secondary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secondary
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceNtpAdvancedConfiguration struct {
+	// The plaintext authentication key. For ASCII type, the key\
+	// \ must contain printable ASCII characters, range 10-20 characters. For\
+	// \ HEX type, range should be 10-40 characters
+	Key *string `pulumi:"key"`
+	// The authentication Key ID
+	KeyNumber *int `pulumi:"keyNumber"`
+	// md5 Authentication type
+	Type *string `pulumi:"type"`
+}
+
+// PrecisionTimeServiceNtpAdvancedConfigurationInput is an input type that accepts PrecisionTimeServiceNtpAdvancedConfigurationArgs and PrecisionTimeServiceNtpAdvancedConfigurationOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceNtpAdvancedConfigurationInput` via:
+//
+//	PrecisionTimeServiceNtpAdvancedConfigurationArgs{...}
+type PrecisionTimeServiceNtpAdvancedConfigurationInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceNtpAdvancedConfigurationOutput() PrecisionTimeServiceNtpAdvancedConfigurationOutput
+	ToPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(context.Context) PrecisionTimeServiceNtpAdvancedConfigurationOutput
+}
+
+type PrecisionTimeServiceNtpAdvancedConfigurationArgs struct {
+	// The plaintext authentication key. For ASCII type, the key\
+	// \ must contain printable ASCII characters, range 10-20 characters. For\
+	// \ HEX type, range should be 10-40 characters
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The authentication Key ID
+	KeyNumber pulumi.IntPtrInput `pulumi:"keyNumber"`
+	// md5 Authentication type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (PrecisionTimeServiceNtpAdvancedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceNtpAdvancedConfigurationArgs) ToPrecisionTimeServiceNtpAdvancedConfigurationOutput() PrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return i.ToPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceNtpAdvancedConfigurationArgs) ToPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(ctx context.Context) PrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceNtpAdvancedConfigurationOutput)
+}
+
+// PrecisionTimeServiceNtpAdvancedConfigurationArrayInput is an input type that accepts PrecisionTimeServiceNtpAdvancedConfigurationArray and PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceNtpAdvancedConfigurationArrayInput` via:
+//
+//	PrecisionTimeServiceNtpAdvancedConfigurationArray{ PrecisionTimeServiceNtpAdvancedConfigurationArgs{...} }
+type PrecisionTimeServiceNtpAdvancedConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput() PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput
+	ToPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(context.Context) PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput
+}
+
+type PrecisionTimeServiceNtpAdvancedConfigurationArray []PrecisionTimeServiceNtpAdvancedConfigurationInput
+
+func (PrecisionTimeServiceNtpAdvancedConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceNtpAdvancedConfigurationArray) ToPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput() PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return i.ToPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceNtpAdvancedConfigurationArray) ToPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(ctx context.Context) PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput)
+}
+
+type PrecisionTimeServiceNtpAdvancedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceNtpAdvancedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceNtpAdvancedConfigurationOutput) ToPrecisionTimeServiceNtpAdvancedConfigurationOutput() PrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceNtpAdvancedConfigurationOutput) ToPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(ctx context.Context) PrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return o
+}
+
+// The plaintext authentication key. For ASCII type, the key\
+// \ must contain printable ASCII characters, range 10-20 characters. For\
+// \ HEX type, range should be 10-40 characters
+func (o PrecisionTimeServiceNtpAdvancedConfigurationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceNtpAdvancedConfiguration) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The authentication Key ID
+func (o PrecisionTimeServiceNtpAdvancedConfigurationOutput) KeyNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceNtpAdvancedConfiguration) *int { return v.KeyNumber }).(pulumi.IntPtrOutput)
+}
+
+// md5 Authentication type
+func (o PrecisionTimeServiceNtpAdvancedConfigurationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceNtpAdvancedConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) ToPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput() PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) ToPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(ctx context.Context) PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) Index(i pulumi.IntInput) PrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrecisionTimeServiceNtpAdvancedConfiguration {
+		return vs[0].([]PrecisionTimeServiceNtpAdvancedConfiguration)[vs[1].(int)]
+	}).(PrecisionTimeServiceNtpAdvancedConfigurationOutput)
+}
+
+type PrecisionTimeServiceOrder struct {
+	// Customer reference number
+	CustomerReferenceNumber *string `pulumi:"customerReferenceNumber"`
+	// Order reference number
+	OrderNumber *string `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
+}
+
+// PrecisionTimeServiceOrderInput is an input type that accepts PrecisionTimeServiceOrderArgs and PrecisionTimeServiceOrderOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceOrderInput` via:
+//
+//	PrecisionTimeServiceOrderArgs{...}
+type PrecisionTimeServiceOrderInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceOrderOutput() PrecisionTimeServiceOrderOutput
+	ToPrecisionTimeServiceOrderOutputWithContext(context.Context) PrecisionTimeServiceOrderOutput
+}
+
+type PrecisionTimeServiceOrderArgs struct {
+	// Customer reference number
+	CustomerReferenceNumber pulumi.StringPtrInput `pulumi:"customerReferenceNumber"`
+	// Order reference number
+	OrderNumber pulumi.StringPtrInput `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber pulumi.StringPtrInput `pulumi:"purchaseOrderNumber"`
+}
+
+func (PrecisionTimeServiceOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceOrder)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceOrderArgs) ToPrecisionTimeServiceOrderOutput() PrecisionTimeServiceOrderOutput {
+	return i.ToPrecisionTimeServiceOrderOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceOrderArgs) ToPrecisionTimeServiceOrderOutputWithContext(ctx context.Context) PrecisionTimeServiceOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceOrderOutput)
+}
+
+func (i PrecisionTimeServiceOrderArgs) ToPrecisionTimeServiceOrderPtrOutput() PrecisionTimeServiceOrderPtrOutput {
+	return i.ToPrecisionTimeServiceOrderPtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceOrderArgs) ToPrecisionTimeServiceOrderPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceOrderOutput).ToPrecisionTimeServiceOrderPtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServiceOrderPtrInput is an input type that accepts PrecisionTimeServiceOrderArgs, PrecisionTimeServiceOrderPtr and PrecisionTimeServiceOrderPtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceOrderPtrInput` via:
+//
+//	        PrecisionTimeServiceOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServiceOrderPtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceOrderPtrOutput() PrecisionTimeServiceOrderPtrOutput
+	ToPrecisionTimeServiceOrderPtrOutputWithContext(context.Context) PrecisionTimeServiceOrderPtrOutput
+}
+
+type precisionTimeServiceOrderPtrType PrecisionTimeServiceOrderArgs
+
+func PrecisionTimeServiceOrderPtr(v *PrecisionTimeServiceOrderArgs) PrecisionTimeServiceOrderPtrInput {
+	return (*precisionTimeServiceOrderPtrType)(v)
+}
+
+func (*precisionTimeServiceOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceOrder)(nil)).Elem()
+}
+
+func (i *precisionTimeServiceOrderPtrType) ToPrecisionTimeServiceOrderPtrOutput() PrecisionTimeServiceOrderPtrOutput {
+	return i.ToPrecisionTimeServiceOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServiceOrderPtrType) ToPrecisionTimeServiceOrderPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceOrderPtrOutput)
+}
+
+type PrecisionTimeServiceOrderOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceOrder)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceOrderOutput) ToPrecisionTimeServiceOrderOutput() PrecisionTimeServiceOrderOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOrderOutput) ToPrecisionTimeServiceOrderOutputWithContext(ctx context.Context) PrecisionTimeServiceOrderOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOrderOutput) ToPrecisionTimeServiceOrderPtrOutput() PrecisionTimeServiceOrderPtrOutput {
+	return o.ToPrecisionTimeServiceOrderPtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServiceOrderOutput) ToPrecisionTimeServiceOrderPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServiceOrder) *PrecisionTimeServiceOrder {
+		return &v
+	}).(PrecisionTimeServiceOrderPtrOutput)
+}
+
+// Customer reference number
+func (o PrecisionTimeServiceOrderOutput) CustomerReferenceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceOrder) *string { return v.CustomerReferenceNumber }).(pulumi.StringPtrOutput)
+}
+
+// Order reference number
+func (o PrecisionTimeServiceOrderOutput) OrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceOrder) *string { return v.OrderNumber }).(pulumi.StringPtrOutput)
+}
+
+// Purchase order number
+func (o PrecisionTimeServiceOrderOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceOrder) *string { return v.PurchaseOrderNumber }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceOrder)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceOrderPtrOutput) ToPrecisionTimeServiceOrderPtrOutput() PrecisionTimeServiceOrderPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOrderPtrOutput) ToPrecisionTimeServiceOrderPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOrderPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOrderPtrOutput) Elem() PrecisionTimeServiceOrderOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceOrder) PrecisionTimeServiceOrder {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServiceOrder
+		return ret
+	}).(PrecisionTimeServiceOrderOutput)
+}
+
+// Customer reference number
+func (o PrecisionTimeServiceOrderPtrOutput) CustomerReferenceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerReferenceNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Order reference number
+func (o PrecisionTimeServiceOrderPtrOutput) OrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Purchase order number
+func (o PrecisionTimeServiceOrderPtrOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PurchaseOrderNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePackage struct {
+	// Time Precision Package Code for the desired billing package
+	Code string `pulumi:"code"`
+	// Time Precision Package HREF link to corresponding resource in Equinix Portal
+	Href *string `pulumi:"href"`
+}
+
+// PrecisionTimeServicePackageInput is an input type that accepts PrecisionTimeServicePackageArgs and PrecisionTimeServicePackageOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePackageInput` via:
+//
+//	PrecisionTimeServicePackageArgs{...}
+type PrecisionTimeServicePackageInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePackageOutput() PrecisionTimeServicePackageOutput
+	ToPrecisionTimeServicePackageOutputWithContext(context.Context) PrecisionTimeServicePackageOutput
+}
+
+type PrecisionTimeServicePackageArgs struct {
+	// Time Precision Package Code for the desired billing package
+	Code pulumi.StringInput `pulumi:"code"`
+	// Time Precision Package HREF link to corresponding resource in Equinix Portal
+	Href pulumi.StringPtrInput `pulumi:"href"`
+}
+
+func (PrecisionTimeServicePackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePackage)(nil)).Elem()
+}
+
+func (i PrecisionTimeServicePackageArgs) ToPrecisionTimeServicePackageOutput() PrecisionTimeServicePackageOutput {
+	return i.ToPrecisionTimeServicePackageOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePackageArgs) ToPrecisionTimeServicePackageOutputWithContext(ctx context.Context) PrecisionTimeServicePackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePackageOutput)
+}
+
+func (i PrecisionTimeServicePackageArgs) ToPrecisionTimeServicePackagePtrOutput() PrecisionTimeServicePackagePtrOutput {
+	return i.ToPrecisionTimeServicePackagePtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePackageArgs) ToPrecisionTimeServicePackagePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePackageOutput).ToPrecisionTimeServicePackagePtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServicePackagePtrInput is an input type that accepts PrecisionTimeServicePackageArgs, PrecisionTimeServicePackagePtr and PrecisionTimeServicePackagePtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePackagePtrInput` via:
+//
+//	        PrecisionTimeServicePackageArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServicePackagePtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePackagePtrOutput() PrecisionTimeServicePackagePtrOutput
+	ToPrecisionTimeServicePackagePtrOutputWithContext(context.Context) PrecisionTimeServicePackagePtrOutput
+}
+
+type precisionTimeServicePackagePtrType PrecisionTimeServicePackageArgs
+
+func PrecisionTimeServicePackagePtr(v *PrecisionTimeServicePackageArgs) PrecisionTimeServicePackagePtrInput {
+	return (*precisionTimeServicePackagePtrType)(v)
+}
+
+func (*precisionTimeServicePackagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServicePackage)(nil)).Elem()
+}
+
+func (i *precisionTimeServicePackagePtrType) ToPrecisionTimeServicePackagePtrOutput() PrecisionTimeServicePackagePtrOutput {
+	return i.ToPrecisionTimeServicePackagePtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServicePackagePtrType) ToPrecisionTimeServicePackagePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePackagePtrOutput)
+}
+
+type PrecisionTimeServicePackageOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePackage)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePackageOutput) ToPrecisionTimeServicePackageOutput() PrecisionTimeServicePackageOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePackageOutput) ToPrecisionTimeServicePackageOutputWithContext(ctx context.Context) PrecisionTimeServicePackageOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePackageOutput) ToPrecisionTimeServicePackagePtrOutput() PrecisionTimeServicePackagePtrOutput {
+	return o.ToPrecisionTimeServicePackagePtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServicePackageOutput) ToPrecisionTimeServicePackagePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePackagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServicePackage) *PrecisionTimeServicePackage {
+		return &v
+	}).(PrecisionTimeServicePackagePtrOutput)
+}
+
+// Time Precision Package Code for the desired billing package
+func (o PrecisionTimeServicePackageOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePackage) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Time Precision Package HREF link to corresponding resource in Equinix Portal
+func (o PrecisionTimeServicePackageOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePackage) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePackagePtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePackagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServicePackage)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePackagePtrOutput) ToPrecisionTimeServicePackagePtrOutput() PrecisionTimeServicePackagePtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePackagePtrOutput) ToPrecisionTimeServicePackagePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePackagePtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePackagePtrOutput) Elem() PrecisionTimeServicePackageOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePackage) PrecisionTimeServicePackage {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServicePackage
+		return ret
+	}).(PrecisionTimeServicePackageOutput)
+}
+
+// Time Precision Package Code for the desired billing package
+func (o PrecisionTimeServicePackagePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePackage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Precision Package HREF link to corresponding resource in Equinix Portal
+func (o PrecisionTimeServicePackagePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePackage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePrecisionTimePrice struct {
+	// offering price charge
+	Charges []PrecisionTimeServicePrecisionTimePriceCharge `pulumi:"charges"`
+	// Offering price currency
+	Currency *string `pulumi:"currency"`
+}
+
+// PrecisionTimeServicePrecisionTimePriceInput is an input type that accepts PrecisionTimeServicePrecisionTimePriceArgs and PrecisionTimeServicePrecisionTimePriceOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePrecisionTimePriceInput` via:
+//
+//	PrecisionTimeServicePrecisionTimePriceArgs{...}
+type PrecisionTimeServicePrecisionTimePriceInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePrecisionTimePriceOutput() PrecisionTimeServicePrecisionTimePriceOutput
+	ToPrecisionTimeServicePrecisionTimePriceOutputWithContext(context.Context) PrecisionTimeServicePrecisionTimePriceOutput
+}
+
+type PrecisionTimeServicePrecisionTimePriceArgs struct {
+	// offering price charge
+	Charges PrecisionTimeServicePrecisionTimePriceChargeArrayInput `pulumi:"charges"`
+	// Offering price currency
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+}
+
+func (PrecisionTimeServicePrecisionTimePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePrecisionTimePrice)(nil)).Elem()
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceArgs) ToPrecisionTimeServicePrecisionTimePriceOutput() PrecisionTimeServicePrecisionTimePriceOutput {
+	return i.ToPrecisionTimeServicePrecisionTimePriceOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceArgs) ToPrecisionTimeServicePrecisionTimePriceOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePrecisionTimePriceOutput)
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceArgs) ToPrecisionTimeServicePrecisionTimePricePtrOutput() PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return i.ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceArgs) ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePrecisionTimePriceOutput).ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServicePrecisionTimePricePtrInput is an input type that accepts PrecisionTimeServicePrecisionTimePriceArgs, PrecisionTimeServicePrecisionTimePricePtr and PrecisionTimeServicePrecisionTimePricePtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePrecisionTimePricePtrInput` via:
+//
+//	        PrecisionTimeServicePrecisionTimePriceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServicePrecisionTimePricePtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePrecisionTimePricePtrOutput() PrecisionTimeServicePrecisionTimePricePtrOutput
+	ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(context.Context) PrecisionTimeServicePrecisionTimePricePtrOutput
+}
+
+type precisionTimeServicePrecisionTimePricePtrType PrecisionTimeServicePrecisionTimePriceArgs
+
+func PrecisionTimeServicePrecisionTimePricePtr(v *PrecisionTimeServicePrecisionTimePriceArgs) PrecisionTimeServicePrecisionTimePricePtrInput {
+	return (*precisionTimeServicePrecisionTimePricePtrType)(v)
+}
+
+func (*precisionTimeServicePrecisionTimePricePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServicePrecisionTimePrice)(nil)).Elem()
+}
+
+func (i *precisionTimeServicePrecisionTimePricePtrType) ToPrecisionTimeServicePrecisionTimePricePtrOutput() PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return i.ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServicePrecisionTimePricePtrType) ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePrecisionTimePricePtrOutput)
+}
+
+type PrecisionTimeServicePrecisionTimePriceOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePrecisionTimePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePrecisionTimePrice)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceOutput) ToPrecisionTimeServicePrecisionTimePriceOutput() PrecisionTimeServicePrecisionTimePriceOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceOutput) ToPrecisionTimeServicePrecisionTimePriceOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePriceOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceOutput) ToPrecisionTimeServicePrecisionTimePricePtrOutput() PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return o.ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceOutput) ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServicePrecisionTimePrice) *PrecisionTimeServicePrecisionTimePrice {
+		return &v
+	}).(PrecisionTimeServicePrecisionTimePricePtrOutput)
+}
+
+// offering price charge
+func (o PrecisionTimeServicePrecisionTimePriceOutput) Charges() PrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePrecisionTimePrice) []PrecisionTimeServicePrecisionTimePriceCharge {
+		return v.Charges
+	}).(PrecisionTimeServicePrecisionTimePriceChargeArrayOutput)
+}
+
+// Offering price currency
+func (o PrecisionTimeServicePrecisionTimePriceOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePrecisionTimePrice) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePrecisionTimePricePtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePrecisionTimePricePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServicePrecisionTimePrice)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePrecisionTimePricePtrOutput) ToPrecisionTimeServicePrecisionTimePricePtrOutput() PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePrecisionTimePricePtrOutput) ToPrecisionTimeServicePrecisionTimePricePtrOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePricePtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePrecisionTimePricePtrOutput) Elem() PrecisionTimeServicePrecisionTimePriceOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePrecisionTimePrice) PrecisionTimeServicePrecisionTimePrice {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServicePrecisionTimePrice
+		return ret
+	}).(PrecisionTimeServicePrecisionTimePriceOutput)
+}
+
+// offering price charge
+func (o PrecisionTimeServicePrecisionTimePricePtrOutput) Charges() PrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePrecisionTimePrice) []PrecisionTimeServicePrecisionTimePriceCharge {
+		if v == nil {
+			return nil
+		}
+		return v.Charges
+	}).(PrecisionTimeServicePrecisionTimePriceChargeArrayOutput)
+}
+
+// Offering price currency
+func (o PrecisionTimeServicePrecisionTimePricePtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePrecisionTimePrice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePrecisionTimePriceCharge struct {
+	// Offering price
+	Price *float64 `pulumi:"price"`
+	// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+	Type *string `pulumi:"type"`
+}
+
+// PrecisionTimeServicePrecisionTimePriceChargeInput is an input type that accepts PrecisionTimeServicePrecisionTimePriceChargeArgs and PrecisionTimeServicePrecisionTimePriceChargeOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePrecisionTimePriceChargeInput` via:
+//
+//	PrecisionTimeServicePrecisionTimePriceChargeArgs{...}
+type PrecisionTimeServicePrecisionTimePriceChargeInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePrecisionTimePriceChargeOutput() PrecisionTimeServicePrecisionTimePriceChargeOutput
+	ToPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(context.Context) PrecisionTimeServicePrecisionTimePriceChargeOutput
+}
+
+type PrecisionTimeServicePrecisionTimePriceChargeArgs struct {
+	// Offering price
+	Price pulumi.Float64PtrInput `pulumi:"price"`
+	// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (PrecisionTimeServicePrecisionTimePriceChargeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceChargeArgs) ToPrecisionTimeServicePrecisionTimePriceChargeOutput() PrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return i.ToPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceChargeArgs) ToPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePrecisionTimePriceChargeOutput)
+}
+
+// PrecisionTimeServicePrecisionTimePriceChargeArrayInput is an input type that accepts PrecisionTimeServicePrecisionTimePriceChargeArray and PrecisionTimeServicePrecisionTimePriceChargeArrayOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePrecisionTimePriceChargeArrayInput` via:
+//
+//	PrecisionTimeServicePrecisionTimePriceChargeArray{ PrecisionTimeServicePrecisionTimePriceChargeArgs{...} }
+type PrecisionTimeServicePrecisionTimePriceChargeArrayInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePrecisionTimePriceChargeArrayOutput() PrecisionTimeServicePrecisionTimePriceChargeArrayOutput
+	ToPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(context.Context) PrecisionTimeServicePrecisionTimePriceChargeArrayOutput
+}
+
+type PrecisionTimeServicePrecisionTimePriceChargeArray []PrecisionTimeServicePrecisionTimePriceChargeInput
+
+func (PrecisionTimeServicePrecisionTimePriceChargeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceChargeArray) ToPrecisionTimeServicePrecisionTimePriceChargeArrayOutput() PrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return i.ToPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePrecisionTimePriceChargeArray) ToPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePrecisionTimePriceChargeArrayOutput)
+}
+
+type PrecisionTimeServicePrecisionTimePriceChargeOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePrecisionTimePriceChargeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceChargeOutput) ToPrecisionTimeServicePrecisionTimePriceChargeOutput() PrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceChargeOutput) ToPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return o
+}
+
+// Offering price
+func (o PrecisionTimeServicePrecisionTimePriceChargeOutput) Price() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePrecisionTimePriceCharge) *float64 { return v.Price }).(pulumi.Float64PtrOutput)
+}
+
+// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+func (o PrecisionTimeServicePrecisionTimePriceChargeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePrecisionTimePriceCharge) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePrecisionTimePriceChargeArrayOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePrecisionTimePriceChargeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceChargeArrayOutput) ToPrecisionTimeServicePrecisionTimePriceChargeArrayOutput() PrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceChargeArrayOutput) ToPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(ctx context.Context) PrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePrecisionTimePriceChargeArrayOutput) Index(i pulumi.IntInput) PrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrecisionTimeServicePrecisionTimePriceCharge {
+		return vs[0].([]PrecisionTimeServicePrecisionTimePriceCharge)[vs[1].(int)]
+	}).(PrecisionTimeServicePrecisionTimePriceChargeOutput)
+}
+
+type PrecisionTimeServiceProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId *string `pulumi:"projectId"`
+}
+
+// PrecisionTimeServiceProjectInput is an input type that accepts PrecisionTimeServiceProjectArgs and PrecisionTimeServiceProjectOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceProjectInput` via:
+//
+//	PrecisionTimeServiceProjectArgs{...}
+type PrecisionTimeServiceProjectInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceProjectOutput() PrecisionTimeServiceProjectOutput
+	ToPrecisionTimeServiceProjectOutputWithContext(context.Context) PrecisionTimeServiceProjectOutput
+}
+
+type PrecisionTimeServiceProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+}
+
+func (PrecisionTimeServiceProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceProjectArgs) ToPrecisionTimeServiceProjectOutput() PrecisionTimeServiceProjectOutput {
+	return i.ToPrecisionTimeServiceProjectOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceProjectArgs) ToPrecisionTimeServiceProjectOutputWithContext(ctx context.Context) PrecisionTimeServiceProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceProjectOutput)
+}
+
+func (i PrecisionTimeServiceProjectArgs) ToPrecisionTimeServiceProjectPtrOutput() PrecisionTimeServiceProjectPtrOutput {
+	return i.ToPrecisionTimeServiceProjectPtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceProjectArgs) ToPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceProjectOutput).ToPrecisionTimeServiceProjectPtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServiceProjectPtrInput is an input type that accepts PrecisionTimeServiceProjectArgs, PrecisionTimeServiceProjectPtr and PrecisionTimeServiceProjectPtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceProjectPtrInput` via:
+//
+//	        PrecisionTimeServiceProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServiceProjectPtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceProjectPtrOutput() PrecisionTimeServiceProjectPtrOutput
+	ToPrecisionTimeServiceProjectPtrOutputWithContext(context.Context) PrecisionTimeServiceProjectPtrOutput
+}
+
+type precisionTimeServiceProjectPtrType PrecisionTimeServiceProjectArgs
+
+func PrecisionTimeServiceProjectPtr(v *PrecisionTimeServiceProjectArgs) PrecisionTimeServiceProjectPtrInput {
+	return (*precisionTimeServiceProjectPtrType)(v)
+}
+
+func (*precisionTimeServiceProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (i *precisionTimeServiceProjectPtrType) ToPrecisionTimeServiceProjectPtrOutput() PrecisionTimeServiceProjectPtrOutput {
+	return i.ToPrecisionTimeServiceProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServiceProjectPtrType) ToPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceProjectPtrOutput)
+}
+
+type PrecisionTimeServiceProjectOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceProjectOutput) ToPrecisionTimeServiceProjectOutput() PrecisionTimeServiceProjectOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceProjectOutput) ToPrecisionTimeServiceProjectOutputWithContext(ctx context.Context) PrecisionTimeServiceProjectOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceProjectOutput) ToPrecisionTimeServiceProjectPtrOutput() PrecisionTimeServiceProjectPtrOutput {
+	return o.ToPrecisionTimeServiceProjectPtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServiceProjectOutput) ToPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServiceProject) *PrecisionTimeServiceProject {
+		return &v
+	}).(PrecisionTimeServiceProjectPtrOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o PrecisionTimeServiceProjectOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceProject) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceProjectPtrOutput) ToPrecisionTimeServiceProjectPtrOutput() PrecisionTimeServiceProjectPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceProjectPtrOutput) ToPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceProjectPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceProjectPtrOutput) Elem() PrecisionTimeServiceProjectOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceProject) PrecisionTimeServiceProject {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServiceProject
+		return ret
+	}).(PrecisionTimeServiceProjectOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o PrecisionTimeServiceProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePtpAdvancedConfiguration struct {
+	// The PTP domain value
+	Domain *int `pulumi:"domain"`
+	// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+	GrantTime *int `pulumi:"grantTime"`
+	// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+	LogAnnounceInterval *int `pulumi:"logAnnounceInterval"`
+	// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogDelayReqInterval *int `pulumi:"logDelayReqInterval"`
+	// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogSyncInterval *int `pulumi:"logSyncInterval"`
+	// The priority1 value determines the best primary clock, Lower value indicates higher priority
+	Priority1 *int `pulumi:"priority1"`
+	// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+	Priority2 *int `pulumi:"priority2"`
+	// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+	TimeScale *string `pulumi:"timeScale"`
+	// ptp transport mode
+	TransportMode *string `pulumi:"transportMode"`
+}
+
+// PrecisionTimeServicePtpAdvancedConfigurationInput is an input type that accepts PrecisionTimeServicePtpAdvancedConfigurationArgs and PrecisionTimeServicePtpAdvancedConfigurationOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePtpAdvancedConfigurationInput` via:
+//
+//	PrecisionTimeServicePtpAdvancedConfigurationArgs{...}
+type PrecisionTimeServicePtpAdvancedConfigurationInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePtpAdvancedConfigurationOutput() PrecisionTimeServicePtpAdvancedConfigurationOutput
+	ToPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(context.Context) PrecisionTimeServicePtpAdvancedConfigurationOutput
+}
+
+type PrecisionTimeServicePtpAdvancedConfigurationArgs struct {
+	// The PTP domain value
+	Domain pulumi.IntPtrInput `pulumi:"domain"`
+	// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+	GrantTime pulumi.IntPtrInput `pulumi:"grantTime"`
+	// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+	LogAnnounceInterval pulumi.IntPtrInput `pulumi:"logAnnounceInterval"`
+	// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogDelayReqInterval pulumi.IntPtrInput `pulumi:"logDelayReqInterval"`
+	// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogSyncInterval pulumi.IntPtrInput `pulumi:"logSyncInterval"`
+	// The priority1 value determines the best primary clock, Lower value indicates higher priority
+	Priority1 pulumi.IntPtrInput `pulumi:"priority1"`
+	// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+	Priority2 pulumi.IntPtrInput `pulumi:"priority2"`
+	// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+	TimeScale pulumi.StringPtrInput `pulumi:"timeScale"`
+	// ptp transport mode
+	TransportMode pulumi.StringPtrInput `pulumi:"transportMode"`
+}
+
+func (PrecisionTimeServicePtpAdvancedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i PrecisionTimeServicePtpAdvancedConfigurationArgs) ToPrecisionTimeServicePtpAdvancedConfigurationOutput() PrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return i.ToPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePtpAdvancedConfigurationArgs) ToPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(ctx context.Context) PrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePtpAdvancedConfigurationOutput)
+}
+
+func (i PrecisionTimeServicePtpAdvancedConfigurationArgs) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return i.ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServicePtpAdvancedConfigurationArgs) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePtpAdvancedConfigurationOutput).ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServicePtpAdvancedConfigurationPtrInput is an input type that accepts PrecisionTimeServicePtpAdvancedConfigurationArgs, PrecisionTimeServicePtpAdvancedConfigurationPtr and PrecisionTimeServicePtpAdvancedConfigurationPtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServicePtpAdvancedConfigurationPtrInput` via:
+//
+//	        PrecisionTimeServicePtpAdvancedConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServicePtpAdvancedConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() PrecisionTimeServicePtpAdvancedConfigurationPtrOutput
+	ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Context) PrecisionTimeServicePtpAdvancedConfigurationPtrOutput
+}
+
+type precisionTimeServicePtpAdvancedConfigurationPtrType PrecisionTimeServicePtpAdvancedConfigurationArgs
+
+func PrecisionTimeServicePtpAdvancedConfigurationPtr(v *PrecisionTimeServicePtpAdvancedConfigurationArgs) PrecisionTimeServicePtpAdvancedConfigurationPtrInput {
+	return (*precisionTimeServicePtpAdvancedConfigurationPtrType)(v)
+}
+
+func (*precisionTimeServicePtpAdvancedConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i *precisionTimeServicePtpAdvancedConfigurationPtrType) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return i.ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServicePtpAdvancedConfigurationPtrType) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServicePtpAdvancedConfigurationPtrOutput)
+}
+
+type PrecisionTimeServicePtpAdvancedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePtpAdvancedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) ToPrecisionTimeServicePtpAdvancedConfigurationOutput() PrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) ToPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(ctx context.Context) PrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o.ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServicePtpAdvancedConfiguration) *PrecisionTimeServicePtpAdvancedConfiguration {
+		return &v
+	}).(PrecisionTimeServicePtpAdvancedConfigurationPtrOutput)
+}
+
+// The PTP domain value
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) Domain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *int { return v.Domain }).(pulumi.IntPtrOutput)
+}
+
+// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) GrantTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *int { return v.GrantTime }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) LogAnnounceInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *int { return v.LogAnnounceInterval }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) LogDelayReqInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *int { return v.LogDelayReqInterval }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) LogSyncInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *int { return v.LogSyncInterval }).(pulumi.IntPtrOutput)
+}
+
+// The priority1 value determines the best primary clock, Lower value indicates higher priority
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) Priority1() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *int { return v.Priority1 }).(pulumi.IntPtrOutput)
+}
+
+// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) Priority2() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *int { return v.Priority2 }).(pulumi.IntPtrOutput)
+}
+
+// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) TimeScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *string { return v.TimeScale }).(pulumi.StringPtrOutput)
+}
+
+// ptp transport mode
+func (o PrecisionTimeServicePtpAdvancedConfigurationOutput) TransportMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServicePtpAdvancedConfiguration) *string { return v.TransportMode }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServicePtpAdvancedConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) ToPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Elem() PrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) PrecisionTimeServicePtpAdvancedConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServicePtpAdvancedConfiguration
+		return ret
+	}).(PrecisionTimeServicePtpAdvancedConfigurationOutput)
+}
+
+// The PTP domain value
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Domain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) GrantTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GrantTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) LogAnnounceInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnnounceInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) LogDelayReqInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogDelayReqInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) LogSyncInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogSyncInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority1 value determines the best primary clock, Lower value indicates higher priority
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Priority1() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority1
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Priority2() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority2
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) TimeScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeScale
+	}).(pulumi.StringPtrOutput)
+}
+
+// ptp transport mode
+func (o PrecisionTimeServicePtpAdvancedConfigurationPtrOutput) TransportMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServicePtpAdvancedConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransportMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// PrecisionTimeServiceTimeoutsInput is an input type that accepts PrecisionTimeServiceTimeoutsArgs and PrecisionTimeServiceTimeoutsOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceTimeoutsInput` via:
+//
+//	PrecisionTimeServiceTimeoutsArgs{...}
+type PrecisionTimeServiceTimeoutsInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceTimeoutsOutput() PrecisionTimeServiceTimeoutsOutput
+	ToPrecisionTimeServiceTimeoutsOutputWithContext(context.Context) PrecisionTimeServiceTimeoutsOutput
+}
+
+type PrecisionTimeServiceTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (PrecisionTimeServiceTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceTimeouts)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceTimeoutsArgs) ToPrecisionTimeServiceTimeoutsOutput() PrecisionTimeServiceTimeoutsOutput {
+	return i.ToPrecisionTimeServiceTimeoutsOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceTimeoutsArgs) ToPrecisionTimeServiceTimeoutsOutputWithContext(ctx context.Context) PrecisionTimeServiceTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceTimeoutsOutput)
+}
+
+func (i PrecisionTimeServiceTimeoutsArgs) ToPrecisionTimeServiceTimeoutsPtrOutput() PrecisionTimeServiceTimeoutsPtrOutput {
+	return i.ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceTimeoutsArgs) ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceTimeoutsOutput).ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServiceTimeoutsPtrInput is an input type that accepts PrecisionTimeServiceTimeoutsArgs, PrecisionTimeServiceTimeoutsPtr and PrecisionTimeServiceTimeoutsPtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceTimeoutsPtrInput` via:
+//
+//	        PrecisionTimeServiceTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServiceTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceTimeoutsPtrOutput() PrecisionTimeServiceTimeoutsPtrOutput
+	ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(context.Context) PrecisionTimeServiceTimeoutsPtrOutput
+}
+
+type precisionTimeServiceTimeoutsPtrType PrecisionTimeServiceTimeoutsArgs
+
+func PrecisionTimeServiceTimeoutsPtr(v *PrecisionTimeServiceTimeoutsArgs) PrecisionTimeServiceTimeoutsPtrInput {
+	return (*precisionTimeServiceTimeoutsPtrType)(v)
+}
+
+func (*precisionTimeServiceTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceTimeouts)(nil)).Elem()
+}
+
+func (i *precisionTimeServiceTimeoutsPtrType) ToPrecisionTimeServiceTimeoutsPtrOutput() PrecisionTimeServiceTimeoutsPtrOutput {
+	return i.ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServiceTimeoutsPtrType) ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceTimeoutsPtrOutput)
+}
+
+type PrecisionTimeServiceTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceTimeouts)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceTimeoutsOutput) ToPrecisionTimeServiceTimeoutsOutput() PrecisionTimeServiceTimeoutsOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceTimeoutsOutput) ToPrecisionTimeServiceTimeoutsOutputWithContext(ctx context.Context) PrecisionTimeServiceTimeoutsOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceTimeoutsOutput) ToPrecisionTimeServiceTimeoutsPtrOutput() PrecisionTimeServiceTimeoutsPtrOutput {
+	return o.ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServiceTimeoutsOutput) ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServiceTimeouts) *PrecisionTimeServiceTimeouts {
+		return &v
+	}).(PrecisionTimeServiceTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PrecisionTimeServiceTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PrecisionTimeServiceTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PrecisionTimeServiceTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PrecisionTimeServiceTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceTimeouts)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceTimeoutsPtrOutput) ToPrecisionTimeServiceTimeoutsPtrOutput() PrecisionTimeServiceTimeoutsPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceTimeoutsPtrOutput) ToPrecisionTimeServiceTimeoutsPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceTimeoutsPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceTimeoutsPtrOutput) Elem() PrecisionTimeServiceTimeoutsOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceTimeouts) PrecisionTimeServiceTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServiceTimeouts
+		return ret
+	}).(PrecisionTimeServiceTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PrecisionTimeServiceTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PrecisionTimeServiceTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PrecisionTimeServiceTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PrecisionTimeServiceTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationChange struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href string `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid string `pulumi:"uuid"`
+}
+
+// RouteAggregationChangeInput is an input type that accepts RouteAggregationChangeArgs and RouteAggregationChangeOutput values.
+// You can construct a concrete instance of `RouteAggregationChangeInput` via:
+//
+//	RouteAggregationChangeArgs{...}
+type RouteAggregationChangeInput interface {
+	pulumi.Input
+
+	ToRouteAggregationChangeOutput() RouteAggregationChangeOutput
+	ToRouteAggregationChangeOutputWithContext(context.Context) RouteAggregationChangeOutput
+}
+
+type RouteAggregationChangeArgs struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (RouteAggregationChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationChange)(nil)).Elem()
+}
+
+func (i RouteAggregationChangeArgs) ToRouteAggregationChangeOutput() RouteAggregationChangeOutput {
+	return i.ToRouteAggregationChangeOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationChangeArgs) ToRouteAggregationChangeOutputWithContext(ctx context.Context) RouteAggregationChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationChangeOutput)
+}
+
+func (i RouteAggregationChangeArgs) ToRouteAggregationChangePtrOutput() RouteAggregationChangePtrOutput {
+	return i.ToRouteAggregationChangePtrOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationChangeArgs) ToRouteAggregationChangePtrOutputWithContext(ctx context.Context) RouteAggregationChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationChangeOutput).ToRouteAggregationChangePtrOutputWithContext(ctx)
+}
+
+// RouteAggregationChangePtrInput is an input type that accepts RouteAggregationChangeArgs, RouteAggregationChangePtr and RouteAggregationChangePtrOutput values.
+// You can construct a concrete instance of `RouteAggregationChangePtrInput` via:
+//
+//	        RouteAggregationChangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteAggregationChangePtrInput interface {
+	pulumi.Input
+
+	ToRouteAggregationChangePtrOutput() RouteAggregationChangePtrOutput
+	ToRouteAggregationChangePtrOutputWithContext(context.Context) RouteAggregationChangePtrOutput
+}
+
+type routeAggregationChangePtrType RouteAggregationChangeArgs
+
+func RouteAggregationChangePtr(v *RouteAggregationChangeArgs) RouteAggregationChangePtrInput {
+	return (*routeAggregationChangePtrType)(v)
+}
+
+func (*routeAggregationChangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationChange)(nil)).Elem()
+}
+
+func (i *routeAggregationChangePtrType) ToRouteAggregationChangePtrOutput() RouteAggregationChangePtrOutput {
+	return i.ToRouteAggregationChangePtrOutputWithContext(context.Background())
+}
+
+func (i *routeAggregationChangePtrType) ToRouteAggregationChangePtrOutputWithContext(ctx context.Context) RouteAggregationChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationChangePtrOutput)
+}
+
+type RouteAggregationChangeOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationChange)(nil)).Elem()
+}
+
+func (o RouteAggregationChangeOutput) ToRouteAggregationChangeOutput() RouteAggregationChangeOutput {
+	return o
+}
+
+func (o RouteAggregationChangeOutput) ToRouteAggregationChangeOutputWithContext(ctx context.Context) RouteAggregationChangeOutput {
+	return o
+}
+
+func (o RouteAggregationChangeOutput) ToRouteAggregationChangePtrOutput() RouteAggregationChangePtrOutput {
+	return o.ToRouteAggregationChangePtrOutputWithContext(context.Background())
+}
+
+func (o RouteAggregationChangeOutput) ToRouteAggregationChangePtrOutputWithContext(ctx context.Context) RouteAggregationChangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteAggregationChange) *RouteAggregationChange {
+		return &v
+	}).(RouteAggregationChangePtrOutput)
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o RouteAggregationChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteAggregationChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o RouteAggregationChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteAggregationChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o RouteAggregationChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteAggregationChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type RouteAggregationChangePtrOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationChange)(nil)).Elem()
+}
+
+func (o RouteAggregationChangePtrOutput) ToRouteAggregationChangePtrOutput() RouteAggregationChangePtrOutput {
+	return o
+}
+
+func (o RouteAggregationChangePtrOutput) ToRouteAggregationChangePtrOutputWithContext(ctx context.Context) RouteAggregationChangePtrOutput {
+	return o
+}
+
+func (o RouteAggregationChangePtrOutput) Elem() RouteAggregationChangeOutput {
+	return o.ApplyT(func(v *RouteAggregationChange) RouteAggregationChange {
+		if v != nil {
+			return *v
+		}
+		var ret RouteAggregationChange
+		return ret
+	}).(RouteAggregationChangeOutput)
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o RouteAggregationChangePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o RouteAggregationChangePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o RouteAggregationChangePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationChangeLog struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy *string `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// RouteAggregationChangeLogInput is an input type that accepts RouteAggregationChangeLogArgs and RouteAggregationChangeLogOutput values.
+// You can construct a concrete instance of `RouteAggregationChangeLogInput` via:
+//
+//	RouteAggregationChangeLogArgs{...}
+type RouteAggregationChangeLogInput interface {
+	pulumi.Input
+
+	ToRouteAggregationChangeLogOutput() RouteAggregationChangeLogOutput
+	ToRouteAggregationChangeLogOutputWithContext(context.Context) RouteAggregationChangeLogOutput
+}
+
+type RouteAggregationChangeLogArgs struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (RouteAggregationChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationChangeLog)(nil)).Elem()
+}
+
+func (i RouteAggregationChangeLogArgs) ToRouteAggregationChangeLogOutput() RouteAggregationChangeLogOutput {
+	return i.ToRouteAggregationChangeLogOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationChangeLogArgs) ToRouteAggregationChangeLogOutputWithContext(ctx context.Context) RouteAggregationChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationChangeLogOutput)
+}
+
+func (i RouteAggregationChangeLogArgs) ToRouteAggregationChangeLogPtrOutput() RouteAggregationChangeLogPtrOutput {
+	return i.ToRouteAggregationChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationChangeLogArgs) ToRouteAggregationChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationChangeLogOutput).ToRouteAggregationChangeLogPtrOutputWithContext(ctx)
+}
+
+// RouteAggregationChangeLogPtrInput is an input type that accepts RouteAggregationChangeLogArgs, RouteAggregationChangeLogPtr and RouteAggregationChangeLogPtrOutput values.
+// You can construct a concrete instance of `RouteAggregationChangeLogPtrInput` via:
+//
+//	        RouteAggregationChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteAggregationChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToRouteAggregationChangeLogPtrOutput() RouteAggregationChangeLogPtrOutput
+	ToRouteAggregationChangeLogPtrOutputWithContext(context.Context) RouteAggregationChangeLogPtrOutput
+}
+
+type routeAggregationChangeLogPtrType RouteAggregationChangeLogArgs
+
+func RouteAggregationChangeLogPtr(v *RouteAggregationChangeLogArgs) RouteAggregationChangeLogPtrInput {
+	return (*routeAggregationChangeLogPtrType)(v)
+}
+
+func (*routeAggregationChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationChangeLog)(nil)).Elem()
+}
+
+func (i *routeAggregationChangeLogPtrType) ToRouteAggregationChangeLogPtrOutput() RouteAggregationChangeLogPtrOutput {
+	return i.ToRouteAggregationChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *routeAggregationChangeLogPtrType) ToRouteAggregationChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationChangeLogPtrOutput)
+}
+
+type RouteAggregationChangeLogOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationChangeLog)(nil)).Elem()
+}
+
+func (o RouteAggregationChangeLogOutput) ToRouteAggregationChangeLogOutput() RouteAggregationChangeLogOutput {
+	return o
+}
+
+func (o RouteAggregationChangeLogOutput) ToRouteAggregationChangeLogOutputWithContext(ctx context.Context) RouteAggregationChangeLogOutput {
+	return o
+}
+
+func (o RouteAggregationChangeLogOutput) ToRouteAggregationChangeLogPtrOutput() RouteAggregationChangeLogPtrOutput {
+	return o.ToRouteAggregationChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o RouteAggregationChangeLogOutput) ToRouteAggregationChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteAggregationChangeLog) *RouteAggregationChangeLog {
+		return &v
+	}).(RouteAggregationChangeLogPtrOutput)
+}
+
+// User name of creator of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o RouteAggregationChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationChangeLog)(nil)).Elem()
+}
+
+func (o RouteAggregationChangeLogPtrOutput) ToRouteAggregationChangeLogPtrOutput() RouteAggregationChangeLogPtrOutput {
+	return o
+}
+
+func (o RouteAggregationChangeLogPtrOutput) ToRouteAggregationChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationChangeLogPtrOutput {
+	return o
+}
+
+func (o RouteAggregationChangeLogPtrOutput) Elem() RouteAggregationChangeLogOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) RouteAggregationChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret RouteAggregationChangeLog
+		return ret
+	}).(RouteAggregationChangeLogOutput)
+}
+
+// User name of creator of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o RouteAggregationChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// RouteAggregationProjectInput is an input type that accepts RouteAggregationProjectArgs and RouteAggregationProjectOutput values.
+// You can construct a concrete instance of `RouteAggregationProjectInput` via:
+//
+//	RouteAggregationProjectArgs{...}
+type RouteAggregationProjectInput interface {
+	pulumi.Input
+
+	ToRouteAggregationProjectOutput() RouteAggregationProjectOutput
+	ToRouteAggregationProjectOutputWithContext(context.Context) RouteAggregationProjectOutput
+}
+
+type RouteAggregationProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (RouteAggregationProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationProject)(nil)).Elem()
+}
+
+func (i RouteAggregationProjectArgs) ToRouteAggregationProjectOutput() RouteAggregationProjectOutput {
+	return i.ToRouteAggregationProjectOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationProjectArgs) ToRouteAggregationProjectOutputWithContext(ctx context.Context) RouteAggregationProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationProjectOutput)
+}
+
+func (i RouteAggregationProjectArgs) ToRouteAggregationProjectPtrOutput() RouteAggregationProjectPtrOutput {
+	return i.ToRouteAggregationProjectPtrOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationProjectArgs) ToRouteAggregationProjectPtrOutputWithContext(ctx context.Context) RouteAggregationProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationProjectOutput).ToRouteAggregationProjectPtrOutputWithContext(ctx)
+}
+
+// RouteAggregationProjectPtrInput is an input type that accepts RouteAggregationProjectArgs, RouteAggregationProjectPtr and RouteAggregationProjectPtrOutput values.
+// You can construct a concrete instance of `RouteAggregationProjectPtrInput` via:
+//
+//	        RouteAggregationProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteAggregationProjectPtrInput interface {
+	pulumi.Input
+
+	ToRouteAggregationProjectPtrOutput() RouteAggregationProjectPtrOutput
+	ToRouteAggregationProjectPtrOutputWithContext(context.Context) RouteAggregationProjectPtrOutput
+}
+
+type routeAggregationProjectPtrType RouteAggregationProjectArgs
+
+func RouteAggregationProjectPtr(v *RouteAggregationProjectArgs) RouteAggregationProjectPtrInput {
+	return (*routeAggregationProjectPtrType)(v)
+}
+
+func (*routeAggregationProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationProject)(nil)).Elem()
+}
+
+func (i *routeAggregationProjectPtrType) ToRouteAggregationProjectPtrOutput() RouteAggregationProjectPtrOutput {
+	return i.ToRouteAggregationProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *routeAggregationProjectPtrType) ToRouteAggregationProjectPtrOutputWithContext(ctx context.Context) RouteAggregationProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationProjectPtrOutput)
+}
+
+type RouteAggregationProjectOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationProject)(nil)).Elem()
+}
+
+func (o RouteAggregationProjectOutput) ToRouteAggregationProjectOutput() RouteAggregationProjectOutput {
+	return o
+}
+
+func (o RouteAggregationProjectOutput) ToRouteAggregationProjectOutputWithContext(ctx context.Context) RouteAggregationProjectOutput {
+	return o
+}
+
+func (o RouteAggregationProjectOutput) ToRouteAggregationProjectPtrOutput() RouteAggregationProjectPtrOutput {
+	return o.ToRouteAggregationProjectPtrOutputWithContext(context.Background())
+}
+
+func (o RouteAggregationProjectOutput) ToRouteAggregationProjectPtrOutputWithContext(ctx context.Context) RouteAggregationProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteAggregationProject) *RouteAggregationProject {
+		return &v
+	}).(RouteAggregationProjectPtrOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o RouteAggregationProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteAggregationProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type RouteAggregationProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationProject)(nil)).Elem()
+}
+
+func (o RouteAggregationProjectPtrOutput) ToRouteAggregationProjectPtrOutput() RouteAggregationProjectPtrOutput {
+	return o
+}
+
+func (o RouteAggregationProjectPtrOutput) ToRouteAggregationProjectPtrOutputWithContext(ctx context.Context) RouteAggregationProjectPtrOutput {
+	return o
+}
+
+func (o RouteAggregationProjectPtrOutput) Elem() RouteAggregationProjectOutput {
+	return o.ApplyT(func(v *RouteAggregationProject) RouteAggregationProject {
+		if v != nil {
+			return *v
+		}
+		var ret RouteAggregationProject
+		return ret
+	}).(RouteAggregationProjectOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o RouteAggregationProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationRuleChange struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href *string `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid string `pulumi:"uuid"`
+}
+
+// RouteAggregationRuleChangeInput is an input type that accepts RouteAggregationRuleChangeArgs and RouteAggregationRuleChangeOutput values.
+// You can construct a concrete instance of `RouteAggregationRuleChangeInput` via:
+//
+//	RouteAggregationRuleChangeArgs{...}
+type RouteAggregationRuleChangeInput interface {
+	pulumi.Input
+
+	ToRouteAggregationRuleChangeOutput() RouteAggregationRuleChangeOutput
+	ToRouteAggregationRuleChangeOutputWithContext(context.Context) RouteAggregationRuleChangeOutput
+}
+
+type RouteAggregationRuleChangeArgs struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (RouteAggregationRuleChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationRuleChange)(nil)).Elem()
+}
+
+func (i RouteAggregationRuleChangeArgs) ToRouteAggregationRuleChangeOutput() RouteAggregationRuleChangeOutput {
+	return i.ToRouteAggregationRuleChangeOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationRuleChangeArgs) ToRouteAggregationRuleChangeOutputWithContext(ctx context.Context) RouteAggregationRuleChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleChangeOutput)
+}
+
+func (i RouteAggregationRuleChangeArgs) ToRouteAggregationRuleChangePtrOutput() RouteAggregationRuleChangePtrOutput {
+	return i.ToRouteAggregationRuleChangePtrOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationRuleChangeArgs) ToRouteAggregationRuleChangePtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleChangeOutput).ToRouteAggregationRuleChangePtrOutputWithContext(ctx)
+}
+
+// RouteAggregationRuleChangePtrInput is an input type that accepts RouteAggregationRuleChangeArgs, RouteAggregationRuleChangePtr and RouteAggregationRuleChangePtrOutput values.
+// You can construct a concrete instance of `RouteAggregationRuleChangePtrInput` via:
+//
+//	        RouteAggregationRuleChangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteAggregationRuleChangePtrInput interface {
+	pulumi.Input
+
+	ToRouteAggregationRuleChangePtrOutput() RouteAggregationRuleChangePtrOutput
+	ToRouteAggregationRuleChangePtrOutputWithContext(context.Context) RouteAggregationRuleChangePtrOutput
+}
+
+type routeAggregationRuleChangePtrType RouteAggregationRuleChangeArgs
+
+func RouteAggregationRuleChangePtr(v *RouteAggregationRuleChangeArgs) RouteAggregationRuleChangePtrInput {
+	return (*routeAggregationRuleChangePtrType)(v)
+}
+
+func (*routeAggregationRuleChangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationRuleChange)(nil)).Elem()
+}
+
+func (i *routeAggregationRuleChangePtrType) ToRouteAggregationRuleChangePtrOutput() RouteAggregationRuleChangePtrOutput {
+	return i.ToRouteAggregationRuleChangePtrOutputWithContext(context.Background())
+}
+
+func (i *routeAggregationRuleChangePtrType) ToRouteAggregationRuleChangePtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleChangePtrOutput)
+}
+
+type RouteAggregationRuleChangeOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationRuleChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationRuleChange)(nil)).Elem()
+}
+
+func (o RouteAggregationRuleChangeOutput) ToRouteAggregationRuleChangeOutput() RouteAggregationRuleChangeOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangeOutput) ToRouteAggregationRuleChangeOutputWithContext(ctx context.Context) RouteAggregationRuleChangeOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangeOutput) ToRouteAggregationRuleChangePtrOutput() RouteAggregationRuleChangePtrOutput {
+	return o.ToRouteAggregationRuleChangePtrOutputWithContext(context.Background())
+}
+
+func (o RouteAggregationRuleChangeOutput) ToRouteAggregationRuleChangePtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteAggregationRuleChange) *RouteAggregationRuleChange {
+		return &v
+	}).(RouteAggregationRuleChangePtrOutput)
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o RouteAggregationRuleChangeOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChange) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o RouteAggregationRuleChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o RouteAggregationRuleChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type RouteAggregationRuleChangePtrOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationRuleChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationRuleChange)(nil)).Elem()
+}
+
+func (o RouteAggregationRuleChangePtrOutput) ToRouteAggregationRuleChangePtrOutput() RouteAggregationRuleChangePtrOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangePtrOutput) ToRouteAggregationRuleChangePtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangePtrOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangePtrOutput) Elem() RouteAggregationRuleChangeOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChange) RouteAggregationRuleChange {
+		if v != nil {
+			return *v
+		}
+		var ret RouteAggregationRuleChange
+		return ret
+	}).(RouteAggregationRuleChangeOutput)
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o RouteAggregationRuleChangePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o RouteAggregationRuleChangePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o RouteAggregationRuleChangePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationRuleChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy *string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// RouteAggregationRuleChangeLogInput is an input type that accepts RouteAggregationRuleChangeLogArgs and RouteAggregationRuleChangeLogOutput values.
+// You can construct a concrete instance of `RouteAggregationRuleChangeLogInput` via:
+//
+//	RouteAggregationRuleChangeLogArgs{...}
+type RouteAggregationRuleChangeLogInput interface {
+	pulumi.Input
+
+	ToRouteAggregationRuleChangeLogOutput() RouteAggregationRuleChangeLogOutput
+	ToRouteAggregationRuleChangeLogOutputWithContext(context.Context) RouteAggregationRuleChangeLogOutput
+}
+
+type RouteAggregationRuleChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (RouteAggregationRuleChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationRuleChangeLog)(nil)).Elem()
+}
+
+func (i RouteAggregationRuleChangeLogArgs) ToRouteAggregationRuleChangeLogOutput() RouteAggregationRuleChangeLogOutput {
+	return i.ToRouteAggregationRuleChangeLogOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationRuleChangeLogArgs) ToRouteAggregationRuleChangeLogOutputWithContext(ctx context.Context) RouteAggregationRuleChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleChangeLogOutput)
+}
+
+func (i RouteAggregationRuleChangeLogArgs) ToRouteAggregationRuleChangeLogPtrOutput() RouteAggregationRuleChangeLogPtrOutput {
+	return i.ToRouteAggregationRuleChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationRuleChangeLogArgs) ToRouteAggregationRuleChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleChangeLogOutput).ToRouteAggregationRuleChangeLogPtrOutputWithContext(ctx)
+}
+
+// RouteAggregationRuleChangeLogPtrInput is an input type that accepts RouteAggregationRuleChangeLogArgs, RouteAggregationRuleChangeLogPtr and RouteAggregationRuleChangeLogPtrOutput values.
+// You can construct a concrete instance of `RouteAggregationRuleChangeLogPtrInput` via:
+//
+//	        RouteAggregationRuleChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteAggregationRuleChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToRouteAggregationRuleChangeLogPtrOutput() RouteAggregationRuleChangeLogPtrOutput
+	ToRouteAggregationRuleChangeLogPtrOutputWithContext(context.Context) RouteAggregationRuleChangeLogPtrOutput
+}
+
+type routeAggregationRuleChangeLogPtrType RouteAggregationRuleChangeLogArgs
+
+func RouteAggregationRuleChangeLogPtr(v *RouteAggregationRuleChangeLogArgs) RouteAggregationRuleChangeLogPtrInput {
+	return (*routeAggregationRuleChangeLogPtrType)(v)
+}
+
+func (*routeAggregationRuleChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationRuleChangeLog)(nil)).Elem()
+}
+
+func (i *routeAggregationRuleChangeLogPtrType) ToRouteAggregationRuleChangeLogPtrOutput() RouteAggregationRuleChangeLogPtrOutput {
+	return i.ToRouteAggregationRuleChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *routeAggregationRuleChangeLogPtrType) ToRouteAggregationRuleChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleChangeLogPtrOutput)
+}
+
+type RouteAggregationRuleChangeLogOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationRuleChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationRuleChangeLog)(nil)).Elem()
+}
+
+func (o RouteAggregationRuleChangeLogOutput) ToRouteAggregationRuleChangeLogOutput() RouteAggregationRuleChangeLogOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangeLogOutput) ToRouteAggregationRuleChangeLogOutputWithContext(ctx context.Context) RouteAggregationRuleChangeLogOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangeLogOutput) ToRouteAggregationRuleChangeLogPtrOutput() RouteAggregationRuleChangeLogPtrOutput {
+	return o.ToRouteAggregationRuleChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o RouteAggregationRuleChangeLogOutput) ToRouteAggregationRuleChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteAggregationRuleChangeLog) *RouteAggregationRuleChangeLog {
+		return &v
+	}).(RouteAggregationRuleChangeLogPtrOutput)
+}
+
+// User name of creator of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o RouteAggregationRuleChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationRuleChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationRuleChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationRuleChangeLog)(nil)).Elem()
+}
+
+func (o RouteAggregationRuleChangeLogPtrOutput) ToRouteAggregationRuleChangeLogPtrOutput() RouteAggregationRuleChangeLogPtrOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangeLogPtrOutput) ToRouteAggregationRuleChangeLogPtrOutputWithContext(ctx context.Context) RouteAggregationRuleChangeLogPtrOutput {
+	return o
+}
+
+func (o RouteAggregationRuleChangeLogPtrOutput) Elem() RouteAggregationRuleChangeLogOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) RouteAggregationRuleChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret RouteAggregationRuleChangeLog
+		return ret
+	}).(RouteAggregationRuleChangeLogOutput)
+}
+
+// User name of creator of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationRuleTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// RouteAggregationRuleTimeoutsInput is an input type that accepts RouteAggregationRuleTimeoutsArgs and RouteAggregationRuleTimeoutsOutput values.
+// You can construct a concrete instance of `RouteAggregationRuleTimeoutsInput` via:
+//
+//	RouteAggregationRuleTimeoutsArgs{...}
+type RouteAggregationRuleTimeoutsInput interface {
+	pulumi.Input
+
+	ToRouteAggregationRuleTimeoutsOutput() RouteAggregationRuleTimeoutsOutput
+	ToRouteAggregationRuleTimeoutsOutputWithContext(context.Context) RouteAggregationRuleTimeoutsOutput
+}
+
+type RouteAggregationRuleTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (RouteAggregationRuleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationRuleTimeouts)(nil)).Elem()
+}
+
+func (i RouteAggregationRuleTimeoutsArgs) ToRouteAggregationRuleTimeoutsOutput() RouteAggregationRuleTimeoutsOutput {
+	return i.ToRouteAggregationRuleTimeoutsOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationRuleTimeoutsArgs) ToRouteAggregationRuleTimeoutsOutputWithContext(ctx context.Context) RouteAggregationRuleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleTimeoutsOutput)
+}
+
+func (i RouteAggregationRuleTimeoutsArgs) ToRouteAggregationRuleTimeoutsPtrOutput() RouteAggregationRuleTimeoutsPtrOutput {
+	return i.ToRouteAggregationRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationRuleTimeoutsArgs) ToRouteAggregationRuleTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleTimeoutsOutput).ToRouteAggregationRuleTimeoutsPtrOutputWithContext(ctx)
+}
+
+// RouteAggregationRuleTimeoutsPtrInput is an input type that accepts RouteAggregationRuleTimeoutsArgs, RouteAggregationRuleTimeoutsPtr and RouteAggregationRuleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `RouteAggregationRuleTimeoutsPtrInput` via:
+//
+//	        RouteAggregationRuleTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteAggregationRuleTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToRouteAggregationRuleTimeoutsPtrOutput() RouteAggregationRuleTimeoutsPtrOutput
+	ToRouteAggregationRuleTimeoutsPtrOutputWithContext(context.Context) RouteAggregationRuleTimeoutsPtrOutput
+}
+
+type routeAggregationRuleTimeoutsPtrType RouteAggregationRuleTimeoutsArgs
+
+func RouteAggregationRuleTimeoutsPtr(v *RouteAggregationRuleTimeoutsArgs) RouteAggregationRuleTimeoutsPtrInput {
+	return (*routeAggregationRuleTimeoutsPtrType)(v)
+}
+
+func (*routeAggregationRuleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationRuleTimeouts)(nil)).Elem()
+}
+
+func (i *routeAggregationRuleTimeoutsPtrType) ToRouteAggregationRuleTimeoutsPtrOutput() RouteAggregationRuleTimeoutsPtrOutput {
+	return i.ToRouteAggregationRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *routeAggregationRuleTimeoutsPtrType) ToRouteAggregationRuleTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationRuleTimeoutsPtrOutput)
+}
+
+type RouteAggregationRuleTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationRuleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationRuleTimeouts)(nil)).Elem()
+}
+
+func (o RouteAggregationRuleTimeoutsOutput) ToRouteAggregationRuleTimeoutsOutput() RouteAggregationRuleTimeoutsOutput {
+	return o
+}
+
+func (o RouteAggregationRuleTimeoutsOutput) ToRouteAggregationRuleTimeoutsOutputWithContext(ctx context.Context) RouteAggregationRuleTimeoutsOutput {
+	return o
+}
+
+func (o RouteAggregationRuleTimeoutsOutput) ToRouteAggregationRuleTimeoutsPtrOutput() RouteAggregationRuleTimeoutsPtrOutput {
+	return o.ToRouteAggregationRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o RouteAggregationRuleTimeoutsOutput) ToRouteAggregationRuleTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationRuleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteAggregationRuleTimeouts) *RouteAggregationRuleTimeouts {
+		return &v
+	}).(RouteAggregationRuleTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationRuleTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o RouteAggregationRuleTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o RouteAggregationRuleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationRuleTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationRuleTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationRuleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationRuleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationRuleTimeouts)(nil)).Elem()
+}
+
+func (o RouteAggregationRuleTimeoutsPtrOutput) ToRouteAggregationRuleTimeoutsPtrOutput() RouteAggregationRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o RouteAggregationRuleTimeoutsPtrOutput) ToRouteAggregationRuleTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o RouteAggregationRuleTimeoutsPtrOutput) Elem() RouteAggregationRuleTimeoutsOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleTimeouts) RouteAggregationRuleTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret RouteAggregationRuleTimeouts
+		return ret
+	}).(RouteAggregationRuleTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationRuleTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o RouteAggregationRuleTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o RouteAggregationRuleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationRuleTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// RouteAggregationTimeoutsInput is an input type that accepts RouteAggregationTimeoutsArgs and RouteAggregationTimeoutsOutput values.
+// You can construct a concrete instance of `RouteAggregationTimeoutsInput` via:
+//
+//	RouteAggregationTimeoutsArgs{...}
+type RouteAggregationTimeoutsInput interface {
+	pulumi.Input
+
+	ToRouteAggregationTimeoutsOutput() RouteAggregationTimeoutsOutput
+	ToRouteAggregationTimeoutsOutputWithContext(context.Context) RouteAggregationTimeoutsOutput
+}
+
+type RouteAggregationTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (RouteAggregationTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (i RouteAggregationTimeoutsArgs) ToRouteAggregationTimeoutsOutput() RouteAggregationTimeoutsOutput {
+	return i.ToRouteAggregationTimeoutsOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationTimeoutsArgs) ToRouteAggregationTimeoutsOutputWithContext(ctx context.Context) RouteAggregationTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationTimeoutsOutput)
+}
+
+func (i RouteAggregationTimeoutsArgs) ToRouteAggregationTimeoutsPtrOutput() RouteAggregationTimeoutsPtrOutput {
+	return i.ToRouteAggregationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i RouteAggregationTimeoutsArgs) ToRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationTimeoutsOutput).ToRouteAggregationTimeoutsPtrOutputWithContext(ctx)
+}
+
+// RouteAggregationTimeoutsPtrInput is an input type that accepts RouteAggregationTimeoutsArgs, RouteAggregationTimeoutsPtr and RouteAggregationTimeoutsPtrOutput values.
+// You can construct a concrete instance of `RouteAggregationTimeoutsPtrInput` via:
+//
+//	        RouteAggregationTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteAggregationTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToRouteAggregationTimeoutsPtrOutput() RouteAggregationTimeoutsPtrOutput
+	ToRouteAggregationTimeoutsPtrOutputWithContext(context.Context) RouteAggregationTimeoutsPtrOutput
+}
+
+type routeAggregationTimeoutsPtrType RouteAggregationTimeoutsArgs
+
+func RouteAggregationTimeoutsPtr(v *RouteAggregationTimeoutsArgs) RouteAggregationTimeoutsPtrInput {
+	return (*routeAggregationTimeoutsPtrType)(v)
+}
+
+func (*routeAggregationTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (i *routeAggregationTimeoutsPtrType) ToRouteAggregationTimeoutsPtrOutput() RouteAggregationTimeoutsPtrOutput {
+	return i.ToRouteAggregationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *routeAggregationTimeoutsPtrType) ToRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteAggregationTimeoutsPtrOutput)
+}
+
+type RouteAggregationTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (o RouteAggregationTimeoutsOutput) ToRouteAggregationTimeoutsOutput() RouteAggregationTimeoutsOutput {
+	return o
+}
+
+func (o RouteAggregationTimeoutsOutput) ToRouteAggregationTimeoutsOutputWithContext(ctx context.Context) RouteAggregationTimeoutsOutput {
+	return o
+}
+
+func (o RouteAggregationTimeoutsOutput) ToRouteAggregationTimeoutsPtrOutput() RouteAggregationTimeoutsPtrOutput {
+	return o.ToRouteAggregationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o RouteAggregationTimeoutsOutput) ToRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteAggregationTimeouts) *RouteAggregationTimeouts {
+		return &v
+	}).(RouteAggregationTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o RouteAggregationTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o RouteAggregationTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteAggregationTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type RouteAggregationTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteAggregationTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteAggregationTimeouts)(nil)).Elem()
+}
+
+func (o RouteAggregationTimeoutsPtrOutput) ToRouteAggregationTimeoutsPtrOutput() RouteAggregationTimeoutsPtrOutput {
+	return o
+}
+
+func (o RouteAggregationTimeoutsPtrOutput) ToRouteAggregationTimeoutsPtrOutputWithContext(ctx context.Context) RouteAggregationTimeoutsPtrOutput {
+	return o
+}
+
+func (o RouteAggregationTimeoutsPtrOutput) Elem() RouteAggregationTimeoutsOutput {
+	return o.ApplyT(func(v *RouteAggregationTimeouts) RouteAggregationTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret RouteAggregationTimeouts
+		return ret
+	}).(RouteAggregationTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o RouteAggregationTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o RouteAggregationTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RouteAggregationTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteAggregationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19623,6 +23721,200 @@ func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceP
 	}).(pulumi.StringPtrOutput)
 }
 
+type StreamAttachmentTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// StreamAttachmentTimeoutsInput is an input type that accepts StreamAttachmentTimeoutsArgs and StreamAttachmentTimeoutsOutput values.
+// You can construct a concrete instance of `StreamAttachmentTimeoutsInput` via:
+//
+//	StreamAttachmentTimeoutsArgs{...}
+type StreamAttachmentTimeoutsInput interface {
+	pulumi.Input
+
+	ToStreamAttachmentTimeoutsOutput() StreamAttachmentTimeoutsOutput
+	ToStreamAttachmentTimeoutsOutputWithContext(context.Context) StreamAttachmentTimeoutsOutput
+}
+
+type StreamAttachmentTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (StreamAttachmentTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i StreamAttachmentTimeoutsArgs) ToStreamAttachmentTimeoutsOutput() StreamAttachmentTimeoutsOutput {
+	return i.ToStreamAttachmentTimeoutsOutputWithContext(context.Background())
+}
+
+func (i StreamAttachmentTimeoutsArgs) ToStreamAttachmentTimeoutsOutputWithContext(ctx context.Context) StreamAttachmentTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAttachmentTimeoutsOutput)
+}
+
+func (i StreamAttachmentTimeoutsArgs) ToStreamAttachmentTimeoutsPtrOutput() StreamAttachmentTimeoutsPtrOutput {
+	return i.ToStreamAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamAttachmentTimeoutsArgs) ToStreamAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) StreamAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAttachmentTimeoutsOutput).ToStreamAttachmentTimeoutsPtrOutputWithContext(ctx)
+}
+
+// StreamAttachmentTimeoutsPtrInput is an input type that accepts StreamAttachmentTimeoutsArgs, StreamAttachmentTimeoutsPtr and StreamAttachmentTimeoutsPtrOutput values.
+// You can construct a concrete instance of `StreamAttachmentTimeoutsPtrInput` via:
+//
+//	        StreamAttachmentTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamAttachmentTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToStreamAttachmentTimeoutsPtrOutput() StreamAttachmentTimeoutsPtrOutput
+	ToStreamAttachmentTimeoutsPtrOutputWithContext(context.Context) StreamAttachmentTimeoutsPtrOutput
+}
+
+type streamAttachmentTimeoutsPtrType StreamAttachmentTimeoutsArgs
+
+func StreamAttachmentTimeoutsPtr(v *StreamAttachmentTimeoutsArgs) StreamAttachmentTimeoutsPtrInput {
+	return (*streamAttachmentTimeoutsPtrType)(v)
+}
+
+func (*streamAttachmentTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i *streamAttachmentTimeoutsPtrType) ToStreamAttachmentTimeoutsPtrOutput() StreamAttachmentTimeoutsPtrOutput {
+	return i.ToStreamAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamAttachmentTimeoutsPtrType) ToStreamAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) StreamAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAttachmentTimeoutsPtrOutput)
+}
+
+type StreamAttachmentTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (StreamAttachmentTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o StreamAttachmentTimeoutsOutput) ToStreamAttachmentTimeoutsOutput() StreamAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o StreamAttachmentTimeoutsOutput) ToStreamAttachmentTimeoutsOutputWithContext(ctx context.Context) StreamAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o StreamAttachmentTimeoutsOutput) ToStreamAttachmentTimeoutsPtrOutput() StreamAttachmentTimeoutsPtrOutput {
+	return o.ToStreamAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamAttachmentTimeoutsOutput) ToStreamAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) StreamAttachmentTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamAttachmentTimeouts) *StreamAttachmentTimeouts {
+		return &v
+	}).(StreamAttachmentTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAttachmentTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAttachmentTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamAttachmentTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAttachmentTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamAttachmentTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAttachmentTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAttachmentTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAttachmentTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type StreamAttachmentTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamAttachmentTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o StreamAttachmentTimeoutsPtrOutput) ToStreamAttachmentTimeoutsPtrOutput() StreamAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamAttachmentTimeoutsPtrOutput) ToStreamAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) StreamAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamAttachmentTimeoutsPtrOutput) Elem() StreamAttachmentTimeoutsOutput {
+	return o.ApplyT(func(v *StreamAttachmentTimeouts) StreamAttachmentTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret StreamAttachmentTimeouts
+		return ret
+	}).(StreamAttachmentTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAttachmentTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamAttachmentTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamAttachmentTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAttachmentTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type StreamChangeLog struct {
 	// User name of creator of the stream resource
 	CreatedBy *string `pulumi:"createdBy"`
@@ -20103,6 +24395,1568 @@ func (o StreamProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy *string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// StreamSubscriptionChangeLogInput is an input type that accepts StreamSubscriptionChangeLogArgs and StreamSubscriptionChangeLogOutput values.
+// You can construct a concrete instance of `StreamSubscriptionChangeLogInput` via:
+//
+//	StreamSubscriptionChangeLogArgs{...}
+type StreamSubscriptionChangeLogInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionChangeLogOutput() StreamSubscriptionChangeLogOutput
+	ToStreamSubscriptionChangeLogOutputWithContext(context.Context) StreamSubscriptionChangeLogOutput
+}
+
+type StreamSubscriptionChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (StreamSubscriptionChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionChangeLog)(nil)).Elem()
+}
+
+func (i StreamSubscriptionChangeLogArgs) ToStreamSubscriptionChangeLogOutput() StreamSubscriptionChangeLogOutput {
+	return i.ToStreamSubscriptionChangeLogOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionChangeLogArgs) ToStreamSubscriptionChangeLogOutputWithContext(ctx context.Context) StreamSubscriptionChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionChangeLogOutput)
+}
+
+func (i StreamSubscriptionChangeLogArgs) ToStreamSubscriptionChangeLogPtrOutput() StreamSubscriptionChangeLogPtrOutput {
+	return i.ToStreamSubscriptionChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionChangeLogArgs) ToStreamSubscriptionChangeLogPtrOutputWithContext(ctx context.Context) StreamSubscriptionChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionChangeLogOutput).ToStreamSubscriptionChangeLogPtrOutputWithContext(ctx)
+}
+
+// StreamSubscriptionChangeLogPtrInput is an input type that accepts StreamSubscriptionChangeLogArgs, StreamSubscriptionChangeLogPtr and StreamSubscriptionChangeLogPtrOutput values.
+// You can construct a concrete instance of `StreamSubscriptionChangeLogPtrInput` via:
+//
+//	        StreamSubscriptionChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSubscriptionChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionChangeLogPtrOutput() StreamSubscriptionChangeLogPtrOutput
+	ToStreamSubscriptionChangeLogPtrOutputWithContext(context.Context) StreamSubscriptionChangeLogPtrOutput
+}
+
+type streamSubscriptionChangeLogPtrType StreamSubscriptionChangeLogArgs
+
+func StreamSubscriptionChangeLogPtr(v *StreamSubscriptionChangeLogArgs) StreamSubscriptionChangeLogPtrInput {
+	return (*streamSubscriptionChangeLogPtrType)(v)
+}
+
+func (*streamSubscriptionChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionChangeLog)(nil)).Elem()
+}
+
+func (i *streamSubscriptionChangeLogPtrType) ToStreamSubscriptionChangeLogPtrOutput() StreamSubscriptionChangeLogPtrOutput {
+	return i.ToStreamSubscriptionChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSubscriptionChangeLogPtrType) ToStreamSubscriptionChangeLogPtrOutputWithContext(ctx context.Context) StreamSubscriptionChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionChangeLogPtrOutput)
+}
+
+type StreamSubscriptionChangeLogOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionChangeLog)(nil)).Elem()
+}
+
+func (o StreamSubscriptionChangeLogOutput) ToStreamSubscriptionChangeLogOutput() StreamSubscriptionChangeLogOutput {
+	return o
+}
+
+func (o StreamSubscriptionChangeLogOutput) ToStreamSubscriptionChangeLogOutputWithContext(ctx context.Context) StreamSubscriptionChangeLogOutput {
+	return o
+}
+
+func (o StreamSubscriptionChangeLogOutput) ToStreamSubscriptionChangeLogPtrOutput() StreamSubscriptionChangeLogPtrOutput {
+	return o.ToStreamSubscriptionChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSubscriptionChangeLogOutput) ToStreamSubscriptionChangeLogPtrOutputWithContext(ctx context.Context) StreamSubscriptionChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSubscriptionChangeLog) *StreamSubscriptionChangeLog {
+		return &v
+	}).(StreamSubscriptionChangeLogPtrOutput)
+}
+
+// User name of creator of the stream resource
+func (o StreamSubscriptionChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o StreamSubscriptionChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o StreamSubscriptionChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o StreamSubscriptionChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o StreamSubscriptionChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o StreamSubscriptionChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o StreamSubscriptionChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o StreamSubscriptionChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o StreamSubscriptionChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o StreamSubscriptionChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o StreamSubscriptionChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o StreamSubscriptionChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionChangeLog)(nil)).Elem()
+}
+
+func (o StreamSubscriptionChangeLogPtrOutput) ToStreamSubscriptionChangeLogPtrOutput() StreamSubscriptionChangeLogPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionChangeLogPtrOutput) ToStreamSubscriptionChangeLogPtrOutputWithContext(ctx context.Context) StreamSubscriptionChangeLogPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionChangeLogPtrOutput) Elem() StreamSubscriptionChangeLogOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) StreamSubscriptionChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSubscriptionChangeLog
+		return ret
+	}).(StreamSubscriptionChangeLogOutput)
+}
+
+// User name of creator of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o StreamSubscriptionChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionEventSelector struct {
+	// List of events to exclude
+	Excepts []string `pulumi:"excepts"`
+	// List of events to include
+	Includes []string `pulumi:"includes"`
+}
+
+// StreamSubscriptionEventSelectorInput is an input type that accepts StreamSubscriptionEventSelectorArgs and StreamSubscriptionEventSelectorOutput values.
+// You can construct a concrete instance of `StreamSubscriptionEventSelectorInput` via:
+//
+//	StreamSubscriptionEventSelectorArgs{...}
+type StreamSubscriptionEventSelectorInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionEventSelectorOutput() StreamSubscriptionEventSelectorOutput
+	ToStreamSubscriptionEventSelectorOutputWithContext(context.Context) StreamSubscriptionEventSelectorOutput
+}
+
+type StreamSubscriptionEventSelectorArgs struct {
+	// List of events to exclude
+	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
+	// List of events to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (StreamSubscriptionEventSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionEventSelector)(nil)).Elem()
+}
+
+func (i StreamSubscriptionEventSelectorArgs) ToStreamSubscriptionEventSelectorOutput() StreamSubscriptionEventSelectorOutput {
+	return i.ToStreamSubscriptionEventSelectorOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionEventSelectorArgs) ToStreamSubscriptionEventSelectorOutputWithContext(ctx context.Context) StreamSubscriptionEventSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionEventSelectorOutput)
+}
+
+func (i StreamSubscriptionEventSelectorArgs) ToStreamSubscriptionEventSelectorPtrOutput() StreamSubscriptionEventSelectorPtrOutput {
+	return i.ToStreamSubscriptionEventSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionEventSelectorArgs) ToStreamSubscriptionEventSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionEventSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionEventSelectorOutput).ToStreamSubscriptionEventSelectorPtrOutputWithContext(ctx)
+}
+
+// StreamSubscriptionEventSelectorPtrInput is an input type that accepts StreamSubscriptionEventSelectorArgs, StreamSubscriptionEventSelectorPtr and StreamSubscriptionEventSelectorPtrOutput values.
+// You can construct a concrete instance of `StreamSubscriptionEventSelectorPtrInput` via:
+//
+//	        StreamSubscriptionEventSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSubscriptionEventSelectorPtrInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionEventSelectorPtrOutput() StreamSubscriptionEventSelectorPtrOutput
+	ToStreamSubscriptionEventSelectorPtrOutputWithContext(context.Context) StreamSubscriptionEventSelectorPtrOutput
+}
+
+type streamSubscriptionEventSelectorPtrType StreamSubscriptionEventSelectorArgs
+
+func StreamSubscriptionEventSelectorPtr(v *StreamSubscriptionEventSelectorArgs) StreamSubscriptionEventSelectorPtrInput {
+	return (*streamSubscriptionEventSelectorPtrType)(v)
+}
+
+func (*streamSubscriptionEventSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionEventSelector)(nil)).Elem()
+}
+
+func (i *streamSubscriptionEventSelectorPtrType) ToStreamSubscriptionEventSelectorPtrOutput() StreamSubscriptionEventSelectorPtrOutput {
+	return i.ToStreamSubscriptionEventSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSubscriptionEventSelectorPtrType) ToStreamSubscriptionEventSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionEventSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionEventSelectorPtrOutput)
+}
+
+type StreamSubscriptionEventSelectorOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionEventSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionEventSelector)(nil)).Elem()
+}
+
+func (o StreamSubscriptionEventSelectorOutput) ToStreamSubscriptionEventSelectorOutput() StreamSubscriptionEventSelectorOutput {
+	return o
+}
+
+func (o StreamSubscriptionEventSelectorOutput) ToStreamSubscriptionEventSelectorOutputWithContext(ctx context.Context) StreamSubscriptionEventSelectorOutput {
+	return o
+}
+
+func (o StreamSubscriptionEventSelectorOutput) ToStreamSubscriptionEventSelectorPtrOutput() StreamSubscriptionEventSelectorPtrOutput {
+	return o.ToStreamSubscriptionEventSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSubscriptionEventSelectorOutput) ToStreamSubscriptionEventSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionEventSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSubscriptionEventSelector) *StreamSubscriptionEventSelector {
+		return &v
+	}).(StreamSubscriptionEventSelectorPtrOutput)
+}
+
+// List of events to exclude
+func (o StreamSubscriptionEventSelectorOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSubscriptionEventSelector) []string { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// List of events to include
+func (o StreamSubscriptionEventSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSubscriptionEventSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type StreamSubscriptionEventSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionEventSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionEventSelector)(nil)).Elem()
+}
+
+func (o StreamSubscriptionEventSelectorPtrOutput) ToStreamSubscriptionEventSelectorPtrOutput() StreamSubscriptionEventSelectorPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionEventSelectorPtrOutput) ToStreamSubscriptionEventSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionEventSelectorPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionEventSelectorPtrOutput) Elem() StreamSubscriptionEventSelectorOutput {
+	return o.ApplyT(func(v *StreamSubscriptionEventSelector) StreamSubscriptionEventSelector {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSubscriptionEventSelector
+		return ret
+	}).(StreamSubscriptionEventSelectorOutput)
+}
+
+// List of events to exclude
+func (o StreamSubscriptionEventSelectorPtrOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSubscriptionEventSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excepts
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of events to include
+func (o StreamSubscriptionEventSelectorPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSubscriptionEventSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
+type StreamSubscriptionMetricSelector struct {
+	// List of metrics to exclude
+	Excepts []string `pulumi:"excepts"`
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// StreamSubscriptionMetricSelectorInput is an input type that accepts StreamSubscriptionMetricSelectorArgs and StreamSubscriptionMetricSelectorOutput values.
+// You can construct a concrete instance of `StreamSubscriptionMetricSelectorInput` via:
+//
+//	StreamSubscriptionMetricSelectorArgs{...}
+type StreamSubscriptionMetricSelectorInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionMetricSelectorOutput() StreamSubscriptionMetricSelectorOutput
+	ToStreamSubscriptionMetricSelectorOutputWithContext(context.Context) StreamSubscriptionMetricSelectorOutput
+}
+
+type StreamSubscriptionMetricSelectorArgs struct {
+	// List of metrics to exclude
+	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (StreamSubscriptionMetricSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionMetricSelector)(nil)).Elem()
+}
+
+func (i StreamSubscriptionMetricSelectorArgs) ToStreamSubscriptionMetricSelectorOutput() StreamSubscriptionMetricSelectorOutput {
+	return i.ToStreamSubscriptionMetricSelectorOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionMetricSelectorArgs) ToStreamSubscriptionMetricSelectorOutputWithContext(ctx context.Context) StreamSubscriptionMetricSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionMetricSelectorOutput)
+}
+
+func (i StreamSubscriptionMetricSelectorArgs) ToStreamSubscriptionMetricSelectorPtrOutput() StreamSubscriptionMetricSelectorPtrOutput {
+	return i.ToStreamSubscriptionMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionMetricSelectorArgs) ToStreamSubscriptionMetricSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionMetricSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionMetricSelectorOutput).ToStreamSubscriptionMetricSelectorPtrOutputWithContext(ctx)
+}
+
+// StreamSubscriptionMetricSelectorPtrInput is an input type that accepts StreamSubscriptionMetricSelectorArgs, StreamSubscriptionMetricSelectorPtr and StreamSubscriptionMetricSelectorPtrOutput values.
+// You can construct a concrete instance of `StreamSubscriptionMetricSelectorPtrInput` via:
+//
+//	        StreamSubscriptionMetricSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSubscriptionMetricSelectorPtrInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionMetricSelectorPtrOutput() StreamSubscriptionMetricSelectorPtrOutput
+	ToStreamSubscriptionMetricSelectorPtrOutputWithContext(context.Context) StreamSubscriptionMetricSelectorPtrOutput
+}
+
+type streamSubscriptionMetricSelectorPtrType StreamSubscriptionMetricSelectorArgs
+
+func StreamSubscriptionMetricSelectorPtr(v *StreamSubscriptionMetricSelectorArgs) StreamSubscriptionMetricSelectorPtrInput {
+	return (*streamSubscriptionMetricSelectorPtrType)(v)
+}
+
+func (*streamSubscriptionMetricSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionMetricSelector)(nil)).Elem()
+}
+
+func (i *streamSubscriptionMetricSelectorPtrType) ToStreamSubscriptionMetricSelectorPtrOutput() StreamSubscriptionMetricSelectorPtrOutput {
+	return i.ToStreamSubscriptionMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSubscriptionMetricSelectorPtrType) ToStreamSubscriptionMetricSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionMetricSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionMetricSelectorPtrOutput)
+}
+
+type StreamSubscriptionMetricSelectorOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionMetricSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionMetricSelector)(nil)).Elem()
+}
+
+func (o StreamSubscriptionMetricSelectorOutput) ToStreamSubscriptionMetricSelectorOutput() StreamSubscriptionMetricSelectorOutput {
+	return o
+}
+
+func (o StreamSubscriptionMetricSelectorOutput) ToStreamSubscriptionMetricSelectorOutputWithContext(ctx context.Context) StreamSubscriptionMetricSelectorOutput {
+	return o
+}
+
+func (o StreamSubscriptionMetricSelectorOutput) ToStreamSubscriptionMetricSelectorPtrOutput() StreamSubscriptionMetricSelectorPtrOutput {
+	return o.ToStreamSubscriptionMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSubscriptionMetricSelectorOutput) ToStreamSubscriptionMetricSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionMetricSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSubscriptionMetricSelector) *StreamSubscriptionMetricSelector {
+		return &v
+	}).(StreamSubscriptionMetricSelectorPtrOutput)
+}
+
+// List of metrics to exclude
+func (o StreamSubscriptionMetricSelectorOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSubscriptionMetricSelector) []string { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// List of metrics to include
+func (o StreamSubscriptionMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamSubscriptionMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type StreamSubscriptionMetricSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionMetricSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionMetricSelector)(nil)).Elem()
+}
+
+func (o StreamSubscriptionMetricSelectorPtrOutput) ToStreamSubscriptionMetricSelectorPtrOutput() StreamSubscriptionMetricSelectorPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionMetricSelectorPtrOutput) ToStreamSubscriptionMetricSelectorPtrOutputWithContext(ctx context.Context) StreamSubscriptionMetricSelectorPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionMetricSelectorPtrOutput) Elem() StreamSubscriptionMetricSelectorOutput {
+	return o.ApplyT(func(v *StreamSubscriptionMetricSelector) StreamSubscriptionMetricSelector {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSubscriptionMetricSelector
+		return ret
+	}).(StreamSubscriptionMetricSelectorOutput)
+}
+
+// List of metrics to exclude
+func (o StreamSubscriptionMetricSelectorPtrOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSubscriptionMetricSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excepts
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of metrics to include
+func (o StreamSubscriptionMetricSelectorPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamSubscriptionMetricSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
+type StreamSubscriptionSink struct {
+	// Boolean switch enabling batch delivery of data
+	BatchEnabled *bool `pulumi:"batchEnabled"`
+	// Maximum size of the batch delivery if enabled
+	BatchSizeMax *int `pulumi:"batchSizeMax"`
+	// Maximum time to wait for batch delivery if enabled
+	BatchWaitTimeMax *int `pulumi:"batchWaitTimeMax"`
+	// Access details for the specified sink type
+	Credential *StreamSubscriptionSinkCredential `pulumi:"credential"`
+	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+	Host *string `pulumi:"host"`
+	// Stream subscription sink settings
+	Settings *StreamSubscriptionSinkSettings `pulumi:"settings"`
+	// Type of the subscriber
+	Type string `pulumi:"type"`
+	// Publicly reachable http endpoint destination for data stream
+	Uri *string `pulumi:"uri"`
+}
+
+// StreamSubscriptionSinkInput is an input type that accepts StreamSubscriptionSinkArgs and StreamSubscriptionSinkOutput values.
+// You can construct a concrete instance of `StreamSubscriptionSinkInput` via:
+//
+//	StreamSubscriptionSinkArgs{...}
+type StreamSubscriptionSinkInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionSinkOutput() StreamSubscriptionSinkOutput
+	ToStreamSubscriptionSinkOutputWithContext(context.Context) StreamSubscriptionSinkOutput
+}
+
+type StreamSubscriptionSinkArgs struct {
+	// Boolean switch enabling batch delivery of data
+	BatchEnabled pulumi.BoolPtrInput `pulumi:"batchEnabled"`
+	// Maximum size of the batch delivery if enabled
+	BatchSizeMax pulumi.IntPtrInput `pulumi:"batchSizeMax"`
+	// Maximum time to wait for batch delivery if enabled
+	BatchWaitTimeMax pulumi.IntPtrInput `pulumi:"batchWaitTimeMax"`
+	// Access details for the specified sink type
+	Credential StreamSubscriptionSinkCredentialPtrInput `pulumi:"credential"`
+	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Stream subscription sink settings
+	Settings StreamSubscriptionSinkSettingsPtrInput `pulumi:"settings"`
+	// Type of the subscriber
+	Type pulumi.StringInput `pulumi:"type"`
+	// Publicly reachable http endpoint destination for data stream
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (StreamSubscriptionSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionSink)(nil)).Elem()
+}
+
+func (i StreamSubscriptionSinkArgs) ToStreamSubscriptionSinkOutput() StreamSubscriptionSinkOutput {
+	return i.ToStreamSubscriptionSinkOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionSinkArgs) ToStreamSubscriptionSinkOutputWithContext(ctx context.Context) StreamSubscriptionSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkOutput)
+}
+
+func (i StreamSubscriptionSinkArgs) ToStreamSubscriptionSinkPtrOutput() StreamSubscriptionSinkPtrOutput {
+	return i.ToStreamSubscriptionSinkPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionSinkArgs) ToStreamSubscriptionSinkPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkOutput).ToStreamSubscriptionSinkPtrOutputWithContext(ctx)
+}
+
+// StreamSubscriptionSinkPtrInput is an input type that accepts StreamSubscriptionSinkArgs, StreamSubscriptionSinkPtr and StreamSubscriptionSinkPtrOutput values.
+// You can construct a concrete instance of `StreamSubscriptionSinkPtrInput` via:
+//
+//	        StreamSubscriptionSinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSubscriptionSinkPtrInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionSinkPtrOutput() StreamSubscriptionSinkPtrOutput
+	ToStreamSubscriptionSinkPtrOutputWithContext(context.Context) StreamSubscriptionSinkPtrOutput
+}
+
+type streamSubscriptionSinkPtrType StreamSubscriptionSinkArgs
+
+func StreamSubscriptionSinkPtr(v *StreamSubscriptionSinkArgs) StreamSubscriptionSinkPtrInput {
+	return (*streamSubscriptionSinkPtrType)(v)
+}
+
+func (*streamSubscriptionSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionSink)(nil)).Elem()
+}
+
+func (i *streamSubscriptionSinkPtrType) ToStreamSubscriptionSinkPtrOutput() StreamSubscriptionSinkPtrOutput {
+	return i.ToStreamSubscriptionSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSubscriptionSinkPtrType) ToStreamSubscriptionSinkPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkPtrOutput)
+}
+
+type StreamSubscriptionSinkOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionSink)(nil)).Elem()
+}
+
+func (o StreamSubscriptionSinkOutput) ToStreamSubscriptionSinkOutput() StreamSubscriptionSinkOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkOutput) ToStreamSubscriptionSinkOutputWithContext(ctx context.Context) StreamSubscriptionSinkOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkOutput) ToStreamSubscriptionSinkPtrOutput() StreamSubscriptionSinkPtrOutput {
+	return o.ToStreamSubscriptionSinkPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSubscriptionSinkOutput) ToStreamSubscriptionSinkPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSubscriptionSink) *StreamSubscriptionSink {
+		return &v
+	}).(StreamSubscriptionSinkPtrOutput)
+}
+
+// Boolean switch enabling batch delivery of data
+func (o StreamSubscriptionSinkOutput) BatchEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) *bool { return v.BatchEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum size of the batch delivery if enabled
+func (o StreamSubscriptionSinkOutput) BatchSizeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) *int { return v.BatchSizeMax }).(pulumi.IntPtrOutput)
+}
+
+// Maximum time to wait for batch delivery if enabled
+func (o StreamSubscriptionSinkOutput) BatchWaitTimeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) *int { return v.BatchWaitTimeMax }).(pulumi.IntPtrOutput)
+}
+
+// Access details for the specified sink type
+func (o StreamSubscriptionSinkOutput) Credential() StreamSubscriptionSinkCredentialPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) *StreamSubscriptionSinkCredential { return v.Credential }).(StreamSubscriptionSinkCredentialPtrOutput)
+}
+
+// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+func (o StreamSubscriptionSinkOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Stream subscription sink settings
+func (o StreamSubscriptionSinkOutput) Settings() StreamSubscriptionSinkSettingsPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) *StreamSubscriptionSinkSettings { return v.Settings }).(StreamSubscriptionSinkSettingsPtrOutput)
+}
+
+// Type of the subscriber
+func (o StreamSubscriptionSinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Publicly reachable http endpoint destination for data stream
+func (o StreamSubscriptionSinkOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSink) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionSinkPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionSink)(nil)).Elem()
+}
+
+func (o StreamSubscriptionSinkPtrOutput) ToStreamSubscriptionSinkPtrOutput() StreamSubscriptionSinkPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkPtrOutput) ToStreamSubscriptionSinkPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkPtrOutput) Elem() StreamSubscriptionSinkOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) StreamSubscriptionSink {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSubscriptionSink
+		return ret
+	}).(StreamSubscriptionSinkOutput)
+}
+
+// Boolean switch enabling batch delivery of data
+func (o StreamSubscriptionSinkPtrOutput) BatchEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BatchEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum size of the batch delivery if enabled
+func (o StreamSubscriptionSinkPtrOutput) BatchSizeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSizeMax
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum time to wait for batch delivery if enabled
+func (o StreamSubscriptionSinkPtrOutput) BatchWaitTimeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchWaitTimeMax
+	}).(pulumi.IntPtrOutput)
+}
+
+// Access details for the specified sink type
+func (o StreamSubscriptionSinkPtrOutput) Credential() StreamSubscriptionSinkCredentialPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *StreamSubscriptionSinkCredential {
+		if v == nil {
+			return nil
+		}
+		return v.Credential
+	}).(StreamSubscriptionSinkCredentialPtrOutput)
+}
+
+// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+func (o StreamSubscriptionSinkPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream subscription sink settings
+func (o StreamSubscriptionSinkPtrOutput) Settings() StreamSubscriptionSinkSettingsPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *StreamSubscriptionSinkSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(StreamSubscriptionSinkSettingsPtrOutput)
+}
+
+// Type of the subscriber
+func (o StreamSubscriptionSinkPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Publicly reachable http endpoint destination for data stream
+func (o StreamSubscriptionSinkPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionSinkCredential struct {
+	// Passed as Authorization header value
+	AccessToken *string `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey *string `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey *string `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password *string `pulumi:"password"`
+	// Type of the credential being passed
+	Type string `pulumi:"type"`
+	// Passed as Authorization header value
+	Username *string `pulumi:"username"`
+}
+
+// StreamSubscriptionSinkCredentialInput is an input type that accepts StreamSubscriptionSinkCredentialArgs and StreamSubscriptionSinkCredentialOutput values.
+// You can construct a concrete instance of `StreamSubscriptionSinkCredentialInput` via:
+//
+//	StreamSubscriptionSinkCredentialArgs{...}
+type StreamSubscriptionSinkCredentialInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionSinkCredentialOutput() StreamSubscriptionSinkCredentialOutput
+	ToStreamSubscriptionSinkCredentialOutputWithContext(context.Context) StreamSubscriptionSinkCredentialOutput
+}
+
+type StreamSubscriptionSinkCredentialArgs struct {
+	// Passed as Authorization header value
+	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey pulumi.StringPtrInput `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Type of the credential being passed
+	Type pulumi.StringInput `pulumi:"type"`
+	// Passed as Authorization header value
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (StreamSubscriptionSinkCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionSinkCredential)(nil)).Elem()
+}
+
+func (i StreamSubscriptionSinkCredentialArgs) ToStreamSubscriptionSinkCredentialOutput() StreamSubscriptionSinkCredentialOutput {
+	return i.ToStreamSubscriptionSinkCredentialOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionSinkCredentialArgs) ToStreamSubscriptionSinkCredentialOutputWithContext(ctx context.Context) StreamSubscriptionSinkCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkCredentialOutput)
+}
+
+func (i StreamSubscriptionSinkCredentialArgs) ToStreamSubscriptionSinkCredentialPtrOutput() StreamSubscriptionSinkCredentialPtrOutput {
+	return i.ToStreamSubscriptionSinkCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionSinkCredentialArgs) ToStreamSubscriptionSinkCredentialPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkCredentialOutput).ToStreamSubscriptionSinkCredentialPtrOutputWithContext(ctx)
+}
+
+// StreamSubscriptionSinkCredentialPtrInput is an input type that accepts StreamSubscriptionSinkCredentialArgs, StreamSubscriptionSinkCredentialPtr and StreamSubscriptionSinkCredentialPtrOutput values.
+// You can construct a concrete instance of `StreamSubscriptionSinkCredentialPtrInput` via:
+//
+//	        StreamSubscriptionSinkCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSubscriptionSinkCredentialPtrInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionSinkCredentialPtrOutput() StreamSubscriptionSinkCredentialPtrOutput
+	ToStreamSubscriptionSinkCredentialPtrOutputWithContext(context.Context) StreamSubscriptionSinkCredentialPtrOutput
+}
+
+type streamSubscriptionSinkCredentialPtrType StreamSubscriptionSinkCredentialArgs
+
+func StreamSubscriptionSinkCredentialPtr(v *StreamSubscriptionSinkCredentialArgs) StreamSubscriptionSinkCredentialPtrInput {
+	return (*streamSubscriptionSinkCredentialPtrType)(v)
+}
+
+func (*streamSubscriptionSinkCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionSinkCredential)(nil)).Elem()
+}
+
+func (i *streamSubscriptionSinkCredentialPtrType) ToStreamSubscriptionSinkCredentialPtrOutput() StreamSubscriptionSinkCredentialPtrOutput {
+	return i.ToStreamSubscriptionSinkCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSubscriptionSinkCredentialPtrType) ToStreamSubscriptionSinkCredentialPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkCredentialPtrOutput)
+}
+
+type StreamSubscriptionSinkCredentialOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionSinkCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionSinkCredential)(nil)).Elem()
+}
+
+func (o StreamSubscriptionSinkCredentialOutput) ToStreamSubscriptionSinkCredentialOutput() StreamSubscriptionSinkCredentialOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkCredentialOutput) ToStreamSubscriptionSinkCredentialOutputWithContext(ctx context.Context) StreamSubscriptionSinkCredentialOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkCredentialOutput) ToStreamSubscriptionSinkCredentialPtrOutput() StreamSubscriptionSinkCredentialPtrOutput {
+	return o.ToStreamSubscriptionSinkCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSubscriptionSinkCredentialOutput) ToStreamSubscriptionSinkCredentialPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSubscriptionSinkCredential) *StreamSubscriptionSinkCredential {
+		return &v
+	}).(StreamSubscriptionSinkCredentialPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkCredential) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkCredential) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialOutput) IntegrationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkCredential) *string { return v.IntegrationKey }).(pulumi.StringPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Type of the credential being passed
+func (o StreamSubscriptionSinkCredentialOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkCredential) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionSinkCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionSinkCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionSinkCredential)(nil)).Elem()
+}
+
+func (o StreamSubscriptionSinkCredentialPtrOutput) ToStreamSubscriptionSinkCredentialPtrOutput() StreamSubscriptionSinkCredentialPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkCredentialPtrOutput) ToStreamSubscriptionSinkCredentialPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkCredentialPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkCredentialPtrOutput) Elem() StreamSubscriptionSinkCredentialOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkCredential) StreamSubscriptionSinkCredential {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSubscriptionSinkCredential
+		return ret
+	}).(StreamSubscriptionSinkCredentialOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialPtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialPtrOutput) IntegrationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the credential being passed
+func (o StreamSubscriptionSinkCredentialPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Passed as Authorization header value
+func (o StreamSubscriptionSinkCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionSinkSettings struct {
+	ApplicationKey *string `pulumi:"applicationKey"`
+	EventIndex     *string `pulumi:"eventIndex"`
+	EventUri       *string `pulumi:"eventUri"`
+	MetricIndex    *string `pulumi:"metricIndex"`
+	MetricUri      *string `pulumi:"metricUri"`
+	Source         *string `pulumi:"source"`
+}
+
+// StreamSubscriptionSinkSettingsInput is an input type that accepts StreamSubscriptionSinkSettingsArgs and StreamSubscriptionSinkSettingsOutput values.
+// You can construct a concrete instance of `StreamSubscriptionSinkSettingsInput` via:
+//
+//	StreamSubscriptionSinkSettingsArgs{...}
+type StreamSubscriptionSinkSettingsInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionSinkSettingsOutput() StreamSubscriptionSinkSettingsOutput
+	ToStreamSubscriptionSinkSettingsOutputWithContext(context.Context) StreamSubscriptionSinkSettingsOutput
+}
+
+type StreamSubscriptionSinkSettingsArgs struct {
+	ApplicationKey pulumi.StringPtrInput `pulumi:"applicationKey"`
+	EventIndex     pulumi.StringPtrInput `pulumi:"eventIndex"`
+	EventUri       pulumi.StringPtrInput `pulumi:"eventUri"`
+	MetricIndex    pulumi.StringPtrInput `pulumi:"metricIndex"`
+	MetricUri      pulumi.StringPtrInput `pulumi:"metricUri"`
+	Source         pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (StreamSubscriptionSinkSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionSinkSettings)(nil)).Elem()
+}
+
+func (i StreamSubscriptionSinkSettingsArgs) ToStreamSubscriptionSinkSettingsOutput() StreamSubscriptionSinkSettingsOutput {
+	return i.ToStreamSubscriptionSinkSettingsOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionSinkSettingsArgs) ToStreamSubscriptionSinkSettingsOutputWithContext(ctx context.Context) StreamSubscriptionSinkSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkSettingsOutput)
+}
+
+func (i StreamSubscriptionSinkSettingsArgs) ToStreamSubscriptionSinkSettingsPtrOutput() StreamSubscriptionSinkSettingsPtrOutput {
+	return i.ToStreamSubscriptionSinkSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionSinkSettingsArgs) ToStreamSubscriptionSinkSettingsPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkSettingsOutput).ToStreamSubscriptionSinkSettingsPtrOutputWithContext(ctx)
+}
+
+// StreamSubscriptionSinkSettingsPtrInput is an input type that accepts StreamSubscriptionSinkSettingsArgs, StreamSubscriptionSinkSettingsPtr and StreamSubscriptionSinkSettingsPtrOutput values.
+// You can construct a concrete instance of `StreamSubscriptionSinkSettingsPtrInput` via:
+//
+//	        StreamSubscriptionSinkSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSubscriptionSinkSettingsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionSinkSettingsPtrOutput() StreamSubscriptionSinkSettingsPtrOutput
+	ToStreamSubscriptionSinkSettingsPtrOutputWithContext(context.Context) StreamSubscriptionSinkSettingsPtrOutput
+}
+
+type streamSubscriptionSinkSettingsPtrType StreamSubscriptionSinkSettingsArgs
+
+func StreamSubscriptionSinkSettingsPtr(v *StreamSubscriptionSinkSettingsArgs) StreamSubscriptionSinkSettingsPtrInput {
+	return (*streamSubscriptionSinkSettingsPtrType)(v)
+}
+
+func (*streamSubscriptionSinkSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionSinkSettings)(nil)).Elem()
+}
+
+func (i *streamSubscriptionSinkSettingsPtrType) ToStreamSubscriptionSinkSettingsPtrOutput() StreamSubscriptionSinkSettingsPtrOutput {
+	return i.ToStreamSubscriptionSinkSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSubscriptionSinkSettingsPtrType) ToStreamSubscriptionSinkSettingsPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionSinkSettingsPtrOutput)
+}
+
+type StreamSubscriptionSinkSettingsOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionSinkSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionSinkSettings)(nil)).Elem()
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) ToStreamSubscriptionSinkSettingsOutput() StreamSubscriptionSinkSettingsOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) ToStreamSubscriptionSinkSettingsOutputWithContext(ctx context.Context) StreamSubscriptionSinkSettingsOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) ToStreamSubscriptionSinkSettingsPtrOutput() StreamSubscriptionSinkSettingsPtrOutput {
+	return o.ToStreamSubscriptionSinkSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) ToStreamSubscriptionSinkSettingsPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSubscriptionSinkSettings) *StreamSubscriptionSinkSettings {
+		return &v
+	}).(StreamSubscriptionSinkSettingsPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) ApplicationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.ApplicationKey }).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) EventIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.EventIndex }).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) EventUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.EventUri }).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) MetricIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.MetricIndex }).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) MetricUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.MetricUri }).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionSinkSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionSinkSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionSinkSettings)(nil)).Elem()
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) ToStreamSubscriptionSinkSettingsPtrOutput() StreamSubscriptionSinkSettingsPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) ToStreamSubscriptionSinkSettingsPtrOutputWithContext(ctx context.Context) StreamSubscriptionSinkSettingsPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) Elem() StreamSubscriptionSinkSettingsOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) StreamSubscriptionSinkSettings {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSubscriptionSinkSettings
+		return ret
+	}).(StreamSubscriptionSinkSettingsOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) ApplicationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) EventIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventIndex
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) EventUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) MetricIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricIndex
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) MetricUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// StreamSubscriptionTimeoutsInput is an input type that accepts StreamSubscriptionTimeoutsArgs and StreamSubscriptionTimeoutsOutput values.
+// You can construct a concrete instance of `StreamSubscriptionTimeoutsInput` via:
+//
+//	StreamSubscriptionTimeoutsArgs{...}
+type StreamSubscriptionTimeoutsInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionTimeoutsOutput() StreamSubscriptionTimeoutsOutput
+	ToStreamSubscriptionTimeoutsOutputWithContext(context.Context) StreamSubscriptionTimeoutsOutput
+}
+
+type StreamSubscriptionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (StreamSubscriptionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionTimeouts)(nil)).Elem()
+}
+
+func (i StreamSubscriptionTimeoutsArgs) ToStreamSubscriptionTimeoutsOutput() StreamSubscriptionTimeoutsOutput {
+	return i.ToStreamSubscriptionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionTimeoutsArgs) ToStreamSubscriptionTimeoutsOutputWithContext(ctx context.Context) StreamSubscriptionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionTimeoutsOutput)
+}
+
+func (i StreamSubscriptionTimeoutsArgs) ToStreamSubscriptionTimeoutsPtrOutput() StreamSubscriptionTimeoutsPtrOutput {
+	return i.ToStreamSubscriptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSubscriptionTimeoutsArgs) ToStreamSubscriptionTimeoutsPtrOutputWithContext(ctx context.Context) StreamSubscriptionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionTimeoutsOutput).ToStreamSubscriptionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// StreamSubscriptionTimeoutsPtrInput is an input type that accepts StreamSubscriptionTimeoutsArgs, StreamSubscriptionTimeoutsPtr and StreamSubscriptionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `StreamSubscriptionTimeoutsPtrInput` via:
+//
+//	        StreamSubscriptionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSubscriptionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSubscriptionTimeoutsPtrOutput() StreamSubscriptionTimeoutsPtrOutput
+	ToStreamSubscriptionTimeoutsPtrOutputWithContext(context.Context) StreamSubscriptionTimeoutsPtrOutput
+}
+
+type streamSubscriptionTimeoutsPtrType StreamSubscriptionTimeoutsArgs
+
+func StreamSubscriptionTimeoutsPtr(v *StreamSubscriptionTimeoutsArgs) StreamSubscriptionTimeoutsPtrInput {
+	return (*streamSubscriptionTimeoutsPtrType)(v)
+}
+
+func (*streamSubscriptionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionTimeouts)(nil)).Elem()
+}
+
+func (i *streamSubscriptionTimeoutsPtrType) ToStreamSubscriptionTimeoutsPtrOutput() StreamSubscriptionTimeoutsPtrOutput {
+	return i.ToStreamSubscriptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSubscriptionTimeoutsPtrType) ToStreamSubscriptionTimeoutsPtrOutputWithContext(ctx context.Context) StreamSubscriptionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSubscriptionTimeoutsPtrOutput)
+}
+
+type StreamSubscriptionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSubscriptionTimeouts)(nil)).Elem()
+}
+
+func (o StreamSubscriptionTimeoutsOutput) ToStreamSubscriptionTimeoutsOutput() StreamSubscriptionTimeoutsOutput {
+	return o
+}
+
+func (o StreamSubscriptionTimeoutsOutput) ToStreamSubscriptionTimeoutsOutputWithContext(ctx context.Context) StreamSubscriptionTimeoutsOutput {
+	return o
+}
+
+func (o StreamSubscriptionTimeoutsOutput) ToStreamSubscriptionTimeoutsPtrOutput() StreamSubscriptionTimeoutsPtrOutput {
+	return o.ToStreamSubscriptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSubscriptionTimeoutsOutput) ToStreamSubscriptionTimeoutsPtrOutputWithContext(ctx context.Context) StreamSubscriptionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSubscriptionTimeouts) *StreamSubscriptionTimeouts {
+		return &v
+	}).(StreamSubscriptionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamSubscriptionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamSubscriptionTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamSubscriptionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamSubscriptionTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type StreamSubscriptionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSubscriptionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSubscriptionTimeouts)(nil)).Elem()
+}
+
+func (o StreamSubscriptionTimeoutsPtrOutput) ToStreamSubscriptionTimeoutsPtrOutput() StreamSubscriptionTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionTimeoutsPtrOutput) ToStreamSubscriptionTimeoutsPtrOutputWithContext(ctx context.Context) StreamSubscriptionTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamSubscriptionTimeoutsPtrOutput) Elem() StreamSubscriptionTimeoutsOutput {
+	return o.ApplyT(func(v *StreamSubscriptionTimeouts) StreamSubscriptionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSubscriptionTimeouts
+		return ret
+	}).(StreamSubscriptionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamSubscriptionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamSubscriptionTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamSubscriptionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamSubscriptionTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26648,6 +32502,361 @@ func (o GetConnectionRedundancyOutput) Group() pulumi.StringOutput {
 // Connection priority in redundancy group - PRIMARY, SECONDARY
 func (o GetConnectionRedundancyOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type GetConnectionRouteAggregationsData struct {
+	// Status of the Route Aggregation Policy attachment lifecycle
+	AttachmentStatus string `pulumi:"attachmentStatus"`
+	// UUID of the Connection to attach this Route Aggregation to
+	ConnectionId string `pulumi:"connectionId"`
+	// URI to the attached Route Aggregation Policy on the Connection
+	Href string `pulumi:"href"`
+	// UUID of the Route Aggregation to attach this Connection to
+	RouteAggregationId string `pulumi:"routeAggregationId"`
+	// Route Aggregation Type. One of ["BGP*IPv4*PREFIX_AGGREGATION"]
+	Type string `pulumi:"type"`
+	// Equinix Assigned ID for Route Aggregation Policy
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetConnectionRouteAggregationsDataInput is an input type that accepts GetConnectionRouteAggregationsDataArgs and GetConnectionRouteAggregationsDataOutput values.
+// You can construct a concrete instance of `GetConnectionRouteAggregationsDataInput` via:
+//
+//	GetConnectionRouteAggregationsDataArgs{...}
+type GetConnectionRouteAggregationsDataInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteAggregationsDataOutput() GetConnectionRouteAggregationsDataOutput
+	ToGetConnectionRouteAggregationsDataOutputWithContext(context.Context) GetConnectionRouteAggregationsDataOutput
+}
+
+type GetConnectionRouteAggregationsDataArgs struct {
+	// Status of the Route Aggregation Policy attachment lifecycle
+	AttachmentStatus pulumi.StringInput `pulumi:"attachmentStatus"`
+	// UUID of the Connection to attach this Route Aggregation to
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// URI to the attached Route Aggregation Policy on the Connection
+	Href pulumi.StringInput `pulumi:"href"`
+	// UUID of the Route Aggregation to attach this Connection to
+	RouteAggregationId pulumi.StringInput `pulumi:"routeAggregationId"`
+	// Route Aggregation Type. One of ["BGP*IPv4*PREFIX_AGGREGATION"]
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix Assigned ID for Route Aggregation Policy
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetConnectionRouteAggregationsDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteAggregationsData)(nil)).Elem()
+}
+
+func (i GetConnectionRouteAggregationsDataArgs) ToGetConnectionRouteAggregationsDataOutput() GetConnectionRouteAggregationsDataOutput {
+	return i.ToGetConnectionRouteAggregationsDataOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteAggregationsDataArgs) ToGetConnectionRouteAggregationsDataOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteAggregationsDataOutput)
+}
+
+// GetConnectionRouteAggregationsDataArrayInput is an input type that accepts GetConnectionRouteAggregationsDataArray and GetConnectionRouteAggregationsDataArrayOutput values.
+// You can construct a concrete instance of `GetConnectionRouteAggregationsDataArrayInput` via:
+//
+//	GetConnectionRouteAggregationsDataArray{ GetConnectionRouteAggregationsDataArgs{...} }
+type GetConnectionRouteAggregationsDataArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteAggregationsDataArrayOutput() GetConnectionRouteAggregationsDataArrayOutput
+	ToGetConnectionRouteAggregationsDataArrayOutputWithContext(context.Context) GetConnectionRouteAggregationsDataArrayOutput
+}
+
+type GetConnectionRouteAggregationsDataArray []GetConnectionRouteAggregationsDataInput
+
+func (GetConnectionRouteAggregationsDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionRouteAggregationsData)(nil)).Elem()
+}
+
+func (i GetConnectionRouteAggregationsDataArray) ToGetConnectionRouteAggregationsDataArrayOutput() GetConnectionRouteAggregationsDataArrayOutput {
+	return i.ToGetConnectionRouteAggregationsDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteAggregationsDataArray) ToGetConnectionRouteAggregationsDataArrayOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteAggregationsDataArrayOutput)
+}
+
+type GetConnectionRouteAggregationsDataOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteAggregationsDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteAggregationsData)(nil)).Elem()
+}
+
+func (o GetConnectionRouteAggregationsDataOutput) ToGetConnectionRouteAggregationsDataOutput() GetConnectionRouteAggregationsDataOutput {
+	return o
+}
+
+func (o GetConnectionRouteAggregationsDataOutput) ToGetConnectionRouteAggregationsDataOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsDataOutput {
+	return o
+}
+
+// Status of the Route Aggregation Policy attachment lifecycle
+func (o GetConnectionRouteAggregationsDataOutput) AttachmentStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsData) string { return v.AttachmentStatus }).(pulumi.StringOutput)
+}
+
+// UUID of the Connection to attach this Route Aggregation to
+func (o GetConnectionRouteAggregationsDataOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsData) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// URI to the attached Route Aggregation Policy on the Connection
+func (o GetConnectionRouteAggregationsDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// UUID of the Route Aggregation to attach this Connection to
+func (o GetConnectionRouteAggregationsDataOutput) RouteAggregationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsData) string { return v.RouteAggregationId }).(pulumi.StringOutput)
+}
+
+// Route Aggregation Type. One of ["BGP*IPv4*PREFIX_AGGREGATION"]
+func (o GetConnectionRouteAggregationsDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix Assigned ID for Route Aggregation Policy
+func (o GetConnectionRouteAggregationsDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetConnectionRouteAggregationsDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteAggregationsDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionRouteAggregationsData)(nil)).Elem()
+}
+
+func (o GetConnectionRouteAggregationsDataArrayOutput) ToGetConnectionRouteAggregationsDataArrayOutput() GetConnectionRouteAggregationsDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionRouteAggregationsDataArrayOutput) ToGetConnectionRouteAggregationsDataArrayOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionRouteAggregationsDataArrayOutput) Index(i pulumi.IntInput) GetConnectionRouteAggregationsDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionRouteAggregationsData {
+		return vs[0].([]GetConnectionRouteAggregationsData)[vs[1].(int)]
+	}).(GetConnectionRouteAggregationsDataOutput)
+}
+
+type GetConnectionRouteAggregationsPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of connection route aggregations available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetConnectionRouteAggregationsPaginationInput is an input type that accepts GetConnectionRouteAggregationsPaginationArgs and GetConnectionRouteAggregationsPaginationOutput values.
+// You can construct a concrete instance of `GetConnectionRouteAggregationsPaginationInput` via:
+//
+//	GetConnectionRouteAggregationsPaginationArgs{...}
+type GetConnectionRouteAggregationsPaginationInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteAggregationsPaginationOutput() GetConnectionRouteAggregationsPaginationOutput
+	ToGetConnectionRouteAggregationsPaginationOutputWithContext(context.Context) GetConnectionRouteAggregationsPaginationOutput
+}
+
+type GetConnectionRouteAggregationsPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of connection route aggregations available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetConnectionRouteAggregationsPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (i GetConnectionRouteAggregationsPaginationArgs) ToGetConnectionRouteAggregationsPaginationOutput() GetConnectionRouteAggregationsPaginationOutput {
+	return i.ToGetConnectionRouteAggregationsPaginationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteAggregationsPaginationArgs) ToGetConnectionRouteAggregationsPaginationOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteAggregationsPaginationOutput)
+}
+
+func (i GetConnectionRouteAggregationsPaginationArgs) ToGetConnectionRouteAggregationsPaginationPtrOutput() GetConnectionRouteAggregationsPaginationPtrOutput {
+	return i.ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionRouteAggregationsPaginationArgs) ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteAggregationsPaginationOutput).ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(ctx)
+}
+
+// GetConnectionRouteAggregationsPaginationPtrInput is an input type that accepts GetConnectionRouteAggregationsPaginationArgs, GetConnectionRouteAggregationsPaginationPtr and GetConnectionRouteAggregationsPaginationPtrOutput values.
+// You can construct a concrete instance of `GetConnectionRouteAggregationsPaginationPtrInput` via:
+//
+//	        GetConnectionRouteAggregationsPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionRouteAggregationsPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetConnectionRouteAggregationsPaginationPtrOutput() GetConnectionRouteAggregationsPaginationPtrOutput
+	ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(context.Context) GetConnectionRouteAggregationsPaginationPtrOutput
+}
+
+type getConnectionRouteAggregationsPaginationPtrType GetConnectionRouteAggregationsPaginationArgs
+
+func GetConnectionRouteAggregationsPaginationPtr(v *GetConnectionRouteAggregationsPaginationArgs) GetConnectionRouteAggregationsPaginationPtrInput {
+	return (*getConnectionRouteAggregationsPaginationPtrType)(v)
+}
+
+func (*getConnectionRouteAggregationsPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (i *getConnectionRouteAggregationsPaginationPtrType) ToGetConnectionRouteAggregationsPaginationPtrOutput() GetConnectionRouteAggregationsPaginationPtrOutput {
+	return i.ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionRouteAggregationsPaginationPtrType) ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRouteAggregationsPaginationPtrOutput)
+}
+
+type GetConnectionRouteAggregationsPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteAggregationsPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (o GetConnectionRouteAggregationsPaginationOutput) ToGetConnectionRouteAggregationsPaginationOutput() GetConnectionRouteAggregationsPaginationOutput {
+	return o
+}
+
+func (o GetConnectionRouteAggregationsPaginationOutput) ToGetConnectionRouteAggregationsPaginationOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsPaginationOutput {
+	return o
+}
+
+func (o GetConnectionRouteAggregationsPaginationOutput) ToGetConnectionRouteAggregationsPaginationPtrOutput() GetConnectionRouteAggregationsPaginationPtrOutput {
+	return o.ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionRouteAggregationsPaginationOutput) ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionRouteAggregationsPagination) *GetConnectionRouteAggregationsPagination {
+		return &v
+	}).(GetConnectionRouteAggregationsPaginationPtrOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetConnectionRouteAggregationsPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetConnectionRouteAggregationsPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetConnectionRouteAggregationsPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetConnectionRouteAggregationsPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of connection route aggregations available to the user making the request
+func (o GetConnectionRouteAggregationsPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionRouteAggregationsPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetConnectionRouteAggregationsPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionRouteAggregationsPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) ToGetConnectionRouteAggregationsPaginationPtrOutput() GetConnectionRouteAggregationsPaginationPtrOutput {
+	return o
+}
+
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) ToGetConnectionRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetConnectionRouteAggregationsPaginationPtrOutput {
+	return o
+}
+
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) Elem() GetConnectionRouteAggregationsPaginationOutput {
+	return o.ApplyT(func(v *GetConnectionRouteAggregationsPagination) GetConnectionRouteAggregationsPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionRouteAggregationsPagination
+		return ret
+	}).(GetConnectionRouteAggregationsPaginationOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionRouteAggregationsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) Next() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionRouteAggregationsPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Next
+	}).(pulumi.StringPtrOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionRouteAggregationsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) Previous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionRouteAggregationsPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Previous
+	}).(pulumi.StringPtrOutput)
+}
+
+// The total number of connection route aggregations available to the user making the request
+func (o GetConnectionRouteAggregationsPaginationPtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetConnectionRouteAggregationsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Total
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetConnectionRouteFiltersData struct {
@@ -42287,6 +48496,5312 @@ func (o GetPortsFilterOutput) ToGetPortsFilterOutputWithContext(ctx context.Cont
 // Query Parameter to Get Ports By Name
 func (o GetPortsFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServiceAccount struct {
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Equinix Account Number
+	AccountNumber int `pulumi:"accountNumber"`
+	// Global Customer Id
+	GlobalCustId string `pulumi:"globalCustId"`
+	// Customer organization naidentifierme
+	GlobalOrgId string `pulumi:"globalOrgId"`
+	// Global organization name
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	// Customer organization identifier
+	OrgId int `pulumi:"orgId"`
+	// Customer organization name
+	OrganizationName string `pulumi:"organizationName"`
+	// Reseller account name
+	ResellerAccountName string `pulumi:"resellerAccountName"`
+	// Reseller account number
+	ResellerAccountNumber int `pulumi:"resellerAccountNumber"`
+	// Reseller customer organization identifier
+	ResellerOrgId int `pulumi:"resellerOrgId"`
+	// Reseller account ucmId
+	ResellerUcmId string `pulumi:"resellerUcmId"`
+	// Global organization name
+	UcmId string `pulumi:"ucmId"`
+}
+
+// GetPrecisionTimeServiceAccountInput is an input type that accepts GetPrecisionTimeServiceAccountArgs and GetPrecisionTimeServiceAccountOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceAccountInput` via:
+//
+//	GetPrecisionTimeServiceAccountArgs{...}
+type GetPrecisionTimeServiceAccountInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceAccountOutput() GetPrecisionTimeServiceAccountOutput
+	ToGetPrecisionTimeServiceAccountOutputWithContext(context.Context) GetPrecisionTimeServiceAccountOutput
+}
+
+type GetPrecisionTimeServiceAccountArgs struct {
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Equinix Account Number
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Global Customer Id
+	GlobalCustId pulumi.StringInput `pulumi:"globalCustId"`
+	// Customer organization naidentifierme
+	GlobalOrgId pulumi.StringInput `pulumi:"globalOrgId"`
+	// Global organization name
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	// Customer organization identifier
+	OrgId pulumi.IntInput `pulumi:"orgId"`
+	// Customer organization name
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// Reseller account name
+	ResellerAccountName pulumi.StringInput `pulumi:"resellerAccountName"`
+	// Reseller account number
+	ResellerAccountNumber pulumi.IntInput `pulumi:"resellerAccountNumber"`
+	// Reseller customer organization identifier
+	ResellerOrgId pulumi.IntInput `pulumi:"resellerOrgId"`
+	// Reseller account ucmId
+	ResellerUcmId pulumi.StringInput `pulumi:"resellerUcmId"`
+	// Global organization name
+	UcmId pulumi.StringInput `pulumi:"ucmId"`
+}
+
+func (GetPrecisionTimeServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceAccount)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceAccountArgs) ToGetPrecisionTimeServiceAccountOutput() GetPrecisionTimeServiceAccountOutput {
+	return i.ToGetPrecisionTimeServiceAccountOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceAccountArgs) ToGetPrecisionTimeServiceAccountOutputWithContext(ctx context.Context) GetPrecisionTimeServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceAccountOutput)
+}
+
+type GetPrecisionTimeServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceAccount)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceAccountOutput) ToGetPrecisionTimeServiceAccountOutput() GetPrecisionTimeServiceAccountOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceAccountOutput) ToGetPrecisionTimeServiceAccountOutputWithContext(ctx context.Context) GetPrecisionTimeServiceAccountOutput {
+	return o
+}
+
+// Account Name
+func (o GetPrecisionTimeServiceAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Equinix Account Number
+func (o GetPrecisionTimeServiceAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Global Customer Id
+func (o GetPrecisionTimeServiceAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+// Customer organization naidentifierme
+func (o GetPrecisionTimeServiceAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+// Global organization name
+func (o GetPrecisionTimeServiceAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+// Customer organization identifier
+func (o GetPrecisionTimeServiceAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+// Customer organization name
+func (o GetPrecisionTimeServiceAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// Reseller account name
+func (o GetPrecisionTimeServiceAccountOutput) ResellerAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.ResellerAccountName }).(pulumi.StringOutput)
+}
+
+// Reseller account number
+func (o GetPrecisionTimeServiceAccountOutput) ResellerAccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) int { return v.ResellerAccountNumber }).(pulumi.IntOutput)
+}
+
+// Reseller customer organization identifier
+func (o GetPrecisionTimeServiceAccountOutput) ResellerOrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) int { return v.ResellerOrgId }).(pulumi.IntOutput)
+}
+
+// Reseller account ucmId
+func (o GetPrecisionTimeServiceAccountOutput) ResellerUcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.ResellerUcmId }).(pulumi.StringOutput)
+}
+
+// Global organization name
+func (o GetPrecisionTimeServiceAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceAccount) string { return v.UcmId }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServiceChangeLog struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetPrecisionTimeServiceChangeLogInput is an input type that accepts GetPrecisionTimeServiceChangeLogArgs and GetPrecisionTimeServiceChangeLogOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceChangeLogInput` via:
+//
+//	GetPrecisionTimeServiceChangeLogArgs{...}
+type GetPrecisionTimeServiceChangeLogInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceChangeLogOutput() GetPrecisionTimeServiceChangeLogOutput
+	ToGetPrecisionTimeServiceChangeLogOutputWithContext(context.Context) GetPrecisionTimeServiceChangeLogOutput
+}
+
+type GetPrecisionTimeServiceChangeLogArgs struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetPrecisionTimeServiceChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceChangeLog)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceChangeLogArgs) ToGetPrecisionTimeServiceChangeLogOutput() GetPrecisionTimeServiceChangeLogOutput {
+	return i.ToGetPrecisionTimeServiceChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceChangeLogArgs) ToGetPrecisionTimeServiceChangeLogOutputWithContext(ctx context.Context) GetPrecisionTimeServiceChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceChangeLogOutput)
+}
+
+type GetPrecisionTimeServiceChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceChangeLog)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceChangeLogOutput) ToGetPrecisionTimeServiceChangeLogOutput() GetPrecisionTimeServiceChangeLogOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceChangeLogOutput) ToGetPrecisionTimeServiceChangeLogOutputWithContext(ctx context.Context) GetPrecisionTimeServiceChangeLogOutput {
+	return o
+}
+
+// User name of creator of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o GetPrecisionTimeServiceChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServiceConnection struct {
+	// Link to the Equinix Fabric Connection associated with the Precision Time Service
+	Href string `pulumi:"href"`
+	// Type of the Equinix Fabric Connection associated with the Precision Time Service
+	Type string `pulumi:"type"`
+	// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetPrecisionTimeServiceConnectionInput is an input type that accepts GetPrecisionTimeServiceConnectionArgs and GetPrecisionTimeServiceConnectionOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceConnectionInput` via:
+//
+//	GetPrecisionTimeServiceConnectionArgs{...}
+type GetPrecisionTimeServiceConnectionInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceConnectionOutput() GetPrecisionTimeServiceConnectionOutput
+	ToGetPrecisionTimeServiceConnectionOutputWithContext(context.Context) GetPrecisionTimeServiceConnectionOutput
+}
+
+type GetPrecisionTimeServiceConnectionArgs struct {
+	// Link to the Equinix Fabric Connection associated with the Precision Time Service
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of the Equinix Fabric Connection associated with the Precision Time Service
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetPrecisionTimeServiceConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceConnectionArgs) ToGetPrecisionTimeServiceConnectionOutput() GetPrecisionTimeServiceConnectionOutput {
+	return i.ToGetPrecisionTimeServiceConnectionOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceConnectionArgs) ToGetPrecisionTimeServiceConnectionOutputWithContext(ctx context.Context) GetPrecisionTimeServiceConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceConnectionOutput)
+}
+
+// GetPrecisionTimeServiceConnectionArrayInput is an input type that accepts GetPrecisionTimeServiceConnectionArray and GetPrecisionTimeServiceConnectionArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceConnectionArrayInput` via:
+//
+//	GetPrecisionTimeServiceConnectionArray{ GetPrecisionTimeServiceConnectionArgs{...} }
+type GetPrecisionTimeServiceConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceConnectionArrayOutput() GetPrecisionTimeServiceConnectionArrayOutput
+	ToGetPrecisionTimeServiceConnectionArrayOutputWithContext(context.Context) GetPrecisionTimeServiceConnectionArrayOutput
+}
+
+type GetPrecisionTimeServiceConnectionArray []GetPrecisionTimeServiceConnectionInput
+
+func (GetPrecisionTimeServiceConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceConnectionArray) ToGetPrecisionTimeServiceConnectionArrayOutput() GetPrecisionTimeServiceConnectionArrayOutput {
+	return i.ToGetPrecisionTimeServiceConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceConnectionArray) ToGetPrecisionTimeServiceConnectionArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServiceConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceConnectionArrayOutput)
+}
+
+type GetPrecisionTimeServiceConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceConnectionOutput) ToGetPrecisionTimeServiceConnectionOutput() GetPrecisionTimeServiceConnectionOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceConnectionOutput) ToGetPrecisionTimeServiceConnectionOutputWithContext(ctx context.Context) GetPrecisionTimeServiceConnectionOutput {
+	return o
+}
+
+// Link to the Equinix Fabric Connection associated with the Precision Time Service
+func (o GetPrecisionTimeServiceConnectionOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceConnection) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of the Equinix Fabric Connection associated with the Precision Time Service
+func (o GetPrecisionTimeServiceConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceConnection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+func (o GetPrecisionTimeServiceConnectionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceConnection) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServiceConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServiceConnection)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceConnectionArrayOutput) ToGetPrecisionTimeServiceConnectionArrayOutput() GetPrecisionTimeServiceConnectionArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceConnectionArrayOutput) ToGetPrecisionTimeServiceConnectionArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServiceConnectionArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceConnectionArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServiceConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServiceConnection {
+		return vs[0].([]GetPrecisionTimeServiceConnection)[vs[1].(int)]
+	}).(GetPrecisionTimeServiceConnectionOutput)
+}
+
+type GetPrecisionTimeServiceIpv4 struct {
+	// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+	DefaultGateway string `pulumi:"defaultGateway"`
+	// IPv4 address that defines the range of consecutive subnets in the network.
+	NetworkMask string `pulumi:"networkMask"`
+	// IPv4 address for the Primary Timing Master Server.
+	Primary string `pulumi:"primary"`
+	// IPv4 address for the Secondary Timing Master Server.
+	Secondary string `pulumi:"secondary"`
+}
+
+// GetPrecisionTimeServiceIpv4Input is an input type that accepts GetPrecisionTimeServiceIpv4Args and GetPrecisionTimeServiceIpv4Output values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceIpv4Input` via:
+//
+//	GetPrecisionTimeServiceIpv4Args{...}
+type GetPrecisionTimeServiceIpv4Input interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceIpv4Output() GetPrecisionTimeServiceIpv4Output
+	ToGetPrecisionTimeServiceIpv4OutputWithContext(context.Context) GetPrecisionTimeServiceIpv4Output
+}
+
+type GetPrecisionTimeServiceIpv4Args struct {
+	// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+	DefaultGateway pulumi.StringInput `pulumi:"defaultGateway"`
+	// IPv4 address that defines the range of consecutive subnets in the network.
+	NetworkMask pulumi.StringInput `pulumi:"networkMask"`
+	// IPv4 address for the Primary Timing Master Server.
+	Primary pulumi.StringInput `pulumi:"primary"`
+	// IPv4 address for the Secondary Timing Master Server.
+	Secondary pulumi.StringInput `pulumi:"secondary"`
+}
+
+func (GetPrecisionTimeServiceIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceIpv4)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceIpv4Args) ToGetPrecisionTimeServiceIpv4Output() GetPrecisionTimeServiceIpv4Output {
+	return i.ToGetPrecisionTimeServiceIpv4OutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceIpv4Args) ToGetPrecisionTimeServiceIpv4OutputWithContext(ctx context.Context) GetPrecisionTimeServiceIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceIpv4Output)
+}
+
+type GetPrecisionTimeServiceIpv4Output struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceIpv4)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceIpv4Output) ToGetPrecisionTimeServiceIpv4Output() GetPrecisionTimeServiceIpv4Output {
+	return o
+}
+
+func (o GetPrecisionTimeServiceIpv4Output) ToGetPrecisionTimeServiceIpv4OutputWithContext(ctx context.Context) GetPrecisionTimeServiceIpv4Output {
+	return o
+}
+
+// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+func (o GetPrecisionTimeServiceIpv4Output) DefaultGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceIpv4) string { return v.DefaultGateway }).(pulumi.StringOutput)
+}
+
+// IPv4 address that defines the range of consecutive subnets in the network.
+func (o GetPrecisionTimeServiceIpv4Output) NetworkMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceIpv4) string { return v.NetworkMask }).(pulumi.StringOutput)
+}
+
+// IPv4 address for the Primary Timing Master Server.
+func (o GetPrecisionTimeServiceIpv4Output) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceIpv4) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+// IPv4 address for the Secondary Timing Master Server.
+func (o GetPrecisionTimeServiceIpv4Output) Secondary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceIpv4) string { return v.Secondary }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServiceNtpAdvancedConfiguration struct {
+	// The plaintext authentication key. For ASCII type, the key\
+	// \ must contain printable ASCII characters, range 10-20 characters. For\
+	// \ HEX type, range should be 10-40 characters
+	Key *string `pulumi:"key"`
+	// The authentication Key ID
+	KeyNumber *int `pulumi:"keyNumber"`
+	// md5 Authentication type
+	Type *string `pulumi:"type"`
+}
+
+// GetPrecisionTimeServiceNtpAdvancedConfigurationInput is an input type that accepts GetPrecisionTimeServiceNtpAdvancedConfigurationArgs and GetPrecisionTimeServiceNtpAdvancedConfigurationOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceNtpAdvancedConfigurationInput` via:
+//
+//	GetPrecisionTimeServiceNtpAdvancedConfigurationArgs{...}
+type GetPrecisionTimeServiceNtpAdvancedConfigurationInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceNtpAdvancedConfigurationOutput() GetPrecisionTimeServiceNtpAdvancedConfigurationOutput
+	ToGetPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(context.Context) GetPrecisionTimeServiceNtpAdvancedConfigurationOutput
+}
+
+type GetPrecisionTimeServiceNtpAdvancedConfigurationArgs struct {
+	// The plaintext authentication key. For ASCII type, the key\
+	// \ must contain printable ASCII characters, range 10-20 characters. For\
+	// \ HEX type, range should be 10-40 characters
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The authentication Key ID
+	KeyNumber pulumi.IntPtrInput `pulumi:"keyNumber"`
+	// md5 Authentication type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetPrecisionTimeServiceNtpAdvancedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceNtpAdvancedConfigurationArgs) ToGetPrecisionTimeServiceNtpAdvancedConfigurationOutput() GetPrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return i.ToGetPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceNtpAdvancedConfigurationArgs) ToGetPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceNtpAdvancedConfigurationOutput)
+}
+
+// GetPrecisionTimeServiceNtpAdvancedConfigurationArrayInput is an input type that accepts GetPrecisionTimeServiceNtpAdvancedConfigurationArray and GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceNtpAdvancedConfigurationArrayInput` via:
+//
+//	GetPrecisionTimeServiceNtpAdvancedConfigurationArray{ GetPrecisionTimeServiceNtpAdvancedConfigurationArgs{...} }
+type GetPrecisionTimeServiceNtpAdvancedConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput() GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput
+	ToGetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(context.Context) GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput
+}
+
+type GetPrecisionTimeServiceNtpAdvancedConfigurationArray []GetPrecisionTimeServiceNtpAdvancedConfigurationInput
+
+func (GetPrecisionTimeServiceNtpAdvancedConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceNtpAdvancedConfigurationArray) ToGetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput() GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return i.ToGetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceNtpAdvancedConfigurationArray) ToGetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput)
+}
+
+type GetPrecisionTimeServiceNtpAdvancedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceNtpAdvancedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationOutput) ToGetPrecisionTimeServiceNtpAdvancedConfigurationOutput() GetPrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationOutput) ToGetPrecisionTimeServiceNtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return o
+}
+
+// The plaintext authentication key. For ASCII type, the key\
+// \ must contain printable ASCII characters, range 10-20 characters. For\
+// \ HEX type, range should be 10-40 characters
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceNtpAdvancedConfiguration) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The authentication Key ID
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationOutput) KeyNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceNtpAdvancedConfiguration) *int { return v.KeyNumber }).(pulumi.IntPtrOutput)
+}
+
+// md5 Authentication type
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceNtpAdvancedConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServiceNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) ToGetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput() GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) ToGetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServiceNtpAdvancedConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServiceNtpAdvancedConfiguration {
+		return vs[0].([]GetPrecisionTimeServiceNtpAdvancedConfiguration)[vs[1].(int)]
+	}).(GetPrecisionTimeServiceNtpAdvancedConfigurationOutput)
+}
+
+type GetPrecisionTimeServiceOrder struct {
+	// Customer reference number
+	CustomerReferenceNumber string `pulumi:"customerReferenceNumber"`
+	// Order reference number
+	OrderNumber string `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber string `pulumi:"purchaseOrderNumber"`
+}
+
+// GetPrecisionTimeServiceOrderInput is an input type that accepts GetPrecisionTimeServiceOrderArgs and GetPrecisionTimeServiceOrderOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceOrderInput` via:
+//
+//	GetPrecisionTimeServiceOrderArgs{...}
+type GetPrecisionTimeServiceOrderInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceOrderOutput() GetPrecisionTimeServiceOrderOutput
+	ToGetPrecisionTimeServiceOrderOutputWithContext(context.Context) GetPrecisionTimeServiceOrderOutput
+}
+
+type GetPrecisionTimeServiceOrderArgs struct {
+	// Customer reference number
+	CustomerReferenceNumber pulumi.StringInput `pulumi:"customerReferenceNumber"`
+	// Order reference number
+	OrderNumber pulumi.StringInput `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber pulumi.StringInput `pulumi:"purchaseOrderNumber"`
+}
+
+func (GetPrecisionTimeServiceOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceOrder)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceOrderArgs) ToGetPrecisionTimeServiceOrderOutput() GetPrecisionTimeServiceOrderOutput {
+	return i.ToGetPrecisionTimeServiceOrderOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceOrderArgs) ToGetPrecisionTimeServiceOrderOutputWithContext(ctx context.Context) GetPrecisionTimeServiceOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceOrderOutput)
+}
+
+type GetPrecisionTimeServiceOrderOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceOrder)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceOrderOutput) ToGetPrecisionTimeServiceOrderOutput() GetPrecisionTimeServiceOrderOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceOrderOutput) ToGetPrecisionTimeServiceOrderOutputWithContext(ctx context.Context) GetPrecisionTimeServiceOrderOutput {
+	return o
+}
+
+// Customer reference number
+func (o GetPrecisionTimeServiceOrderOutput) CustomerReferenceNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceOrder) string { return v.CustomerReferenceNumber }).(pulumi.StringOutput)
+}
+
+// Order reference number
+func (o GetPrecisionTimeServiceOrderOutput) OrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceOrder) string { return v.OrderNumber }).(pulumi.StringOutput)
+}
+
+// Purchase order number
+func (o GetPrecisionTimeServiceOrderOutput) PurchaseOrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceOrder) string { return v.PurchaseOrderNumber }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicePackage struct {
+	// Time Precision Package Code for the desired billing package
+	Code string `pulumi:"code"`
+	// Time Precision Package HREF link to corresponding resource in Equinix Portal
+	Href string `pulumi:"href"`
+}
+
+// GetPrecisionTimeServicePackageInput is an input type that accepts GetPrecisionTimeServicePackageArgs and GetPrecisionTimeServicePackageOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicePackageInput` via:
+//
+//	GetPrecisionTimeServicePackageArgs{...}
+type GetPrecisionTimeServicePackageInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicePackageOutput() GetPrecisionTimeServicePackageOutput
+	ToGetPrecisionTimeServicePackageOutputWithContext(context.Context) GetPrecisionTimeServicePackageOutput
+}
+
+type GetPrecisionTimeServicePackageArgs struct {
+	// Time Precision Package Code for the desired billing package
+	Code pulumi.StringInput `pulumi:"code"`
+	// Time Precision Package HREF link to corresponding resource in Equinix Portal
+	Href pulumi.StringInput `pulumi:"href"`
+}
+
+func (GetPrecisionTimeServicePackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePackage)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicePackageArgs) ToGetPrecisionTimeServicePackageOutput() GetPrecisionTimeServicePackageOutput {
+	return i.ToGetPrecisionTimeServicePackageOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicePackageArgs) ToGetPrecisionTimeServicePackageOutputWithContext(ctx context.Context) GetPrecisionTimeServicePackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicePackageOutput)
+}
+
+type GetPrecisionTimeServicePackageOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicePackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePackage)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicePackageOutput) ToGetPrecisionTimeServicePackageOutput() GetPrecisionTimeServicePackageOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePackageOutput) ToGetPrecisionTimeServicePackageOutputWithContext(ctx context.Context) GetPrecisionTimeServicePackageOutput {
+	return o
+}
+
+// Time Precision Package Code for the desired billing package
+func (o GetPrecisionTimeServicePackageOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePackage) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Time Precision Package HREF link to corresponding resource in Equinix Portal
+func (o GetPrecisionTimeServicePackageOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePackage) string { return v.Href }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicePrecisionTimePrice struct {
+	// offering price charge
+	Charges []GetPrecisionTimeServicePrecisionTimePriceCharge `pulumi:"charges"`
+	// Offering price currency
+	Currency string `pulumi:"currency"`
+}
+
+// GetPrecisionTimeServicePrecisionTimePriceInput is an input type that accepts GetPrecisionTimeServicePrecisionTimePriceArgs and GetPrecisionTimeServicePrecisionTimePriceOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicePrecisionTimePriceInput` via:
+//
+//	GetPrecisionTimeServicePrecisionTimePriceArgs{...}
+type GetPrecisionTimeServicePrecisionTimePriceInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicePrecisionTimePriceOutput() GetPrecisionTimeServicePrecisionTimePriceOutput
+	ToGetPrecisionTimeServicePrecisionTimePriceOutputWithContext(context.Context) GetPrecisionTimeServicePrecisionTimePriceOutput
+}
+
+type GetPrecisionTimeServicePrecisionTimePriceArgs struct {
+	// offering price charge
+	Charges GetPrecisionTimeServicePrecisionTimePriceChargeArrayInput `pulumi:"charges"`
+	// Offering price currency
+	Currency pulumi.StringInput `pulumi:"currency"`
+}
+
+func (GetPrecisionTimeServicePrecisionTimePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePrice)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicePrecisionTimePriceArgs) ToGetPrecisionTimeServicePrecisionTimePriceOutput() GetPrecisionTimeServicePrecisionTimePriceOutput {
+	return i.ToGetPrecisionTimeServicePrecisionTimePriceOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicePrecisionTimePriceArgs) ToGetPrecisionTimeServicePrecisionTimePriceOutputWithContext(ctx context.Context) GetPrecisionTimeServicePrecisionTimePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicePrecisionTimePriceOutput)
+}
+
+type GetPrecisionTimeServicePrecisionTimePriceOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicePrecisionTimePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePrice)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicePrecisionTimePriceOutput) ToGetPrecisionTimeServicePrecisionTimePriceOutput() GetPrecisionTimeServicePrecisionTimePriceOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePrecisionTimePriceOutput) ToGetPrecisionTimeServicePrecisionTimePriceOutputWithContext(ctx context.Context) GetPrecisionTimeServicePrecisionTimePriceOutput {
+	return o
+}
+
+// offering price charge
+func (o GetPrecisionTimeServicePrecisionTimePriceOutput) Charges() GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePrecisionTimePrice) []GetPrecisionTimeServicePrecisionTimePriceCharge {
+		return v.Charges
+	}).(GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput)
+}
+
+// Offering price currency
+func (o GetPrecisionTimeServicePrecisionTimePriceOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePrecisionTimePrice) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicePrecisionTimePriceCharge struct {
+	// Offering price
+	Price float64 `pulumi:"price"`
+	// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+	Type string `pulumi:"type"`
+}
+
+// GetPrecisionTimeServicePrecisionTimePriceChargeInput is an input type that accepts GetPrecisionTimeServicePrecisionTimePriceChargeArgs and GetPrecisionTimeServicePrecisionTimePriceChargeOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicePrecisionTimePriceChargeInput` via:
+//
+//	GetPrecisionTimeServicePrecisionTimePriceChargeArgs{...}
+type GetPrecisionTimeServicePrecisionTimePriceChargeInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicePrecisionTimePriceChargeOutput() GetPrecisionTimeServicePrecisionTimePriceChargeOutput
+	ToGetPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(context.Context) GetPrecisionTimeServicePrecisionTimePriceChargeOutput
+}
+
+type GetPrecisionTimeServicePrecisionTimePriceChargeArgs struct {
+	// Offering price
+	Price pulumi.Float64Input `pulumi:"price"`
+	// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPrecisionTimeServicePrecisionTimePriceChargeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicePrecisionTimePriceChargeArgs) ToGetPrecisionTimeServicePrecisionTimePriceChargeOutput() GetPrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return i.ToGetPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicePrecisionTimePriceChargeArgs) ToGetPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(ctx context.Context) GetPrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicePrecisionTimePriceChargeOutput)
+}
+
+// GetPrecisionTimeServicePrecisionTimePriceChargeArrayInput is an input type that accepts GetPrecisionTimeServicePrecisionTimePriceChargeArray and GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicePrecisionTimePriceChargeArrayInput` via:
+//
+//	GetPrecisionTimeServicePrecisionTimePriceChargeArray{ GetPrecisionTimeServicePrecisionTimePriceChargeArgs{...} }
+type GetPrecisionTimeServicePrecisionTimePriceChargeArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput() GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput
+	ToGetPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(context.Context) GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput
+}
+
+type GetPrecisionTimeServicePrecisionTimePriceChargeArray []GetPrecisionTimeServicePrecisionTimePriceChargeInput
+
+func (GetPrecisionTimeServicePrecisionTimePriceChargeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicePrecisionTimePriceChargeArray) ToGetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput() GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return i.ToGetPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicePrecisionTimePriceChargeArray) ToGetPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput)
+}
+
+type GetPrecisionTimeServicePrecisionTimePriceChargeOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicePrecisionTimePriceChargeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicePrecisionTimePriceChargeOutput) ToGetPrecisionTimeServicePrecisionTimePriceChargeOutput() GetPrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePrecisionTimePriceChargeOutput) ToGetPrecisionTimeServicePrecisionTimePriceChargeOutputWithContext(ctx context.Context) GetPrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return o
+}
+
+// Offering price
+func (o GetPrecisionTimeServicePrecisionTimePriceChargeOutput) Price() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPrecisionTimeServicePrecisionTimePriceCharge) float64 { return v.Price }).(pulumi.Float64Output)
+}
+
+// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+func (o GetPrecisionTimeServicePrecisionTimePriceChargeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePrecisionTimePriceCharge) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicePrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput) ToGetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput() GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput) ToGetPrecisionTimeServicePrecisionTimePriceChargeArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServicePrecisionTimePriceChargeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicePrecisionTimePriceCharge {
+		return vs[0].([]GetPrecisionTimeServicePrecisionTimePriceCharge)[vs[1].(int)]
+	}).(GetPrecisionTimeServicePrecisionTimePriceChargeOutput)
+}
+
+type GetPrecisionTimeServiceProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetPrecisionTimeServiceProjectInput is an input type that accepts GetPrecisionTimeServiceProjectArgs and GetPrecisionTimeServiceProjectOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceProjectInput` via:
+//
+//	GetPrecisionTimeServiceProjectArgs{...}
+type GetPrecisionTimeServiceProjectInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceProjectOutput() GetPrecisionTimeServiceProjectOutput
+	ToGetPrecisionTimeServiceProjectOutputWithContext(context.Context) GetPrecisionTimeServiceProjectOutput
+}
+
+type GetPrecisionTimeServiceProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetPrecisionTimeServiceProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceProjectArgs) ToGetPrecisionTimeServiceProjectOutput() GetPrecisionTimeServiceProjectOutput {
+	return i.ToGetPrecisionTimeServiceProjectOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceProjectArgs) ToGetPrecisionTimeServiceProjectOutputWithContext(ctx context.Context) GetPrecisionTimeServiceProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceProjectOutput)
+}
+
+func (i GetPrecisionTimeServiceProjectArgs) ToGetPrecisionTimeServiceProjectPtrOutput() GetPrecisionTimeServiceProjectPtrOutput {
+	return i.ToGetPrecisionTimeServiceProjectPtrOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceProjectArgs) ToGetPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServiceProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceProjectOutput).ToGetPrecisionTimeServiceProjectPtrOutputWithContext(ctx)
+}
+
+// GetPrecisionTimeServiceProjectPtrInput is an input type that accepts GetPrecisionTimeServiceProjectArgs, GetPrecisionTimeServiceProjectPtr and GetPrecisionTimeServiceProjectPtrOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceProjectPtrInput` via:
+//
+//	        GetPrecisionTimeServiceProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPrecisionTimeServiceProjectPtrInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceProjectPtrOutput() GetPrecisionTimeServiceProjectPtrOutput
+	ToGetPrecisionTimeServiceProjectPtrOutputWithContext(context.Context) GetPrecisionTimeServiceProjectPtrOutput
+}
+
+type getPrecisionTimeServiceProjectPtrType GetPrecisionTimeServiceProjectArgs
+
+func GetPrecisionTimeServiceProjectPtr(v *GetPrecisionTimeServiceProjectArgs) GetPrecisionTimeServiceProjectPtrInput {
+	return (*getPrecisionTimeServiceProjectPtrType)(v)
+}
+
+func (*getPrecisionTimeServiceProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (i *getPrecisionTimeServiceProjectPtrType) ToGetPrecisionTimeServiceProjectPtrOutput() GetPrecisionTimeServiceProjectPtrOutput {
+	return i.ToGetPrecisionTimeServiceProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *getPrecisionTimeServiceProjectPtrType) ToGetPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServiceProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceProjectPtrOutput)
+}
+
+type GetPrecisionTimeServiceProjectOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceProjectOutput) ToGetPrecisionTimeServiceProjectOutput() GetPrecisionTimeServiceProjectOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceProjectOutput) ToGetPrecisionTimeServiceProjectOutputWithContext(ctx context.Context) GetPrecisionTimeServiceProjectOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceProjectOutput) ToGetPrecisionTimeServiceProjectPtrOutput() GetPrecisionTimeServiceProjectPtrOutput {
+	return o.ToGetPrecisionTimeServiceProjectPtrOutputWithContext(context.Background())
+}
+
+func (o GetPrecisionTimeServiceProjectOutput) ToGetPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServiceProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrecisionTimeServiceProject) *GetPrecisionTimeServiceProject {
+		return &v
+	}).(GetPrecisionTimeServiceProjectPtrOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetPrecisionTimeServiceProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServiceProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServiceProject)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceProjectPtrOutput) ToGetPrecisionTimeServiceProjectPtrOutput() GetPrecisionTimeServiceProjectPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceProjectPtrOutput) ToGetPrecisionTimeServiceProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServiceProjectPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceProjectPtrOutput) Elem() GetPrecisionTimeServiceProjectOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServiceProject) GetPrecisionTimeServiceProject {
+		if v != nil {
+			return *v
+		}
+		var ret GetPrecisionTimeServiceProject
+		return ret
+	}).(GetPrecisionTimeServiceProjectOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetPrecisionTimeServiceProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServiceProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicePtpAdvancedConfiguration struct {
+	// The PTP domain value
+	Domain *int `pulumi:"domain"`
+	// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+	GrantTime *int `pulumi:"grantTime"`
+	// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+	LogAnnounceInterval *int `pulumi:"logAnnounceInterval"`
+	// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogDelayReqInterval *int `pulumi:"logDelayReqInterval"`
+	// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogSyncInterval *int `pulumi:"logSyncInterval"`
+	// The priority1 value determines the best primary clock, Lower value indicates higher priority
+	Priority1 *int `pulumi:"priority1"`
+	// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+	Priority2 *int `pulumi:"priority2"`
+	// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+	TimeScale *string `pulumi:"timeScale"`
+	// ptp transport mode
+	TransportMode *string `pulumi:"transportMode"`
+}
+
+// GetPrecisionTimeServicePtpAdvancedConfigurationInput is an input type that accepts GetPrecisionTimeServicePtpAdvancedConfigurationArgs and GetPrecisionTimeServicePtpAdvancedConfigurationOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicePtpAdvancedConfigurationInput` via:
+//
+//	GetPrecisionTimeServicePtpAdvancedConfigurationArgs{...}
+type GetPrecisionTimeServicePtpAdvancedConfigurationInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicePtpAdvancedConfigurationOutput() GetPrecisionTimeServicePtpAdvancedConfigurationOutput
+	ToGetPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationOutput
+}
+
+type GetPrecisionTimeServicePtpAdvancedConfigurationArgs struct {
+	// The PTP domain value
+	Domain pulumi.IntPtrInput `pulumi:"domain"`
+	// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+	GrantTime pulumi.IntPtrInput `pulumi:"grantTime"`
+	// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+	LogAnnounceInterval pulumi.IntPtrInput `pulumi:"logAnnounceInterval"`
+	// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogDelayReqInterval pulumi.IntPtrInput `pulumi:"logDelayReqInterval"`
+	// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogSyncInterval pulumi.IntPtrInput `pulumi:"logSyncInterval"`
+	// The priority1 value determines the best primary clock, Lower value indicates higher priority
+	Priority1 pulumi.IntPtrInput `pulumi:"priority1"`
+	// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+	Priority2 pulumi.IntPtrInput `pulumi:"priority2"`
+	// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+	TimeScale pulumi.StringPtrInput `pulumi:"timeScale"`
+	// ptp transport mode
+	TransportMode pulumi.StringPtrInput `pulumi:"transportMode"`
+}
+
+func (GetPrecisionTimeServicePtpAdvancedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicePtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicePtpAdvancedConfigurationOutput() GetPrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return i.ToGetPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicePtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicePtpAdvancedConfigurationOutput)
+}
+
+func (i GetPrecisionTimeServicePtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return i.ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicePtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicePtpAdvancedConfigurationOutput).ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx)
+}
+
+// GetPrecisionTimeServicePtpAdvancedConfigurationPtrInput is an input type that accepts GetPrecisionTimeServicePtpAdvancedConfigurationArgs, GetPrecisionTimeServicePtpAdvancedConfigurationPtr and GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicePtpAdvancedConfigurationPtrInput` via:
+//
+//	        GetPrecisionTimeServicePtpAdvancedConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPrecisionTimeServicePtpAdvancedConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput
+	ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput
+}
+
+type getPrecisionTimeServicePtpAdvancedConfigurationPtrType GetPrecisionTimeServicePtpAdvancedConfigurationArgs
+
+func GetPrecisionTimeServicePtpAdvancedConfigurationPtr(v *GetPrecisionTimeServicePtpAdvancedConfigurationArgs) GetPrecisionTimeServicePtpAdvancedConfigurationPtrInput {
+	return (*getPrecisionTimeServicePtpAdvancedConfigurationPtrType)(v)
+}
+
+func (*getPrecisionTimeServicePtpAdvancedConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i *getPrecisionTimeServicePtpAdvancedConfigurationPtrType) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return i.ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *getPrecisionTimeServicePtpAdvancedConfigurationPtrType) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput)
+}
+
+type GetPrecisionTimeServicePtpAdvancedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicePtpAdvancedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicePtpAdvancedConfigurationOutput() GetPrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicePtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o.ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrecisionTimeServicePtpAdvancedConfiguration) *GetPrecisionTimeServicePtpAdvancedConfiguration {
+		return &v
+	}).(GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput)
+}
+
+// The PTP domain value
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) Domain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *int { return v.Domain }).(pulumi.IntPtrOutput)
+}
+
+// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) GrantTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *int { return v.GrantTime }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) LogAnnounceInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *int { return v.LogAnnounceInterval }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) LogDelayReqInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *int { return v.LogDelayReqInterval }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) LogSyncInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *int { return v.LogSyncInterval }).(pulumi.IntPtrOutput)
+}
+
+// The priority1 value determines the best primary clock, Lower value indicates higher priority
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) Priority1() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *int { return v.Priority1 }).(pulumi.IntPtrOutput)
+}
+
+// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) Priority2() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *int { return v.Priority2 }).(pulumi.IntPtrOutput)
+}
+
+// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) TimeScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *string { return v.TimeScale }).(pulumi.StringPtrOutput)
+}
+
+// ptp transport mode
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationOutput) TransportMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicePtpAdvancedConfiguration) *string { return v.TransportMode }).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicePtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) ToGetPrecisionTimeServicePtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Elem() GetPrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) GetPrecisionTimeServicePtpAdvancedConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GetPrecisionTimeServicePtpAdvancedConfiguration
+		return ret
+	}).(GetPrecisionTimeServicePtpAdvancedConfigurationOutput)
+}
+
+// The PTP domain value
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Domain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) GrantTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GrantTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) LogAnnounceInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnnounceInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) LogDelayReqInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogDelayReqInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) LogSyncInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogSyncInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority1 value determines the best primary clock, Lower value indicates higher priority
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Priority1() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority1
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) Priority2() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority2
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) TimeScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeScale
+	}).(pulumi.StringPtrOutput)
+}
+
+// ptp transport mode
+func (o GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput) TransportMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicePtpAdvancedConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransportMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicesData struct {
+	// Equinix User Account associated with Precision Time Service
+	Account GetPrecisionTimeServicesDataAccount `pulumi:"account"`
+	// Details of the last change on the route aggregation resource
+	ChangeLog GetPrecisionTimeServicesDataChangeLog `pulumi:"changeLog"`
+	// An array of objects with unique identifiers of connections.
+	Connections []GetPrecisionTimeServicesDataConnection `pulumi:"connections"`
+	// Equinix generated Portal link for the created Precision Time Service
+	Href string `pulumi:"href"`
+	// An object that has Network IP Configurations for Timing Master Servers.
+	Ipv4 GetPrecisionTimeServicesDataIpv4 `pulumi:"ipv4"`
+	// Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
+	Name string `pulumi:"name"`
+	// NTP Advanced configuration
+	NtpAdvancedConfigurations []GetPrecisionTimeServicesDataNtpAdvancedConfiguration `pulumi:"ntpAdvancedConfigurations"`
+	// Precision Time Order
+	Order GetPrecisionTimeServicesDataOrder `pulumi:"order"`
+	// Precision Time Service Package Details
+	Package GetPrecisionTimeServicesDataPackage `pulumi:"package"`
+	// Precision Time Service Price
+	PrecisionTimePrice GetPrecisionTimeServicesDataPrecisionTimePrice `pulumi:"precisionTimePrice"`
+	// Equinix Project attribute object
+	Project *GetPrecisionTimeServicesDataProject `pulumi:"project"`
+	// PTP Advanced Configuration
+	PtpAdvancedConfiguration *GetPrecisionTimeServicesDataPtpAdvancedConfiguration `pulumi:"ptpAdvancedConfiguration"`
+	// Indicator of the state of this Precision Time Service
+	State string `pulumi:"state"`
+	// Choose type of Precision Time Service
+	Type string `pulumi:"type"`
+	// Equinix generated id for the Precision Time Service
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetPrecisionTimeServicesDataInput is an input type that accepts GetPrecisionTimeServicesDataArgs and GetPrecisionTimeServicesDataOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataInput` via:
+//
+//	GetPrecisionTimeServicesDataArgs{...}
+type GetPrecisionTimeServicesDataInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataOutput() GetPrecisionTimeServicesDataOutput
+	ToGetPrecisionTimeServicesDataOutputWithContext(context.Context) GetPrecisionTimeServicesDataOutput
+}
+
+type GetPrecisionTimeServicesDataArgs struct {
+	// Equinix User Account associated with Precision Time Service
+	Account GetPrecisionTimeServicesDataAccountInput `pulumi:"account"`
+	// Details of the last change on the route aggregation resource
+	ChangeLog GetPrecisionTimeServicesDataChangeLogInput `pulumi:"changeLog"`
+	// An array of objects with unique identifiers of connections.
+	Connections GetPrecisionTimeServicesDataConnectionArrayInput `pulumi:"connections"`
+	// Equinix generated Portal link for the created Precision Time Service
+	Href pulumi.StringInput `pulumi:"href"`
+	// An object that has Network IP Configurations for Timing Master Servers.
+	Ipv4 GetPrecisionTimeServicesDataIpv4Input `pulumi:"ipv4"`
+	// Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
+	Name pulumi.StringInput `pulumi:"name"`
+	// NTP Advanced configuration
+	NtpAdvancedConfigurations GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayInput `pulumi:"ntpAdvancedConfigurations"`
+	// Precision Time Order
+	Order GetPrecisionTimeServicesDataOrderInput `pulumi:"order"`
+	// Precision Time Service Package Details
+	Package GetPrecisionTimeServicesDataPackageInput `pulumi:"package"`
+	// Precision Time Service Price
+	PrecisionTimePrice GetPrecisionTimeServicesDataPrecisionTimePriceInput `pulumi:"precisionTimePrice"`
+	// Equinix Project attribute object
+	Project GetPrecisionTimeServicesDataProjectPtrInput `pulumi:"project"`
+	// PTP Advanced Configuration
+	PtpAdvancedConfiguration GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrInput `pulumi:"ptpAdvancedConfiguration"`
+	// Indicator of the state of this Precision Time Service
+	State pulumi.StringInput `pulumi:"state"`
+	// Choose type of Precision Time Service
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix generated id for the Precision Time Service
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetPrecisionTimeServicesDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesData)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataArgs) ToGetPrecisionTimeServicesDataOutput() GetPrecisionTimeServicesDataOutput {
+	return i.ToGetPrecisionTimeServicesDataOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataArgs) ToGetPrecisionTimeServicesDataOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataOutput)
+}
+
+// GetPrecisionTimeServicesDataArrayInput is an input type that accepts GetPrecisionTimeServicesDataArray and GetPrecisionTimeServicesDataArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataArrayInput` via:
+//
+//	GetPrecisionTimeServicesDataArray{ GetPrecisionTimeServicesDataArgs{...} }
+type GetPrecisionTimeServicesDataArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataArrayOutput() GetPrecisionTimeServicesDataArrayOutput
+	ToGetPrecisionTimeServicesDataArrayOutputWithContext(context.Context) GetPrecisionTimeServicesDataArrayOutput
+}
+
+type GetPrecisionTimeServicesDataArray []GetPrecisionTimeServicesDataInput
+
+func (GetPrecisionTimeServicesDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesData)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataArray) ToGetPrecisionTimeServicesDataArrayOutput() GetPrecisionTimeServicesDataArrayOutput {
+	return i.ToGetPrecisionTimeServicesDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataArray) ToGetPrecisionTimeServicesDataArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataArrayOutput)
+}
+
+type GetPrecisionTimeServicesDataOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesData)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataOutput) ToGetPrecisionTimeServicesDataOutput() GetPrecisionTimeServicesDataOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataOutput) ToGetPrecisionTimeServicesDataOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataOutput {
+	return o
+}
+
+// Equinix User Account associated with Precision Time Service
+func (o GetPrecisionTimeServicesDataOutput) Account() GetPrecisionTimeServicesDataAccountOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) GetPrecisionTimeServicesDataAccount { return v.Account }).(GetPrecisionTimeServicesDataAccountOutput)
+}
+
+// Details of the last change on the route aggregation resource
+func (o GetPrecisionTimeServicesDataOutput) ChangeLog() GetPrecisionTimeServicesDataChangeLogOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) GetPrecisionTimeServicesDataChangeLog { return v.ChangeLog }).(GetPrecisionTimeServicesDataChangeLogOutput)
+}
+
+// An array of objects with unique identifiers of connections.
+func (o GetPrecisionTimeServicesDataOutput) Connections() GetPrecisionTimeServicesDataConnectionArrayOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) []GetPrecisionTimeServicesDataConnection { return v.Connections }).(GetPrecisionTimeServicesDataConnectionArrayOutput)
+}
+
+// Equinix generated Portal link for the created Precision Time Service
+func (o GetPrecisionTimeServicesDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// An object that has Network IP Configurations for Timing Master Servers.
+func (o GetPrecisionTimeServicesDataOutput) Ipv4() GetPrecisionTimeServicesDataIpv4Output {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) GetPrecisionTimeServicesDataIpv4 { return v.Ipv4 }).(GetPrecisionTimeServicesDataIpv4Output)
+}
+
+// Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
+func (o GetPrecisionTimeServicesDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// NTP Advanced configuration
+func (o GetPrecisionTimeServicesDataOutput) NtpAdvancedConfigurations() GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) []GetPrecisionTimeServicesDataNtpAdvancedConfiguration {
+		return v.NtpAdvancedConfigurations
+	}).(GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput)
+}
+
+// Precision Time Order
+func (o GetPrecisionTimeServicesDataOutput) Order() GetPrecisionTimeServicesDataOrderOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) GetPrecisionTimeServicesDataOrder { return v.Order }).(GetPrecisionTimeServicesDataOrderOutput)
+}
+
+// Precision Time Service Package Details
+func (o GetPrecisionTimeServicesDataOutput) Package() GetPrecisionTimeServicesDataPackageOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) GetPrecisionTimeServicesDataPackage { return v.Package }).(GetPrecisionTimeServicesDataPackageOutput)
+}
+
+// Precision Time Service Price
+func (o GetPrecisionTimeServicesDataOutput) PrecisionTimePrice() GetPrecisionTimeServicesDataPrecisionTimePriceOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) GetPrecisionTimeServicesDataPrecisionTimePrice {
+		return v.PrecisionTimePrice
+	}).(GetPrecisionTimeServicesDataPrecisionTimePriceOutput)
+}
+
+// Equinix Project attribute object
+func (o GetPrecisionTimeServicesDataOutput) Project() GetPrecisionTimeServicesDataProjectPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) *GetPrecisionTimeServicesDataProject { return v.Project }).(GetPrecisionTimeServicesDataProjectPtrOutput)
+}
+
+// PTP Advanced Configuration
+func (o GetPrecisionTimeServicesDataOutput) PtpAdvancedConfiguration() GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) *GetPrecisionTimeServicesDataPtpAdvancedConfiguration {
+		return v.PtpAdvancedConfiguration
+	}).(GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput)
+}
+
+// Indicator of the state of this Precision Time Service
+func (o GetPrecisionTimeServicesDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Choose type of Precision Time Service
+func (o GetPrecisionTimeServicesDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix generated id for the Precision Time Service
+func (o GetPrecisionTimeServicesDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesData)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataArrayOutput) ToGetPrecisionTimeServicesDataArrayOutput() GetPrecisionTimeServicesDataArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataArrayOutput) ToGetPrecisionTimeServicesDataArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServicesDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicesData {
+		return vs[0].([]GetPrecisionTimeServicesData)[vs[1].(int)]
+	}).(GetPrecisionTimeServicesDataOutput)
+}
+
+type GetPrecisionTimeServicesDataAccount struct {
+	// Account Name
+	AccountName string `pulumi:"accountName"`
+	// Equinix Account Number
+	AccountNumber int `pulumi:"accountNumber"`
+	// Global Customer Id
+	GlobalCustId string `pulumi:"globalCustId"`
+	// Customer organization naidentifierme
+	GlobalOrgId string `pulumi:"globalOrgId"`
+	// Global organization name
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	// Customer organization identifier
+	OrgId int `pulumi:"orgId"`
+	// Customer organization name
+	OrganizationName string `pulumi:"organizationName"`
+	// Reseller account name
+	ResellerAccountName string `pulumi:"resellerAccountName"`
+	// Reseller account number
+	ResellerAccountNumber int `pulumi:"resellerAccountNumber"`
+	// Reseller customer organization identifier
+	ResellerOrgId int `pulumi:"resellerOrgId"`
+	// Reseller account ucmId
+	ResellerUcmId string `pulumi:"resellerUcmId"`
+	// Global organization name
+	UcmId string `pulumi:"ucmId"`
+}
+
+// GetPrecisionTimeServicesDataAccountInput is an input type that accepts GetPrecisionTimeServicesDataAccountArgs and GetPrecisionTimeServicesDataAccountOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataAccountInput` via:
+//
+//	GetPrecisionTimeServicesDataAccountArgs{...}
+type GetPrecisionTimeServicesDataAccountInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataAccountOutput() GetPrecisionTimeServicesDataAccountOutput
+	ToGetPrecisionTimeServicesDataAccountOutputWithContext(context.Context) GetPrecisionTimeServicesDataAccountOutput
+}
+
+type GetPrecisionTimeServicesDataAccountArgs struct {
+	// Account Name
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Equinix Account Number
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Global Customer Id
+	GlobalCustId pulumi.StringInput `pulumi:"globalCustId"`
+	// Customer organization naidentifierme
+	GlobalOrgId pulumi.StringInput `pulumi:"globalOrgId"`
+	// Global organization name
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	// Customer organization identifier
+	OrgId pulumi.IntInput `pulumi:"orgId"`
+	// Customer organization name
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// Reseller account name
+	ResellerAccountName pulumi.StringInput `pulumi:"resellerAccountName"`
+	// Reseller account number
+	ResellerAccountNumber pulumi.IntInput `pulumi:"resellerAccountNumber"`
+	// Reseller customer organization identifier
+	ResellerOrgId pulumi.IntInput `pulumi:"resellerOrgId"`
+	// Reseller account ucmId
+	ResellerUcmId pulumi.StringInput `pulumi:"resellerUcmId"`
+	// Global organization name
+	UcmId pulumi.StringInput `pulumi:"ucmId"`
+}
+
+func (GetPrecisionTimeServicesDataAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataAccount)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataAccountArgs) ToGetPrecisionTimeServicesDataAccountOutput() GetPrecisionTimeServicesDataAccountOutput {
+	return i.ToGetPrecisionTimeServicesDataAccountOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataAccountArgs) ToGetPrecisionTimeServicesDataAccountOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataAccountOutput)
+}
+
+type GetPrecisionTimeServicesDataAccountOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataAccount)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataAccountOutput) ToGetPrecisionTimeServicesDataAccountOutput() GetPrecisionTimeServicesDataAccountOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataAccountOutput) ToGetPrecisionTimeServicesDataAccountOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataAccountOutput {
+	return o
+}
+
+// Account Name
+func (o GetPrecisionTimeServicesDataAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Equinix Account Number
+func (o GetPrecisionTimeServicesDataAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Global Customer Id
+func (o GetPrecisionTimeServicesDataAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+// Customer organization naidentifierme
+func (o GetPrecisionTimeServicesDataAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+// Global organization name
+func (o GetPrecisionTimeServicesDataAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+// Customer organization identifier
+func (o GetPrecisionTimeServicesDataAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+// Customer organization name
+func (o GetPrecisionTimeServicesDataAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// Reseller account name
+func (o GetPrecisionTimeServicesDataAccountOutput) ResellerAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.ResellerAccountName }).(pulumi.StringOutput)
+}
+
+// Reseller account number
+func (o GetPrecisionTimeServicesDataAccountOutput) ResellerAccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) int { return v.ResellerAccountNumber }).(pulumi.IntOutput)
+}
+
+// Reseller customer organization identifier
+func (o GetPrecisionTimeServicesDataAccountOutput) ResellerOrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) int { return v.ResellerOrgId }).(pulumi.IntOutput)
+}
+
+// Reseller account ucmId
+func (o GetPrecisionTimeServicesDataAccountOutput) ResellerUcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.ResellerUcmId }).(pulumi.StringOutput)
+}
+
+// Global organization name
+func (o GetPrecisionTimeServicesDataAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataAccount) string { return v.UcmId }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataChangeLog struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetPrecisionTimeServicesDataChangeLogInput is an input type that accepts GetPrecisionTimeServicesDataChangeLogArgs and GetPrecisionTimeServicesDataChangeLogOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataChangeLogInput` via:
+//
+//	GetPrecisionTimeServicesDataChangeLogArgs{...}
+type GetPrecisionTimeServicesDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataChangeLogOutput() GetPrecisionTimeServicesDataChangeLogOutput
+	ToGetPrecisionTimeServicesDataChangeLogOutputWithContext(context.Context) GetPrecisionTimeServicesDataChangeLogOutput
+}
+
+type GetPrecisionTimeServicesDataChangeLogArgs struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetPrecisionTimeServicesDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataChangeLog)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataChangeLogArgs) ToGetPrecisionTimeServicesDataChangeLogOutput() GetPrecisionTimeServicesDataChangeLogOutput {
+	return i.ToGetPrecisionTimeServicesDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataChangeLogArgs) ToGetPrecisionTimeServicesDataChangeLogOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataChangeLogOutput)
+}
+
+type GetPrecisionTimeServicesDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataChangeLog)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataChangeLogOutput) ToGetPrecisionTimeServicesDataChangeLogOutput() GetPrecisionTimeServicesDataChangeLogOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataChangeLogOutput) ToGetPrecisionTimeServicesDataChangeLogOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataChangeLogOutput {
+	return o
+}
+
+// User name of creator of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o GetPrecisionTimeServicesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataConnection struct {
+	// Link to the Equinix Fabric Connection associated with the Precision Time Service
+	Href string `pulumi:"href"`
+	// Type of the Equinix Fabric Connection associated with the Precision Time Service
+	Type string `pulumi:"type"`
+	// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetPrecisionTimeServicesDataConnectionInput is an input type that accepts GetPrecisionTimeServicesDataConnectionArgs and GetPrecisionTimeServicesDataConnectionOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataConnectionInput` via:
+//
+//	GetPrecisionTimeServicesDataConnectionArgs{...}
+type GetPrecisionTimeServicesDataConnectionInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataConnectionOutput() GetPrecisionTimeServicesDataConnectionOutput
+	ToGetPrecisionTimeServicesDataConnectionOutputWithContext(context.Context) GetPrecisionTimeServicesDataConnectionOutput
+}
+
+type GetPrecisionTimeServicesDataConnectionArgs struct {
+	// Link to the Equinix Fabric Connection associated with the Precision Time Service
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of the Equinix Fabric Connection associated with the Precision Time Service
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetPrecisionTimeServicesDataConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataConnection)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataConnectionArgs) ToGetPrecisionTimeServicesDataConnectionOutput() GetPrecisionTimeServicesDataConnectionOutput {
+	return i.ToGetPrecisionTimeServicesDataConnectionOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataConnectionArgs) ToGetPrecisionTimeServicesDataConnectionOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataConnectionOutput)
+}
+
+// GetPrecisionTimeServicesDataConnectionArrayInput is an input type that accepts GetPrecisionTimeServicesDataConnectionArray and GetPrecisionTimeServicesDataConnectionArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataConnectionArrayInput` via:
+//
+//	GetPrecisionTimeServicesDataConnectionArray{ GetPrecisionTimeServicesDataConnectionArgs{...} }
+type GetPrecisionTimeServicesDataConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataConnectionArrayOutput() GetPrecisionTimeServicesDataConnectionArrayOutput
+	ToGetPrecisionTimeServicesDataConnectionArrayOutputWithContext(context.Context) GetPrecisionTimeServicesDataConnectionArrayOutput
+}
+
+type GetPrecisionTimeServicesDataConnectionArray []GetPrecisionTimeServicesDataConnectionInput
+
+func (GetPrecisionTimeServicesDataConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesDataConnection)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataConnectionArray) ToGetPrecisionTimeServicesDataConnectionArrayOutput() GetPrecisionTimeServicesDataConnectionArrayOutput {
+	return i.ToGetPrecisionTimeServicesDataConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataConnectionArray) ToGetPrecisionTimeServicesDataConnectionArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataConnectionArrayOutput)
+}
+
+type GetPrecisionTimeServicesDataConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataConnection)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataConnectionOutput) ToGetPrecisionTimeServicesDataConnectionOutput() GetPrecisionTimeServicesDataConnectionOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataConnectionOutput) ToGetPrecisionTimeServicesDataConnectionOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataConnectionOutput {
+	return o
+}
+
+// Link to the Equinix Fabric Connection associated with the Precision Time Service
+func (o GetPrecisionTimeServicesDataConnectionOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataConnection) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of the Equinix Fabric Connection associated with the Precision Time Service
+func (o GetPrecisionTimeServicesDataConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataConnection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+func (o GetPrecisionTimeServicesDataConnectionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataConnection) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesDataConnection)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataConnectionArrayOutput) ToGetPrecisionTimeServicesDataConnectionArrayOutput() GetPrecisionTimeServicesDataConnectionArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataConnectionArrayOutput) ToGetPrecisionTimeServicesDataConnectionArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataConnectionArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataConnectionArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServicesDataConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicesDataConnection {
+		return vs[0].([]GetPrecisionTimeServicesDataConnection)[vs[1].(int)]
+	}).(GetPrecisionTimeServicesDataConnectionOutput)
+}
+
+type GetPrecisionTimeServicesDataIpv4 struct {
+	// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+	DefaultGateway string `pulumi:"defaultGateway"`
+	// IPv4 address that defines the range of consecutive subnets in the network.
+	NetworkMask string `pulumi:"networkMask"`
+	// IPv4 address for the Primary Timing Master Server.
+	Primary string `pulumi:"primary"`
+	// IPv4 address for the Secondary Timing Master Server.
+	Secondary string `pulumi:"secondary"`
+}
+
+// GetPrecisionTimeServicesDataIpv4Input is an input type that accepts GetPrecisionTimeServicesDataIpv4Args and GetPrecisionTimeServicesDataIpv4Output values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataIpv4Input` via:
+//
+//	GetPrecisionTimeServicesDataIpv4Args{...}
+type GetPrecisionTimeServicesDataIpv4Input interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataIpv4Output() GetPrecisionTimeServicesDataIpv4Output
+	ToGetPrecisionTimeServicesDataIpv4OutputWithContext(context.Context) GetPrecisionTimeServicesDataIpv4Output
+}
+
+type GetPrecisionTimeServicesDataIpv4Args struct {
+	// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+	DefaultGateway pulumi.StringInput `pulumi:"defaultGateway"`
+	// IPv4 address that defines the range of consecutive subnets in the network.
+	NetworkMask pulumi.StringInput `pulumi:"networkMask"`
+	// IPv4 address for the Primary Timing Master Server.
+	Primary pulumi.StringInput `pulumi:"primary"`
+	// IPv4 address for the Secondary Timing Master Server.
+	Secondary pulumi.StringInput `pulumi:"secondary"`
+}
+
+func (GetPrecisionTimeServicesDataIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataIpv4)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataIpv4Args) ToGetPrecisionTimeServicesDataIpv4Output() GetPrecisionTimeServicesDataIpv4Output {
+	return i.ToGetPrecisionTimeServicesDataIpv4OutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataIpv4Args) ToGetPrecisionTimeServicesDataIpv4OutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataIpv4Output)
+}
+
+type GetPrecisionTimeServicesDataIpv4Output struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataIpv4)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataIpv4Output) ToGetPrecisionTimeServicesDataIpv4Output() GetPrecisionTimeServicesDataIpv4Output {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataIpv4Output) ToGetPrecisionTimeServicesDataIpv4OutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataIpv4Output {
+	return o
+}
+
+// IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+func (o GetPrecisionTimeServicesDataIpv4Output) DefaultGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataIpv4) string { return v.DefaultGateway }).(pulumi.StringOutput)
+}
+
+// IPv4 address that defines the range of consecutive subnets in the network.
+func (o GetPrecisionTimeServicesDataIpv4Output) NetworkMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataIpv4) string { return v.NetworkMask }).(pulumi.StringOutput)
+}
+
+// IPv4 address for the Primary Timing Master Server.
+func (o GetPrecisionTimeServicesDataIpv4Output) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataIpv4) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+// IPv4 address for the Secondary Timing Master Server.
+func (o GetPrecisionTimeServicesDataIpv4Output) Secondary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataIpv4) string { return v.Secondary }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataNtpAdvancedConfiguration struct {
+	// The plaintext authentication key. For ASCII type, the key\
+	// \ must contain printable ASCII characters, range 10-20 characters. For\
+	// \ HEX type, range should be 10-40 characters
+	Key *string `pulumi:"key"`
+	// The authentication Key ID
+	KeyNumber *int `pulumi:"keyNumber"`
+	// md5 Authentication type
+	Type *string `pulumi:"type"`
+}
+
+// GetPrecisionTimeServicesDataNtpAdvancedConfigurationInput is an input type that accepts GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs and GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataNtpAdvancedConfigurationInput` via:
+//
+//	GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs{...}
+type GetPrecisionTimeServicesDataNtpAdvancedConfigurationInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput() GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput
+	ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationOutputWithContext(context.Context) GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput
+}
+
+type GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs struct {
+	// The plaintext authentication key. For ASCII type, the key\
+	// \ must contain printable ASCII characters, range 10-20 characters. For\
+	// \ HEX type, range should be 10-40 characters
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The authentication Key ID
+	KeyNumber pulumi.IntPtrInput `pulumi:"keyNumber"`
+	// md5 Authentication type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput() GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput {
+	return i.ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput)
+}
+
+// GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayInput is an input type that accepts GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray and GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayInput` via:
+//
+//	GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray{ GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs{...} }
+type GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput() GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput
+	ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutputWithContext(context.Context) GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput
+}
+
+type GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray []GetPrecisionTimeServicesDataNtpAdvancedConfigurationInput
+
+func (GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesDataNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput() GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput {
+	return i.ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput)
+}
+
+type GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput() GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput {
+	return o
+}
+
+// The plaintext authentication key. For ASCII type, the key\
+// \ must contain printable ASCII characters, range 10-20 characters. For\
+// \ HEX type, range should be 10-40 characters
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataNtpAdvancedConfiguration) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The authentication Key ID
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput) KeyNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataNtpAdvancedConfiguration) *int { return v.KeyNumber }).(pulumi.IntPtrOutput)
+}
+
+// md5 Authentication type
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataNtpAdvancedConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesDataNtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput() GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput) ToGetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicesDataNtpAdvancedConfiguration {
+		return vs[0].([]GetPrecisionTimeServicesDataNtpAdvancedConfiguration)[vs[1].(int)]
+	}).(GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput)
+}
+
+type GetPrecisionTimeServicesDataOrder struct {
+	// Customer reference number
+	CustomerReferenceNumber string `pulumi:"customerReferenceNumber"`
+	// Order reference number
+	OrderNumber string `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber string `pulumi:"purchaseOrderNumber"`
+}
+
+// GetPrecisionTimeServicesDataOrderInput is an input type that accepts GetPrecisionTimeServicesDataOrderArgs and GetPrecisionTimeServicesDataOrderOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataOrderInput` via:
+//
+//	GetPrecisionTimeServicesDataOrderArgs{...}
+type GetPrecisionTimeServicesDataOrderInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataOrderOutput() GetPrecisionTimeServicesDataOrderOutput
+	ToGetPrecisionTimeServicesDataOrderOutputWithContext(context.Context) GetPrecisionTimeServicesDataOrderOutput
+}
+
+type GetPrecisionTimeServicesDataOrderArgs struct {
+	// Customer reference number
+	CustomerReferenceNumber pulumi.StringInput `pulumi:"customerReferenceNumber"`
+	// Order reference number
+	OrderNumber pulumi.StringInput `pulumi:"orderNumber"`
+	// Purchase order number
+	PurchaseOrderNumber pulumi.StringInput `pulumi:"purchaseOrderNumber"`
+}
+
+func (GetPrecisionTimeServicesDataOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataOrder)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataOrderArgs) ToGetPrecisionTimeServicesDataOrderOutput() GetPrecisionTimeServicesDataOrderOutput {
+	return i.ToGetPrecisionTimeServicesDataOrderOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataOrderArgs) ToGetPrecisionTimeServicesDataOrderOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataOrderOutput)
+}
+
+type GetPrecisionTimeServicesDataOrderOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataOrder)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataOrderOutput) ToGetPrecisionTimeServicesDataOrderOutput() GetPrecisionTimeServicesDataOrderOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataOrderOutput) ToGetPrecisionTimeServicesDataOrderOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataOrderOutput {
+	return o
+}
+
+// Customer reference number
+func (o GetPrecisionTimeServicesDataOrderOutput) CustomerReferenceNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataOrder) string { return v.CustomerReferenceNumber }).(pulumi.StringOutput)
+}
+
+// Order reference number
+func (o GetPrecisionTimeServicesDataOrderOutput) OrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataOrder) string { return v.OrderNumber }).(pulumi.StringOutput)
+}
+
+// Purchase order number
+func (o GetPrecisionTimeServicesDataOrderOutput) PurchaseOrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataOrder) string { return v.PurchaseOrderNumber }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataPackage struct {
+	// Time Precision Package Code for the desired billing package
+	Code string `pulumi:"code"`
+	// Time Precision Package HREF link to corresponding resource in Equinix Portal
+	Href string `pulumi:"href"`
+}
+
+// GetPrecisionTimeServicesDataPackageInput is an input type that accepts GetPrecisionTimeServicesDataPackageArgs and GetPrecisionTimeServicesDataPackageOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataPackageInput` via:
+//
+//	GetPrecisionTimeServicesDataPackageArgs{...}
+type GetPrecisionTimeServicesDataPackageInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataPackageOutput() GetPrecisionTimeServicesDataPackageOutput
+	ToGetPrecisionTimeServicesDataPackageOutputWithContext(context.Context) GetPrecisionTimeServicesDataPackageOutput
+}
+
+type GetPrecisionTimeServicesDataPackageArgs struct {
+	// Time Precision Package Code for the desired billing package
+	Code pulumi.StringInput `pulumi:"code"`
+	// Time Precision Package HREF link to corresponding resource in Equinix Portal
+	Href pulumi.StringInput `pulumi:"href"`
+}
+
+func (GetPrecisionTimeServicesDataPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPackage)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataPackageArgs) ToGetPrecisionTimeServicesDataPackageOutput() GetPrecisionTimeServicesDataPackageOutput {
+	return i.ToGetPrecisionTimeServicesDataPackageOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataPackageArgs) ToGetPrecisionTimeServicesDataPackageOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataPackageOutput)
+}
+
+type GetPrecisionTimeServicesDataPackageOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPackage)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataPackageOutput) ToGetPrecisionTimeServicesDataPackageOutput() GetPrecisionTimeServicesDataPackageOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPackageOutput) ToGetPrecisionTimeServicesDataPackageOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPackageOutput {
+	return o
+}
+
+// Time Precision Package Code for the desired billing package
+func (o GetPrecisionTimeServicesDataPackageOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPackage) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Time Precision Package HREF link to corresponding resource in Equinix Portal
+func (o GetPrecisionTimeServicesDataPackageOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPackage) string { return v.Href }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePrice struct {
+	// offering price charge
+	Charges []GetPrecisionTimeServicesDataPrecisionTimePriceCharge `pulumi:"charges"`
+	// Offering price currency
+	Currency string `pulumi:"currency"`
+}
+
+// GetPrecisionTimeServicesDataPrecisionTimePriceInput is an input type that accepts GetPrecisionTimeServicesDataPrecisionTimePriceArgs and GetPrecisionTimeServicesDataPrecisionTimePriceOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataPrecisionTimePriceInput` via:
+//
+//	GetPrecisionTimeServicesDataPrecisionTimePriceArgs{...}
+type GetPrecisionTimeServicesDataPrecisionTimePriceInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataPrecisionTimePriceOutput() GetPrecisionTimeServicesDataPrecisionTimePriceOutput
+	ToGetPrecisionTimeServicesDataPrecisionTimePriceOutputWithContext(context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceOutput
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePriceArgs struct {
+	// offering price charge
+	Charges GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayInput `pulumi:"charges"`
+	// Offering price currency
+	Currency pulumi.StringInput `pulumi:"currency"`
+}
+
+func (GetPrecisionTimeServicesDataPrecisionTimePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePrice)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataPrecisionTimePriceArgs) ToGetPrecisionTimeServicesDataPrecisionTimePriceOutput() GetPrecisionTimeServicesDataPrecisionTimePriceOutput {
+	return i.ToGetPrecisionTimeServicesDataPrecisionTimePriceOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataPrecisionTimePriceArgs) ToGetPrecisionTimeServicesDataPrecisionTimePriceOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataPrecisionTimePriceOutput)
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePriceOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataPrecisionTimePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePrice)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceOutput) ToGetPrecisionTimeServicesDataPrecisionTimePriceOutput() GetPrecisionTimeServicesDataPrecisionTimePriceOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceOutput) ToGetPrecisionTimeServicesDataPrecisionTimePriceOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceOutput {
+	return o
+}
+
+// offering price charge
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceOutput) Charges() GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPrecisionTimePrice) []GetPrecisionTimeServicesDataPrecisionTimePriceCharge {
+		return v.Charges
+	}).(GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput)
+}
+
+// Offering price currency
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPrecisionTimePrice) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePriceCharge struct {
+	// Offering price
+	Price float64 `pulumi:"price"`
+	// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+	Type string `pulumi:"type"`
+}
+
+// GetPrecisionTimeServicesDataPrecisionTimePriceChargeInput is an input type that accepts GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs and GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataPrecisionTimePriceChargeInput` via:
+//
+//	GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs{...}
+type GetPrecisionTimeServicesDataPrecisionTimePriceChargeInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput() GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput
+	ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeOutputWithContext(context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs struct {
+	// Offering price
+	Price pulumi.Float64Input `pulumi:"price"`
+	// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput() GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput {
+	return i.ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput)
+}
+
+// GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayInput is an input type that accepts GetPrecisionTimeServicesDataPrecisionTimePriceChargeArray and GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayInput` via:
+//
+//	GetPrecisionTimeServicesDataPrecisionTimePriceChargeArray{ GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs{...} }
+type GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput() GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput
+	ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutputWithContext(context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePriceChargeArray []GetPrecisionTimeServicesDataPrecisionTimePriceChargeInput
+
+func (GetPrecisionTimeServicesDataPrecisionTimePriceChargeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesDataPrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataPrecisionTimePriceChargeArray) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput() GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput {
+	return i.ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataPrecisionTimePriceChargeArray) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput)
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput() GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput {
+	return o
+}
+
+// Offering price
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput) Price() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPrecisionTimePriceCharge) float64 { return v.Price }).(pulumi.Float64Output)
+}
+
+// Price charge type; MONTHLY*RECURRING, NON*RECURRING
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPrecisionTimePriceCharge) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesDataPrecisionTimePriceCharge)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput() GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput) ToGetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicesDataPrecisionTimePriceCharge {
+		return vs[0].([]GetPrecisionTimeServicesDataPrecisionTimePriceCharge)[vs[1].(int)]
+	}).(GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput)
+}
+
+type GetPrecisionTimeServicesDataProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetPrecisionTimeServicesDataProjectInput is an input type that accepts GetPrecisionTimeServicesDataProjectArgs and GetPrecisionTimeServicesDataProjectOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataProjectInput` via:
+//
+//	GetPrecisionTimeServicesDataProjectArgs{...}
+type GetPrecisionTimeServicesDataProjectInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataProjectOutput() GetPrecisionTimeServicesDataProjectOutput
+	ToGetPrecisionTimeServicesDataProjectOutputWithContext(context.Context) GetPrecisionTimeServicesDataProjectOutput
+}
+
+type GetPrecisionTimeServicesDataProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetPrecisionTimeServicesDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataProject)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataProjectArgs) ToGetPrecisionTimeServicesDataProjectOutput() GetPrecisionTimeServicesDataProjectOutput {
+	return i.ToGetPrecisionTimeServicesDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataProjectArgs) ToGetPrecisionTimeServicesDataProjectOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataProjectOutput)
+}
+
+func (i GetPrecisionTimeServicesDataProjectArgs) ToGetPrecisionTimeServicesDataProjectPtrOutput() GetPrecisionTimeServicesDataProjectPtrOutput {
+	return i.ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataProjectArgs) ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataProjectOutput).ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(ctx)
+}
+
+// GetPrecisionTimeServicesDataProjectPtrInput is an input type that accepts GetPrecisionTimeServicesDataProjectArgs, GetPrecisionTimeServicesDataProjectPtr and GetPrecisionTimeServicesDataProjectPtrOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataProjectPtrInput` via:
+//
+//	        GetPrecisionTimeServicesDataProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPrecisionTimeServicesDataProjectPtrInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataProjectPtrOutput() GetPrecisionTimeServicesDataProjectPtrOutput
+	ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(context.Context) GetPrecisionTimeServicesDataProjectPtrOutput
+}
+
+type getPrecisionTimeServicesDataProjectPtrType GetPrecisionTimeServicesDataProjectArgs
+
+func GetPrecisionTimeServicesDataProjectPtr(v *GetPrecisionTimeServicesDataProjectArgs) GetPrecisionTimeServicesDataProjectPtrInput {
+	return (*getPrecisionTimeServicesDataProjectPtrType)(v)
+}
+
+func (*getPrecisionTimeServicesDataProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicesDataProject)(nil)).Elem()
+}
+
+func (i *getPrecisionTimeServicesDataProjectPtrType) ToGetPrecisionTimeServicesDataProjectPtrOutput() GetPrecisionTimeServicesDataProjectPtrOutput {
+	return i.ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *getPrecisionTimeServicesDataProjectPtrType) ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataProjectPtrOutput)
+}
+
+type GetPrecisionTimeServicesDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataProject)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataProjectOutput) ToGetPrecisionTimeServicesDataProjectOutput() GetPrecisionTimeServicesDataProjectOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataProjectOutput) ToGetPrecisionTimeServicesDataProjectOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataProjectOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataProjectOutput) ToGetPrecisionTimeServicesDataProjectPtrOutput() GetPrecisionTimeServicesDataProjectPtrOutput {
+	return o.ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(context.Background())
+}
+
+func (o GetPrecisionTimeServicesDataProjectOutput) ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrecisionTimeServicesDataProject) *GetPrecisionTimeServicesDataProject {
+		return &v
+	}).(GetPrecisionTimeServicesDataProjectPtrOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetPrecisionTimeServicesDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetPrecisionTimeServicesDataProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicesDataProject)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataProjectPtrOutput) ToGetPrecisionTimeServicesDataProjectPtrOutput() GetPrecisionTimeServicesDataProjectPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataProjectPtrOutput) ToGetPrecisionTimeServicesDataProjectPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataProjectPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataProjectPtrOutput) Elem() GetPrecisionTimeServicesDataProjectOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataProject) GetPrecisionTimeServicesDataProject {
+		if v != nil {
+			return *v
+		}
+		var ret GetPrecisionTimeServicesDataProject
+		return ret
+	}).(GetPrecisionTimeServicesDataProjectOutput)
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetPrecisionTimeServicesDataProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicesDataPtpAdvancedConfiguration struct {
+	// The PTP domain value
+	Domain *int `pulumi:"domain"`
+	// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+	GrantTime *int `pulumi:"grantTime"`
+	// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+	LogAnnounceInterval *int `pulumi:"logAnnounceInterval"`
+	// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogDelayReqInterval *int `pulumi:"logDelayReqInterval"`
+	// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogSyncInterval *int `pulumi:"logSyncInterval"`
+	// The priority1 value determines the best primary clock, Lower value indicates higher priority
+	Priority1 *int `pulumi:"priority1"`
+	// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+	Priority2 *int `pulumi:"priority2"`
+	// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+	TimeScale *string `pulumi:"timeScale"`
+	// ptp transport mode
+	TransportMode *string `pulumi:"transportMode"`
+}
+
+// GetPrecisionTimeServicesDataPtpAdvancedConfigurationInput is an input type that accepts GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs and GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataPtpAdvancedConfigurationInput` via:
+//
+//	GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs{...}
+type GetPrecisionTimeServicesDataPtpAdvancedConfigurationInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput
+	ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationOutputWithContext(context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput
+}
+
+type GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs struct {
+	// The PTP domain value
+	Domain pulumi.IntPtrInput `pulumi:"domain"`
+	// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+	GrantTime pulumi.IntPtrInput `pulumi:"grantTime"`
+	// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+	LogAnnounceInterval pulumi.IntPtrInput `pulumi:"logAnnounceInterval"`
+	// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogDelayReqInterval pulumi.IntPtrInput `pulumi:"logDelayReqInterval"`
+	// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+	LogSyncInterval pulumi.IntPtrInput `pulumi:"logSyncInterval"`
+	// The priority1 value determines the best primary clock, Lower value indicates higher priority
+	Priority1 pulumi.IntPtrInput `pulumi:"priority1"`
+	// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+	Priority2 pulumi.IntPtrInput `pulumi:"priority2"`
+	// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+	TimeScale pulumi.StringPtrInput `pulumi:"timeScale"`
+	// ptp transport mode
+	TransportMode pulumi.StringPtrInput `pulumi:"transportMode"`
+}
+
+func (GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput {
+	return i.ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput)
+}
+
+func (i GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return i.ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput).ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(ctx)
+}
+
+// GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrInput is an input type that accepts GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs, GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtr and GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrInput` via:
+//
+//	        GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput
+	ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput
+}
+
+type getPrecisionTimeServicesDataPtpAdvancedConfigurationPtrType GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs
+
+func GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtr(v *GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs) GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrInput {
+	return (*getPrecisionTimeServicesDataPtpAdvancedConfigurationPtrType)(v)
+}
+
+func (*getPrecisionTimeServicesDataPtpAdvancedConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicesDataPtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (i *getPrecisionTimeServicesDataPtpAdvancedConfigurationPtrType) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return i.ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *getPrecisionTimeServicesDataPtpAdvancedConfigurationPtrType) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput)
+}
+
+type GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataPtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return o.ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *GetPrecisionTimeServicesDataPtpAdvancedConfiguration {
+		return &v
+	}).(GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput)
+}
+
+// The PTP domain value
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) Domain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int { return v.Domain }).(pulumi.IntPtrOutput)
+}
+
+// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) GrantTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int { return v.GrantTime }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) LogAnnounceInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int { return v.LogAnnounceInterval }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) LogDelayReqInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int { return v.LogDelayReqInterval }).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) LogSyncInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int { return v.LogSyncInterval }).(pulumi.IntPtrOutput)
+}
+
+// The priority1 value determines the best primary clock, Lower value indicates higher priority
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) Priority1() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int { return v.Priority1 }).(pulumi.IntPtrOutput)
+}
+
+// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) Priority2() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int { return v.Priority2 }).(pulumi.IntPtrOutput)
+}
+
+// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) TimeScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *string { return v.TimeScale }).(pulumi.StringPtrOutput)
+}
+
+// ptp transport mode
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput) TransportMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *string { return v.TransportMode }).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicesDataPtpAdvancedConfiguration)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput() GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) ToGetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) Elem() GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) GetPrecisionTimeServicesDataPtpAdvancedConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GetPrecisionTimeServicesDataPtpAdvancedConfiguration
+		return ret
+	}).(GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput)
+}
+
+// The PTP domain value
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) Domain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) GrantTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GrantTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) LogAnnounceInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnnounceInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) LogDelayReqInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogDelayReqInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) LogSyncInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogSyncInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority1 value determines the best primary clock, Lower value indicates higher priority
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) Priority1() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority1
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) Priority2() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority2
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) TimeScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeScale
+	}).(pulumi.StringPtrOutput)
+}
+
+// ptp transport mode
+func (o GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput) TransportMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesDataPtpAdvancedConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransportMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicesFilter struct {
+	// Operation applied to the values of the filter
+	Operator string `pulumi:"operator"`
+	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+	Or *bool `pulumi:"or"`
+	// Property to apply the filter to
+	Property string `pulumi:"property"`
+	// List of values to apply the operation to for the specified property
+	Values []string `pulumi:"values"`
+}
+
+// GetPrecisionTimeServicesFilterInput is an input type that accepts GetPrecisionTimeServicesFilterArgs and GetPrecisionTimeServicesFilterOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesFilterInput` via:
+//
+//	GetPrecisionTimeServicesFilterArgs{...}
+type GetPrecisionTimeServicesFilterInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesFilterOutput() GetPrecisionTimeServicesFilterOutput
+	ToGetPrecisionTimeServicesFilterOutputWithContext(context.Context) GetPrecisionTimeServicesFilterOutput
+}
+
+type GetPrecisionTimeServicesFilterArgs struct {
+	// Operation applied to the values of the filter
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+	Or pulumi.BoolPtrInput `pulumi:"or"`
+	// Property to apply the filter to
+	Property pulumi.StringInput `pulumi:"property"`
+	// List of values to apply the operation to for the specified property
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetPrecisionTimeServicesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesFilter)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesFilterArgs) ToGetPrecisionTimeServicesFilterOutput() GetPrecisionTimeServicesFilterOutput {
+	return i.ToGetPrecisionTimeServicesFilterOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesFilterArgs) ToGetPrecisionTimeServicesFilterOutputWithContext(ctx context.Context) GetPrecisionTimeServicesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesFilterOutput)
+}
+
+// GetPrecisionTimeServicesFilterArrayInput is an input type that accepts GetPrecisionTimeServicesFilterArray and GetPrecisionTimeServicesFilterArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesFilterArrayInput` via:
+//
+//	GetPrecisionTimeServicesFilterArray{ GetPrecisionTimeServicesFilterArgs{...} }
+type GetPrecisionTimeServicesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesFilterArrayOutput() GetPrecisionTimeServicesFilterArrayOutput
+	ToGetPrecisionTimeServicesFilterArrayOutputWithContext(context.Context) GetPrecisionTimeServicesFilterArrayOutput
+}
+
+type GetPrecisionTimeServicesFilterArray []GetPrecisionTimeServicesFilterInput
+
+func (GetPrecisionTimeServicesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesFilter)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesFilterArray) ToGetPrecisionTimeServicesFilterArrayOutput() GetPrecisionTimeServicesFilterArrayOutput {
+	return i.ToGetPrecisionTimeServicesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesFilterArray) ToGetPrecisionTimeServicesFilterArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesFilterArrayOutput)
+}
+
+type GetPrecisionTimeServicesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesFilter)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesFilterOutput) ToGetPrecisionTimeServicesFilterOutput() GetPrecisionTimeServicesFilterOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesFilterOutput) ToGetPrecisionTimeServicesFilterOutputWithContext(ctx context.Context) GetPrecisionTimeServicesFilterOutput {
+	return o
+}
+
+// Operation applied to the values of the filter
+func (o GetPrecisionTimeServicesFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+func (o GetPrecisionTimeServicesFilterOutput) Or() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesFilter) *bool { return v.Or }).(pulumi.BoolPtrOutput)
+}
+
+// Property to apply the filter to
+func (o GetPrecisionTimeServicesFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// List of values to apply the operation to for the specified property
+func (o GetPrecisionTimeServicesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetPrecisionTimeServicesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesFilter)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesFilterArrayOutput) ToGetPrecisionTimeServicesFilterArrayOutput() GetPrecisionTimeServicesFilterArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesFilterArrayOutput) ToGetPrecisionTimeServicesFilterArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesFilterArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesFilterArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServicesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicesFilter {
+		return vs[0].([]GetPrecisionTimeServicesFilter)[vs[1].(int)]
+	}).(GetPrecisionTimeServicesFilterOutput)
+}
+
+type GetPrecisionTimeServicesPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+}
+
+// GetPrecisionTimeServicesPaginationInput is an input type that accepts GetPrecisionTimeServicesPaginationArgs and GetPrecisionTimeServicesPaginationOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesPaginationInput` via:
+//
+//	GetPrecisionTimeServicesPaginationArgs{...}
+type GetPrecisionTimeServicesPaginationInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesPaginationOutput() GetPrecisionTimeServicesPaginationOutput
+	ToGetPrecisionTimeServicesPaginationOutputWithContext(context.Context) GetPrecisionTimeServicesPaginationOutput
+}
+
+type GetPrecisionTimeServicesPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+}
+
+func (GetPrecisionTimeServicesPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesPagination)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesPaginationArgs) ToGetPrecisionTimeServicesPaginationOutput() GetPrecisionTimeServicesPaginationOutput {
+	return i.ToGetPrecisionTimeServicesPaginationOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesPaginationArgs) ToGetPrecisionTimeServicesPaginationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesPaginationOutput)
+}
+
+func (i GetPrecisionTimeServicesPaginationArgs) ToGetPrecisionTimeServicesPaginationPtrOutput() GetPrecisionTimeServicesPaginationPtrOutput {
+	return i.ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesPaginationArgs) ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesPaginationOutput).ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(ctx)
+}
+
+// GetPrecisionTimeServicesPaginationPtrInput is an input type that accepts GetPrecisionTimeServicesPaginationArgs, GetPrecisionTimeServicesPaginationPtr and GetPrecisionTimeServicesPaginationPtrOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesPaginationPtrInput` via:
+//
+//	        GetPrecisionTimeServicesPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPrecisionTimeServicesPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesPaginationPtrOutput() GetPrecisionTimeServicesPaginationPtrOutput
+	ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(context.Context) GetPrecisionTimeServicesPaginationPtrOutput
+}
+
+type getPrecisionTimeServicesPaginationPtrType GetPrecisionTimeServicesPaginationArgs
+
+func GetPrecisionTimeServicesPaginationPtr(v *GetPrecisionTimeServicesPaginationArgs) GetPrecisionTimeServicesPaginationPtrInput {
+	return (*getPrecisionTimeServicesPaginationPtrType)(v)
+}
+
+func (*getPrecisionTimeServicesPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicesPagination)(nil)).Elem()
+}
+
+func (i *getPrecisionTimeServicesPaginationPtrType) ToGetPrecisionTimeServicesPaginationPtrOutput() GetPrecisionTimeServicesPaginationPtrOutput {
+	return i.ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getPrecisionTimeServicesPaginationPtrType) ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesPaginationPtrOutput)
+}
+
+type GetPrecisionTimeServicesPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesPagination)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesPaginationOutput) ToGetPrecisionTimeServicesPaginationOutput() GetPrecisionTimeServicesPaginationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesPaginationOutput) ToGetPrecisionTimeServicesPaginationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesPaginationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesPaginationOutput) ToGetPrecisionTimeServicesPaginationPtrOutput() GetPrecisionTimeServicesPaginationPtrOutput {
+	return o.ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetPrecisionTimeServicesPaginationOutput) ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPrecisionTimeServicesPagination) *GetPrecisionTimeServicesPagination {
+		return &v
+	}).(GetPrecisionTimeServicesPaginationPtrOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetPrecisionTimeServicesPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetPrecisionTimeServicesPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+type GetPrecisionTimeServicesPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPrecisionTimeServicesPagination)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesPaginationPtrOutput) ToGetPrecisionTimeServicesPaginationPtrOutput() GetPrecisionTimeServicesPaginationPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesPaginationPtrOutput) ToGetPrecisionTimeServicesPaginationPtrOutputWithContext(ctx context.Context) GetPrecisionTimeServicesPaginationPtrOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesPaginationPtrOutput) Elem() GetPrecisionTimeServicesPaginationOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesPagination) GetPrecisionTimeServicesPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetPrecisionTimeServicesPagination
+		return ret
+	}).(GetPrecisionTimeServicesPaginationOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetPrecisionTimeServicesPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetPrecisionTimeServicesPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPrecisionTimeServicesPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPrecisionTimeServicesSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+	Property *string `pulumi:"property"`
+}
+
+// GetPrecisionTimeServicesSortInput is an input type that accepts GetPrecisionTimeServicesSortArgs and GetPrecisionTimeServicesSortOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesSortInput` via:
+//
+//	GetPrecisionTimeServicesSortArgs{...}
+type GetPrecisionTimeServicesSortInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesSortOutput() GetPrecisionTimeServicesSortOutput
+	ToGetPrecisionTimeServicesSortOutputWithContext(context.Context) GetPrecisionTimeServicesSortOutput
+}
+
+type GetPrecisionTimeServicesSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetPrecisionTimeServicesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesSort)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesSortArgs) ToGetPrecisionTimeServicesSortOutput() GetPrecisionTimeServicesSortOutput {
+	return i.ToGetPrecisionTimeServicesSortOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesSortArgs) ToGetPrecisionTimeServicesSortOutputWithContext(ctx context.Context) GetPrecisionTimeServicesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesSortOutput)
+}
+
+// GetPrecisionTimeServicesSortArrayInput is an input type that accepts GetPrecisionTimeServicesSortArray and GetPrecisionTimeServicesSortArrayOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesSortArrayInput` via:
+//
+//	GetPrecisionTimeServicesSortArray{ GetPrecisionTimeServicesSortArgs{...} }
+type GetPrecisionTimeServicesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesSortArrayOutput() GetPrecisionTimeServicesSortArrayOutput
+	ToGetPrecisionTimeServicesSortArrayOutputWithContext(context.Context) GetPrecisionTimeServicesSortArrayOutput
+}
+
+type GetPrecisionTimeServicesSortArray []GetPrecisionTimeServicesSortInput
+
+func (GetPrecisionTimeServicesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesSort)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesSortArray) ToGetPrecisionTimeServicesSortArrayOutput() GetPrecisionTimeServicesSortArrayOutput {
+	return i.ToGetPrecisionTimeServicesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesSortArray) ToGetPrecisionTimeServicesSortArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesSortArrayOutput)
+}
+
+type GetPrecisionTimeServicesSortOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesSort)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesSortOutput) ToGetPrecisionTimeServicesSortOutput() GetPrecisionTimeServicesSortOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesSortOutput) ToGetPrecisionTimeServicesSortOutputWithContext(ctx context.Context) GetPrecisionTimeServicesSortOutput {
+	return o
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetPrecisionTimeServicesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+func (o GetPrecisionTimeServicesSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetPrecisionTimeServicesSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrecisionTimeServicesSort)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesSortArrayOutput) ToGetPrecisionTimeServicesSortArrayOutput() GetPrecisionTimeServicesSortArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesSortArrayOutput) ToGetPrecisionTimeServicesSortArrayOutputWithContext(ctx context.Context) GetPrecisionTimeServicesSortArrayOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesSortArrayOutput) Index(i pulumi.IntInput) GetPrecisionTimeServicesSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicesSort {
+		return vs[0].([]GetPrecisionTimeServicesSort)[vs[1].(int)]
+	}).(GetPrecisionTimeServicesSortOutput)
+}
+
+type GetRouteAggregationChange struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href string `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteAggregationChangeInput is an input type that accepts GetRouteAggregationChangeArgs and GetRouteAggregationChangeOutput values.
+// You can construct a concrete instance of `GetRouteAggregationChangeInput` via:
+//
+//	GetRouteAggregationChangeArgs{...}
+type GetRouteAggregationChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationChangeOutput() GetRouteAggregationChangeOutput
+	ToGetRouteAggregationChangeOutputWithContext(context.Context) GetRouteAggregationChangeOutput
+}
+
+type GetRouteAggregationChangeArgs struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteAggregationChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationChange)(nil)).Elem()
+}
+
+func (i GetRouteAggregationChangeArgs) ToGetRouteAggregationChangeOutput() GetRouteAggregationChangeOutput {
+	return i.ToGetRouteAggregationChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationChangeArgs) ToGetRouteAggregationChangeOutputWithContext(ctx context.Context) GetRouteAggregationChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationChangeOutput)
+}
+
+type GetRouteAggregationChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationChange)(nil)).Elem()
+}
+
+func (o GetRouteAggregationChangeOutput) ToGetRouteAggregationChangeOutput() GetRouteAggregationChangeOutput {
+	return o
+}
+
+func (o GetRouteAggregationChangeOutput) ToGetRouteAggregationChangeOutputWithContext(ctx context.Context) GetRouteAggregationChangeOutput {
+	return o
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o GetRouteAggregationChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o GetRouteAggregationChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o GetRouteAggregationChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationChangeLog struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteAggregationChangeLogInput is an input type that accepts GetRouteAggregationChangeLogArgs and GetRouteAggregationChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteAggregationChangeLogInput` via:
+//
+//	GetRouteAggregationChangeLogArgs{...}
+type GetRouteAggregationChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationChangeLogOutput() GetRouteAggregationChangeLogOutput
+	ToGetRouteAggregationChangeLogOutputWithContext(context.Context) GetRouteAggregationChangeLogOutput
+}
+
+type GetRouteAggregationChangeLogArgs struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteAggregationChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteAggregationChangeLogArgs) ToGetRouteAggregationChangeLogOutput() GetRouteAggregationChangeLogOutput {
+	return i.ToGetRouteAggregationChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationChangeLogArgs) ToGetRouteAggregationChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationChangeLogOutput)
+}
+
+type GetRouteAggregationChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteAggregationChangeLogOutput) ToGetRouteAggregationChangeLogOutput() GetRouteAggregationChangeLogOutput {
+	return o
+}
+
+func (o GetRouteAggregationChangeLogOutput) ToGetRouteAggregationChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationChangeLogOutput {
+	return o
+}
+
+// User name of creator of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o GetRouteAggregationChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetRouteAggregationProjectInput is an input type that accepts GetRouteAggregationProjectArgs and GetRouteAggregationProjectOutput values.
+// You can construct a concrete instance of `GetRouteAggregationProjectInput` via:
+//
+//	GetRouteAggregationProjectArgs{...}
+type GetRouteAggregationProjectInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationProjectOutput() GetRouteAggregationProjectOutput
+	ToGetRouteAggregationProjectOutputWithContext(context.Context) GetRouteAggregationProjectOutput
+}
+
+type GetRouteAggregationProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetRouteAggregationProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationProject)(nil)).Elem()
+}
+
+func (i GetRouteAggregationProjectArgs) ToGetRouteAggregationProjectOutput() GetRouteAggregationProjectOutput {
+	return i.ToGetRouteAggregationProjectOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationProjectArgs) ToGetRouteAggregationProjectOutputWithContext(ctx context.Context) GetRouteAggregationProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationProjectOutput)
+}
+
+type GetRouteAggregationProjectOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationProject)(nil)).Elem()
+}
+
+func (o GetRouteAggregationProjectOutput) ToGetRouteAggregationProjectOutput() GetRouteAggregationProjectOutput {
+	return o
+}
+
+func (o GetRouteAggregationProjectOutput) ToGetRouteAggregationProjectOutputWithContext(ctx context.Context) GetRouteAggregationProjectOutput {
+	return o
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetRouteAggregationProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationRuleChange struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href string `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteAggregationRuleChangeInput is an input type that accepts GetRouteAggregationRuleChangeArgs and GetRouteAggregationRuleChangeOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRuleChangeInput` via:
+//
+//	GetRouteAggregationRuleChangeArgs{...}
+type GetRouteAggregationRuleChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRuleChangeOutput() GetRouteAggregationRuleChangeOutput
+	ToGetRouteAggregationRuleChangeOutputWithContext(context.Context) GetRouteAggregationRuleChangeOutput
+}
+
+type GetRouteAggregationRuleChangeArgs struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteAggregationRuleChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRuleChange)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRuleChangeArgs) ToGetRouteAggregationRuleChangeOutput() GetRouteAggregationRuleChangeOutput {
+	return i.ToGetRouteAggregationRuleChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRuleChangeArgs) ToGetRouteAggregationRuleChangeOutputWithContext(ctx context.Context) GetRouteAggregationRuleChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRuleChangeOutput)
+}
+
+type GetRouteAggregationRuleChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRuleChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRuleChange)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRuleChangeOutput) ToGetRouteAggregationRuleChangeOutput() GetRouteAggregationRuleChangeOutput {
+	return o
+}
+
+func (o GetRouteAggregationRuleChangeOutput) ToGetRouteAggregationRuleChangeOutputWithContext(ctx context.Context) GetRouteAggregationRuleChangeOutput {
+	return o
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o GetRouteAggregationRuleChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o GetRouteAggregationRuleChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o GetRouteAggregationRuleChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationRuleChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteAggregationRuleChangeLogInput is an input type that accepts GetRouteAggregationRuleChangeLogArgs and GetRouteAggregationRuleChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRuleChangeLogInput` via:
+//
+//	GetRouteAggregationRuleChangeLogArgs{...}
+type GetRouteAggregationRuleChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRuleChangeLogOutput() GetRouteAggregationRuleChangeLogOutput
+	ToGetRouteAggregationRuleChangeLogOutputWithContext(context.Context) GetRouteAggregationRuleChangeLogOutput
+}
+
+type GetRouteAggregationRuleChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteAggregationRuleChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRuleChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRuleChangeLogArgs) ToGetRouteAggregationRuleChangeLogOutput() GetRouteAggregationRuleChangeLogOutput {
+	return i.ToGetRouteAggregationRuleChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRuleChangeLogArgs) ToGetRouteAggregationRuleChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationRuleChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRuleChangeLogOutput)
+}
+
+type GetRouteAggregationRuleChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRuleChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRuleChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRuleChangeLogOutput) ToGetRouteAggregationRuleChangeLogOutput() GetRouteAggregationRuleChangeLogOutput {
+	return o
+}
+
+func (o GetRouteAggregationRuleChangeLogOutput) ToGetRouteAggregationRuleChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationRuleChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetRouteAggregationRuleChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationRulesData struct {
+	// Current state of latest route aggregation rule change
+	Change GetRouteAggregationRulesDataChange `pulumi:"change"`
+	// Details of the last change on the stream resource
+	ChangeLog GetRouteAggregationRulesDataChangeLog `pulumi:"changeLog"`
+	// Customer-provided route aggregation rule description
+	Description *string `pulumi:"description"`
+	// Equinix auto generated URI to the route aggregation rule resource
+	Href string `pulumi:"href"`
+	// Customer provided name of the route aggregation rule
+	Name string `pulumi:"name"`
+	// Customer-provided route aggregation rule prefix
+	Prefix string `pulumi:"prefix"`
+	// UUID of the Route Aggregation to apply this Rule to
+	RouteAggregationId string `pulumi:"routeAggregationId"`
+	// Value representing provisioning status for the route aggregation rule resource
+	State string `pulumi:"state"`
+	// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for the route aggregation rule resource
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteAggregationRulesDataInput is an input type that accepts GetRouteAggregationRulesDataArgs and GetRouteAggregationRulesDataOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesDataInput` via:
+//
+//	GetRouteAggregationRulesDataArgs{...}
+type GetRouteAggregationRulesDataInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesDataOutput() GetRouteAggregationRulesDataOutput
+	ToGetRouteAggregationRulesDataOutputWithContext(context.Context) GetRouteAggregationRulesDataOutput
+}
+
+type GetRouteAggregationRulesDataArgs struct {
+	// Current state of latest route aggregation rule change
+	Change GetRouteAggregationRulesDataChangeInput `pulumi:"change"`
+	// Details of the last change on the stream resource
+	ChangeLog GetRouteAggregationRulesDataChangeLogInput `pulumi:"changeLog"`
+	// Customer-provided route aggregation rule description
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Equinix auto generated URI to the route aggregation rule resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer provided name of the route aggregation rule
+	Name pulumi.StringInput `pulumi:"name"`
+	// Customer-provided route aggregation rule prefix
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// UUID of the Route Aggregation to apply this Rule to
+	RouteAggregationId pulumi.StringInput `pulumi:"routeAggregationId"`
+	// Value representing provisioning status for the route aggregation rule resource
+	State pulumi.StringInput `pulumi:"state"`
+	// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for the route aggregation rule resource
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteAggregationRulesDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesData)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesDataArgs) ToGetRouteAggregationRulesDataOutput() GetRouteAggregationRulesDataOutput {
+	return i.ToGetRouteAggregationRulesDataOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesDataArgs) ToGetRouteAggregationRulesDataOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesDataOutput)
+}
+
+// GetRouteAggregationRulesDataArrayInput is an input type that accepts GetRouteAggregationRulesDataArray and GetRouteAggregationRulesDataArrayOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesDataArrayInput` via:
+//
+//	GetRouteAggregationRulesDataArray{ GetRouteAggregationRulesDataArgs{...} }
+type GetRouteAggregationRulesDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesDataArrayOutput() GetRouteAggregationRulesDataArrayOutput
+	ToGetRouteAggregationRulesDataArrayOutputWithContext(context.Context) GetRouteAggregationRulesDataArrayOutput
+}
+
+type GetRouteAggregationRulesDataArray []GetRouteAggregationRulesDataInput
+
+func (GetRouteAggregationRulesDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationRulesData)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesDataArray) ToGetRouteAggregationRulesDataArrayOutput() GetRouteAggregationRulesDataArrayOutput {
+	return i.ToGetRouteAggregationRulesDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesDataArray) ToGetRouteAggregationRulesDataArrayOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesDataArrayOutput)
+}
+
+type GetRouteAggregationRulesDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesData)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesDataOutput) ToGetRouteAggregationRulesDataOutput() GetRouteAggregationRulesDataOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesDataOutput) ToGetRouteAggregationRulesDataOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataOutput {
+	return o
+}
+
+// Current state of latest route aggregation rule change
+func (o GetRouteAggregationRulesDataOutput) Change() GetRouteAggregationRulesDataChangeOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) GetRouteAggregationRulesDataChange { return v.Change }).(GetRouteAggregationRulesDataChangeOutput)
+}
+
+// Details of the last change on the stream resource
+func (o GetRouteAggregationRulesDataOutput) ChangeLog() GetRouteAggregationRulesDataChangeLogOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) GetRouteAggregationRulesDataChangeLog { return v.ChangeLog }).(GetRouteAggregationRulesDataChangeLogOutput)
+}
+
+// Customer-provided route aggregation rule description
+func (o GetRouteAggregationRulesDataOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Equinix auto generated URI to the route aggregation rule resource
+func (o GetRouteAggregationRulesDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Customer provided name of the route aggregation rule
+func (o GetRouteAggregationRulesDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Customer-provided route aggregation rule prefix
+func (o GetRouteAggregationRulesDataOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// UUID of the Route Aggregation to apply this Rule to
+func (o GetRouteAggregationRulesDataOutput) RouteAggregationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.RouteAggregationId }).(pulumi.StringOutput)
+}
+
+// Value representing provisioning status for the route aggregation rule resource
+func (o GetRouteAggregationRulesDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+func (o GetRouteAggregationRulesDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for the route aggregation rule resource
+func (o GetRouteAggregationRulesDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationRulesDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationRulesData)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesDataArrayOutput) ToGetRouteAggregationRulesDataArrayOutput() GetRouteAggregationRulesDataArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesDataArrayOutput) ToGetRouteAggregationRulesDataArrayOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesDataArrayOutput) Index(i pulumi.IntInput) GetRouteAggregationRulesDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteAggregationRulesData {
+		return vs[0].([]GetRouteAggregationRulesData)[vs[1].(int)]
+	}).(GetRouteAggregationRulesDataOutput)
+}
+
+type GetRouteAggregationRulesDataChange struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href string `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteAggregationRulesDataChangeInput is an input type that accepts GetRouteAggregationRulesDataChangeArgs and GetRouteAggregationRulesDataChangeOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesDataChangeInput` via:
+//
+//	GetRouteAggregationRulesDataChangeArgs{...}
+type GetRouteAggregationRulesDataChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesDataChangeOutput() GetRouteAggregationRulesDataChangeOutput
+	ToGetRouteAggregationRulesDataChangeOutputWithContext(context.Context) GetRouteAggregationRulesDataChangeOutput
+}
+
+type GetRouteAggregationRulesDataChangeArgs struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteAggregationRulesDataChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesDataChange)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesDataChangeArgs) ToGetRouteAggregationRulesDataChangeOutput() GetRouteAggregationRulesDataChangeOutput {
+	return i.ToGetRouteAggregationRulesDataChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesDataChangeArgs) ToGetRouteAggregationRulesDataChangeOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesDataChangeOutput)
+}
+
+type GetRouteAggregationRulesDataChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesDataChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesDataChange)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesDataChangeOutput) ToGetRouteAggregationRulesDataChangeOutput() GetRouteAggregationRulesDataChangeOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesDataChangeOutput) ToGetRouteAggregationRulesDataChangeOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataChangeOutput {
+	return o
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o GetRouteAggregationRulesDataChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o GetRouteAggregationRulesDataChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o GetRouteAggregationRulesDataChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationRulesDataChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteAggregationRulesDataChangeLogInput is an input type that accepts GetRouteAggregationRulesDataChangeLogArgs and GetRouteAggregationRulesDataChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesDataChangeLogInput` via:
+//
+//	GetRouteAggregationRulesDataChangeLogArgs{...}
+type GetRouteAggregationRulesDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesDataChangeLogOutput() GetRouteAggregationRulesDataChangeLogOutput
+	ToGetRouteAggregationRulesDataChangeLogOutputWithContext(context.Context) GetRouteAggregationRulesDataChangeLogOutput
+}
+
+type GetRouteAggregationRulesDataChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteAggregationRulesDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesDataChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesDataChangeLogArgs) ToGetRouteAggregationRulesDataChangeLogOutput() GetRouteAggregationRulesDataChangeLogOutput {
+	return i.ToGetRouteAggregationRulesDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesDataChangeLogArgs) ToGetRouteAggregationRulesDataChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesDataChangeLogOutput)
+}
+
+type GetRouteAggregationRulesDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesDataChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesDataChangeLogOutput) ToGetRouteAggregationRulesDataChangeLogOutput() GetRouteAggregationRulesDataChangeLogOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesDataChangeLogOutput) ToGetRouteAggregationRulesDataChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationRulesDataChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationRulesPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of route agrgegation rules available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetRouteAggregationRulesPaginationInput is an input type that accepts GetRouteAggregationRulesPaginationArgs and GetRouteAggregationRulesPaginationOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesPaginationInput` via:
+//
+//	GetRouteAggregationRulesPaginationArgs{...}
+type GetRouteAggregationRulesPaginationInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesPaginationOutput() GetRouteAggregationRulesPaginationOutput
+	ToGetRouteAggregationRulesPaginationOutputWithContext(context.Context) GetRouteAggregationRulesPaginationOutput
+}
+
+type GetRouteAggregationRulesPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of route agrgegation rules available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetRouteAggregationRulesPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesPagination)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesPaginationArgs) ToGetRouteAggregationRulesPaginationOutput() GetRouteAggregationRulesPaginationOutput {
+	return i.ToGetRouteAggregationRulesPaginationOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesPaginationArgs) ToGetRouteAggregationRulesPaginationOutputWithContext(ctx context.Context) GetRouteAggregationRulesPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesPaginationOutput)
+}
+
+func (i GetRouteAggregationRulesPaginationArgs) ToGetRouteAggregationRulesPaginationPtrOutput() GetRouteAggregationRulesPaginationPtrOutput {
+	return i.ToGetRouteAggregationRulesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesPaginationArgs) ToGetRouteAggregationRulesPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationRulesPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesPaginationOutput).ToGetRouteAggregationRulesPaginationPtrOutputWithContext(ctx)
+}
+
+// GetRouteAggregationRulesPaginationPtrInput is an input type that accepts GetRouteAggregationRulesPaginationArgs, GetRouteAggregationRulesPaginationPtr and GetRouteAggregationRulesPaginationPtrOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesPaginationPtrInput` via:
+//
+//	        GetRouteAggregationRulesPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRouteAggregationRulesPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesPaginationPtrOutput() GetRouteAggregationRulesPaginationPtrOutput
+	ToGetRouteAggregationRulesPaginationPtrOutputWithContext(context.Context) GetRouteAggregationRulesPaginationPtrOutput
+}
+
+type getRouteAggregationRulesPaginationPtrType GetRouteAggregationRulesPaginationArgs
+
+func GetRouteAggregationRulesPaginationPtr(v *GetRouteAggregationRulesPaginationArgs) GetRouteAggregationRulesPaginationPtrInput {
+	return (*getRouteAggregationRulesPaginationPtrType)(v)
+}
+
+func (*getRouteAggregationRulesPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteAggregationRulesPagination)(nil)).Elem()
+}
+
+func (i *getRouteAggregationRulesPaginationPtrType) ToGetRouteAggregationRulesPaginationPtrOutput() GetRouteAggregationRulesPaginationPtrOutput {
+	return i.ToGetRouteAggregationRulesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getRouteAggregationRulesPaginationPtrType) ToGetRouteAggregationRulesPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationRulesPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesPaginationPtrOutput)
+}
+
+type GetRouteAggregationRulesPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesPagination)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesPaginationOutput) ToGetRouteAggregationRulesPaginationOutput() GetRouteAggregationRulesPaginationOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesPaginationOutput) ToGetRouteAggregationRulesPaginationOutputWithContext(ctx context.Context) GetRouteAggregationRulesPaginationOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesPaginationOutput) ToGetRouteAggregationRulesPaginationPtrOutput() GetRouteAggregationRulesPaginationPtrOutput {
+	return o.ToGetRouteAggregationRulesPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetRouteAggregationRulesPaginationOutput) ToGetRouteAggregationRulesPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationRulesPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRouteAggregationRulesPagination) *GetRouteAggregationRulesPagination {
+		return &v
+	}).(GetRouteAggregationRulesPaginationPtrOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetRouteAggregationRulesPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetRouteAggregationRulesPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetRouteAggregationRulesPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetRouteAggregationRulesPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of route agrgegation rules available to the user making the request
+func (o GetRouteAggregationRulesPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetRouteAggregationRulesPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteAggregationRulesPagination)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesPaginationPtrOutput) ToGetRouteAggregationRulesPaginationPtrOutput() GetRouteAggregationRulesPaginationPtrOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesPaginationPtrOutput) ToGetRouteAggregationRulesPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationRulesPaginationPtrOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesPaginationPtrOutput) Elem() GetRouteAggregationRulesPaginationOutput {
+	return o.ApplyT(func(v *GetRouteAggregationRulesPagination) GetRouteAggregationRulesPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetRouteAggregationRulesPagination
+		return ret
+	}).(GetRouteAggregationRulesPaginationOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetRouteAggregationRulesPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationRulesPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetRouteAggregationRulesPaginationPtrOutput) Next() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationRulesPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Next
+	}).(pulumi.StringPtrOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetRouteAggregationRulesPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationRulesPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetRouteAggregationRulesPaginationPtrOutput) Previous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationRulesPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Previous
+	}).(pulumi.StringPtrOutput)
+}
+
+// The total number of route agrgegation rules available to the user making the request
+func (o GetRouteAggregationRulesPaginationPtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationRulesPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Total
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetRouteAggregationsData struct {
+	// Current state of latest Route Aggregation change
+	Change GetRouteAggregationsDataChange `pulumi:"change"`
+	// Details of the last change on the route aggregation resource
+	ChangeLog GetRouteAggregationsDataChangeLog `pulumi:"changeLog"`
+	// Number of Connections attached to route aggregation
+	ConnectionsCount int `pulumi:"connectionsCount"`
+	// Customer-provided route aggregation description
+	Description string `pulumi:"description"`
+	// Equinix auto generated URI to the route aggregation resource
+	Href string `pulumi:"href"`
+	// Customer provided name of the route aggregation
+	Name string `pulumi:"name"`
+	// Equinix Project attribute object
+	Project GetRouteAggregationsDataProject `pulumi:"project"`
+	// Number of Rules attached to route aggregation
+	RulesCount int `pulumi:"rulesCount"`
+	// Value representing provisioning status for the route aggregation resource
+	State string `pulumi:"state"`
+	// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for the route aggregation resource
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteAggregationsDataInput is an input type that accepts GetRouteAggregationsDataArgs and GetRouteAggregationsDataOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsDataInput` via:
+//
+//	GetRouteAggregationsDataArgs{...}
+type GetRouteAggregationsDataInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsDataOutput() GetRouteAggregationsDataOutput
+	ToGetRouteAggregationsDataOutputWithContext(context.Context) GetRouteAggregationsDataOutput
+}
+
+type GetRouteAggregationsDataArgs struct {
+	// Current state of latest Route Aggregation change
+	Change GetRouteAggregationsDataChangeInput `pulumi:"change"`
+	// Details of the last change on the route aggregation resource
+	ChangeLog GetRouteAggregationsDataChangeLogInput `pulumi:"changeLog"`
+	// Number of Connections attached to route aggregation
+	ConnectionsCount pulumi.IntInput `pulumi:"connectionsCount"`
+	// Customer-provided route aggregation description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Equinix auto generated URI to the route aggregation resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Customer provided name of the route aggregation
+	Name pulumi.StringInput `pulumi:"name"`
+	// Equinix Project attribute object
+	Project GetRouteAggregationsDataProjectInput `pulumi:"project"`
+	// Number of Rules attached to route aggregation
+	RulesCount pulumi.IntInput `pulumi:"rulesCount"`
+	// Value representing provisioning status for the route aggregation resource
+	State pulumi.StringInput `pulumi:"state"`
+	// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for the route aggregation resource
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteAggregationsDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsData)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsDataArgs) ToGetRouteAggregationsDataOutput() GetRouteAggregationsDataOutput {
+	return i.ToGetRouteAggregationsDataOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsDataArgs) ToGetRouteAggregationsDataOutputWithContext(ctx context.Context) GetRouteAggregationsDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsDataOutput)
+}
+
+// GetRouteAggregationsDataArrayInput is an input type that accepts GetRouteAggregationsDataArray and GetRouteAggregationsDataArrayOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsDataArrayInput` via:
+//
+//	GetRouteAggregationsDataArray{ GetRouteAggregationsDataArgs{...} }
+type GetRouteAggregationsDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsDataArrayOutput() GetRouteAggregationsDataArrayOutput
+	ToGetRouteAggregationsDataArrayOutputWithContext(context.Context) GetRouteAggregationsDataArrayOutput
+}
+
+type GetRouteAggregationsDataArray []GetRouteAggregationsDataInput
+
+func (GetRouteAggregationsDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationsData)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsDataArray) ToGetRouteAggregationsDataArrayOutput() GetRouteAggregationsDataArrayOutput {
+	return i.ToGetRouteAggregationsDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsDataArray) ToGetRouteAggregationsDataArrayOutputWithContext(ctx context.Context) GetRouteAggregationsDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsDataArrayOutput)
+}
+
+type GetRouteAggregationsDataOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsData)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsDataOutput) ToGetRouteAggregationsDataOutput() GetRouteAggregationsDataOutput {
+	return o
+}
+
+func (o GetRouteAggregationsDataOutput) ToGetRouteAggregationsDataOutputWithContext(ctx context.Context) GetRouteAggregationsDataOutput {
+	return o
+}
+
+// Current state of latest Route Aggregation change
+func (o GetRouteAggregationsDataOutput) Change() GetRouteAggregationsDataChangeOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) GetRouteAggregationsDataChange { return v.Change }).(GetRouteAggregationsDataChangeOutput)
+}
+
+// Details of the last change on the route aggregation resource
+func (o GetRouteAggregationsDataOutput) ChangeLog() GetRouteAggregationsDataChangeLogOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) GetRouteAggregationsDataChangeLog { return v.ChangeLog }).(GetRouteAggregationsDataChangeLogOutput)
+}
+
+// Number of Connections attached to route aggregation
+func (o GetRouteAggregationsDataOutput) ConnectionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) int { return v.ConnectionsCount }).(pulumi.IntOutput)
+}
+
+// Customer-provided route aggregation description
+func (o GetRouteAggregationsDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Equinix auto generated URI to the route aggregation resource
+func (o GetRouteAggregationsDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Customer provided name of the route aggregation
+func (o GetRouteAggregationsDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Equinix Project attribute object
+func (o GetRouteAggregationsDataOutput) Project() GetRouteAggregationsDataProjectOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) GetRouteAggregationsDataProject { return v.Project }).(GetRouteAggregationsDataProjectOutput)
+}
+
+// Number of Rules attached to route aggregation
+func (o GetRouteAggregationsDataOutput) RulesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) int { return v.RulesCount }).(pulumi.IntOutput)
+}
+
+// Value representing provisioning status for the route aggregation resource
+func (o GetRouteAggregationsDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
+func (o GetRouteAggregationsDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for the route aggregation resource
+func (o GetRouteAggregationsDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationsDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationsData)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsDataArrayOutput) ToGetRouteAggregationsDataArrayOutput() GetRouteAggregationsDataArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationsDataArrayOutput) ToGetRouteAggregationsDataArrayOutputWithContext(ctx context.Context) GetRouteAggregationsDataArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationsDataArrayOutput) Index(i pulumi.IntInput) GetRouteAggregationsDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteAggregationsData {
+		return vs[0].([]GetRouteAggregationsData)[vs[1].(int)]
+	}).(GetRouteAggregationsDataOutput)
+}
+
+type GetRouteAggregationsDataChange struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href string `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetRouteAggregationsDataChangeInput is an input type that accepts GetRouteAggregationsDataChangeArgs and GetRouteAggregationsDataChangeOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsDataChangeInput` via:
+//
+//	GetRouteAggregationsDataChangeArgs{...}
+type GetRouteAggregationsDataChangeInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsDataChangeOutput() GetRouteAggregationsDataChangeOutput
+	ToGetRouteAggregationsDataChangeOutputWithContext(context.Context) GetRouteAggregationsDataChangeOutput
+}
+
+type GetRouteAggregationsDataChangeArgs struct {
+	// Equinix auto generated URI to the route aggregation change
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix defined Route Aggregation Change Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for a change
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetRouteAggregationsDataChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsDataChange)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsDataChangeArgs) ToGetRouteAggregationsDataChangeOutput() GetRouteAggregationsDataChangeOutput {
+	return i.ToGetRouteAggregationsDataChangeOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsDataChangeArgs) ToGetRouteAggregationsDataChangeOutputWithContext(ctx context.Context) GetRouteAggregationsDataChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsDataChangeOutput)
+}
+
+type GetRouteAggregationsDataChangeOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsDataChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsDataChange)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsDataChangeOutput) ToGetRouteAggregationsDataChangeOutput() GetRouteAggregationsDataChangeOutput {
+	return o
+}
+
+func (o GetRouteAggregationsDataChangeOutput) ToGetRouteAggregationsDataChangeOutputWithContext(ctx context.Context) GetRouteAggregationsDataChangeOutput {
+	return o
+}
+
+// Equinix auto generated URI to the route aggregation change
+func (o GetRouteAggregationsDataChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix defined Route Aggregation Change Type
+func (o GetRouteAggregationsDataChangeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChange) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for a change
+func (o GetRouteAggregationsDataChangeOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChange) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationsDataChangeLog struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetRouteAggregationsDataChangeLogInput is an input type that accepts GetRouteAggregationsDataChangeLogArgs and GetRouteAggregationsDataChangeLogOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsDataChangeLogInput` via:
+//
+//	GetRouteAggregationsDataChangeLogArgs{...}
+type GetRouteAggregationsDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsDataChangeLogOutput() GetRouteAggregationsDataChangeLogOutput
+	ToGetRouteAggregationsDataChangeLogOutputWithContext(context.Context) GetRouteAggregationsDataChangeLogOutput
+}
+
+type GetRouteAggregationsDataChangeLogArgs struct {
+	// User name of creator of the route aggregation resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the route aggregation resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the route aggregation resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the route aggregation resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the route aggregation resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the route aggregation resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the route aggregation resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the route aggregation resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the route aggregation resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the route aggregation resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the route aggregation resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the route aggregation resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetRouteAggregationsDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsDataChangeLog)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsDataChangeLogArgs) ToGetRouteAggregationsDataChangeLogOutput() GetRouteAggregationsDataChangeLogOutput {
+	return i.ToGetRouteAggregationsDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsDataChangeLogArgs) ToGetRouteAggregationsDataChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationsDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsDataChangeLogOutput)
+}
+
+type GetRouteAggregationsDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsDataChangeLog)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsDataChangeLogOutput) ToGetRouteAggregationsDataChangeLogOutput() GetRouteAggregationsDataChangeLogOutput {
+	return o
+}
+
+func (o GetRouteAggregationsDataChangeLogOutput) ToGetRouteAggregationsDataChangeLogOutputWithContext(ctx context.Context) GetRouteAggregationsDataChangeLogOutput {
+	return o
+}
+
+// User name of creator of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the route aggregation resource
+func (o GetRouteAggregationsDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationsDataProject struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetRouteAggregationsDataProjectInput is an input type that accepts GetRouteAggregationsDataProjectArgs and GetRouteAggregationsDataProjectOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsDataProjectInput` via:
+//
+//	GetRouteAggregationsDataProjectArgs{...}
+type GetRouteAggregationsDataProjectInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsDataProjectOutput() GetRouteAggregationsDataProjectOutput
+	ToGetRouteAggregationsDataProjectOutputWithContext(context.Context) GetRouteAggregationsDataProjectOutput
+}
+
+type GetRouteAggregationsDataProjectArgs struct {
+	// Equinix Subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetRouteAggregationsDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsDataProject)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsDataProjectArgs) ToGetRouteAggregationsDataProjectOutput() GetRouteAggregationsDataProjectOutput {
+	return i.ToGetRouteAggregationsDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsDataProjectArgs) ToGetRouteAggregationsDataProjectOutputWithContext(ctx context.Context) GetRouteAggregationsDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsDataProjectOutput)
+}
+
+type GetRouteAggregationsDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsDataProject)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsDataProjectOutput) ToGetRouteAggregationsDataProjectOutput() GetRouteAggregationsDataProjectOutput {
+	return o
+}
+
+func (o GetRouteAggregationsDataProjectOutput) ToGetRouteAggregationsDataProjectOutputWithContext(ctx context.Context) GetRouteAggregationsDataProjectOutput {
+	return o
+}
+
+// Equinix Subscriber-assigned project ID
+func (o GetRouteAggregationsDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationsFilter struct {
+	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+	Operator string `pulumi:"operator"`
+	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetRouteAggregationsFilterInput is an input type that accepts GetRouteAggregationsFilterArgs and GetRouteAggregationsFilterOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsFilterInput` via:
+//
+//	GetRouteAggregationsFilterArgs{...}
+type GetRouteAggregationsFilterInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsFilterOutput() GetRouteAggregationsFilterOutput
+	ToGetRouteAggregationsFilterOutputWithContext(context.Context) GetRouteAggregationsFilterOutput
+}
+
+type GetRouteAggregationsFilterArgs struct {
+	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRouteAggregationsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsFilter)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsFilterArgs) ToGetRouteAggregationsFilterOutput() GetRouteAggregationsFilterOutput {
+	return i.ToGetRouteAggregationsFilterOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsFilterArgs) ToGetRouteAggregationsFilterOutputWithContext(ctx context.Context) GetRouteAggregationsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsFilterOutput)
+}
+
+type GetRouteAggregationsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsFilter)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsFilterOutput) ToGetRouteAggregationsFilterOutput() GetRouteAggregationsFilterOutput {
+	return o
+}
+
+func (o GetRouteAggregationsFilterOutput) ToGetRouteAggregationsFilterOutputWithContext(ctx context.Context) GetRouteAggregationsFilterOutput {
+	return o
+}
+
+// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+func (o GetRouteAggregationsFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+func (o GetRouteAggregationsFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetRouteAggregationsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteAggregationsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRouteAggregationsPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of route aggregations available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetRouteAggregationsPaginationInput is an input type that accepts GetRouteAggregationsPaginationArgs and GetRouteAggregationsPaginationOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsPaginationInput` via:
+//
+//	GetRouteAggregationsPaginationArgs{...}
+type GetRouteAggregationsPaginationInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsPaginationOutput() GetRouteAggregationsPaginationOutput
+	ToGetRouteAggregationsPaginationOutputWithContext(context.Context) GetRouteAggregationsPaginationOutput
+}
+
+type GetRouteAggregationsPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of route aggregations available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetRouteAggregationsPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsPaginationArgs) ToGetRouteAggregationsPaginationOutput() GetRouteAggregationsPaginationOutput {
+	return i.ToGetRouteAggregationsPaginationOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsPaginationArgs) ToGetRouteAggregationsPaginationOutputWithContext(ctx context.Context) GetRouteAggregationsPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsPaginationOutput)
+}
+
+func (i GetRouteAggregationsPaginationArgs) ToGetRouteAggregationsPaginationPtrOutput() GetRouteAggregationsPaginationPtrOutput {
+	return i.ToGetRouteAggregationsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsPaginationArgs) ToGetRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationsPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsPaginationOutput).ToGetRouteAggregationsPaginationPtrOutputWithContext(ctx)
+}
+
+// GetRouteAggregationsPaginationPtrInput is an input type that accepts GetRouteAggregationsPaginationArgs, GetRouteAggregationsPaginationPtr and GetRouteAggregationsPaginationPtrOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsPaginationPtrInput` via:
+//
+//	        GetRouteAggregationsPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRouteAggregationsPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsPaginationPtrOutput() GetRouteAggregationsPaginationPtrOutput
+	ToGetRouteAggregationsPaginationPtrOutputWithContext(context.Context) GetRouteAggregationsPaginationPtrOutput
+}
+
+type getRouteAggregationsPaginationPtrType GetRouteAggregationsPaginationArgs
+
+func GetRouteAggregationsPaginationPtr(v *GetRouteAggregationsPaginationArgs) GetRouteAggregationsPaginationPtrInput {
+	return (*getRouteAggregationsPaginationPtrType)(v)
+}
+
+func (*getRouteAggregationsPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (i *getRouteAggregationsPaginationPtrType) ToGetRouteAggregationsPaginationPtrOutput() GetRouteAggregationsPaginationPtrOutput {
+	return i.ToGetRouteAggregationsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getRouteAggregationsPaginationPtrType) ToGetRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationsPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsPaginationPtrOutput)
+}
+
+type GetRouteAggregationsPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsPaginationOutput) ToGetRouteAggregationsPaginationOutput() GetRouteAggregationsPaginationOutput {
+	return o
+}
+
+func (o GetRouteAggregationsPaginationOutput) ToGetRouteAggregationsPaginationOutputWithContext(ctx context.Context) GetRouteAggregationsPaginationOutput {
+	return o
+}
+
+func (o GetRouteAggregationsPaginationOutput) ToGetRouteAggregationsPaginationPtrOutput() GetRouteAggregationsPaginationPtrOutput {
+	return o.ToGetRouteAggregationsPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetRouteAggregationsPaginationOutput) ToGetRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationsPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRouteAggregationsPagination) *GetRouteAggregationsPagination {
+		return &v
+	}).(GetRouteAggregationsPaginationPtrOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetRouteAggregationsPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationsPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetRouteAggregationsPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetRouteAggregationsPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationsPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetRouteAggregationsPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationsPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of route aggregations available to the user making the request
+func (o GetRouteAggregationsPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteAggregationsPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetRouteAggregationsPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteAggregationsPagination)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsPaginationPtrOutput) ToGetRouteAggregationsPaginationPtrOutput() GetRouteAggregationsPaginationPtrOutput {
+	return o
+}
+
+func (o GetRouteAggregationsPaginationPtrOutput) ToGetRouteAggregationsPaginationPtrOutputWithContext(ctx context.Context) GetRouteAggregationsPaginationPtrOutput {
+	return o
+}
+
+func (o GetRouteAggregationsPaginationPtrOutput) Elem() GetRouteAggregationsPaginationOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsPagination) GetRouteAggregationsPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetRouteAggregationsPagination
+		return ret
+	}).(GetRouteAggregationsPaginationOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetRouteAggregationsPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetRouteAggregationsPaginationPtrOutput) Next() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Next
+	}).(pulumi.StringPtrOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetRouteAggregationsPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetRouteAggregationsPaginationPtrOutput) Previous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Previous
+	}).(pulumi.StringPtrOutput)
+}
+
+// The total number of route aggregations available to the user making the request
+func (o GetRouteAggregationsPaginationPtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Total
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetRouteAggregationsSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+	Property *string `pulumi:"property"`
+}
+
+// GetRouteAggregationsSortInput is an input type that accepts GetRouteAggregationsSortArgs and GetRouteAggregationsSortOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsSortInput` via:
+//
+//	GetRouteAggregationsSortArgs{...}
+type GetRouteAggregationsSortInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsSortOutput() GetRouteAggregationsSortOutput
+	ToGetRouteAggregationsSortOutputWithContext(context.Context) GetRouteAggregationsSortOutput
+}
+
+type GetRouteAggregationsSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetRouteAggregationsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsSort)(nil)).Elem()
+}
+
+func (i GetRouteAggregationsSortArgs) ToGetRouteAggregationsSortOutput() GetRouteAggregationsSortOutput {
+	return i.ToGetRouteAggregationsSortOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsSortArgs) ToGetRouteAggregationsSortOutputWithContext(ctx context.Context) GetRouteAggregationsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsSortOutput)
+}
+
+func (i GetRouteAggregationsSortArgs) ToGetRouteAggregationsSortPtrOutput() GetRouteAggregationsSortPtrOutput {
+	return i.ToGetRouteAggregationsSortPtrOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationsSortArgs) ToGetRouteAggregationsSortPtrOutputWithContext(ctx context.Context) GetRouteAggregationsSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsSortOutput).ToGetRouteAggregationsSortPtrOutputWithContext(ctx)
+}
+
+// GetRouteAggregationsSortPtrInput is an input type that accepts GetRouteAggregationsSortArgs, GetRouteAggregationsSortPtr and GetRouteAggregationsSortPtrOutput values.
+// You can construct a concrete instance of `GetRouteAggregationsSortPtrInput` via:
+//
+//	        GetRouteAggregationsSortArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRouteAggregationsSortPtrInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationsSortPtrOutput() GetRouteAggregationsSortPtrOutput
+	ToGetRouteAggregationsSortPtrOutputWithContext(context.Context) GetRouteAggregationsSortPtrOutput
+}
+
+type getRouteAggregationsSortPtrType GetRouteAggregationsSortArgs
+
+func GetRouteAggregationsSortPtr(v *GetRouteAggregationsSortArgs) GetRouteAggregationsSortPtrInput {
+	return (*getRouteAggregationsSortPtrType)(v)
+}
+
+func (*getRouteAggregationsSortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteAggregationsSort)(nil)).Elem()
+}
+
+func (i *getRouteAggregationsSortPtrType) ToGetRouteAggregationsSortPtrOutput() GetRouteAggregationsSortPtrOutput {
+	return i.ToGetRouteAggregationsSortPtrOutputWithContext(context.Background())
+}
+
+func (i *getRouteAggregationsSortPtrType) ToGetRouteAggregationsSortPtrOutputWithContext(ctx context.Context) GetRouteAggregationsSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationsSortPtrOutput)
+}
+
+type GetRouteAggregationsSortOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationsSort)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsSortOutput) ToGetRouteAggregationsSortOutput() GetRouteAggregationsSortOutput {
+	return o
+}
+
+func (o GetRouteAggregationsSortOutput) ToGetRouteAggregationsSortOutputWithContext(ctx context.Context) GetRouteAggregationsSortOutput {
+	return o
+}
+
+func (o GetRouteAggregationsSortOutput) ToGetRouteAggregationsSortPtrOutput() GetRouteAggregationsSortPtrOutput {
+	return o.ToGetRouteAggregationsSortPtrOutputWithContext(context.Background())
+}
+
+func (o GetRouteAggregationsSortOutput) ToGetRouteAggregationsSortPtrOutputWithContext(ctx context.Context) GetRouteAggregationsSortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRouteAggregationsSort) *GetRouteAggregationsSort {
+		return &v
+	}).(GetRouteAggregationsSortPtrOutput)
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetRouteAggregationsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteAggregationsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+func (o GetRouteAggregationsSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteAggregationsSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetRouteAggregationsSortPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationsSortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRouteAggregationsSort)(nil)).Elem()
+}
+
+func (o GetRouteAggregationsSortPtrOutput) ToGetRouteAggregationsSortPtrOutput() GetRouteAggregationsSortPtrOutput {
+	return o
+}
+
+func (o GetRouteAggregationsSortPtrOutput) ToGetRouteAggregationsSortPtrOutputWithContext(ctx context.Context) GetRouteAggregationsSortPtrOutput {
+	return o
+}
+
+func (o GetRouteAggregationsSortPtrOutput) Elem() GetRouteAggregationsSortOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsSort) GetRouteAggregationsSort {
+		if v != nil {
+			return *v
+		}
+		var ret GetRouteAggregationsSort
+		return ret
+	}).(GetRouteAggregationsSortOutput)
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetRouteAggregationsSortPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+func (o GetRouteAggregationsSortPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRouteAggregationsSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Property
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetRouteFilterChange struct {
@@ -59436,6 +70951,457 @@ func (o GetServiceTokensPaginationPtrOutput) Total() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetStreamAttachmentsData struct {
+	// Value representing status for the stream attachment
+	AttachmentStatus string `pulumi:"attachmentStatus"`
+	// Equinix auto generated URI to the stream attachment in Equinix Portal
+	Href string `pulumi:"href"`
+	// Boolean value indicating enablement of metrics for this asset stream attachment
+	MetricsEnabled bool `pulumi:"metricsEnabled"`
+	// Equinix defined type for the asset stream attachment
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique id for the stream attachment
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetStreamAttachmentsDataInput is an input type that accepts GetStreamAttachmentsDataArgs and GetStreamAttachmentsDataOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsDataInput` via:
+//
+//	GetStreamAttachmentsDataArgs{...}
+type GetStreamAttachmentsDataInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsDataOutput() GetStreamAttachmentsDataOutput
+	ToGetStreamAttachmentsDataOutputWithContext(context.Context) GetStreamAttachmentsDataOutput
+}
+
+type GetStreamAttachmentsDataArgs struct {
+	// Value representing status for the stream attachment
+	AttachmentStatus pulumi.StringInput `pulumi:"attachmentStatus"`
+	// Equinix auto generated URI to the stream attachment in Equinix Portal
+	Href pulumi.StringInput `pulumi:"href"`
+	// Boolean value indicating enablement of metrics for this asset stream attachment
+	MetricsEnabled pulumi.BoolInput `pulumi:"metricsEnabled"`
+	// Equinix defined type for the asset stream attachment
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique id for the stream attachment
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetStreamAttachmentsDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsData)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsDataArgs) ToGetStreamAttachmentsDataOutput() GetStreamAttachmentsDataOutput {
+	return i.ToGetStreamAttachmentsDataOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsDataArgs) ToGetStreamAttachmentsDataOutputWithContext(ctx context.Context) GetStreamAttachmentsDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsDataOutput)
+}
+
+// GetStreamAttachmentsDataArrayInput is an input type that accepts GetStreamAttachmentsDataArray and GetStreamAttachmentsDataArrayOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsDataArrayInput` via:
+//
+//	GetStreamAttachmentsDataArray{ GetStreamAttachmentsDataArgs{...} }
+type GetStreamAttachmentsDataArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsDataArrayOutput() GetStreamAttachmentsDataArrayOutput
+	ToGetStreamAttachmentsDataArrayOutputWithContext(context.Context) GetStreamAttachmentsDataArrayOutput
+}
+
+type GetStreamAttachmentsDataArray []GetStreamAttachmentsDataInput
+
+func (GetStreamAttachmentsDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsData)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsDataArray) ToGetStreamAttachmentsDataArrayOutput() GetStreamAttachmentsDataArrayOutput {
+	return i.ToGetStreamAttachmentsDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsDataArray) ToGetStreamAttachmentsDataArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsDataArrayOutput)
+}
+
+type GetStreamAttachmentsDataOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsData)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsDataOutput) ToGetStreamAttachmentsDataOutput() GetStreamAttachmentsDataOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsDataOutput) ToGetStreamAttachmentsDataOutputWithContext(ctx context.Context) GetStreamAttachmentsDataOutput {
+	return o
+}
+
+// Value representing status for the stream attachment
+func (o GetStreamAttachmentsDataOutput) AttachmentStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.AttachmentStatus }).(pulumi.StringOutput)
+}
+
+// Equinix auto generated URI to the stream attachment in Equinix Portal
+func (o GetStreamAttachmentsDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Boolean value indicating enablement of metrics for this asset stream attachment
+func (o GetStreamAttachmentsDataOutput) MetricsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsData) bool { return v.MetricsEnabled }).(pulumi.BoolOutput)
+}
+
+// Equinix defined type for the asset stream attachment
+func (o GetStreamAttachmentsDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique id for the stream attachment
+func (o GetStreamAttachmentsDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetStreamAttachmentsDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsData)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsDataArrayOutput) ToGetStreamAttachmentsDataArrayOutput() GetStreamAttachmentsDataArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsDataArrayOutput) ToGetStreamAttachmentsDataArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsDataArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsDataArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsData {
+		return vs[0].([]GetStreamAttachmentsData)[vs[1].(int)]
+	}).(GetStreamAttachmentsDataOutput)
+}
+
+type GetStreamAttachmentsFilter struct {
+	// Operation applied to the values of the filter
+	Operator string `pulumi:"operator"`
+	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+	Or *bool `pulumi:"or"`
+	// Property to apply the filter to
+	Property string `pulumi:"property"`
+	// List of values to apply the operation to for the specified property
+	Values []string `pulumi:"values"`
+}
+
+// GetStreamAttachmentsFilterInput is an input type that accepts GetStreamAttachmentsFilterArgs and GetStreamAttachmentsFilterOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsFilterInput` via:
+//
+//	GetStreamAttachmentsFilterArgs{...}
+type GetStreamAttachmentsFilterInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput
+	ToGetStreamAttachmentsFilterOutputWithContext(context.Context) GetStreamAttachmentsFilterOutput
+}
+
+type GetStreamAttachmentsFilterArgs struct {
+	// Operation applied to the values of the filter
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+	Or pulumi.BoolPtrInput `pulumi:"or"`
+	// Property to apply the filter to
+	Property pulumi.StringInput `pulumi:"property"`
+	// List of values to apply the operation to for the specified property
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetStreamAttachmentsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsFilterArgs) ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput {
+	return i.ToGetStreamAttachmentsFilterOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsFilterArgs) ToGetStreamAttachmentsFilterOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsFilterOutput)
+}
+
+// GetStreamAttachmentsFilterArrayInput is an input type that accepts GetStreamAttachmentsFilterArray and GetStreamAttachmentsFilterArrayOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsFilterArrayInput` via:
+//
+//	GetStreamAttachmentsFilterArray{ GetStreamAttachmentsFilterArgs{...} }
+type GetStreamAttachmentsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput
+	ToGetStreamAttachmentsFilterArrayOutputWithContext(context.Context) GetStreamAttachmentsFilterArrayOutput
+}
+
+type GetStreamAttachmentsFilterArray []GetStreamAttachmentsFilterInput
+
+func (GetStreamAttachmentsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsFilterArray) ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput {
+	return i.ToGetStreamAttachmentsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsFilterArray) ToGetStreamAttachmentsFilterArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsFilterArrayOutput)
+}
+
+type GetStreamAttachmentsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsFilterOutput) ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsFilterOutput) ToGetStreamAttachmentsFilterOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterOutput {
+	return o
+}
+
+// Operation applied to the values of the filter
+func (o GetStreamAttachmentsFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+func (o GetStreamAttachmentsFilterOutput) Or() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) *bool { return v.Or }).(pulumi.BoolPtrOutput)
+}
+
+// Property to apply the filter to
+func (o GetStreamAttachmentsFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// List of values to apply the operation to for the specified property
+func (o GetStreamAttachmentsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamAttachmentsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsFilterArrayOutput) ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsFilterArrayOutput) ToGetStreamAttachmentsFilterArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsFilterArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsFilter {
+		return vs[0].([]GetStreamAttachmentsFilter)[vs[1].(int)]
+	}).(GetStreamAttachmentsFilterOutput)
+}
+
+type GetStreamAttachmentsPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetStreamAttachmentsPaginationInput is an input type that accepts GetStreamAttachmentsPaginationArgs and GetStreamAttachmentsPaginationOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsPaginationInput` via:
+//
+//	GetStreamAttachmentsPaginationArgs{...}
+type GetStreamAttachmentsPaginationInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput
+	ToGetStreamAttachmentsPaginationOutputWithContext(context.Context) GetStreamAttachmentsPaginationOutput
+}
+
+type GetStreamAttachmentsPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetStreamAttachmentsPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsPagination)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsPaginationArgs) ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput {
+	return i.ToGetStreamAttachmentsPaginationOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsPaginationArgs) ToGetStreamAttachmentsPaginationOutputWithContext(ctx context.Context) GetStreamAttachmentsPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsPaginationOutput)
+}
+
+type GetStreamAttachmentsPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsPagination)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsPaginationOutput) ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsPaginationOutput) ToGetStreamAttachmentsPaginationOutputWithContext(ctx context.Context) GetStreamAttachmentsPaginationOutput {
+	return o
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetStreamAttachmentsPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetStreamAttachmentsPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetStreamAttachmentsPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetStreamAttachmentsPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of streams available to the user making the request
+func (o GetStreamAttachmentsPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetStreamAttachmentsSort struct {
+	// The sorting direction of the property chosen. ASC or DESC
+	Direction string `pulumi:"direction"`
+	// The field name the sorting is performed on
+	Property string `pulumi:"property"`
+}
+
+// GetStreamAttachmentsSortInput is an input type that accepts GetStreamAttachmentsSortArgs and GetStreamAttachmentsSortOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsSortInput` via:
+//
+//	GetStreamAttachmentsSortArgs{...}
+type GetStreamAttachmentsSortInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput
+	ToGetStreamAttachmentsSortOutputWithContext(context.Context) GetStreamAttachmentsSortOutput
+}
+
+type GetStreamAttachmentsSortArgs struct {
+	// The sorting direction of the property chosen. ASC or DESC
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// The field name the sorting is performed on
+	Property pulumi.StringInput `pulumi:"property"`
+}
+
+func (GetStreamAttachmentsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsSortArgs) ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput {
+	return i.ToGetStreamAttachmentsSortOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsSortArgs) ToGetStreamAttachmentsSortOutputWithContext(ctx context.Context) GetStreamAttachmentsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsSortOutput)
+}
+
+// GetStreamAttachmentsSortArrayInput is an input type that accepts GetStreamAttachmentsSortArray and GetStreamAttachmentsSortArrayOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsSortArrayInput` via:
+//
+//	GetStreamAttachmentsSortArray{ GetStreamAttachmentsSortArgs{...} }
+type GetStreamAttachmentsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput
+	ToGetStreamAttachmentsSortArrayOutputWithContext(context.Context) GetStreamAttachmentsSortArrayOutput
+}
+
+type GetStreamAttachmentsSortArray []GetStreamAttachmentsSortInput
+
+func (GetStreamAttachmentsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsSortArray) ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput {
+	return i.ToGetStreamAttachmentsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsSortArray) ToGetStreamAttachmentsSortArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsSortArrayOutput)
+}
+
+type GetStreamAttachmentsSortOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsSortOutput) ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsSortOutput) ToGetStreamAttachmentsSortOutputWithContext(ctx context.Context) GetStreamAttachmentsSortOutput {
+	return o
+}
+
+// The sorting direction of the property chosen. ASC or DESC
+func (o GetStreamAttachmentsSortOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsSort) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The field name the sorting is performed on
+func (o GetStreamAttachmentsSortOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsSort) string { return v.Property }).(pulumi.StringOutput)
+}
+
+type GetStreamAttachmentsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsSortArrayOutput) ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsSortArrayOutput) ToGetStreamAttachmentsSortArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsSortArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsSortArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsSort {
+		return vs[0].([]GetStreamAttachmentsSort)[vs[1].(int)]
+	}).(GetStreamAttachmentsSortOutput)
+}
+
 type GetStreamChangeLog struct {
 	// User name of creator of the stream resource
 	CreatedBy string `pulumi:"createdBy"`
@@ -59637,6 +71603,1442 @@ func (o GetStreamProjectOutput) ToGetStreamProjectOutputWithContext(ctx context.
 // Equinix Subscriber-assigned project ID
 func (o GetStreamProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStreamProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamSubscriptionChangeLogInput is an input type that accepts GetStreamSubscriptionChangeLogArgs and GetStreamSubscriptionChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionChangeLogInput` via:
+//
+//	GetStreamSubscriptionChangeLogArgs{...}
+type GetStreamSubscriptionChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionChangeLogOutput() GetStreamSubscriptionChangeLogOutput
+	ToGetStreamSubscriptionChangeLogOutputWithContext(context.Context) GetStreamSubscriptionChangeLogOutput
+}
+
+type GetStreamSubscriptionChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamSubscriptionChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionChangeLogArgs) ToGetStreamSubscriptionChangeLogOutput() GetStreamSubscriptionChangeLogOutput {
+	return i.ToGetStreamSubscriptionChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionChangeLogArgs) ToGetStreamSubscriptionChangeLogOutputWithContext(ctx context.Context) GetStreamSubscriptionChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionChangeLogOutput)
+}
+
+type GetStreamSubscriptionChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionChangeLogOutput) ToGetStreamSubscriptionChangeLogOutput() GetStreamSubscriptionChangeLogOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionChangeLogOutput) ToGetStreamSubscriptionChangeLogOutputWithContext(ctx context.Context) GetStreamSubscriptionChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamSubscriptionChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionEventSelector struct {
+	// List of events to exclude
+	Excepts []string `pulumi:"excepts"`
+	// List of events to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamSubscriptionEventSelectorInput is an input type that accepts GetStreamSubscriptionEventSelectorArgs and GetStreamSubscriptionEventSelectorOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionEventSelectorInput` via:
+//
+//	GetStreamSubscriptionEventSelectorArgs{...}
+type GetStreamSubscriptionEventSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionEventSelectorOutput() GetStreamSubscriptionEventSelectorOutput
+	ToGetStreamSubscriptionEventSelectorOutputWithContext(context.Context) GetStreamSubscriptionEventSelectorOutput
+}
+
+type GetStreamSubscriptionEventSelectorArgs struct {
+	// List of events to exclude
+	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
+	// List of events to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamSubscriptionEventSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionEventSelector)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionEventSelectorArgs) ToGetStreamSubscriptionEventSelectorOutput() GetStreamSubscriptionEventSelectorOutput {
+	return i.ToGetStreamSubscriptionEventSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionEventSelectorArgs) ToGetStreamSubscriptionEventSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionEventSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionEventSelectorOutput)
+}
+
+type GetStreamSubscriptionEventSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionEventSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionEventSelector)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionEventSelectorOutput) ToGetStreamSubscriptionEventSelectorOutput() GetStreamSubscriptionEventSelectorOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionEventSelectorOutput) ToGetStreamSubscriptionEventSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionEventSelectorOutput {
+	return o
+}
+
+// List of events to exclude
+func (o GetStreamSubscriptionEventSelectorOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionEventSelector) []string { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// List of events to include
+func (o GetStreamSubscriptionEventSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionEventSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamSubscriptionMetricSelector struct {
+	// List of metrics to exclude
+	Excepts []string `pulumi:"excepts"`
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamSubscriptionMetricSelectorInput is an input type that accepts GetStreamSubscriptionMetricSelectorArgs and GetStreamSubscriptionMetricSelectorOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionMetricSelectorInput` via:
+//
+//	GetStreamSubscriptionMetricSelectorArgs{...}
+type GetStreamSubscriptionMetricSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionMetricSelectorOutput() GetStreamSubscriptionMetricSelectorOutput
+	ToGetStreamSubscriptionMetricSelectorOutputWithContext(context.Context) GetStreamSubscriptionMetricSelectorOutput
+}
+
+type GetStreamSubscriptionMetricSelectorArgs struct {
+	// List of metrics to exclude
+	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamSubscriptionMetricSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionMetricSelector)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionMetricSelectorArgs) ToGetStreamSubscriptionMetricSelectorOutput() GetStreamSubscriptionMetricSelectorOutput {
+	return i.ToGetStreamSubscriptionMetricSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionMetricSelectorArgs) ToGetStreamSubscriptionMetricSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionMetricSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionMetricSelectorOutput)
+}
+
+type GetStreamSubscriptionMetricSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionMetricSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionMetricSelector)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionMetricSelectorOutput) ToGetStreamSubscriptionMetricSelectorOutput() GetStreamSubscriptionMetricSelectorOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionMetricSelectorOutput) ToGetStreamSubscriptionMetricSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionMetricSelectorOutput {
+	return o
+}
+
+// List of metrics to exclude
+func (o GetStreamSubscriptionMetricSelectorOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionMetricSelector) []string { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// List of metrics to include
+func (o GetStreamSubscriptionMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamSubscriptionSink struct {
+	// Boolean switch enabling batch delivery of data
+	BatchEnabled bool `pulumi:"batchEnabled"`
+	// Maximum size of the batch delivery if enabled
+	BatchSizeMax int `pulumi:"batchSizeMax"`
+	// Maximum time to wait for batch delivery if enabled
+	BatchWaitTimeMax int `pulumi:"batchWaitTimeMax"`
+	// Access details for the specified sink type
+	Credential GetStreamSubscriptionSinkCredential `pulumi:"credential"`
+	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+	Host string `pulumi:"host"`
+	// Stream subscription sink settings
+	Settings GetStreamSubscriptionSinkSettings `pulumi:"settings"`
+	// Type of the subscriber
+	Type string `pulumi:"type"`
+	// Publicly reachable http endpoint destination for data stream
+	Uri string `pulumi:"uri"`
+}
+
+// GetStreamSubscriptionSinkInput is an input type that accepts GetStreamSubscriptionSinkArgs and GetStreamSubscriptionSinkOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionSinkInput` via:
+//
+//	GetStreamSubscriptionSinkArgs{...}
+type GetStreamSubscriptionSinkInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionSinkOutput() GetStreamSubscriptionSinkOutput
+	ToGetStreamSubscriptionSinkOutputWithContext(context.Context) GetStreamSubscriptionSinkOutput
+}
+
+type GetStreamSubscriptionSinkArgs struct {
+	// Boolean switch enabling batch delivery of data
+	BatchEnabled pulumi.BoolInput `pulumi:"batchEnabled"`
+	// Maximum size of the batch delivery if enabled
+	BatchSizeMax pulumi.IntInput `pulumi:"batchSizeMax"`
+	// Maximum time to wait for batch delivery if enabled
+	BatchWaitTimeMax pulumi.IntInput `pulumi:"batchWaitTimeMax"`
+	// Access details for the specified sink type
+	Credential GetStreamSubscriptionSinkCredentialInput `pulumi:"credential"`
+	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+	Host pulumi.StringInput `pulumi:"host"`
+	// Stream subscription sink settings
+	Settings GetStreamSubscriptionSinkSettingsInput `pulumi:"settings"`
+	// Type of the subscriber
+	Type pulumi.StringInput `pulumi:"type"`
+	// Publicly reachable http endpoint destination for data stream
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetStreamSubscriptionSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionSink)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionSinkArgs) ToGetStreamSubscriptionSinkOutput() GetStreamSubscriptionSinkOutput {
+	return i.ToGetStreamSubscriptionSinkOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionSinkArgs) ToGetStreamSubscriptionSinkOutputWithContext(ctx context.Context) GetStreamSubscriptionSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionSinkOutput)
+}
+
+type GetStreamSubscriptionSinkOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionSink)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionSinkOutput) ToGetStreamSubscriptionSinkOutput() GetStreamSubscriptionSinkOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionSinkOutput) ToGetStreamSubscriptionSinkOutputWithContext(ctx context.Context) GetStreamSubscriptionSinkOutput {
+	return o
+}
+
+// Boolean switch enabling batch delivery of data
+func (o GetStreamSubscriptionSinkOutput) BatchEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) bool { return v.BatchEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum size of the batch delivery if enabled
+func (o GetStreamSubscriptionSinkOutput) BatchSizeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) int { return v.BatchSizeMax }).(pulumi.IntOutput)
+}
+
+// Maximum time to wait for batch delivery if enabled
+func (o GetStreamSubscriptionSinkOutput) BatchWaitTimeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) int { return v.BatchWaitTimeMax }).(pulumi.IntOutput)
+}
+
+// Access details for the specified sink type
+func (o GetStreamSubscriptionSinkOutput) Credential() GetStreamSubscriptionSinkCredentialOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) GetStreamSubscriptionSinkCredential { return v.Credential }).(GetStreamSubscriptionSinkCredentialOutput)
+}
+
+// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+func (o GetStreamSubscriptionSinkOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Stream subscription sink settings
+func (o GetStreamSubscriptionSinkOutput) Settings() GetStreamSubscriptionSinkSettingsOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) GetStreamSubscriptionSinkSettings { return v.Settings }).(GetStreamSubscriptionSinkSettingsOutput)
+}
+
+// Type of the subscriber
+func (o GetStreamSubscriptionSinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Publicly reachable http endpoint destination for data stream
+func (o GetStreamSubscriptionSinkOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSink) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionSinkCredential struct {
+	// Passed as Authorization header value
+	AccessToken string `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey string `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey string `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password string `pulumi:"password"`
+	// Type of the credential being passed
+	Type string `pulumi:"type"`
+	// Passed as Authorization header value
+	Username string `pulumi:"username"`
+}
+
+// GetStreamSubscriptionSinkCredentialInput is an input type that accepts GetStreamSubscriptionSinkCredentialArgs and GetStreamSubscriptionSinkCredentialOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionSinkCredentialInput` via:
+//
+//	GetStreamSubscriptionSinkCredentialArgs{...}
+type GetStreamSubscriptionSinkCredentialInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionSinkCredentialOutput() GetStreamSubscriptionSinkCredentialOutput
+	ToGetStreamSubscriptionSinkCredentialOutputWithContext(context.Context) GetStreamSubscriptionSinkCredentialOutput
+}
+
+type GetStreamSubscriptionSinkCredentialArgs struct {
+	// Passed as Authorization header value
+	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password pulumi.StringInput `pulumi:"password"`
+	// Type of the credential being passed
+	Type pulumi.StringInput `pulumi:"type"`
+	// Passed as Authorization header value
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetStreamSubscriptionSinkCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionSinkCredential)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionSinkCredentialArgs) ToGetStreamSubscriptionSinkCredentialOutput() GetStreamSubscriptionSinkCredentialOutput {
+	return i.ToGetStreamSubscriptionSinkCredentialOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionSinkCredentialArgs) ToGetStreamSubscriptionSinkCredentialOutputWithContext(ctx context.Context) GetStreamSubscriptionSinkCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionSinkCredentialOutput)
+}
+
+type GetStreamSubscriptionSinkCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionSinkCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionSinkCredential)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionSinkCredentialOutput) ToGetStreamSubscriptionSinkCredentialOutput() GetStreamSubscriptionSinkCredentialOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionSinkCredentialOutput) ToGetStreamSubscriptionSinkCredentialOutputWithContext(ctx context.Context) GetStreamSubscriptionSinkCredentialOutput {
+	return o
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkCredentialOutput) AccessToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkCredential) string { return v.AccessToken }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkCredentialOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkCredential) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkCredentialOutput) IntegrationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkCredential) string { return v.IntegrationKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkCredentialOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkCredential) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Type of the credential being passed
+func (o GetStreamSubscriptionSinkCredentialOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkCredential) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionSinkSettings struct {
+	// Passed as Authorization header value
+	AccessToken string `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey string `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey string `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password string `pulumi:"password"`
+	// Type of the stream subscription request
+	Type string `pulumi:"type"`
+	// Passed as Authorization header value
+	Username string `pulumi:"username"`
+}
+
+// GetStreamSubscriptionSinkSettingsInput is an input type that accepts GetStreamSubscriptionSinkSettingsArgs and GetStreamSubscriptionSinkSettingsOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionSinkSettingsInput` via:
+//
+//	GetStreamSubscriptionSinkSettingsArgs{...}
+type GetStreamSubscriptionSinkSettingsInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionSinkSettingsOutput() GetStreamSubscriptionSinkSettingsOutput
+	ToGetStreamSubscriptionSinkSettingsOutputWithContext(context.Context) GetStreamSubscriptionSinkSettingsOutput
+}
+
+type GetStreamSubscriptionSinkSettingsArgs struct {
+	// Passed as Authorization header value
+	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password pulumi.StringInput `pulumi:"password"`
+	// Type of the stream subscription request
+	Type pulumi.StringInput `pulumi:"type"`
+	// Passed as Authorization header value
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetStreamSubscriptionSinkSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionSinkSettings)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionSinkSettingsArgs) ToGetStreamSubscriptionSinkSettingsOutput() GetStreamSubscriptionSinkSettingsOutput {
+	return i.ToGetStreamSubscriptionSinkSettingsOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionSinkSettingsArgs) ToGetStreamSubscriptionSinkSettingsOutputWithContext(ctx context.Context) GetStreamSubscriptionSinkSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionSinkSettingsOutput)
+}
+
+type GetStreamSubscriptionSinkSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionSinkSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionSinkSettings)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionSinkSettingsOutput) ToGetStreamSubscriptionSinkSettingsOutput() GetStreamSubscriptionSinkSettingsOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionSinkSettingsOutput) ToGetStreamSubscriptionSinkSettingsOutputWithContext(ctx context.Context) GetStreamSubscriptionSinkSettingsOutput {
+	return o
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkSettingsOutput) AccessToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.AccessToken }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkSettingsOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkSettingsOutput) IntegrationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.IntegrationKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkSettingsOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Type of the stream subscription request
+func (o GetStreamSubscriptionSinkSettingsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionSinkSettingsOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionsData struct {
+	// Details of the last change on the stream resource
+	ChangeLog GetStreamSubscriptionsDataChangeLog `pulumi:"changeLog"`
+	// Customer-provided stream subscription description
+	Description string `pulumi:"description"`
+	// Stream subscription enabled status
+	Enabled bool `pulumi:"enabled"`
+	// Lists of events to be included/excluded on the stream subscription
+	EventSelector GetStreamSubscriptionsDataEventSelector `pulumi:"eventSelector"`
+	// Equinix assigned URI of the stream subscription resource
+	Href string `pulumi:"href"`
+	// Lists of metrics to be included/excluded on the stream subscription
+	MetricSelector GetStreamSubscriptionsDataMetricSelector `pulumi:"metricSelector"`
+	// Customer-provided stream subscription name
+	Name string `pulumi:"name"`
+	// The details of the subscriber to the Equinix Stream
+	Sink GetStreamSubscriptionsDataSink `pulumi:"sink"`
+	// Value representing provisioning status for the stream resource
+	State string `pulumi:"state"`
+	// Type of the stream subscription request
+	Type string `pulumi:"type"`
+	// Equinix assigned unique identifier of the stream subscription resource
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetStreamSubscriptionsDataInput is an input type that accepts GetStreamSubscriptionsDataArgs and GetStreamSubscriptionsDataOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataInput` via:
+//
+//	GetStreamSubscriptionsDataArgs{...}
+type GetStreamSubscriptionsDataInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataOutput() GetStreamSubscriptionsDataOutput
+	ToGetStreamSubscriptionsDataOutputWithContext(context.Context) GetStreamSubscriptionsDataOutput
+}
+
+type GetStreamSubscriptionsDataArgs struct {
+	// Details of the last change on the stream resource
+	ChangeLog GetStreamSubscriptionsDataChangeLogInput `pulumi:"changeLog"`
+	// Customer-provided stream subscription description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Stream subscription enabled status
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Lists of events to be included/excluded on the stream subscription
+	EventSelector GetStreamSubscriptionsDataEventSelectorInput `pulumi:"eventSelector"`
+	// Equinix assigned URI of the stream subscription resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Lists of metrics to be included/excluded on the stream subscription
+	MetricSelector GetStreamSubscriptionsDataMetricSelectorInput `pulumi:"metricSelector"`
+	// Customer-provided stream subscription name
+	Name pulumi.StringInput `pulumi:"name"`
+	// The details of the subscriber to the Equinix Stream
+	Sink GetStreamSubscriptionsDataSinkInput `pulumi:"sink"`
+	// Value representing provisioning status for the stream resource
+	State pulumi.StringInput `pulumi:"state"`
+	// Type of the stream subscription request
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix assigned unique identifier of the stream subscription resource
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetStreamSubscriptionsDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsData)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataArgs) ToGetStreamSubscriptionsDataOutput() GetStreamSubscriptionsDataOutput {
+	return i.ToGetStreamSubscriptionsDataOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataArgs) ToGetStreamSubscriptionsDataOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataOutput)
+}
+
+// GetStreamSubscriptionsDataArrayInput is an input type that accepts GetStreamSubscriptionsDataArray and GetStreamSubscriptionsDataArrayOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataArrayInput` via:
+//
+//	GetStreamSubscriptionsDataArray{ GetStreamSubscriptionsDataArgs{...} }
+type GetStreamSubscriptionsDataArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataArrayOutput() GetStreamSubscriptionsDataArrayOutput
+	ToGetStreamSubscriptionsDataArrayOutputWithContext(context.Context) GetStreamSubscriptionsDataArrayOutput
+}
+
+type GetStreamSubscriptionsDataArray []GetStreamSubscriptionsDataInput
+
+func (GetStreamSubscriptionsDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamSubscriptionsData)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataArray) ToGetStreamSubscriptionsDataArrayOutput() GetStreamSubscriptionsDataArrayOutput {
+	return i.ToGetStreamSubscriptionsDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataArray) ToGetStreamSubscriptionsDataArrayOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataArrayOutput)
+}
+
+type GetStreamSubscriptionsDataOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsData)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataOutput) ToGetStreamSubscriptionsDataOutput() GetStreamSubscriptionsDataOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataOutput) ToGetStreamSubscriptionsDataOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataOutput {
+	return o
+}
+
+// Details of the last change on the stream resource
+func (o GetStreamSubscriptionsDataOutput) ChangeLog() GetStreamSubscriptionsDataChangeLogOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) GetStreamSubscriptionsDataChangeLog { return v.ChangeLog }).(GetStreamSubscriptionsDataChangeLogOutput)
+}
+
+// Customer-provided stream subscription description
+func (o GetStreamSubscriptionsDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Stream subscription enabled status
+func (o GetStreamSubscriptionsDataOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Lists of events to be included/excluded on the stream subscription
+func (o GetStreamSubscriptionsDataOutput) EventSelector() GetStreamSubscriptionsDataEventSelectorOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) GetStreamSubscriptionsDataEventSelector { return v.EventSelector }).(GetStreamSubscriptionsDataEventSelectorOutput)
+}
+
+// Equinix assigned URI of the stream subscription resource
+func (o GetStreamSubscriptionsDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Lists of metrics to be included/excluded on the stream subscription
+func (o GetStreamSubscriptionsDataOutput) MetricSelector() GetStreamSubscriptionsDataMetricSelectorOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) GetStreamSubscriptionsDataMetricSelector { return v.MetricSelector }).(GetStreamSubscriptionsDataMetricSelectorOutput)
+}
+
+// Customer-provided stream subscription name
+func (o GetStreamSubscriptionsDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The details of the subscriber to the Equinix Stream
+func (o GetStreamSubscriptionsDataOutput) Sink() GetStreamSubscriptionsDataSinkOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) GetStreamSubscriptionsDataSink { return v.Sink }).(GetStreamSubscriptionsDataSinkOutput)
+}
+
+// Value representing provisioning status for the stream resource
+func (o GetStreamSubscriptionsDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Type of the stream subscription request
+func (o GetStreamSubscriptionsDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix assigned unique identifier of the stream subscription resource
+func (o GetStreamSubscriptionsDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionsDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamSubscriptionsData)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataArrayOutput) ToGetStreamSubscriptionsDataArrayOutput() GetStreamSubscriptionsDataArrayOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataArrayOutput) ToGetStreamSubscriptionsDataArrayOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataArrayOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataArrayOutput) Index(i pulumi.IntInput) GetStreamSubscriptionsDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamSubscriptionsData {
+		return vs[0].([]GetStreamSubscriptionsData)[vs[1].(int)]
+	}).(GetStreamSubscriptionsDataOutput)
+}
+
+type GetStreamSubscriptionsDataChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamSubscriptionsDataChangeLogInput is an input type that accepts GetStreamSubscriptionsDataChangeLogArgs and GetStreamSubscriptionsDataChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataChangeLogInput` via:
+//
+//	GetStreamSubscriptionsDataChangeLogArgs{...}
+type GetStreamSubscriptionsDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataChangeLogOutput() GetStreamSubscriptionsDataChangeLogOutput
+	ToGetStreamSubscriptionsDataChangeLogOutputWithContext(context.Context) GetStreamSubscriptionsDataChangeLogOutput
+}
+
+type GetStreamSubscriptionsDataChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamSubscriptionsDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataChangeLogArgs) ToGetStreamSubscriptionsDataChangeLogOutput() GetStreamSubscriptionsDataChangeLogOutput {
+	return i.ToGetStreamSubscriptionsDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataChangeLogArgs) ToGetStreamSubscriptionsDataChangeLogOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataChangeLogOutput)
+}
+
+type GetStreamSubscriptionsDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataChangeLogOutput) ToGetStreamSubscriptionsDataChangeLogOutput() GetStreamSubscriptionsDataChangeLogOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataChangeLogOutput) ToGetStreamSubscriptionsDataChangeLogOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamSubscriptionsDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionsDataEventSelector struct {
+	// List of events to exclude
+	Excepts []string `pulumi:"excepts"`
+	// List of events to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamSubscriptionsDataEventSelectorInput is an input type that accepts GetStreamSubscriptionsDataEventSelectorArgs and GetStreamSubscriptionsDataEventSelectorOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataEventSelectorInput` via:
+//
+//	GetStreamSubscriptionsDataEventSelectorArgs{...}
+type GetStreamSubscriptionsDataEventSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataEventSelectorOutput() GetStreamSubscriptionsDataEventSelectorOutput
+	ToGetStreamSubscriptionsDataEventSelectorOutputWithContext(context.Context) GetStreamSubscriptionsDataEventSelectorOutput
+}
+
+type GetStreamSubscriptionsDataEventSelectorArgs struct {
+	// List of events to exclude
+	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
+	// List of events to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamSubscriptionsDataEventSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataEventSelector)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataEventSelectorArgs) ToGetStreamSubscriptionsDataEventSelectorOutput() GetStreamSubscriptionsDataEventSelectorOutput {
+	return i.ToGetStreamSubscriptionsDataEventSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataEventSelectorArgs) ToGetStreamSubscriptionsDataEventSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataEventSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataEventSelectorOutput)
+}
+
+type GetStreamSubscriptionsDataEventSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataEventSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataEventSelector)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataEventSelectorOutput) ToGetStreamSubscriptionsDataEventSelectorOutput() GetStreamSubscriptionsDataEventSelectorOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataEventSelectorOutput) ToGetStreamSubscriptionsDataEventSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataEventSelectorOutput {
+	return o
+}
+
+// List of events to exclude
+func (o GetStreamSubscriptionsDataEventSelectorOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataEventSelector) []string { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// List of events to include
+func (o GetStreamSubscriptionsDataEventSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataEventSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamSubscriptionsDataMetricSelector struct {
+	// List of metrics to exclude
+	Excepts []string `pulumi:"excepts"`
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamSubscriptionsDataMetricSelectorInput is an input type that accepts GetStreamSubscriptionsDataMetricSelectorArgs and GetStreamSubscriptionsDataMetricSelectorOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataMetricSelectorInput` via:
+//
+//	GetStreamSubscriptionsDataMetricSelectorArgs{...}
+type GetStreamSubscriptionsDataMetricSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataMetricSelectorOutput() GetStreamSubscriptionsDataMetricSelectorOutput
+	ToGetStreamSubscriptionsDataMetricSelectorOutputWithContext(context.Context) GetStreamSubscriptionsDataMetricSelectorOutput
+}
+
+type GetStreamSubscriptionsDataMetricSelectorArgs struct {
+	// List of metrics to exclude
+	Excepts pulumi.StringArrayInput `pulumi:"excepts"`
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamSubscriptionsDataMetricSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataMetricSelector)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataMetricSelectorArgs) ToGetStreamSubscriptionsDataMetricSelectorOutput() GetStreamSubscriptionsDataMetricSelectorOutput {
+	return i.ToGetStreamSubscriptionsDataMetricSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataMetricSelectorArgs) ToGetStreamSubscriptionsDataMetricSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataMetricSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataMetricSelectorOutput)
+}
+
+type GetStreamSubscriptionsDataMetricSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataMetricSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataMetricSelector)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataMetricSelectorOutput) ToGetStreamSubscriptionsDataMetricSelectorOutput() GetStreamSubscriptionsDataMetricSelectorOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataMetricSelectorOutput) ToGetStreamSubscriptionsDataMetricSelectorOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataMetricSelectorOutput {
+	return o
+}
+
+// List of metrics to exclude
+func (o GetStreamSubscriptionsDataMetricSelectorOutput) Excepts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataMetricSelector) []string { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// List of metrics to include
+func (o GetStreamSubscriptionsDataMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamSubscriptionsDataSink struct {
+	// Boolean switch enabling batch delivery of data
+	BatchEnabled bool `pulumi:"batchEnabled"`
+	// Maximum size of the batch delivery if enabled
+	BatchSizeMax int `pulumi:"batchSizeMax"`
+	// Maximum time to wait for batch delivery if enabled
+	BatchWaitTimeMax int `pulumi:"batchWaitTimeMax"`
+	// Access details for the specified sink type
+	Credential GetStreamSubscriptionsDataSinkCredential `pulumi:"credential"`
+	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+	Host string `pulumi:"host"`
+	// Stream subscription sink settings
+	Settings GetStreamSubscriptionsDataSinkSettings `pulumi:"settings"`
+	// Type of the subscriber
+	Type string `pulumi:"type"`
+	// Publicly reachable http endpoint destination for data stream
+	Uri string `pulumi:"uri"`
+}
+
+// GetStreamSubscriptionsDataSinkInput is an input type that accepts GetStreamSubscriptionsDataSinkArgs and GetStreamSubscriptionsDataSinkOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataSinkInput` via:
+//
+//	GetStreamSubscriptionsDataSinkArgs{...}
+type GetStreamSubscriptionsDataSinkInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataSinkOutput() GetStreamSubscriptionsDataSinkOutput
+	ToGetStreamSubscriptionsDataSinkOutputWithContext(context.Context) GetStreamSubscriptionsDataSinkOutput
+}
+
+type GetStreamSubscriptionsDataSinkArgs struct {
+	// Boolean switch enabling batch delivery of data
+	BatchEnabled pulumi.BoolInput `pulumi:"batchEnabled"`
+	// Maximum size of the batch delivery if enabled
+	BatchSizeMax pulumi.IntInput `pulumi:"batchSizeMax"`
+	// Maximum time to wait for batch delivery if enabled
+	BatchWaitTimeMax pulumi.IntInput `pulumi:"batchWaitTimeMax"`
+	// Access details for the specified sink type
+	Credential GetStreamSubscriptionsDataSinkCredentialInput `pulumi:"credential"`
+	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+	Host pulumi.StringInput `pulumi:"host"`
+	// Stream subscription sink settings
+	Settings GetStreamSubscriptionsDataSinkSettingsInput `pulumi:"settings"`
+	// Type of the subscriber
+	Type pulumi.StringInput `pulumi:"type"`
+	// Publicly reachable http endpoint destination for data stream
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetStreamSubscriptionsDataSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataSink)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataSinkArgs) ToGetStreamSubscriptionsDataSinkOutput() GetStreamSubscriptionsDataSinkOutput {
+	return i.ToGetStreamSubscriptionsDataSinkOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataSinkArgs) ToGetStreamSubscriptionsDataSinkOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataSinkOutput)
+}
+
+type GetStreamSubscriptionsDataSinkOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataSink)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataSinkOutput) ToGetStreamSubscriptionsDataSinkOutput() GetStreamSubscriptionsDataSinkOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataSinkOutput) ToGetStreamSubscriptionsDataSinkOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkOutput {
+	return o
+}
+
+// Boolean switch enabling batch delivery of data
+func (o GetStreamSubscriptionsDataSinkOutput) BatchEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) bool { return v.BatchEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum size of the batch delivery if enabled
+func (o GetStreamSubscriptionsDataSinkOutput) BatchSizeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) int { return v.BatchSizeMax }).(pulumi.IntOutput)
+}
+
+// Maximum time to wait for batch delivery if enabled
+func (o GetStreamSubscriptionsDataSinkOutput) BatchWaitTimeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) int { return v.BatchWaitTimeMax }).(pulumi.IntOutput)
+}
+
+// Access details for the specified sink type
+func (o GetStreamSubscriptionsDataSinkOutput) Credential() GetStreamSubscriptionsDataSinkCredentialOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) GetStreamSubscriptionsDataSinkCredential { return v.Credential }).(GetStreamSubscriptionsDataSinkCredentialOutput)
+}
+
+// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+func (o GetStreamSubscriptionsDataSinkOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Stream subscription sink settings
+func (o GetStreamSubscriptionsDataSinkOutput) Settings() GetStreamSubscriptionsDataSinkSettingsOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) GetStreamSubscriptionsDataSinkSettings { return v.Settings }).(GetStreamSubscriptionsDataSinkSettingsOutput)
+}
+
+// Type of the subscriber
+func (o GetStreamSubscriptionsDataSinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Publicly reachable http endpoint destination for data stream
+func (o GetStreamSubscriptionsDataSinkOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionsDataSinkCredential struct {
+	// Passed as Authorization header value
+	AccessToken string `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey string `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey string `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password string `pulumi:"password"`
+	// Type of the credential being passed
+	Type string `pulumi:"type"`
+	// Passed as Authorization header value
+	Username string `pulumi:"username"`
+}
+
+// GetStreamSubscriptionsDataSinkCredentialInput is an input type that accepts GetStreamSubscriptionsDataSinkCredentialArgs and GetStreamSubscriptionsDataSinkCredentialOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataSinkCredentialInput` via:
+//
+//	GetStreamSubscriptionsDataSinkCredentialArgs{...}
+type GetStreamSubscriptionsDataSinkCredentialInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataSinkCredentialOutput() GetStreamSubscriptionsDataSinkCredentialOutput
+	ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(context.Context) GetStreamSubscriptionsDataSinkCredentialOutput
+}
+
+type GetStreamSubscriptionsDataSinkCredentialArgs struct {
+	// Passed as Authorization header value
+	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password pulumi.StringInput `pulumi:"password"`
+	// Type of the credential being passed
+	Type pulumi.StringInput `pulumi:"type"`
+	// Passed as Authorization header value
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetStreamSubscriptionsDataSinkCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkCredential)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataSinkCredentialArgs) ToGetStreamSubscriptionsDataSinkCredentialOutput() GetStreamSubscriptionsDataSinkCredentialOutput {
+	return i.ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataSinkCredentialArgs) ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataSinkCredentialOutput)
+}
+
+type GetStreamSubscriptionsDataSinkCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataSinkCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkCredential)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) ToGetStreamSubscriptionsDataSinkCredentialOutput() GetStreamSubscriptionsDataSinkCredentialOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkCredentialOutput {
+	return o
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) AccessToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.AccessToken }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) IntegrationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.IntegrationKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Type of the credential being passed
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionsDataSinkSettings struct {
+	// Passed as Authorization header value
+	AccessToken string `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey string `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey string `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password string `pulumi:"password"`
+	Type     string `pulumi:"type"`
+	// Passed as Authorization header value
+	Username string `pulumi:"username"`
+}
+
+// GetStreamSubscriptionsDataSinkSettingsInput is an input type that accepts GetStreamSubscriptionsDataSinkSettingsArgs and GetStreamSubscriptionsDataSinkSettingsOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsDataSinkSettingsInput` via:
+//
+//	GetStreamSubscriptionsDataSinkSettingsArgs{...}
+type GetStreamSubscriptionsDataSinkSettingsInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsDataSinkSettingsOutput() GetStreamSubscriptionsDataSinkSettingsOutput
+	ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(context.Context) GetStreamSubscriptionsDataSinkSettingsOutput
+}
+
+type GetStreamSubscriptionsDataSinkSettingsArgs struct {
+	// Passed as Authorization header value
+	AccessToken pulumi.StringInput `pulumi:"accessToken"`
+	// Passed as Authorization header value
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Passed as Authorization header value
+	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
+	// Passed as Authorization header value
+	Password pulumi.StringInput `pulumi:"password"`
+	Type     pulumi.StringInput `pulumi:"type"`
+	// Passed as Authorization header value
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetStreamSubscriptionsDataSinkSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkSettings)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsDataSinkSettingsArgs) ToGetStreamSubscriptionsDataSinkSettingsOutput() GetStreamSubscriptionsDataSinkSettingsOutput {
+	return i.ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsDataSinkSettingsArgs) ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataSinkSettingsOutput)
+}
+
+type GetStreamSubscriptionsDataSinkSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsDataSinkSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkSettings)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) ToGetStreamSubscriptionsDataSinkSettingsOutput() GetStreamSubscriptionsDataSinkSettingsOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkSettingsOutput {
+	return o
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) AccessToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.AccessToken }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) IntegrationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.IntegrationKey }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Passed as Authorization header value
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetStreamSubscriptionsPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetStreamSubscriptionsPaginationInput is an input type that accepts GetStreamSubscriptionsPaginationArgs and GetStreamSubscriptionsPaginationOutput values.
+// You can construct a concrete instance of `GetStreamSubscriptionsPaginationInput` via:
+//
+//	GetStreamSubscriptionsPaginationArgs{...}
+type GetStreamSubscriptionsPaginationInput interface {
+	pulumi.Input
+
+	ToGetStreamSubscriptionsPaginationOutput() GetStreamSubscriptionsPaginationOutput
+	ToGetStreamSubscriptionsPaginationOutputWithContext(context.Context) GetStreamSubscriptionsPaginationOutput
+}
+
+type GetStreamSubscriptionsPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetStreamSubscriptionsPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsPagination)(nil)).Elem()
+}
+
+func (i GetStreamSubscriptionsPaginationArgs) ToGetStreamSubscriptionsPaginationOutput() GetStreamSubscriptionsPaginationOutput {
+	return i.ToGetStreamSubscriptionsPaginationOutputWithContext(context.Background())
+}
+
+func (i GetStreamSubscriptionsPaginationArgs) ToGetStreamSubscriptionsPaginationOutputWithContext(ctx context.Context) GetStreamSubscriptionsPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsPaginationOutput)
+}
+
+type GetStreamSubscriptionsPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetStreamSubscriptionsPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamSubscriptionsPagination)(nil)).Elem()
+}
+
+func (o GetStreamSubscriptionsPaginationOutput) ToGetStreamSubscriptionsPaginationOutput() GetStreamSubscriptionsPaginationOutput {
+	return o
+}
+
+func (o GetStreamSubscriptionsPaginationOutput) ToGetStreamSubscriptionsPaginationOutputWithContext(ctx context.Context) GetStreamSubscriptionsPaginationOutput {
+	return o
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetStreamSubscriptionsPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetStreamSubscriptionsPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetStreamSubscriptionsPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetStreamSubscriptionsPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of streams available to the user making the request
+func (o GetStreamSubscriptionsPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsPagination) int { return v.Total }).(pulumi.IntOutput)
 }
 
 type GetStreamsData struct {
@@ -60175,6 +73577,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProjectPtrInput)(nil)).Elem(), ConnectionProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionRedundancyInput)(nil)).Elem(), ConnectionRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionRedundancyPtrInput)(nil)).Elem(), ConnectionRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionRouteAggregationTimeoutsInput)(nil)).Elem(), ConnectionRouteAggregationTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionRouteAggregationTimeoutsPtrInput)(nil)).Elem(), ConnectionRouteAggregationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideInput)(nil)).Elem(), ConnectionZSideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSidePtrInput)(nil)).Elem(), ConnectionZSideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointInput)(nil)).Elem(), ConnectionZSideAccessPointArgs{})
@@ -60219,6 +73623,44 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkOperationPtrInput)(nil)).Elem(), NetworkOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProjectInput)(nil)).Elem(), NetworkProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProjectPtrInput)(nil)).Elem(), NetworkProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceAccountInput)(nil)).Elem(), PrecisionTimeServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceAccountPtrInput)(nil)).Elem(), PrecisionTimeServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceChangeLogInput)(nil)).Elem(), PrecisionTimeServiceChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceChangeLogPtrInput)(nil)).Elem(), PrecisionTimeServiceChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceConnectionInput)(nil)).Elem(), PrecisionTimeServiceConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceConnectionArrayInput)(nil)).Elem(), PrecisionTimeServiceConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceIpv4Input)(nil)).Elem(), PrecisionTimeServiceIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceIpv4PtrInput)(nil)).Elem(), PrecisionTimeServiceIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceNtpAdvancedConfigurationInput)(nil)).Elem(), PrecisionTimeServiceNtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceNtpAdvancedConfigurationArrayInput)(nil)).Elem(), PrecisionTimeServiceNtpAdvancedConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceOrderInput)(nil)).Elem(), PrecisionTimeServiceOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceOrderPtrInput)(nil)).Elem(), PrecisionTimeServiceOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePackageInput)(nil)).Elem(), PrecisionTimeServicePackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePackagePtrInput)(nil)).Elem(), PrecisionTimeServicePackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePrecisionTimePriceInput)(nil)).Elem(), PrecisionTimeServicePrecisionTimePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePrecisionTimePricePtrInput)(nil)).Elem(), PrecisionTimeServicePrecisionTimePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePrecisionTimePriceChargeInput)(nil)).Elem(), PrecisionTimeServicePrecisionTimePriceChargeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePrecisionTimePriceChargeArrayInput)(nil)).Elem(), PrecisionTimeServicePrecisionTimePriceChargeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceProjectInput)(nil)).Elem(), PrecisionTimeServiceProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceProjectPtrInput)(nil)).Elem(), PrecisionTimeServiceProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePtpAdvancedConfigurationInput)(nil)).Elem(), PrecisionTimeServicePtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePtpAdvancedConfigurationPtrInput)(nil)).Elem(), PrecisionTimeServicePtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceTimeoutsInput)(nil)).Elem(), PrecisionTimeServiceTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceTimeoutsPtrInput)(nil)).Elem(), PrecisionTimeServiceTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationChangeInput)(nil)).Elem(), RouteAggregationChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationChangePtrInput)(nil)).Elem(), RouteAggregationChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationChangeLogInput)(nil)).Elem(), RouteAggregationChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationChangeLogPtrInput)(nil)).Elem(), RouteAggregationChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationProjectInput)(nil)).Elem(), RouteAggregationProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationProjectPtrInput)(nil)).Elem(), RouteAggregationProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationRuleChangeInput)(nil)).Elem(), RouteAggregationRuleChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationRuleChangePtrInput)(nil)).Elem(), RouteAggregationRuleChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationRuleChangeLogInput)(nil)).Elem(), RouteAggregationRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationRuleChangeLogPtrInput)(nil)).Elem(), RouteAggregationRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationRuleTimeoutsInput)(nil)).Elem(), RouteAggregationRuleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationRuleTimeoutsPtrInput)(nil)).Elem(), RouteAggregationRuleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationTimeoutsInput)(nil)).Elem(), RouteAggregationTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouteAggregationTimeoutsPtrInput)(nil)).Elem(), RouteAggregationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterChangeInput)(nil)).Elem(), RouteFilterChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterChangeArrayInput)(nil)).Elem(), RouteFilterChangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteFilterChangeLogInput)(nil)).Elem(), RouteFilterChangeLogArgs{})
@@ -60327,10 +73769,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAttachmentTimeoutsInput)(nil)).Elem(), StreamAttachmentTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAttachmentTimeoutsPtrInput)(nil)).Elem(), StreamAttachmentTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamChangeLogInput)(nil)).Elem(), StreamChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamChangeLogPtrInput)(nil)).Elem(), StreamChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamProjectInput)(nil)).Elem(), StreamProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamProjectPtrInput)(nil)).Elem(), StreamProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionChangeLogInput)(nil)).Elem(), StreamSubscriptionChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionChangeLogPtrInput)(nil)).Elem(), StreamSubscriptionChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionEventSelectorInput)(nil)).Elem(), StreamSubscriptionEventSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionEventSelectorPtrInput)(nil)).Elem(), StreamSubscriptionEventSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionMetricSelectorInput)(nil)).Elem(), StreamSubscriptionMetricSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionMetricSelectorPtrInput)(nil)).Elem(), StreamSubscriptionMetricSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionSinkInput)(nil)).Elem(), StreamSubscriptionSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionSinkPtrInput)(nil)).Elem(), StreamSubscriptionSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionSinkCredentialInput)(nil)).Elem(), StreamSubscriptionSinkCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionSinkCredentialPtrInput)(nil)).Elem(), StreamSubscriptionSinkCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionSinkSettingsInput)(nil)).Elem(), StreamSubscriptionSinkSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionSinkSettingsPtrInput)(nil)).Elem(), StreamSubscriptionSinkSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionTimeoutsInput)(nil)).Elem(), StreamSubscriptionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSubscriptionTimeoutsPtrInput)(nil)).Elem(), StreamSubscriptionTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamTimeoutsInput)(nil)).Elem(), StreamTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamTimeoutsPtrInput)(nil)).Elem(), StreamTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRouterAccountInput)(nil)).Elem(), GetCloudRouterAccountArgs{})
@@ -60416,6 +73874,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOrderInput)(nil)).Elem(), GetConnectionOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProjectInput)(nil)).Elem(), GetConnectionProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRedundancyInput)(nil)).Elem(), GetConnectionRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteAggregationsDataInput)(nil)).Elem(), GetConnectionRouteAggregationsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteAggregationsDataArrayInput)(nil)).Elem(), GetConnectionRouteAggregationsDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteAggregationsPaginationInput)(nil)).Elem(), GetConnectionRouteAggregationsPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteAggregationsPaginationPtrInput)(nil)).Elem(), GetConnectionRouteAggregationsPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteFiltersDataInput)(nil)).Elem(), GetConnectionRouteFiltersDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteFiltersDataArrayInput)(nil)).Elem(), GetConnectionRouteFiltersDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRouteFiltersPaginationInput)(nil)).Elem(), GetConnectionRouteFiltersPaginationArgs{})
@@ -60613,6 +74075,67 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyInput)(nil)).Elem(), GetPortsDatumRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyArrayInput)(nil)).Elem(), GetPortsDatumRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterInput)(nil)).Elem(), GetPortsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceAccountInput)(nil)).Elem(), GetPrecisionTimeServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceChangeLogInput)(nil)).Elem(), GetPrecisionTimeServiceChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceConnectionInput)(nil)).Elem(), GetPrecisionTimeServiceConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceConnectionArrayInput)(nil)).Elem(), GetPrecisionTimeServiceConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceIpv4Input)(nil)).Elem(), GetPrecisionTimeServiceIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceNtpAdvancedConfigurationInput)(nil)).Elem(), GetPrecisionTimeServiceNtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceNtpAdvancedConfigurationArrayInput)(nil)).Elem(), GetPrecisionTimeServiceNtpAdvancedConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceOrderInput)(nil)).Elem(), GetPrecisionTimeServiceOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePackageInput)(nil)).Elem(), GetPrecisionTimeServicePackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePriceInput)(nil)).Elem(), GetPrecisionTimeServicePrecisionTimePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePriceChargeInput)(nil)).Elem(), GetPrecisionTimeServicePrecisionTimePriceChargeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePriceChargeArrayInput)(nil)).Elem(), GetPrecisionTimeServicePrecisionTimePriceChargeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceProjectInput)(nil)).Elem(), GetPrecisionTimeServiceProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceProjectPtrInput)(nil)).Elem(), GetPrecisionTimeServiceProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePtpAdvancedConfigurationInput)(nil)).Elem(), GetPrecisionTimeServicePtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePtpAdvancedConfigurationPtrInput)(nil)).Elem(), GetPrecisionTimeServicePtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataInput)(nil)).Elem(), GetPrecisionTimeServicesDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataArrayInput)(nil)).Elem(), GetPrecisionTimeServicesDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataAccountInput)(nil)).Elem(), GetPrecisionTimeServicesDataAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataChangeLogInput)(nil)).Elem(), GetPrecisionTimeServicesDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataConnectionInput)(nil)).Elem(), GetPrecisionTimeServicesDataConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataConnectionArrayInput)(nil)).Elem(), GetPrecisionTimeServicesDataConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataIpv4Input)(nil)).Elem(), GetPrecisionTimeServicesDataIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataNtpAdvancedConfigurationInput)(nil)).Elem(), GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayInput)(nil)).Elem(), GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataOrderInput)(nil)).Elem(), GetPrecisionTimeServicesDataOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPackageInput)(nil)).Elem(), GetPrecisionTimeServicesDataPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePriceInput)(nil)).Elem(), GetPrecisionTimeServicesDataPrecisionTimePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePriceChargeInput)(nil)).Elem(), GetPrecisionTimeServicesDataPrecisionTimePriceChargeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayInput)(nil)).Elem(), GetPrecisionTimeServicesDataPrecisionTimePriceChargeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataProjectInput)(nil)).Elem(), GetPrecisionTimeServicesDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataProjectPtrInput)(nil)).Elem(), GetPrecisionTimeServicesDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPtpAdvancedConfigurationInput)(nil)).Elem(), GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrInput)(nil)).Elem(), GetPrecisionTimeServicesDataPtpAdvancedConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesFilterInput)(nil)).Elem(), GetPrecisionTimeServicesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesFilterArrayInput)(nil)).Elem(), GetPrecisionTimeServicesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesPaginationInput)(nil)).Elem(), GetPrecisionTimeServicesPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesPaginationPtrInput)(nil)).Elem(), GetPrecisionTimeServicesPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesSortInput)(nil)).Elem(), GetPrecisionTimeServicesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesSortArrayInput)(nil)).Elem(), GetPrecisionTimeServicesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationChangeInput)(nil)).Elem(), GetRouteAggregationChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationChangeLogInput)(nil)).Elem(), GetRouteAggregationChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationProjectInput)(nil)).Elem(), GetRouteAggregationProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRuleChangeInput)(nil)).Elem(), GetRouteAggregationRuleChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRuleChangeLogInput)(nil)).Elem(), GetRouteAggregationRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesDataInput)(nil)).Elem(), GetRouteAggregationRulesDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesDataArrayInput)(nil)).Elem(), GetRouteAggregationRulesDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesDataChangeInput)(nil)).Elem(), GetRouteAggregationRulesDataChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesDataChangeLogInput)(nil)).Elem(), GetRouteAggregationRulesDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesPaginationInput)(nil)).Elem(), GetRouteAggregationRulesPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesPaginationPtrInput)(nil)).Elem(), GetRouteAggregationRulesPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataInput)(nil)).Elem(), GetRouteAggregationsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataArrayInput)(nil)).Elem(), GetRouteAggregationsDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataChangeInput)(nil)).Elem(), GetRouteAggregationsDataChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataChangeLogInput)(nil)).Elem(), GetRouteAggregationsDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataProjectInput)(nil)).Elem(), GetRouteAggregationsDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsFilterInput)(nil)).Elem(), GetRouteAggregationsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsPaginationInput)(nil)).Elem(), GetRouteAggregationsPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsPaginationPtrInput)(nil)).Elem(), GetRouteAggregationsPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsSortInput)(nil)).Elem(), GetRouteAggregationsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsSortPtrInput)(nil)).Elem(), GetRouteAggregationsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterChangeInput)(nil)).Elem(), GetRouteFilterChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterChangeArrayInput)(nil)).Elem(), GetRouteFilterChangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterChangeLogInput)(nil)).Elem(), GetRouteFilterChangeLogArgs{})
@@ -60821,8 +74344,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensFilterArrayInput)(nil)).Elem(), GetServiceTokensFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationPtrInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataInput)(nil)).Elem(), GetStreamAttachmentsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataArrayInput)(nil)).Elem(), GetStreamAttachmentsDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsFilterInput)(nil)).Elem(), GetStreamAttachmentsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsFilterArrayInput)(nil)).Elem(), GetStreamAttachmentsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsPaginationInput)(nil)).Elem(), GetStreamAttachmentsPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortInput)(nil)).Elem(), GetStreamAttachmentsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortArrayInput)(nil)).Elem(), GetStreamAttachmentsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamChangeLogInput)(nil)).Elem(), GetStreamChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamProjectInput)(nil)).Elem(), GetStreamProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionChangeLogInput)(nil)).Elem(), GetStreamSubscriptionChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionEventSelectorInput)(nil)).Elem(), GetStreamSubscriptionEventSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionMetricSelectorInput)(nil)).Elem(), GetStreamSubscriptionMetricSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionSinkInput)(nil)).Elem(), GetStreamSubscriptionSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionSinkCredentialInput)(nil)).Elem(), GetStreamSubscriptionSinkCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionSinkSettingsInput)(nil)).Elem(), GetStreamSubscriptionSinkSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataInput)(nil)).Elem(), GetStreamSubscriptionsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataArrayInput)(nil)).Elem(), GetStreamSubscriptionsDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataChangeLogInput)(nil)).Elem(), GetStreamSubscriptionsDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataEventSelectorInput)(nil)).Elem(), GetStreamSubscriptionsDataEventSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataMetricSelectorInput)(nil)).Elem(), GetStreamSubscriptionsDataMetricSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataSinkInput)(nil)).Elem(), GetStreamSubscriptionsDataSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataSinkCredentialInput)(nil)).Elem(), GetStreamSubscriptionsDataSinkCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataSinkSettingsInput)(nil)).Elem(), GetStreamSubscriptionsDataSinkSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsPaginationInput)(nil)).Elem(), GetStreamSubscriptionsPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataInput)(nil)).Elem(), GetStreamsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataArrayInput)(nil)).Elem(), GetStreamsDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataChangeLogInput)(nil)).Elem(), GetStreamsDataChangeLogArgs{})
@@ -60894,6 +74439,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProjectPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionRedundancyOutput{})
 	pulumi.RegisterOutputType(ConnectionRedundancyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionRouteAggregationTimeoutsOutput{})
+	pulumi.RegisterOutputType(ConnectionRouteAggregationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideOutput{})
 	pulumi.RegisterOutputType(ConnectionZSidePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointOutput{})
@@ -60938,6 +74485,44 @@ func init() {
 	pulumi.RegisterOutputType(NetworkOperationPtrOutput{})
 	pulumi.RegisterOutputType(NetworkProjectOutput{})
 	pulumi.RegisterOutputType(NetworkProjectPtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceAccountOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceChangeLogOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceConnectionOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceConnectionArrayOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceIpv4Output{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceIpv4PtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceNtpAdvancedConfigurationOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceOrderOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceOrderPtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePackageOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePackagePtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePrecisionTimePriceOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePrecisionTimePricePtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePrecisionTimePriceChargeOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePrecisionTimePriceChargeArrayOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceProjectOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceProjectPtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePtpAdvancedConfigurationOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServicePtpAdvancedConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceTimeoutsOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(RouteAggregationChangeOutput{})
+	pulumi.RegisterOutputType(RouteAggregationChangePtrOutput{})
+	pulumi.RegisterOutputType(RouteAggregationChangeLogOutput{})
+	pulumi.RegisterOutputType(RouteAggregationChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(RouteAggregationProjectOutput{})
+	pulumi.RegisterOutputType(RouteAggregationProjectPtrOutput{})
+	pulumi.RegisterOutputType(RouteAggregationRuleChangeOutput{})
+	pulumi.RegisterOutputType(RouteAggregationRuleChangePtrOutput{})
+	pulumi.RegisterOutputType(RouteAggregationRuleChangeLogOutput{})
+	pulumi.RegisterOutputType(RouteAggregationRuleChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(RouteAggregationRuleTimeoutsOutput{})
+	pulumi.RegisterOutputType(RouteAggregationRuleTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(RouteAggregationTimeoutsOutput{})
+	pulumi.RegisterOutputType(RouteAggregationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(RouteFilterChangeOutput{})
 	pulumi.RegisterOutputType(RouteFilterChangeArrayOutput{})
 	pulumi.RegisterOutputType(RouteFilterChangeLogOutput{})
@@ -61046,10 +74631,26 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(StreamAttachmentTimeoutsOutput{})
+	pulumi.RegisterOutputType(StreamAttachmentTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(StreamChangeLogOutput{})
 	pulumi.RegisterOutputType(StreamChangeLogPtrOutput{})
 	pulumi.RegisterOutputType(StreamProjectOutput{})
 	pulumi.RegisterOutputType(StreamProjectPtrOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionChangeLogOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionEventSelectorOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionEventSelectorPtrOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionMetricSelectorOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionMetricSelectorPtrOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionSinkOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionSinkPtrOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionSinkCredentialOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionSinkCredentialPtrOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionSinkSettingsOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionSinkSettingsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionTimeoutsOutput{})
+	pulumi.RegisterOutputType(StreamSubscriptionTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(StreamTimeoutsOutput{})
 	pulumi.RegisterOutputType(StreamTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetCloudRouterAccountOutput{})
@@ -61135,6 +74736,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOrderOutput{})
 	pulumi.RegisterOutputType(GetConnectionProjectOutput{})
 	pulumi.RegisterOutputType(GetConnectionRedundancyOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteAggregationsDataOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteAggregationsDataArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteAggregationsPaginationOutput{})
+	pulumi.RegisterOutputType(GetConnectionRouteAggregationsPaginationPtrOutput{})
 	pulumi.RegisterOutputType(GetConnectionRouteFiltersDataOutput{})
 	pulumi.RegisterOutputType(GetConnectionRouteFiltersDataArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionRouteFiltersPaginationOutput{})
@@ -61332,6 +74937,67 @@ func init() {
 	pulumi.RegisterOutputType(GetPortsDatumRedundancyOutput{})
 	pulumi.RegisterOutputType(GetPortsDatumRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(GetPortsFilterOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceAccountOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceChangeLogOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceConnectionOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceIpv4Output{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceNtpAdvancedConfigurationOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceOrderOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicePackageOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicePrecisionTimePriceOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicePrecisionTimePriceChargeOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicePrecisionTimePriceChargeArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceProjectOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceProjectPtrOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicePtpAdvancedConfigurationOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicePtpAdvancedConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataAccountOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataConnectionOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataIpv4Output{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataOrderOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPackageOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPrecisionTimePriceOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPrecisionTimePriceChargeOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPrecisionTimePriceChargeArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataProjectOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataProjectPtrOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPtpAdvancedConfigurationOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPtpAdvancedConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesFilterOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesPaginationOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesSortOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationProjectOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRuleChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRuleChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesDataOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesDataArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesDataChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesPaginationOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsDataOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsDataArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsDataChangeOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsDataProjectOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsFilterOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsPaginationOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsSortOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationsSortPtrOutput{})
 	pulumi.RegisterOutputType(GetRouteFilterChangeOutput{})
 	pulumi.RegisterOutputType(GetRouteFilterChangeArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteFilterChangeLogOutput{})
@@ -61540,8 +75206,30 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTokensFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensPaginationOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsDataOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsDataArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsFilterOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsPaginationOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsSortOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetStreamChangeLogOutput{})
 	pulumi.RegisterOutputType(GetStreamProjectOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionEventSelectorOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionMetricSelectorOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionSinkOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionSinkCredentialOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionSinkSettingsOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataEventSelectorOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataMetricSelectorOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataSinkOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataSinkCredentialOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsDataSinkSettingsOutput{})
+	pulumi.RegisterOutputType(GetStreamSubscriptionsPaginationOutput{})
 	pulumi.RegisterOutputType(GetStreamsDataOutput{})
 	pulumi.RegisterOutputType(GetStreamsDataArrayOutput{})
 	pulumi.RegisterOutputType(GetStreamsDataChangeLogOutput{})
