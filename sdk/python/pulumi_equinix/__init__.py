@@ -45,6 +45,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/connectionRouteAggregation",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/connectionRouteAggregation:ConnectionRouteAggregation": "ConnectionRouteAggregation"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/connectionRouteFilter",
   "fqn": "pulumi_equinix.fabric",
   "classes": {
@@ -57,6 +65,30 @@ _utilities.register(
   "fqn": "pulumi_equinix.fabric",
   "classes": {
    "equinix:fabric/network:Network": "Network"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/precisionTimeService",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/precisionTimeService:PrecisionTimeService": "PrecisionTimeService"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/routeAggregation",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/routeAggregation:RouteAggregation": "RouteAggregation"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/routeAggregationRule",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/routeAggregationRule:RouteAggregationRule": "RouteAggregationRule"
   }
  },
  {
@@ -105,6 +137,22 @@ _utilities.register(
   "fqn": "pulumi_equinix.fabric",
   "classes": {
    "equinix:fabric/stream:Stream": "Stream"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/streamAttachment",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/streamAttachment:StreamAttachment": "StreamAttachment"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/streamSubscription",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/streamSubscription:StreamSubscription": "StreamSubscription"
   }
  },
  {

@@ -2,7 +2,7 @@ module equinix-fabric-service_token-example_zside_colo_service_token
 
 go 1.22.0
 
-toolchain go1.23.0
+toolchain go1.23.3
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

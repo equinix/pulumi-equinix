@@ -3,7 +3,7 @@ name: equinix-fabric-connection_route_aggregation
 runtime: yaml
 resources:
   policyAttachment:
-    type: equinix:FabricConnectionRouteAggregation
+    type: equinix:fabric:ConnectionRouteAggregation
     name: policy_attachment
     properties:
       routeAggregationId: <route_aggregation_id>
