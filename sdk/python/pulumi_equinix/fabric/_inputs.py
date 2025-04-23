@@ -83,6 +83,8 @@ __all__ = [
     'ConnectionProjectArgsDict',
     'ConnectionRedundancyArgs',
     'ConnectionRedundancyArgsDict',
+    'ConnectionRouteAggregationTimeoutsArgs',
+    'ConnectionRouteAggregationTimeoutsArgsDict',
     'ConnectionZSideArgs',
     'ConnectionZSideArgsDict',
     'ConnectionZSideAccessPointArgs',
@@ -127,6 +129,44 @@ __all__ = [
     'NetworkOperationArgsDict',
     'NetworkProjectArgs',
     'NetworkProjectArgsDict',
+    'PrecisionTimeServiceAccountArgs',
+    'PrecisionTimeServiceAccountArgsDict',
+    'PrecisionTimeServiceChangeLogArgs',
+    'PrecisionTimeServiceChangeLogArgsDict',
+    'PrecisionTimeServiceConnectionArgs',
+    'PrecisionTimeServiceConnectionArgsDict',
+    'PrecisionTimeServiceIpv4Args',
+    'PrecisionTimeServiceIpv4ArgsDict',
+    'PrecisionTimeServiceNtpAdvancedConfigurationArgs',
+    'PrecisionTimeServiceNtpAdvancedConfigurationArgsDict',
+    'PrecisionTimeServiceOrderArgs',
+    'PrecisionTimeServiceOrderArgsDict',
+    'PrecisionTimeServicePackageArgs',
+    'PrecisionTimeServicePackageArgsDict',
+    'PrecisionTimeServicePrecisionTimePriceArgs',
+    'PrecisionTimeServicePrecisionTimePriceArgsDict',
+    'PrecisionTimeServicePrecisionTimePriceChargeArgs',
+    'PrecisionTimeServicePrecisionTimePriceChargeArgsDict',
+    'PrecisionTimeServiceProjectArgs',
+    'PrecisionTimeServiceProjectArgsDict',
+    'PrecisionTimeServicePtpAdvancedConfigurationArgs',
+    'PrecisionTimeServicePtpAdvancedConfigurationArgsDict',
+    'PrecisionTimeServiceTimeoutsArgs',
+    'PrecisionTimeServiceTimeoutsArgsDict',
+    'RouteAggregationChangeArgs',
+    'RouteAggregationChangeArgsDict',
+    'RouteAggregationChangeLogArgs',
+    'RouteAggregationChangeLogArgsDict',
+    'RouteAggregationProjectArgs',
+    'RouteAggregationProjectArgsDict',
+    'RouteAggregationRuleChangeArgs',
+    'RouteAggregationRuleChangeArgsDict',
+    'RouteAggregationRuleChangeLogArgs',
+    'RouteAggregationRuleChangeLogArgsDict',
+    'RouteAggregationRuleTimeoutsArgs',
+    'RouteAggregationRuleTimeoutsArgsDict',
+    'RouteAggregationTimeoutsArgs',
+    'RouteAggregationTimeoutsArgsDict',
     'RouteFilterChangeArgs',
     'RouteFilterChangeArgsDict',
     'RouteFilterChangeLogArgs',
@@ -235,10 +275,26 @@ __all__ = [
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArgsDict',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgsDict',
+    'StreamAttachmentTimeoutsArgs',
+    'StreamAttachmentTimeoutsArgsDict',
     'StreamChangeLogArgs',
     'StreamChangeLogArgsDict',
     'StreamProjectArgs',
     'StreamProjectArgsDict',
+    'StreamSubscriptionChangeLogArgs',
+    'StreamSubscriptionChangeLogArgsDict',
+    'StreamSubscriptionEventSelectorArgs',
+    'StreamSubscriptionEventSelectorArgsDict',
+    'StreamSubscriptionMetricSelectorArgs',
+    'StreamSubscriptionMetricSelectorArgsDict',
+    'StreamSubscriptionSinkArgs',
+    'StreamSubscriptionSinkArgsDict',
+    'StreamSubscriptionSinkCredentialArgs',
+    'StreamSubscriptionSinkCredentialArgsDict',
+    'StreamSubscriptionSinkSettingsArgs',
+    'StreamSubscriptionSinkSettingsArgsDict',
+    'StreamSubscriptionTimeoutsArgs',
+    'StreamSubscriptionTimeoutsArgsDict',
     'StreamTimeoutsArgs',
     'StreamTimeoutsArgsDict',
     'GetCloudRoutersFilterArgs',
@@ -247,6 +303,8 @@ __all__ = [
     'GetCloudRoutersPaginationArgsDict',
     'GetCloudRoutersSortArgs',
     'GetCloudRoutersSortArgsDict',
+    'GetConnectionRouteAggregationsPaginationArgs',
+    'GetConnectionRouteAggregationsPaginationArgsDict',
     'GetConnectionsFilterArgs',
     'GetConnectionsFilterArgsDict',
     'GetConnectionsPaginationArgs',
@@ -263,6 +321,26 @@ __all__ = [
     'GetNetworksSortArgsDict',
     'GetPortsFilterArgs',
     'GetPortsFilterArgsDict',
+    'GetPrecisionTimeServiceNtpAdvancedConfigurationArgs',
+    'GetPrecisionTimeServiceNtpAdvancedConfigurationArgsDict',
+    'GetPrecisionTimeServiceProjectArgs',
+    'GetPrecisionTimeServiceProjectArgsDict',
+    'GetPrecisionTimeServicePtpAdvancedConfigurationArgs',
+    'GetPrecisionTimeServicePtpAdvancedConfigurationArgsDict',
+    'GetPrecisionTimeServicesFilterArgs',
+    'GetPrecisionTimeServicesFilterArgsDict',
+    'GetPrecisionTimeServicesPaginationArgs',
+    'GetPrecisionTimeServicesPaginationArgsDict',
+    'GetPrecisionTimeServicesSortArgs',
+    'GetPrecisionTimeServicesSortArgsDict',
+    'GetRouteAggregationRulesPaginationArgs',
+    'GetRouteAggregationRulesPaginationArgsDict',
+    'GetRouteAggregationsFilterArgs',
+    'GetRouteAggregationsFilterArgsDict',
+    'GetRouteAggregationsPaginationArgs',
+    'GetRouteAggregationsPaginationArgsDict',
+    'GetRouteAggregationsSortArgs',
+    'GetRouteAggregationsSortArgsDict',
     'GetRouteFiltersFilterArgs',
     'GetRouteFiltersFilterArgsDict',
     'GetRouteFiltersPaginationArgs',
@@ -279,6 +357,14 @@ __all__ = [
     'GetServiceTokensFilterArgsDict',
     'GetServiceTokensPaginationArgs',
     'GetServiceTokensPaginationArgsDict',
+    'GetStreamAttachmentsFilterArgs',
+    'GetStreamAttachmentsFilterArgsDict',
+    'GetStreamAttachmentsPaginationArgs',
+    'GetStreamAttachmentsPaginationArgsDict',
+    'GetStreamAttachmentsSortArgs',
+    'GetStreamAttachmentsSortArgsDict',
+    'GetStreamSubscriptionsPaginationArgs',
+    'GetStreamSubscriptionsPaginationArgsDict',
     'GetStreamsPaginationArgs',
     'GetStreamsPaginationArgsDict',
 ]
@@ -3497,6 +3583,98 @@ class ConnectionRedundancyArgs:
 
 
 if not MYPY:
+    class ConnectionRouteAggregationTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    ConnectionRouteAggregationTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionRouteAggregationTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class ConnectionZSideArgsDict(TypedDict):
         access_point: NotRequired[pulumi.Input['ConnectionZSideAccessPointArgsDict']]
         """
@@ -5600,6 +5778,2148 @@ class NetworkProjectArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceAccountArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Account Name
+        """
+        account_number: NotRequired[pulumi.Input[int]]
+        """
+        Equinix Account Number
+        """
+        global_cust_id: NotRequired[pulumi.Input[str]]
+        """
+        Global Customer Id
+        """
+        global_org_id: NotRequired[pulumi.Input[str]]
+        """
+        Customer organization naidentifierme
+        """
+        global_organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Global organization name
+        """
+        org_id: NotRequired[pulumi.Input[int]]
+        """
+        Customer organization identifier
+        """
+        organization_name: NotRequired[pulumi.Input[str]]
+        """
+        Customer organization name
+        """
+        reseller_account_name: NotRequired[pulumi.Input[str]]
+        """
+        Reseller account name
+        """
+        reseller_account_number: NotRequired[pulumi.Input[int]]
+        """
+        Reseller account number
+        """
+        reseller_org_id: NotRequired[pulumi.Input[int]]
+        """
+        Reseller customer organization identifier
+        """
+        reseller_ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Reseller account ucmId
+        """
+        ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Global organization name
+        """
+elif False:
+    PrecisionTimeServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceAccountArgs:
+    def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_number: Optional[pulumi.Input[int]] = None,
+                 global_cust_id: Optional[pulumi.Input[str]] = None,
+                 global_org_id: Optional[pulumi.Input[str]] = None,
+                 global_organization_name: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[int]] = None,
+                 organization_name: Optional[pulumi.Input[str]] = None,
+                 reseller_account_name: Optional[pulumi.Input[str]] = None,
+                 reseller_account_number: Optional[pulumi.Input[int]] = None,
+                 reseller_org_id: Optional[pulumi.Input[int]] = None,
+                 reseller_ucm_id: Optional[pulumi.Input[str]] = None,
+                 ucm_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] account_name: Account Name
+        :param pulumi.Input[int] account_number: Equinix Account Number
+        :param pulumi.Input[str] global_cust_id: Global Customer Id
+        :param pulumi.Input[str] global_org_id: Customer organization naidentifierme
+        :param pulumi.Input[str] global_organization_name: Global organization name
+        :param pulumi.Input[int] org_id: Customer organization identifier
+        :param pulumi.Input[str] organization_name: Customer organization name
+        :param pulumi.Input[str] reseller_account_name: Reseller account name
+        :param pulumi.Input[int] reseller_account_number: Reseller account number
+        :param pulumi.Input[int] reseller_org_id: Reseller customer organization identifier
+        :param pulumi.Input[str] reseller_ucm_id: Reseller account ucmId
+        :param pulumi.Input[str] ucm_id: Global organization name
+        """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+        if global_cust_id is not None:
+            pulumi.set(__self__, "global_cust_id", global_cust_id)
+        if global_org_id is not None:
+            pulumi.set(__self__, "global_org_id", global_org_id)
+        if global_organization_name is not None:
+            pulumi.set(__self__, "global_organization_name", global_organization_name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+        if reseller_account_name is not None:
+            pulumi.set(__self__, "reseller_account_name", reseller_account_name)
+        if reseller_account_number is not None:
+            pulumi.set(__self__, "reseller_account_number", reseller_account_number)
+        if reseller_org_id is not None:
+            pulumi.set(__self__, "reseller_org_id", reseller_org_id)
+        if reseller_ucm_id is not None:
+            pulumi.set(__self__, "reseller_ucm_id", reseller_ucm_id)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account Name
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Equinix Account Number
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "account_number", value)
+
+    @property
+    @pulumi.getter(name="globalCustId")
+    def global_cust_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Global Customer Id
+        """
+        return pulumi.get(self, "global_cust_id")
+
+    @global_cust_id.setter
+    def global_cust_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_cust_id", value)
+
+    @property
+    @pulumi.getter(name="globalOrgId")
+    def global_org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer organization naidentifierme
+        """
+        return pulumi.get(self, "global_org_id")
+
+    @global_org_id.setter
+    def global_org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_org_id", value)
+
+    @property
+    @pulumi.getter(name="globalOrganizationName")
+    def global_organization_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "global_organization_name")
+
+    @global_organization_name.setter
+    def global_organization_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_organization_name", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Customer organization identifier
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer organization name
+        """
+        return pulumi.get(self, "organization_name")
+
+    @organization_name.setter
+    def organization_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_name", value)
+
+    @property
+    @pulumi.getter(name="resellerAccountName")
+    def reseller_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reseller account name
+        """
+        return pulumi.get(self, "reseller_account_name")
+
+    @reseller_account_name.setter
+    def reseller_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reseller_account_name", value)
+
+    @property
+    @pulumi.getter(name="resellerAccountNumber")
+    def reseller_account_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Reseller account number
+        """
+        return pulumi.get(self, "reseller_account_number")
+
+    @reseller_account_number.setter
+    def reseller_account_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reseller_account_number", value)
+
+    @property
+    @pulumi.getter(name="resellerOrgId")
+    def reseller_org_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Reseller customer organization identifier
+        """
+        return pulumi.get(self, "reseller_org_id")
+
+    @reseller_org_id.setter
+    def reseller_org_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reseller_org_id", value)
+
+    @property
+    @pulumi.getter(name="resellerUcmId")
+    def reseller_ucm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reseller account ucmId
+        """
+        return pulumi.get(self, "reseller_ucm_id")
+
+    @reseller_ucm_id.setter
+    def reseller_ucm_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reseller_ucm_id", value)
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Global organization name
+        """
+        return pulumi.get(self, "ucm_id")
+
+    @ucm_id.setter
+    def ucm_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ucm_id", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of creator of the route aggregation resource
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of creator of the route aggregation resource
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Creation time of the route aggregation resource
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of deleter of the route aggregation resource
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of deleter of the route aggregation resource
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deletion time of the route aggregation resource
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of last updater of the route aggregation resource
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of last updater of the route aggregation resource
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Last update time of the route aggregation resource
+        """
+elif False:
+    PrecisionTimeServiceChangeLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceChangeLogArgs:
+    def __init__(__self__, *,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_by_email: Optional[pulumi.Input[str]] = None,
+                 created_by_full_name: Optional[pulumi.Input[str]] = None,
+                 created_date_time: Optional[pulumi.Input[str]] = None,
+                 deleted_by: Optional[pulumi.Input[str]] = None,
+                 deleted_by_email: Optional[pulumi.Input[str]] = None,
+                 deleted_by_full_name: Optional[pulumi.Input[str]] = None,
+                 deleted_date_time: Optional[pulumi.Input[str]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 updated_by_email: Optional[pulumi.Input[str]] = None,
+                 updated_by_full_name: Optional[pulumi.Input[str]] = None,
+                 updated_date_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_by: User name of creator of the route aggregation resource
+        :param pulumi.Input[str] created_by_email: Email of creator of the route aggregation resource
+        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the route aggregation resource
+        :param pulumi.Input[str] created_date_time: Creation time of the route aggregation resource
+        :param pulumi.Input[str] deleted_by: User name of deleter of the route aggregation resource
+        :param pulumi.Input[str] deleted_by_email: Email of deleter of the route aggregation resource
+        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param pulumi.Input[str] deleted_date_time: Deletion time of the route aggregation resource
+        :param pulumi.Input[str] updated_by: User name of last updater of the route aggregation resource
+        :param pulumi.Input[str] updated_by_email: Email of last updater of the route aggregation resource
+        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param pulumi.Input[str] updated_date_time: Last update time of the route aggregation resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @created_by_email.setter
+    def created_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_email", value)
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @created_by_full_name.setter
+    def created_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @deleted_by.setter
+    def deleted_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by", value)
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @deleted_by_email.setter
+    def deleted_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_email", value)
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @deleted_by_full_name.setter
+    def deleted_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @updated_by_email.setter
+    def updated_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_email", value)
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @updated_by_full_name.setter
+    def updated_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceConnectionArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Link to the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the Equinix Fabric Connection associated with the Precision Time Service
+        """
+elif False:
+    PrecisionTimeServiceConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceConnectionArgs:
+    def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
+                 href: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uuid: Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        :param pulumi.Input[str] href: Link to the Equinix Fabric Connection associated with the Precision Time Service
+        :param pulumi.Input[str] type: Type of the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix Fabric Connection UUID; Precision Time Service will be connected with it
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Link to the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the Equinix Fabric Connection associated with the Precision Time Service
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceIpv4ArgsDict(TypedDict):
+        default_gateway: pulumi.Input[str]
+        """
+        IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        """
+        network_mask: pulumi.Input[str]
+        """
+        IPv4 address that defines the range of consecutive subnets in the network.
+        """
+        primary: pulumi.Input[str]
+        """
+        IPv4 address for the Primary Timing Master Server.
+        """
+        secondary: pulumi.Input[str]
+        """
+        IPv4 address for the Secondary Timing Master Server.
+        """
+elif False:
+    PrecisionTimeServiceIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceIpv4Args:
+    def __init__(__self__, *,
+                 default_gateway: pulumi.Input[str],
+                 network_mask: pulumi.Input[str],
+                 primary: pulumi.Input[str],
+                 secondary: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] default_gateway: IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        :param pulumi.Input[str] network_mask: IPv4 address that defines the range of consecutive subnets in the network.
+        :param pulumi.Input[str] primary: IPv4 address for the Primary Timing Master Server.
+        :param pulumi.Input[str] secondary: IPv4 address for the Secondary Timing Master Server.
+        """
+        pulumi.set(__self__, "default_gateway", default_gateway)
+        pulumi.set(__self__, "network_mask", network_mask)
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "secondary", secondary)
+
+    @property
+    @pulumi.getter(name="defaultGateway")
+    def default_gateway(self) -> pulumi.Input[str]:
+        """
+        IPv4 address that establishes the Routing Interface where traffic is directed. It serves as the next hop in the Network.
+        """
+        return pulumi.get(self, "default_gateway")
+
+    @default_gateway.setter
+    def default_gateway(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_gateway", value)
+
+    @property
+    @pulumi.getter(name="networkMask")
+    def network_mask(self) -> pulumi.Input[str]:
+        """
+        IPv4 address that defines the range of consecutive subnets in the network.
+        """
+        return pulumi.get(self, "network_mask")
+
+    @network_mask.setter
+    def network_mask(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_mask", value)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> pulumi.Input[str]:
+        """
+        IPv4 address for the Primary Timing Master Server.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: pulumi.Input[str]):
+        pulumi.set(self, "primary", value)
+
+    @property
+    @pulumi.getter
+    def secondary(self) -> pulumi.Input[str]:
+        """
+        IPv4 address for the Secondary Timing Master Server.
+        """
+        return pulumi.get(self, "secondary")
+
+    @secondary.setter
+    def secondary(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secondary", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceNtpAdvancedConfigurationArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The plaintext authentication key. For ASCII type, the key\\
+        \\ must contain printable ASCII characters, range 10-20 characters. For\\
+        \\ HEX type, range should be 10-40 characters
+        """
+        key_number: NotRequired[pulumi.Input[int]]
+        """
+        The authentication Key ID
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        md5 Authentication type
+        """
+elif False:
+    PrecisionTimeServiceNtpAdvancedConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceNtpAdvancedConfigurationArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 key_number: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The plaintext authentication key. For ASCII type, the key\\
+               \\ must contain printable ASCII characters, range 10-20 characters. For\\
+               \\ HEX type, range should be 10-40 characters
+        :param pulumi.Input[int] key_number: The authentication Key ID
+        :param pulumi.Input[str] type: md5 Authentication type
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if key_number is not None:
+            pulumi.set(__self__, "key_number", key_number)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The plaintext authentication key. For ASCII type, the key\\
+        \\ must contain printable ASCII characters, range 10-20 characters. For\\
+        \\ HEX type, range should be 10-40 characters
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="keyNumber")
+    def key_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The authentication Key ID
+        """
+        return pulumi.get(self, "key_number")
+
+    @key_number.setter
+    def key_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "key_number", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        md5 Authentication type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceOrderArgsDict(TypedDict):
+        customer_reference_number: NotRequired[pulumi.Input[str]]
+        """
+        Customer reference number
+        """
+        order_number: NotRequired[pulumi.Input[str]]
+        """
+        Order reference number
+        """
+        purchase_order_number: NotRequired[pulumi.Input[str]]
+        """
+        Purchase order number
+        """
+elif False:
+    PrecisionTimeServiceOrderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceOrderArgs:
+    def __init__(__self__, *,
+                 customer_reference_number: Optional[pulumi.Input[str]] = None,
+                 order_number: Optional[pulumi.Input[str]] = None,
+                 purchase_order_number: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] customer_reference_number: Customer reference number
+        :param pulumi.Input[str] order_number: Order reference number
+        :param pulumi.Input[str] purchase_order_number: Purchase order number
+        """
+        if customer_reference_number is not None:
+            pulumi.set(__self__, "customer_reference_number", customer_reference_number)
+        if order_number is not None:
+            pulumi.set(__self__, "order_number", order_number)
+        if purchase_order_number is not None:
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+
+    @property
+    @pulumi.getter(name="customerReferenceNumber")
+    def customer_reference_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer reference number
+        """
+        return pulumi.get(self, "customer_reference_number")
+
+    @customer_reference_number.setter
+    def customer_reference_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_reference_number", value)
+
+    @property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Order reference number
+        """
+        return pulumi.get(self, "order_number")
+
+    @order_number.setter
+    def order_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_number", value)
+
+    @property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Purchase order number
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+    @purchase_order_number.setter
+    def purchase_order_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purchase_order_number", value)
+
+
+if not MYPY:
+    class PrecisionTimeServicePackageArgsDict(TypedDict):
+        code: pulumi.Input[str]
+        """
+        Time Precision Package Code for the desired billing package
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+elif False:
+    PrecisionTimeServicePackageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServicePackageArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[str],
+                 href: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] code: Time Precision Package Code for the desired billing package
+        :param pulumi.Input[str] href: Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        pulumi.set(__self__, "code", code)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[str]:
+        """
+        Time Precision Package Code for the desired billing package
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time Precision Package HREF link to corresponding resource in Equinix Portal
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+
+if not MYPY:
+    class PrecisionTimeServicePrecisionTimePriceArgsDict(TypedDict):
+        charges: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServicePrecisionTimePriceChargeArgsDict']]]]
+        """
+        offering price charge
+        """
+        currency: NotRequired[pulumi.Input[str]]
+        """
+        Offering price currency
+        """
+elif False:
+    PrecisionTimeServicePrecisionTimePriceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServicePrecisionTimePriceArgs:
+    def __init__(__self__, *,
+                 charges: Optional[pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServicePrecisionTimePriceChargeArgs']]]] = None,
+                 currency: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServicePrecisionTimePriceChargeArgs']]] charges: offering price charge
+        :param pulumi.Input[str] currency: Offering price currency
+        """
+        if charges is not None:
+            pulumi.set(__self__, "charges", charges)
+        if currency is not None:
+            pulumi.set(__self__, "currency", currency)
+
+    @property
+    @pulumi.getter
+    def charges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServicePrecisionTimePriceChargeArgs']]]]:
+        """
+        offering price charge
+        """
+        return pulumi.get(self, "charges")
+
+    @charges.setter
+    def charges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServicePrecisionTimePriceChargeArgs']]]]):
+        pulumi.set(self, "charges", value)
+
+    @property
+    @pulumi.getter
+    def currency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Offering price currency
+        """
+        return pulumi.get(self, "currency")
+
+    @currency.setter
+    def currency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "currency", value)
+
+
+if not MYPY:
+    class PrecisionTimeServicePrecisionTimePriceChargeArgsDict(TypedDict):
+        price: NotRequired[pulumi.Input[float]]
+        """
+        Offering price
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+elif False:
+    PrecisionTimeServicePrecisionTimePriceChargeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServicePrecisionTimePriceChargeArgs:
+    def __init__(__self__, *,
+                 price: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] price: Offering price
+        :param pulumi.Input[str] type: Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        if price is not None:
+            pulumi.set(__self__, "price", price)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def price(self) -> Optional[pulumi.Input[float]]:
+        """
+        Offering price
+        """
+        return pulumi.get(self, "price")
+
+    @price.setter
+    def price(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "price", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Price charge type; MONTHLY*RECURRING, NON*RECURRING
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceProjectArgsDict(TypedDict):
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Equinix Subscriber-assigned project ID
+        """
+elif False:
+    PrecisionTimeServiceProjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceProjectArgs:
+    def __init__(__self__, *,
+                 project_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] project_id: Equinix Subscriber-assigned project ID
+        """
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class PrecisionTimeServicePtpAdvancedConfigurationArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[int]]
+        """
+        The PTP domain value
+        """
+        grant_time: NotRequired[pulumi.Input[int]]
+        """
+        Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        """
+        log_announce_interval: NotRequired[pulumi.Input[int]]
+        """
+        Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        """
+        log_delay_req_interval: NotRequired[pulumi.Input[int]]
+        """
+        Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        log_sync_interval: NotRequired[pulumi.Input[int]]
+        """
+        Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        priority1: NotRequired[pulumi.Input[int]]
+        """
+        The priority1 value determines the best primary clock, Lower value indicates higher priority
+        """
+        priority2: NotRequired[pulumi.Input[int]]
+        """
+        The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        """
+        time_scale: NotRequired[pulumi.Input[str]]
+        """
+        Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        """
+        transport_mode: NotRequired[pulumi.Input[str]]
+        """
+        ptp transport mode
+        """
+elif False:
+    PrecisionTimeServicePtpAdvancedConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServicePtpAdvancedConfigurationArgs:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[int]] = None,
+                 grant_time: Optional[pulumi.Input[int]] = None,
+                 log_announce_interval: Optional[pulumi.Input[int]] = None,
+                 log_delay_req_interval: Optional[pulumi.Input[int]] = None,
+                 log_sync_interval: Optional[pulumi.Input[int]] = None,
+                 priority1: Optional[pulumi.Input[int]] = None,
+                 priority2: Optional[pulumi.Input[int]] = None,
+                 time_scale: Optional[pulumi.Input[str]] = None,
+                 transport_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] domain: The PTP domain value
+        :param pulumi.Input[int] grant_time: Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        :param pulumi.Input[int] log_announce_interval: Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        :param pulumi.Input[int] log_delay_req_interval: Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param pulumi.Input[int] log_sync_interval: Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param pulumi.Input[int] priority1: The priority1 value determines the best primary clock, Lower value indicates higher priority
+        :param pulumi.Input[int] priority2: The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        :param pulumi.Input[str] time_scale: Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        :param pulumi.Input[str] transport_mode: ptp transport mode
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if grant_time is not None:
+            pulumi.set(__self__, "grant_time", grant_time)
+        if log_announce_interval is not None:
+            pulumi.set(__self__, "log_announce_interval", log_announce_interval)
+        if log_delay_req_interval is not None:
+            pulumi.set(__self__, "log_delay_req_interval", log_delay_req_interval)
+        if log_sync_interval is not None:
+            pulumi.set(__self__, "log_sync_interval", log_sync_interval)
+        if priority1 is not None:
+            pulumi.set(__self__, "priority1", priority1)
+        if priority2 is not None:
+            pulumi.set(__self__, "priority2", priority2)
+        if time_scale is not None:
+            pulumi.set(__self__, "time_scale", time_scale)
+        if transport_mode is not None:
+            pulumi.set(__self__, "transport_mode", transport_mode)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[int]]:
+        """
+        The PTP domain value
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="grantTime")
+    def grant_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        """
+        return pulumi.get(self, "grant_time")
+
+    @grant_time.setter
+    def grant_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grant_time", value)
+
+    @property
+    @pulumi.getter(name="logAnnounceInterval")
+    def log_announce_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        """
+        return pulumi.get(self, "log_announce_interval")
+
+    @log_announce_interval.setter
+    def log_announce_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_announce_interval", value)
+
+    @property
+    @pulumi.getter(name="logDelayReqInterval")
+    def log_delay_req_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_delay_req_interval")
+
+    @log_delay_req_interval.setter
+    def log_delay_req_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_delay_req_interval", value)
+
+    @property
+    @pulumi.getter(name="logSyncInterval")
+    def log_sync_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_sync_interval")
+
+    @log_sync_interval.setter
+    def log_sync_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_sync_interval", value)
+
+    @property
+    @pulumi.getter
+    def priority1(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority1 value determines the best primary clock, Lower value indicates higher priority
+        """
+        return pulumi.get(self, "priority1")
+
+    @priority1.setter
+    def priority1(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority1", value)
+
+    @property
+    @pulumi.getter
+    def priority2(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        """
+        return pulumi.get(self, "priority2")
+
+    @priority2.setter
+    def priority2(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority2", value)
+
+    @property
+    @pulumi.getter(name="timeScale")
+    def time_scale(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        """
+        return pulumi.get(self, "time_scale")
+
+    @time_scale.setter
+    def time_scale(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_scale", value)
+
+    @property
+    @pulumi.getter(name="transportMode")
+    def transport_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        ptp transport mode
+        """
+        return pulumi.get(self, "transport_mode")
+
+    @transport_mode.setter
+    def transport_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transport_mode", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    PrecisionTimeServiceTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class RouteAggregationChangeArgsDict(TypedDict):
+        href: pulumi.Input[str]
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        type: pulumi.Input[str]
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned unique id for a change
+        """
+elif False:
+    RouteAggregationChangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAggregationChangeArgs:
+    def __init__(__self__, *,
+                 href: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 uuid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] href: Equinix auto generated URI to the route aggregation change
+        :param pulumi.Input[str] type: Equinix defined Route Aggregation Change Type
+        :param pulumi.Input[str] uuid: Equinix-assigned unique id for a change
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> pulumi.Input[str]:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: pulumi.Input[str]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class RouteAggregationChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of creator of the route aggregation resource
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of creator of the route aggregation resource
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Creation time of the route aggregation resource
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of deleter of the route aggregation resource
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of deleter of the route aggregation resource
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deletion time of the route aggregation resource
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of last updater of the route aggregation resource
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of last updater of the route aggregation resource
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Last update time of the route aggregation resource
+        """
+elif False:
+    RouteAggregationChangeLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAggregationChangeLogArgs:
+    def __init__(__self__, *,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_by_email: Optional[pulumi.Input[str]] = None,
+                 created_by_full_name: Optional[pulumi.Input[str]] = None,
+                 created_date_time: Optional[pulumi.Input[str]] = None,
+                 deleted_by: Optional[pulumi.Input[str]] = None,
+                 deleted_by_email: Optional[pulumi.Input[str]] = None,
+                 deleted_by_full_name: Optional[pulumi.Input[str]] = None,
+                 deleted_date_time: Optional[pulumi.Input[str]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 updated_by_email: Optional[pulumi.Input[str]] = None,
+                 updated_by_full_name: Optional[pulumi.Input[str]] = None,
+                 updated_date_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_by: User name of creator of the route aggregation resource
+        :param pulumi.Input[str] created_by_email: Email of creator of the route aggregation resource
+        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the route aggregation resource
+        :param pulumi.Input[str] created_date_time: Creation time of the route aggregation resource
+        :param pulumi.Input[str] deleted_by: User name of deleter of the route aggregation resource
+        :param pulumi.Input[str] deleted_by_email: Email of deleter of the route aggregation resource
+        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the route aggregation resource
+        :param pulumi.Input[str] deleted_date_time: Deletion time of the route aggregation resource
+        :param pulumi.Input[str] updated_by: User name of last updater of the route aggregation resource
+        :param pulumi.Input[str] updated_by_email: Email of last updater of the route aggregation resource
+        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the route aggregation resource
+        :param pulumi.Input[str] updated_date_time: Last update time of the route aggregation resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @created_by_email.setter
+    def created_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_email", value)
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of creator of the route aggregation resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @created_by_full_name.setter
+    def created_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time of the route aggregation resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @deleted_by.setter
+    def deleted_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by", value)
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @deleted_by_email.setter
+    def deleted_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_email", value)
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of deleter of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @deleted_by_full_name.setter
+    def deleted_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion time of the route aggregation resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @updated_by_email.setter
+    def updated_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_email", value)
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of last updater of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @updated_by_full_name.setter
+    def updated_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last update time of the route aggregation resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+if not MYPY:
+    class RouteAggregationProjectArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        Equinix Subscriber-assigned project ID
+        """
+elif False:
+    RouteAggregationProjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAggregationProjectArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class RouteAggregationRuleChangeArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned unique id for a change
+        """
+        href: NotRequired[pulumi.Input[str]]
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+elif False:
+    RouteAggregationRuleChangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAggregationRuleChangeArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 uuid: pulumi.Input[str],
+                 href: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Equinix defined Route Aggregation Change Type
+        :param pulumi.Input[str] uuid: Equinix-assigned unique id for a change
+        :param pulumi.Input[str] href: Equinix auto generated URI to the route aggregation change
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Equinix defined Route Aggregation Change Type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned unique id for a change
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix auto generated URI to the route aggregation change
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+
+if not MYPY:
+    class RouteAggregationRuleChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of creator of the stream resource
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of creator of the stream resource
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of creator of the stream resource
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Creation time of the stream resource
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of deleter of the stream resource
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of deleter of the stream resource
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of deleter of the stream resource
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deletion time of the stream resource
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of last updater of the stream resource
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of last updater of the stream resource
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of last updater of the stream resource
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Last update time of the stream resource
+        """
+elif False:
+    RouteAggregationRuleChangeLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAggregationRuleChangeLogArgs:
+    def __init__(__self__, *,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_by_email: Optional[pulumi.Input[str]] = None,
+                 created_by_full_name: Optional[pulumi.Input[str]] = None,
+                 created_date_time: Optional[pulumi.Input[str]] = None,
+                 deleted_by: Optional[pulumi.Input[str]] = None,
+                 deleted_by_email: Optional[pulumi.Input[str]] = None,
+                 deleted_by_full_name: Optional[pulumi.Input[str]] = None,
+                 deleted_date_time: Optional[pulumi.Input[str]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 updated_by_email: Optional[pulumi.Input[str]] = None,
+                 updated_by_full_name: Optional[pulumi.Input[str]] = None,
+                 updated_date_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_by: User name of creator of the stream resource
+        :param pulumi.Input[str] created_by_email: Email of creator of the stream resource
+        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the stream resource
+        :param pulumi.Input[str] created_date_time: Creation time of the stream resource
+        :param pulumi.Input[str] deleted_by: User name of deleter of the stream resource
+        :param pulumi.Input[str] deleted_by_email: Email of deleter of the stream resource
+        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the stream resource
+        :param pulumi.Input[str] deleted_date_time: Deletion time of the stream resource
+        :param pulumi.Input[str] updated_by: User name of last updater of the stream resource
+        :param pulumi.Input[str] updated_by_email: Email of last updater of the stream resource
+        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the stream resource
+        :param pulumi.Input[str] updated_date_time: Last update time of the stream resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @created_by_email.setter
+    def created_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_email", value)
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @created_by_full_name.setter
+    def created_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @deleted_by.setter
+    def deleted_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by", value)
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @deleted_by_email.setter
+    def deleted_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_email", value)
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @deleted_by_full_name.setter
+    def deleted_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @updated_by_email.setter
+    def updated_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_email", value)
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @updated_by_full_name.setter
+    def updated_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+if not MYPY:
+    class RouteAggregationRuleTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    RouteAggregationRuleTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAggregationRuleTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class RouteAggregationTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    RouteAggregationTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteAggregationTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:
@@ -11804,6 +14124,98 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArg
 
 
 if not MYPY:
+    class StreamAttachmentTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    StreamAttachmentTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamAttachmentTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class StreamChangeLogArgsDict(TypedDict):
         created_by: NotRequired[pulumi.Input[str]]
         """
@@ -12084,6 +14496,842 @@ class StreamProjectArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class StreamSubscriptionChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of creator of the stream resource
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of creator of the stream resource
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of creator of the stream resource
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Creation time of the stream resource
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of deleter of the stream resource
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of deleter of the stream resource
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of deleter of the stream resource
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deletion time of the stream resource
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of last updater of the stream resource
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of last updater of the stream resource
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of last updater of the stream resource
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Last update time of the stream resource
+        """
+elif False:
+    StreamSubscriptionChangeLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSubscriptionChangeLogArgs:
+    def __init__(__self__, *,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_by_email: Optional[pulumi.Input[str]] = None,
+                 created_by_full_name: Optional[pulumi.Input[str]] = None,
+                 created_date_time: Optional[pulumi.Input[str]] = None,
+                 deleted_by: Optional[pulumi.Input[str]] = None,
+                 deleted_by_email: Optional[pulumi.Input[str]] = None,
+                 deleted_by_full_name: Optional[pulumi.Input[str]] = None,
+                 deleted_date_time: Optional[pulumi.Input[str]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 updated_by_email: Optional[pulumi.Input[str]] = None,
+                 updated_by_full_name: Optional[pulumi.Input[str]] = None,
+                 updated_date_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_by: User name of creator of the stream resource
+        :param pulumi.Input[str] created_by_email: Email of creator of the stream resource
+        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the stream resource
+        :param pulumi.Input[str] created_date_time: Creation time of the stream resource
+        :param pulumi.Input[str] deleted_by: User name of deleter of the stream resource
+        :param pulumi.Input[str] deleted_by_email: Email of deleter of the stream resource
+        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the stream resource
+        :param pulumi.Input[str] deleted_date_time: Deletion time of the stream resource
+        :param pulumi.Input[str] updated_by: User name of last updater of the stream resource
+        :param pulumi.Input[str] updated_by_email: Email of last updater of the stream resource
+        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the stream resource
+        :param pulumi.Input[str] updated_date_time: Last update time of the stream resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @created_by_email.setter
+    def created_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_email", value)
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @created_by_full_name.setter
+    def created_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @deleted_by.setter
+    def deleted_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by", value)
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @deleted_by_email.setter
+    def deleted_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_email", value)
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @deleted_by_full_name.setter
+    def deleted_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @updated_by_email.setter
+    def updated_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_email", value)
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @updated_by_full_name.setter
+    def updated_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+if not MYPY:
+    class StreamSubscriptionEventSelectorArgsDict(TypedDict):
+        includes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of events to include
+        """
+        excepts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of events to exclude
+        """
+elif False:
+    StreamSubscriptionEventSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSubscriptionEventSelectorArgs:
+    def __init__(__self__, *,
+                 includes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] includes: List of events to include
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of events to exclude
+        """
+        pulumi.set(__self__, "includes", includes)
+        if excepts is not None:
+            pulumi.set(__self__, "excepts", excepts)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of events to include
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "includes", value)
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of events to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+    @excepts.setter
+    def excepts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excepts", value)
+
+
+if not MYPY:
+    class StreamSubscriptionMetricSelectorArgsDict(TypedDict):
+        includes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of metrics to include
+        """
+        excepts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of metrics to exclude
+        """
+elif False:
+    StreamSubscriptionMetricSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSubscriptionMetricSelectorArgs:
+    def __init__(__self__, *,
+                 includes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 excepts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] includes: List of metrics to include
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of metrics to exclude
+        """
+        pulumi.set(__self__, "includes", includes)
+        if excepts is not None:
+            pulumi.set(__self__, "excepts", excepts)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "includes", value)
+
+    @property
+    @pulumi.getter
+    def excepts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of metrics to exclude
+        """
+        return pulumi.get(self, "excepts")
+
+    @excepts.setter
+    def excepts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excepts", value)
+
+
+if not MYPY:
+    class StreamSubscriptionSinkArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of the subscriber
+        """
+        batch_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean switch enabling batch delivery of data
+        """
+        batch_size_max: NotRequired[pulumi.Input[int]]
+        """
+        Maximum size of the batch delivery if enabled
+        """
+        batch_wait_time_max: NotRequired[pulumi.Input[int]]
+        """
+        Maximum time to wait for batch delivery if enabled
+        """
+        credential: NotRequired[pulumi.Input['StreamSubscriptionSinkCredentialArgsDict']]
+        """
+        Access details for the specified sink type
+        """
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        """
+        settings: NotRequired[pulumi.Input['StreamSubscriptionSinkSettingsArgsDict']]
+        """
+        Stream subscription sink settings
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        Publicly reachable http endpoint destination for data stream
+        """
+elif False:
+    StreamSubscriptionSinkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSubscriptionSinkArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 batch_enabled: Optional[pulumi.Input[bool]] = None,
+                 batch_size_max: Optional[pulumi.Input[int]] = None,
+                 batch_wait_time_max: Optional[pulumi.Input[int]] = None,
+                 credential: Optional[pulumi.Input['StreamSubscriptionSinkCredentialArgs']] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input['StreamSubscriptionSinkSettingsArgs']] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of the subscriber
+        :param pulumi.Input[bool] batch_enabled: Boolean switch enabling batch delivery of data
+        :param pulumi.Input[int] batch_size_max: Maximum size of the batch delivery if enabled
+        :param pulumi.Input[int] batch_wait_time_max: Maximum time to wait for batch delivery if enabled
+        :param pulumi.Input['StreamSubscriptionSinkCredentialArgs'] credential: Access details for the specified sink type
+        :param pulumi.Input[str] host: Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        :param pulumi.Input['StreamSubscriptionSinkSettingsArgs'] settings: Stream subscription sink settings
+        :param pulumi.Input[str] uri: Publicly reachable http endpoint destination for data stream
+        """
+        pulumi.set(__self__, "type", type)
+        if batch_enabled is not None:
+            pulumi.set(__self__, "batch_enabled", batch_enabled)
+        if batch_size_max is not None:
+            pulumi.set(__self__, "batch_size_max", batch_size_max)
+        if batch_wait_time_max is not None:
+            pulumi.set(__self__, "batch_wait_time_max", batch_wait_time_max)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the subscriber
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="batchEnabled")
+    def batch_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean switch enabling batch delivery of data
+        """
+        return pulumi.get(self, "batch_enabled")
+
+    @batch_enabled.setter
+    def batch_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "batch_enabled", value)
+
+    @property
+    @pulumi.getter(name="batchSizeMax")
+    def batch_size_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum size of the batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_size_max")
+
+    @batch_size_max.setter
+    def batch_size_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_size_max", value)
+
+    @property
+    @pulumi.getter(name="batchWaitTimeMax")
+    def batch_wait_time_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum time to wait for batch delivery if enabled
+        """
+        return pulumi.get(self, "batch_wait_time_max")
+
+    @batch_wait_time_max.setter
+    def batch_wait_time_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_wait_time_max", value)
+
+    @property
+    @pulumi.getter
+    def credential(self) -> Optional[pulumi.Input['StreamSubscriptionSinkCredentialArgs']]:
+        """
+        Access details for the specified sink type
+        """
+        return pulumi.get(self, "credential")
+
+    @credential.setter
+    def credential(self, value: Optional[pulumi.Input['StreamSubscriptionSinkCredentialArgs']]):
+        pulumi.set(self, "credential", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Known hostname of certain data stream subscription products. Not to be confused with a variable URI
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['StreamSubscriptionSinkSettingsArgs']]:
+        """
+        Stream subscription sink settings
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['StreamSubscriptionSinkSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Publicly reachable http endpoint destination for data stream
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class StreamSubscriptionSinkCredentialArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of the credential being passed
+        """
+        access_token: NotRequired[pulumi.Input[str]]
+        """
+        Passed as Authorization header value
+        """
+        api_key: NotRequired[pulumi.Input[str]]
+        """
+        Passed as Authorization header value
+        """
+        integration_key: NotRequired[pulumi.Input[str]]
+        """
+        Passed as Authorization header value
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Passed as Authorization header value
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Passed as Authorization header value
+        """
+elif False:
+    StreamSubscriptionSinkCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSubscriptionSinkCredentialArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 access_token: Optional[pulumi.Input[str]] = None,
+                 api_key: Optional[pulumi.Input[str]] = None,
+                 integration_key: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of the credential being passed
+        :param pulumi.Input[str] access_token: Passed as Authorization header value
+        :param pulumi.Input[str] api_key: Passed as Authorization header value
+        :param pulumi.Input[str] integration_key: Passed as Authorization header value
+        :param pulumi.Input[str] password: Passed as Authorization header value
+        :param pulumi.Input[str] username: Passed as Authorization header value
+        """
+        pulumi.set(__self__, "type", type)
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if integration_key is not None:
+            pulumi.set(__self__, "integration_key", integration_key)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the credential being passed
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_token", value)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter(name="integrationKey")
+    def integration_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "integration_key")
+
+    @integration_key.setter
+    def integration_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integration_key", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Passed as Authorization header value
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class StreamSubscriptionSinkSettingsArgsDict(TypedDict):
+        application_key: NotRequired[pulumi.Input[str]]
+        event_index: NotRequired[pulumi.Input[str]]
+        event_uri: NotRequired[pulumi.Input[str]]
+        metric_index: NotRequired[pulumi.Input[str]]
+        metric_uri: NotRequired[pulumi.Input[str]]
+        source: NotRequired[pulumi.Input[str]]
+elif False:
+    StreamSubscriptionSinkSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSubscriptionSinkSettingsArgs:
+    def __init__(__self__, *,
+                 application_key: Optional[pulumi.Input[str]] = None,
+                 event_index: Optional[pulumi.Input[str]] = None,
+                 event_uri: Optional[pulumi.Input[str]] = None,
+                 metric_index: Optional[pulumi.Input[str]] = None,
+                 metric_uri: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None):
+        if application_key is not None:
+            pulumi.set(__self__, "application_key", application_key)
+        if event_index is not None:
+            pulumi.set(__self__, "event_index", event_index)
+        if event_uri is not None:
+            pulumi.set(__self__, "event_uri", event_uri)
+        if metric_index is not None:
+            pulumi.set(__self__, "metric_index", metric_index)
+        if metric_uri is not None:
+            pulumi.set(__self__, "metric_uri", metric_uri)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="applicationKey")
+    def application_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "application_key")
+
+    @application_key.setter
+    def application_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_key", value)
+
+    @property
+    @pulumi.getter(name="eventIndex")
+    def event_index(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_index")
+
+    @event_index.setter
+    def event_index(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_index", value)
+
+    @property
+    @pulumi.getter(name="eventUri")
+    def event_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_uri")
+
+    @event_uri.setter
+    def event_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_uri", value)
+
+    @property
+    @pulumi.getter(name="metricIndex")
+    def metric_index(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric_index")
+
+    @metric_index.setter
+    def metric_index(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_index", value)
+
+    @property
+    @pulumi.getter(name="metricUri")
+    def metric_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric_uri")
+
+    @metric_uri.setter
+    def metric_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_uri", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class StreamSubscriptionTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    StreamSubscriptionTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSubscriptionTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:
@@ -12369,6 +15617,113 @@ class GetCloudRoutersSortArgs:
     @property.setter
     def property(self, value: Optional[str]):
         pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetConnectionRouteAggregationsPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        next: str
+        """
+        The URL relative to the next item in the response
+        """
+        offset: int
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        previous: str
+        """
+        The URL relative to the previous item in the response
+        """
+        total: int
+        """
+        The total number of connection route aggregations available to the user making the request
+        """
+elif False:
+    GetConnectionRouteAggregationsPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetConnectionRouteAggregationsPaginationArgs:
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of connection route aggregations available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: int):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: int):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of connection route aggregations available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
 
 
 if not MYPY:
@@ -12895,6 +16250,833 @@ class GetPortsFilterArgs:
     @name.setter
     def name(self, value: str):
         pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class GetPrecisionTimeServiceNtpAdvancedConfigurationArgsDict(TypedDict):
+        key: NotRequired[str]
+        """
+        The plaintext authentication key. For ASCII type, the key\\
+        \\ must contain printable ASCII characters, range 10-20 characters. For\\
+        \\ HEX type, range should be 10-40 characters
+        """
+        key_number: NotRequired[int]
+        """
+        The authentication Key ID
+        """
+        type: NotRequired[str]
+        """
+        md5 Authentication type
+        """
+elif False:
+    GetPrecisionTimeServiceNtpAdvancedConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPrecisionTimeServiceNtpAdvancedConfigurationArgs:
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 key_number: Optional[int] = None,
+                 type: Optional[str] = None):
+        """
+        :param str key: The plaintext authentication key. For ASCII type, the key\\
+               \\ must contain printable ASCII characters, range 10-20 characters. For\\
+               \\ HEX type, range should be 10-40 characters
+        :param int key_number: The authentication Key ID
+        :param str type: md5 Authentication type
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if key_number is not None:
+            pulumi.set(__self__, "key_number", key_number)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The plaintext authentication key. For ASCII type, the key\\
+        \\ must contain printable ASCII characters, range 10-20 characters. For\\
+        \\ HEX type, range should be 10-40 characters
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="keyNumber")
+    def key_number(self) -> Optional[int]:
+        """
+        The authentication Key ID
+        """
+        return pulumi.get(self, "key_number")
+
+    @key_number.setter
+    def key_number(self, value: Optional[int]):
+        pulumi.set(self, "key_number", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        md5 Authentication type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class GetPrecisionTimeServiceProjectArgsDict(TypedDict):
+        project_id: str
+        """
+        Equinix Subscriber-assigned project ID
+        """
+elif False:
+    GetPrecisionTimeServiceProjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPrecisionTimeServiceProjectArgs:
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Equinix Subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Equinix Subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: str):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class GetPrecisionTimeServicePtpAdvancedConfigurationArgsDict(TypedDict):
+        domain: NotRequired[int]
+        """
+        The PTP domain value
+        """
+        grant_time: NotRequired[int]
+        """
+        Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        """
+        log_announce_interval: NotRequired[int]
+        """
+        Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        """
+        log_delay_req_interval: NotRequired[int]
+        """
+        Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        log_sync_interval: NotRequired[int]
+        """
+        Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        priority1: NotRequired[int]
+        """
+        The priority1 value determines the best primary clock, Lower value indicates higher priority
+        """
+        priority2: NotRequired[int]
+        """
+        The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        """
+        time_scale: NotRequired[str]
+        """
+        Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        """
+        transport_mode: NotRequired[str]
+        """
+        ptp transport mode
+        """
+elif False:
+    GetPrecisionTimeServicePtpAdvancedConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPrecisionTimeServicePtpAdvancedConfigurationArgs:
+    def __init__(__self__, *,
+                 domain: Optional[int] = None,
+                 grant_time: Optional[int] = None,
+                 log_announce_interval: Optional[int] = None,
+                 log_delay_req_interval: Optional[int] = None,
+                 log_sync_interval: Optional[int] = None,
+                 priority1: Optional[int] = None,
+                 priority2: Optional[int] = None,
+                 time_scale: Optional[str] = None,
+                 transport_mode: Optional[str] = None):
+        """
+        :param int domain: The PTP domain value
+        :param int grant_time: Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        :param int log_announce_interval: Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        :param int log_delay_req_interval: Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int log_sync_interval: Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        :param int priority1: The priority1 value determines the best primary clock, Lower value indicates higher priority
+        :param int priority2: The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        :param str time_scale: Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        :param str transport_mode: ptp transport mode
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if grant_time is not None:
+            pulumi.set(__self__, "grant_time", grant_time)
+        if log_announce_interval is not None:
+            pulumi.set(__self__, "log_announce_interval", log_announce_interval)
+        if log_delay_req_interval is not None:
+            pulumi.set(__self__, "log_delay_req_interval", log_delay_req_interval)
+        if log_sync_interval is not None:
+            pulumi.set(__self__, "log_sync_interval", log_sync_interval)
+        if priority1 is not None:
+            pulumi.set(__self__, "priority1", priority1)
+        if priority2 is not None:
+            pulumi.set(__self__, "priority2", priority2)
+        if time_scale is not None:
+            pulumi.set(__self__, "time_scale", time_scale)
+        if transport_mode is not None:
+            pulumi.set(__self__, "transport_mode", transport_mode)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[int]:
+        """
+        The PTP domain value
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[int]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="grantTime")
+    def grant_time(self) -> Optional[int]:
+        """
+        Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200
+        """
+        return pulumi.get(self, "grant_time")
+
+    @grant_time.setter
+    def grant_time(self, value: Optional[int]):
+        pulumi.set(self, "grant_time", value)
+
+    @property
+    @pulumi.getter(name="logAnnounceInterval")
+    def log_announce_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Announce packets from the PTP time server. Default is 1 (1 packet every 2 seconds), Unit packets/second
+        """
+        return pulumi.get(self, "log_announce_interval")
+
+    @log_announce_interval.setter
+    def log_announce_interval(self, value: Optional[int]):
+        pulumi.set(self, "log_announce_interval", value)
+
+    @property
+    @pulumi.getter(name="logDelayReqInterval")
+    def log_delay_req_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP DelayReq packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_delay_req_interval")
+
+    @log_delay_req_interval.setter
+    def log_delay_req_interval(self, value: Optional[int]):
+        pulumi.set(self, "log_delay_req_interval", value)
+
+    @property
+    @pulumi.getter(name="logSyncInterval")
+    def log_sync_interval(self) -> Optional[int]:
+        """
+        Logarithmic value that controls the rate of PTP Sync packets. Default is -4 (16 packets per second), Unit packets/second..
+        """
+        return pulumi.get(self, "log_sync_interval")
+
+    @log_sync_interval.setter
+    def log_sync_interval(self, value: Optional[int]):
+        pulumi.set(self, "log_sync_interval", value)
+
+    @property
+    @pulumi.getter
+    def priority1(self) -> Optional[int]:
+        """
+        The priority1 value determines the best primary clock, Lower value indicates higher priority
+        """
+        return pulumi.get(self, "priority1")
+
+    @priority1.setter
+    def priority1(self, value: Optional[int]):
+        pulumi.set(self, "priority1", value)
+
+    @property
+    @pulumi.getter
+    def priority2(self) -> Optional[int]:
+        """
+        The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network
+        """
+        return pulumi.get(self, "priority2")
+
+    @priority2.setter
+    def priority2(self, value: Optional[int]):
+        pulumi.set(self, "priority2", value)
+
+    @property
+    @pulumi.getter(name="timeScale")
+    def time_scale(self) -> Optional[str]:
+        """
+        Time Scale value, ARB denotes Arbitrary and PTP denotes Precision Time Protocol
+        """
+        return pulumi.get(self, "time_scale")
+
+    @time_scale.setter
+    def time_scale(self, value: Optional[str]):
+        pulumi.set(self, "time_scale", value)
+
+    @property
+    @pulumi.getter(name="transportMode")
+    def transport_mode(self) -> Optional[str]:
+        """
+        ptp transport mode
+        """
+        return pulumi.get(self, "transport_mode")
+
+    @transport_mode.setter
+    def transport_mode(self, value: Optional[str]):
+        pulumi.set(self, "transport_mode", value)
+
+
+if not MYPY:
+    class GetPrecisionTimeServicesFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operation applied to the values of the filter
+        """
+        property: str
+        """
+        Property to apply the filter to
+        """
+        values: Sequence[str]
+        """
+        List of values to apply the operation to for the specified property
+        """
+        or_: NotRequired[bool]
+        """
+        Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+elif False:
+    GetPrecisionTimeServicesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPrecisionTimeServicesFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str],
+                 or_: Optional[bool] = None):
+        """
+        :param str operator: Operation applied to the values of the filter
+        :param str property: Property to apply the filter to
+        :param Sequence[str] values: List of values to apply the operation to for the specified property
+        :param bool or_: Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+        if or_ is not None:
+            pulumi.set(__self__, "or_", or_)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operation applied to the values of the filter
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of values to apply the operation to for the specified property
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="or")
+    def or_(self) -> Optional[bool]:
+        """
+        Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        return pulumi.get(self, "or_")
+
+    @or_.setter
+    def or_(self, value: Optional[bool]):
+        pulumi.set(self, "or_", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Property to apply the filter to
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetPrecisionTimeServicesPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        offset: int
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+elif False:
+    GetPrecisionTimeServicesPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPrecisionTimeServicesPaginationArgs:
+    def __init__(__self__, *,
+                 limit: int,
+                 offset: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param int offset: Index of the first item returned in the response. The default is 0
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: int):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: int):
+        pulumi.set(self, "offset", value)
+
+
+if not MYPY:
+    class GetPrecisionTimeServicesSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+        """
+elif False:
+    GetPrecisionTimeServicesSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPrecisionTimeServicesSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetRouteAggregationRulesPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        next: str
+        """
+        The URL relative to the next item in the response
+        """
+        offset: int
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        previous: str
+        """
+        The URL relative to the previous item in the response
+        """
+        total: int
+        """
+        The total number of route agrgegation rules available to the user making the request
+        """
+elif False:
+    GetRouteAggregationRulesPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteAggregationRulesPaginationArgs:
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of route agrgegation rules available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: int):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: int):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of route agrgegation rules available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
+
+
+if not MYPY:
+    class GetRouteAggregationsFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        property: str
+        """
+        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetRouteAggregationsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteAggregationsFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        :param str property: possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetRouteAggregationsPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        next: str
+        """
+        The URL relative to the next item in the response
+        """
+        offset: int
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        previous: str
+        """
+        The URL relative to the previous item in the response
+        """
+        total: int
+        """
+        The total number of route aggregations available to the user making the request
+        """
+elif False:
+    GetRouteAggregationsPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteAggregationsPaginationArgs:
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of route aggregations available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: int):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: int):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of route aggregations available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
+
+
+if not MYPY:
+    class GetRouteAggregationsSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        """
+elif False:
+    GetRouteAggregationsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteAggregationsSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
 
 
 if not MYPY:
@@ -13466,6 +17648,359 @@ class GetServiceTokensPaginationArgs:
     def total(self) -> int:
         """
         Total number of elements returned.
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
+
+
+if not MYPY:
+    class GetStreamAttachmentsFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operation applied to the values of the filter
+        """
+        property: str
+        """
+        Property to apply the filter to
+        """
+        values: Sequence[str]
+        """
+        List of values to apply the operation to for the specified property
+        """
+        or_: NotRequired[bool]
+        """
+        Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+elif False:
+    GetStreamAttachmentsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStreamAttachmentsFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str],
+                 or_: Optional[bool] = None):
+        """
+        :param str operator: Operation applied to the values of the filter
+        :param str property: Property to apply the filter to
+        :param Sequence[str] values: List of values to apply the operation to for the specified property
+        :param bool or_: Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+        if or_ is not None:
+            pulumi.set(__self__, "or_", or_)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operation applied to the values of the filter
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of values to apply the operation to for the specified property
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="or")
+    def or_(self) -> Optional[bool]:
+        """
+        Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+        """
+        return pulumi.get(self, "or_")
+
+    @or_.setter
+    def or_(self, value: Optional[bool]):
+        pulumi.set(self, "or_", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Property to apply the filter to
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetStreamAttachmentsPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        next: str
+        """
+        The URL relative to the next item in the response
+        """
+        offset: int
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        previous: str
+        """
+        The URL relative to the previous item in the response
+        """
+        total: int
+        """
+        The total number of streams available to the user making the request
+        """
+elif False:
+    GetStreamAttachmentsPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStreamAttachmentsPaginationArgs:
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of streams available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: int):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: int):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of streams available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
+
+
+if not MYPY:
+    class GetStreamAttachmentsSortArgsDict(TypedDict):
+        direction: str
+        """
+        The sorting direction of the property chosen. ASC or DESC
+        """
+        property: str
+        """
+        The field name the sorting is performed on
+        """
+elif False:
+    GetStreamAttachmentsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStreamAttachmentsSortArgs:
+    def __init__(__self__, *,
+                 direction: str,
+                 property: str):
+        """
+        :param str direction: The sorting direction of the property chosen. ASC or DESC
+        :param str property: The field name the sorting is performed on
+        """
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> str:
+        """
+        The sorting direction of the property chosen. ASC or DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: str):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The field name the sorting is performed on
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetStreamSubscriptionsPaginationArgsDict(TypedDict):
+        limit: int
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        next: str
+        """
+        The URL relative to the next item in the response
+        """
+        offset: int
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        previous: str
+        """
+        The URL relative to the previous item in the response
+        """
+        total: int
+        """
+        The total number of streams available to the user making the request
+        """
+elif False:
+    GetStreamSubscriptionsPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStreamSubscriptionsPaginationArgs:
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of streams available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: int):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: int):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of streams available to the user making the request
         """
         return pulumi.get(self, "total")
 

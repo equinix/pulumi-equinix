@@ -3,7 +3,7 @@ name: equinix-fabric-stream_attachment
 runtime: yaml
 resources:
   asset:
-    type: equinix:FabricStreamAttachment
+    type: equinix:fabric:StreamAttachment
     properties:
       assetId: <id_of_the_asset_being_attached>
       asset: <asset_group>

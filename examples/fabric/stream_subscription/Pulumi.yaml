@@ -3,7 +3,7 @@ name: equinix-fabric-stream_subscription
 runtime: yaml
 resources:
   SPLUNK:
-    type: equinix:FabricStreamSubscription
+    type: equinix:fabric:StreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -27,7 +27,7 @@ resources:
           type: ACCESS_TOKEN
           accessToken: <splunk_access_token>
   SLACK:
-    type: equinix:FabricStreamSubscription
+    type: equinix:fabric:StreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -38,7 +38,7 @@ resources:
         type: SLACK
         uri: <slack_uri>
   PAGER_DUTY:
-    type: equinix:FabricStreamSubscription
+    type: equinix:fabric:StreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -55,7 +55,7 @@ resources:
           type: INTEGRATION_KEY
           integrationKey: <pager_duty_integration_key>
   DATADOG:
-    type: equinix:FabricStreamSubscription
+    type: equinix:fabric:StreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -74,7 +74,7 @@ resources:
           type: API_KEY
           apiKey: <datadog_api_key>
   MSTEAMS:
-    type: equinix:FabricStreamSubscription
+    type: equinix:fabric:StreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
