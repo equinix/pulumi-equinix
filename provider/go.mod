@@ -53,8 +53,8 @@ require (
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/equinix/equinix-sdk-go v0.51.0 // indirect
-	github.com/equinix/ne-go v1.19.0 // indirect
+	github.com/equinix/equinix-sdk-go v0.51.1 // indirect
+	github.com/equinix/ne-go v1.20.0 // indirect
 	github.com/equinix/oauth2-go v1.0.0 // indirect
 	github.com/equinix/rest-go v1.3.0 // indirect
 	github.com/ettle/strcase v0.1.1 // indirect

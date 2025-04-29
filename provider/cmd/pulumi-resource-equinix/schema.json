@@ -19466,8 +19466,7 @@
                 "adminPassword": {
                     "type": "string",
                     "description": "The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.\n",
-                    "secret": true,
-                    "willReplaceOnChanges": true
+                    "secret": true
                 },
                 "controller1": {
                     "type": "string",
@@ -19606,8 +19605,7 @@
                 "adminPassword": {
                     "type": "string",
                     "description": "The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.\n",
-                    "secret": true,
-                    "willReplaceOnChanges": true
+                    "secret": true
                 },
                 "controller1": {
                     "type": "string",
@@ -19859,8 +19857,7 @@
             "properties": {
                 "accountNumber": {
                     "type": "string",
-                    "description": "Billing account number for secondary device.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Billing account number for secondary device.\n"
                 },
                 "aclTemplateId": {
                     "type": "string",
@@ -19876,13 +19873,11 @@
                 },
                 "cloudInitFileId": {
                     "type": "string",
-                    "description": "Identifier of a cloud init file that will be applied on a secondary device.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Identifier of a cloud init file that will be applied on a secondary device.\n"
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "Secondary device hostname.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Secondary device hostname.\n"
                 },
                 "ibx": {
                     "type": "string",
@@ -19897,13 +19892,11 @@
                 },
                 "licenseFile": {
                     "type": "string",
-                    "description": "Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Path to the license file that will be uploaded and applied on a secondary device. Applicable for some device types in BYOL licensing mode.\n"
                 },
                 "licenseFileId": {
                     "type": "string",
-                    "description": "Identifier of a license file that will be applied on a secondary device.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Identifier of a license file that will be applied on a secondary device.\n"
                 },
                 "licenseStatus": {
                     "type": "string",
@@ -19911,13 +19904,11 @@
                 },
                 "licenseToken": {
                     "type": "string",
-                    "description": "License Token can be provided for some device types o the device.\n",
-                    "willReplaceOnChanges": true
+                    "description": "License Token can be provided for some device types o the device.\n"
                 },
                 "metroCode": {
                     "type": "string",
-                    "description": "Metro location of a secondary device.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Metro location of a secondary device.\n"
                 },
                 "mgmtAclTemplateUuid": {
                     "type": "string",
@@ -19960,8 +19951,7 @@
                 },
                 "sshKey": {
                     "$ref": "#/types/equinix:networkedge/DeviceSecondaryDeviceSshKey:DeviceSecondaryDeviceSshKey",
-                    "description": "Definition of SSH key that will be provisioned on a device\n",
-                    "willReplaceOnChanges": true
+                    "description": "Definition of SSH key that will be provisioned on a device\n"
                 },
                 "status": {
                     "type": "string",
@@ -19976,8 +19966,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Key/Value pairs of vendor specific configuration parameters for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`, `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`, `panoramaAuthKey`, `panoramaIpAddress`, `ipAddress`, `subnetMaskIp`, `gatewayIp`.\n"
                 },
                 "wanInterfaceId": {
                     "type": "string",
@@ -27531,8 +27520,7 @@
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "Device hostname prefix.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Device hostname prefix.\n"
                 },
                 "interfaceCount": {
                     "type": "integer",
@@ -27596,8 +27584,7 @@
                 },
                 "secondaryDevice": {
                     "$ref": "#/types/equinix:networkedge/DeviceSecondaryDevice:DeviceSecondaryDevice",
-                    "description": "Definition of secondary device for redundant device configurations. See Secondary Device below for more details.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Definition of secondary device for redundant device configurations. See Secondary Device below for more details.\n"
                 },
                 "selfManaged": {
                     "type": "boolean",
@@ -27606,8 +27593,7 @@
                 },
                 "sshKey": {
                     "$ref": "#/types/equinix:networkedge/DeviceSshKey:DeviceSshKey",
-                    "description": "Definition of SSH key that will be provisioned on a device\n",
-                    "willReplaceOnChanges": true
+                    "description": "Definition of SSH key that will be provisioned on a device\n"
                 },
                 "termLength": {
                     "type": "integer",
@@ -27615,8 +27601,7 @@
                 },
                 "throughput": {
                     "type": "integer",
-                    "description": "Device license throughput.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Device license throughput.\n"
                 },
                 "throughputUnit": {
                     "type": "string",
@@ -27629,8 +27614,7 @@
                             "$ref": "#/types/equinix:networkedge/throughputUnit:ThroughputUnit"
                         }
                     ],
-                    "description": "License throughput unit. One of `Mbps` or `Gbps`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "License throughput unit. One of `Mbps` or `Gbps`.\n"
                 },
                 "tier": {
                     "type": "integer",
@@ -27647,8 +27631,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n"
                 },
                 "version": {
                     "type": "string",
@@ -27730,8 +27713,7 @@
                     },
                     "hostname": {
                         "type": "string",
-                        "description": "Device hostname prefix.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Device hostname prefix.\n"
                     },
                     "ibx": {
                         "type": "string",
@@ -27822,8 +27804,7 @@
                     },
                     "secondaryDevice": {
                         "$ref": "#/types/equinix:networkedge/DeviceSecondaryDevice:DeviceSecondaryDevice",
-                        "description": "Definition of secondary device for redundant device configurations. See Secondary Device below for more details.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Definition of secondary device for redundant device configurations. See Secondary Device below for more details.\n"
                     },
                     "selfManaged": {
                         "type": "boolean",
@@ -27840,8 +27821,7 @@
                     },
                     "sshKey": {
                         "$ref": "#/types/equinix:networkedge/DeviceSshKey:DeviceSshKey",
-                        "description": "Definition of SSH key that will be provisioned on a device\n",
-                        "willReplaceOnChanges": true
+                        "description": "Definition of SSH key that will be provisioned on a device\n"
                     },
                     "status": {
                         "type": "string",
@@ -27853,8 +27833,7 @@
                     },
                     "throughput": {
                         "type": "integer",
-                        "description": "Device license throughput.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Device license throughput.\n"
                     },
                     "throughputUnit": {
                         "type": "string",
@@ -27867,8 +27846,7 @@
                                 "$ref": "#/types/equinix:networkedge/throughputUnit:ThroughputUnit"
                             }
                         ],
-                        "description": "License throughput unit. One of `Mbps` or `Gbps`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "License throughput unit. One of `Mbps` or `Gbps`.\n"
                     },
                     "tier": {
                         "type": "integer",
@@ -27889,8 +27867,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))\n* `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.\n"
                     },
                     "version": {
                         "type": "string",
