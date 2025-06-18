@@ -39,10 +39,10 @@ NODEJS_VERSION  = $(shell $(PULUMICTL_BIN) get version --language javascript)
 PYPI_VERSION    = $(shell $(PULUMICTL_BIN) get version --language python)
 DOTNET_VERSION  = $(shell $(PULUMICTL_BIN) get version --language dotnet)
 
-development: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
+development: install_plugins provider lint_provider generate_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
 # Required for the codegen action that runs in pulumi/pulumi and pulumi/pulumi-terraform-bridge
-build: install_plugins provider build_sdks install_sdks
+build: install_plugins provider generate_sdks install_sdks
 only_build: build
 
 only_tfgen: install_plugins upstream build_schema
@@ -67,7 +67,7 @@ provider: only_provider
 only_provider: build_schema $(PULUMICTL_BIN)
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION} -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
-build_sdks: clean build_nodejs build_python build_go build_dotnet build_java # build all the sdks
+generate_sdks: clean build_nodejs build_python build_go build_dotnet build_java # build all the sdks
 
 build_nodejs: upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
@@ -228,4 +228,4 @@ examples: install_equinix_plugin $(PULUMICTL_BIN)
 	@mkdir -p .pulumi
 	@cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
 
-.PHONY: development build build_schema build_schema_post_examples build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_equinix_plugin uninstall_equinix_plugin install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider examples examples_check
+.PHONY: development build build_schema build_schema_post_examples generate_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_equinix_plugin uninstall_equinix_plugin install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider examples examples_check
