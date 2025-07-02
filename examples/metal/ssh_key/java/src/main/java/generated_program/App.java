@@ -34,7 +34,7 @@ public class App {
             .hostname("test-device")
             .plan("c3.small.x86")
             .metro("sv")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectId(projectId)
             .build(), CustomResourceOptions.builder()

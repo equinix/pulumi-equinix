@@ -10,7 +10,7 @@ const web1 = new equinix.metal.Device("web1", {
     hostname: "tf.coreos2",
     plan: equinix.metal.Plan.C3SmallX86,
     metro: "sv",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
 });
@@ -23,7 +23,7 @@ web1 = equinix.metal.Device("web1",
     hostname="tf.coreos2",
     plan=equinix.metal.Plan.C3_SMALL_X86,
     metro="sv",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id)
 ```
@@ -41,7 +41,7 @@ func main() {
 			Hostname:        pulumi.String("tf.coreos2"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
 			Metro:           pulumi.String("sv"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.Any(projectId),
 		})
@@ -65,7 +65,7 @@ return await Deployment.RunAsync(() =>
         Hostname = "tf.coreos2",
         Plan = Equinix.Metal.Plan.C3SmallX86,
         Metro = "sv",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
     });
@@ -97,7 +97,7 @@ public class App {
             .hostname("tf.coreos2")
             .plan("c3.small.x86")
             .metro("sv")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectId(projectId)
             .build());
@@ -113,7 +113,7 @@ resources:
       hostname: tf.coreos2
       plan: c3.small.x86
       metro: sv
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       billingCycle: hourly
       projectId: ${projectId}
 ```
@@ -266,7 +266,7 @@ const web1 = new equinix.metal.Device("web1", {
     hostname: "tf.coreos2",
     plan: equinix.metal.Plan.C3SmallX86,
     metro: "ny",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
     ipAddresses: [{
@@ -283,7 +283,7 @@ web1 = equinix.metal.Device("web1",
     hostname="tf.coreos2",
     plan=equinix.metal.Plan.C3_SMALL_X86,
     metro="ny",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id,
     ip_addresses=[{
@@ -305,7 +305,7 @@ func main() {
 			Hostname:        pulumi.String("tf.coreos2"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
 			Metro:           pulumi.String("ny"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.Any(projectId),
 			IpAddresses: metal.DeviceIpAddressArray{
@@ -335,7 +335,7 @@ return await Deployment.RunAsync(() =>
         Hostname = "tf.coreos2",
         Plan = Equinix.Metal.Plan.C3SmallX86,
         Metro = "ny",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
         IpAddresses = new[]
@@ -376,7 +376,7 @@ public class App {
             .hostname("tf.coreos2")
             .plan("c3.small.x86")
             .metro("ny")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectId(projectId)
             .ipAddresses(DeviceIpAddressArgs.builder()
@@ -396,7 +396,7 @@ resources:
       hostname: tf.coreos2
       plan: c3.small.x86
       metro: ny
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       billingCycle: hourly
       projectId: ${projectId}
       ipAddresses:
@@ -415,12 +415,64 @@ const web1 = new equinix.metal.Device("web1", {
     hostname: "tftest",
     plan: equinix.metal.Plan.C3SmallX86,
     metro: "ny",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
     hardwareReservationId: "next-available",
-    storage: "{  \\"disks\\": [    {      \\"device\\": \\"/dev/sda\\",      \\"wipeTable\\": true,      \\"partitions\\": [        {          \\"label\\": \\"BIOS\\",          \\"number\\": 1,          \\"size\\": \\"4096\\"        },        {          \\"label\\": \\"SWAP\\",          \\"number\\": 2,          \\"size\\": \\"3993600\\"        },        {          \\"label\\": \\"ROOT\\",          \\"number\\": 3,          \\"size\\": \\"0\\"        }      ]    }  ],  \\"filesystems\\": [    {      \\"mount\\": {        \\"device\\": \\"/dev/sda3\\",        \\"format\\": \\"ext4\\",        \\"point\\": \\"/\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"ROOT\\"          ]        }      }    },    {      \\"mount\\": {        \\"device\\": \\"/dev/sda2\\",        \\"format\\": \\"swap\\",        \\"point\\": \\"none\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"SWAP\\"          ]        }      }    }  ]}
-",
+    storage: `{
+  \"disks\": [
+    {
+      \"device\": \"/dev/sda\",
+      \"wipeTable\": true,
+      \"partitions\": [
+        {
+          \"label\": \"BIOS\",
+          \"number\": 1,
+          \"size\": \"4096\"
+        },
+        {
+          \"label\": \"SWAP\",
+          \"number\": 2,
+          \"size\": \"3993600\"
+        },
+        {
+          \"label\": \"ROOT\",
+          \"number\": 3,
+          \"size\": \"0\"
+        }
+      ]
+    }
+  ],
+  \"filesystems\": [
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda3\",
+        \"format\": \"ext4\",
+        \"point\": \"/\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"ROOT\"
+          ]
+        }
+      }
+    },
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda2\",
+        \"format\": \"swap\",
+        \"point\": \"none\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"SWAP\"
+          ]
+        }
+      }
+    }
+  ]
+}
+`,
 });
 ```
 ```python
@@ -431,12 +483,64 @@ web1 = equinix.metal.Device("web1",
     hostname="tftest",
     plan=equinix.metal.Plan.C3_SMALL_X86,
     metro="ny",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id,
     hardware_reservation_id="next-available",
-    storage="{  \\"disks\\": [    {      \\"device\\": \\"/dev/sda\\",      \\"wipeTable\\": true,      \\"partitions\\": [        {          \\"label\\": \\"BIOS\\",          \\"number\\": 1,          \\"size\\": \\"4096\\"        },        {          \\"label\\": \\"SWAP\\",          \\"number\\": 2,          \\"size\\": \\"3993600\\"        },        {          \\"label\\": \\"ROOT\\",          \\"number\\": 3,          \\"size\\": \\"0\\"        }      ]    }  ],  \\"filesystems\\": [    {      \\"mount\\": {        \\"device\\": \\"/dev/sda3\\",        \\"format\\": \\"ext4\\",        \\"point\\": \\"/\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"ROOT\\"          ]        }      }    },    {      \\"mount\\": {        \\"device\\": \\"/dev/sda2\\",        \\"format\\": \\"swap\\",        \\"point\\": \\"none\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"SWAP\\"          ]        }      }    }  ]}
-")
+    storage="""{
+  \"disks\": [
+    {
+      \"device\": \"/dev/sda\",
+      \"wipeTable\": true,
+      \"partitions\": [
+        {
+          \"label\": \"BIOS\",
+          \"number\": 1,
+          \"size\": \"4096\"
+        },
+        {
+          \"label\": \"SWAP\",
+          \"number\": 2,
+          \"size\": \"3993600\"
+        },
+        {
+          \"label\": \"ROOT\",
+          \"number\": 3,
+          \"size\": \"0\"
+        }
+      ]
+    }
+  ],
+  \"filesystems\": [
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda3\",
+        \"format\": \"ext4\",
+        \"point\": \"/\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"ROOT\"
+          ]
+        }
+      }
+    },
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda2\",
+        \"format\": \"swap\",
+        \"point\": \"none\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"SWAP\"
+          ]
+        }
+      }
+    }
+  ]
+}
+""")
 ```
 ```go
 package main
@@ -452,12 +556,64 @@ func main() {
 			Hostname:              pulumi.String("tftest"),
 			Plan:                  pulumi.String(metal.PlanC3SmallX86),
 			Metro:                 pulumi.String("ny"),
-			OperatingSystem:       pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem:       pulumi.String("ubuntu_24_04"),
 			BillingCycle:          pulumi.String(metal.BillingCycleHourly),
 			ProjectId:             pulumi.Any(projectId),
 			HardwareReservationId: pulumi.String("next-available"),
-			Storage:               pulumi.String("{  \\"disks\\": [    {      \\"device\\": \\"/dev/sda\\",      \\"wipeTable\\": true,      \\"partitions\\": [        {          \\"label\\": \\"BIOS\\",          \\"number\\": 1,          \\"size\\": \\"4096\\"        },        {          \\"label\\": \\"SWAP\\",          \\"number\\": 2,          \\"size\\": \\"3993600\\"        },        {          \\"label\\": \\"ROOT\\",          \\"number\\": 3,          \\"size\\": \\"0\\"        }      ]    }  ],  \\"filesystems\\": [    {      \\"mount\\": {        \\"device\\": \\"/dev/sda3\\",        \\"format\\": \\"ext4\\",        \\"point\\": \\"/\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"ROOT\\"          ]        }      }    },    {      \\"mount\\": {        \\"device\\": \\"/dev/sda2\\",        \\"format\\": \\"swap\\",        \\"point\\": \\"none\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"SWAP\\"          ]        }      }    }  ]}
-"),
+			Storage: pulumi.String(`{
+  \"disks\": [
+    {
+      \"device\": \"/dev/sda\",
+      \"wipeTable\": true,
+      \"partitions\": [
+        {
+          \"label\": \"BIOS\",
+          \"number\": 1,
+          \"size\": \"4096\"
+        },
+        {
+          \"label\": \"SWAP\",
+          \"number\": 2,
+          \"size\": \"3993600\"
+        },
+        {
+          \"label\": \"ROOT\",
+          \"number\": 3,
+          \"size\": \"0\"
+        }
+      ]
+    }
+  ],
+  \"filesystems\": [
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda3\",
+        \"format\": \"ext4\",
+        \"point\": \"/\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"ROOT\"
+          ]
+        }
+      }
+    },
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda2\",
+        \"format\": \"swap\",
+        \"point\": \"none\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"SWAP\"
+          ]
+        }
+      }
+    }
+  ]
+}
+`),
 		})
 		if err != nil {
 			return err
@@ -479,11 +635,63 @@ return await Deployment.RunAsync(() =>
         Hostname = "tftest",
         Plan = Equinix.Metal.Plan.C3SmallX86,
         Metro = "ny",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
         HardwareReservationId = "next-available",
-        Storage = @"{  \""disks\"": [    {      \""device\"": \""/dev/sda\"",      \""wipeTable\"": true,      \""partitions\"": [        {          \""label\"": \""BIOS\"",          \""number\"": 1,          \""size\"": \""4096\""        },        {          \""label\"": \""SWAP\"",          \""number\"": 2,          \""size\"": \""3993600\""        },        {          \""label\"": \""ROOT\"",          \""number\"": 3,          \""size\"": \""0\""        }      ]    }  ],  \""filesystems\"": [    {      \""mount\"": {        \""device\"": \""/dev/sda3\"",        \""format\"": \""ext4\"",        \""point\"": \""/\"",        \""create\"": {          \""options\"": [            \""-L\"",            \""ROOT\""          ]        }      }    },    {      \""mount\"": {        \""device\"": \""/dev/sda2\"",        \""format\"": \""swap\"",        \""point\"": \""none\"",        \""create\"": {          \""options\"": [            \""-L\"",            \""SWAP\""          ]        }      }    }  ]}
+        Storage = @"{
+  \""disks\"": [
+    {
+      \""device\"": \""/dev/sda\"",
+      \""wipeTable\"": true,
+      \""partitions\"": [
+        {
+          \""label\"": \""BIOS\"",
+          \""number\"": 1,
+          \""size\"": \""4096\""
+        },
+        {
+          \""label\"": \""SWAP\"",
+          \""number\"": 2,
+          \""size\"": \""3993600\""
+        },
+        {
+          \""label\"": \""ROOT\"",
+          \""number\"": 3,
+          \""size\"": \""0\""
+        }
+      ]
+    }
+  ],
+  \""filesystems\"": [
+    {
+      \""mount\"": {
+        \""device\"": \""/dev/sda3\"",
+        \""format\"": \""ext4\"",
+        \""point\"": \""/\"",
+        \""create\"": {
+          \""options\"": [
+            \""-L\"",
+            \""ROOT\""
+          ]
+        }
+      }
+    },
+    {
+      \""mount\"": {
+        \""device\"": \""/dev/sda2\"",
+        \""format\"": \""swap\"",
+        \""point\"": \""none\"",
+        \""create\"": {
+          \""options\"": [
+            \""-L\"",
+            \""SWAP\""
+          ]
+        }
+      }
+    }
+  ]
+}
 ",
     });
 
@@ -514,12 +722,64 @@ public class App {
             .hostname("tftest")
             .plan("c3.small.x86")
             .metro("ny")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectId(projectId)
             .hardwareReservationId("next-available")
             .storage("""
-{  \"disks\": [    {      \"device\": \"/dev/sda\",      \"wipeTable\": true,      \"partitions\": [        {          \"label\": \"BIOS\",          \"number\": 1,          \"size\": \"4096\"        },        {          \"label\": \"SWAP\",          \"number\": 2,          \"size\": \"3993600\"        },        {          \"label\": \"ROOT\",          \"number\": 3,          \"size\": \"0\"        }      ]    }  ],  \"filesystems\": [    {      \"mount\": {        \"device\": \"/dev/sda3\",        \"format\": \"ext4\",        \"point\": \"/\",        \"create\": {          \"options\": [            \"-L\",            \"ROOT\"          ]        }      }    },    {      \"mount\": {        \"device\": \"/dev/sda2\",        \"format\": \"swap\",        \"point\": \"none\",        \"create\": {          \"options\": [            \"-L\",            \"SWAP\"          ]        }      }    }  ]}
+{
+  \"disks\": [
+    {
+      \"device\": \"/dev/sda\",
+      \"wipeTable\": true,
+      \"partitions\": [
+        {
+          \"label\": \"BIOS\",
+          \"number\": 1,
+          \"size\": \"4096\"
+        },
+        {
+          \"label\": \"SWAP\",
+          \"number\": 2,
+          \"size\": \"3993600\"
+        },
+        {
+          \"label\": \"ROOT\",
+          \"number\": 3,
+          \"size\": \"0\"
+        }
+      ]
+    }
+  ],
+  \"filesystems\": [
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda3\",
+        \"format\": \"ext4\",
+        \"point\": \"/\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"ROOT\"
+          ]
+        }
+      }
+    },
+    {
+      \"mount\": {
+        \"device\": \"/dev/sda2\",
+        \"format\": \"swap\",
+        \"point\": \"none\",
+        \"create\": {
+          \"options\": [
+            \"-L\",
+            \"SWAP\"
+          ]
+        }
+      }
+    }
+  ]
+}
             """)
             .build());
 
@@ -534,12 +794,64 @@ resources:
       hostname: tftest
       plan: c3.small.x86
       metro: ny
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       billingCycle: hourly
       projectId: ${projectId}
       hardwareReservationId: next-available
       storage: |
-        {  \"disks\": [    {      \"device\": \"/dev/sda\",      \"wipeTable\": true,      \"partitions\": [        {          \"label\": \"BIOS\",          \"number\": 1,          \"size\": \"4096\"        },        {          \"label\": \"SWAP\",          \"number\": 2,          \"size\": \"3993600\"        },        {          \"label\": \"ROOT\",          \"number\": 3,          \"size\": \"0\"        }      ]    }  ],  \"filesystems\": [    {      \"mount\": {        \"device\": \"/dev/sda3\",        \"format\": \"ext4\",        \"point\": \"/\",        \"create\": {          \"options\": [            \"-L\",            \"ROOT\"          ]        }      }    },    {      \"mount\": {        \"device\": \"/dev/sda2\",        \"format\": \"swap\",        \"point\": \"none\",        \"create\": {          \"options\": [            \"-L\",            \"SWAP\"          ]        }      }    }  ]}
+        {
+          \"disks\": [
+            {
+              \"device\": \"/dev/sda\",
+              \"wipeTable\": true,
+              \"partitions\": [
+                {
+                  \"label\": \"BIOS\",
+                  \"number\": 1,
+                  \"size\": \"4096\"
+                },
+                {
+                  \"label\": \"SWAP\",
+                  \"number\": 2,
+                  \"size\": \"3993600\"
+                },
+                {
+                  \"label\": \"ROOT\",
+                  \"number\": 3,
+                  \"size\": \"0\"
+                }
+              ]
+            }
+          ],
+          \"filesystems\": [
+            {
+              \"mount\": {
+                \"device\": \"/dev/sda3\",
+                \"format\": \"ext4\",
+                \"point\": \"/\",
+                \"create\": {
+                  \"options\": [
+                    \"-L\",
+                    \"ROOT\"
+                  ]
+                }
+              }
+            },
+            {
+              \"mount\": {
+                \"device\": \"/dev/sda2\",
+                \"format\": \"swap\",
+                \"point\": \"none\",
+                \"create\": {
+                  \"options\": [
+                    \"-L\",
+                    \"SWAP\"
+                  ]
+                }
+              }
+            }
+          ]
+        }
 ```
 {{% /example %}}
 

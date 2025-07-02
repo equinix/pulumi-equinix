@@ -10,6 +10,6 @@ req = equinix.metal.SpotMarketRequest("req",
     instance_parameters={
         "hostname": "testspot",
         "billing_cycle": "hourly",
-        "operating_system": "ubuntu_20_04",
+        "operating_system": "ubuntu_24_04",
         "plan": "c3.small.x86",
     })

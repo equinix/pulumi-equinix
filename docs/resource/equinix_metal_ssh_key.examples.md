@@ -15,7 +15,7 @@ const test = new equinix.metal.Device("test", {
     hostname: "test-device",
     plan: equinix.metal.Plan.C3SmallX86,
     metro: "sv",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
 }, {
@@ -34,7 +34,7 @@ test = equinix.metal.Device("test",
     hostname="test-device",
     plan=equinix.metal.Plan.C3_SMALL_X86,
     metro="sv",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id,
     opts = pulumi.ResourceOptions(depends_on=[key1]))
@@ -65,7 +65,7 @@ func main() {
 			Hostname:        pulumi.String("test-device"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
 			Metro:           pulumi.String("sv"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.Any(projectId),
 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -101,7 +101,7 @@ return await Deployment.RunAsync(() =>
         Hostname = "test-device",
         Plan = Equinix.Metal.Plan.C3SmallX86,
         Metro = "sv",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
     }, new CustomResourceOptions
@@ -151,7 +151,7 @@ public class App {
             .hostname("test-device")
             .plan("c3.small.x86")
             .metro("sv")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectId(projectId)
             .build(), CustomResourceOptions.builder()
@@ -182,7 +182,7 @@ resources:
       hostname: test-device
       plan: c3.small.x86
       metro: sv
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       billingCycle: hourly
       projectId: ${projectId}
     options:

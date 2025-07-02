@@ -9,7 +9,7 @@ test = equinix.metal.Device("test",
     hostname="test-device",
     plan=equinix.metal.Plan.C3_SMALL_X86,
     metro="sv",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id,
     opts = pulumi.ResourceOptions(depends_on=[key1]))

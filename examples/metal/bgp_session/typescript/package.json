@@ -7,6 +7,6 @@
 		"typescript": "^4.0.0",
 		"@pulumi/pulumi": "^3.0.0",
 		"@equinix-labs/pulumi-equinix": "<1.0.0",
-		"@pulumi/null": "0.0.8"
+		"@pulumi/null": "0.0.11"
 	}
 }

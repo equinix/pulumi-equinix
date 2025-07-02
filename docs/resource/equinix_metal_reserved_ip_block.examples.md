@@ -198,7 +198,7 @@ const nodes = new equinix.metal.Device("nodes", {
     projectId: projectId,
     metro: "sv",
     plan: equinix.metal.Plan.C3SmallX86,
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     hostname: "test",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     ipAddresses: [
@@ -225,7 +225,7 @@ nodes = equinix.metal.Device("nodes",
     project_id=project_id,
     metro="sv",
     plan=equinix.metal.Plan.C3_SMALL_X86,
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     hostname="test",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     ip_addresses=[
@@ -261,7 +261,7 @@ func main() {
 			ProjectId:       pulumi.Any(projectId),
 			Metro:           pulumi.String("sv"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			Hostname:        pulumi.String("test"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			IpAddresses: metal.DeviceIpAddressArray{
@@ -304,7 +304,7 @@ return await Deployment.RunAsync(() =>
         ProjectId = projectId,
         Metro = "sv",
         Plan = Equinix.Metal.Plan.C3SmallX86,
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         Hostname = "test",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         IpAddresses = new[]
@@ -361,7 +361,7 @@ public class App {
             .projectId(projectId)
             .metro("sv")
             .plan("c3.small.x86")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .hostname("test")
             .billingCycle("hourly")
             .ipAddresses(            
@@ -394,7 +394,7 @@ resources:
       projectId: ${projectId}
       metro: sv
       plan: c3.small.x86
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       hostname: test
       billingCycle: hourly
       ipAddresses:
