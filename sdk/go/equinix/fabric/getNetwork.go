@@ -41,7 +41,7 @@ import (
 //			ctx.Export("name", networkDataName.Name)
 //			ctx.Export("scope", networkDataName.Scope)
 //			ctx.Export("type", networkDataName.Type)
-//			ctx.Export("region", networkDataName.Locations[0].Region)
+//			ctx.Export("region", pulumi.StringArray("TODO: For expression"))
 //			return nil
 //		})
 //	}
@@ -85,11 +85,11 @@ type LookupNetworkResult struct {
 	Operation GetNetworkOperation `pulumi:"operation"`
 	// Fabric Network project
 	Project GetNetworkProject `pulumi:"project"`
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope string `pulumi:"scope"`
 	// Fabric Network overall state
 	State string `pulumi:"state"`
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type string `pulumi:"type"`
 	// Equinix-assigned network identifier
 	Uuid string `pulumi:"uuid"`
@@ -179,7 +179,7 @@ func (o LookupNetworkResultOutput) Project() GetNetworkProjectOutput {
 	return o.ApplyT(func(v LookupNetworkResult) GetNetworkProject { return v.Project }).(GetNetworkProjectOutput)
 }
 
-// Fabric Network scope
+// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 func (o LookupNetworkResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -189,7 +189,7 @@ func (o LookupNetworkResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Supported Network types - EVPLAN, EPLAN, IPWAN
+// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 func (o LookupNetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }

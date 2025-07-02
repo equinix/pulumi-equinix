@@ -37,7 +37,7 @@ import (
 //				InstanceParameters: &metal.SpotMarketRequestInstanceParametersArgs{
 //					Hostname:        pulumi.String("testspot"),
 //					BillingCycle:    pulumi.String("hourly"),
-//					OperatingSystem: pulumi.String("ubuntu_20_04"),
+//					OperatingSystem: pulumi.String("ubuntu_24_04"),
 //					Plan:            pulumi.String("c3.small.x86"),
 //				},
 //			})

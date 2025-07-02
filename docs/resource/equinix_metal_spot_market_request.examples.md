@@ -13,7 +13,7 @@ const req = new equinix.metal.SpotMarketRequest("req", {
     instanceParameters: {
         hostname: "testspot",
         billingCycle: "hourly",
-        operatingSystem: "ubuntu_20_04",
+        operatingSystem: "ubuntu_24_04",
         plan: "c3.small.x86",
     },
 });
@@ -31,7 +31,7 @@ req = equinix.metal.SpotMarketRequest("req",
     instance_parameters={
         "hostname": "testspot",
         "billing_cycle": "hourly",
-        "operating_system": "ubuntu_20_04",
+        "operating_system": "ubuntu_24_04",
         "plan": "c3.small.x86",
     })
 ```
@@ -54,7 +54,7 @@ func main() {
 			InstanceParameters: &metal.SpotMarketRequestInstanceParametersArgs{
 				Hostname:        pulumi.String("testspot"),
 				BillingCycle:    pulumi.String("hourly"),
-				OperatingSystem: pulumi.String("ubuntu_20_04"),
+				OperatingSystem: pulumi.String("ubuntu_24_04"),
 				Plan:            pulumi.String("c3.small.x86"),
 			},
 		})
@@ -84,7 +84,7 @@ return await Deployment.RunAsync(() =>
         {
             Hostname = "testspot",
             BillingCycle = "hourly",
-            OperatingSystem = "ubuntu_20_04",
+            OperatingSystem = "ubuntu_24_04",
             Plan = "c3.small.x86",
         },
     });
@@ -122,7 +122,7 @@ public class App {
             .instanceParameters(SpotMarketRequestInstanceParametersArgs.builder()
                 .hostname("testspot")
                 .billingCycle("hourly")
-                .operatingSystem("ubuntu_20_04")
+                .operatingSystem("ubuntu_24_04")
                 .plan("c3.small.x86")
                 .build())
             .build());
@@ -144,7 +144,7 @@ resources:
       instanceParameters:
         hostname: testspot
         billingCycle: hourly
-        operatingSystem: ubuntu_20_04
+        operatingSystem: ubuntu_24_04
         plan: c3.small.x86
 ```
 {{% /example %}}

@@ -19,7 +19,7 @@ func main() {
 			ProjectId:       pulumi.Any(projectId),
 			Metro:           pulumi.String("sv"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			Hostname:        pulumi.String("test"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			IpAddresses: metal.DeviceIpAddressArray{

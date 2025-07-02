@@ -35,7 +35,7 @@ import (
 //				Hostname:        pulumi.String("tf.coreos2"),
 //				Plan:            pulumi.String(metal.PlanC3SmallX86),
 //				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				OperatingSystem: pulumi.String("ubuntu_24_04"),
 //				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:       pulumi.Any(projectId),
 //			})
@@ -96,7 +96,7 @@ import (
 //				Hostname:        pulumi.String("tf.coreos2"),
 //				Plan:            pulumi.String(metal.PlanC3SmallX86),
 //				Metro:           pulumi.String("ny"),
-//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				OperatingSystem: pulumi.String("ubuntu_24_04"),
 //				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:       pulumi.Any(projectId),
 //				IpAddresses: metal.DeviceIpAddressArray{
@@ -131,13 +131,65 @@ import (
 //				Hostname:              pulumi.String("tftest"),
 //				Plan:                  pulumi.String(metal.PlanC3SmallX86),
 //				Metro:                 pulumi.String("ny"),
-//				OperatingSystem:       pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				OperatingSystem:       pulumi.String("ubuntu_24_04"),
 //				BillingCycle:          pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:             pulumi.Any(projectId),
 //				HardwareReservationId: pulumi.String("next-available"),
-//				Storage:               pulumi.String("{  \\"disks\\": [    {      \\"device\\": \\"/dev/sda\\",      \\"wipeTable\\": true,      \\"partitions\\": [        {          \\"label\\": \\"BIOS\\",          \\"number\\": 1,          \\"size\\": \\"4096\\"        },        {          \\"label\\": \\"SWAP\\",          \\"number\\": 2,          \\"size\\": \\"3993600\\"        },        {          \\"label\\": \\"ROOT\\",          \\"number\\": 3,          \\"size\\": \\"0\\"        }      ]    }  ],  \\"filesystems\\": [    {      \\"mount\\": {        \\"device\\": \\"/dev/sda3\\",        \\"format\\": \\"ext4\\",        \\"point\\": \\"/\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"ROOT\\"          ]        }      }    },    {      \\"mount\\": {        \\"device\\": \\"/dev/sda2\\",        \\"format\\": \\"swap\\",        \\"point\\": \\"none\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"SWAP\\"          ]        }      }    }  ]}
+//				Storage: pulumi.String(`{
+//	  \"disks\": [
+//	    {
+//	      \"device\": \"/dev/sda\",
+//	      \"wipeTable\": true,
+//	      \"partitions\": [
+//	        {
+//	          \"label\": \"BIOS\",
+//	          \"number\": 1,
+//	          \"size\": \"4096\"
+//	        },
+//	        {
+//	          \"label\": \"SWAP\",
+//	          \"number\": 2,
+//	          \"size\": \"3993600\"
+//	        },
+//	        {
+//	          \"label\": \"ROOT\",
+//	          \"number\": 3,
+//	          \"size\": \"0\"
+//	        }
+//	      ]
+//	    }
+//	  ],
+//	  \"filesystems\": [
+//	    {
+//	      \"mount\": {
+//	        \"device\": \"/dev/sda3\",
+//	        \"format\": \"ext4\",
+//	        \"point\": \"/\",
+//	        \"create\": {
+//	          \"options\": [
+//	            \"-L\",
+//	            \"ROOT\"
+//	          ]
+//	        }
+//	      }
+//	    },
+//	    {
+//	      \"mount\": {
+//	        \"device\": \"/dev/sda2\",
+//	        \"format\": \"swap\",
+//	        \"point\": \"none\",
+//	        \"create\": {
+//	          \"options\": [
+//	            \"-L\",
+//	            \"SWAP\"
+//	          ]
+//	        }
+//	      }
+//	    }
+//	  ]
+//	}
 //
-// "),
+// `),
 //
 //			})
 //			if err != nil {

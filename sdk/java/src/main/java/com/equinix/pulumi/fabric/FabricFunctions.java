@@ -158,13 +158,13 @@ public final class FabricFunctions {
      * 
      *         ctx.export("id", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.id()));
      *         ctx.export("name", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.name()));
-     *         ctx.export("accountNumber", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export("accountNumber", "TODO: ForExpression");
      *         ctx.export("equinixAsn", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.equinixAsn()));
-     *         ctx.export("metroCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroCode()));
-     *         ctx.export("metroName", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroName()));
-     *         ctx.export("region", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].region()));
-     *         ctx.export("packageCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.packages()[0].code()));
-     *         ctx.export("projectId", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export("metroCode", "TODO: ForExpression");
+     *         ctx.export("metroName", "TODO: ForExpression");
+     *         ctx.export("region", "TODO: ForExpression");
+     *         ctx.export("packageCode", "TODO: ForExpression");
+     *         ctx.export("projectId", "TODO: ForExpression");
      *         ctx.export("type", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.type()));
      *     }
      * }
@@ -214,13 +214,13 @@ public final class FabricFunctions {
      * 
      *         ctx.export("id", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.id()));
      *         ctx.export("name", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.name()));
-     *         ctx.export("accountNumber", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export("accountNumber", "TODO: ForExpression");
      *         ctx.export("equinixAsn", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.equinixAsn()));
-     *         ctx.export("metroCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroCode()));
-     *         ctx.export("metroName", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroName()));
-     *         ctx.export("region", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].region()));
-     *         ctx.export("packageCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.packages()[0].code()));
-     *         ctx.export("projectId", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export("metroCode", "TODO: ForExpression");
+     *         ctx.export("metroName", "TODO: ForExpression");
+     *         ctx.export("region", "TODO: ForExpression");
+     *         ctx.export("packageCode", "TODO: ForExpression");
+     *         ctx.export("projectId", "TODO: ForExpression");
      *         ctx.export("type", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.type()));
      *     }
      * }
@@ -270,13 +270,13 @@ public final class FabricFunctions {
      * 
      *         ctx.export("id", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.id()));
      *         ctx.export("name", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.name()));
-     *         ctx.export("accountNumber", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export("accountNumber", "TODO: ForExpression");
      *         ctx.export("equinixAsn", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.equinixAsn()));
-     *         ctx.export("metroCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroCode()));
-     *         ctx.export("metroName", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroName()));
-     *         ctx.export("region", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].region()));
-     *         ctx.export("packageCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.packages()[0].code()));
-     *         ctx.export("projectId", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export("metroCode", "TODO: ForExpression");
+     *         ctx.export("metroName", "TODO: ForExpression");
+     *         ctx.export("region", "TODO: ForExpression");
+     *         ctx.export("packageCode", "TODO: ForExpression");
+     *         ctx.export("projectId", "TODO: ForExpression");
      *         ctx.export("type", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.type()));
      *     }
      * }
@@ -326,13 +326,13 @@ public final class FabricFunctions {
      * 
      *         ctx.export("id", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.id()));
      *         ctx.export("name", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.name()));
-     *         ctx.export("accountNumber", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export("accountNumber", "TODO: ForExpression");
      *         ctx.export("equinixAsn", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.equinixAsn()));
-     *         ctx.export("metroCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroCode()));
-     *         ctx.export("metroName", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroName()));
-     *         ctx.export("region", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].region()));
-     *         ctx.export("packageCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.packages()[0].code()));
-     *         ctx.export("projectId", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export("metroCode", "TODO: ForExpression");
+     *         ctx.export("metroName", "TODO: ForExpression");
+     *         ctx.export("region", "TODO: ForExpression");
+     *         ctx.export("packageCode", "TODO: ForExpression");
+     *         ctx.export("projectId", "TODO: ForExpression");
      *         ctx.export("type", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.type()));
      *     }
      * }
@@ -382,13 +382,13 @@ public final class FabricFunctions {
      * 
      *         ctx.export("id", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.id()));
      *         ctx.export("name", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.name()));
-     *         ctx.export("accountNumber", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export("accountNumber", "TODO: ForExpression");
      *         ctx.export("equinixAsn", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.equinixAsn()));
-     *         ctx.export("metroCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroCode()));
-     *         ctx.export("metroName", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].metroName()));
-     *         ctx.export("region", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.locations()[0].region()));
-     *         ctx.export("packageCode", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.packages()[0].code()));
-     *         ctx.export("projectId", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export("metroCode", "TODO: ForExpression");
+     *         ctx.export("metroName", "TODO: ForExpression");
+     *         ctx.export("region", "TODO: ForExpression");
+     *         ctx.export("packageCode", "TODO: ForExpression");
+     *         ctx.export("projectId", "TODO: ForExpression");
      *         ctx.export("type", cloudRouterDataName.applyValue(getCloudRouterResult -> getCloudRouterResult.type()));
      *     }
      * }
@@ -462,56 +462,6 @@ public final class FabricFunctions {
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
      * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
-     *             .uuid("<uuid_of_connection>")
-     *             .build());
-     * 
-     *         ctx.export("id", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.id()));
-     *         ctx.export("name", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("accountNumber", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.account().accountNumber()));
-     *         ctx.export("bandwidth", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("projectId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.project().projectId()));
-     *         ctx.export("redundancyGroup", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().group()));
-     *         ctx.export("redundancyPriority", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().priority()));
-     *         ctx.export("state", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.state()));
-     *         ctx.export("type", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.type()));
-     *         ctx.export("accessPointType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().type()));
-     *         ctx.export("accessPointLinkProtocolType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().type()));
-     *         ctx.export("accessPointLinkProtocolVlanTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
-     *         ctx.export("accessPointLinkProtocolVlanCTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
-     *         ctx.export("accessPointLinkProtocolVlanSTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
-     *         ctx.export("accessPointProviderConnectionId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().providerConnectionId()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args) {
         return getConnection(args, InvokeOptions.Empty);
@@ -522,56 +472,6 @@ public final class FabricFunctions {
      * Additional documentation:
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
      * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
-     *             .uuid("<uuid_of_connection>")
-     *             .build());
-     * 
-     *         ctx.export("id", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.id()));
-     *         ctx.export("name", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("accountNumber", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.account().accountNumber()));
-     *         ctx.export("bandwidth", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("projectId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.project().projectId()));
-     *         ctx.export("redundancyGroup", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().group()));
-     *         ctx.export("redundancyPriority", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().priority()));
-     *         ctx.export("state", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.state()));
-     *         ctx.export("type", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.type()));
-     *         ctx.export("accessPointType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().type()));
-     *         ctx.export("accessPointLinkProtocolType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().type()));
-     *         ctx.export("accessPointLinkProtocolVlanTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
-     *         ctx.export("accessPointLinkProtocolVlanCTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
-     *         ctx.export("accessPointLinkProtocolVlanSTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
-     *         ctx.export("accessPointProviderConnectionId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().providerConnectionId()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args) {
@@ -584,56 +484,6 @@ public final class FabricFunctions {
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
      * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
-     *             .uuid("<uuid_of_connection>")
-     *             .build());
-     * 
-     *         ctx.export("id", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.id()));
-     *         ctx.export("name", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("accountNumber", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.account().accountNumber()));
-     *         ctx.export("bandwidth", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("projectId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.project().projectId()));
-     *         ctx.export("redundancyGroup", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().group()));
-     *         ctx.export("redundancyPriority", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().priority()));
-     *         ctx.export("state", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.state()));
-     *         ctx.export("type", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.type()));
-     *         ctx.export("accessPointType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().type()));
-     *         ctx.export("accessPointLinkProtocolType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().type()));
-     *         ctx.export("accessPointLinkProtocolVlanTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
-     *         ctx.export("accessPointLinkProtocolVlanCTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
-     *         ctx.export("accessPointLinkProtocolVlanSTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
-     *         ctx.export("accessPointProviderConnectionId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().providerConnectionId()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
@@ -645,56 +495,6 @@ public final class FabricFunctions {
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
      * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
-     *             .uuid("<uuid_of_connection>")
-     *             .build());
-     * 
-     *         ctx.export("id", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.id()));
-     *         ctx.export("name", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("accountNumber", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.account().accountNumber()));
-     *         ctx.export("bandwidth", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("projectId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.project().projectId()));
-     *         ctx.export("redundancyGroup", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().group()));
-     *         ctx.export("redundancyPriority", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().priority()));
-     *         ctx.export("state", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.state()));
-     *         ctx.export("type", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.type()));
-     *         ctx.export("accessPointType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().type()));
-     *         ctx.export("accessPointLinkProtocolType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().type()));
-     *         ctx.export("accessPointLinkProtocolVlanTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
-     *         ctx.export("accessPointLinkProtocolVlanCTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
-     *         ctx.export("accessPointLinkProtocolVlanSTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
-     *         ctx.export("accessPointProviderConnectionId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().providerConnectionId()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
@@ -705,56 +505,6 @@ public final class FabricFunctions {
      * Additional documentation:
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
      * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
-     *             .uuid("<uuid_of_connection>")
-     *             .build());
-     * 
-     *         ctx.export("id", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.id()));
-     *         ctx.export("name", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("accountNumber", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.account().accountNumber()));
-     *         ctx.export("bandwidth", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.bandwidth()));
-     *         ctx.export("projectId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.project().projectId()));
-     *         ctx.export("redundancyGroup", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().group()));
-     *         ctx.export("redundancyPriority", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.redundancy().priority()));
-     *         ctx.export("state", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.state()));
-     *         ctx.export("type", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.type()));
-     *         ctx.export("accessPointType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().type()));
-     *         ctx.export("accessPointLinkProtocolType", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().type()));
-     *         ctx.export("accessPointLinkProtocolVlanTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
-     *         ctx.export("accessPointLinkProtocolVlanCTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
-     *         ctx.export("accessPointLinkProtocolVlanSTag", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
-     *         ctx.export("accessPointProviderConnectionId", connectionDataName.applyValue(getConnectionResult -> getConnectionResult.aSide().accessPoint().providerConnectionId()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
@@ -1875,7 +1625,6 @@ public final class FabricFunctions {
      *             .metroCode("<metro_code>")
      *             .build());
      * 
-     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
      *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
      *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
      *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
@@ -1925,7 +1674,6 @@ public final class FabricFunctions {
      *             .metroCode("<metro_code>")
      *             .build());
      * 
-     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
      *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
      *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
      *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
@@ -1975,7 +1723,6 @@ public final class FabricFunctions {
      *             .metroCode("<metro_code>")
      *             .build());
      * 
-     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
      *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
      *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
      *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
@@ -2025,7 +1772,6 @@ public final class FabricFunctions {
      *             .metroCode("<metro_code>")
      *             .build());
      * 
-     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
      *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
      *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
      *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
@@ -2075,7 +1821,6 @@ public final class FabricFunctions {
      *             .metroCode("<metro_code>")
      *             .build());
      * 
-     *         ctx.export("id", metro.applyValue(getMetroResult -> getMetroResult.id()));
      *         ctx.export("type", metro.applyValue(getMetroResult -> getMetroResult.type()));
      *         ctx.export("metroCode", metro.applyValue(getMetroResult -> getMetroResult.metroCode()));
      *         ctx.export("region", metro.applyValue(getMetroResult -> getMetroResult.region()));
@@ -2098,12 +1843,106 @@ public final class FabricFunctions {
     /**
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metros = FabricFunctions.getMetros(GetMetrosArgs.builder()
+     *             .pagination(GetMetrosPaginationArgs.builder()
+     *                 .limit(12)
+     *                 .offset(6)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()).length());
+     *         ctx.export("firstMetroType", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].type()));
+     *         ctx.export("firstMetroCode", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].code()));
+     *         ctx.export("firstMetroRegion", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].region()));
+     *         ctx.export("firstMetroName", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].name()));
+     *         ctx.export("firstMetroEquinixAsn", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].equinixAsn()));
+     *         ctx.export("firstMetroLocalVcBandwidthMax", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].localVcBandwidthMax()));
+     *         ctx.export("firstMetroGeoCoordinates", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoCoordinates()));
+     *         ctx.export("firstMetroConnectedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].connectedMetros()));
+     *         ctx.export("firstMetroGeoScopes", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMetrosResult> getMetros(GetMetrosArgs args) {
         return getMetros(args, InvokeOptions.Empty);
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metros = FabricFunctions.getMetros(GetMetrosArgs.builder()
+     *             .pagination(GetMetrosPaginationArgs.builder()
+     *                 .limit(12)
+     *                 .offset(6)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()).length());
+     *         ctx.export("firstMetroType", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].type()));
+     *         ctx.export("firstMetroCode", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].code()));
+     *         ctx.export("firstMetroRegion", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].region()));
+     *         ctx.export("firstMetroName", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].name()));
+     *         ctx.export("firstMetroEquinixAsn", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].equinixAsn()));
+     *         ctx.export("firstMetroLocalVcBandwidthMax", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].localVcBandwidthMax()));
+     *         ctx.export("firstMetroGeoCoordinates", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoCoordinates()));
+     *         ctx.export("firstMetroConnectedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].connectedMetros()));
+     *         ctx.export("firstMetroGeoScopes", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetrosResult> getMetrosPlain(GetMetrosPlainArgs args) {
@@ -2112,6 +1951,53 @@ public final class FabricFunctions {
     /**
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metros = FabricFunctions.getMetros(GetMetrosArgs.builder()
+     *             .pagination(GetMetrosPaginationArgs.builder()
+     *                 .limit(12)
+     *                 .offset(6)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()).length());
+     *         ctx.export("firstMetroType", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].type()));
+     *         ctx.export("firstMetroCode", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].code()));
+     *         ctx.export("firstMetroRegion", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].region()));
+     *         ctx.export("firstMetroName", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].name()));
+     *         ctx.export("firstMetroEquinixAsn", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].equinixAsn()));
+     *         ctx.export("firstMetroLocalVcBandwidthMax", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].localVcBandwidthMax()));
+     *         ctx.export("firstMetroGeoCoordinates", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoCoordinates()));
+     *         ctx.export("firstMetroConnectedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].connectedMetros()));
+     *         ctx.export("firstMetroGeoScopes", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMetrosResult> getMetros(GetMetrosArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getMetros:getMetros", TypeShape.of(GetMetrosResult.class), args, Utilities.withVersion(options));
@@ -2119,12 +2005,106 @@ public final class FabricFunctions {
     /**
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metros = FabricFunctions.getMetros(GetMetrosArgs.builder()
+     *             .pagination(GetMetrosPaginationArgs.builder()
+     *                 .limit(12)
+     *                 .offset(6)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()).length());
+     *         ctx.export("firstMetroType", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].type()));
+     *         ctx.export("firstMetroCode", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].code()));
+     *         ctx.export("firstMetroRegion", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].region()));
+     *         ctx.export("firstMetroName", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].name()));
+     *         ctx.export("firstMetroEquinixAsn", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].equinixAsn()));
+     *         ctx.export("firstMetroLocalVcBandwidthMax", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].localVcBandwidthMax()));
+     *         ctx.export("firstMetroGeoCoordinates", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoCoordinates()));
+     *         ctx.export("firstMetroConnectedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].connectedMetros()));
+     *         ctx.export("firstMetroGeoScopes", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMetrosResult> getMetros(GetMetrosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getMetros:getMetros", TypeShape.of(GetMetrosResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetMetrosPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var metros = FabricFunctions.getMetros(GetMetrosArgs.builder()
+     *             .pagination(GetMetrosPaginationArgs.builder()
+     *                 .limit(12)
+     *                 .offset(6)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("numberOfReturnedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()).length());
+     *         ctx.export("firstMetroType", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].type()));
+     *         ctx.export("firstMetroCode", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].code()));
+     *         ctx.export("firstMetroRegion", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].region()));
+     *         ctx.export("firstMetroName", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].name()));
+     *         ctx.export("firstMetroEquinixAsn", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].equinixAsn()));
+     *         ctx.export("firstMetroLocalVcBandwidthMax", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].localVcBandwidthMax()));
+     *         ctx.export("firstMetroGeoCoordinates", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoCoordinates()));
+     *         ctx.export("firstMetroConnectedMetros", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].connectedMetros()));
+     *         ctx.export("firstMetroGeoScopes", metros.applyValue(getMetrosResult -> getMetrosResult.datas()[0].geoScopes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetrosResult> getMetrosPlain(GetMetrosPlainArgs args, InvokeOptions options) {
@@ -2170,7 +2150,7 @@ public final class FabricFunctions {
      *         ctx.export("name", networkDataName.applyValue(getNetworkResult -> getNetworkResult.name()));
      *         ctx.export("scope", networkDataName.applyValue(getNetworkResult -> getNetworkResult.scope()));
      *         ctx.export("type", networkDataName.applyValue(getNetworkResult -> getNetworkResult.type()));
-     *         ctx.export("region", networkDataName.applyValue(getNetworkResult -> getNetworkResult.locations()[0].region()));
+     *         ctx.export("region", "TODO: ForExpression");
      *     }
      * }
      * }
@@ -2221,7 +2201,7 @@ public final class FabricFunctions {
      *         ctx.export("name", networkDataName.applyValue(getNetworkResult -> getNetworkResult.name()));
      *         ctx.export("scope", networkDataName.applyValue(getNetworkResult -> getNetworkResult.scope()));
      *         ctx.export("type", networkDataName.applyValue(getNetworkResult -> getNetworkResult.type()));
-     *         ctx.export("region", networkDataName.applyValue(getNetworkResult -> getNetworkResult.locations()[0].region()));
+     *         ctx.export("region", "TODO: ForExpression");
      *     }
      * }
      * }
@@ -2272,7 +2252,7 @@ public final class FabricFunctions {
      *         ctx.export("name", networkDataName.applyValue(getNetworkResult -> getNetworkResult.name()));
      *         ctx.export("scope", networkDataName.applyValue(getNetworkResult -> getNetworkResult.scope()));
      *         ctx.export("type", networkDataName.applyValue(getNetworkResult -> getNetworkResult.type()));
-     *         ctx.export("region", networkDataName.applyValue(getNetworkResult -> getNetworkResult.locations()[0].region()));
+     *         ctx.export("region", "TODO: ForExpression");
      *     }
      * }
      * }
@@ -2323,7 +2303,7 @@ public final class FabricFunctions {
      *         ctx.export("name", networkDataName.applyValue(getNetworkResult -> getNetworkResult.name()));
      *         ctx.export("scope", networkDataName.applyValue(getNetworkResult -> getNetworkResult.scope()));
      *         ctx.export("type", networkDataName.applyValue(getNetworkResult -> getNetworkResult.type()));
-     *         ctx.export("region", networkDataName.applyValue(getNetworkResult -> getNetworkResult.locations()[0].region()));
+     *         ctx.export("region", "TODO: ForExpression");
      *     }
      * }
      * }
@@ -2374,7 +2354,7 @@ public final class FabricFunctions {
      *         ctx.export("name", networkDataName.applyValue(getNetworkResult -> getNetworkResult.name()));
      *         ctx.export("scope", networkDataName.applyValue(getNetworkResult -> getNetworkResult.scope()));
      *         ctx.export("type", networkDataName.applyValue(getNetworkResult -> getNetworkResult.type()));
-     *         ctx.export("region", networkDataName.applyValue(getNetworkResult -> getNetworkResult.locations()[0].region()));
+     *         ctx.export("region", "TODO: ForExpression");
      *     }
      * }
      * }

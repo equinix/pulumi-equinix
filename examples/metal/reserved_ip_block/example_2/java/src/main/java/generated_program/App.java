@@ -31,7 +31,7 @@ public class App {
             .projectId(projectId)
             .metro("sv")
             .plan("c3.small.x86")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .hostname("test")
             .billingCycle("hourly")
             .ipAddresses(            

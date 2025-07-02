@@ -19,7 +19,7 @@ return await Deployment.RunAsync(() =>
         Hostname = "test",
         Plan = Equinix.Metal.Plan.C3MediumX86,
         Metro = "ny",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectSshKeyIds = new[]
         {

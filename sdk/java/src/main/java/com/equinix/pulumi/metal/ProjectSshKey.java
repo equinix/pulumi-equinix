@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .hostname("test")
  *             .plan("c3.medium.x86")
  *             .metro("ny")
- *             .operatingSystem("ubuntu_20_04")
+ *             .operatingSystem("ubuntu_24_04")
  *             .billingCycle("hourly")
  *             .projectSshKeyIds(test.id())
  *             .projectId(projectId)

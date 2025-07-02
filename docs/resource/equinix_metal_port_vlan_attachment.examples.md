@@ -15,7 +15,7 @@ const testDevice = new equinix.metal.Device("testDevice", {
     hostname: "test",
     plan: equinix.metal.Plan.C3SmallX86,
     metro: "ny",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
 });
@@ -41,7 +41,7 @@ test_device = equinix.metal.Device("testDevice",
     hostname="test",
     plan=equinix.metal.Plan.C3_SMALL_X86,
     metro="ny",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id)
 test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
@@ -74,7 +74,7 @@ func main() {
 			Hostname:        pulumi.String("test"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
 			Metro:           pulumi.String("ny"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.Any(projectId),
 		})
@@ -120,7 +120,7 @@ return await Deployment.RunAsync(() =>
         Hostname = "test",
         Plan = Equinix.Metal.Plan.C3SmallX86,
         Metro = "ny",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
     });
@@ -177,7 +177,7 @@ public class App {
             .hostname("test")
             .plan("c3.small.x86")
             .metro("ny")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectId(projectId)
             .build());
@@ -211,7 +211,7 @@ resources:
       hostname: test
       plan: c3.small.x86
       metro: ny
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       billingCycle: hourly
       projectId: ${projectId}
   testDeviceNetworkType:
@@ -240,7 +240,7 @@ const test = new equinix.metal.Device("test", {
     hostname: "test",
     plan: equinix.metal.Plan.C3SmallX86,
     metro: "ny",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
 });
@@ -280,7 +280,7 @@ test = equinix.metal.Device("test",
     hostname="test",
     plan=equinix.metal.Plan.C3_SMALL_X86,
     metro="ny",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_id=project_id)
 test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
@@ -319,7 +319,7 @@ func main() {
 			Hostname:        pulumi.String("test"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
 			Metro:           pulumi.String("ny"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.Any(projectId),
 		})
@@ -385,7 +385,7 @@ return await Deployment.RunAsync(() =>
         Hostname = "test",
         Plan = Equinix.Metal.Plan.C3SmallX86,
         Metro = "ny",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectId = projectId,
     });
@@ -465,7 +465,7 @@ public class App {
             .hostname("test")
             .plan("c3.small.x86")
             .metro("ny")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectId(projectId)
             .build());
@@ -513,7 +513,7 @@ resources:
       hostname: test
       plan: c3.small.x86
       metro: ny
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       billingCycle: hourly
       projectId: ${projectId}
   testDeviceNetworkType:

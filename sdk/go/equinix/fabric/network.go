@@ -78,11 +78,11 @@ type Network struct {
 	Operation NetworkOperationOutput `pulumi:"operation"`
 	// Fabric Network project
 	Project NetworkProjectOutput `pulumi:"project"`
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// Fabric Network overall state
 	State pulumi.StringOutput `pulumi:"state"`
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Equinix-assigned network identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -148,11 +148,11 @@ type networkState struct {
 	Operation *NetworkOperation `pulumi:"operation"`
 	// Fabric Network project
 	Project *NetworkProject `pulumi:"project"`
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope *string `pulumi:"scope"`
 	// Fabric Network overall state
 	State *string `pulumi:"state"`
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type *string `pulumi:"type"`
 	// Equinix-assigned network identifier
 	Uuid *string `pulumi:"uuid"`
@@ -177,11 +177,11 @@ type NetworkState struct {
 	Operation NetworkOperationPtrInput
 	// Fabric Network project
 	Project NetworkProjectPtrInput
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope pulumi.StringPtrInput
 	// Fabric Network overall state
 	State pulumi.StringPtrInput
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type pulumi.StringPtrInput
 	// Equinix-assigned network identifier
 	Uuid pulumi.StringPtrInput
@@ -200,9 +200,9 @@ type networkArgs struct {
 	Notifications []NetworkNotification `pulumi:"notifications"`
 	// Fabric Network project
 	Project NetworkProject `pulumi:"project"`
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope string `pulumi:"scope"`
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type string `pulumi:"type"`
 }
 
@@ -216,9 +216,9 @@ type NetworkArgs struct {
 	Notifications NetworkNotificationArrayInput
 	// Fabric Network project
 	Project NetworkProjectInput
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope pulumi.StringInput
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type pulumi.StringInput
 }
 
@@ -354,7 +354,7 @@ func (o NetworkOutput) Project() NetworkProjectOutput {
 	return o.ApplyT(func(v *Network) NetworkProjectOutput { return v.Project }).(NetworkProjectOutput)
 }
 
-// Fabric Network scope
+// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 func (o NetworkOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }
@@ -364,7 +364,7 @@ func (o NetworkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Supported Network types - EVPLAN, EPLAN, IPWAN
+// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 func (o NetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

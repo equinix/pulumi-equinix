@@ -20,7 +20,7 @@ func main() {
 			Hostname:        pulumi.String("test"),
 			Plan:            pulumi.String(metal.PlanC3MediumX86),
 			Metro:           pulumi.String("ny"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectSshKeyIds: pulumi.StringArray{
 				test.ID(),

@@ -2896,7 +2896,7 @@ type ConnectionASideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // ConnectionASideAccessPointNetworkInput is an input type that accepts ConnectionASideAccessPointNetworkArgs and ConnectionASideAccessPointNetworkOutput values.
@@ -2914,7 +2914,7 @@ type ConnectionASideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (ConnectionASideAccessPointNetworkArgs) ElementType() reflect.Type {
@@ -3000,8 +3000,8 @@ func (o ConnectionASideAccessPointNetworkOutput) Href() pulumi.StringPtrOutput {
 }
 
 // Equinix-assigned Network identifier
-func (o ConnectionASideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o ConnectionASideAccessPointNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPointNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type ConnectionASideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
@@ -3044,7 +3044,7 @@ func (o ConnectionASideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3921,7 +3921,7 @@ type ConnectionASideAccessPointVirtualDevice struct {
 	// Virtual Device type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // ConnectionASideAccessPointVirtualDeviceInput is an input type that accepts ConnectionASideAccessPointVirtualDeviceArgs and ConnectionASideAccessPointVirtualDeviceOutput values.
@@ -3943,7 +3943,7 @@ type ConnectionASideAccessPointVirtualDeviceArgs struct {
 	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (ConnectionASideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
@@ -4039,8 +4039,8 @@ func (o ConnectionASideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOu
 }
 
 // Equinix-assigned Virtual Device identifier
-func (o ConnectionASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o ConnectionASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type ConnectionASideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
@@ -4103,7 +4103,7 @@ func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7859,7 +7859,7 @@ type ConnectionZSideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // ConnectionZSideAccessPointNetworkInput is an input type that accepts ConnectionZSideAccessPointNetworkArgs and ConnectionZSideAccessPointNetworkOutput values.
@@ -7877,7 +7877,7 @@ type ConnectionZSideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (ConnectionZSideAccessPointNetworkArgs) ElementType() reflect.Type {
@@ -7963,8 +7963,8 @@ func (o ConnectionZSideAccessPointNetworkOutput) Href() pulumi.StringPtrOutput {
 }
 
 // Equinix-assigned Network identifier
-func (o ConnectionZSideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o ConnectionZSideAccessPointNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPointNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type ConnectionZSideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
@@ -8007,7 +8007,7 @@ func (o ConnectionZSideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8884,7 +8884,7 @@ type ConnectionZSideAccessPointVirtualDevice struct {
 	// Virtual Device type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // ConnectionZSideAccessPointVirtualDeviceInput is an input type that accepts ConnectionZSideAccessPointVirtualDeviceArgs and ConnectionZSideAccessPointVirtualDeviceOutput values.
@@ -8906,7 +8906,7 @@ type ConnectionZSideAccessPointVirtualDeviceArgs struct {
 	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (ConnectionZSideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
@@ -9002,8 +9002,8 @@ func (o ConnectionZSideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOu
 }
 
 // Equinix-assigned Virtual Device identifier
-func (o ConnectionZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o ConnectionZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type ConnectionZSideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
@@ -9066,7 +9066,7 @@ func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30140,7 +30140,7 @@ type GetConnectionASideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href string `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionASideAccessPointNetworkInput is an input type that accepts GetConnectionASideAccessPointNetworkArgs and GetConnectionASideAccessPointNetworkOutput values.
@@ -30158,7 +30158,7 @@ type GetConnectionASideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringInput `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionASideAccessPointNetworkArgs) ElementType() reflect.Type {
@@ -30244,8 +30244,8 @@ func (o GetConnectionASideAccessPointNetworkOutput) Href() pulumi.StringOutput {
 }
 
 // Equinix-assigned Network identifier
-func (o GetConnectionASideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionASideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionASideAccessPointNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionASideAccessPointNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionASideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
@@ -30288,7 +30288,7 @@ func (o GetConnectionASideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOu
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31107,7 +31107,7 @@ type GetConnectionASideAccessPointVirtualDevice struct {
 	// Virtual Device type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionASideAccessPointVirtualDeviceInput is an input type that accepts GetConnectionASideAccessPointVirtualDeviceArgs and GetConnectionASideAccessPointVirtualDeviceOutput values.
@@ -31129,7 +31129,7 @@ type GetConnectionASideAccessPointVirtualDeviceArgs struct {
 	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionASideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
@@ -31225,8 +31225,8 @@ func (o GetConnectionASideAccessPointVirtualDeviceOutput) Type() pulumi.StringPt
 }
 
 // Equinix-assigned Virtual Device identifier
-func (o GetConnectionASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionASideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionASideAccessPointVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionASideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
@@ -31289,7 +31289,7 @@ func (o GetConnectionASideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.Strin
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34493,7 +34493,7 @@ type GetConnectionZSideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href string `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionZSideAccessPointNetworkInput is an input type that accepts GetConnectionZSideAccessPointNetworkArgs and GetConnectionZSideAccessPointNetworkOutput values.
@@ -34511,7 +34511,7 @@ type GetConnectionZSideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringInput `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionZSideAccessPointNetworkArgs) ElementType() reflect.Type {
@@ -34597,8 +34597,8 @@ func (o GetConnectionZSideAccessPointNetworkOutput) Href() pulumi.StringOutput {
 }
 
 // Equinix-assigned Network identifier
-func (o GetConnectionZSideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionZSideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionZSideAccessPointNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionZSideAccessPointNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionZSideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
@@ -34641,7 +34641,7 @@ func (o GetConnectionZSideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOu
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -35460,7 +35460,7 @@ type GetConnectionZSideAccessPointVirtualDevice struct {
 	// Virtual Device type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionZSideAccessPointVirtualDeviceInput is an input type that accepts GetConnectionZSideAccessPointVirtualDeviceArgs and GetConnectionZSideAccessPointVirtualDeviceOutput values.
@@ -35482,7 +35482,7 @@ type GetConnectionZSideAccessPointVirtualDeviceArgs struct {
 	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionZSideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
@@ -35578,8 +35578,8 @@ func (o GetConnectionZSideAccessPointVirtualDeviceOutput) Type() pulumi.StringPt
 }
 
 // Equinix-assigned Virtual Device identifier
-func (o GetConnectionZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionZSideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionZSideAccessPointVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionZSideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
@@ -35642,7 +35642,7 @@ func (o GetConnectionZSideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.Strin
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37630,7 +37630,7 @@ type GetConnectionsDataASideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href string `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionsDataASideAccessPointNetworkInput is an input type that accepts GetConnectionsDataASideAccessPointNetworkArgs and GetConnectionsDataASideAccessPointNetworkOutput values.
@@ -37648,7 +37648,7 @@ type GetConnectionsDataASideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringInput `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionsDataASideAccessPointNetworkArgs) ElementType() reflect.Type {
@@ -37734,8 +37734,8 @@ func (o GetConnectionsDataASideAccessPointNetworkOutput) Href() pulumi.StringOut
 }
 
 // Equinix-assigned Network identifier
-func (o GetConnectionsDataASideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionsDataASideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionsDataASideAccessPointNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionsDataASideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
@@ -37778,7 +37778,7 @@ func (o GetConnectionsDataASideAccessPointNetworkPtrOutput) Uuid() pulumi.String
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38597,7 +38597,7 @@ type GetConnectionsDataASideAccessPointVirtualDevice struct {
 	// Virtual Device type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionsDataASideAccessPointVirtualDeviceInput is an input type that accepts GetConnectionsDataASideAccessPointVirtualDeviceArgs and GetConnectionsDataASideAccessPointVirtualDeviceOutput values.
@@ -38619,7 +38619,7 @@ type GetConnectionsDataASideAccessPointVirtualDeviceArgs struct {
 	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionsDataASideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
@@ -38715,8 +38715,8 @@ func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) Type() pulumi.Str
 }
 
 // Equinix-assigned Virtual Device identifier
-func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionsDataASideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionsDataASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPointVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionsDataASideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
@@ -38779,7 +38779,7 @@ func (o GetConnectionsDataASideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41689,7 +41689,7 @@ type GetConnectionsDataZSideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href string `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionsDataZSideAccessPointNetworkInput is an input type that accepts GetConnectionsDataZSideAccessPointNetworkArgs and GetConnectionsDataZSideAccessPointNetworkOutput values.
@@ -41707,7 +41707,7 @@ type GetConnectionsDataZSideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringInput `pulumi:"href"`
 	// Equinix-assigned Network identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionsDataZSideAccessPointNetworkArgs) ElementType() reflect.Type {
@@ -41793,8 +41793,8 @@ func (o GetConnectionsDataZSideAccessPointNetworkOutput) Href() pulumi.StringOut
 }
 
 // Equinix-assigned Network identifier
-func (o GetConnectionsDataZSideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionsDataZSideAccessPointNetworkOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionsDataZSideAccessPointNetworkPtrOutput struct{ *pulumi.OutputState }
@@ -41837,7 +41837,7 @@ func (o GetConnectionsDataZSideAccessPointNetworkPtrOutput) Uuid() pulumi.String
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -42656,7 +42656,7 @@ type GetConnectionsDataZSideAccessPointVirtualDevice struct {
 	// Virtual Device type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // GetConnectionsDataZSideAccessPointVirtualDeviceInput is an input type that accepts GetConnectionsDataZSideAccessPointVirtualDeviceArgs and GetConnectionsDataZSideAccessPointVirtualDeviceOutput values.
@@ -42678,7 +42678,7 @@ type GetConnectionsDataZSideAccessPointVirtualDeviceArgs struct {
 	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetConnectionsDataZSideAccessPointVirtualDeviceArgs) ElementType() reflect.Type {
@@ -42774,8 +42774,8 @@ func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) Type() pulumi.Str
 }
 
 // Equinix-assigned Virtual Device identifier
-func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetConnectionsDataZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPointVirtualDevice) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
@@ -42838,7 +42838,7 @@ func (o GetConnectionsDataZSideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.
 		if v == nil {
 			return nil
 		}
-		return v.Uuid
+		return &v.Uuid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43147,7 +43147,7 @@ type GetConnectionsFilter struct {
 	Group *string `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator string `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -43169,7 +43169,7 @@ type GetConnectionsFilterArgs struct {
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -43236,7 +43236,7 @@ func (o GetConnectionsFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
 func (o GetConnectionsFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -43425,7 +43425,7 @@ func (o GetConnectionsPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
 type GetConnectionsSort struct {
 	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
 	Direction *string `pulumi:"direction"`
-	// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+	// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
 	Property *string `pulumi:"property"`
 }
 
@@ -43443,7 +43443,7 @@ type GetConnectionsSortInput interface {
 type GetConnectionsSortArgs struct {
 	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+	// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
 	Property pulumi.StringPtrInput `pulumi:"property"`
 }
 
@@ -43503,7 +43503,7 @@ func (o GetConnectionsSortOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+// The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
 func (o GetConnectionsSortOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsSort) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
@@ -45118,11 +45118,11 @@ type GetNetworksData struct {
 	Operations []GetNetworksDataOperation `pulumi:"operations"`
 	// Fabric Network project
 	Projects []GetNetworksDataProject `pulumi:"projects"`
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope string `pulumi:"scope"`
 	// Fabric Network overall state
 	State string `pulumi:"state"`
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type string `pulumi:"type"`
 	// Equinix-assigned network identifier
 	Uuid string `pulumi:"uuid"`
@@ -45158,11 +45158,11 @@ type GetNetworksDataArgs struct {
 	Operations GetNetworksDataOperationArrayInput `pulumi:"operations"`
 	// Fabric Network project
 	Projects GetNetworksDataProjectArrayInput `pulumi:"projects"`
-	// Fabric Network scope
+	// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// Fabric Network overall state
 	State pulumi.StringInput `pulumi:"state"`
-	// Supported Network types - EVPLAN, EPLAN, IPWAN
+	// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix-assigned network identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
@@ -45264,7 +45264,7 @@ func (o GetNetworksDataOutput) Projects() GetNetworksDataProjectArrayOutput {
 	return o.ApplyT(func(v GetNetworksData) []GetNetworksDataProject { return v.Projects }).(GetNetworksDataProjectArrayOutput)
 }
 
-// Fabric Network scope
+// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
 func (o GetNetworksDataOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksData) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -45274,7 +45274,7 @@ func (o GetNetworksDataOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksData) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Supported Network types - EVPLAN, EPLAN, IPWAN
+// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
 func (o GetNetworksDataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksData) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -39,7 +39,10 @@ namespace Pulumi.Equinix.Fabric
         ///         ["name"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Name),
         ///         ["scope"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Scope),
         ///         ["type"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Type),
-        ///         ["region"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Locations[0]?.Region),
+        ///         ["region"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.Region;
+        ///         }).ToList(),
         ///     };
         /// });
         /// ```
@@ -75,7 +78,10 @@ namespace Pulumi.Equinix.Fabric
         ///         ["name"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Name),
         ///         ["scope"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Scope),
         ///         ["type"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Type),
-        ///         ["region"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Locations[0]?.Region),
+        ///         ["region"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.Region;
+        ///         }).ToList(),
         ///     };
         /// });
         /// ```
@@ -111,7 +117,10 @@ namespace Pulumi.Equinix.Fabric
         ///         ["name"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Name),
         ///         ["scope"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Scope),
         ///         ["type"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Type),
-        ///         ["region"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Locations[0]?.Region),
+        ///         ["region"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.Region;
+        ///         }).ToList(),
         ///     };
         /// });
         /// ```
@@ -194,7 +203,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly Outputs.GetNetworkProjectResult Project;
         /// <summary>
-        /// Fabric Network scope
+        /// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         /// </summary>
         public readonly string Scope;
         /// <summary>
@@ -202,7 +211,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Supported Network types - EVPLAN, EPLAN, IPWAN
+        /// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         /// </summary>
         public readonly string Type;
         /// <summary>

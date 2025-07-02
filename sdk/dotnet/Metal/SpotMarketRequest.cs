@@ -32,7 +32,7 @@ namespace Pulumi.Equinix.Metal
     ///         {
     ///             Hostname = "testspot",
     ///             BillingCycle = "hourly",
-    ///             OperatingSystem = "ubuntu_20_04",
+    ///             OperatingSystem = "ubuntu_24_04",
     ///             Plan = "c3.small.x86",
     ///         },
     ///     });

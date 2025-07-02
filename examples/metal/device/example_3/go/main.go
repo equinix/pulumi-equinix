@@ -11,7 +11,7 @@ func main() {
 			Hostname:        pulumi.String("tf.coreos2"),
 			Plan:            pulumi.String(metal.PlanC3SmallX86),
 			Metro:           pulumi.String("ny"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectId:       pulumi.Any(projectId),
 			IpAddresses: metal.DeviceIpAddressArray{

@@ -64,7 +64,7 @@ public final class GetNetworksData {
      */
     private List<GetNetworksDataProject> projects;
     /**
-     * @return Fabric Network scope
+     * @return Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      * 
      */
     private String scope;
@@ -74,7 +74,7 @@ public final class GetNetworksData {
      */
     private String state;
     /**
-     * @return Supported Network types - EVPLAN, EPLAN, IPWAN
+     * @return Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      * 
      */
     private String type;
@@ -149,7 +149,7 @@ public final class GetNetworksData {
         return this.projects;
     }
     /**
-     * @return Fabric Network scope
+     * @return Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      * 
      */
     public String scope() {
@@ -163,7 +163,7 @@ public final class GetNetworksData {
         return this.state;
     }
     /**
-     * @return Supported Network types - EVPLAN, EPLAN, IPWAN
+     * @return Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      * 
      */
     public String type() {

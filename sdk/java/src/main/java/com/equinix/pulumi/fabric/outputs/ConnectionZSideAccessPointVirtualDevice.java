@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,7 +31,7 @@ public final class ConnectionZSideAccessPointVirtualDevice {
      * @return Equinix-assigned Virtual Device identifier
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
 
     private ConnectionZSideAccessPointVirtualDevice() {}
     /**
@@ -58,8 +59,8 @@ public final class ConnectionZSideAccessPointVirtualDevice {
      * @return Equinix-assigned Virtual Device identifier
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -74,7 +75,7 @@ public final class ConnectionZSideAccessPointVirtualDevice {
         private @Nullable String href;
         private @Nullable String name;
         private @Nullable String type;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(ConnectionZSideAccessPointVirtualDevice defaults) {
     	      Objects.requireNonNull(defaults);
@@ -103,8 +104,10 @@ public final class ConnectionZSideAccessPointVirtualDevice {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("ConnectionZSideAccessPointVirtualDevice", "uuid");
+            }
             this.uuid = uuid;
             return this;
         }

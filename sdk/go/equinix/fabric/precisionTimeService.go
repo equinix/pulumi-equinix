@@ -43,7 +43,7 @@ type PrecisionTimeService struct {
 	// Equinix Project attribute object
 	Project PrecisionTimeServiceProjectOutput `pulumi:"project"`
 	// PTP Advanced Configuration
-	PtpAdvancedConfiguration PrecisionTimeServicePtpAdvancedConfigurationPtrOutput `pulumi:"ptpAdvancedConfiguration"`
+	PtpAdvancedConfiguration PrecisionTimeServicePtpAdvancedConfigurationOutput `pulumi:"ptpAdvancedConfiguration"`
 	// Indicator of the state of this Precision Time Service
 	State    pulumi.StringOutput                   `pulumi:"state"`
 	Timeouts PrecisionTimeServiceTimeoutsPtrOutput `pulumi:"timeouts"`
@@ -350,10 +350,10 @@ func (o PrecisionTimeServiceOutput) Project() PrecisionTimeServiceProjectOutput 
 }
 
 // PTP Advanced Configuration
-func (o PrecisionTimeServiceOutput) PtpAdvancedConfiguration() PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
-	return o.ApplyT(func(v *PrecisionTimeService) PrecisionTimeServicePtpAdvancedConfigurationPtrOutput {
+func (o PrecisionTimeServiceOutput) PtpAdvancedConfiguration() PrecisionTimeServicePtpAdvancedConfigurationOutput {
+	return o.ApplyT(func(v *PrecisionTimeService) PrecisionTimeServicePtpAdvancedConfigurationOutput {
 		return v.PtpAdvancedConfiguration
-	}).(PrecisionTimeServicePtpAdvancedConfigurationPtrOutput)
+	}).(PrecisionTimeServicePtpAdvancedConfigurationOutput)
 }
 
 // Indicator of the state of this Precision Time Service

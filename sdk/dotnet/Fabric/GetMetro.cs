@@ -29,7 +29,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["id"] = metro.Apply(getMetroResult =&gt; getMetroResult.Id),
         ///         ["type"] = metro.Apply(getMetroResult =&gt; getMetroResult.Type),
         ///         ["metroCode"] = metro.Apply(getMetroResult =&gt; getMetroResult.MetroCode),
         ///         ["region"] = metro.Apply(getMetroResult =&gt; getMetroResult.Region),
@@ -64,7 +63,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["id"] = metro.Apply(getMetroResult =&gt; getMetroResult.Id),
         ///         ["type"] = metro.Apply(getMetroResult =&gt; getMetroResult.Type),
         ///         ["metroCode"] = metro.Apply(getMetroResult =&gt; getMetroResult.MetroCode),
         ///         ["region"] = metro.Apply(getMetroResult =&gt; getMetroResult.Region),
@@ -99,7 +97,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["id"] = metro.Apply(getMetroResult =&gt; getMetroResult.Id),
         ///         ["type"] = metro.Apply(getMetroResult =&gt; getMetroResult.Type),
         ///         ["metroCode"] = metro.Apply(getMetroResult =&gt; getMetroResult.MetroCode),
         ///         ["region"] = metro.Apply(getMetroResult =&gt; getMetroResult.Region),

@@ -88,7 +88,7 @@ namespace Pulumi.Equinix.Fabric
         /// PTP Advanced Configuration
         /// </summary>
         [Output("ptpAdvancedConfiguration")]
-        public Output<Outputs.PrecisionTimeServicePtpAdvancedConfiguration?> PtpAdvancedConfiguration { get; private set; } = null!;
+        public Output<Outputs.PrecisionTimeServicePtpAdvancedConfiguration> PtpAdvancedConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// Indicator of the state of this Precision Time Service

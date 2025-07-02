@@ -20,13 +20,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Equinix-assigned Network identifier
         /// </summary>
-        public readonly string? Uuid;
+        public readonly string Uuid;
 
         [OutputConstructor]
         private ConnectionASideAccessPointNetwork(
             string? href,
 
-            string? uuid)
+            string uuid)
         {
             Href = href;
             Uuid = uuid;

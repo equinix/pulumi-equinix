@@ -600,7 +600,7 @@ class ReservedIpBlock(pulumi.CustomResource):
             project_id=project_id,
             metro="sv",
             plan=equinix.metal.Plan.C3_SMALL_X86,
-            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            operating_system="ubuntu_24_04",
             hostname="test",
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             ip_addresses=[
@@ -689,7 +689,7 @@ class ReservedIpBlock(pulumi.CustomResource):
             project_id=project_id,
             metro="sv",
             plan=equinix.metal.Plan.C3_SMALL_X86,
-            operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+            operating_system="ubuntu_24_04",
             hostname="test",
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             ip_addresses=[

@@ -37,13 +37,31 @@ namespace Pulumi.Equinix.Fabric
         ///     {
         ///         ["id"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Id),
         ///         ["name"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Name),
-        ///         ["accountNumber"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Accounts[0]?.AccountNumber),
+        ///         ["accountNumber"] = .Select(account =&gt; 
+        ///         {
+        ///             return account.AccountNumber;
+        ///         }).ToList(),
         ///         ["equinixAsn"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.EquinixAsn),
-        ///         ["metroCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroCode),
-        ///         ["metroName"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroName),
-        ///         ["region"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.Region),
-        ///         ["packageCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Packages[0]?.Code),
-        ///         ["projectId"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Projects[0]?.ProjectId),
+        ///         ["metroCode"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.MetroCode;
+        ///         }).ToList(),
+        ///         ["metroName"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.MetroName;
+        ///         }).ToList(),
+        ///         ["region"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.Region;
+        ///         }).ToList(),
+        ///         ["packageCode"] = .Select(package =&gt; 
+        ///         {
+        ///             return package.Code;
+        ///         }).ToList(),
+        ///         ["projectId"] = .Select(project =&gt; 
+        ///         {
+        ///             return project.ProjectId;
+        ///         }).ToList(),
         ///         ["type"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Type),
         ///     };
         /// });
@@ -78,13 +96,31 @@ namespace Pulumi.Equinix.Fabric
         ///     {
         ///         ["id"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Id),
         ///         ["name"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Name),
-        ///         ["accountNumber"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Accounts[0]?.AccountNumber),
+        ///         ["accountNumber"] = .Select(account =&gt; 
+        ///         {
+        ///             return account.AccountNumber;
+        ///         }).ToList(),
         ///         ["equinixAsn"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.EquinixAsn),
-        ///         ["metroCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroCode),
-        ///         ["metroName"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroName),
-        ///         ["region"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.Region),
-        ///         ["packageCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Packages[0]?.Code),
-        ///         ["projectId"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Projects[0]?.ProjectId),
+        ///         ["metroCode"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.MetroCode;
+        ///         }).ToList(),
+        ///         ["metroName"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.MetroName;
+        ///         }).ToList(),
+        ///         ["region"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.Region;
+        ///         }).ToList(),
+        ///         ["packageCode"] = .Select(package =&gt; 
+        ///         {
+        ///             return package.Code;
+        ///         }).ToList(),
+        ///         ["projectId"] = .Select(project =&gt; 
+        ///         {
+        ///             return project.ProjectId;
+        ///         }).ToList(),
         ///         ["type"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Type),
         ///     };
         /// });
@@ -119,13 +155,31 @@ namespace Pulumi.Equinix.Fabric
         ///     {
         ///         ["id"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Id),
         ///         ["name"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Name),
-        ///         ["accountNumber"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Accounts[0]?.AccountNumber),
+        ///         ["accountNumber"] = .Select(account =&gt; 
+        ///         {
+        ///             return account.AccountNumber;
+        ///         }).ToList(),
         ///         ["equinixAsn"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.EquinixAsn),
-        ///         ["metroCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroCode),
-        ///         ["metroName"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroName),
-        ///         ["region"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.Region),
-        ///         ["packageCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Packages[0]?.Code),
-        ///         ["projectId"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Projects[0]?.ProjectId),
+        ///         ["metroCode"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.MetroCode;
+        ///         }).ToList(),
+        ///         ["metroName"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.MetroName;
+        ///         }).ToList(),
+        ///         ["region"] = .Select(location =&gt; 
+        ///         {
+        ///             return location.Region;
+        ///         }).ToList(),
+        ///         ["packageCode"] = .Select(package =&gt; 
+        ///         {
+        ///             return package.Code;
+        ///         }).ToList(),
+        ///         ["projectId"] = .Select(project =&gt; 
+        ///         {
+        ///             return project.ProjectId;
+        ///         }).ToList(),
         ///         ["type"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Type),
         ///     };
         /// });

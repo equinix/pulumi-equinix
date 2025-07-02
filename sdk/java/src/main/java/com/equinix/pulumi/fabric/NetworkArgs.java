@@ -81,14 +81,14 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Fabric Network scope
+     * Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      * 
      */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
     /**
-     * @return Fabric Network scope
+     * @return Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      * 
      */
     public Output<String> scope() {
@@ -96,14 +96,14 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Supported Network types - EVPLAN, EPLAN, IPWAN
+     * Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Supported Network types - EVPLAN, EPLAN, IPWAN
+     * @return Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      * 
      */
     public Output<String> type() {
@@ -234,7 +234,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope Fabric Network scope
+         * @param scope Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope Fabric Network scope
+         * @param scope Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Supported Network types - EVPLAN, EPLAN, IPWAN
+         * @param type Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Supported Network types - EVPLAN, EPLAN, IPWAN
+         * @param type Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
          * 
          * @return builder
          * 

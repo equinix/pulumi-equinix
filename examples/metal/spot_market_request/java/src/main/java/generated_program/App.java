@@ -28,7 +28,7 @@ public class App {
             .instanceParameters(SpotMarketRequestInstanceParametersArgs.builder()
                 .hostname("testspot")
                 .billingCycle("hourly")
-                .operatingSystem("ubuntu_20_04")
+                .operatingSystem("ubuntu_24_04")
                 .plan("c3.small.x86")
                 .build())
             .build());

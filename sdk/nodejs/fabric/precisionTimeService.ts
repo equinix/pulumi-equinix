@@ -68,7 +68,7 @@ export class PrecisionTimeService extends pulumi.CustomResource {
     /**
      * NTP Advanced configuration
      */
-    public readonly ntpAdvancedConfigurations!: pulumi.Output<outputs.fabric.PrecisionTimeServiceNtpAdvancedConfiguration[] | undefined>;
+    public readonly ntpAdvancedConfigurations!: pulumi.Output<outputs.fabric.PrecisionTimeServiceNtpAdvancedConfiguration[]>;
     /**
      * Precision Time Order
      */
@@ -88,7 +88,7 @@ export class PrecisionTimeService extends pulumi.CustomResource {
     /**
      * PTP Advanced Configuration
      */
-    public readonly ptpAdvancedConfiguration!: pulumi.Output<outputs.fabric.PrecisionTimeServicePtpAdvancedConfiguration | undefined>;
+    public readonly ptpAdvancedConfiguration!: pulumi.Output<outputs.fabric.PrecisionTimeServicePtpAdvancedConfiguration>;
     /**
      * Indicator of the state of this Precision Time Service
      */

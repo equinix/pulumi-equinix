@@ -11,7 +11,7 @@ const testDevice = new equinix.metal.Device("testDevice", {
     hostname: "test",
     plan: equinix.metal.Plan.C3MediumX86,
     metro: "ny",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectSshKeyIds: [test.id],
     projectId: projectId,

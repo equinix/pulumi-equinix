@@ -1932,13 +1932,13 @@ class ConnectionASideAccessPointLocationArgs:
 
 if not MYPY:
     class ConnectionASideAccessPointNetworkArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Network identifier
+        """
         href: NotRequired[pulumi.Input[str]]
         """
         Unique Resource Identifier
-        """
-        uuid: NotRequired[pulumi.Input[str]]
-        """
-        Equinix-assigned Network identifier
         """
 elif False:
     ConnectionASideAccessPointNetworkArgsDict: TypeAlias = Mapping[str, Any]
@@ -1946,16 +1946,27 @@ elif False:
 @pulumi.input_type
 class ConnectionASideAccessPointNetworkArgs:
     def __init__(__self__, *,
-                 href: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 uuid: pulumi.Input[str],
+                 href: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
+        :param pulumi.Input[str] href: Unique Resource Identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -1968,18 +1979,6 @@ class ConnectionASideAccessPointNetworkArgs:
     @href.setter
     def href(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "href", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 if not MYPY:
@@ -2382,6 +2381,10 @@ class ConnectionASideAccessPointRouterArgs:
 
 if not MYPY:
     class ConnectionASideAccessPointVirtualDeviceArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Virtual Device identifier
+        """
         href: NotRequired[pulumi.Input[str]]
         """
         Unique Resource Identifier
@@ -2394,34 +2397,41 @@ if not MYPY:
         """
         Virtual Device type
         """
-        uuid: NotRequired[pulumi.Input[str]]
-        """
-        Equinix-assigned Virtual Device identifier
-        """
 elif False:
     ConnectionASideAccessPointVirtualDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionASideAccessPointVirtualDeviceArgs:
     def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
                  href: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] uuid: Equinix-assigned Virtual Device identifier
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] name: Customer-assigned Virtual Device Name
         :param pulumi.Input[str] type: Virtual Device type
-        :param pulumi.Input[str] uuid: Equinix-assigned Virtual Device identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -2458,18 +2468,6 @@ class ConnectionASideAccessPointVirtualDeviceArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 if not MYPY:
@@ -4544,13 +4542,13 @@ class ConnectionZSideAccessPointLocationArgs:
 
 if not MYPY:
     class ConnectionZSideAccessPointNetworkArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Network identifier
+        """
         href: NotRequired[pulumi.Input[str]]
         """
         Unique Resource Identifier
-        """
-        uuid: NotRequired[pulumi.Input[str]]
-        """
-        Equinix-assigned Network identifier
         """
 elif False:
     ConnectionZSideAccessPointNetworkArgsDict: TypeAlias = Mapping[str, Any]
@@ -4558,16 +4556,27 @@ elif False:
 @pulumi.input_type
 class ConnectionZSideAccessPointNetworkArgs:
     def __init__(__self__, *,
-                 href: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 uuid: pulumi.Input[str],
+                 href: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned Network identifier
+        :param pulumi.Input[str] href: Unique Resource Identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -4580,18 +4589,6 @@ class ConnectionZSideAccessPointNetworkArgs:
     @href.setter
     def href(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "href", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 if not MYPY:
@@ -4994,6 +4991,10 @@ class ConnectionZSideAccessPointRouterArgs:
 
 if not MYPY:
     class ConnectionZSideAccessPointVirtualDeviceArgsDict(TypedDict):
+        uuid: pulumi.Input[str]
+        """
+        Equinix-assigned Virtual Device identifier
+        """
         href: NotRequired[pulumi.Input[str]]
         """
         Unique Resource Identifier
@@ -5006,34 +5007,41 @@ if not MYPY:
         """
         Virtual Device type
         """
-        uuid: NotRequired[pulumi.Input[str]]
-        """
-        Equinix-assigned Virtual Device identifier
-        """
 elif False:
     ConnectionZSideAccessPointVirtualDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionZSideAccessPointVirtualDeviceArgs:
     def __init__(__self__, *,
+                 uuid: pulumi.Input[str],
                  href: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 uuid: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] uuid: Equinix-assigned Virtual Device identifier
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] name: Customer-assigned Virtual Device Name
         :param pulumi.Input[str] type: Virtual Device type
-        :param pulumi.Input[str] uuid: Equinix-assigned Virtual Device identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[str]:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter
@@ -5070,18 +5078,6 @@ class ConnectionZSideAccessPointVirtualDeviceArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[str]]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uuid", value)
 
 
 if not MYPY:
@@ -15734,7 +15730,7 @@ if not MYPY:
         """
         property: str
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
         """
         values: Sequence[str]
         """
@@ -15756,7 +15752,7 @@ class GetConnectionsFilterArgs:
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -15806,7 +15802,7 @@ class GetConnectionsFilterArgs:
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
         """
         return pulumi.get(self, "property")
 
@@ -15875,7 +15871,7 @@ if not MYPY:
         """
         property: NotRequired[str]
         """
-        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
         """
 elif False:
     GetConnectionsSortArgsDict: TypeAlias = Mapping[str, Any]
@@ -15887,7 +15883,7 @@ class GetConnectionsSortArgs:
                  property: Optional[str] = None):
         """
         :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
-        :param str property: The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        :param str property: The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
@@ -15910,7 +15906,7 @@ class GetConnectionsSortArgs:
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
         """
         return pulumi.get(self, "property")
 

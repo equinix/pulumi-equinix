@@ -17,42 +17,6 @@ namespace Pulumi.Equinix.Fabric
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
         /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var connectionDataName = Equinix.Fabric.GetConnection.Invoke(new()
-        ///     {
-        ///         Uuid = "&lt;uuid_of_connection&gt;",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["id"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Id),
-        ///         ["name"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
-        ///         ["accountNumber"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Account?.AccountNumber),
-        ///         ["bandwidth"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
-        ///         ["projectId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Project?.ProjectId),
-        ///         ["redundancyGroup"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Group),
-        ///         ["redundancyPriority"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Priority),
-        ///         ["state"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.State),
-        ///         ["type"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Type),
-        ///         ["accessPointType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.Type),
-        ///         ["accessPointLinkProtocolType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.Type),
-        ///         ["accessPointLinkProtocolVlanTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanTag),
-        ///         ["accessPointLinkProtocolVlanCTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanCTag),
-        ///         ["accessPointLinkProtocolVlanSTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanSTag),
-        ///         ["accessPointProviderConnectionId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.ProviderConnectionId),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
@@ -63,42 +27,6 @@ namespace Pulumi.Equinix.Fabric
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
         /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var connectionDataName = Equinix.Fabric.GetConnection.Invoke(new()
-        ///     {
-        ///         Uuid = "&lt;uuid_of_connection&gt;",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["id"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Id),
-        ///         ["name"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
-        ///         ["accountNumber"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Account?.AccountNumber),
-        ///         ["bandwidth"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
-        ///         ["projectId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Project?.ProjectId),
-        ///         ["redundancyGroup"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Group),
-        ///         ["redundancyPriority"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Priority),
-        ///         ["state"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.State),
-        ///         ["type"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Type),
-        ///         ["accessPointType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.Type),
-        ///         ["accessPointLinkProtocolType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.Type),
-        ///         ["accessPointLinkProtocolVlanTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanTag),
-        ///         ["accessPointLinkProtocolVlanCTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanCTag),
-        ///         ["accessPointLinkProtocolVlanSTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanSTag),
-        ///         ["accessPointProviderConnectionId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.ProviderConnectionId),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
@@ -109,42 +37,6 @@ namespace Pulumi.Equinix.Fabric
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
         /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var connectionDataName = Equinix.Fabric.GetConnection.Invoke(new()
-        ///     {
-        ///         Uuid = "&lt;uuid_of_connection&gt;",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["id"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Id),
-        ///         ["name"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
-        ///         ["accountNumber"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Account?.AccountNumber),
-        ///         ["bandwidth"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
-        ///         ["projectId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Project?.ProjectId),
-        ///         ["redundancyGroup"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Group),
-        ///         ["redundancyPriority"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Priority),
-        ///         ["state"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.State),
-        ///         ["type"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Type),
-        ///         ["accessPointType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.Type),
-        ///         ["accessPointLinkProtocolType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.Type),
-        ///         ["accessPointLinkProtocolVlanTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanTag),
-        ///         ["accessPointLinkProtocolVlanCTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanCTag),
-        ///         ["accessPointLinkProtocolVlanSTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanSTag),
-        ///         ["accessPointProviderConnectionId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.ProviderConnectionId),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());

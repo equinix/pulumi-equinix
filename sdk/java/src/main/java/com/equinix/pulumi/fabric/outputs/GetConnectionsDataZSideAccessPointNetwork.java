@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionsDataZSideAccessPointNetwork {
@@ -21,7 +19,7 @@ public final class GetConnectionsDataZSideAccessPointNetwork {
      * @return Equinix-assigned Network identifier
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
 
     private GetConnectionsDataZSideAccessPointNetwork() {}
     /**
@@ -35,8 +33,8 @@ public final class GetConnectionsDataZSideAccessPointNetwork {
      * @return Equinix-assigned Network identifier
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -49,7 +47,7 @@ public final class GetConnectionsDataZSideAccessPointNetwork {
     @CustomType.Builder
     public static final class Builder {
         private String href;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(GetConnectionsDataZSideAccessPointNetwork defaults) {
     	      Objects.requireNonNull(defaults);
@@ -66,8 +64,10 @@ public final class GetConnectionsDataZSideAccessPointNetwork {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataZSideAccessPointNetwork", "uuid");
+            }
             this.uuid = uuid;
             return this;
         }

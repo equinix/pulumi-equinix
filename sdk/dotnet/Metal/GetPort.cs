@@ -33,7 +33,7 @@ namespace Pulumi.Equinix.Metal
         ///         Hostname = "tfacc-test-device-port",
         ///         Plan = Equinix.Metal.Plan.C3MediumX86,
         ///         Metro = "sv",
-        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         OperatingSystem = "ubuntu_24_04",
         ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = projectId,
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Equinix.Metal
         ///         Hostname = "tfacc-test-device-port",
         ///         Plan = Equinix.Metal.Plan.C3MediumX86,
         ///         Metro = "sv",
-        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         OperatingSystem = "ubuntu_24_04",
         ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = projectId,
         ///     });
@@ -111,7 +111,7 @@ namespace Pulumi.Equinix.Metal
         ///         Hostname = "tfacc-test-device-port",
         ///         Plan = Equinix.Metal.Plan.C3MediumX86,
         ///         Metro = "sv",
-        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         OperatingSystem = "ubuntu_24_04",
         ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = projectId,
         ///     });

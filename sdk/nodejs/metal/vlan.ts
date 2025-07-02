@@ -67,7 +67,7 @@ export class Vlan extends pulumi.CustomResource {
     /**
      * Description string.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
      *

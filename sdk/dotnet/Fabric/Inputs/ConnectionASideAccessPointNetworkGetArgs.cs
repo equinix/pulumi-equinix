@@ -21,8 +21,8 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// <summary>
         /// Equinix-assigned Network identifier
         /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
+        [Input("uuid", required: true)]
+        public Input<string> Uuid { get; set; } = null!;
 
         public ConnectionASideAccessPointNetworkGetArgs()
         {

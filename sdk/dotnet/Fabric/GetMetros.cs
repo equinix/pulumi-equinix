@@ -13,18 +13,117 @@ namespace Pulumi.Equinix.Fabric
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var metros = Equinix.Fabric.GetMetros.Invoke(new()
+        ///     {
+        ///         Pagination = new Equinix.Fabric.Inputs.GetMetrosPaginationInputArgs
+        ///         {
+        ///             Limit = 12,
+        ///             Offset = 6,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length,
+        ///         ["firstMetroType"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Type),
+        ///         ["firstMetroCode"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Code),
+        ///         ["firstMetroRegion"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Region),
+        ///         ["firstMetroName"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Name),
+        ///         ["firstMetroEquinixAsn"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.EquinixAsn),
+        ///         ["firstMetroLocalVcBandwidthMax"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.LocalVcBandwidthMax),
+        ///         ["firstMetroGeoCoordinates"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.GeoCoordinates),
+        ///         ["firstMetroConnectedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.ConnectedMetros),
+        ///         ["firstMetroGeoScopes"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.GeoScopes),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetMetrosResult> InvokeAsync(GetMetrosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetrosResult>("equinix:fabric/getMetros:getMetros", args ?? new GetMetrosArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var metros = Equinix.Fabric.GetMetros.Invoke(new()
+        ///     {
+        ///         Pagination = new Equinix.Fabric.Inputs.GetMetrosPaginationInputArgs
+        ///         {
+        ///             Limit = 12,
+        ///             Offset = 6,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length,
+        ///         ["firstMetroType"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Type),
+        ///         ["firstMetroCode"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Code),
+        ///         ["firstMetroRegion"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Region),
+        ///         ["firstMetroName"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Name),
+        ///         ["firstMetroEquinixAsn"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.EquinixAsn),
+        ///         ["firstMetroLocalVcBandwidthMax"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.LocalVcBandwidthMax),
+        ///         ["firstMetroGeoCoordinates"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.GeoCoordinates),
+        ///         ["firstMetroConnectedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.ConnectedMetros),
+        ///         ["firstMetroGeoScopes"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.GeoScopes),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMetrosResult> Invoke(GetMetrosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetrosResult>("equinix:fabric/getMetros:getMetros", args ?? new GetMetrosInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var metros = Equinix.Fabric.GetMetros.Invoke(new()
+        ///     {
+        ///         Pagination = new Equinix.Fabric.Inputs.GetMetrosPaginationInputArgs
+        ///         {
+        ///             Limit = 12,
+        ///             Offset = 6,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length,
+        ///         ["firstMetroType"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Type),
+        ///         ["firstMetroCode"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Code),
+        ///         ["firstMetroRegion"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Region),
+        ///         ["firstMetroName"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Name),
+        ///         ["firstMetroEquinixAsn"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.EquinixAsn),
+        ///         ["firstMetroLocalVcBandwidthMax"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.LocalVcBandwidthMax),
+        ///         ["firstMetroGeoCoordinates"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.GeoCoordinates),
+        ///         ["firstMetroConnectedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.ConnectedMetros),
+        ///         ["firstMetroGeoScopes"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.GeoScopes),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMetrosResult> Invoke(GetMetrosInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetrosResult>("equinix:fabric/getMetros:getMetros", args ?? new GetMetrosInvokeArgs(), options.WithDefaults());

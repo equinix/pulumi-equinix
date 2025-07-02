@@ -59,7 +59,7 @@ type Vlan struct {
 	pulumi.CustomResourceState
 
 	// Description string.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -257,8 +257,8 @@ func (o VlanOutput) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
 }
 
 // Description string.
-func (o VlanOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o VlanOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vlan) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide

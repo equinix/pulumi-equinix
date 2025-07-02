@@ -205,14 +205,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Fabric Network scope
+     * Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
-     * @return Fabric Network scope
+     * @return Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      * 
      */
     public Output<String> scope() {
@@ -233,14 +233,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Supported Network types - EVPLAN, EPLAN, IPWAN
+     * Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Supported Network types - EVPLAN, EPLAN, IPWAN
+     * @return Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      * 
      */
     public Output<String> type() {

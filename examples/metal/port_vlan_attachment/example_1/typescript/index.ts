@@ -10,7 +10,7 @@ const testDevice = new equinix.metal.Device("testDevice", {
     hostname: "test",
     plan: equinix.metal.Plan.C3SmallX86,
     metro: "ny",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectId: projectId,
 });

@@ -112,7 +112,7 @@ def get_operating_system(distro: Optional[str] = None,
     import pulumi_equinix as equinix
 
     example = equinix.metal.get_operating_system(distro="ubuntu",
-        version="20.04",
+        version="24.04",
         provisionable_on="c3.medium.x86")
     server = equinix.metal.Device("server",
         hostname="tf.ubuntu",
@@ -159,7 +159,7 @@ def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = 
     import pulumi_equinix as equinix
 
     example = equinix.metal.get_operating_system(distro="ubuntu",
-        version="20.04",
+        version="24.04",
         provisionable_on="c3.medium.x86")
     server = equinix.metal.Device("server",
         hostname="tf.ubuntu",

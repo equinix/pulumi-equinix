@@ -58,7 +58,7 @@ import (
 //				Hostname:        pulumi.String("test"),
 //				Plan:            pulumi.String(metal.PlanC3SmallX86),
 //				Metro:           pulumi.String("ny"),
-//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				OperatingSystem: pulumi.String("ubuntu_24_04"),
 //				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:       pulumi.Any(projectId),
 //			})
@@ -102,7 +102,7 @@ import (
 //				Hostname:        pulumi.String("test"),
 //				Plan:            pulumi.String(metal.PlanC3SmallX86),
 //				Metro:           pulumi.String("ny"),
-//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				OperatingSystem: pulumi.String("ubuntu_24_04"),
 //				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:       pulumi.Any(projectId),
 //			})

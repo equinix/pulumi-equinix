@@ -52,7 +52,7 @@ namespace Pulumi.Equinix.Metal
         /// Description string.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide

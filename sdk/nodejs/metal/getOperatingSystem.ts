@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const example = equinix.metal.getOperatingSystem({
  *     distro: "ubuntu",
- *     version: "20.04",
+ *     version: "24.04",
  *     provisionableOn: "c3.medium.x86",
  * });
  * const server = new equinix.metal.Device("server", {
@@ -89,7 +89,7 @@ export interface GetOperatingSystemResult {
  *
  * const example = equinix.metal.getOperatingSystem({
  *     distro: "ubuntu",
- *     version: "20.04",
+ *     version: "24.04",
  *     provisionableOn: "c3.medium.x86",
  * });
  * const server = new equinix.metal.Device("server", {

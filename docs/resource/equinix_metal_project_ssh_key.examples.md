@@ -14,7 +14,7 @@ const testDevice = new equinix.metal.Device("testDevice", {
     hostname: "test",
     plan: equinix.metal.Plan.C3MediumX86,
     metro: "ny",
-    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+    operatingSystem: "ubuntu_24_04",
     billingCycle: equinix.metal.BillingCycle.Hourly,
     projectSshKeyIds: [test.id],
     projectId: projectId,
@@ -33,7 +33,7 @@ test_device = equinix.metal.Device("testDevice",
     hostname="test",
     plan=equinix.metal.Plan.C3_MEDIUM_X86,
     metro="ny",
-    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+    operating_system="ubuntu_24_04",
     billing_cycle=equinix.metal.BillingCycle.HOURLY,
     project_ssh_key_ids=[test.id],
     project_id=project_id)
@@ -61,7 +61,7 @@ func main() {
 			Hostname:        pulumi.String("test"),
 			Plan:            pulumi.String(metal.PlanC3MediumX86),
 			Metro:           pulumi.String("ny"),
-			OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+			OperatingSystem: pulumi.String("ubuntu_24_04"),
 			BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 			ProjectSshKeyIds: pulumi.StringArray{
 				test.ID(),
@@ -97,7 +97,7 @@ return await Deployment.RunAsync(() =>
         Hostname = "test",
         Plan = Equinix.Metal.Plan.C3MediumX86,
         Metro = "ny",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        OperatingSystem = "ubuntu_24_04",
         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ProjectSshKeyIds = new[]
         {
@@ -143,7 +143,7 @@ public class App {
             .hostname("test")
             .plan("c3.medium.x86")
             .metro("ny")
-            .operatingSystem("ubuntu_20_04")
+            .operatingSystem("ubuntu_24_04")
             .billingCycle("hourly")
             .projectSshKeyIds(test.id())
             .projectId(projectId)
@@ -167,7 +167,7 @@ resources:
       hostname: test
       plan: c3.medium.x86
       metro: ny
-      operatingSystem: ubuntu_20_04
+      operatingSystem: ubuntu_24_04
       billingCycle: hourly
       projectSshKeyIds:
         - ${test.id}

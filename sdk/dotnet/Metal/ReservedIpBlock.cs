@@ -77,7 +77,7 @@ namespace Pulumi.Equinix.Metal
     ///         ProjectId = projectId,
     ///         Metro = "sv",
     ///         Plan = Equinix.Metal.Plan.C3SmallX86,
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         OperatingSystem = "ubuntu_24_04",
     ///         Hostname = "test",
     ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
     ///         IpAddresses = new[]

@@ -13,32 +13,6 @@ import * as utilities from "../utilities";
  * Additional documentation:
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const connectionDataName = equinix.fabric.getConnection({
- *     uuid: "<uuid_of_connection>",
- * });
- * export const id = connectionDataName.then(connectionDataName => connectionDataName.id);
- * export const name = connectionDataName.then(connectionDataName => connectionDataName.bandwidth);
- * export const accountNumber = connectionDataName.then(connectionDataName => connectionDataName.account?.accountNumber);
- * export const bandwidth = connectionDataName.then(connectionDataName => connectionDataName.bandwidth);
- * export const projectId = connectionDataName.then(connectionDataName => connectionDataName.project?.projectId);
- * export const redundancyGroup = connectionDataName.then(connectionDataName => connectionDataName.redundancy?.group);
- * export const redundancyPriority = connectionDataName.then(connectionDataName => connectionDataName.redundancy?.priority);
- * export const state = connectionDataName.then(connectionDataName => connectionDataName.state);
- * export const type = connectionDataName.then(connectionDataName => connectionDataName.type);
- * export const accessPointType = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.type);
- * export const accessPointLinkProtocolType = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.type);
- * export const accessPointLinkProtocolVlanTag = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanTag);
- * export const accessPointLinkProtocolVlanCTag = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanCTag);
- * export const accessPointLinkProtocolVlanSTag = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanSTag);
- * export const accessPointProviderConnectionId = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.providerConnectionId);
- * ```
  */
 export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -148,32 +122,6 @@ export interface GetConnectionResult {
  * Additional documentation:
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
  * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const connectionDataName = equinix.fabric.getConnection({
- *     uuid: "<uuid_of_connection>",
- * });
- * export const id = connectionDataName.then(connectionDataName => connectionDataName.id);
- * export const name = connectionDataName.then(connectionDataName => connectionDataName.bandwidth);
- * export const accountNumber = connectionDataName.then(connectionDataName => connectionDataName.account?.accountNumber);
- * export const bandwidth = connectionDataName.then(connectionDataName => connectionDataName.bandwidth);
- * export const projectId = connectionDataName.then(connectionDataName => connectionDataName.project?.projectId);
- * export const redundancyGroup = connectionDataName.then(connectionDataName => connectionDataName.redundancy?.group);
- * export const redundancyPriority = connectionDataName.then(connectionDataName => connectionDataName.redundancy?.priority);
- * export const state = connectionDataName.then(connectionDataName => connectionDataName.state);
- * export const type = connectionDataName.then(connectionDataName => connectionDataName.type);
- * export const accessPointType = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.type);
- * export const accessPointLinkProtocolType = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.type);
- * export const accessPointLinkProtocolVlanTag = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanTag);
- * export const accessPointLinkProtocolVlanCTag = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanCTag);
- * export const accessPointLinkProtocolVlanSTag = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.linkProtocol?.vlanSTag);
- * export const accessPointProviderConnectionId = connectionDataName.then(connectionDataName => connectionDataName.aSide?.accessPoint?.providerConnectionId);
- * ```
  */
 export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
