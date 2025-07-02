@@ -180,14 +180,14 @@ public class PrecisionTimeService extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ntpAdvancedConfigurations", refs={List.class,PrecisionTimeServiceNtpAdvancedConfiguration.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<PrecisionTimeServiceNtpAdvancedConfiguration>> ntpAdvancedConfigurations;
+    private Output<List<PrecisionTimeServiceNtpAdvancedConfiguration>> ntpAdvancedConfigurations;
 
     /**
      * @return NTP Advanced configuration
      * 
      */
-    public Output<Optional<List<PrecisionTimeServiceNtpAdvancedConfiguration>>> ntpAdvancedConfigurations() {
-        return Codegen.optional(this.ntpAdvancedConfigurations);
+    public Output<List<PrecisionTimeServiceNtpAdvancedConfiguration>> ntpAdvancedConfigurations() {
+        return this.ntpAdvancedConfigurations;
     }
     /**
      * Precision Time Order
@@ -250,14 +250,14 @@ public class PrecisionTimeService extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ptpAdvancedConfiguration", refs={PrecisionTimeServicePtpAdvancedConfiguration.class}, tree="[0]")
-    private Output</* @Nullable */ PrecisionTimeServicePtpAdvancedConfiguration> ptpAdvancedConfiguration;
+    private Output<PrecisionTimeServicePtpAdvancedConfiguration> ptpAdvancedConfiguration;
 
     /**
      * @return PTP Advanced Configuration
      * 
      */
-    public Output<Optional<PrecisionTimeServicePtpAdvancedConfiguration>> ptpAdvancedConfiguration() {
-        return Codegen.optional(this.ptpAdvancedConfiguration);
+    public Output<PrecisionTimeServicePtpAdvancedConfiguration> ptpAdvancedConfiguration() {
+        return this.ptpAdvancedConfiguration;
     }
     /**
      * Indicator of the state of this Precision Time Service

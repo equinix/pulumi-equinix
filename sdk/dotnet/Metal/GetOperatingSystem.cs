@@ -27,7 +27,7 @@ namespace Pulumi.Equinix.Metal
         ///     var example = Equinix.Metal.GetOperatingSystem.Invoke(new()
         ///     {
         ///         Distro = "ubuntu",
-        ///         Version = "20.04",
+        ///         Version = "24.04",
         ///         ProvisionableOn = "c3.medium.x86",
         ///     });
         /// 
@@ -63,7 +63,7 @@ namespace Pulumi.Equinix.Metal
         ///     var example = Equinix.Metal.GetOperatingSystem.Invoke(new()
         ///     {
         ///         Distro = "ubuntu",
-        ///         Version = "20.04",
+        ///         Version = "24.04",
         ///         ProvisionableOn = "c3.medium.x86",
         ///     });
         /// 
@@ -99,7 +99,7 @@ namespace Pulumi.Equinix.Metal
         ///     var example = Equinix.Metal.GetOperatingSystem.Invoke(new()
         ///     {
         ///         Distro = "ubuntu",
-        ///         Version = "20.04",
+        ///         Version = "24.04",
         ///         ProvisionableOn = "c3.medium.x86",
         ///     });
         /// 

@@ -101,7 +101,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<outputs.fabric.NetworkProject>;
     /**
-     * Fabric Network scope
+     * Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      */
     public readonly scope!: pulumi.Output<string>;
     /**
@@ -109,7 +109,7 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Supported Network types - EVPLAN, EPLAN, IPWAN
+     * Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -217,7 +217,7 @@ export interface NetworkState {
      */
     project?: pulumi.Input<inputs.fabric.NetworkProject>;
     /**
-     * Fabric Network scope
+     * Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      */
     scope?: pulumi.Input<string>;
     /**
@@ -225,7 +225,7 @@ export interface NetworkState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Supported Network types - EVPLAN, EPLAN, IPWAN
+     * Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      */
     type?: pulumi.Input<string>;
     /**
@@ -255,11 +255,11 @@ export interface NetworkArgs {
      */
     project: pulumi.Input<inputs.fabric.NetworkProject>;
     /**
-     * Fabric Network scope
+     * Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      */
     scope: pulumi.Input<string>;
     /**
-     * Supported Network types - EVPLAN, EPLAN, IPWAN
+     * Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      */
     type: pulumi.Input<string>;
 }

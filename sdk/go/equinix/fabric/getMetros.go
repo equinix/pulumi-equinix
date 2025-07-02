@@ -12,6 +12,43 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			metros, err := fabric.GetMetros(ctx, &fabric.GetMetrosArgs{
+//				Pagination: fabric.GetMetrosPagination{
+//					Limit:  pulumi.IntRef(12),
+//					Offset: pulumi.IntRef(6),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("numberOfReturnedMetros", pulumi.Int(len(metros.Datas)))
+//			ctx.Export("firstMetroType", metros.Datas[0].Type)
+//			ctx.Export("firstMetroCode", metros.Datas[0].Code)
+//			ctx.Export("firstMetroRegion", metros.Datas[0].Region)
+//			ctx.Export("firstMetroName", metros.Datas[0].Name)
+//			ctx.Export("firstMetroEquinixAsn", metros.Datas[0].EquinixAsn)
+//			ctx.Export("firstMetroLocalVcBandwidthMax", metros.Datas[0].LocalVcBandwidthMax)
+//			ctx.Export("firstMetroGeoCoordinates", metros.Datas[0].GeoCoordinates)
+//			ctx.Export("firstMetroConnectedMetros", metros.Datas[0].ConnectedMetros)
+//			ctx.Export("firstMetroGeoScopes", metros.Datas[0].GeoScopes)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMetros(ctx *pulumi.Context, args *GetMetrosArgs, opts ...pulumi.InvokeOption) (*GetMetrosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetrosResult

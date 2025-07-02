@@ -31,8 +31,8 @@ class NetworkArgs:
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkNotificationArgs']]] notifications: Preferences for notifications on Fabric Network configuration or status changes
         :param pulumi.Input['NetworkProjectArgs'] project: Fabric Network project
-        :param pulumi.Input[str] scope: Fabric Network scope
-        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN
+        :param pulumi.Input[str] scope: Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
+        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         :param pulumi.Input['NetworkLocationArgs'] location: Fabric Network location
         :param pulumi.Input[str] name: Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         """
@@ -73,7 +73,7 @@ class NetworkArgs:
     @pulumi.getter
     def scope(self) -> pulumi.Input[str]:
         """
-        Fabric Network scope
+        Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         """
         return pulumi.get(self, "scope")
 
@@ -85,7 +85,7 @@ class NetworkArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Supported Network types - EVPLAN, EPLAN, IPWAN
+        Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         """
         return pulumi.get(self, "type")
 
@@ -145,9 +145,9 @@ class _NetworkState:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkNotificationArgs']]] notifications: Preferences for notifications on Fabric Network configuration or status changes
         :param pulumi.Input['NetworkOperationArgs'] operation: Network operation information that is associated with this Fabric Network
         :param pulumi.Input['NetworkProjectArgs'] project: Fabric Network project
-        :param pulumi.Input[str] scope: Fabric Network scope
+        :param pulumi.Input[str] scope: Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         :param pulumi.Input[str] state: Fabric Network overall state
-        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN
+        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         :param pulumi.Input[str] uuid: Equinix-assigned network identifier
         """
         if change is not None:
@@ -289,7 +289,7 @@ class _NetworkState:
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
-        Fabric Network scope
+        Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         """
         return pulumi.get(self, "scope")
 
@@ -313,7 +313,7 @@ class _NetworkState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Supported Network types - EVPLAN, EPLAN, IPWAN
+        Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         """
         return pulumi.get(self, "type")
 
@@ -380,8 +380,8 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] name: Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkNotificationArgs', 'NetworkNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Network configuration or status changes
         :param pulumi.Input[Union['NetworkProjectArgs', 'NetworkProjectArgsDict']] project: Fabric Network project
-        :param pulumi.Input[str] scope: Fabric Network scope
-        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN
+        :param pulumi.Input[str] scope: Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
+        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         """
         ...
     @overload
@@ -507,9 +507,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkNotificationArgs', 'NetworkNotificationArgsDict']]]] notifications: Preferences for notifications on Fabric Network configuration or status changes
         :param pulumi.Input[Union['NetworkOperationArgs', 'NetworkOperationArgsDict']] operation: Network operation information that is associated with this Fabric Network
         :param pulumi.Input[Union['NetworkProjectArgs', 'NetworkProjectArgsDict']] project: Fabric Network project
-        :param pulumi.Input[str] scope: Fabric Network scope
+        :param pulumi.Input[str] scope: Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         :param pulumi.Input[str] state: Fabric Network overall state
-        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN
+        :param pulumi.Input[str] type: Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         :param pulumi.Input[str] uuid: Equinix-assigned network identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -607,7 +607,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
         """
-        Fabric Network scope
+        Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         """
         return pulumi.get(self, "scope")
 
@@ -623,7 +623,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Supported Network types - EVPLAN, EPLAN, IPWAN
+        Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         """
         return pulumi.get(self, "type")
 

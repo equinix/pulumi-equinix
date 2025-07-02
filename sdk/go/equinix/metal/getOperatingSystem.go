@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := metal.GetOperatingSystem(ctx, &metal.GetOperatingSystemArgs{
 //				Distro:          pulumi.StringRef("ubuntu"),
-//				Version:         pulumi.StringRef("20.04"),
+//				Version:         pulumi.StringRef("24.04"),
 //				ProvisionableOn: pulumi.StringRef("c3.medium.x86"),
 //			}, nil)
 //			if err != nil {

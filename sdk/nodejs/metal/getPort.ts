@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     hostname: "tfacc-test-device-port",
  *     plan: equinix.metal.Plan.C3MediumX86,
  *     metro: "sv",
- *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     operatingSystem: "ubuntu_24_04",
  *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: projectId,
  * });
@@ -127,7 +127,7 @@ export interface GetPortResult {
  *     hostname: "tfacc-test-device-port",
  *     plan: equinix.metal.Plan.C3MediumX86,
  *     metro: "sv",
- *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     operatingSystem: "ubuntu_24_04",
  *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: projectId,
  * });

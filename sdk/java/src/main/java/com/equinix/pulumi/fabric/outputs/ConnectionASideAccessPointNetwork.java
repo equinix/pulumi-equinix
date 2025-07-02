@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,7 +21,7 @@ public final class ConnectionASideAccessPointNetwork {
      * @return Equinix-assigned Network identifier
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
 
     private ConnectionASideAccessPointNetwork() {}
     /**
@@ -34,8 +35,8 @@ public final class ConnectionASideAccessPointNetwork {
      * @return Equinix-assigned Network identifier
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -48,7 +49,7 @@ public final class ConnectionASideAccessPointNetwork {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String href;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(ConnectionASideAccessPointNetwork defaults) {
     	      Objects.requireNonNull(defaults);
@@ -63,8 +64,10 @@ public final class ConnectionASideAccessPointNetwork {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("ConnectionASideAccessPointNetwork", "uuid");
+            }
             this.uuid = uuid;
             return this;
         }

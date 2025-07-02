@@ -3083,7 +3083,7 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
      *             .distro("ubuntu")
-     *             .version("20.04")
+     *             .version("24.04")
      *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
@@ -3138,7 +3138,7 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
      *             .distro("ubuntu")
-     *             .version("20.04")
+     *             .version("24.04")
      *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
@@ -3193,7 +3193,7 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
      *             .distro("ubuntu")
-     *             .version("20.04")
+     *             .version("24.04")
      *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
@@ -3248,7 +3248,7 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
      *             .distro("ubuntu")
-     *             .version("20.04")
+     *             .version("24.04")
      *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
@@ -3303,7 +3303,7 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
      *             .distro("ubuntu")
-     *             .version("20.04")
+     *             .version("24.04")
      *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
@@ -3358,7 +3358,7 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
      *             .distro("ubuntu")
-     *             .version("20.04")
+     *             .version("24.04")
      *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
@@ -3413,7 +3413,7 @@ public final class MetalFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()
      *             .distro("ubuntu")
-     *             .version("20.04")
+     *             .version("24.04")
      *             .provisionableOn("c3.medium.x86")
      *             .build());
      * 
@@ -3796,7 +3796,7 @@ public final class MetalFunctions {
      *             .hostname("tfacc-test-device-port")
      *             .plan("c3.medium.x86")
      *             .metro("sv")
-     *             .operatingSystem("ubuntu_20_04")
+     *             .operatingSystem("ubuntu_24_04")
      *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
@@ -3854,7 +3854,7 @@ public final class MetalFunctions {
      *             .hostname("tfacc-test-device-port")
      *             .plan("c3.medium.x86")
      *             .metro("sv")
-     *             .operatingSystem("ubuntu_20_04")
+     *             .operatingSystem("ubuntu_24_04")
      *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
@@ -3912,7 +3912,7 @@ public final class MetalFunctions {
      *             .hostname("tfacc-test-device-port")
      *             .plan("c3.medium.x86")
      *             .metro("sv")
-     *             .operatingSystem("ubuntu_20_04")
+     *             .operatingSystem("ubuntu_24_04")
      *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
@@ -3970,7 +3970,7 @@ public final class MetalFunctions {
      *             .hostname("tfacc-test-device-port")
      *             .plan("c3.medium.x86")
      *             .metro("sv")
-     *             .operatingSystem("ubuntu_20_04")
+     *             .operatingSystem("ubuntu_24_04")
      *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
@@ -4028,7 +4028,7 @@ public final class MetalFunctions {
      *             .hostname("tfacc-test-device-port")
      *             .plan("c3.medium.x86")
      *             .metro("sv")
-     *             .operatingSystem("ubuntu_20_04")
+     *             .operatingSystem("ubuntu_24_04")
      *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
@@ -4086,7 +4086,7 @@ public final class MetalFunctions {
      *             .hostname("tfacc-test-device-port")
      *             .plan("c3.medium.x86")
      *             .metro("sv")
-     *             .operatingSystem("ubuntu_20_04")
+     *             .operatingSystem("ubuntu_24_04")
      *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());
@@ -4144,7 +4144,7 @@ public final class MetalFunctions {
      *             .hostname("tfacc-test-device-port")
      *             .plan("c3.medium.x86")
      *             .metro("sv")
-     *             .operatingSystem("ubuntu_20_04")
+     *             .operatingSystem("ubuntu_24_04")
      *             .billingCycle("hourly")
      *             .projectId(projectId)
      *             .build());

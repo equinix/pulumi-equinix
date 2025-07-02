@@ -31,7 +31,7 @@ public final class GetConnectionsDataASideAccessPointVirtualDevice {
      * @return Equinix-assigned Virtual Device identifier
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
 
     private GetConnectionsDataASideAccessPointVirtualDevice() {}
     /**
@@ -59,8 +59,8 @@ public final class GetConnectionsDataASideAccessPointVirtualDevice {
      * @return Equinix-assigned Virtual Device identifier
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -75,7 +75,7 @@ public final class GetConnectionsDataASideAccessPointVirtualDevice {
         private String href;
         private @Nullable String name;
         private @Nullable String type;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(GetConnectionsDataASideAccessPointVirtualDevice defaults) {
     	      Objects.requireNonNull(defaults);
@@ -106,8 +106,10 @@ public final class GetConnectionsDataASideAccessPointVirtualDevice {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsDataASideAccessPointVirtualDevice", "uuid");
+            }
             this.uuid = uuid;
             return this;
         }

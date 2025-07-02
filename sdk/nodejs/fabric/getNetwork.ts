@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * export const name = networkDataName.then(networkDataName => networkDataName.name);
  * export const scope = networkDataName.then(networkDataName => networkDataName.scope);
  * export const type = networkDataName.then(networkDataName => networkDataName.type);
- * export const region = networkDataName.then(networkDataName => networkDataName.locations?.[0]?.region);
+ * export const region = networkDataName.then(networkDataName => .map(location => (location.region)));
  * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
@@ -92,7 +92,7 @@ export interface GetNetworkResult {
      */
     readonly project: outputs.fabric.GetNetworkProject;
     /**
-     * Fabric Network scope
+     * Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
      */
     readonly scope: string;
     /**
@@ -100,7 +100,7 @@ export interface GetNetworkResult {
      */
     readonly state: string;
     /**
-     * Supported Network types - EVPLAN, EPLAN, IPWAN
+     * Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
      */
     readonly type: string;
     /**
@@ -128,7 +128,7 @@ export interface GetNetworkResult {
  * export const name = networkDataName.then(networkDataName => networkDataName.name);
  * export const scope = networkDataName.then(networkDataName => networkDataName.scope);
  * export const type = networkDataName.then(networkDataName => networkDataName.type);
- * export const region = networkDataName.then(networkDataName => networkDataName.locations?.[0]?.region);
+ * export const region = networkDataName.then(networkDataName => .map(location => (location.region)));
  * ```
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkResult> {

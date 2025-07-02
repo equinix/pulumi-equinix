@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * const metro = equinix.fabric.getMetro({
  *     metroCode: "<metro_code>",
  * });
- * export const id = metro.then(metro => metro.id);
  * export const type = metro.then(metro => metro.type);
  * export const metroCode = metro.then(metro => metro.metroCode);
  * export const region = metro.then(metro => metro.region);
@@ -109,7 +108,6 @@ export interface GetMetroResult {
  * const metro = equinix.fabric.getMetro({
  *     metroCode: "<metro_code>",
  * });
- * export const id = metro.then(metro => metro.id);
  * export const type = metro.then(metro => metro.type);
  * export const metroCode = metro.then(metro => metro.metroCode);
  * export const region = metro.then(metro => metro.region);

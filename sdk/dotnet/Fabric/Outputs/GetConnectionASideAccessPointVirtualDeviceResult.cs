@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Equinix-assigned Virtual Device identifier
         /// </summary>
-        public readonly string? Uuid;
+        public readonly string Uuid;
 
         [OutputConstructor]
         private GetConnectionASideAccessPointVirtualDeviceResult(
@@ -38,7 +38,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string? type,
 
-            string? uuid)
+            string uuid)
         {
             Href = href;
             Name = name;

@@ -109,7 +109,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.NetworkProject> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Fabric Network scope
+        /// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Supported Network types - EVPLAN, EPLAN, IPWAN
+        /// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -210,13 +210,13 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.NetworkProjectArgs> Project { get; set; } = null!;
 
         /// <summary>
-        /// Fabric Network scope
+        /// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
         /// <summary>
-        /// Supported Network types - EVPLAN, EPLAN, IPWAN
+        /// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.NetworkProjectGetArgs>? Project { get; set; }
 
         /// <summary>
-        /// Fabric Network scope
+        /// Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -302,7 +302,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Supported Network types - EVPLAN, EPLAN, IPWAN
+        /// Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -1676,16 +1676,23 @@ class ConnectionASideAccessPointLocation(dict):
 @pulumi.output_type
 class ConnectionASideAccessPointNetwork(dict):
     def __init__(__self__, *,
-                 href: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 uuid: str,
+                 href: Optional[str] = None):
         """
-        :param str href: Unique Resource Identifier
         :param str uuid: Equinix-assigned Network identifier
+        :param str href: Unique Resource Identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -1694,14 +1701,6 @@ class ConnectionASideAccessPointNetwork(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -1961,24 +1960,31 @@ class ConnectionASideAccessPointRouter(dict):
 @pulumi.output_type
 class ConnectionASideAccessPointVirtualDevice(dict):
     def __init__(__self__, *,
+                 uuid: str,
                  href: Optional[str] = None,
                  name: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
+        :param str uuid: Equinix-assigned Virtual Device identifier
         :param str href: Unique Resource Identifier
         :param str name: Customer-assigned Virtual Device Name
         :param str type: Virtual Device type
-        :param str uuid: Equinix-assigned Virtual Device identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -2003,14 +2009,6 @@ class ConnectionASideAccessPointVirtualDevice(dict):
         Virtual Device type
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -3542,16 +3540,23 @@ class ConnectionZSideAccessPointLocation(dict):
 @pulumi.output_type
 class ConnectionZSideAccessPointNetwork(dict):
     def __init__(__self__, *,
-                 href: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 uuid: str,
+                 href: Optional[str] = None):
         """
-        :param str href: Unique Resource Identifier
         :param str uuid: Equinix-assigned Network identifier
+        :param str href: Unique Resource Identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -3560,14 +3565,6 @@ class ConnectionZSideAccessPointNetwork(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Network identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -3827,24 +3824,31 @@ class ConnectionZSideAccessPointRouter(dict):
 @pulumi.output_type
 class ConnectionZSideAccessPointVirtualDevice(dict):
     def __init__(__self__, *,
+                 uuid: str,
                  href: Optional[str] = None,
                  name: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
+        :param str uuid: Equinix-assigned Virtual Device identifier
         :param str href: Unique Resource Identifier
         :param str name: Customer-assigned Virtual Device Name
         :param str type: Virtual Device type
-        :param str uuid: Equinix-assigned Virtual Device identifier
         """
+        pulumi.set(__self__, "uuid", uuid)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -3869,14 +3873,6 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
         Virtual Device type
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -13117,14 +13113,13 @@ class GetConnectionASideAccessPointLocationResult(dict):
 class GetConnectionASideAccessPointNetworkResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 uuid: Optional[str] = None):
+                 uuid: str):
         """
         :param str href: Unique Resource Identifier
         :param str uuid: Equinix-assigned Network identifier
         """
         pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -13136,7 +13131,7 @@ class GetConnectionASideAccessPointNetworkResult(dict):
 
     @property
     @pulumi.getter
-    def uuid(self) -> Optional[str]:
+    def uuid(self) -> str:
         """
         Equinix-assigned Network identifier
         """
@@ -13370,22 +13365,21 @@ class GetConnectionASideAccessPointRouterResult(dict):
 class GetConnectionASideAccessPointVirtualDeviceResult(dict):
     def __init__(__self__, *,
                  href: str,
+                 uuid: str,
                  name: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned Virtual Device identifier
         :param str name: Customer-assigned Virtual Device Name
         :param str type: Virtual Device type
-        :param str uuid: Equinix-assigned Virtual Device identifier
         """
         pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "uuid", uuid)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -13394,6 +13388,14 @@ class GetConnectionASideAccessPointVirtualDeviceResult(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -13410,14 +13412,6 @@ class GetConnectionASideAccessPointVirtualDeviceResult(dict):
         Virtual Device type
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -14803,14 +14797,13 @@ class GetConnectionZSideAccessPointLocationResult(dict):
 class GetConnectionZSideAccessPointNetworkResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 uuid: Optional[str] = None):
+                 uuid: str):
         """
         :param str href: Unique Resource Identifier
         :param str uuid: Equinix-assigned Network identifier
         """
         pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -14822,7 +14815,7 @@ class GetConnectionZSideAccessPointNetworkResult(dict):
 
     @property
     @pulumi.getter
-    def uuid(self) -> Optional[str]:
+    def uuid(self) -> str:
         """
         Equinix-assigned Network identifier
         """
@@ -15056,22 +15049,21 @@ class GetConnectionZSideAccessPointRouterResult(dict):
 class GetConnectionZSideAccessPointVirtualDeviceResult(dict):
     def __init__(__self__, *,
                  href: str,
+                 uuid: str,
                  name: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned Virtual Device identifier
         :param str name: Customer-assigned Virtual Device Name
         :param str type: Virtual Device type
-        :param str uuid: Equinix-assigned Virtual Device identifier
         """
         pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "uuid", uuid)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -15080,6 +15072,14 @@ class GetConnectionZSideAccessPointVirtualDeviceResult(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -15096,14 +15096,6 @@ class GetConnectionZSideAccessPointVirtualDeviceResult(dict):
         Virtual Device type
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -15908,14 +15900,13 @@ class GetConnectionsDataASideAccessPointLocationResult(dict):
 class GetConnectionsDataASideAccessPointNetworkResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 uuid: Optional[str] = None):
+                 uuid: str):
         """
         :param str href: Unique Resource Identifier
         :param str uuid: Equinix-assigned Network identifier
         """
         pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -15927,7 +15918,7 @@ class GetConnectionsDataASideAccessPointNetworkResult(dict):
 
     @property
     @pulumi.getter
-    def uuid(self) -> Optional[str]:
+    def uuid(self) -> str:
         """
         Equinix-assigned Network identifier
         """
@@ -16161,22 +16152,21 @@ class GetConnectionsDataASideAccessPointRouterResult(dict):
 class GetConnectionsDataASideAccessPointVirtualDeviceResult(dict):
     def __init__(__self__, *,
                  href: str,
+                 uuid: str,
                  name: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned Virtual Device identifier
         :param str name: Customer-assigned Virtual Device Name
         :param str type: Virtual Device type
-        :param str uuid: Equinix-assigned Virtual Device identifier
         """
         pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "uuid", uuid)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -16185,6 +16175,14 @@ class GetConnectionsDataASideAccessPointVirtualDeviceResult(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -16201,14 +16199,6 @@ class GetConnectionsDataASideAccessPointVirtualDeviceResult(dict):
         Virtual Device type
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -17335,14 +17325,13 @@ class GetConnectionsDataZSideAccessPointLocationResult(dict):
 class GetConnectionsDataZSideAccessPointNetworkResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 uuid: Optional[str] = None):
+                 uuid: str):
         """
         :param str href: Unique Resource Identifier
         :param str uuid: Equinix-assigned Network identifier
         """
         pulumi.set(__self__, "href", href)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -17354,7 +17343,7 @@ class GetConnectionsDataZSideAccessPointNetworkResult(dict):
 
     @property
     @pulumi.getter
-    def uuid(self) -> Optional[str]:
+    def uuid(self) -> str:
         """
         Equinix-assigned Network identifier
         """
@@ -17588,22 +17577,21 @@ class GetConnectionsDataZSideAccessPointRouterResult(dict):
 class GetConnectionsDataZSideAccessPointVirtualDeviceResult(dict):
     def __init__(__self__, *,
                  href: str,
+                 uuid: str,
                  name: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 type: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned Virtual Device identifier
         :param str name: Customer-assigned Virtual Device Name
         :param str type: Virtual Device type
-        :param str uuid: Equinix-assigned Virtual Device identifier
         """
         pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "uuid", uuid)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -17612,6 +17600,14 @@ class GetConnectionsDataZSideAccessPointVirtualDeviceResult(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
@@ -17628,14 +17624,6 @@ class GetConnectionsDataZSideAccessPointVirtualDeviceResult(dict):
         Virtual Device type
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned Virtual Device identifier
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -17731,7 +17719,7 @@ class GetConnectionsFilterResult(dict):
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -17769,7 +17757,7 @@ class GetConnectionsFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
         """
         return pulumi.get(self, "property")
 
@@ -17812,7 +17800,7 @@ class GetConnectionsSortResult(dict):
                  property: Optional[str] = None):
         """
         :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
-        :param str property: The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        :param str property: The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
@@ -17831,7 +17819,7 @@ class GetConnectionsSortResult(dict):
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
         """
         return pulumi.get(self, "property")
 
@@ -18603,9 +18591,9 @@ class GetNetworksDataResult(dict):
         :param Sequence['GetNetworksDataNotificationArgs'] notifications: Preferences for notifications on Fabric Network configuration or status changes
         :param Sequence['GetNetworksDataOperationArgs'] operations: Network operation information that is associated with this Fabric Network
         :param Sequence['GetNetworksDataProjectArgs'] projects: Fabric Network project
-        :param str scope: Fabric Network scope
+        :param str scope: Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         :param str state: Fabric Network overall state
-        :param str type: Supported Network types - EVPLAN, EPLAN, IPWAN
+        :param str type: Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         :param str uuid: Equinix-assigned network identifier
         """
         pulumi.set(__self__, "change_logs", change_logs)
@@ -18698,7 +18686,7 @@ class GetNetworksDataResult(dict):
     @pulumi.getter
     def scope(self) -> str:
         """
-        Fabric Network scope
+        Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         """
         return pulumi.get(self, "scope")
 
@@ -18714,7 +18702,7 @@ class GetNetworksDataResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Supported Network types - EVPLAN, EPLAN, IPWAN
+        Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         """
         return pulumi.get(self, "type")
 

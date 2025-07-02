@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  * });
  * export const id = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.id);
  * export const name = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.name);
- * export const accountNumber = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.accounts?.[0]?.accountNumber);
+ * export const accountNumber = cloudRouterDataName.then(cloudRouterDataName => .map(account => (account.accountNumber)));
  * export const equinixAsn = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.equinixAsn);
- * export const metroCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroCode);
- * export const metroName = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroName);
- * export const region = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.region);
- * export const packageCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.packages?.[0]?.code);
- * export const projectId = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.projects?.[0]?.projectId);
+ * export const metroCode = cloudRouterDataName.then(cloudRouterDataName => .map(location => (location.metroCode)));
+ * export const metroName = cloudRouterDataName.then(cloudRouterDataName => .map(location => (location.metroName)));
+ * export const region = cloudRouterDataName.then(cloudRouterDataName => .map(location => (location.region)));
+ * export const packageCode = cloudRouterDataName.then(cloudRouterDataName => .map(package => (_package.code)));
+ * export const projectId = cloudRouterDataName.then(cloudRouterDataName => .map(project => (project.projectId)));
  * export const type = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.type);
  * ```
  */
@@ -143,13 +143,13 @@ export interface GetCloudRouterResult {
  * });
  * export const id = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.id);
  * export const name = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.name);
- * export const accountNumber = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.accounts?.[0]?.accountNumber);
+ * export const accountNumber = cloudRouterDataName.then(cloudRouterDataName => .map(account => (account.accountNumber)));
  * export const equinixAsn = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.equinixAsn);
- * export const metroCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroCode);
- * export const metroName = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroName);
- * export const region = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.region);
- * export const packageCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.packages?.[0]?.code);
- * export const projectId = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.projects?.[0]?.projectId);
+ * export const metroCode = cloudRouterDataName.then(cloudRouterDataName => .map(location => (location.metroCode)));
+ * export const metroName = cloudRouterDataName.then(cloudRouterDataName => .map(location => (location.metroName)));
+ * export const region = cloudRouterDataName.then(cloudRouterDataName => .map(location => (location.region)));
+ * export const packageCode = cloudRouterDataName.then(cloudRouterDataName => .map(package => (_package.code)));
+ * export const projectId = cloudRouterDataName.then(cloudRouterDataName => .map(project => (project.projectId)));
  * export const type = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.type);
  * ```
  */

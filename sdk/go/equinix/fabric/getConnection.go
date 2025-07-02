@@ -16,47 +16,6 @@ import (
 // Additional documentation:
 // * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
 // * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			connectionDataName, err := fabric.LookupConnection(ctx, &fabric.LookupConnectionArgs{
-//				Uuid: "<uuid_of_connection>",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("id", connectionDataName.Id)
-//			ctx.Export("name", connectionDataName.Bandwidth)
-//			ctx.Export("accountNumber", connectionDataName.Account.AccountNumber)
-//			ctx.Export("bandwidth", connectionDataName.Bandwidth)
-//			ctx.Export("projectId", connectionDataName.Project.ProjectId)
-//			ctx.Export("redundancyGroup", connectionDataName.Redundancy.Group)
-//			ctx.Export("redundancyPriority", connectionDataName.Redundancy.Priority)
-//			ctx.Export("state", connectionDataName.State)
-//			ctx.Export("type", connectionDataName.Type)
-//			ctx.Export("accessPointType", connectionDataName.ASide.AccessPoint.Type)
-//			ctx.Export("accessPointLinkProtocolType", connectionDataName.ASide.AccessPoint.LinkProtocol.Type)
-//			ctx.Export("accessPointLinkProtocolVlanTag", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanTag)
-//			ctx.Export("accessPointLinkProtocolVlanCTag", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanCTag)
-//			ctx.Export("accessPointLinkProtocolVlanSTag", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanSTag)
-//			ctx.Export("accessPointProviderConnectionId", connectionDataName.ASide.AccessPoint.ProviderConnectionId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult

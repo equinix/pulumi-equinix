@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,15 +65,15 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
      * Equinix-assigned Virtual Device identifier
      * 
      */
-    @Import(name="uuid")
-    private @Nullable Output<String> uuid;
+    @Import(name="uuid", required=true)
+    private Output<String> uuid;
 
     /**
      * @return Equinix-assigned Virtual Device identifier
      * 
      */
-    public Optional<Output<String>> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public Output<String> uuid() {
+        return this.uuid;
     }
 
     private ConnectionZSideAccessPointVirtualDeviceArgs() {}
@@ -171,7 +172,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder uuid(@Nullable Output<String> uuid) {
+        public Builder uuid(Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
@@ -187,6 +188,9 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
         }
 
         public ConnectionZSideAccessPointVirtualDeviceArgs build() {
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("ConnectionZSideAccessPointVirtualDeviceArgs", "uuid");
+            }
             return $;
         }
     }

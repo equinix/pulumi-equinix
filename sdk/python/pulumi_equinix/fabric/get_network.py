@@ -155,7 +155,7 @@ class GetNetworkResult:
     @pulumi.getter
     def scope(self) -> str:
         """
-        Fabric Network scope
+        Fabric Network scope. Valid values: [REGIONAL GLOBAL LOCAL]. Note: When scope is REGIONAL, the location.region field is required.
         """
         return pulumi.get(self, "scope")
 
@@ -171,7 +171,7 @@ class GetNetworkResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Supported Network types - EVPLAN, EPLAN, IPWAN
+        Supported Network types - EVPLAN, EPLAN, IPWAN, EVPTREE, EPTREE
         """
         return pulumi.get(self, "type")
 
@@ -226,7 +226,7 @@ def get_network(uuid: Optional[str] = None,
     pulumi.export("name", network_data_name.name)
     pulumi.export("scope", network_data_name.scope)
     pulumi.export("type", network_data_name.type)
-    pulumi.export("region", network_data_name.locations[0].region)
+    pulumi.export("region", [location.region for location in network_data_name.locations])
     ```
 
 
@@ -272,7 +272,7 @@ def get_network_output(uuid: Optional[pulumi.Input[str]] = None,
     pulumi.export("name", network_data_name.name)
     pulumi.export("scope", network_data_name.scope)
     pulumi.export("type", network_data_name.type)
-    pulumi.export("region", network_data_name.locations[0].region)
+    pulumi.export("region", [location.region for location in network_data_name.locations])
     ```
 
 

@@ -625,7 +625,7 @@ class PrecisionTimeService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ntpAdvancedConfigurations")
-    def ntp_advanced_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.PrecisionTimeServiceNtpAdvancedConfiguration']]]:
+    def ntp_advanced_configurations(self) -> pulumi.Output[Sequence['outputs.PrecisionTimeServiceNtpAdvancedConfiguration']]:
         """
         NTP Advanced configuration
         """
@@ -665,7 +665,7 @@ class PrecisionTimeService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ptpAdvancedConfiguration")
-    def ptp_advanced_configuration(self) -> pulumi.Output[Optional['outputs.PrecisionTimeServicePtpAdvancedConfiguration']]:
+    def ptp_advanced_configuration(self) -> pulumi.Output['outputs.PrecisionTimeServicePtpAdvancedConfiguration']:
         """
         PTP Advanced Configuration
         """

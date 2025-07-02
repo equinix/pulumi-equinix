@@ -51,7 +51,7 @@ namespace Pulumi.Equinix.Metal
     ///         Hostname = "test",
     ///         Plan = Equinix.Metal.Plan.C3SmallX86,
     ///         Metro = "ny",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         OperatingSystem = "ubuntu_24_04",
     ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
     ///         ProjectId = projectId,
     ///     });
@@ -85,7 +85,7 @@ namespace Pulumi.Equinix.Metal
     ///         Hostname = "test",
     ///         Plan = Equinix.Metal.Plan.C3SmallX86,
     ///         Metro = "ny",
-    ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+    ///         OperatingSystem = "ubuntu_24_04",
     ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
     ///         ProjectId = projectId,
     ///     });

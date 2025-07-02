@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     projectId: projectId,
  *     metro: "sv",
  *     plan: equinix.metal.Plan.C3SmallX86,
- *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     operatingSystem: "ubuntu_24_04",
  *     hostname: "test",
  *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     ipAddresses: [

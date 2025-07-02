@@ -31,7 +31,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("id", metro.Id)
 //			ctx.Export("type", metro.Type)
 //			ctx.Export("metroCode", metro.MetroCode)
 //			ctx.Export("region", metro.Region)

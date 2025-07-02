@@ -93,6 +93,26 @@ def get_metros(pagination: Optional[Union['GetMetrosPaginationArgs', 'GetMetrosP
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    metros = equinix.fabric.get_metros(pagination={
+        "limit": 12,
+        "offset": 6,
+    })
+    pulumi.export("numberOfReturnedMetros", len(metros.datas))
+    pulumi.export("firstMetroType", metros.datas[0].type)
+    pulumi.export("firstMetroCode", metros.datas[0].code)
+    pulumi.export("firstMetroRegion", metros.datas[0].region)
+    pulumi.export("firstMetroName", metros.datas[0].name)
+    pulumi.export("firstMetroEquinixAsn", metros.datas[0].equinix_asn)
+    pulumi.export("firstMetroLocalVcBandwidthMax", metros.datas[0].local_vc_bandwidth_max)
+    pulumi.export("firstMetroGeoCoordinates", metros.datas[0].geo_coordinates)
+    pulumi.export("firstMetroConnectedMetros", metros.datas[0].connected_metros)
+    pulumi.export("firstMetroGeoScopes", metros.datas[0].geo_scopes)
+    ```
+
 
     :param Union['GetMetrosPaginationArgs', 'GetMetrosPaginationArgsDict'] pagination: Pagination details for the returned metro list
     :param str presence: User On Boarded Metros based on Fabric resource availability
@@ -113,6 +133,26 @@ def get_metros_output(pagination: Optional[pulumi.Input[Union['GetMetrosPaginati
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetrosResult]:
     """
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    metros = equinix.fabric.get_metros(pagination={
+        "limit": 12,
+        "offset": 6,
+    })
+    pulumi.export("numberOfReturnedMetros", len(metros.datas))
+    pulumi.export("firstMetroType", metros.datas[0].type)
+    pulumi.export("firstMetroCode", metros.datas[0].code)
+    pulumi.export("firstMetroRegion", metros.datas[0].region)
+    pulumi.export("firstMetroName", metros.datas[0].name)
+    pulumi.export("firstMetroEquinixAsn", metros.datas[0].equinix_asn)
+    pulumi.export("firstMetroLocalVcBandwidthMax", metros.datas[0].local_vc_bandwidth_max)
+    pulumi.export("firstMetroGeoCoordinates", metros.datas[0].geo_coordinates)
+    pulumi.export("firstMetroConnectedMetros", metros.datas[0].connected_metros)
+    pulumi.export("firstMetroGeoScopes", metros.datas[0].geo_scopes)
+    ```
 
 
     :param Union['GetMetrosPaginationArgs', 'GetMetrosPaginationArgsDict'] pagination: Pagination details for the returned metro list

@@ -192,7 +192,6 @@ def get_metro(metro_code: Optional[str] = None,
     import pulumi_equinix as equinix
 
     metro = equinix.fabric.get_metro(metro_code="<metro_code>")
-    pulumi.export("id", metro.id)
     pulumi.export("type", metro.type)
     pulumi.export("metroCode", metro.metro_code)
     pulumi.export("region", metro.region)
@@ -235,7 +234,6 @@ def get_metro_output(metro_code: Optional[pulumi.Input[str]] = None,
     import pulumi_equinix as equinix
 
     metro = equinix.fabric.get_metro(metro_code="<metro_code>")
-    pulumi.export("id", metro.id)
     pulumi.export("type", metro.type)
     pulumi.export("metroCode", metro.metro_code)
     pulumi.export("region", metro.region)

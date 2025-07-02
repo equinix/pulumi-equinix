@@ -287,30 +287,6 @@ def get_connection(uuid: Optional[str] = None,
     * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    connection_data_name = equinix.fabric.get_connection(uuid="<uuid_of_connection>")
-    pulumi.export("id", connection_data_name.id)
-    pulumi.export("name", connection_data_name.bandwidth)
-    pulumi.export("accountNumber", connection_data_name.account.account_number)
-    pulumi.export("bandwidth", connection_data_name.bandwidth)
-    pulumi.export("projectId", connection_data_name.project.project_id)
-    pulumi.export("redundancyGroup", connection_data_name.redundancy.group)
-    pulumi.export("redundancyPriority", connection_data_name.redundancy.priority)
-    pulumi.export("state", connection_data_name.state)
-    pulumi.export("type", connection_data_name.type)
-    pulumi.export("accessPointType", connection_data_name.a_side.access_point.type)
-    pulumi.export("accessPointLinkProtocolType", connection_data_name.a_side.access_point.link_protocol.type)
-    pulumi.export("accessPointLinkProtocolVlanTag", connection_data_name.a_side.access_point.link_protocol.vlan_tag)
-    pulumi.export("accessPointLinkProtocolVlanCTag", connection_data_name.a_side.access_point.link_protocol.vlan_c_tag)
-    pulumi.export("accessPointLinkProtocolVlanSTag", connection_data_name.a_side.access_point.link_protocol.vlan_s_tag)
-    pulumi.export("accessPointProviderConnectionId", connection_data_name.a_side.access_point.provider_connection_id)
-    ```
-
 
     :param str uuid: Equinix-assigned connection identifier
     """
@@ -348,30 +324,6 @@ def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
     Additional documentation:
     * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
     * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    connection_data_name = equinix.fabric.get_connection(uuid="<uuid_of_connection>")
-    pulumi.export("id", connection_data_name.id)
-    pulumi.export("name", connection_data_name.bandwidth)
-    pulumi.export("accountNumber", connection_data_name.account.account_number)
-    pulumi.export("bandwidth", connection_data_name.bandwidth)
-    pulumi.export("projectId", connection_data_name.project.project_id)
-    pulumi.export("redundancyGroup", connection_data_name.redundancy.group)
-    pulumi.export("redundancyPriority", connection_data_name.redundancy.priority)
-    pulumi.export("state", connection_data_name.state)
-    pulumi.export("type", connection_data_name.type)
-    pulumi.export("accessPointType", connection_data_name.a_side.access_point.type)
-    pulumi.export("accessPointLinkProtocolType", connection_data_name.a_side.access_point.link_protocol.type)
-    pulumi.export("accessPointLinkProtocolVlanTag", connection_data_name.a_side.access_point.link_protocol.vlan_tag)
-    pulumi.export("accessPointLinkProtocolVlanCTag", connection_data_name.a_side.access_point.link_protocol.vlan_c_tag)
-    pulumi.export("accessPointLinkProtocolVlanSTag", connection_data_name.a_side.access_point.link_protocol.vlan_s_tag)
-    pulumi.export("accessPointProviderConnectionId", connection_data_name.a_side.access_point.provider_connection_id)
-    ```
 
 
     :param str uuid: Equinix-assigned connection identifier

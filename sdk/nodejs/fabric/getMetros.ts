@@ -9,6 +9,28 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const metros = equinix.fabric.getMetros({
+ *     pagination: {
+ *         limit: 12,
+ *         offset: 6,
+ *     },
+ * });
+ * export const numberOfReturnedMetros = metros.then(metros => metros.datas).length;
+ * export const firstMetroType = metros.then(metros => metros.datas?.[0]?.type);
+ * export const firstMetroCode = metros.then(metros => metros.datas?.[0]?.code);
+ * export const firstMetroRegion = metros.then(metros => metros.datas?.[0]?.region);
+ * export const firstMetroName = metros.then(metros => metros.datas?.[0]?.name);
+ * export const firstMetroEquinixAsn = metros.then(metros => metros.datas?.[0]?.equinixAsn);
+ * export const firstMetroLocalVcBandwidthMax = metros.then(metros => metros.datas?.[0]?.localVcBandwidthMax);
+ * export const firstMetroGeoCoordinates = metros.then(metros => metros.datas?.[0]?.geoCoordinates);
+ * export const firstMetroConnectedMetros = metros.then(metros => metros.datas?.[0]?.connectedMetros);
+ * export const firstMetroGeoScopes = metros.then(metros => metros.datas?.[0]?.geoScopes);
+ * ```
  */
 export function getMetros(args: GetMetrosArgs, opts?: pulumi.InvokeOptions): Promise<GetMetrosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +77,28 @@ export interface GetMetrosResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const metros = equinix.fabric.getMetros({
+ *     pagination: {
+ *         limit: 12,
+ *         offset: 6,
+ *     },
+ * });
+ * export const numberOfReturnedMetros = metros.then(metros => metros.datas).length;
+ * export const firstMetroType = metros.then(metros => metros.datas?.[0]?.type);
+ * export const firstMetroCode = metros.then(metros => metros.datas?.[0]?.code);
+ * export const firstMetroRegion = metros.then(metros => metros.datas?.[0]?.region);
+ * export const firstMetroName = metros.then(metros => metros.datas?.[0]?.name);
+ * export const firstMetroEquinixAsn = metros.then(metros => metros.datas?.[0]?.equinixAsn);
+ * export const firstMetroLocalVcBandwidthMax = metros.then(metros => metros.datas?.[0]?.localVcBandwidthMax);
+ * export const firstMetroGeoCoordinates = metros.then(metros => metros.datas?.[0]?.geoCoordinates);
+ * export const firstMetroConnectedMetros = metros.then(metros => metros.datas?.[0]?.connectedMetros);
+ * export const firstMetroGeoScopes = metros.then(metros => metros.datas?.[0]?.geoScopes);
+ * ```
  */
 export function getMetrosOutput(args: GetMetrosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetrosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

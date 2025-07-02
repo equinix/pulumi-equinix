@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .hostname("test")
  *             .plan("c3.small.x86")
  *             .metro("ny")
- *             .operatingSystem("ubuntu_20_04")
+ *             .operatingSystem("ubuntu_24_04")
  *             .billingCycle("hourly")
  *             .projectId(projectId)
  *             .build());
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *             .hostname("test")
  *             .plan("c3.small.x86")
  *             .metro("ny")
- *             .operatingSystem("ubuntu_20_04")
+ *             .operatingSystem("ubuntu_24_04")
  *             .billingCycle("hourly")
  *             .projectId(projectId)
  *             .build());
