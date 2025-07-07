@@ -180,6 +180,16 @@ export const getStream: typeof import("./getStream").getStream = null as any;
 export const getStreamOutput: typeof import("./getStream").getStreamOutput = null as any;
 utilities.lazyLoad(exports, ["getStream","getStreamOutput"], () => require("./getStream"));
 
+export { GetStreamAlertRuleArgs, GetStreamAlertRuleResult, GetStreamAlertRuleOutputArgs } from "./getStreamAlertRule";
+export const getStreamAlertRule: typeof import("./getStreamAlertRule").getStreamAlertRule = null as any;
+export const getStreamAlertRuleOutput: typeof import("./getStreamAlertRule").getStreamAlertRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getStreamAlertRule","getStreamAlertRuleOutput"], () => require("./getStreamAlertRule"));
+
+export { GetStreamAlertRulesArgs, GetStreamAlertRulesResult, GetStreamAlertRulesOutputArgs } from "./getStreamAlertRules";
+export const getStreamAlertRules: typeof import("./getStreamAlertRules").getStreamAlertRules = null as any;
+export const getStreamAlertRulesOutput: typeof import("./getStreamAlertRules").getStreamAlertRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getStreamAlertRules","getStreamAlertRulesOutput"], () => require("./getStreamAlertRules"));
+
 export { GetStreamAttachmentArgs, GetStreamAttachmentResult, GetStreamAttachmentOutputArgs } from "./getStreamAttachment";
 export const getStreamAttachment: typeof import("./getStreamAttachment").getStreamAttachment = null as any;
 export const getStreamAttachmentOutput: typeof import("./getStreamAttachment").getStreamAttachmentOutput = null as any;
@@ -255,6 +265,11 @@ export type Stream = import("./stream").Stream;
 export const Stream: typeof import("./stream").Stream = null as any;
 utilities.lazyLoad(exports, ["Stream"], () => require("./stream"));
 
+export { StreamAlertRuleArgs, StreamAlertRuleState } from "./streamAlertRule";
+export type StreamAlertRule = import("./streamAlertRule").StreamAlertRule;
+export const StreamAlertRule: typeof import("./streamAlertRule").StreamAlertRule = null as any;
+utilities.lazyLoad(exports, ["StreamAlertRule"], () => require("./streamAlertRule"));
+
 export { StreamAttachmentArgs, StreamAttachmentState } from "./streamAttachment";
 export type StreamAttachment = import("./streamAttachment").StreamAttachment;
 export const StreamAttachment: typeof import("./streamAttachment").StreamAttachment = null as any;
@@ -301,6 +316,8 @@ const _module = {
                 return new ServiceToken(name, <any>undefined, { urn })
             case "equinix:fabric/stream:Stream":
                 return new Stream(name, <any>undefined, { urn })
+            case "equinix:fabric/streamAlertRule:StreamAlertRule":
+                return new StreamAlertRule(name, <any>undefined, { urn })
             case "equinix:fabric/streamAttachment:StreamAttachment":
                 return new StreamAttachment(name, <any>undefined, { urn })
             case "equinix:fabric/streamSubscription:StreamSubscription":
@@ -324,5 +341,6 @@ pulumi.runtime.registerResourceModule("equinix", "fabric/routingProtocol", _modu
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceProfile", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceToken", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/stream", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/streamAlertRule", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/streamAttachment", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/streamSubscription", _module)

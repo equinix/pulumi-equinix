@@ -3,7 +3,7 @@ name: equinix-fabric-route_aggregation_rule
 runtime: yaml
 resources:
   raRule:
-    type: equinix:fabric:RouteAggregationRule
+    type: equinix:fabricRouteAggregationRule
     name: ra_rule
     properties:
       routeAggregationId: <route_aggregation_id>

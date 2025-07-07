@@ -505,6 +505,12 @@ func Provider() tfbridge.ProviderInfo {
 					ReplaceExamplesSection: true,
 				},
 			},
+			"equinix_fabric_stream_alert_rule": {
+				Tok: makeEquinixResource(fabricMod, "StreamAlertRule"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			"equinix_fabric_routing_protocol": {
 				Tok: makeEquinixResource(fabricMod, "RoutingProtocol"),
 				Docs: &tfbridge.DocInfo{
@@ -1207,6 +1213,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_fabric_streams": {
 				Tok: makeEquinixDataSource(fabricMod, "Streams"),
+			},
+			"equinix_fabric_stream_alert_rule": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamAlertRule"),
+			},
+			"equinix_fabric_stream_alert_rules": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamAlertRules"),
 			},
 			"equinix_fabric_stream_attachment": {
 				Tok: makeEquinixDataSource(fabricMod, "StreamAttachment"),

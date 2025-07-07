@@ -78,7 +78,7 @@ public class App {
 ```yaml
 resources:
   newStreamAlertRule:
-    type: equinix:FabricStreamAlertRule
+    type: equinix:fabricStreamAlertRule
     name: new_stream_alert_rule
     properties:
       streamId: <stream_id>
@@ -92,7 +92,7 @@ resources:
       criticalThreshold: <critical_threshold>
       metricName: equinix.fabric.connection.bandwidth_tx.usage
       resourceSelector:
-        includes:
+        include:
           - '*/connections/<connection_id>'
 outputs:
   streamAlertRuleType: ${newStreamAlertRule.type}

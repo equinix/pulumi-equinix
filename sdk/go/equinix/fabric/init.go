@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceToken{}
 	case "equinix:fabric/stream:Stream":
 		r = &Stream{}
+	case "equinix:fabric/streamAlertRule:StreamAlertRule":
+		r = &StreamAlertRule{}
 	case "equinix:fabric/streamAttachment:StreamAttachment":
 		r = &StreamAttachment{}
 	case "equinix:fabric/streamSubscription:StreamSubscription":
@@ -134,6 +136,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"fabric/stream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/streamAlertRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

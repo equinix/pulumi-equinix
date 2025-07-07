@@ -3,7 +3,7 @@ name: equinix-fabric-route_aggregation
 runtime: yaml
 resources:
   new-ra:
-    type: equinix:fabric:RouteAggregation
+    type: equinix:fabricRouteAggregation
     properties:
       type: BGP_IPv4_PREFIX_AGGREGATION
       name: new-ra
