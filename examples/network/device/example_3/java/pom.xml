@@ -30,7 +30,7 @@
 				</dependency><dependency>
 					<groupId>com.pulumi</groupId>
 					<artifactId>std</artifactId>
-					<version>2.2.0</version>
+					<version>1.7.3</version>
 				</dependency>
 			</dependencies>
 

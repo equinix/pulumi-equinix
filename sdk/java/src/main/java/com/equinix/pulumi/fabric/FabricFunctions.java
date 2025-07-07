@@ -64,6 +64,10 @@ import com.equinix.pulumi.fabric.inputs.GetServiceTokenArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokenPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokensArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceTokensPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRuleArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRulePlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRulesArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRulesPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamAttachmentArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamAttachmentPlainArgs;
@@ -106,6 +110,8 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfileResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceTokenResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceTokensResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamAlertRuleResult;
+import com.equinix.pulumi.fabric.outputs.GetStreamAlertRulesResult;
 import com.equinix.pulumi.fabric.outputs.GetStreamAttachmentResult;
 import com.equinix.pulumi.fabric.outputs.GetStreamAttachmentsResult;
 import com.equinix.pulumi.fabric.outputs.GetStreamResult;
@@ -6767,6 +6773,536 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetStreamResult> getStreamPlain(GetStreamPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getStream:getStream", TypeShape.of(GetStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRule = FabricFunctions.getStreamAlertRule(GetStreamAlertRuleArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .streamAlertRuleId("<uuid_of_stream_alert_rule>")
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRuleType", data.equinix_fabric_stream_alert_rule().alert_rule().type());
+     *         ctx.export("streamAlertRuleId", data.equinix_fabric_stream_alert_rule().alert_rule().uuid());
+     *         ctx.export("streamAlertRuleState", data.equinix_fabric_stream_alert_rule().alert_rule().state());
+     *         ctx.export("streamAlertRuleStreamId", data.equinix_fabric_stream_alert_rule().alert_rule().stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAlertRuleResult> getStreamAlertRule(GetStreamAlertRuleArgs args) {
+        return getStreamAlertRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRule = FabricFunctions.getStreamAlertRule(GetStreamAlertRuleArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .streamAlertRuleId("<uuid_of_stream_alert_rule>")
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRuleType", data.equinix_fabric_stream_alert_rule().alert_rule().type());
+     *         ctx.export("streamAlertRuleId", data.equinix_fabric_stream_alert_rule().alert_rule().uuid());
+     *         ctx.export("streamAlertRuleState", data.equinix_fabric_stream_alert_rule().alert_rule().state());
+     *         ctx.export("streamAlertRuleStreamId", data.equinix_fabric_stream_alert_rule().alert_rule().stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAlertRuleResult> getStreamAlertRulePlain(GetStreamAlertRulePlainArgs args) {
+        return getStreamAlertRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRule = FabricFunctions.getStreamAlertRule(GetStreamAlertRuleArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .streamAlertRuleId("<uuid_of_stream_alert_rule>")
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRuleType", data.equinix_fabric_stream_alert_rule().alert_rule().type());
+     *         ctx.export("streamAlertRuleId", data.equinix_fabric_stream_alert_rule().alert_rule().uuid());
+     *         ctx.export("streamAlertRuleState", data.equinix_fabric_stream_alert_rule().alert_rule().state());
+     *         ctx.export("streamAlertRuleStreamId", data.equinix_fabric_stream_alert_rule().alert_rule().stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAlertRuleResult> getStreamAlertRule(GetStreamAlertRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRule:getStreamAlertRule", TypeShape.of(GetStreamAlertRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRule = FabricFunctions.getStreamAlertRule(GetStreamAlertRuleArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .streamAlertRuleId("<uuid_of_stream_alert_rule>")
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRuleType", data.equinix_fabric_stream_alert_rule().alert_rule().type());
+     *         ctx.export("streamAlertRuleId", data.equinix_fabric_stream_alert_rule().alert_rule().uuid());
+     *         ctx.export("streamAlertRuleState", data.equinix_fabric_stream_alert_rule().alert_rule().state());
+     *         ctx.export("streamAlertRuleStreamId", data.equinix_fabric_stream_alert_rule().alert_rule().stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAlertRuleResult> getStreamAlertRule(GetStreamAlertRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRule:getStreamAlertRule", TypeShape.of(GetStreamAlertRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRule = FabricFunctions.getStreamAlertRule(GetStreamAlertRuleArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .streamAlertRuleId("<uuid_of_stream_alert_rule>")
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRuleType", data.equinix_fabric_stream_alert_rule().alert_rule().type());
+     *         ctx.export("streamAlertRuleId", data.equinix_fabric_stream_alert_rule().alert_rule().uuid());
+     *         ctx.export("streamAlertRuleState", data.equinix_fabric_stream_alert_rule().alert_rule().state());
+     *         ctx.export("streamAlertRuleStreamId", data.equinix_fabric_stream_alert_rule().alert_rule().stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAlertRuleResult> getStreamAlertRulePlain(GetStreamAlertRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStreamAlertRule:getStreamAlertRule", TypeShape.of(GetStreamAlertRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRules = FabricFunctions.getStreamAlertRules(GetStreamAlertRulesArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .pagination(GetStreamAlertRulesPaginationArgs.builder()
+     *                 .limit(5)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRulesType", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].type());
+     *         ctx.export("streamAlertRulesId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].uuid());
+     *         ctx.export("streamAlertRulesState", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].state());
+     *         ctx.export("streamAlertRulesStreamId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAlertRulesResult> getStreamAlertRules(GetStreamAlertRulesArgs args) {
+        return getStreamAlertRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRules = FabricFunctions.getStreamAlertRules(GetStreamAlertRulesArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .pagination(GetStreamAlertRulesPaginationArgs.builder()
+     *                 .limit(5)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRulesType", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].type());
+     *         ctx.export("streamAlertRulesId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].uuid());
+     *         ctx.export("streamAlertRulesState", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].state());
+     *         ctx.export("streamAlertRulesStreamId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAlertRulesResult> getStreamAlertRulesPlain(GetStreamAlertRulesPlainArgs args) {
+        return getStreamAlertRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRules = FabricFunctions.getStreamAlertRules(GetStreamAlertRulesArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .pagination(GetStreamAlertRulesPaginationArgs.builder()
+     *                 .limit(5)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRulesType", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].type());
+     *         ctx.export("streamAlertRulesId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].uuid());
+     *         ctx.export("streamAlertRulesState", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].state());
+     *         ctx.export("streamAlertRulesStreamId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAlertRulesResult> getStreamAlertRules(GetStreamAlertRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRules:getStreamAlertRules", TypeShape.of(GetStreamAlertRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRules = FabricFunctions.getStreamAlertRules(GetStreamAlertRulesArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .pagination(GetStreamAlertRulesPaginationArgs.builder()
+     *                 .limit(5)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRulesType", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].type());
+     *         ctx.export("streamAlertRulesId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].uuid());
+     *         ctx.export("streamAlertRulesState", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].state());
+     *         ctx.export("streamAlertRulesStreamId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStreamAlertRulesResult> getStreamAlertRules(GetStreamAlertRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRules:getStreamAlertRules", TypeShape.of(GetStreamAlertRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
+     * 
+     * Additional Documentation:
+     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
+     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesPaginationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataStreamAlertRules = FabricFunctions.getStreamAlertRules(GetStreamAlertRulesArgs.builder()
+     *             .streamId("<uuid_of_stream>")
+     *             .pagination(GetStreamAlertRulesPaginationArgs.builder()
+     *                 .limit(5)
+     *                 .offset(1)
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("streamAlertRulesType", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].type());
+     *         ctx.export("streamAlertRulesId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].uuid());
+     *         ctx.export("streamAlertRulesState", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].state());
+     *         ctx.export("streamAlertRulesStreamId", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].stream_id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStreamAlertRulesResult> getStreamAlertRulesPlain(GetStreamAlertRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getStreamAlertRules:getStreamAlertRules", TypeShape.of(GetStreamAlertRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs

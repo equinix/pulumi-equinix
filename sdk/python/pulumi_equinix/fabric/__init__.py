@@ -41,6 +41,8 @@ from .get_service_profiles import *
 from .get_service_token import *
 from .get_service_tokens import *
 from .get_stream import *
+from .get_stream_alert_rule import *
+from .get_stream_alert_rules import *
 from .get_stream_attachment import *
 from .get_stream_attachments import *
 from .get_stream_subscription import *
@@ -56,6 +58,7 @@ from .routing_protocol import *
 from .service_profile import *
 from .service_token import *
 from .stream import *
+from .stream_alert_rule import *
 from .stream_attachment import *
 from .stream_subscription import *
 from ._inputs import *
