@@ -7998,6 +7998,204 @@ export namespace fabric {
         total: number;
     }
 
+    export interface GetStreamAlertRuleChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetStreamAlertRuleResourceSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
+    export interface GetStreamAlertRulesData {
+        /**
+         * Details of the last change on the stream resource
+         */
+        changeLog: outputs.fabric.GetStreamAlertRulesDataChangeLog;
+        /**
+         * Stream alert rule metric critical threshold
+         */
+        criticalThreshold: string;
+        /**
+         * Customer-provided stream alert rule description
+         */
+        description: string;
+        /**
+         * Stream subscription enabled status
+         */
+        enabled: boolean;
+        /**
+         * Equinix assigned URI of the stream alert rule resource
+         */
+        href: string;
+        /**
+         * Stream alert rule metric name
+         */
+        metricName: string;
+        /**
+         * Customer-provided stream alert rule name
+         */
+        name: string;
+        /**
+         * Stream alert rule metric operand
+         */
+        operand: string;
+        /**
+         * Lists of metrics to be included/excluded on the stream alert rule
+         */
+        resourceSelector: outputs.fabric.GetStreamAlertRulesDataResourceSelector;
+        /**
+         * Value representing provisioning status for the stream resource
+         */
+        state: string;
+        /**
+         * Type of the stream alert rule
+         */
+        type: string;
+        /**
+         * Equinix assigned unique identifier of the stream subscription resource
+         */
+        uuid: string;
+        /**
+         * Stream alert rule metric warning threshold
+         */
+        warningThreshold: string;
+        /**
+         * Stream alert rule metric window size
+         */
+        windowSize: string;
+    }
+
+    export interface GetStreamAlertRulesDataChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetStreamAlertRulesDataResourceSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
+    export interface GetStreamAlertRulesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of alert rules available to the user making the request
+         */
+        total: number;
+    }
+
     export interface GetStreamAttachmentsData {
         /**
          * Value representing status for the stream attachment
@@ -10481,6 +10679,83 @@ export namespace fabric {
          * Equinix-assigned Virtual Device identifier
          */
         uuid: string;
+    }
+
+    export interface StreamAlertRuleChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface StreamAlertRuleResourceSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
+    export interface StreamAlertRuleTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
     }
 
     export interface StreamAttachmentTimeouts {

@@ -366,57 +366,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### example 9
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const sv = equinix.networkedge.getAccountOutput({
- *     metroCode: "SV",
- * });
- * const panwCluster = new equinix.networkedge.Device("panwCluster", {
- *     name: "tf-panw",
- *     metroCode: sv.apply(sv => sv.metroCode),
- *     typeCode: "PA-VM",
- *     selfManaged: true,
- *     byol: true,
- *     packageCode: "VM100",
- *     notifications: [
- *         "john@equinix.com",
- *         "marry@equinix.com",
- *         "fred@equinix.com",
- *     ],
- *     termLength: 12,
- *     accountNumber: sv.apply(sv => sv.number),
- *     version: "11.1.3",
- *     interfaceCount: 10,
- *     coreCount: 2,
- *     sshKey: {
- *         username: "test",
- *         keyName: "test-key",
- *     },
- *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
- *     clusterDetails: {
- *         clusterName: "tf-panw-cluster",
- *         node0: {
- *             vendorConfiguration: {
- *                 hostname: "panw-node0",
- *                 panoramaIpAddress: "x.x.x.x",
- *                 panoramaAuthKey: "xxxxxxxxxxx",
- *             },
- *             licenseToken: "licenseToken",
- *         },
- *         node1: {
- *             vendorConfiguration: {
- *                 hostname: "panw-node1",
- *                 panoramaIpAddress: "x.x.x.x",
- *                 panoramaAuthKey: "xxxxxxxxxxx",
- *             },
- *             licenseToken: "licenseToken",
- *         },
- *     },
- * });
- * ```
  * ### example Aviatrix Transit Edge
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -500,40 +449,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### example c8000v byol without default password
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const sv = equinix.networkedge.getAccountOutput({
- *     metroCode: "SV",
- * });
- * const c8000VByolWithtoutDefaultPassword = new equinix.networkedge.Device("c8000v-byol-withtout-default-password", {
- *     name: "tf-c8000v-byol",
- *     metroCode: sv.apply(sv => sv.metroCode),
- *     typeCode: "C8000V",
- *     selfManaged: true,
- *     byol: true,
- *     generateDefaultPassword: false,
- *     packageCode: "VM100",
- *     notifications: [
- *         "john@equinix.com",
- *         "marry@equinix.com",
- *         "fred@equinix.com",
- *     ],
- *     termLength: 12,
- *     accountNumber: sv.apply(sv => sv.number),
- *     version: "17.11.01a",
- *     interfaceCount: 10,
- *     coreCount: 2,
- *     tier: 1,
- *     sshKey: {
- *         username: "test",
- *         keyName: "test-key",
- *     },
- *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
- * });
- * ```
  * ### example c8000v byol with bandwidth throughput
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -561,39 +476,6 @@ import * as utilities from "../utilities";
  *     coreCount: 2,
  *     throughput: 100,
  *     throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
- *     sshKey: {
- *         username: "test",
- *         keyName: "test-key",
- *     },
- *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
- * });
- * ```
- * ### example c8000v byol with bandwidth tier
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const sv = equinix.networkedge.getAccountOutput({
- *     metroCode: "SV",
- * });
- * const c8000VByolTier = new equinix.networkedge.Device("c8000v-byol-tier", {
- *     name: "tf-c8000v-byol",
- *     metroCode: sv.apply(sv => sv.metroCode),
- *     typeCode: "C8000V",
- *     selfManaged: true,
- *     byol: true,
- *     packageCode: "VM100",
- *     notifications: [
- *         "john@equinix.com",
- *         "marry@equinix.com",
- *         "fred@equinix.com",
- *     ],
- *     termLength: 12,
- *     accountNumber: sv.apply(sv => sv.number),
- *     version: "17.11.01a",
- *     interfaceCount: 10,
- *     coreCount: 2,
- *     tier: 1,
  *     sshKey: {
  *         username: "test",
  *         keyName: "test-key",
@@ -631,49 +513,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### example cisco ftd cluster znpd
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const sv = equinix.networkedge.getAccountOutput({
- *     metroCode: "SV",
- * });
- * const ciscoFTDSV = new equinix.networkedge.Device("cisco-FTD-SV", {
- *     name: "TF_Cisco_NGFW_CLUSTER_ZNPD",
- *     projectId: "XXXXXXX",
- *     metroCode: sv.apply(sv => sv.metroCode),
- *     typeCode: "Cisco_NGFW",
- *     selfManaged: true,
- *     connectivity: "PRIVATE",
- *     byol: true,
- *     packageCode: "FTDv10",
- *     notifications: ["test@eq.com"],
- *     accountNumber: sv.apply(sv => sv.number),
- *     version: "7.0.4-55",
- *     hostname: "test",
- *     coreCount: 4,
- *     termLength: 1,
- *     interfaceCount: 10,
- *     clusterDetails: {
- *         clusterName: "tf-ftd-cluster",
- *         node0: {
- *             vendorConfiguration: {
- *                 hostname: "test",
- *                 activationKey: "XXXXX",
- *                 controller1: "X.X.X.X",
- *                 managementType: "FMC",
- *             },
- *         },
- *         node1: {
- *             vendorConfiguration: {
- *                 hostname: "test",
- *                 managementType: "FMC",
- *             },
- *         },
- *     },
- * });
- * ```
  * ### example fortigate sdwan single device
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -701,49 +540,6 @@ import * as utilities from "../utilities";
  *     vendorConfiguration: {
  *         adminPassword: "XXXXX",
  *         controller1: "X.X.X.X",
- *     },
- * });
- * ```
- * ### example infoblox cluster device
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const sv = equinix.networkedge.getAccountOutput({
- *     metroCode: "SV",
- * });
- * const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
- *     name: "TF_INFOBLOX",
- *     projectId: "XXXXXXXXXX",
- *     metroCode: sv.apply(sv => sv.metroCode),
- *     typeCode: "INFOBLOX-GRID-MEMBER",
- *     selfManaged: true,
- *     byol: true,
- *     packageCode: "STD",
- *     notifications: ["test@eq.com"],
- *     accountNumber: sv.apply(sv => sv.number),
- *     version: "9.0.5",
- *     connectivity: "PRIVATE",
- *     coreCount: 8,
- *     termLength: 1,
- *     clusterDetails: {
- *         clusterName: "tf-infoblox-cluster",
- *         node0: {
- *             vendorConfiguration: {
- *                 adminPassword: "xxxxxxx",
- *                 ipAddress: "X.X.X.X",
- *                 subnetMaskIp: "X.X.X.X",
- *                 gatewayIp: "X.X.X.X",
- *             },
- *         },
- *         node1: {
- *             vendorConfiguration: {
- *                 adminPassword: "xxxxxxx",
- *                 ipAddress: "X.X.X.X",
- *                 subnetMaskIp: "X.X.X.X",
- *                 gatewayIp: "X.X.X.X",
- *             },
- *         },
  *     },
  * });
  * ```

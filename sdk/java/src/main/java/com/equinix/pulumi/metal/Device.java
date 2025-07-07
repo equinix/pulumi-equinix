@@ -176,52 +176,52 @@ import javax.annotation.Nullable;
  *             .hardwareReservationId("next-available")
  *             .storage("""
  * {
- *   \"disks\": [
+ *   "disks": [
  *     {
- *       \"device\": \"/dev/sda\",
- *       \"wipeTable\": true,
- *       \"partitions\": [
+ *       "device": "/dev/sda",
+ *       "wipeTable": true,
+ *       "partitions": [
  *         {
- *           \"label\": \"BIOS\",
- *           \"number\": 1,
- *           \"size\": \"4096\"
+ *           "label": "BIOS",
+ *           "number": 1,
+ *           "size": "4096"
  *         },
  *         {
- *           \"label\": \"SWAP\",
- *           \"number\": 2,
- *           \"size\": \"3993600\"
+ *           "label": "SWAP",
+ *           "number": 2,
+ *           "size": "3993600"
  *         },
  *         {
- *           \"label\": \"ROOT\",
- *           \"number\": 3,
- *           \"size\": \"0\"
+ *           "label": "ROOT",
+ *           "number": 3,
+ *           "size": "0"
  *         }
  *       ]
  *     }
  *   ],
- *   \"filesystems\": [
+ *   "filesystems": [
  *     {
- *       \"mount\": {
- *         \"device\": \"/dev/sda3\",
- *         \"format\": \"ext4\",
- *         \"point\": \"/\",
- *         \"create\": {
- *           \"options\": [
- *             \"-L\",
- *             \"ROOT\"
+ *       "mount": {
+ *         "device": "/dev/sda3",
+ *         "format": "ext4",
+ *         "point": "/",
+ *         "create": {
+ *           "options": [
+ *             "-L",
+ *             "ROOT"
  *           ]
  *         }
  *       }
  *     },
  *     {
- *       \"mount\": {
- *         \"device\": \"/dev/sda2\",
- *         \"format\": \"swap\",
- *         \"point\": \"none\",
- *         \"create\": {
- *           \"options\": [
- *             \"-L\",
- *             \"SWAP\"
+ *       "mount": {
+ *         "device": "/dev/sda2",
+ *         "format": "swap",
+ *         "point": "none",
+ *         "create": {
+ *           "options": [
+ *             "-L",
+ *             "SWAP"
  *           ]
  *         }
  *       }

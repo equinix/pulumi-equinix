@@ -141,6 +141,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/streamAlertRule",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/streamAlertRule:StreamAlertRule": "StreamAlertRule"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/streamAttachment",
   "fqn": "pulumi_equinix.fabric",
   "classes": {

@@ -3,7 +3,7 @@ name: equinix-fabric-connection_route_filter
 runtime: yaml
 resources:
   policyAttachment:
-    type: equinix:fabric:ConnectionRouteFilter
+    type: equinix:fabricConnectionRouteFilter
     name: policy_attachment
     properties:
       connectionId: <connection_uuid>

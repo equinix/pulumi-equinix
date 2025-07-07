@@ -1965,6 +1965,52 @@ export namespace fabric {
         total?: pulumi.Input<number>;
     }
 
+    export interface GetStreamAlertRulesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of alert rules available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetStreamAlertRulesPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string>;
+        /**
+         * The total number of alert rules available to the user making the request
+         */
+        total?: pulumi.Input<number>;
+    }
+
     export interface GetStreamAttachmentsFilter {
         /**
          * Operation applied to the values of the filter
@@ -3997,6 +4043,83 @@ export namespace fabric {
          * Equinix-assigned Virtual Device identifier
          */
         uuid: pulumi.Input<string>;
+    }
+
+    export interface StreamAlertRuleChangeLog {
+        /**
+         * User name of creator of the stream resource
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Email of creator of the stream resource
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of creator of the stream resource
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Creation time of the stream resource
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * User name of deleter of the stream resource
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Email of deleter of the stream resource
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of deleter of the stream resource
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deletion time of the stream resource
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * User name of last updater of the stream resource
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Email of last updater of the stream resource
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of last updater of the stream resource
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Last update time of the stream resource
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface StreamAlertRuleResourceSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface StreamAlertRuleTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
     }
 
     export interface StreamAttachmentTimeouts {
