@@ -3,7 +3,7 @@ name: equinix-fabric-stream_alert_rule
 runtime: yaml
 resources:
   newStreamAlertRule:
-    type: equinix:FabricStreamAlertRule
+    type: equinix:fabric:StreamAlertRule
     name: new_stream_alert_rule
     properties:
       streamId: <stream_id>

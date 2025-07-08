@@ -23721,6 +23721,683 @@ func (o ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceP
 	}).(pulumi.StringPtrOutput)
 }
 
+type StreamAlertRuleChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy *string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// StreamAlertRuleChangeLogInput is an input type that accepts StreamAlertRuleChangeLogArgs and StreamAlertRuleChangeLogOutput values.
+// You can construct a concrete instance of `StreamAlertRuleChangeLogInput` via:
+//
+//	StreamAlertRuleChangeLogArgs{...}
+type StreamAlertRuleChangeLogInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleChangeLogOutput() StreamAlertRuleChangeLogOutput
+	ToStreamAlertRuleChangeLogOutputWithContext(context.Context) StreamAlertRuleChangeLogOutput
+}
+
+type StreamAlertRuleChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (StreamAlertRuleChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleChangeLog)(nil)).Elem()
+}
+
+func (i StreamAlertRuleChangeLogArgs) ToStreamAlertRuleChangeLogOutput() StreamAlertRuleChangeLogOutput {
+	return i.ToStreamAlertRuleChangeLogOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleChangeLogArgs) ToStreamAlertRuleChangeLogOutputWithContext(ctx context.Context) StreamAlertRuleChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleChangeLogOutput)
+}
+
+func (i StreamAlertRuleChangeLogArgs) ToStreamAlertRuleChangeLogPtrOutput() StreamAlertRuleChangeLogPtrOutput {
+	return i.ToStreamAlertRuleChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleChangeLogArgs) ToStreamAlertRuleChangeLogPtrOutputWithContext(ctx context.Context) StreamAlertRuleChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleChangeLogOutput).ToStreamAlertRuleChangeLogPtrOutputWithContext(ctx)
+}
+
+// StreamAlertRuleChangeLogPtrInput is an input type that accepts StreamAlertRuleChangeLogArgs, StreamAlertRuleChangeLogPtr and StreamAlertRuleChangeLogPtrOutput values.
+// You can construct a concrete instance of `StreamAlertRuleChangeLogPtrInput` via:
+//
+//	        StreamAlertRuleChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamAlertRuleChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleChangeLogPtrOutput() StreamAlertRuleChangeLogPtrOutput
+	ToStreamAlertRuleChangeLogPtrOutputWithContext(context.Context) StreamAlertRuleChangeLogPtrOutput
+}
+
+type streamAlertRuleChangeLogPtrType StreamAlertRuleChangeLogArgs
+
+func StreamAlertRuleChangeLogPtr(v *StreamAlertRuleChangeLogArgs) StreamAlertRuleChangeLogPtrInput {
+	return (*streamAlertRuleChangeLogPtrType)(v)
+}
+
+func (*streamAlertRuleChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleChangeLog)(nil)).Elem()
+}
+
+func (i *streamAlertRuleChangeLogPtrType) ToStreamAlertRuleChangeLogPtrOutput() StreamAlertRuleChangeLogPtrOutput {
+	return i.ToStreamAlertRuleChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *streamAlertRuleChangeLogPtrType) ToStreamAlertRuleChangeLogPtrOutputWithContext(ctx context.Context) StreamAlertRuleChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleChangeLogPtrOutput)
+}
+
+type StreamAlertRuleChangeLogOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleChangeLog)(nil)).Elem()
+}
+
+func (o StreamAlertRuleChangeLogOutput) ToStreamAlertRuleChangeLogOutput() StreamAlertRuleChangeLogOutput {
+	return o
+}
+
+func (o StreamAlertRuleChangeLogOutput) ToStreamAlertRuleChangeLogOutputWithContext(ctx context.Context) StreamAlertRuleChangeLogOutput {
+	return o
+}
+
+func (o StreamAlertRuleChangeLogOutput) ToStreamAlertRuleChangeLogPtrOutput() StreamAlertRuleChangeLogPtrOutput {
+	return o.ToStreamAlertRuleChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o StreamAlertRuleChangeLogOutput) ToStreamAlertRuleChangeLogPtrOutputWithContext(ctx context.Context) StreamAlertRuleChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamAlertRuleChangeLog) *StreamAlertRuleChangeLog {
+		return &v
+	}).(StreamAlertRuleChangeLogPtrOutput)
+}
+
+// User name of creator of the stream resource
+func (o StreamAlertRuleChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o StreamAlertRuleChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o StreamAlertRuleChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o StreamAlertRuleChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o StreamAlertRuleChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o StreamAlertRuleChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o StreamAlertRuleChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o StreamAlertRuleChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o StreamAlertRuleChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o StreamAlertRuleChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o StreamAlertRuleChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o StreamAlertRuleChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type StreamAlertRuleChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleChangeLog)(nil)).Elem()
+}
+
+func (o StreamAlertRuleChangeLogPtrOutput) ToStreamAlertRuleChangeLogPtrOutput() StreamAlertRuleChangeLogPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleChangeLogPtrOutput) ToStreamAlertRuleChangeLogPtrOutputWithContext(ctx context.Context) StreamAlertRuleChangeLogPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleChangeLogPtrOutput) Elem() StreamAlertRuleChangeLogOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) StreamAlertRuleChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret StreamAlertRuleChangeLog
+		return ret
+	}).(StreamAlertRuleChangeLogOutput)
+}
+
+// User name of creator of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the stream resource
+func (o StreamAlertRuleChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamAlertRuleResourceSelector struct {
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// StreamAlertRuleResourceSelectorInput is an input type that accepts StreamAlertRuleResourceSelectorArgs and StreamAlertRuleResourceSelectorOutput values.
+// You can construct a concrete instance of `StreamAlertRuleResourceSelectorInput` via:
+//
+//	StreamAlertRuleResourceSelectorArgs{...}
+type StreamAlertRuleResourceSelectorInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleResourceSelectorOutput() StreamAlertRuleResourceSelectorOutput
+	ToStreamAlertRuleResourceSelectorOutputWithContext(context.Context) StreamAlertRuleResourceSelectorOutput
+}
+
+type StreamAlertRuleResourceSelectorArgs struct {
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (StreamAlertRuleResourceSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleResourceSelector)(nil)).Elem()
+}
+
+func (i StreamAlertRuleResourceSelectorArgs) ToStreamAlertRuleResourceSelectorOutput() StreamAlertRuleResourceSelectorOutput {
+	return i.ToStreamAlertRuleResourceSelectorOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleResourceSelectorArgs) ToStreamAlertRuleResourceSelectorOutputWithContext(ctx context.Context) StreamAlertRuleResourceSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleResourceSelectorOutput)
+}
+
+func (i StreamAlertRuleResourceSelectorArgs) ToStreamAlertRuleResourceSelectorPtrOutput() StreamAlertRuleResourceSelectorPtrOutput {
+	return i.ToStreamAlertRuleResourceSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleResourceSelectorArgs) ToStreamAlertRuleResourceSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleResourceSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleResourceSelectorOutput).ToStreamAlertRuleResourceSelectorPtrOutputWithContext(ctx)
+}
+
+// StreamAlertRuleResourceSelectorPtrInput is an input type that accepts StreamAlertRuleResourceSelectorArgs, StreamAlertRuleResourceSelectorPtr and StreamAlertRuleResourceSelectorPtrOutput values.
+// You can construct a concrete instance of `StreamAlertRuleResourceSelectorPtrInput` via:
+//
+//	        StreamAlertRuleResourceSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamAlertRuleResourceSelectorPtrInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleResourceSelectorPtrOutput() StreamAlertRuleResourceSelectorPtrOutput
+	ToStreamAlertRuleResourceSelectorPtrOutputWithContext(context.Context) StreamAlertRuleResourceSelectorPtrOutput
+}
+
+type streamAlertRuleResourceSelectorPtrType StreamAlertRuleResourceSelectorArgs
+
+func StreamAlertRuleResourceSelectorPtr(v *StreamAlertRuleResourceSelectorArgs) StreamAlertRuleResourceSelectorPtrInput {
+	return (*streamAlertRuleResourceSelectorPtrType)(v)
+}
+
+func (*streamAlertRuleResourceSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleResourceSelector)(nil)).Elem()
+}
+
+func (i *streamAlertRuleResourceSelectorPtrType) ToStreamAlertRuleResourceSelectorPtrOutput() StreamAlertRuleResourceSelectorPtrOutput {
+	return i.ToStreamAlertRuleResourceSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *streamAlertRuleResourceSelectorPtrType) ToStreamAlertRuleResourceSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleResourceSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleResourceSelectorPtrOutput)
+}
+
+type StreamAlertRuleResourceSelectorOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleResourceSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleResourceSelector)(nil)).Elem()
+}
+
+func (o StreamAlertRuleResourceSelectorOutput) ToStreamAlertRuleResourceSelectorOutput() StreamAlertRuleResourceSelectorOutput {
+	return o
+}
+
+func (o StreamAlertRuleResourceSelectorOutput) ToStreamAlertRuleResourceSelectorOutputWithContext(ctx context.Context) StreamAlertRuleResourceSelectorOutput {
+	return o
+}
+
+func (o StreamAlertRuleResourceSelectorOutput) ToStreamAlertRuleResourceSelectorPtrOutput() StreamAlertRuleResourceSelectorPtrOutput {
+	return o.ToStreamAlertRuleResourceSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o StreamAlertRuleResourceSelectorOutput) ToStreamAlertRuleResourceSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleResourceSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamAlertRuleResourceSelector) *StreamAlertRuleResourceSelector {
+		return &v
+	}).(StreamAlertRuleResourceSelectorPtrOutput)
+}
+
+// List of metrics to include
+func (o StreamAlertRuleResourceSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamAlertRuleResourceSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type StreamAlertRuleResourceSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleResourceSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleResourceSelector)(nil)).Elem()
+}
+
+func (o StreamAlertRuleResourceSelectorPtrOutput) ToStreamAlertRuleResourceSelectorPtrOutput() StreamAlertRuleResourceSelectorPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleResourceSelectorPtrOutput) ToStreamAlertRuleResourceSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleResourceSelectorPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleResourceSelectorPtrOutput) Elem() StreamAlertRuleResourceSelectorOutput {
+	return o.ApplyT(func(v *StreamAlertRuleResourceSelector) StreamAlertRuleResourceSelector {
+		if v != nil {
+			return *v
+		}
+		var ret StreamAlertRuleResourceSelector
+		return ret
+	}).(StreamAlertRuleResourceSelectorOutput)
+}
+
+// List of metrics to include
+func (o StreamAlertRuleResourceSelectorPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamAlertRuleResourceSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
+type StreamAlertRuleTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// StreamAlertRuleTimeoutsInput is an input type that accepts StreamAlertRuleTimeoutsArgs and StreamAlertRuleTimeoutsOutput values.
+// You can construct a concrete instance of `StreamAlertRuleTimeoutsInput` via:
+//
+//	StreamAlertRuleTimeoutsArgs{...}
+type StreamAlertRuleTimeoutsInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleTimeoutsOutput() StreamAlertRuleTimeoutsOutput
+	ToStreamAlertRuleTimeoutsOutputWithContext(context.Context) StreamAlertRuleTimeoutsOutput
+}
+
+type StreamAlertRuleTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (StreamAlertRuleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleTimeouts)(nil)).Elem()
+}
+
+func (i StreamAlertRuleTimeoutsArgs) ToStreamAlertRuleTimeoutsOutput() StreamAlertRuleTimeoutsOutput {
+	return i.ToStreamAlertRuleTimeoutsOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleTimeoutsArgs) ToStreamAlertRuleTimeoutsOutputWithContext(ctx context.Context) StreamAlertRuleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleTimeoutsOutput)
+}
+
+func (i StreamAlertRuleTimeoutsArgs) ToStreamAlertRuleTimeoutsPtrOutput() StreamAlertRuleTimeoutsPtrOutput {
+	return i.ToStreamAlertRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleTimeoutsArgs) ToStreamAlertRuleTimeoutsPtrOutputWithContext(ctx context.Context) StreamAlertRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleTimeoutsOutput).ToStreamAlertRuleTimeoutsPtrOutputWithContext(ctx)
+}
+
+// StreamAlertRuleTimeoutsPtrInput is an input type that accepts StreamAlertRuleTimeoutsArgs, StreamAlertRuleTimeoutsPtr and StreamAlertRuleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `StreamAlertRuleTimeoutsPtrInput` via:
+//
+//	        StreamAlertRuleTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamAlertRuleTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleTimeoutsPtrOutput() StreamAlertRuleTimeoutsPtrOutput
+	ToStreamAlertRuleTimeoutsPtrOutputWithContext(context.Context) StreamAlertRuleTimeoutsPtrOutput
+}
+
+type streamAlertRuleTimeoutsPtrType StreamAlertRuleTimeoutsArgs
+
+func StreamAlertRuleTimeoutsPtr(v *StreamAlertRuleTimeoutsArgs) StreamAlertRuleTimeoutsPtrInput {
+	return (*streamAlertRuleTimeoutsPtrType)(v)
+}
+
+func (*streamAlertRuleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleTimeouts)(nil)).Elem()
+}
+
+func (i *streamAlertRuleTimeoutsPtrType) ToStreamAlertRuleTimeoutsPtrOutput() StreamAlertRuleTimeoutsPtrOutput {
+	return i.ToStreamAlertRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamAlertRuleTimeoutsPtrType) ToStreamAlertRuleTimeoutsPtrOutputWithContext(ctx context.Context) StreamAlertRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleTimeoutsPtrOutput)
+}
+
+type StreamAlertRuleTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleTimeouts)(nil)).Elem()
+}
+
+func (o StreamAlertRuleTimeoutsOutput) ToStreamAlertRuleTimeoutsOutput() StreamAlertRuleTimeoutsOutput {
+	return o
+}
+
+func (o StreamAlertRuleTimeoutsOutput) ToStreamAlertRuleTimeoutsOutputWithContext(ctx context.Context) StreamAlertRuleTimeoutsOutput {
+	return o
+}
+
+func (o StreamAlertRuleTimeoutsOutput) ToStreamAlertRuleTimeoutsPtrOutput() StreamAlertRuleTimeoutsPtrOutput {
+	return o.ToStreamAlertRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamAlertRuleTimeoutsOutput) ToStreamAlertRuleTimeoutsPtrOutputWithContext(ctx context.Context) StreamAlertRuleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamAlertRuleTimeouts) *StreamAlertRuleTimeouts {
+		return &v
+	}).(StreamAlertRuleTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAlertRuleTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamAlertRuleTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamAlertRuleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAlertRuleTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type StreamAlertRuleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleTimeouts)(nil)).Elem()
+}
+
+func (o StreamAlertRuleTimeoutsPtrOutput) ToStreamAlertRuleTimeoutsPtrOutput() StreamAlertRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleTimeoutsPtrOutput) ToStreamAlertRuleTimeoutsPtrOutputWithContext(ctx context.Context) StreamAlertRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleTimeoutsPtrOutput) Elem() StreamAlertRuleTimeoutsOutput {
+	return o.ApplyT(func(v *StreamAlertRuleTimeouts) StreamAlertRuleTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret StreamAlertRuleTimeouts
+		return ret
+	}).(StreamAlertRuleTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAlertRuleTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o StreamAlertRuleTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o StreamAlertRuleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o StreamAlertRuleTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type StreamAttachmentTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -70951,6 +71628,714 @@ func (o GetServiceTokensPaginationPtrOutput) Total() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetStreamAlertRuleChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamAlertRuleChangeLogInput is an input type that accepts GetStreamAlertRuleChangeLogArgs and GetStreamAlertRuleChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamAlertRuleChangeLogInput` via:
+//
+//	GetStreamAlertRuleChangeLogArgs{...}
+type GetStreamAlertRuleChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRuleChangeLogOutput() GetStreamAlertRuleChangeLogOutput
+	ToGetStreamAlertRuleChangeLogOutputWithContext(context.Context) GetStreamAlertRuleChangeLogOutput
+}
+
+type GetStreamAlertRuleChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamAlertRuleChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamAlertRuleChangeLogArgs) ToGetStreamAlertRuleChangeLogOutput() GetStreamAlertRuleChangeLogOutput {
+	return i.ToGetStreamAlertRuleChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRuleChangeLogArgs) ToGetStreamAlertRuleChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRuleChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleChangeLogOutput)
+}
+
+type GetStreamAlertRuleChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRuleChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamAlertRuleChangeLogOutput) ToGetStreamAlertRuleChangeLogOutput() GetStreamAlertRuleChangeLogOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleChangeLogOutput) ToGetStreamAlertRuleChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRuleChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamAlertRuleChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetStreamAlertRuleResourceSelector struct {
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamAlertRuleResourceSelectorInput is an input type that accepts GetStreamAlertRuleResourceSelectorArgs and GetStreamAlertRuleResourceSelectorOutput values.
+// You can construct a concrete instance of `GetStreamAlertRuleResourceSelectorInput` via:
+//
+//	GetStreamAlertRuleResourceSelectorArgs{...}
+type GetStreamAlertRuleResourceSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRuleResourceSelectorOutput() GetStreamAlertRuleResourceSelectorOutput
+	ToGetStreamAlertRuleResourceSelectorOutputWithContext(context.Context) GetStreamAlertRuleResourceSelectorOutput
+}
+
+type GetStreamAlertRuleResourceSelectorArgs struct {
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamAlertRuleResourceSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleResourceSelector)(nil)).Elem()
+}
+
+func (i GetStreamAlertRuleResourceSelectorArgs) ToGetStreamAlertRuleResourceSelectorOutput() GetStreamAlertRuleResourceSelectorOutput {
+	return i.ToGetStreamAlertRuleResourceSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRuleResourceSelectorArgs) ToGetStreamAlertRuleResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleResourceSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleResourceSelectorOutput)
+}
+
+type GetStreamAlertRuleResourceSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRuleResourceSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleResourceSelector)(nil)).Elem()
+}
+
+func (o GetStreamAlertRuleResourceSelectorOutput) ToGetStreamAlertRuleResourceSelectorOutput() GetStreamAlertRuleResourceSelectorOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleResourceSelectorOutput) ToGetStreamAlertRuleResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleResourceSelectorOutput {
+	return o
+}
+
+// List of metrics to include
+func (o GetStreamAlertRuleResourceSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleResourceSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamAlertRulesData struct {
+	// Details of the last change on the stream resource
+	ChangeLog GetStreamAlertRulesDataChangeLog `pulumi:"changeLog"`
+	// Stream alert rule metric critical threshold
+	CriticalThreshold string `pulumi:"criticalThreshold"`
+	// Customer-provided stream alert rule description
+	Description string `pulumi:"description"`
+	// Stream subscription enabled status
+	Enabled bool `pulumi:"enabled"`
+	// Equinix assigned URI of the stream alert rule resource
+	Href string `pulumi:"href"`
+	// Stream alert rule metric name
+	MetricName string `pulumi:"metricName"`
+	// Customer-provided stream alert rule name
+	Name string `pulumi:"name"`
+	// Stream alert rule metric operand
+	Operand string `pulumi:"operand"`
+	// Lists of metrics to be included/excluded on the stream alert rule
+	ResourceSelector GetStreamAlertRulesDataResourceSelector `pulumi:"resourceSelector"`
+	// Value representing provisioning status for the stream resource
+	State string `pulumi:"state"`
+	// Type of the stream alert rule
+	Type string `pulumi:"type"`
+	// Equinix assigned unique identifier of the stream subscription resource
+	Uuid string `pulumi:"uuid"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold string `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize string `pulumi:"windowSize"`
+}
+
+// GetStreamAlertRulesDataInput is an input type that accepts GetStreamAlertRulesDataArgs and GetStreamAlertRulesDataOutput values.
+// You can construct a concrete instance of `GetStreamAlertRulesDataInput` via:
+//
+//	GetStreamAlertRulesDataArgs{...}
+type GetStreamAlertRulesDataInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRulesDataOutput() GetStreamAlertRulesDataOutput
+	ToGetStreamAlertRulesDataOutputWithContext(context.Context) GetStreamAlertRulesDataOutput
+}
+
+type GetStreamAlertRulesDataArgs struct {
+	// Details of the last change on the stream resource
+	ChangeLog GetStreamAlertRulesDataChangeLogInput `pulumi:"changeLog"`
+	// Stream alert rule metric critical threshold
+	CriticalThreshold pulumi.StringInput `pulumi:"criticalThreshold"`
+	// Customer-provided stream alert rule description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Stream subscription enabled status
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Equinix assigned URI of the stream alert rule resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Stream alert rule metric name
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Customer-provided stream alert rule name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Stream alert rule metric operand
+	Operand pulumi.StringInput `pulumi:"operand"`
+	// Lists of metrics to be included/excluded on the stream alert rule
+	ResourceSelector GetStreamAlertRulesDataResourceSelectorInput `pulumi:"resourceSelector"`
+	// Value representing provisioning status for the stream resource
+	State pulumi.StringInput `pulumi:"state"`
+	// Type of the stream alert rule
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix assigned unique identifier of the stream subscription resource
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold pulumi.StringInput `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize pulumi.StringInput `pulumi:"windowSize"`
+}
+
+func (GetStreamAlertRulesDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesData)(nil)).Elem()
+}
+
+func (i GetStreamAlertRulesDataArgs) ToGetStreamAlertRulesDataOutput() GetStreamAlertRulesDataOutput {
+	return i.ToGetStreamAlertRulesDataOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRulesDataArgs) ToGetStreamAlertRulesDataOutputWithContext(ctx context.Context) GetStreamAlertRulesDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataOutput)
+}
+
+// GetStreamAlertRulesDataArrayInput is an input type that accepts GetStreamAlertRulesDataArray and GetStreamAlertRulesDataArrayOutput values.
+// You can construct a concrete instance of `GetStreamAlertRulesDataArrayInput` via:
+//
+//	GetStreamAlertRulesDataArray{ GetStreamAlertRulesDataArgs{...} }
+type GetStreamAlertRulesDataArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRulesDataArrayOutput() GetStreamAlertRulesDataArrayOutput
+	ToGetStreamAlertRulesDataArrayOutputWithContext(context.Context) GetStreamAlertRulesDataArrayOutput
+}
+
+type GetStreamAlertRulesDataArray []GetStreamAlertRulesDataInput
+
+func (GetStreamAlertRulesDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAlertRulesData)(nil)).Elem()
+}
+
+func (i GetStreamAlertRulesDataArray) ToGetStreamAlertRulesDataArrayOutput() GetStreamAlertRulesDataArrayOutput {
+	return i.ToGetStreamAlertRulesDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRulesDataArray) ToGetStreamAlertRulesDataArrayOutputWithContext(ctx context.Context) GetStreamAlertRulesDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataArrayOutput)
+}
+
+type GetStreamAlertRulesDataOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRulesDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesData)(nil)).Elem()
+}
+
+func (o GetStreamAlertRulesDataOutput) ToGetStreamAlertRulesDataOutput() GetStreamAlertRulesDataOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesDataOutput) ToGetStreamAlertRulesDataOutputWithContext(ctx context.Context) GetStreamAlertRulesDataOutput {
+	return o
+}
+
+// Details of the last change on the stream resource
+func (o GetStreamAlertRulesDataOutput) ChangeLog() GetStreamAlertRulesDataChangeLogOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataChangeLog { return v.ChangeLog }).(GetStreamAlertRulesDataChangeLogOutput)
+}
+
+// Stream alert rule metric critical threshold
+func (o GetStreamAlertRulesDataOutput) CriticalThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.CriticalThreshold }).(pulumi.StringOutput)
+}
+
+// Customer-provided stream alert rule description
+func (o GetStreamAlertRulesDataOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Stream subscription enabled status
+func (o GetStreamAlertRulesDataOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Equinix assigned URI of the stream alert rule resource
+func (o GetStreamAlertRulesDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric name
+func (o GetStreamAlertRulesDataOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Customer-provided stream alert rule name
+func (o GetStreamAlertRulesDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric operand
+func (o GetStreamAlertRulesDataOutput) Operand() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Operand }).(pulumi.StringOutput)
+}
+
+// Lists of metrics to be included/excluded on the stream alert rule
+func (o GetStreamAlertRulesDataOutput) ResourceSelector() GetStreamAlertRulesDataResourceSelectorOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataResourceSelector { return v.ResourceSelector }).(GetStreamAlertRulesDataResourceSelectorOutput)
+}
+
+// Value representing provisioning status for the stream resource
+func (o GetStreamAlertRulesDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Type of the stream alert rule
+func (o GetStreamAlertRulesDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix assigned unique identifier of the stream subscription resource
+func (o GetStreamAlertRulesDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric warning threshold
+func (o GetStreamAlertRulesDataOutput) WarningThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.WarningThreshold }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric window size
+func (o GetStreamAlertRulesDataOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.WindowSize }).(pulumi.StringOutput)
+}
+
+type GetStreamAlertRulesDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRulesDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAlertRulesData)(nil)).Elem()
+}
+
+func (o GetStreamAlertRulesDataArrayOutput) ToGetStreamAlertRulesDataArrayOutput() GetStreamAlertRulesDataArrayOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesDataArrayOutput) ToGetStreamAlertRulesDataArrayOutputWithContext(ctx context.Context) GetStreamAlertRulesDataArrayOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesDataArrayOutput) Index(i pulumi.IntInput) GetStreamAlertRulesDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAlertRulesData {
+		return vs[0].([]GetStreamAlertRulesData)[vs[1].(int)]
+	}).(GetStreamAlertRulesDataOutput)
+}
+
+type GetStreamAlertRulesDataChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamAlertRulesDataChangeLogInput is an input type that accepts GetStreamAlertRulesDataChangeLogArgs and GetStreamAlertRulesDataChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamAlertRulesDataChangeLogInput` via:
+//
+//	GetStreamAlertRulesDataChangeLogArgs{...}
+type GetStreamAlertRulesDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRulesDataChangeLogOutput() GetStreamAlertRulesDataChangeLogOutput
+	ToGetStreamAlertRulesDataChangeLogOutputWithContext(context.Context) GetStreamAlertRulesDataChangeLogOutput
+}
+
+type GetStreamAlertRulesDataChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamAlertRulesDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamAlertRulesDataChangeLogArgs) ToGetStreamAlertRulesDataChangeLogOutput() GetStreamAlertRulesDataChangeLogOutput {
+	return i.ToGetStreamAlertRulesDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRulesDataChangeLogArgs) ToGetStreamAlertRulesDataChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRulesDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataChangeLogOutput)
+}
+
+type GetStreamAlertRulesDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRulesDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamAlertRulesDataChangeLogOutput) ToGetStreamAlertRulesDataChangeLogOutput() GetStreamAlertRulesDataChangeLogOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesDataChangeLogOutput) ToGetStreamAlertRulesDataChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRulesDataChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetStreamAlertRulesDataResourceSelector struct {
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamAlertRulesDataResourceSelectorInput is an input type that accepts GetStreamAlertRulesDataResourceSelectorArgs and GetStreamAlertRulesDataResourceSelectorOutput values.
+// You can construct a concrete instance of `GetStreamAlertRulesDataResourceSelectorInput` via:
+//
+//	GetStreamAlertRulesDataResourceSelectorArgs{...}
+type GetStreamAlertRulesDataResourceSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRulesDataResourceSelectorOutput() GetStreamAlertRulesDataResourceSelectorOutput
+	ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(context.Context) GetStreamAlertRulesDataResourceSelectorOutput
+}
+
+type GetStreamAlertRulesDataResourceSelectorArgs struct {
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamAlertRulesDataResourceSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataResourceSelector)(nil)).Elem()
+}
+
+func (i GetStreamAlertRulesDataResourceSelectorArgs) ToGetStreamAlertRulesDataResourceSelectorOutput() GetStreamAlertRulesDataResourceSelectorOutput {
+	return i.ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRulesDataResourceSelectorArgs) ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataResourceSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataResourceSelectorOutput)
+}
+
+type GetStreamAlertRulesDataResourceSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRulesDataResourceSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataResourceSelector)(nil)).Elem()
+}
+
+func (o GetStreamAlertRulesDataResourceSelectorOutput) ToGetStreamAlertRulesDataResourceSelectorOutput() GetStreamAlertRulesDataResourceSelectorOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesDataResourceSelectorOutput) ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataResourceSelectorOutput {
+	return o
+}
+
+// List of metrics to include
+func (o GetStreamAlertRulesDataResourceSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataResourceSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamAlertRulesPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of alert rules available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetStreamAlertRulesPaginationInput is an input type that accepts GetStreamAlertRulesPaginationArgs and GetStreamAlertRulesPaginationOutput values.
+// You can construct a concrete instance of `GetStreamAlertRulesPaginationInput` via:
+//
+//	GetStreamAlertRulesPaginationArgs{...}
+type GetStreamAlertRulesPaginationInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRulesPaginationOutput() GetStreamAlertRulesPaginationOutput
+	ToGetStreamAlertRulesPaginationOutputWithContext(context.Context) GetStreamAlertRulesPaginationOutput
+}
+
+type GetStreamAlertRulesPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of alert rules available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetStreamAlertRulesPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesPagination)(nil)).Elem()
+}
+
+func (i GetStreamAlertRulesPaginationArgs) ToGetStreamAlertRulesPaginationOutput() GetStreamAlertRulesPaginationOutput {
+	return i.ToGetStreamAlertRulesPaginationOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRulesPaginationArgs) ToGetStreamAlertRulesPaginationOutputWithContext(ctx context.Context) GetStreamAlertRulesPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesPaginationOutput)
+}
+
+type GetStreamAlertRulesPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRulesPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesPagination)(nil)).Elem()
+}
+
+func (o GetStreamAlertRulesPaginationOutput) ToGetStreamAlertRulesPaginationOutput() GetStreamAlertRulesPaginationOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesPaginationOutput) ToGetStreamAlertRulesPaginationOutputWithContext(ctx context.Context) GetStreamAlertRulesPaginationOutput {
+	return o
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetStreamAlertRulesPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetStreamAlertRulesPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetStreamAlertRulesPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetStreamAlertRulesPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of alert rules available to the user making the request
+func (o GetStreamAlertRulesPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
 type GetStreamAttachmentsData struct {
 	// Value representing status for the stream attachment
 	AttachmentStatus string `pulumi:"attachmentStatus"`
@@ -73769,6 +75154,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleChangeLogInput)(nil)).Elem(), StreamAlertRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleChangeLogPtrInput)(nil)).Elem(), StreamAlertRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleResourceSelectorInput)(nil)).Elem(), StreamAlertRuleResourceSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleResourceSelectorPtrInput)(nil)).Elem(), StreamAlertRuleResourceSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleTimeoutsInput)(nil)).Elem(), StreamAlertRuleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleTimeoutsPtrInput)(nil)).Elem(), StreamAlertRuleTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamAttachmentTimeoutsInput)(nil)).Elem(), StreamAttachmentTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamAttachmentTimeoutsPtrInput)(nil)).Elem(), StreamAttachmentTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamChangeLogInput)(nil)).Elem(), StreamChangeLogArgs{})
@@ -74344,6 +75735,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensFilterArrayInput)(nil)).Elem(), GetServiceTokensFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationPtrInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleChangeLogInput)(nil)).Elem(), GetStreamAlertRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleResourceSelectorInput)(nil)).Elem(), GetStreamAlertRuleResourceSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataInput)(nil)).Elem(), GetStreamAlertRulesDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataArrayInput)(nil)).Elem(), GetStreamAlertRulesDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataChangeLogInput)(nil)).Elem(), GetStreamAlertRulesDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataResourceSelectorInput)(nil)).Elem(), GetStreamAlertRulesDataResourceSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesPaginationInput)(nil)).Elem(), GetStreamAlertRulesPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataInput)(nil)).Elem(), GetStreamAttachmentsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataArrayInput)(nil)).Elem(), GetStreamAttachmentsDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsFilterInput)(nil)).Elem(), GetStreamAttachmentsFilterArgs{})
@@ -74631,6 +76029,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput{})
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleChangeLogOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleResourceSelectorOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleResourceSelectorPtrOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleTimeoutsOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(StreamAttachmentTimeoutsOutput{})
 	pulumi.RegisterOutputType(StreamAttachmentTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(StreamChangeLogOutput{})
@@ -75206,6 +76610,13 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTokensFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensPaginationOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRuleChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRuleResourceSelectorOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRulesDataOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRulesDataArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRulesDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRulesDataResourceSelectorOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRulesPaginationOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsDataOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsDataArrayOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsFilterOutput{})

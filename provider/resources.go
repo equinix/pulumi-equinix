@@ -164,6 +164,9 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_stream_subscription": {
 				Tok: makeEquinixResource(fabricMod, "StreamSubscription"),
 			},
+			"equinix_fabric_stream_alert_rule": {
+				Tok: makeEquinixResource(fabricMod, "StreamAlertRule"),
+			},
 			"equinix_fabric_route_filter": {
 				Tok: makeEquinixResource(fabricMod, "RouteFilter"),
 			},
@@ -1219,6 +1222,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_fabric_stream_subscriptions": {
 				Tok: makeEquinixDataSource(fabricMod, "StreamSubscriptions"),
+			},
+			"equinix_fabric_stream_alert_rule": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamAlertRule"),
+			},
+			"equinix_fabric_stream_alert_rules": {
+				Tok: makeEquinixDataSource(fabricMod, "StreamAlertRules"),
 			},
 			"equinix_fabric_connection_route_filter": {
 				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilter"),

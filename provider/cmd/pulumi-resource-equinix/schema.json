@@ -4556,6 +4556,113 @@
                 }
             }
         },
+        "equinix:fabric/StreamAlertRuleChangeLog:StreamAlertRuleChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "User name of creator of the stream resource\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Email of creator of the stream resource\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Legal name of creator of the stream resource\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the stream resource\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "User name of deleter of the stream resource\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Email of deleter of the stream resource\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of deleter of the stream resource\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the stream resource\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User name of last updater of the stream resource\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Email of last updater of the stream resource\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of last updater of the stream resource\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the stream resource\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdBy",
+                        "createdByEmail",
+                        "createdByFullName",
+                        "createdDateTime",
+                        "deletedBy",
+                        "deletedByEmail",
+                        "deletedByFullName",
+                        "deletedDateTime",
+                        "updatedBy",
+                        "updatedByEmail",
+                        "updatedByFullName",
+                        "updatedDateTime"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/StreamAlertRuleResourceSelector:StreamAlertRuleResourceSelector": {
+            "properties": {
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of metrics to include\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "includes"
+            ]
+        },
+        "equinix:fabric/StreamAlertRuleTimeouts:StreamAlertRuleTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "equinix:fabric/StreamAttachmentTimeouts:StreamAttachmentTimeouts": {
             "properties": {
                 "create": {
@@ -16158,6 +16265,309 @@
                 }
             }
         },
+        "equinix:fabric/getStreamAlertRuleChangeLog:getStreamAlertRuleChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "User name of creator of the stream resource\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Email of creator of the stream resource\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Legal name of creator of the stream resource\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the stream resource\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "User name of deleter of the stream resource\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Email of deleter of the stream resource\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of deleter of the stream resource\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the stream resource\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User name of last updater of the stream resource\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Email of last updater of the stream resource\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of last updater of the stream resource\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the stream resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamAlertRuleResourceSelector:getStreamAlertRuleResourceSelector": {
+            "properties": {
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of metrics to include\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "includes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamAlertRulesData:getStreamAlertRulesData": {
+            "properties": {
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/getStreamAlertRulesDataChangeLog:getStreamAlertRulesDataChangeLog",
+                    "description": "Details of the last change on the stream resource\n"
+                },
+                "criticalThreshold": {
+                    "type": "string",
+                    "description": "Stream alert rule metric critical threshold\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Customer-provided stream alert rule description\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Stream subscription enabled status\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Equinix assigned URI of the stream alert rule resource\n"
+                },
+                "metricName": {
+                    "type": "string",
+                    "description": "Stream alert rule metric name\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Customer-provided stream alert rule name\n"
+                },
+                "operand": {
+                    "type": "string",
+                    "description": "Stream alert rule metric operand\n"
+                },
+                "resourceSelector": {
+                    "$ref": "#/types/equinix:fabric/getStreamAlertRulesDataResourceSelector:getStreamAlertRulesDataResourceSelector",
+                    "description": "Lists of metrics to be included/excluded on the stream alert rule\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Value representing provisioning status for the stream resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the stream alert rule\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix assigned unique identifier of the stream subscription resource\n"
+                },
+                "warningThreshold": {
+                    "type": "string",
+                    "description": "Stream alert rule metric warning threshold\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "Stream alert rule metric window size\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "changeLog",
+                "criticalThreshold",
+                "description",
+                "enabled",
+                "href",
+                "metricName",
+                "name",
+                "operand",
+                "resourceSelector",
+                "state",
+                "type",
+                "uuid",
+                "warningThreshold",
+                "windowSize"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamAlertRulesDataChangeLog:getStreamAlertRulesDataChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "User name of creator of the stream resource\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Email of creator of the stream resource\n"
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "description": "Legal name of creator of the stream resource\n"
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the stream resource\n"
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "description": "User name of deleter of the stream resource\n"
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "description": "Email of deleter of the stream resource\n"
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of deleter of the stream resource\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the stream resource\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User name of last updater of the stream resource\n"
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "description": "Email of last updater of the stream resource\n"
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "description": "Legal name of last updater of the stream resource\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the stream resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamAlertRulesDataResourceSelector:getStreamAlertRulesDataResourceSelector": {
+            "properties": {
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of metrics to include\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "includes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getStreamAlertRulesPagination:getStreamAlertRulesPagination": {
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20\n"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "The URL relative to the next item in the response\n"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Index of the first item returned in the response. The default is 0\n"
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "The URL relative to the previous item in the response\n"
+                },
+                "total": {
+                    "type": "integer",
+                    "description": "The total number of alert rules available to the user making the request\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "limit",
+                "next",
+                "offset",
+                "previous",
+                "total"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "equinix:fabric/getStreamAttachmentsData:getStreamAttachmentsData": {
             "properties": {
                 "attachmentStatus": {
@@ -23486,6 +23896,219 @@
                 "type": "object"
             }
         },
+        "equinix:fabric/streamAlertRule:StreamAlertRule": {
+            "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Alert Rules'\n}\n\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.StreamAlertRule;\nimport com.pulumi.equinix.fabric.StreamAlertRuleArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamAlertRuleResourceSelectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newStreamAlertRule = new StreamAlertRule(\"newStreamAlertRule\", StreamAlertRuleArgs.builder()\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"METRIC_ALERT\")\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .operand(\"ABOVE\")\n            .windowSize(\"\u003cwindow_size\u003e\")\n            .warningThreshold(\"\u003cwarning_threshold\u003e\")\n            .criticalThreshold(\"\u003ccritical_threshold\u003e\")\n            .metricName(\"equinix.fabric.connection.bandwidth_tx.usage\")\n            .resourceSelector(StreamAlertRuleResourceSelectorArgs.builder()\n                .include(\"*/connections/\u003cconnection_id\u003e\")\n                .build())\n            .build());\n\n        ctx.export(\"streamAlertRuleType\", newStreamAlertRule.type());\n        ctx.export(\"streamAlertRuleId\", newStreamAlertRule.uuid());\n        ctx.export(\"streamAlertRuleStreamId\", newStreamAlertRule.streamId());\n        ctx.export(\"streamAlertRuleState\", newStreamAlertRule.state());\n    }\n}\n```\n```yaml\nresources:\n  newStreamAlertRule:\n    type: equinix:fabric:StreamAlertRule\n    properties:\n      streamId: \u003cstream_id\u003e\n      type: METRIC_ALERT\n      description: \u003cdescription\u003e\n      enabled: true\n      operand: ABOVE\n      windowSize: \u003cwindow_size\u003e\n      warningThreshold: \u003cwarning_threshold\u003e\n      criticalThreshold: \u003ccritical_threshold\u003e\n      metricName: equinix.fabric.connection.bandwidth_tx.usage\n      resourceSelector:\n        include:\n          - '*/connections/\u003cconnection_id\u003e'\noutputs:\n  streamAlertRuleType: ${newStreamAlertRule.type}\n  streamAlertRuleId: ${newStreamAlertRule.uuid}\n  streamAlertRuleStreamId: ${newStreamAlertRule.streamId}\n  streamAlertRuleState: ${newStreamAlertRule.state}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/StreamAlertRuleChangeLog:StreamAlertRuleChangeLog",
+                    "description": "Details of the last change on the stream resource\n"
+                },
+                "criticalThreshold": {
+                    "type": "string",
+                    "description": "Stream alert rule metric critical threshold\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Customer-provided stream alert rule description\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Stream alert rule enabled status\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Equinix assigned URI of the stream alert rule\n"
+                },
+                "metricName": {
+                    "type": "string",
+                    "description": "Stream alert rule metric name\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Customer-provided stream alert rule name\n"
+                },
+                "operand": {
+                    "type": "string",
+                    "description": "Stream alert rule metric operand\n"
+                },
+                "resourceSelector": {
+                    "$ref": "#/types/equinix:fabric/StreamAlertRuleResourceSelector:StreamAlertRuleResourceSelector",
+                    "description": "Resource selector for the stream alert rule\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Value representing provisioning status for the stream alert rule\n"
+                },
+                "streamId": {
+                    "type": "string",
+                    "description": "The stream UUID that contains this alert rule\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/equinix:fabric/StreamAlertRuleTimeouts:StreamAlertRuleTimeouts"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the stream alert rule\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix assigned unique identifier for the stream alert rule\n"
+                },
+                "warningThreshold": {
+                    "type": "string",
+                    "description": "Stream alert rule metric warning threshold\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "Stream alert rule metric window size\n"
+                }
+            },
+            "required": [
+                "changeLog",
+                "criticalThreshold",
+                "description",
+                "enabled",
+                "href",
+                "metricName",
+                "name",
+                "operand",
+                "resourceSelector",
+                "state",
+                "streamId",
+                "type",
+                "uuid",
+                "warningThreshold",
+                "windowSize"
+            ],
+            "inputProperties": {
+                "criticalThreshold": {
+                    "type": "string",
+                    "description": "Stream alert rule metric critical threshold\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Customer-provided stream alert rule description\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Stream alert rule enabled status\n"
+                },
+                "metricName": {
+                    "type": "string",
+                    "description": "Stream alert rule metric name\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Customer-provided stream alert rule name\n"
+                },
+                "operand": {
+                    "type": "string",
+                    "description": "Stream alert rule metric operand\n"
+                },
+                "resourceSelector": {
+                    "$ref": "#/types/equinix:fabric/StreamAlertRuleResourceSelector:StreamAlertRuleResourceSelector",
+                    "description": "Resource selector for the stream alert rule\n"
+                },
+                "streamId": {
+                    "type": "string",
+                    "description": "The stream UUID that contains this alert rule\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/equinix:fabric/StreamAlertRuleTimeouts:StreamAlertRuleTimeouts"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the stream alert rule\n"
+                },
+                "warningThreshold": {
+                    "type": "string",
+                    "description": "Stream alert rule metric warning threshold\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "Stream alert rule metric window size\n"
+                }
+            },
+            "requiredInputs": [
+                "criticalThreshold",
+                "description",
+                "metricName",
+                "operand",
+                "streamId",
+                "type",
+                "warningThreshold",
+                "windowSize"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering StreamAlertRule resources.\n",
+                "properties": {
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/StreamAlertRuleChangeLog:StreamAlertRuleChangeLog",
+                        "description": "Details of the last change on the stream resource\n"
+                    },
+                    "criticalThreshold": {
+                        "type": "string",
+                        "description": "Stream alert rule metric critical threshold\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Customer-provided stream alert rule description\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Stream alert rule enabled status\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Equinix assigned URI of the stream alert rule\n"
+                    },
+                    "metricName": {
+                        "type": "string",
+                        "description": "Stream alert rule metric name\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Customer-provided stream alert rule name\n"
+                    },
+                    "operand": {
+                        "type": "string",
+                        "description": "Stream alert rule metric operand\n"
+                    },
+                    "resourceSelector": {
+                        "$ref": "#/types/equinix:fabric/StreamAlertRuleResourceSelector:StreamAlertRuleResourceSelector",
+                        "description": "Resource selector for the stream alert rule\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Value representing provisioning status for the stream alert rule\n"
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "The stream UUID that contains this alert rule\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/equinix:fabric/StreamAlertRuleTimeouts:StreamAlertRuleTimeouts"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the stream alert rule\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix assigned unique identifier for the stream alert rule\n"
+                    },
+                    "warningThreshold": {
+                        "type": "string",
+                        "description": "Stream alert rule metric warning threshold\n"
+                    },
+                    "windowSize": {
+                        "type": "string",
+                        "description": "Stream alert rule metric window size\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "equinix:fabric/streamAttachment:StreamAttachment": {
             "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Attachments\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Streams\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst asset = new equinix.fabric.StreamAttachment(\"asset\", {\n    asset: \"\u003casset_group\u003e\",\n    assetId: \"\u003cid_of_the_asset_being_attached\u003e\",\n    streamId: \"\u003cid_of_the_stream_asset_is_being_attached_to\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nasset = equinix.fabric.StreamAttachment(\"asset\",\n    asset=\"\u003casset_group\u003e\",\n    asset_id=\"\u003cid_of_the_asset_being_attached\u003e\",\n    stream_id=\"\u003cid_of_the_stream_asset_is_being_attached_to\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var asset = new Equinix.Fabric.StreamAttachment(\"asset\", new()\n    {\n        Asset = \"\u003casset_group\u003e\",\n        AssetId = \"\u003cid_of_the_asset_being_attached\u003e\",\n        StreamId = \"\u003cid_of_the_stream_asset_is_being_attached_to\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fabric.NewStreamAttachment(ctx, \"asset\", \u0026fabric.StreamAttachmentArgs{\n\t\t\tAsset:    pulumi.String(\"\u003casset_group\u003e\"),\n\t\t\tAssetId:  pulumi.String(\"\u003cid_of_the_asset_being_attached\u003e\"),\n\t\t\tStreamId: pulumi.String(\"\u003cid_of_the_stream_asset_is_being_attached_to\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.StreamAttachment;\nimport com.pulumi.equinix.fabric.StreamAttachmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var asset = new StreamAttachment(\"asset\", StreamAttachmentArgs.builder()\n            .asset(\"\u003casset_group\u003e\")\n            .assetId(\"\u003cid_of_the_asset_being_attached\u003e\")\n            .streamId(\"\u003cid_of_the_stream_asset_is_being_attached_to\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  asset:\n    type: equinix:fabric:StreamAttachment\n    properties:\n      asset: \u003casset_group\u003e\n      assetId: \u003cid_of_the_asset_being_attached\u003e\n      streamId: \u003cid_of_the_stream_asset_is_being_attached_to\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -23847,7 +24470,7 @@
             }
         },
         "equinix:metal/device:Device": {
-            "description": "Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.\n\n\u003e **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### example 1\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tf.coreos2\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"sv\",\n    operatingSystem: \"ubuntu_24_04\",\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tf.coreos2\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"sv\",\n    operating_system=\"ubuntu_24_04\",\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_24_04\"),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tf.coreos2\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"sv\",\n        OperatingSystem = \"ubuntu_24_04\",\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"ubuntu_24_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: ubuntu_24_04\n      billingCycle: hourly\n      projectId: ${projectId}\n```\n{{% /example %}}\n\n{{% example %}}\n### example 2\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst pxe1 = new equinix.metal.Device(\"pxe1\", {\n    hostname: \"tf.coreos2-pxe\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"sv\",\n    operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    ipxeScriptUrl: \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    alwaysPxe: false,\n    userData: example.rendered,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\npxe1 = equinix.metal.Device(\"pxe1\",\n    hostname=\"tf.coreos2-pxe\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"sv\",\n    operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    ipxe_script_url=\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    always_pxe=False,\n    user_data=example[\"rendered\"])\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"pxe1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2-pxe\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystemCustomIPXE),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t\tIpxeScriptUrl:   pulumi.String(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\"),\n\t\t\tAlwaysPxe:       pulumi.Bool(false),\n\t\t\tUserData:        pulumi.Any(example.Rendered),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pxe1 = new Equinix.Metal.Device(\"pxe1\", new()\n    {\n        Hostname = \"tf.coreos2-pxe\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"sv\",\n        OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        IpxeScriptUrl = \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n        AlwaysPxe = false,\n        UserData = example.Rendered,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pxe1 = new Device(\"pxe1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2-pxe\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"custom_ipxe\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .ipxeScriptUrl(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\")\n            .alwaysPxe(false)\n            .userData(example.rendered())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pxe1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2-pxe\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: custom_ipxe\n      billingCycle: hourly\n      projectId: ${projectId}\n      ipxeScriptUrl: https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\n      alwaysPxe: 'false'\n      userData: ${example.rendered}\n```\n{{% /example %}}\n\n{{% example %}}\n### example 3\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tf.coreos2\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"ny\",\n    operatingSystem: \"ubuntu_24_04\",\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    ipAddresses: [{\n        type: \"private_ipv4\",\n        cidr: 30,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tf.coreos2\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"ny\",\n    operating_system=\"ubuntu_24_04\",\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    ip_addresses=[{\n        \"type\": \"private_ipv4\",\n        \"cidr\": 30,\n    }])\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"ny\"),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_24_04\"),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t\tIpAddresses: metal.DeviceIpAddressArray{\n\t\t\t\t\u0026metal.DeviceIpAddressArgs{\n\t\t\t\t\tType: pulumi.String(\"private_ipv4\"),\n\t\t\t\t\tCidr: pulumi.Int(30),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tf.coreos2\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"ny\",\n        OperatingSystem = \"ubuntu_24_04\",\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        IpAddresses = new[]\n        {\n            new Equinix.Metal.Inputs.DeviceIpAddressArgs\n            {\n                Type = \"private_ipv4\",\n                Cidr = 30,\n            },\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.inputs.DeviceIpAddressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2\")\n            .plan(\"c3.small.x86\")\n            .metro(\"ny\")\n            .operatingSystem(\"ubuntu_24_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .ipAddresses(DeviceIpAddressArgs.builder()\n                .type(\"private_ipv4\")\n                .cidr(30)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2\n      plan: c3.small.x86\n      metro: ny\n      operatingSystem: ubuntu_24_04\n      billingCycle: hourly\n      projectId: ${projectId}\n      ipAddresses:\n        - type: private_ipv4\n          cidr: 30\n```\n{{% /example %}}\n\n{{% example %}}\n### example 4\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tftest\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"ny\",\n    operatingSystem: \"ubuntu_24_04\",\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    hardwareReservationId: \"next-available\",\n    storage: `{\n  \\\"disks\\\": [\n    {\n      \\\"device\\\": \\\"/dev/sda\\\",\n      \\\"wipeTable\\\": true,\n      \\\"partitions\\\": [\n        {\n          \\\"label\\\": \\\"BIOS\\\",\n          \\\"number\\\": 1,\n          \\\"size\\\": \\\"4096\\\"\n        },\n        {\n          \\\"label\\\": \\\"SWAP\\\",\n          \\\"number\\\": 2,\n          \\\"size\\\": \\\"3993600\\\"\n        },\n        {\n          \\\"label\\\": \\\"ROOT\\\",\n          \\\"number\\\": 3,\n          \\\"size\\\": \\\"0\\\"\n        }\n      ]\n    }\n  ],\n  \\\"filesystems\\\": [\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda3\\\",\n        \\\"format\\\": \\\"ext4\\\",\n        \\\"point\\\": \\\"/\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"ROOT\\\"\n          ]\n        }\n      }\n    },\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda2\\\",\n        \\\"format\\\": \\\"swap\\\",\n        \\\"point\\\": \\\"none\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"SWAP\\\"\n          ]\n        }\n      }\n    }\n  ]\n}\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tftest\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"ny\",\n    operating_system=\"ubuntu_24_04\",\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    hardware_reservation_id=\"next-available\",\n    storage=\"\"\"{\n  \\\"disks\\\": [\n    {\n      \\\"device\\\": \\\"/dev/sda\\\",\n      \\\"wipeTable\\\": true,\n      \\\"partitions\\\": [\n        {\n          \\\"label\\\": \\\"BIOS\\\",\n          \\\"number\\\": 1,\n          \\\"size\\\": \\\"4096\\\"\n        },\n        {\n          \\\"label\\\": \\\"SWAP\\\",\n          \\\"number\\\": 2,\n          \\\"size\\\": \\\"3993600\\\"\n        },\n        {\n          \\\"label\\\": \\\"ROOT\\\",\n          \\\"number\\\": 3,\n          \\\"size\\\": \\\"0\\\"\n        }\n      ]\n    }\n  ],\n  \\\"filesystems\\\": [\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda3\\\",\n        \\\"format\\\": \\\"ext4\\\",\n        \\\"point\\\": \\\"/\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"ROOT\\\"\n          ]\n        }\n      }\n    },\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda2\\\",\n        \\\"format\\\": \\\"swap\\\",\n        \\\"point\\\": \\\"none\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"SWAP\\\"\n          ]\n        }\n      }\n    }\n  ]\n}\n\"\"\")\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:              pulumi.String(\"tftest\"),\n\t\t\tPlan:                  pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:                 pulumi.String(\"ny\"),\n\t\t\tOperatingSystem:       pulumi.String(\"ubuntu_24_04\"),\n\t\t\tBillingCycle:          pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:             pulumi.Any(projectId),\n\t\t\tHardwareReservationId: pulumi.String(\"next-available\"),\n\t\t\tStorage: pulumi.String(`{\n  \\\"disks\\\": [\n    {\n      \\\"device\\\": \\\"/dev/sda\\\",\n      \\\"wipeTable\\\": true,\n      \\\"partitions\\\": [\n        {\n          \\\"label\\\": \\\"BIOS\\\",\n          \\\"number\\\": 1,\n          \\\"size\\\": \\\"4096\\\"\n        },\n        {\n          \\\"label\\\": \\\"SWAP\\\",\n          \\\"number\\\": 2,\n          \\\"size\\\": \\\"3993600\\\"\n        },\n        {\n          \\\"label\\\": \\\"ROOT\\\",\n          \\\"number\\\": 3,\n          \\\"size\\\": \\\"0\\\"\n        }\n      ]\n    }\n  ],\n  \\\"filesystems\\\": [\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda3\\\",\n        \\\"format\\\": \\\"ext4\\\",\n        \\\"point\\\": \\\"/\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"ROOT\\\"\n          ]\n        }\n      }\n    },\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda2\\\",\n        \\\"format\\\": \\\"swap\\\",\n        \\\"point\\\": \\\"none\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"SWAP\\\"\n          ]\n        }\n      }\n    }\n  ]\n}\n`),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tftest\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"ny\",\n        OperatingSystem = \"ubuntu_24_04\",\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        HardwareReservationId = \"next-available\",\n        Storage = @\"{\n  \\\"\"disks\\\"\": [\n    {\n      \\\"\"device\\\"\": \\\"\"/dev/sda\\\"\",\n      \\\"\"wipeTable\\\"\": true,\n      \\\"\"partitions\\\"\": [\n        {\n          \\\"\"label\\\"\": \\\"\"BIOS\\\"\",\n          \\\"\"number\\\"\": 1,\n          \\\"\"size\\\"\": \\\"\"4096\\\"\"\n        },\n        {\n          \\\"\"label\\\"\": \\\"\"SWAP\\\"\",\n          \\\"\"number\\\"\": 2,\n          \\\"\"size\\\"\": \\\"\"3993600\\\"\"\n        },\n        {\n          \\\"\"label\\\"\": \\\"\"ROOT\\\"\",\n          \\\"\"number\\\"\": 3,\n          \\\"\"size\\\"\": \\\"\"0\\\"\"\n        }\n      ]\n    }\n  ],\n  \\\"\"filesystems\\\"\": [\n    {\n      \\\"\"mount\\\"\": {\n        \\\"\"device\\\"\": \\\"\"/dev/sda3\\\"\",\n        \\\"\"format\\\"\": \\\"\"ext4\\\"\",\n        \\\"\"point\\\"\": \\\"\"/\\\"\",\n        \\\"\"create\\\"\": {\n          \\\"\"options\\\"\": [\n            \\\"\"-L\\\"\",\n            \\\"\"ROOT\\\"\"\n          ]\n        }\n      }\n    },\n    {\n      \\\"\"mount\\\"\": {\n        \\\"\"device\\\"\": \\\"\"/dev/sda2\\\"\",\n        \\\"\"format\\\"\": \\\"\"swap\\\"\",\n        \\\"\"point\\\"\": \\\"\"none\\\"\",\n        \\\"\"create\\\"\": {\n          \\\"\"options\\\"\": [\n            \\\"\"-L\\\"\",\n            \\\"\"SWAP\\\"\"\n          ]\n        }\n      }\n    }\n  ]\n}\n\",\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()\n            .hostname(\"tftest\")\n            .plan(\"c3.small.x86\")\n            .metro(\"ny\")\n            .operatingSystem(\"ubuntu_24_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .hardwareReservationId(\"next-available\")\n            .storage(\"\"\"\n{\n  \\\"disks\\\": [\n    {\n      \\\"device\\\": \\\"/dev/sda\\\",\n      \\\"wipeTable\\\": true,\n      \\\"partitions\\\": [\n        {\n          \\\"label\\\": \\\"BIOS\\\",\n          \\\"number\\\": 1,\n          \\\"size\\\": \\\"4096\\\"\n        },\n        {\n          \\\"label\\\": \\\"SWAP\\\",\n          \\\"number\\\": 2,\n          \\\"size\\\": \\\"3993600\\\"\n        },\n        {\n          \\\"label\\\": \\\"ROOT\\\",\n          \\\"number\\\": 3,\n          \\\"size\\\": \\\"0\\\"\n        }\n      ]\n    }\n  ],\n  \\\"filesystems\\\": [\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda3\\\",\n        \\\"format\\\": \\\"ext4\\\",\n        \\\"point\\\": \\\"/\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"ROOT\\\"\n          ]\n        }\n      }\n    },\n    {\n      \\\"mount\\\": {\n        \\\"device\\\": \\\"/dev/sda2\\\",\n        \\\"format\\\": \\\"swap\\\",\n        \\\"point\\\": \\\"none\\\",\n        \\\"create\\\": {\n          \\\"options\\\": [\n            \\\"-L\\\",\n            \\\"SWAP\\\"\n          ]\n        }\n      }\n    }\n  ]\n}\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tftest\n      plan: c3.small.x86\n      metro: ny\n      operatingSystem: ubuntu_24_04\n      billingCycle: hourly\n      projectId: ${projectId}\n      hardwareReservationId: next-available\n      storage: |\n        {\n          \\\"disks\\\": [\n            {\n              \\\"device\\\": \\\"/dev/sda\\\",\n              \\\"wipeTable\\\": true,\n              \\\"partitions\\\": [\n                {\n                  \\\"label\\\": \\\"BIOS\\\",\n                  \\\"number\\\": 1,\n                  \\\"size\\\": \\\"4096\\\"\n                },\n                {\n                  \\\"label\\\": \\\"SWAP\\\",\n                  \\\"number\\\": 2,\n                  \\\"size\\\": \\\"3993600\\\"\n                },\n                {\n                  \\\"label\\\": \\\"ROOT\\\",\n                  \\\"number\\\": 3,\n                  \\\"size\\\": \\\"0\\\"\n                }\n              ]\n            }\n          ],\n          \\\"filesystems\\\": [\n            {\n              \\\"mount\\\": {\n                \\\"device\\\": \\\"/dev/sda3\\\",\n                \\\"format\\\": \\\"ext4\\\",\n                \\\"point\\\": \\\"/\\\",\n                \\\"create\\\": {\n                  \\\"options\\\": [\n                    \\\"-L\\\",\n                    \\\"ROOT\\\"\n                  ]\n                }\n              }\n            },\n            {\n              \\\"mount\\\": {\n                \\\"device\\\": \\\"/dev/sda2\\\",\n                \\\"format\\\": \\\"swap\\\",\n                \\\"point\\\": \\\"none\\\",\n                \\\"create\\\": {\n                  \\\"options\\\": [\n                    \\\"-L\\\",\n                    \\\"SWAP\\\"\n                  ]\n                }\n              }\n            }\n          ]\n        }\n```\n{{% /example %}}\n\n{{% example %}}\n### example 5\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst pxe1 = new equinix.metal.Device(\"pxe1\", {\n    hostname: \"tf.coreos2-pxe\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"sv\",\n    operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    ipxeScriptUrl: \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    alwaysPxe: false,\n    userData: userData,\n    customData: customData,\n    behavior: {\n        allowChanges: [\n            \"custom_data\",\n            \"user_data\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\npxe1 = equinix.metal.Device(\"pxe1\",\n    hostname=\"tf.coreos2-pxe\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"sv\",\n    operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    ipxe_script_url=\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    always_pxe=False,\n    user_data=user_data,\n    custom_data=custom_data,\n    behavior={\n        \"allow_changes\": [\n            \"custom_data\",\n            \"user_data\",\n        ],\n    })\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"pxe1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2-pxe\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystemCustomIPXE),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t\tIpxeScriptUrl:   pulumi.String(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\"),\n\t\t\tAlwaysPxe:       pulumi.Bool(false),\n\t\t\tUserData:        pulumi.Any(userData),\n\t\t\tCustomData:      pulumi.Any(customData),\n\t\t\tBehavior: \u0026metal.DeviceBehaviorArgs{\n\t\t\t\tAllowChanges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"custom_data\"),\n\t\t\t\t\tpulumi.String(\"user_data\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pxe1 = new Equinix.Metal.Device(\"pxe1\", new()\n    {\n        Hostname = \"tf.coreos2-pxe\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"sv\",\n        OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        IpxeScriptUrl = \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n        AlwaysPxe = false,\n        UserData = userData,\n        CustomData = customData,\n        Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs\n        {\n            AllowChanges = new[]\n            {\n                \"custom_data\",\n                \"user_data\",\n            },\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.inputs.DeviceBehaviorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pxe1 = new Device(\"pxe1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2-pxe\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"custom_ipxe\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .ipxeScriptUrl(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\")\n            .alwaysPxe(false)\n            .userData(userData)\n            .customData(customData)\n            .behavior(DeviceBehaviorArgs.builder()\n                .allowChanges(                \n                    \"custom_data\",\n                    \"user_data\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pxe1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2-pxe\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: custom_ipxe\n      billingCycle: hourly\n      projectId: ${projectId}\n      ipxeScriptUrl: https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\n      alwaysPxe: 'false'\n      userData: ${userData}\n      customData: ${customData}\n      behavior:\n        allowChanges:\n          - custom_data\n          - user_data\n```\n{{% /example %}}\n\n{{% /examples %}}",
+            "description": "Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.\n\n\u003e **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### example 1\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tf.coreos2\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"sv\",\n    operatingSystem: \"ubuntu_24_04\",\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tf.coreos2\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"sv\",\n    operating_system=\"ubuntu_24_04\",\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_24_04\"),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tf.coreos2\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"sv\",\n        OperatingSystem = \"ubuntu_24_04\",\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"ubuntu_24_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: ubuntu_24_04\n      billingCycle: hourly\n      projectId: ${projectId}\n```\n{{% /example %}}\n\n{{% example %}}\n### example 2\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst pxe1 = new equinix.metal.Device(\"pxe1\", {\n    hostname: \"tf.coreos2-pxe\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"sv\",\n    operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    ipxeScriptUrl: \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    alwaysPxe: false,\n    userData: example.rendered,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\npxe1 = equinix.metal.Device(\"pxe1\",\n    hostname=\"tf.coreos2-pxe\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"sv\",\n    operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    ipxe_script_url=\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    always_pxe=False,\n    user_data=example[\"rendered\"])\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"pxe1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2-pxe\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystemCustomIPXE),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t\tIpxeScriptUrl:   pulumi.String(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\"),\n\t\t\tAlwaysPxe:       pulumi.Bool(false),\n\t\t\tUserData:        pulumi.Any(example.Rendered),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pxe1 = new Equinix.Metal.Device(\"pxe1\", new()\n    {\n        Hostname = \"tf.coreos2-pxe\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"sv\",\n        OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        IpxeScriptUrl = \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n        AlwaysPxe = false,\n        UserData = example.Rendered,\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pxe1 = new Device(\"pxe1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2-pxe\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"custom_ipxe\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .ipxeScriptUrl(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\")\n            .alwaysPxe(false)\n            .userData(example.rendered())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pxe1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2-pxe\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: custom_ipxe\n      billingCycle: hourly\n      projectId: ${projectId}\n      ipxeScriptUrl: https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\n      alwaysPxe: 'false'\n      userData: ${example.rendered}\n```\n{{% /example %}}\n\n{{% example %}}\n### example 3\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tf.coreos2\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"ny\",\n    operatingSystem: \"ubuntu_24_04\",\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    ipAddresses: [{\n        type: \"private_ipv4\",\n        cidr: 30,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tf.coreos2\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"ny\",\n    operating_system=\"ubuntu_24_04\",\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    ip_addresses=[{\n        \"type\": \"private_ipv4\",\n        \"cidr\": 30,\n    }])\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"ny\"),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_24_04\"),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t\tIpAddresses: metal.DeviceIpAddressArray{\n\t\t\t\t\u0026metal.DeviceIpAddressArgs{\n\t\t\t\t\tType: pulumi.String(\"private_ipv4\"),\n\t\t\t\t\tCidr: pulumi.Int(30),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tf.coreos2\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"ny\",\n        OperatingSystem = \"ubuntu_24_04\",\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        IpAddresses = new[]\n        {\n            new Equinix.Metal.Inputs.DeviceIpAddressArgs\n            {\n                Type = \"private_ipv4\",\n                Cidr = 30,\n            },\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.inputs.DeviceIpAddressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2\")\n            .plan(\"c3.small.x86\")\n            .metro(\"ny\")\n            .operatingSystem(\"ubuntu_24_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .ipAddresses(DeviceIpAddressArgs.builder()\n                .type(\"private_ipv4\")\n                .cidr(30)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2\n      plan: c3.small.x86\n      metro: ny\n      operatingSystem: ubuntu_24_04\n      billingCycle: hourly\n      projectId: ${projectId}\n      ipAddresses:\n        - type: private_ipv4\n          cidr: 30\n```\n{{% /example %}}\n\n{{% example %}}\n### example 4\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tftest\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"ny\",\n    operatingSystem: \"ubuntu_24_04\",\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    hardwareReservationId: \"next-available\",\n    storage: \"{  \\\\\"disks\\\\\": [    {      \\\\\"device\\\\\": \\\\\"/dev/sda\\\\\",      \\\\\"wipeTable\\\\\": true,      \\\\\"partitions\\\\\": [        {          \\\\\"label\\\\\": \\\\\"BIOS\\\\\",          \\\\\"number\\\\\": 1,          \\\\\"size\\\\\": \\\\\"4096\\\\\"        },        {          \\\\\"label\\\\\": \\\\\"SWAP\\\\\",          \\\\\"number\\\\\": 2,          \\\\\"size\\\\\": \\\\\"3993600\\\\\"        },        {          \\\\\"label\\\\\": \\\\\"ROOT\\\\\",          \\\\\"number\\\\\": 3,          \\\\\"size\\\\\": \\\\\"0\\\\\"        }      ]    }  ],  \\\\\"filesystems\\\\\": [    {      \\\\\"mount\\\\\": {        \\\\\"device\\\\\": \\\\\"/dev/sda3\\\\\",        \\\\\"format\\\\\": \\\\\"ext4\\\\\",        \\\\\"point\\\\\": \\\\\"/\\\\\",        \\\\\"create\\\\\": {          \\\\\"options\\\\\": [            \\\\\"-L\\\\\",            \\\\\"ROOT\\\\\"          ]        }      }    },    {      \\\\\"mount\\\\\": {        \\\\\"device\\\\\": \\\\\"/dev/sda2\\\\\",        \\\\\"format\\\\\": \\\\\"swap\\\\\",        \\\\\"point\\\\\": \\\\\"none\\\\\",        \\\\\"create\\\\\": {          \\\\\"options\\\\\": [            \\\\\"-L\\\\\",            \\\\\"SWAP\\\\\"          ]        }      }    }  ]}\n\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tftest\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"ny\",\n    operating_system=\"ubuntu_24_04\",\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    hardware_reservation_id=\"next-available\",\n    storage=\"{  \\\\\"disks\\\\\": [    {      \\\\\"device\\\\\": \\\\\"/dev/sda\\\\\",      \\\\\"wipeTable\\\\\": true,      \\\\\"partitions\\\\\": [        {          \\\\\"label\\\\\": \\\\\"BIOS\\\\\",          \\\\\"number\\\\\": 1,          \\\\\"size\\\\\": \\\\\"4096\\\\\"        },        {          \\\\\"label\\\\\": \\\\\"SWAP\\\\\",          \\\\\"number\\\\\": 2,          \\\\\"size\\\\\": \\\\\"3993600\\\\\"        },        {          \\\\\"label\\\\\": \\\\\"ROOT\\\\\",          \\\\\"number\\\\\": 3,          \\\\\"size\\\\\": \\\\\"0\\\\\"        }      ]    }  ],  \\\\\"filesystems\\\\\": [    {      \\\\\"mount\\\\\": {        \\\\\"device\\\\\": \\\\\"/dev/sda3\\\\\",        \\\\\"format\\\\\": \\\\\"ext4\\\\\",        \\\\\"point\\\\\": \\\\\"/\\\\\",        \\\\\"create\\\\\": {          \\\\\"options\\\\\": [            \\\\\"-L\\\\\",            \\\\\"ROOT\\\\\"          ]        }      }    },    {      \\\\\"mount\\\\\": {        \\\\\"device\\\\\": \\\\\"/dev/sda2\\\\\",        \\\\\"format\\\\\": \\\\\"swap\\\\\",        \\\\\"point\\\\\": \\\\\"none\\\\\",        \\\\\"create\\\\\": {          \\\\\"options\\\\\": [            \\\\\"-L\\\\\",            \\\\\"SWAP\\\\\"          ]        }      }    }  ]}\n\")\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:              pulumi.String(\"tftest\"),\n\t\t\tPlan:                  pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:                 pulumi.String(\"ny\"),\n\t\t\tOperatingSystem:       pulumi.String(\"ubuntu_24_04\"),\n\t\t\tBillingCycle:          pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:             pulumi.Any(projectId),\n\t\t\tHardwareReservationId: pulumi.String(\"next-available\"),\n\t\t\tStorage:               pulumi.String(\"{  \\\\\"disks\\\\\": [    {      \\\\\"device\\\\\": \\\\\"/dev/sda\\\\\",      \\\\\"wipeTable\\\\\": true,      \\\\\"partitions\\\\\": [        {          \\\\\"label\\\\\": \\\\\"BIOS\\\\\",          \\\\\"number\\\\\": 1,          \\\\\"size\\\\\": \\\\\"4096\\\\\"        },        {          \\\\\"label\\\\\": \\\\\"SWAP\\\\\",          \\\\\"number\\\\\": 2,          \\\\\"size\\\\\": \\\\\"3993600\\\\\"        },        {          \\\\\"label\\\\\": \\\\\"ROOT\\\\\",          \\\\\"number\\\\\": 3,          \\\\\"size\\\\\": \\\\\"0\\\\\"        }      ]    }  ],  \\\\\"filesystems\\\\\": [    {      \\\\\"mount\\\\\": {        \\\\\"device\\\\\": \\\\\"/dev/sda3\\\\\",        \\\\\"format\\\\\": \\\\\"ext4\\\\\",        \\\\\"point\\\\\": \\\\\"/\\\\\",        \\\\\"create\\\\\": {          \\\\\"options\\\\\": [            \\\\\"-L\\\\\",            \\\\\"ROOT\\\\\"          ]        }      }    },    {      \\\\\"mount\\\\\": {        \\\\\"device\\\\\": \\\\\"/dev/sda2\\\\\",        \\\\\"format\\\\\": \\\\\"swap\\\\\",        \\\\\"point\\\\\": \\\\\"none\\\\\",        \\\\\"create\\\\\": {          \\\\\"options\\\\\": [            \\\\\"-L\\\\\",            \\\\\"SWAP\\\\\"          ]        }      }    }  ]}\n\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tftest\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"ny\",\n        OperatingSystem = \"ubuntu_24_04\",\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        HardwareReservationId = \"next-available\",\n        Storage = @\"{  \\\"\"disks\\\"\": [    {      \\\"\"device\\\"\": \\\"\"/dev/sda\\\"\",      \\\"\"wipeTable\\\"\": true,      \\\"\"partitions\\\"\": [        {          \\\"\"label\\\"\": \\\"\"BIOS\\\"\",          \\\"\"number\\\"\": 1,          \\\"\"size\\\"\": \\\"\"4096\\\"\"        },        {          \\\"\"label\\\"\": \\\"\"SWAP\\\"\",          \\\"\"number\\\"\": 2,          \\\"\"size\\\"\": \\\"\"3993600\\\"\"        },        {          \\\"\"label\\\"\": \\\"\"ROOT\\\"\",          \\\"\"number\\\"\": 3,          \\\"\"size\\\"\": \\\"\"0\\\"\"        }      ]    }  ],  \\\"\"filesystems\\\"\": [    {      \\\"\"mount\\\"\": {        \\\"\"device\\\"\": \\\"\"/dev/sda3\\\"\",        \\\"\"format\\\"\": \\\"\"ext4\\\"\",        \\\"\"point\\\"\": \\\"\"/\\\"\",        \\\"\"create\\\"\": {          \\\"\"options\\\"\": [            \\\"\"-L\\\"\",            \\\"\"ROOT\\\"\"          ]        }      }    },    {      \\\"\"mount\\\"\": {        \\\"\"device\\\"\": \\\"\"/dev/sda2\\\"\",        \\\"\"format\\\"\": \\\"\"swap\\\"\",        \\\"\"point\\\"\": \\\"\"none\\\"\",        \\\"\"create\\\"\": {          \\\"\"options\\\"\": [            \\\"\"-L\\\"\",            \\\"\"SWAP\\\"\"          ]        }      }    }  ]}\n\",\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()\n            .hostname(\"tftest\")\n            .plan(\"c3.small.x86\")\n            .metro(\"ny\")\n            .operatingSystem(\"ubuntu_24_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .hardwareReservationId(\"next-available\")\n            .storage(\"\"\"\n{  \\\"disks\\\": [    {      \\\"device\\\": \\\"/dev/sda\\\",      \\\"wipeTable\\\": true,      \\\"partitions\\\": [        {          \\\"label\\\": \\\"BIOS\\\",          \\\"number\\\": 1,          \\\"size\\\": \\\"4096\\\"        },        {          \\\"label\\\": \\\"SWAP\\\",          \\\"number\\\": 2,          \\\"size\\\": \\\"3993600\\\"        },        {          \\\"label\\\": \\\"ROOT\\\",          \\\"number\\\": 3,          \\\"size\\\": \\\"0\\\"        }      ]    }  ],  \\\"filesystems\\\": [    {      \\\"mount\\\": {        \\\"device\\\": \\\"/dev/sda3\\\",        \\\"format\\\": \\\"ext4\\\",        \\\"point\\\": \\\"/\\\",        \\\"create\\\": {          \\\"options\\\": [            \\\"-L\\\",            \\\"ROOT\\\"          ]        }      }    },    {      \\\"mount\\\": {        \\\"device\\\": \\\"/dev/sda2\\\",        \\\"format\\\": \\\"swap\\\",        \\\"point\\\": \\\"none\\\",        \\\"create\\\": {          \\\"options\\\": [            \\\"-L\\\",            \\\"SWAP\\\"          ]        }      }    }  ]}\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tftest\n      plan: c3.small.x86\n      metro: ny\n      operatingSystem: ubuntu_24_04\n      billingCycle: hourly\n      projectId: ${projectId}\n      hardwareReservationId: next-available\n      storage: |\n        {  \\\"disks\\\": [    {      \\\"device\\\": \\\"/dev/sda\\\",      \\\"wipeTable\\\": true,      \\\"partitions\\\": [        {          \\\"label\\\": \\\"BIOS\\\",          \\\"number\\\": 1,          \\\"size\\\": \\\"4096\\\"        },        {          \\\"label\\\": \\\"SWAP\\\",          \\\"number\\\": 2,          \\\"size\\\": \\\"3993600\\\"        },        {          \\\"label\\\": \\\"ROOT\\\",          \\\"number\\\": 3,          \\\"size\\\": \\\"0\\\"        }      ]    }  ],  \\\"filesystems\\\": [    {      \\\"mount\\\": {        \\\"device\\\": \\\"/dev/sda3\\\",        \\\"format\\\": \\\"ext4\\\",        \\\"point\\\": \\\"/\\\",        \\\"create\\\": {          \\\"options\\\": [            \\\"-L\\\",            \\\"ROOT\\\"          ]        }      }    },    {      \\\"mount\\\": {        \\\"device\\\": \\\"/dev/sda2\\\",        \\\"format\\\": \\\"swap\\\",        \\\"point\\\": \\\"none\\\",        \\\"create\\\": {          \\\"options\\\": [            \\\"-L\\\",            \\\"SWAP\\\"          ]        }      }    }  ]}\n```\n{{% /example %}}\n\n{{% example %}}\n### example 5\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst pxe1 = new equinix.metal.Device(\"pxe1\", {\n    hostname: \"tf.coreos2-pxe\",\n    plan: equinix.metal.Plan.C3SmallX86,\n    metro: \"sv\",\n    operatingSystem: equinix.metal.OperatingSystem.CustomIPXE,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n    ipxeScriptUrl: \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    alwaysPxe: false,\n    userData: userData,\n    customData: customData,\n    behavior: {\n        allowChanges: [\n            \"custom_data\",\n            \"user_data\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\npxe1 = equinix.metal.Device(\"pxe1\",\n    hostname=\"tf.coreos2-pxe\",\n    plan=equinix.metal.Plan.C3_SMALL_X86,\n    metro=\"sv\",\n    operating_system=equinix.metal.OperatingSystem.CUSTOM_IPXE,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id,\n    ipxe_script_url=\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n    always_pxe=False,\n    user_data=user_data,\n    custom_data=custom_data,\n    behavior={\n        \"allow_changes\": [\n            \"custom_data\",\n            \"user_data\",\n        ],\n    })\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"pxe1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2-pxe\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3SmallX86),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystemCustomIPXE),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(projectId),\n\t\t\tIpxeScriptUrl:   pulumi.String(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\"),\n\t\t\tAlwaysPxe:       pulumi.Bool(false),\n\t\t\tUserData:        pulumi.Any(userData),\n\t\t\tCustomData:      pulumi.Any(customData),\n\t\t\tBehavior: \u0026metal.DeviceBehaviorArgs{\n\t\t\t\tAllowChanges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"custom_data\"),\n\t\t\t\t\tpulumi.String(\"user_data\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pxe1 = new Equinix.Metal.Device(\"pxe1\", new()\n    {\n        Hostname = \"tf.coreos2-pxe\",\n        Plan = Equinix.Metal.Plan.C3SmallX86,\n        Metro = \"sv\",\n        OperatingSystem = Equinix.Metal.OperatingSystem.CustomIPXE,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n        IpxeScriptUrl = \"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\",\n        AlwaysPxe = false,\n        UserData = userData,\n        CustomData = customData,\n        Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs\n        {\n            AllowChanges = new[]\n            {\n                \"custom_data\",\n                \"user_data\",\n            },\n        },\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.inputs.DeviceBehaviorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pxe1 = new Device(\"pxe1\", DeviceArgs.builder()\n            .hostname(\"tf.coreos2-pxe\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"custom_ipxe\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .ipxeScriptUrl(\"https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\")\n            .alwaysPxe(false)\n            .userData(userData)\n            .customData(customData)\n            .behavior(DeviceBehaviorArgs.builder()\n                .allowChanges(                \n                    \"custom_data\",\n                    \"user_data\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pxe1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2-pxe\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: custom_ipxe\n      billingCycle: hourly\n      projectId: ${projectId}\n      ipxeScriptUrl: https://rawgit.com/cloudnativelabs/pxe/master/packet/coreos-stable-metal.ipxe\n      alwaysPxe: 'false'\n      userData: ${userData}\n      customData: ${customData}\n      behavior:\n        allowChanges:\n          - custom_data\n          - user_data\n```\n{{% /example %}}\n\n{{% /examples %}}",
             "properties": {
                 "accessPrivateIpv4": {
                     "type": "string",
@@ -28258,7 +28881,7 @@
             }
         },
         "equinix:networkedge/sshKey:SshKey": {
-            "description": "Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst john = new equinix.networkedge.SshKey(\"john\", {\n    name: \"johnKent\",\n    publicKey: `  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX\n  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu\n  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS\n  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl\n  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N\n  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM\n  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5\n  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW\n  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F\n  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n`,\n    type: \"RSA\",\n    projectId: \"a86d7112-d740-4758-9c9c-31e66373746b\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\njohn = equinix.networkedge.SshKey(\"john\",\n    name=\"johnKent\",\n    public_key=\"\"\"  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX\n  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu\n  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS\n  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl\n  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N\n  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM\n  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5\n  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW\n  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F\n  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n\"\"\",\n    type=\"RSA\",\n    project_id=\"a86d7112-d740-4758-9c9c-31e66373746b\")\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := networkedge.NewSshKey(ctx, \"john\", \u0026networkedge.SshKeyArgs{\n\t\t\tName: pulumi.String(\"johnKent\"),\n\t\t\tPublicKey: pulumi.String(`  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX\n  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu\n  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS\n  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl\n  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N\n  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM\n  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5\n  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW\n  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F\n  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n`),\n\t\t\tType:      pulumi.String(\"RSA\"),\n\t\t\tProjectId: pulumi.String(\"a86d7112-d740-4758-9c9c-31e66373746b\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var john = new Equinix.NetworkEdge.SshKey(\"john\", new()\n    {\n        Name = \"johnKent\",\n        PublicKey = @\"  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX\n  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu\n  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS\n  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl\n  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N\n  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM\n  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5\n  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW\n  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F\n  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n\",\n        Type = \"RSA\",\n        ProjectId = \"a86d7112-d740-4758-9c9c-31e66373746b\",\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.networkedge.SshKey;\nimport com.pulumi.equinix.networkedge.SshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var john = new SshKey(\"john\", SshKeyArgs.builder()\n            .name(\"johnKent\")\n            .publicKey(\"\"\"\n  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX\n  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu\n  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS\n  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl\n  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N\n  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM\n  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5\n  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW\n  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F\n  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n            \"\"\")\n            .type(\"RSA\")\n            .projectId(\"a86d7112-d740-4758-9c9c-31e66373746b\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  john:\n    type: equinix:networkedge:SshKey\n    properties:\n      name: johnKent\n      publicKey: |2\n          ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX\n          2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu\n          iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS\n          qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl\n          mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N\n          w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM\n          8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5\n          SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW\n          WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F\n          jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n      type: RSA\n      projectId: a86d7112-d740-4758-9c9c-31e66373746b\n```\n{{% /example %}}\n\n## Import\n\nThis resource can be imported using an existing ID:\n\n```sh\n$ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}\n```\n\n\n{{% /examples %}}",
+            "description": "Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst john = new equinix.networkedge.SshKey(\"john\", {\n    name: \"johnKent\",\n    publicKey: \"  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\\n\",\n    type: \"RSA\",\n    projectId: \"a86d7112-d740-4758-9c9c-31e66373746b\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\njohn = equinix.networkedge.SshKey(\"john\",\n    name=\"johnKent\",\n    public_key=\"  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\\n\",\n    type=\"RSA\",\n    project_id=\"a86d7112-d740-4758-9c9c-31e66373746b\")\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := networkedge.NewSshKey(ctx, \"john\", \u0026networkedge.SshKeyArgs{\n\t\t\tName:      pulumi.String(\"johnKent\"),\n\t\t\tPublicKey: pulumi.String(\"  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\\n\"),\n\t\t\tType:      pulumi.String(\"RSA\"),\n\t\t\tProjectId: pulumi.String(\"a86d7112-d740-4758-9c9c-31e66373746b\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var john = new Equinix.NetworkEdge.SshKey(\"john\", new()\n    {\n        Name = \"johnKent\",\n        PublicKey = @\"  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n\",\n        Type = \"RSA\",\n        ProjectId = \"a86d7112-d740-4758-9c9c-31e66373746b\",\n    });\n\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.networkedge.SshKey;\nimport com.pulumi.equinix.networkedge.SshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var john = new SshKey(\"john\", SshKeyArgs.builder()\n            .name(\"johnKent\")\n            .publicKey(\"\"\"\n  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n            \"\"\")\n            .type(\"RSA\")\n            .projectId(\"a86d7112-d740-4758-9c9c-31e66373746b\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  john:\n    type: equinix:networkedge:SshKey\n    properties:\n      name: johnKent\n      publicKey: |2\n          ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpXGdxljAyPp9vH97436U171cX  2gRkfPnpL8ebrk7ZBeeIpdjtd8mYpXf6fOI0o91TQXZTYtjABzeRgg6/m9hsMOnTHjzWpFyuj/hiPu  iie1WtT4NffSH1ALQFX/azouBLmdNiYFMLfEVPZleergAqsYOHGCiQuR6Qh5j0yc5Wx+LKxiRZyjsS  qo+EB8V6xBXi2i5PDJXK+dYG8YU9vdNeQdB84HvTWcGEnLR5w7pgC74pBVwzs3oWLy+3jWS0TKKtfl  mryeFRufXq87gEkC1MOWX88uQgjyCsemuhPdN++2WS57gu7vcqCMwMDZa7dukRS3JANBtbs7qQhp9N  w2PB4q6tohqUnSDxNjCqcoGeMNg/0kHeZcoVuznsjOrIDt0HgUApflkbtw1DP7Epfc2MJ0anf5GizM  8UjMYiXEvv2U/qu8Vb7d5bxAshXM5nh67NSrgst9YzSSodjUCnFQkniz6KLrTkX6c2y2gJ5c9tWhg5  SPkAc8OqLrmIwf5jGoHGh6eUJy7AtMcwE3iUpbrLw8EEoZDoDXkzh+RbOtSNKXWV4EAXsIhjQusCOW  WQnuAHCy9N4Td0Sntzu/xhCZ8xN0oO67Cqlsk98xSRLXeg21PuuhOYJw0DLF6L68zU2OO0RzqoNq/F  jIsltSUJPAIfYKL0yEefeNWOXSrasI1ezw== John.Kent@company.com\n      type: RSA\n      projectId: a86d7112-d740-4758-9c9c-31e66373746b\n```\n{{% /example %}}\n\n## Import\n\nThis resource can be imported using an existing ID:\n\n```sh\n$ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}\n```\n\n\n{{% /examples %}}",
             "properties": {
                 "name": {
                     "type": "string",
@@ -31060,6 +31683,172 @@
                     "streamSubscriptionsCount",
                     "type",
                     "uuid"
+                ]
+            }
+        },
+        "equinix:fabric/getStreamAlertRule:getStreamAlertRule": {
+            "description": "Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetStreamAlertRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dataStreamAlertRule = FabricFunctions.getStreamAlertRule(GetStreamAlertRuleArgs.builder()\n            .streamId(\"\u003cuuid_of_stream\u003e\")\n            .streamAlertRuleId(\"\u003cuuid_of_stream_alert_rule\u003e\")\n            .build());\n\n        ctx.export(\"streamAlertRuleType\", data.equinix_fabric_stream_alert_rule().alert_rule().type());\n        ctx.export(\"streamAlertRuleId\", data.equinix_fabric_stream_alert_rule().alert_rule().uuid());\n        ctx.export(\"streamAlertRuleState\", data.equinix_fabric_stream_alert_rule().alert_rule().state());\n        ctx.export(\"streamAlertRuleStreamId\", data.equinix_fabric_stream_alert_rule().alert_rule().stream_id());\n    }\n}\n```\n```yaml\nvariables:\n  dataStreamAlertRule:\n    fn::invoke:\n      function: equinix:fabric:getStreamAlertRule\n      arguments:\n        streamId: \u003cuuid_of_stream\u003e\n        streamAlertRuleId: \u003cuuid_of_stream_alert_rule\u003e\noutputs:\n  streamAlertRuleType: ${data.equinix_fabric_stream_alert_rule.alert_rule.type}\n  streamAlertRuleId: ${data.equinix_fabric_stream_alert_rule.alert_rule.uuid}\n  streamAlertRuleState: ${data.equinix_fabric_stream_alert_rule.alert_rule.state}\n  streamAlertRuleStreamId: ${data.equinix_fabric_stream_alert_rule.alert_rule.stream_id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getStreamAlertRule.\n",
+                "properties": {
+                    "alertRuleId": {
+                        "type": "string",
+                        "description": "The uuid of the stream alert rule\n"
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "The uuid of the stream that is the target of the stream alert rule\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "alertRuleId",
+                    "streamId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getStreamAlertRule.\n",
+                "properties": {
+                    "alertRuleId": {
+                        "type": "string",
+                        "description": "The uuid of the stream alert rule\n"
+                    },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/getStreamAlertRuleChangeLog:getStreamAlertRuleChangeLog",
+                        "description": "Details of the last change on the stream resource\n"
+                    },
+                    "criticalThreshold": {
+                        "type": "string",
+                        "description": "Stream alert rule metric critical threshold\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Customer-provided stream alert rule description\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Stream subscription enabled status\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Equinix assigned URI of the stream alert rule resource\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the resource\n"
+                    },
+                    "metricName": {
+                        "type": "string",
+                        "description": "Stream alert rule metric name\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Customer-provided stream alert rule name\n"
+                    },
+                    "operand": {
+                        "type": "string",
+                        "description": "Stream alert rule metric operand\n"
+                    },
+                    "resourceSelector": {
+                        "$ref": "#/types/equinix:fabric/getStreamAlertRuleResourceSelector:getStreamAlertRuleResourceSelector",
+                        "description": "Lists of metrics to be included/excluded on the stream alert rule\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Value representing provisioning status for the stream resource\n"
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "The uuid of the stream that is the target of the stream alert rule\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the stream alert rule\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix assigned unique identifier of the stream subscription resource\n"
+                    },
+                    "warningThreshold": {
+                        "type": "string",
+                        "description": "Stream alert rule metric warning threshold\n"
+                    },
+                    "windowSize": {
+                        "type": "string",
+                        "description": "Stream alert rule metric window size\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "alertRuleId",
+                    "changeLog",
+                    "criticalThreshold",
+                    "description",
+                    "enabled",
+                    "href",
+                    "id",
+                    "metricName",
+                    "name",
+                    "operand",
+                    "resourceSelector",
+                    "state",
+                    "streamId",
+                    "type",
+                    "uuid",
+                    "warningThreshold",
+                    "windowSize"
+                ]
+            }
+        },
+        "equinix:fabric/getStreamAlertRules:getStreamAlertRules": {
+            "description": "Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst dataStreamAlertRules = equinix.fabric.getStreamAlertRules({\n    streamId: \"\u003cuuid_of_stream\u003e\",\n    pagination: {\n        limit: 5,\n        offset: 1,\n    },\n});\nexport const streamAlertRulesType = data.equinix_fabric_stream_alert_rules.alert_rules.data[0].type;\nexport const streamAlertRulesId = data.equinix_fabric_stream_alert_rules.alert_rules.data[0].uuid;\nexport const streamAlertRulesState = data.equinix_fabric_stream_alert_rules.alert_rules.data[0].state;\nexport const streamAlertRulesStreamId = data.equinix_fabric_stream_alert_rules.alert_rules.data[0].stream_id;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\ndata_stream_alert_rules = equinix.fabric.get_stream_alert_rules(stream_id=\"\u003cuuid_of_stream\u003e\",\n    pagination={\n        \"limit\": 5,\n        \"offset\": 1,\n    })\npulumi.export(\"streamAlertRulesType\", data[\"equinix_fabric_stream_alert_rules\"][\"alert_rules\"][\"data\"][0][\"type\"])\npulumi.export(\"streamAlertRulesId\", data[\"equinix_fabric_stream_alert_rules\"][\"alert_rules\"][\"data\"][0][\"uuid\"])\npulumi.export(\"streamAlertRulesState\", data[\"equinix_fabric_stream_alert_rules\"][\"alert_rules\"][\"data\"][0][\"state\"])\npulumi.export(\"streamAlertRulesStreamId\", data[\"equinix_fabric_stream_alert_rules\"][\"alert_rules\"][\"data\"][0][\"stream_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dataStreamAlertRules = Equinix.Fabric.GetStreamAlertRules.Invoke(new()\n    {\n        StreamId = \"\u003cuuid_of_stream\u003e\",\n        Pagination = new Equinix.Fabric.Inputs.GetStreamAlertRulesPaginationInputArgs\n        {\n            Limit = 5,\n            Offset = 1,\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"streamAlertRulesType\"] = data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].Type,\n        [\"streamAlertRulesId\"] = data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].Uuid,\n        [\"streamAlertRulesState\"] = data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].State,\n        [\"streamAlertRulesStreamId\"] = data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].Stream_id,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fabric.GetStreamAlertRules(ctx, \u0026fabric.GetStreamAlertRulesArgs{\n\t\t\tStreamId: \"\u003cuuid_of_stream\u003e\",\n\t\t\tPagination: fabric.GetStreamAlertRulesPagination{\n\t\t\t\tLimit:  5,\n\t\t\t\tOffset: 1,\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"streamAlertRulesType\", data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].Type)\n\t\tctx.Export(\"streamAlertRulesId\", data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].Uuid)\n\t\tctx.Export(\"streamAlertRulesState\", data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].State)\n\t\tctx.Export(\"streamAlertRulesStreamId\", data.Equinix_fabric_stream_alert_rules.Alert_rules.Data[0].Stream_id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.FabricFunctions;\nimport com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesArgs;\nimport com.pulumi.equinix.fabric.inputs.GetStreamAlertRulesPaginationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dataStreamAlertRules = FabricFunctions.getStreamAlertRules(GetStreamAlertRulesArgs.builder()\n            .streamId(\"\u003cuuid_of_stream\u003e\")\n            .pagination(GetStreamAlertRulesPaginationArgs.builder()\n                .limit(5)\n                .offset(1)\n                .build())\n            .build());\n\n        ctx.export(\"streamAlertRulesType\", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].type());\n        ctx.export(\"streamAlertRulesId\", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].uuid());\n        ctx.export(\"streamAlertRulesState\", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].state());\n        ctx.export(\"streamAlertRulesStreamId\", data.equinix_fabric_stream_alert_rules().alert_rules().data()[0].stream_id());\n    }\n}\n```\n```yaml\nvariables:\n  dataStreamAlertRules:\n    fn::invoke:\n      function: equinix:fabric:getStreamAlertRules\n      arguments:\n        streamId: \u003cuuid_of_stream\u003e\n        pagination:\n          limit: 5\n          offset: 1\noutputs:\n  streamAlertRulesType: ${data.equinix_fabric_stream_alert_rules.alert_rules.data[0].type}\n  streamAlertRulesId: ${data.equinix_fabric_stream_alert_rules.alert_rules.data[0].uuid}\n  streamAlertRulesState: ${data.equinix_fabric_stream_alert_rules.alert_rules.data[0].state}\n  streamAlertRulesStreamId: ${data.equinix_fabric_stream_alert_rules.alert_rules.data[0].stream_id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getStreamAlertRules.\n",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getStreamAlertRulesPagination:getStreamAlertRulesPagination",
+                        "description": "Pagination details for the returned stream alert rules list\n"
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "The uuid of the stream that is the target of the stream alert rule\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "pagination",
+                    "streamId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getStreamAlertRules.\n",
+                "properties": {
+                    "datas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getStreamAlertRulesData:getStreamAlertRulesData"
+                        },
+                        "description": "Returned list of stream objects\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the resource\n"
+                    },
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getStreamAlertRulesPagination:getStreamAlertRulesPagination",
+                        "description": "Pagination details for the returned stream alert rules list\n"
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "description": "The uuid of the stream that is the target of the stream alert rule\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datas",
+                    "id",
+                    "pagination",
+                    "streamId"
                 ]
             }
         },

@@ -147,6 +147,9 @@ __all__ = [
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPort',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice',
+    'StreamAlertRuleChangeLog',
+    'StreamAlertRuleResourceSelector',
+    'StreamAlertRuleTimeouts',
     'StreamAttachmentTimeouts',
     'StreamChangeLog',
     'StreamProject',
@@ -465,6 +468,12 @@ __all__ = [
     'GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceResult',
     'GetServiceTokensFilterResult',
     'GetServiceTokensPaginationResult',
+    'GetStreamAlertRuleChangeLogResult',
+    'GetStreamAlertRuleResourceSelectorResult',
+    'GetStreamAlertRulesDataResult',
+    'GetStreamAlertRulesDataChangeLogResult',
+    'GetStreamAlertRulesDataResourceSelectorResult',
+    'GetStreamAlertRulesPaginationResult',
     'GetStreamAttachmentsDataResult',
     'GetStreamAttachmentsFilterResult',
     'GetStreamAttachmentsPaginationResult',
@@ -10596,6 +10605,269 @@ class ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice(di
         Virtual Device type
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class StreamAlertRuleChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamAlertRuleChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamAlertRuleChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamAlertRuleChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class StreamAlertRuleResourceSelector(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class StreamAlertRuleTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -30663,6 +30935,543 @@ class GetServiceTokensPaginationResult(dict):
     def total(self) -> int:
         """
         Total number of elements returned.
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetStreamAlertRuleChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetStreamAlertRuleResourceSelectorResult(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class GetStreamAlertRulesDataResult(dict):
+    def __init__(__self__, *,
+                 change_log: 'outputs.GetStreamAlertRulesDataChangeLogResult',
+                 critical_threshold: str,
+                 description: str,
+                 enabled: bool,
+                 href: str,
+                 metric_name: str,
+                 name: str,
+                 operand: str,
+                 resource_selector: 'outputs.GetStreamAlertRulesDataResourceSelectorResult',
+                 state: str,
+                 type: str,
+                 uuid: str,
+                 warning_threshold: str,
+                 window_size: str):
+        """
+        :param 'GetStreamAlertRulesDataChangeLogArgs' change_log: Details of the last change on the stream resource
+        :param str critical_threshold: Stream alert rule metric critical threshold
+        :param str description: Customer-provided stream alert rule description
+        :param bool enabled: Stream subscription enabled status
+        :param str href: Equinix assigned URI of the stream alert rule resource
+        :param str metric_name: Stream alert rule metric name
+        :param str name: Customer-provided stream alert rule name
+        :param str operand: Stream alert rule metric operand
+        :param 'GetStreamAlertRulesDataResourceSelectorArgs' resource_selector: Lists of metrics to be included/excluded on the stream alert rule
+        :param str state: Value representing provisioning status for the stream resource
+        :param str type: Type of the stream alert rule
+        :param str uuid: Equinix assigned unique identifier of the stream subscription resource
+        :param str warning_threshold: Stream alert rule metric warning threshold
+        :param str window_size: Stream alert rule metric window size
+        """
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "critical_threshold", critical_threshold)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operand", operand)
+        pulumi.set(__self__, "resource_selector", resource_selector)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "warning_threshold", warning_threshold)
+        pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetStreamAlertRulesDataChangeLogResult':
+        """
+        Details of the last change on the stream resource
+        """
+        return pulumi.get(self, "change_log")
+
+    @property
+    @pulumi.getter(name="criticalThreshold")
+    def critical_threshold(self) -> str:
+        """
+        Stream alert rule metric critical threshold
+        """
+        return pulumi.get(self, "critical_threshold")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Customer-provided stream alert rule description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Stream subscription enabled status
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Equinix assigned URI of the stream alert rule resource
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> str:
+        """
+        Stream alert rule metric name
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Customer-provided stream alert rule name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operand(self) -> str:
+        """
+        Stream alert rule metric operand
+        """
+        return pulumi.get(self, "operand")
+
+    @property
+    @pulumi.getter(name="resourceSelector")
+    def resource_selector(self) -> 'outputs.GetStreamAlertRulesDataResourceSelectorResult':
+        """
+        Lists of metrics to be included/excluded on the stream alert rule
+        """
+        return pulumi.get(self, "resource_selector")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Value representing provisioning status for the stream resource
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the stream alert rule
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Equinix assigned unique identifier of the stream subscription resource
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="warningThreshold")
+    def warning_threshold(self) -> str:
+        """
+        Stream alert rule metric warning threshold
+        """
+        return pulumi.get(self, "warning_threshold")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> str:
+        """
+        Stream alert rule metric window size
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class GetStreamAlertRulesDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: User name of creator of the stream resource
+        :param str created_by_email: Email of creator of the stream resource
+        :param str created_by_full_name: Legal name of creator of the stream resource
+        :param str created_date_time: Creation time of the stream resource
+        :param str deleted_by: User name of deleter of the stream resource
+        :param str deleted_by_email: Email of deleter of the stream resource
+        :param str deleted_by_full_name: Legal name of deleter of the stream resource
+        :param str deleted_date_time: Deletion time of the stream resource
+        :param str updated_by: User name of last updater of the stream resource
+        :param str updated_by_email: Email of last updater of the stream resource
+        :param str updated_by_full_name: Legal name of last updater of the stream resource
+        :param str updated_date_time: Last update time of the stream resource
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        User name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Email of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Legal name of creator of the stream resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Creation time of the stream resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        User name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Email of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Legal name of deleter of the stream resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deletion time of the stream resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        User name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Email of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Legal name of last updater of the stream resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Last update time of the stream resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetStreamAlertRulesDataResourceSelectorResult(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class GetStreamAlertRulesPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: int,
+                 next: str,
+                 offset: int,
+                 previous: str,
+                 total: int):
+        """
+        :param int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param str next: The URL relative to the next item in the response
+        :param int offset: Index of the first item returned in the response. The default is 0
+        :param str previous: The URL relative to the previous item in the response
+        :param int total: The total number of alert rules available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of alert rules available to the user making the request
         """
         return pulumi.get(self, "total")
 
