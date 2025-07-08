@@ -1,6 +1,0 @@
-# WARNING: This file was build based on https://github.com/pulumi/ci-mgmt
-# but it is currently not in sync. Any update must be done manually
-
----
-upstream-provider-name: terraform-provider-equinix
-remove-plugins: true
