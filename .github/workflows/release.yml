@@ -224,4 +224,8 @@ jobs:
       fail-fast: true
       matrix:
         language:
+          - nodejs
+          - python
+          - dotnet
+          - go
           - java
