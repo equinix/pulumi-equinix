@@ -1132,6 +1132,64 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### example f5xc single
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var f5XcSingle = new Device("f5XcSingle", DeviceArgs.builder()
+ *             .name("tf-f5xc")
+ *             .projectId("XXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("F5XC")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .connectivity("INTERNET-ACCESS")
+ *             .packageCode("STD")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(1)
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .aclTemplateId("xxxx")
+ *             .version("9.2025.17")
+ *             .interfaceCount(8)
+ *             .coreCount(8)
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("token", "XXXXXXXXXX"),
+ *                 Map.entry("hostname", "XXXX")
+ *             ))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ### example fortigate sdwan single device
  * <pre>
  * {@code

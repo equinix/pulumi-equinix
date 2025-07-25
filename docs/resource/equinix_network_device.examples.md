@@ -4908,6 +4908,256 @@ variables:
 {{% /example %}}
 
 {{% example %}}
+### example f5xc single
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const f5XcSingle = new equinix.networkedge.Device("f5xc-single", {
+    name: "tf-f5xc",
+    projectId: "XXXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "F5XC",
+    selfManaged: true,
+    byol: true,
+    connectivity: "INTERNET-ACCESS",
+    packageCode: "STD",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    termLength: 1,
+    accountNumber: sv.apply(sv => sv.number),
+    aclTemplateId: "xxxx",
+    version: "9.2025.17",
+    interfaceCount: 8,
+    coreCount: 8,
+    vendorConfiguration: {
+        token: "XXXXXXXXXX",
+        hostname: "XXXX",
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+f5_xc_single = equinix.networkedge.Device("f5xc-single",
+    name="tf-f5xc",
+    project_id="XXXXXX",
+    metro_code=sv.metro_code,
+    type_code="F5XC",
+    self_managed=True,
+    byol=True,
+    connectivity="INTERNET-ACCESS",
+    package_code="STD",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    term_length=1,
+    account_number=sv.number,
+    acl_template_id="xxxx",
+    version="9.2025.17",
+    interface_count=8,
+    core_count=8,
+    vendor_configuration={
+        "token": "XXXXXXXXXX",
+        "hostname": "XXXX",
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "f5xc-single", &networkedge.DeviceArgs{
+			Name:      pulumi.String("tf-f5xc"),
+			ProjectId: pulumi.String("XXXXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:     pulumi.String("F5XC"),
+			SelfManaged:  pulumi.Bool(true),
+			Byol:         pulumi.Bool(true),
+			Connectivity: pulumi.String("INTERNET-ACCESS"),
+			PackageCode:  pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			TermLength: pulumi.Int(1),
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			AclTemplateId:  pulumi.String("xxxx"),
+			Version:        pulumi.String("9.2025.17"),
+			InterfaceCount: pulumi.Int(8),
+			CoreCount:      pulumi.Int(8),
+			VendorConfiguration: pulumi.StringMap{
+				"token":    pulumi.String("XXXXXXXXXX"),
+				"hostname": pulumi.String("XXXX"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var f5XcSingle = new Equinix.NetworkEdge.Device("f5xc-single", new()
+    {
+        Name = "tf-f5xc",
+        ProjectId = "XXXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "F5XC",
+        SelfManaged = true,
+        Byol = true,
+        Connectivity = "INTERNET-ACCESS",
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        TermLength = 1,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        AclTemplateId = "xxxx",
+        Version = "9.2025.17",
+        InterfaceCount = 8,
+        CoreCount = 8,
+        VendorConfiguration = 
+        {
+            { "token", "XXXXXXXXXX" },
+            { "hostname", "XXXX" },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var f5XcSingle = new Device("f5XcSingle", DeviceArgs.builder()
+            .name("tf-f5xc")
+            .projectId("XXXXXX")
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .typeCode("F5XC")
+            .selfManaged(true)
+            .byol(true)
+            .connectivity("INTERNET-ACCESS")
+            .packageCode("STD")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .termLength(1)
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .aclTemplateId("xxxx")
+            .version("9.2025.17")
+            .interfaceCount(8)
+            .coreCount(8)
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("token", "XXXXXXXXXX"),
+                Map.entry("hostname", "XXXX")
+            ))
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  f5xc-single:
+    type: equinix:networkedge:Device
+    properties:
+      name: tf-f5xc
+      projectId: XXXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: F5XC
+      selfManaged: true
+      byol: true
+      connectivity: INTERNET-ACCESS
+      packageCode: STD
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      termLength: 1
+      accountNumber: ${sv.number}
+      aclTemplateId: xxxx
+      version: 9.2025.17
+      interfaceCount: 8
+      coreCount: 8
+      vendorConfiguration:
+        token: XXXXXXXXXX
+        hostname: XXXX
+variables:
+  # Create F5XC device
+  sv:
+    fn::invoke:
+      function: equinix:networkedge:getAccount
+      arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
 ### example fortigate sdwan single device
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
