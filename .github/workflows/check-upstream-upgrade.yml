@@ -15,7 +15,7 @@ jobs:
       with:
         tools: go
     - name: Install upgrade-provider
-      run: go install github.com/pulumi/upgrade-provider@main
+      run: go install github.com/pulumi/upgrade-provider@ec62fc8d980f # NOTE: newer upgrade-provider versions do not initialize the upstream submodule
       shell: bash
     - name: "Set up git identity: name"
       run: git config --global user.name GitHub
