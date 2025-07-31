@@ -308,6 +308,8 @@ class SpotMarketRequest(pulumi.CustomResource):
                  wait_for_devices: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:** This resource has been deprecated and is no longer supported.
+
         Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 
         ## Example Usage
@@ -355,6 +357,8 @@ class SpotMarketRequest(pulumi.CustomResource):
                  args: SpotMarketRequestArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:** This resource has been deprecated and is no longer supported.
+
         Provides an Equinix Metal Spot Market Request resource to allow you to manage spot market requests on your account. For more detail on Spot Market, see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 
         ## Example Usage
