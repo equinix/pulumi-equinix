@@ -110,16 +110,6 @@ export const getReservedIpBlock: typeof import("./getReservedIpBlock").getReserv
 export const getReservedIpBlockOutput: typeof import("./getReservedIpBlock").getReservedIpBlockOutput = null as any;
 utilities.lazyLoad(exports, ["getReservedIpBlock","getReservedIpBlockOutput"], () => require("./getReservedIpBlock"));
 
-export { GetSpotMarketPriceArgs, GetSpotMarketPriceResult, GetSpotMarketPriceOutputArgs } from "./getSpotMarketPrice";
-export const getSpotMarketPrice: typeof import("./getSpotMarketPrice").getSpotMarketPrice = null as any;
-export const getSpotMarketPriceOutput: typeof import("./getSpotMarketPrice").getSpotMarketPriceOutput = null as any;
-utilities.lazyLoad(exports, ["getSpotMarketPrice","getSpotMarketPriceOutput"], () => require("./getSpotMarketPrice"));
-
-export { GetSpotMarketRequestArgs, GetSpotMarketRequestResult, GetSpotMarketRequestOutputArgs } from "./getSpotMarketRequest";
-export const getSpotMarketRequest: typeof import("./getSpotMarketRequest").getSpotMarketRequest = null as any;
-export const getSpotMarketRequestOutput: typeof import("./getSpotMarketRequest").getSpotMarketRequestOutput = null as any;
-utilities.lazyLoad(exports, ["getSpotMarketRequest","getSpotMarketRequestOutput"], () => require("./getSpotMarketRequest"));
-
 export { GetVirtualCircuitArgs, GetVirtualCircuitResult, GetVirtualCircuitOutputArgs } from "./getVirtualCircuit";
 export const getVirtualCircuit: typeof import("./getVirtualCircuit").getVirtualCircuit = null as any;
 export const getVirtualCircuitOutput: typeof import("./getVirtualCircuit").getVirtualCircuitOutput = null as any;
@@ -185,11 +175,6 @@ export type ReservedIpBlock = import("./reservedIpBlock").ReservedIpBlock;
 export const ReservedIpBlock: typeof import("./reservedIpBlock").ReservedIpBlock = null as any;
 utilities.lazyLoad(exports, ["ReservedIpBlock"], () => require("./reservedIpBlock"));
 
-export { SpotMarketRequestArgs, SpotMarketRequestState } from "./spotMarketRequest";
-export type SpotMarketRequest = import("./spotMarketRequest").SpotMarketRequest;
-export const SpotMarketRequest: typeof import("./spotMarketRequest").SpotMarketRequest = null as any;
-utilities.lazyLoad(exports, ["SpotMarketRequest"], () => require("./spotMarketRequest"));
-
 export { SshKeyArgs, SshKeyState } from "./sshKey";
 export type SshKey = import("./sshKey").SshKey;
 export const SshKey: typeof import("./sshKey").SshKey = null as any;
@@ -251,8 +236,6 @@ const _module = {
                 return new ProjectSshKey(name, <any>undefined, { urn })
             case "equinix:metal/reservedIpBlock:ReservedIpBlock":
                 return new ReservedIpBlock(name, <any>undefined, { urn })
-            case "equinix:metal/spotMarketRequest:SpotMarketRequest":
-                return new SpotMarketRequest(name, <any>undefined, { urn })
             case "equinix:metal/sshKey:SshKey":
                 return new SshKey(name, <any>undefined, { urn })
             case "equinix:metal/userApiKey:UserApiKey":
@@ -282,7 +265,6 @@ pulumi.runtime.registerResourceModule("equinix", "metal/project", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/projectApiKey", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/projectSshKey", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/reservedIpBlock", _module)
-pulumi.runtime.registerResourceModule("equinix", "metal/spotMarketRequest", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/sshKey", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/userApiKey", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/virtualCircuit", _module)

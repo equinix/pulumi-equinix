@@ -49,8 +49,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectSshKey{}
 	case "equinix:metal/reservedIpBlock:ReservedIpBlock":
 		r = &ReservedIpBlock{}
-	case "equinix:metal/spotMarketRequest:SpotMarketRequest":
-		r = &SpotMarketRequest{}
 	case "equinix:metal/sshKey:SshKey":
 		r = &SshKey{}
 	case "equinix:metal/userApiKey:UserApiKey":
@@ -142,11 +140,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"metal/reservedIpBlock",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"equinix",
-		"metal/spotMarketRequest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
