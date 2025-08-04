@@ -277,14 +277,6 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
-  "mod": "metal/spotMarketRequest",
-  "fqn": "pulumi_equinix.metal",
-  "classes": {
-   "equinix:metal/spotMarketRequest:SpotMarketRequest": "SpotMarketRequest"
-  }
- },
- {
-  "pkg": "equinix",
   "mod": "metal/sshKey",
   "fqn": "pulumi_equinix.metal",
   "classes": {
