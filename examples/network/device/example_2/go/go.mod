@@ -2,7 +2,7 @@ module equinix-network-device-example_2
 
 go 1.22.0
 
-toolchain go1.23.0
+toolchain go1.23.11
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
