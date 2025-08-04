@@ -11664,31 +11664,6 @@ export namespace metal {
         status: string;
     }
 
-    export interface SpotMarketRequestInstanceParameters {
-        alwaysPxe?: boolean;
-        billingCycle: string;
-        customdata?: string;
-        description?: string;
-        features?: string[];
-        hostname: string;
-        ipxeScriptUrl?: string;
-        /**
-         * Blocks deletion of the SpotMarketRequest device until the lock is disabled.
-         */
-        locked?: boolean;
-        operatingSystem: string;
-        plan: string;
-        projectSshKeys?: string[];
-        tags?: string[];
-        terminationTime: string;
-        /**
-         * @deprecated Use instance_parameters.termination_time instead
-         */
-        termintationTime: string;
-        userSshKeys?: string[];
-        userdata?: string;
-    }
-
 }
 
 export namespace networkedge {

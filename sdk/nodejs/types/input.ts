@@ -4709,31 +4709,6 @@ export namespace metal {
          */
         status?: pulumi.Input<string>;
     }
-
-    export interface SpotMarketRequestInstanceParameters {
-        alwaysPxe?: pulumi.Input<boolean>;
-        billingCycle: pulumi.Input<string>;
-        customdata?: pulumi.Input<string>;
-        description?: pulumi.Input<string>;
-        features?: pulumi.Input<pulumi.Input<string>[]>;
-        hostname: pulumi.Input<string>;
-        ipxeScriptUrl?: pulumi.Input<string>;
-        /**
-         * Blocks deletion of the SpotMarketRequest device until the lock is disabled.
-         */
-        locked?: pulumi.Input<boolean>;
-        operatingSystem: pulumi.Input<string>;
-        plan: pulumi.Input<string>;
-        projectSshKeys?: pulumi.Input<pulumi.Input<string>[]>;
-        tags?: pulumi.Input<pulumi.Input<string>[]>;
-        terminationTime?: pulumi.Input<string>;
-        /**
-         * @deprecated Use instance_parameters.termination_time instead
-         */
-        termintationTime?: pulumi.Input<string>;
-        userSshKeys?: pulumi.Input<pulumi.Input<string>[]>;
-        userdata?: pulumi.Input<string>;
-    }
 }
 
 export namespace networkedge {

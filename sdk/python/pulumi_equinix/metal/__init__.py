@@ -28,7 +28,6 @@ from .get_project import *
 from .get_project_ssh_key import *
 from .get_reserved_ip_block import *
 from .get_spot_market_price import *
-from .get_spot_market_request import *
 from .get_virtual_circuit import *
 from .get_vlan import *
 from .get_vrf import *
@@ -42,7 +41,6 @@ from .project import *
 from .project_api_key import *
 from .project_ssh_key import *
 from .reserved_ip_block import *
-from .spot_market_request import *
 from .ssh_key import *
 from .user_api_key import *
 from .virtual_circuit import *
