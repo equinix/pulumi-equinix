@@ -2,7 +2,7 @@ module equinix-fabric-stream_attachment
 
 go 1.22.0
 
-toolchain go1.23.0
+toolchain go1.23.11
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
