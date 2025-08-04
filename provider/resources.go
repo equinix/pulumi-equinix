@@ -686,12 +686,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_spot_market_request": {
-				Tok: makeEquinixResource(metalMod, "SpotMarketRequest"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
-			},
 			"equinix_metal_ssh_key": {
 				Tok: makeEquinixResource(metalMod, "SshKey"),
 				Docs: &tfbridge.DocInfo{
@@ -1824,8 +1818,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_metal_project_ssh_key":     {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
 			"equinix_metal_reserved_ip_block":   {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
-			"equinix_metal_spot_market_price":   {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
-			"equinix_metal_spot_market_request": {Tok: makeEquinixDataSource(metalMod, "SpotMarketRequest")},
 			"equinix_metal_virtual_circuit":     {Tok: makeEquinixDataSource(metalMod, "VirtualCircuit")},
 			"equinix_metal_vlan":                {Tok: makeEquinixDataSource(metalMod, "Vlan")},
 			"equinix_metal_vrf":                 {Tok: makeEquinixDataSource(metalMod, "Vrf")},
