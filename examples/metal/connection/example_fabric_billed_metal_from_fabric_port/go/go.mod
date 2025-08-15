@@ -2,7 +2,7 @@ module equinix-metal-connection-example_fabric_billed_metal_from_fabric_port
 
 go 1.22.0
 
-toolchain go1.23.0
+toolchain go1.23.11
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

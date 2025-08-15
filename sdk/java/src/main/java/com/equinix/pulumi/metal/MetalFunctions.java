@@ -40,8 +40,6 @@ import com.equinix.pulumi.metal.inputs.GetReservedIpBlockArgs;
 import com.equinix.pulumi.metal.inputs.GetReservedIpBlockPlainArgs;
 import com.equinix.pulumi.metal.inputs.GetSpotMarketPriceArgs;
 import com.equinix.pulumi.metal.inputs.GetSpotMarketPricePlainArgs;
-import com.equinix.pulumi.metal.inputs.GetSpotMarketRequestArgs;
-import com.equinix.pulumi.metal.inputs.GetSpotMarketRequestPlainArgs;
 import com.equinix.pulumi.metal.inputs.GetVirtualCircuitArgs;
 import com.equinix.pulumi.metal.inputs.GetVirtualCircuitPlainArgs;
 import com.equinix.pulumi.metal.inputs.GetVlanArgs;
@@ -66,7 +64,6 @@ import com.equinix.pulumi.metal.outputs.GetProjectResult;
 import com.equinix.pulumi.metal.outputs.GetProjectSshKeyResult;
 import com.equinix.pulumi.metal.outputs.GetReservedIpBlockResult;
 import com.equinix.pulumi.metal.outputs.GetSpotMarketPriceResult;
-import com.equinix.pulumi.metal.outputs.GetSpotMarketRequestResult;
 import com.equinix.pulumi.metal.outputs.GetVirtualCircuitResult;
 import com.equinix.pulumi.metal.outputs.GetVlanResult;
 import com.equinix.pulumi.metal.outputs.GetVrfResult;
@@ -5046,21 +5043,6 @@ public final class MetalFunctions {
      */
     public static CompletableFuture<GetSpotMarketPriceResult> getSpotMarketPricePlain(GetSpotMarketPricePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", TypeShape.of(GetSpotMarketPriceResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetSpotMarketRequestResult> getSpotMarketRequest(GetSpotMarketRequestArgs args) {
-        return getSpotMarketRequest(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetSpotMarketRequestResult> getSpotMarketRequestPlain(GetSpotMarketRequestPlainArgs args) {
-        return getSpotMarketRequestPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetSpotMarketRequestResult> getSpotMarketRequest(GetSpotMarketRequestArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", TypeShape.of(GetSpotMarketRequestResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetSpotMarketRequestResult> getSpotMarketRequest(GetSpotMarketRequestArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", TypeShape.of(GetSpotMarketRequestResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetSpotMarketRequestResult> getSpotMarketRequestPlain(GetSpotMarketRequestPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", TypeShape.of(GetSpotMarketRequestResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
