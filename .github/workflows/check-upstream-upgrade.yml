@@ -10,10 +10,14 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
-    - name: Setup tools
-      uses: ./.github/actions/setup-tools
+    - name: Install Go
+      uses: actions/setup-go@v5
       with:
-        tools: go
+        go-version-file: provider/go.mod
+        cache-dependency-path: |
+          provider/*.sum
+          upstream/*.sum
+          sdk/*.sum
     - name: Install upgrade-provider
       run: go install github.com/pulumi/upgrade-provider@main
       shell: bash
