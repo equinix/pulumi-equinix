@@ -145,6 +145,55 @@ import javax.annotation.Nullable;
  *             .type("STREAM_SUBSCRIPTION")
  *             .build());
  * 
+ *         var servicenow = new StreamSubscription("servicenow", StreamSubscriptionArgs.builder()
+ *             .description("<description>")
+ *             .enabled(true)
+ *             .sink(StreamSubscriptionSinkArgs.builder()
+ *                 .credential(StreamSubscriptionSinkCredentialArgs.builder()
+ *                     .password("<servicenow_password>")
+ *                     .type("USERNAME_PASSWORD")
+ *                     .username("<servicenow_username>")
+ *                     .build())
+ *                 .host("<servicenow_host>")
+ *                 .settings(StreamSubscriptionSinkSettingsArgs.builder()
+ *                     .source("Equinix")
+ *                     .build())
+ *                 .type("SERVICENOW")
+ *                 .build())
+ *             .streamId("<stream_id>")
+ *             .type("STREAM_SUBSCRIPTION")
+ *             .build());
+ * 
+ *         var webhook = new StreamSubscription("webhook", StreamSubscriptionArgs.builder()
+ *             .description("<description>")
+ *             .enabled(true)
+ *             .sink(StreamSubscriptionSinkArgs.builder()
+ *                 .settings(StreamSubscriptionSinkSettingsArgs.builder()
+ *                     .eventUri("<webhook_event_uri>")
+ *                     .format("<webhook_format>")
+ *                     .metricUri("<webhook_metric_uri>")
+ *                     .build())
+ *                 .type("WEBHOOK")
+ *                 .build())
+ *             .streamId("<stream_id>")
+ *             .type("STREAM_SUBSCRIPTION")
+ *             .build());
+ * 
+ *         var grafana = new StreamSubscription("grafana", StreamSubscriptionArgs.builder()
+ *             .description("<description>")
+ *             .enabled(true)
+ *             .sink(StreamSubscriptionSinkArgs.builder()
+ *                 .settings(StreamSubscriptionSinkSettingsArgs.builder()
+ *                     .eventUri("<grafana_event_uri>")
+ *                     .format("OPENTELEMETRY")
+ *                     .metricUri("<grafana_metric_uri>")
+ *                     .build())
+ *                 .type("WEBHOOK")
+ *                 .build())
+ *             .streamId("<stream_id>")
+ *             .type("STREAM_SUBSCRIPTION")
+ *             .build());
+ * 
  *     }
  * }
  * }

@@ -14,6 +14,7 @@ public final class StreamSubscriptionSinkSettings {
     private @Nullable String applicationKey;
     private @Nullable String eventIndex;
     private @Nullable String eventUri;
+    private @Nullable String format;
     private @Nullable String metricIndex;
     private @Nullable String metricUri;
     private @Nullable String source;
@@ -27,6 +28,9 @@ public final class StreamSubscriptionSinkSettings {
     }
     public Optional<String> eventUri() {
         return Optional.ofNullable(this.eventUri);
+    }
+    public Optional<String> format() {
+        return Optional.ofNullable(this.format);
     }
     public Optional<String> metricIndex() {
         return Optional.ofNullable(this.metricIndex);
@@ -50,6 +54,7 @@ public final class StreamSubscriptionSinkSettings {
         private @Nullable String applicationKey;
         private @Nullable String eventIndex;
         private @Nullable String eventUri;
+        private @Nullable String format;
         private @Nullable String metricIndex;
         private @Nullable String metricUri;
         private @Nullable String source;
@@ -59,6 +64,7 @@ public final class StreamSubscriptionSinkSettings {
     	      this.applicationKey = defaults.applicationKey;
     	      this.eventIndex = defaults.eventIndex;
     	      this.eventUri = defaults.eventUri;
+    	      this.format = defaults.format;
     	      this.metricIndex = defaults.metricIndex;
     	      this.metricUri = defaults.metricUri;
     	      this.source = defaults.source;
@@ -80,6 +86,12 @@ public final class StreamSubscriptionSinkSettings {
         public Builder eventUri(@Nullable String eventUri) {
 
             this.eventUri = eventUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder format(@Nullable String format) {
+
+            this.format = format;
             return this;
         }
         @CustomType.Setter
@@ -105,6 +117,7 @@ public final class StreamSubscriptionSinkSettings {
             _resultValue.applicationKey = applicationKey;
             _resultValue.eventIndex = eventIndex;
             _resultValue.eventUri = eventUri;
+            _resultValue.format = format;
             _resultValue.metricIndex = metricIndex;
             _resultValue.metricUri = metricUri;
             _resultValue.source = source;

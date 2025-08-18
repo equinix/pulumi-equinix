@@ -36,6 +36,13 @@ public final class StreamSubscriptionSinkSettingsArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.eventUri);
     }
 
+    @Import(name="format")
+    private @Nullable Output<String> format;
+
+    public Optional<Output<String>> format() {
+        return Optional.ofNullable(this.format);
+    }
+
     @Import(name="metricIndex")
     private @Nullable Output<String> metricIndex;
 
@@ -63,6 +70,7 @@ public final class StreamSubscriptionSinkSettingsArgs extends com.pulumi.resourc
         this.applicationKey = $.applicationKey;
         this.eventIndex = $.eventIndex;
         this.eventUri = $.eventUri;
+        this.format = $.format;
         this.metricIndex = $.metricIndex;
         this.metricUri = $.metricUri;
         this.source = $.source;
@@ -111,6 +119,15 @@ public final class StreamSubscriptionSinkSettingsArgs extends com.pulumi.resourc
 
         public Builder eventUri(String eventUri) {
             return eventUri(Output.of(eventUri));
+        }
+
+        public Builder format(@Nullable Output<String> format) {
+            $.format = format;
+            return this;
+        }
+
+        public Builder format(String format) {
+            return format(Output.of(format));
         }
 
         public Builder metricIndex(@Nullable Output<String> metricIndex) {

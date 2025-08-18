@@ -13,48 +13,37 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetStreamSubscriptionsDataSinkSettingsResult
     {
-        /// <summary>
-        /// Passed as Authorization header value
-        /// </summary>
-        public readonly string AccessToken;
-        /// <summary>
-        /// Passed as Authorization header value
-        /// </summary>
-        public readonly string ApiKey;
-        /// <summary>
-        /// Passed as Authorization header value
-        /// </summary>
-        public readonly string IntegrationKey;
-        /// <summary>
-        /// Passed as Authorization header value
-        /// </summary>
-        public readonly string Password;
-        public readonly string Type;
-        /// <summary>
-        /// Passed as Authorization header value
-        /// </summary>
-        public readonly string Username;
+        public readonly string ApplicationKey;
+        public readonly string EventIndex;
+        public readonly string EventUri;
+        public readonly string Format;
+        public readonly string MetricIndex;
+        public readonly string MetricUri;
+        public readonly string Source;
 
         [OutputConstructor]
         private GetStreamSubscriptionsDataSinkSettingsResult(
-            string accessToken,
+            string applicationKey,
 
-            string apiKey,
+            string eventIndex,
 
-            string integrationKey,
+            string eventUri,
 
-            string password,
+            string format,
 
-            string type,
+            string metricIndex,
 
-            string username)
+            string metricUri,
+
+            string source)
         {
-            AccessToken = accessToken;
-            ApiKey = apiKey;
-            IntegrationKey = integrationKey;
-            Password = password;
-            Type = type;
-            Username = username;
+            ApplicationKey = applicationKey;
+            EventIndex = eventIndex;
+            EventUri = eventUri;
+            Format = format;
+            MetricIndex = metricIndex;
+            MetricUri = metricUri;
+            Source = source;
         }
     }
 }

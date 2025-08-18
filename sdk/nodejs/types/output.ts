@@ -8466,30 +8466,13 @@ export namespace fabric {
     }
 
     export interface GetStreamSubscriptionSinkSettings {
-        /**
-         * Passed as Authorization header value
-         */
-        accessToken: string;
-        /**
-         * Passed as Authorization header value
-         */
-        apiKey: string;
-        /**
-         * Passed as Authorization header value
-         */
-        integrationKey: string;
-        /**
-         * Passed as Authorization header value
-         */
-        password: string;
-        /**
-         * Type of the stream subscription request
-         */
-        type: string;
-        /**
-         * Passed as Authorization header value
-         */
-        username: string;
+        applicationKey: string;
+        eventIndex: string;
+        eventUri: string;
+        format: string;
+        metricIndex: string;
+        metricUri: string;
+        source: string;
     }
 
     export interface GetStreamSubscriptionsData {
@@ -8675,27 +8658,13 @@ export namespace fabric {
     }
 
     export interface GetStreamSubscriptionsDataSinkSettings {
-        /**
-         * Passed as Authorization header value
-         */
-        accessToken: string;
-        /**
-         * Passed as Authorization header value
-         */
-        apiKey: string;
-        /**
-         * Passed as Authorization header value
-         */
-        integrationKey: string;
-        /**
-         * Passed as Authorization header value
-         */
-        password: string;
-        type: string;
-        /**
-         * Passed as Authorization header value
-         */
-        username: string;
+        applicationKey: string;
+        eventIndex: string;
+        eventUri: string;
+        format: string;
+        metricIndex: string;
+        metricUri: string;
+        source: string;
     }
 
     export interface GetStreamSubscriptionsPagination {
@@ -10974,6 +10943,7 @@ export namespace fabric {
         applicationKey: string;
         eventIndex: string;
         eventUri: string;
+        format: string;
         metricIndex: string;
         metricUri: string;
         source: string;
