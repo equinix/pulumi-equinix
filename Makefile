@@ -5,7 +5,7 @@ BIN_DIR       := $(WORKING_DIR)/.pulumi/bin
 PULUMICTL_BIN := $(BIN_DIR)/pulumictl
 export PATH := $(BIN_DIR):$(PATH)
 
-PULUMICTL_VERSION := v0.0.46
+PULUMICTL_VERSION := v0.0.50
 
 SHELL            := /bin/bash
 PACK             := equinix
