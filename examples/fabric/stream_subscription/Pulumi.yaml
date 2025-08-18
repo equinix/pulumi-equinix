@@ -84,3 +84,48 @@ resources:
       sink:
         type: TEAMS
         uri: <msteams_uri>
+  servicenow:
+    type: equinix:fabric:StreamSubscription
+    properties:
+      type: STREAM_SUBSCRIPTION
+      name: <name>
+      description: <description>
+      streamId: <stream_id>
+      enabled: true
+      sink:
+        type: SERVICENOW
+        host: <servicenow_host>
+        settings:
+          source: Equinix
+        credential:
+          type: USERNAME_PASSWORD
+          username: <servicenow_username>
+          password: <servicenow_password>
+  webhook:
+    type: equinix:fabric:StreamSubscription
+    properties:
+      type: STREAM_SUBSCRIPTION
+      name: <name>
+      description: <description>
+      streamId: <stream_id>
+      enabled: true
+      sink:
+        type: WEBHOOK
+        settings:
+          format: <webhook_format>
+          eventUri: <webhook_event_uri>
+          metricUri: <webhook_metric_uri>
+  grafana:
+    type: equinix:fabric:StreamSubscription
+    properties:
+      type: STREAM_SUBSCRIPTION
+      name: <name>
+      description: <description>
+      streamId: <stream_id>
+      enabled: true
+      sink:
+        type: WEBHOOK
+        settings:
+          format: OPENTELEMETRY
+          eventUri: <grafana_event_uri>
+          metricUri: <grafana_metric_uri>

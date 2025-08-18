@@ -2,7 +2,7 @@ module equinix-fabric-connection-example_fcr_to_metal
 
 go 1.22.0
 
-toolchain go1.23.11
+toolchain go1.23.0
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
