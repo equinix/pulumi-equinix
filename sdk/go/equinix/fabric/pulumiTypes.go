@@ -26239,6 +26239,7 @@ type StreamSubscriptionSinkSettings struct {
 	ApplicationKey *string `pulumi:"applicationKey"`
 	EventIndex     *string `pulumi:"eventIndex"`
 	EventUri       *string `pulumi:"eventUri"`
+	Format         *string `pulumi:"format"`
 	MetricIndex    *string `pulumi:"metricIndex"`
 	MetricUri      *string `pulumi:"metricUri"`
 	Source         *string `pulumi:"source"`
@@ -26259,6 +26260,7 @@ type StreamSubscriptionSinkSettingsArgs struct {
 	ApplicationKey pulumi.StringPtrInput `pulumi:"applicationKey"`
 	EventIndex     pulumi.StringPtrInput `pulumi:"eventIndex"`
 	EventUri       pulumi.StringPtrInput `pulumi:"eventUri"`
+	Format         pulumi.StringPtrInput `pulumi:"format"`
 	MetricIndex    pulumi.StringPtrInput `pulumi:"metricIndex"`
 	MetricUri      pulumi.StringPtrInput `pulumi:"metricUri"`
 	Source         pulumi.StringPtrInput `pulumi:"source"`
@@ -26353,6 +26355,10 @@ func (o StreamSubscriptionSinkSettingsOutput) EventUri() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.EventUri }).(pulumi.StringPtrOutput)
 }
 
+func (o StreamSubscriptionSinkSettingsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
 func (o StreamSubscriptionSinkSettingsOutput) MetricIndex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSubscriptionSinkSettings) *string { return v.MetricIndex }).(pulumi.StringPtrOutput)
 }
@@ -26413,6 +26419,15 @@ func (o StreamSubscriptionSinkSettingsPtrOutput) EventUri() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.EventUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StreamSubscriptionSinkSettingsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSubscriptionSinkSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -73476,18 +73491,13 @@ func (o GetStreamSubscriptionSinkCredentialOutput) Username() pulumi.StringOutpu
 }
 
 type GetStreamSubscriptionSinkSettings struct {
-	// Passed as Authorization header value
-	AccessToken string `pulumi:"accessToken"`
-	// Passed as Authorization header value
-	ApiKey string `pulumi:"apiKey"`
-	// Passed as Authorization header value
-	IntegrationKey string `pulumi:"integrationKey"`
-	// Passed as Authorization header value
-	Password string `pulumi:"password"`
-	// Type of the stream subscription request
-	Type string `pulumi:"type"`
-	// Passed as Authorization header value
-	Username string `pulumi:"username"`
+	ApplicationKey string `pulumi:"applicationKey"`
+	EventIndex     string `pulumi:"eventIndex"`
+	EventUri       string `pulumi:"eventUri"`
+	Format         string `pulumi:"format"`
+	MetricIndex    string `pulumi:"metricIndex"`
+	MetricUri      string `pulumi:"metricUri"`
+	Source         string `pulumi:"source"`
 }
 
 // GetStreamSubscriptionSinkSettingsInput is an input type that accepts GetStreamSubscriptionSinkSettingsArgs and GetStreamSubscriptionSinkSettingsOutput values.
@@ -73502,18 +73512,13 @@ type GetStreamSubscriptionSinkSettingsInput interface {
 }
 
 type GetStreamSubscriptionSinkSettingsArgs struct {
-	// Passed as Authorization header value
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
-	// Passed as Authorization header value
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// Passed as Authorization header value
-	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
-	// Passed as Authorization header value
-	Password pulumi.StringInput `pulumi:"password"`
-	// Type of the stream subscription request
-	Type pulumi.StringInput `pulumi:"type"`
-	// Passed as Authorization header value
-	Username pulumi.StringInput `pulumi:"username"`
+	ApplicationKey pulumi.StringInput `pulumi:"applicationKey"`
+	EventIndex     pulumi.StringInput `pulumi:"eventIndex"`
+	EventUri       pulumi.StringInput `pulumi:"eventUri"`
+	Format         pulumi.StringInput `pulumi:"format"`
+	MetricIndex    pulumi.StringInput `pulumi:"metricIndex"`
+	MetricUri      pulumi.StringInput `pulumi:"metricUri"`
+	Source         pulumi.StringInput `pulumi:"source"`
 }
 
 func (GetStreamSubscriptionSinkSettingsArgs) ElementType() reflect.Type {
@@ -73542,34 +73547,32 @@ func (o GetStreamSubscriptionSinkSettingsOutput) ToGetStreamSubscriptionSinkSett
 	return o
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionSinkSettingsOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.AccessToken }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionSinkSettingsOutput) ApplicationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.ApplicationKey }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionSinkSettingsOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.ApiKey }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionSinkSettingsOutput) EventIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.EventIndex }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionSinkSettingsOutput) IntegrationKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.IntegrationKey }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionSinkSettingsOutput) EventUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.EventUri }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionSinkSettingsOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Password }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionSinkSettingsOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Format }).(pulumi.StringOutput)
 }
 
-// Type of the stream subscription request
-func (o GetStreamSubscriptionSinkSettingsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Type }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionSinkSettingsOutput) MetricIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.MetricIndex }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionSinkSettingsOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Username }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionSinkSettingsOutput) MetricUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.MetricUri }).(pulumi.StringOutput)
+}
+
+func (o GetStreamSubscriptionSinkSettingsOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionSinkSettings) string { return v.Source }).(pulumi.StringOutput)
 }
 
 type GetStreamSubscriptionsData struct {
@@ -74245,17 +74248,13 @@ func (o GetStreamSubscriptionsDataSinkCredentialOutput) Username() pulumi.String
 }
 
 type GetStreamSubscriptionsDataSinkSettings struct {
-	// Passed as Authorization header value
-	AccessToken string `pulumi:"accessToken"`
-	// Passed as Authorization header value
-	ApiKey string `pulumi:"apiKey"`
-	// Passed as Authorization header value
-	IntegrationKey string `pulumi:"integrationKey"`
-	// Passed as Authorization header value
-	Password string `pulumi:"password"`
-	Type     string `pulumi:"type"`
-	// Passed as Authorization header value
-	Username string `pulumi:"username"`
+	ApplicationKey string `pulumi:"applicationKey"`
+	EventIndex     string `pulumi:"eventIndex"`
+	EventUri       string `pulumi:"eventUri"`
+	Format         string `pulumi:"format"`
+	MetricIndex    string `pulumi:"metricIndex"`
+	MetricUri      string `pulumi:"metricUri"`
+	Source         string `pulumi:"source"`
 }
 
 // GetStreamSubscriptionsDataSinkSettingsInput is an input type that accepts GetStreamSubscriptionsDataSinkSettingsArgs and GetStreamSubscriptionsDataSinkSettingsOutput values.
@@ -74270,17 +74269,13 @@ type GetStreamSubscriptionsDataSinkSettingsInput interface {
 }
 
 type GetStreamSubscriptionsDataSinkSettingsArgs struct {
-	// Passed as Authorization header value
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
-	// Passed as Authorization header value
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// Passed as Authorization header value
-	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
-	// Passed as Authorization header value
-	Password pulumi.StringInput `pulumi:"password"`
-	Type     pulumi.StringInput `pulumi:"type"`
-	// Passed as Authorization header value
-	Username pulumi.StringInput `pulumi:"username"`
+	ApplicationKey pulumi.StringInput `pulumi:"applicationKey"`
+	EventIndex     pulumi.StringInput `pulumi:"eventIndex"`
+	EventUri       pulumi.StringInput `pulumi:"eventUri"`
+	Format         pulumi.StringInput `pulumi:"format"`
+	MetricIndex    pulumi.StringInput `pulumi:"metricIndex"`
+	MetricUri      pulumi.StringInput `pulumi:"metricUri"`
+	Source         pulumi.StringInput `pulumi:"source"`
 }
 
 func (GetStreamSubscriptionsDataSinkSettingsArgs) ElementType() reflect.Type {
@@ -74309,33 +74304,32 @@ func (o GetStreamSubscriptionsDataSinkSettingsOutput) ToGetStreamSubscriptionsDa
 	return o
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.AccessToken }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) ApplicationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.ApplicationKey }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.ApiKey }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) EventIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.EventIndex }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) IntegrationKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.IntegrationKey }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) EventUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.EventUri }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Password }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Format }).(pulumi.StringOutput)
 }
 
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Type }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) MetricIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.MetricIndex }).(pulumi.StringOutput)
 }
 
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Username }).(pulumi.StringOutput)
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) MetricUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.MetricUri }).(pulumi.StringOutput)
+}
+
+func (o GetStreamSubscriptionsDataSinkSettingsOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Source }).(pulumi.StringOutput)
 }
 
 type GetStreamSubscriptionsPagination struct {

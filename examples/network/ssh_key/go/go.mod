@@ -2,7 +2,7 @@ module equinix-network-ssh_key
 
 go 1.22.0
 
-toolchain go1.23.11
+toolchain go1.23.0
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

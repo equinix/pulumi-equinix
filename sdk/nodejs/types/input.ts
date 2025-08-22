@@ -4338,6 +4338,7 @@ export namespace fabric {
         applicationKey?: pulumi.Input<string>;
         eventIndex?: pulumi.Input<string>;
         eventUri?: pulumi.Input<string>;
+        format?: pulumi.Input<string>;
         metricIndex?: pulumi.Input<string>;
         metricUri?: pulumi.Input<string>;
         source?: pulumi.Input<string>;

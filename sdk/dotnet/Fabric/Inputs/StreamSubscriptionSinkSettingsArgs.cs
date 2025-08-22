@@ -21,6 +21,9 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("eventUri")]
         public Input<string>? EventUri { get; set; }
 
+        [Input("format")]
+        public Input<string>? Format { get; set; }
+
         [Input("metricIndex")]
         public Input<string>? MetricIndex { get; set; }
 

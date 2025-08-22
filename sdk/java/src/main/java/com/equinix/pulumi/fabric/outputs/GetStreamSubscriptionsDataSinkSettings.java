@@ -10,71 +10,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStreamSubscriptionsDataSinkSettings {
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    private String accessToken;
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    private String apiKey;
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    private String integrationKey;
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    private String password;
-    private String type;
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    private String username;
+    private String applicationKey;
+    private String eventIndex;
+    private String eventUri;
+    private String format;
+    private String metricIndex;
+    private String metricUri;
+    private String source;
 
     private GetStreamSubscriptionsDataSinkSettings() {}
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    public String accessToken() {
-        return this.accessToken;
+    public String applicationKey() {
+        return this.applicationKey;
     }
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    public String apiKey() {
-        return this.apiKey;
+    public String eventIndex() {
+        return this.eventIndex;
     }
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    public String integrationKey() {
-        return this.integrationKey;
+    public String eventUri() {
+        return this.eventUri;
     }
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    public String password() {
-        return this.password;
+    public String format() {
+        return this.format;
     }
-    public String type() {
-        return this.type;
+    public String metricIndex() {
+        return this.metricIndex;
     }
-    /**
-     * @return Passed as Authorization header value
-     * 
-     */
-    public String username() {
-        return this.username;
+    public String metricUri() {
+        return this.metricUri;
+    }
+    public String source() {
+        return this.source;
     }
 
     public static Builder builder() {
@@ -86,79 +50,90 @@ public final class GetStreamSubscriptionsDataSinkSettings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accessToken;
-        private String apiKey;
-        private String integrationKey;
-        private String password;
-        private String type;
-        private String username;
+        private String applicationKey;
+        private String eventIndex;
+        private String eventUri;
+        private String format;
+        private String metricIndex;
+        private String metricUri;
+        private String source;
         public Builder() {}
         public Builder(GetStreamSubscriptionsDataSinkSettings defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accessToken = defaults.accessToken;
-    	      this.apiKey = defaults.apiKey;
-    	      this.integrationKey = defaults.integrationKey;
-    	      this.password = defaults.password;
-    	      this.type = defaults.type;
-    	      this.username = defaults.username;
+    	      this.applicationKey = defaults.applicationKey;
+    	      this.eventIndex = defaults.eventIndex;
+    	      this.eventUri = defaults.eventUri;
+    	      this.format = defaults.format;
+    	      this.metricIndex = defaults.metricIndex;
+    	      this.metricUri = defaults.metricUri;
+    	      this.source = defaults.source;
         }
 
         @CustomType.Setter
-        public Builder accessToken(String accessToken) {
-            if (accessToken == null) {
-              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "accessToken");
+        public Builder applicationKey(String applicationKey) {
+            if (applicationKey == null) {
+              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "applicationKey");
             }
-            this.accessToken = accessToken;
+            this.applicationKey = applicationKey;
             return this;
         }
         @CustomType.Setter
-        public Builder apiKey(String apiKey) {
-            if (apiKey == null) {
-              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "apiKey");
+        public Builder eventIndex(String eventIndex) {
+            if (eventIndex == null) {
+              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "eventIndex");
             }
-            this.apiKey = apiKey;
+            this.eventIndex = eventIndex;
             return this;
         }
         @CustomType.Setter
-        public Builder integrationKey(String integrationKey) {
-            if (integrationKey == null) {
-              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "integrationKey");
+        public Builder eventUri(String eventUri) {
+            if (eventUri == null) {
+              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "eventUri");
             }
-            this.integrationKey = integrationKey;
+            this.eventUri = eventUri;
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "password");
+        public Builder format(String format) {
+            if (format == null) {
+              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "format");
             }
-            this.password = password;
+            this.format = format;
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "type");
+        public Builder metricIndex(String metricIndex) {
+            if (metricIndex == null) {
+              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "metricIndex");
             }
-            this.type = type;
+            this.metricIndex = metricIndex;
             return this;
         }
         @CustomType.Setter
-        public Builder username(String username) {
-            if (username == null) {
-              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "username");
+        public Builder metricUri(String metricUri) {
+            if (metricUri == null) {
+              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "metricUri");
             }
-            this.username = username;
+            this.metricUri = metricUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder source(String source) {
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetStreamSubscriptionsDataSinkSettings", "source");
+            }
+            this.source = source;
             return this;
         }
         public GetStreamSubscriptionsDataSinkSettings build() {
             final var _resultValue = new GetStreamSubscriptionsDataSinkSettings();
-            _resultValue.accessToken = accessToken;
-            _resultValue.apiKey = apiKey;
-            _resultValue.integrationKey = integrationKey;
-            _resultValue.password = password;
-            _resultValue.type = type;
-            _resultValue.username = username;
+            _resultValue.applicationKey = applicationKey;
+            _resultValue.eventIndex = eventIndex;
+            _resultValue.eventUri = eventUri;
+            _resultValue.format = format;
+            _resultValue.metricIndex = metricIndex;
+            _resultValue.metricUri = metricUri;
+            _resultValue.source = source;
             return _resultValue;
         }
     }

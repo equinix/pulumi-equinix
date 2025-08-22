@@ -16,6 +16,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         public readonly string? ApplicationKey;
         public readonly string? EventIndex;
         public readonly string? EventUri;
+        public readonly string? Format;
         public readonly string? MetricIndex;
         public readonly string? MetricUri;
         public readonly string? Source;
@@ -28,6 +29,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string? eventUri,
 
+            string? format,
+
             string? metricIndex,
 
             string? metricUri,
@@ -37,6 +40,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             ApplicationKey = applicationKey;
             EventIndex = eventIndex;
             EventUri = eventUri;
+            Format = format;
             MetricIndex = metricIndex;
             MetricUri = metricUri;
             Source = source;

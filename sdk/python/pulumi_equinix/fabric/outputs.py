@@ -11653,6 +11653,7 @@ class StreamSubscriptionSinkSettings(dict):
                  application_key: Optional[str] = None,
                  event_index: Optional[str] = None,
                  event_uri: Optional[str] = None,
+                 format: Optional[str] = None,
                  metric_index: Optional[str] = None,
                  metric_uri: Optional[str] = None,
                  source: Optional[str] = None):
@@ -11662,6 +11663,8 @@ class StreamSubscriptionSinkSettings(dict):
             pulumi.set(__self__, "event_index", event_index)
         if event_uri is not None:
             pulumi.set(__self__, "event_uri", event_uri)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if metric_index is not None:
             pulumi.set(__self__, "metric_index", metric_index)
         if metric_uri is not None:
@@ -11683,6 +11686,11 @@ class StreamSubscriptionSinkSettings(dict):
     @pulumi.getter(name="eventUri")
     def event_uri(self) -> Optional[str]:
         return pulumi.get(self, "event_uri")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        return pulumi.get(self, "format")
 
     @property
     @pulumi.getter(name="metricIndex")
@@ -32206,74 +32214,55 @@ class GetStreamSubscriptionSinkCredentialResult(dict):
 @pulumi.output_type
 class GetStreamSubscriptionSinkSettingsResult(dict):
     def __init__(__self__, *,
-                 access_token: str,
-                 api_key: str,
-                 integration_key: str,
-                 password: str,
-                 type: str,
-                 username: str):
-        """
-        :param str access_token: Passed as Authorization header value
-        :param str api_key: Passed as Authorization header value
-        :param str integration_key: Passed as Authorization header value
-        :param str password: Passed as Authorization header value
-        :param str type: Type of the stream subscription request
-        :param str username: Passed as Authorization header value
-        """
-        pulumi.set(__self__, "access_token", access_token)
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "integration_key", integration_key)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "username", username)
+                 application_key: str,
+                 event_index: str,
+                 event_uri: str,
+                 format: str,
+                 metric_index: str,
+                 metric_uri: str,
+                 source: str):
+        pulumi.set(__self__, "application_key", application_key)
+        pulumi.set(__self__, "event_index", event_index)
+        pulumi.set(__self__, "event_uri", event_uri)
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "metric_index", metric_index)
+        pulumi.set(__self__, "metric_uri", metric_uri)
+        pulumi.set(__self__, "source", source)
 
     @property
-    @pulumi.getter(name="accessToken")
-    def access_token(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "access_token")
+    @pulumi.getter(name="applicationKey")
+    def application_key(self) -> str:
+        return pulumi.get(self, "application_key")
 
     @property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "api_key")
+    @pulumi.getter(name="eventIndex")
+    def event_index(self) -> str:
+        return pulumi.get(self, "event_index")
 
     @property
-    @pulumi.getter(name="integrationKey")
-    def integration_key(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "integration_key")
+    @pulumi.getter(name="eventUri")
+    def event_uri(self) -> str:
+        return pulumi.get(self, "event_uri")
 
     @property
     @pulumi.getter
-    def password(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "password")
+    def format(self) -> str:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="metricIndex")
+    def metric_index(self) -> str:
+        return pulumi.get(self, "metric_index")
+
+    @property
+    @pulumi.getter(name="metricUri")
+    def metric_uri(self) -> str:
+        return pulumi.get(self, "metric_uri")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
-        """
-        Type of the stream subscription request
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def username(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "username")
+    def source(self) -> str:
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type
@@ -32772,70 +32761,55 @@ class GetStreamSubscriptionsDataSinkCredentialResult(dict):
 @pulumi.output_type
 class GetStreamSubscriptionsDataSinkSettingsResult(dict):
     def __init__(__self__, *,
-                 access_token: str,
-                 api_key: str,
-                 integration_key: str,
-                 password: str,
-                 type: str,
-                 username: str):
-        """
-        :param str access_token: Passed as Authorization header value
-        :param str api_key: Passed as Authorization header value
-        :param str integration_key: Passed as Authorization header value
-        :param str password: Passed as Authorization header value
-        :param str username: Passed as Authorization header value
-        """
-        pulumi.set(__self__, "access_token", access_token)
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "integration_key", integration_key)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "username", username)
+                 application_key: str,
+                 event_index: str,
+                 event_uri: str,
+                 format: str,
+                 metric_index: str,
+                 metric_uri: str,
+                 source: str):
+        pulumi.set(__self__, "application_key", application_key)
+        pulumi.set(__self__, "event_index", event_index)
+        pulumi.set(__self__, "event_uri", event_uri)
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "metric_index", metric_index)
+        pulumi.set(__self__, "metric_uri", metric_uri)
+        pulumi.set(__self__, "source", source)
 
     @property
-    @pulumi.getter(name="accessToken")
-    def access_token(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "access_token")
+    @pulumi.getter(name="applicationKey")
+    def application_key(self) -> str:
+        return pulumi.get(self, "application_key")
 
     @property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "api_key")
+    @pulumi.getter(name="eventIndex")
+    def event_index(self) -> str:
+        return pulumi.get(self, "event_index")
 
     @property
-    @pulumi.getter(name="integrationKey")
-    def integration_key(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "integration_key")
+    @pulumi.getter(name="eventUri")
+    def event_uri(self) -> str:
+        return pulumi.get(self, "event_uri")
 
     @property
     @pulumi.getter
-    def password(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "password")
+    def format(self) -> str:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="metricIndex")
+    def metric_index(self) -> str:
+        return pulumi.get(self, "metric_index")
+
+    @property
+    @pulumi.getter(name="metricUri")
+    def metric_uri(self) -> str:
+        return pulumi.get(self, "metric_uri")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def username(self) -> str:
-        """
-        Passed as Authorization header value
-        """
-        return pulumi.get(self, "username")
+    def source(self) -> str:
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type

@@ -5007,6 +5007,9 @@
                 "eventUri": {
                     "type": "string"
                 },
+                "format": {
+                    "type": "string"
+                },
                 "metricIndex": {
                     "type": "string"
                 },
@@ -5024,6 +5027,7 @@
                         "applicationKey",
                         "eventIndex",
                         "eventUri",
+                        "format",
                         "metricIndex",
                         "metricUri",
                         "source"
@@ -17001,39 +17005,37 @@
         },
         "equinix:fabric/getStreamSubscriptionSinkSettings:getStreamSubscriptionSinkSettings": {
             "properties": {
-                "accessToken": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                "applicationKey": {
+                    "type": "string"
                 },
-                "apiKey": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                "eventIndex": {
+                    "type": "string"
                 },
-                "integrationKey": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                "eventUri": {
+                    "type": "string"
                 },
-                "password": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                "format": {
+                    "type": "string"
                 },
-                "type": {
-                    "type": "string",
-                    "description": "Type of the stream subscription request\n"
+                "metricIndex": {
+                    "type": "string"
                 },
-                "username": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                "metricUri": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
                 }
             },
             "type": "object",
             "required": [
-                "accessToken",
-                "apiKey",
-                "integrationKey",
-                "password",
-                "type",
-                "username"
+                "applicationKey",
+                "eventIndex",
+                "eventUri",
+                "format",
+                "metricIndex",
+                "metricUri",
+                "source"
             ],
             "language": {
                 "nodejs": {
@@ -17332,38 +17334,37 @@
         },
         "equinix:fabric/getStreamSubscriptionsDataSinkSettings:getStreamSubscriptionsDataSinkSettings": {
             "properties": {
-                "accessToken": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
-                },
-                "apiKey": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
-                },
-                "integrationKey": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
-                },
-                "password": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
-                },
-                "type": {
+                "applicationKey": {
                     "type": "string"
                 },
-                "username": {
-                    "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                "eventIndex": {
+                    "type": "string"
+                },
+                "eventUri": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string"
+                },
+                "metricIndex": {
+                    "type": "string"
+                },
+                "metricUri": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
                 }
             },
             "type": "object",
             "required": [
-                "accessToken",
-                "apiKey",
-                "integrationKey",
-                "password",
-                "type",
-                "username"
+                "applicationKey",
+                "eventIndex",
+                "eventUri",
+                "format",
+                "metricIndex",
+                "metricUri",
+                "source"
             ],
             "language": {
                 "nodejs": {
@@ -24142,7 +24143,7 @@
             }
         },
         "equinix:fabric/streamSubscription:StreamSubscription": {
-            "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Subscriptions\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.StreamSubscription;\nimport com.pulumi.equinix.fabric.StreamSubscriptionArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionEventSelectorArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionMetricSelectorArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionSinkArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionSinkCredentialArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionSinkSettingsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sPLUNK = new StreamSubscription(\"sPLUNK\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .eventSelector(StreamSubscriptionEventSelectorArgs.builder()\n                .include(\"equinix.fabric.connection.*\")\n                .build())\n            .metricSelector(StreamSubscriptionMetricSelectorArgs.builder()\n                .include(\"equinix.fabric.connection.*\")\n                .build())\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .credential(StreamSubscriptionSinkCredentialArgs.builder()\n                    .accessToken(\"\u003csplunk_access_token\u003e\")\n                    .type(\"ACCESS_TOKEN\")\n                    .build())\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .eventIndex(\"\u003csplunk_event_index\u003e\")\n                    .metricIndex(\"\u003csplunk_metric_index\u003e\")\n                    .source(\"\u003csplunk_source\u003e\")\n                    .build())\n                .type(\"SPLUNK_HEC\")\n                .uri(\"\u003csplunk_uri\u003e\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var sLACK = new StreamSubscription(\"sLACK\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .type(\"SLACK\")\n                .uri(\"\u003cslack_uri\u003e\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var pAGERDUTY = new StreamSubscription(\"pAGERDUTY\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .credential(StreamSubscriptionSinkCredentialArgs.builder()\n                    .integrationKey(\"\u003cpager_duty_integration_key\u003e\")\n                    .type(\"INTEGRATION_KEY\")\n                    .build())\n                .host(\"\u003cpager_duty_host\")\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .alertUri(\"\u003cpager_duty_alert_uri\u003e\")\n                    .changeUri(\"\u003cpager_duty_change_uri\u003e\")\n                    .build())\n                .type(\"PAGERDUTY\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var dATADOG = new StreamSubscription(\"dATADOG\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .credential(StreamSubscriptionSinkCredentialArgs.builder()\n                    .apiKey(\"\u003cdatadog_api_key\u003e\")\n                    .type(\"API_KEY\")\n                    .build())\n                .host(\"\u003cdatadog_host\u003e\")\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .applicationKey(\"\u003cdatadog_application_key\u003e\")\n                    .eventUri(\"\u003cdatadog_event_uri\u003e\")\n                    .metricUri(\"\u003cdatadog_metric_uri\u003e\")\n                    .source(\"Equinix\")\n                    .build())\n                .type(\"DATADOG\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var mSTEAMS = new StreamSubscription(\"mSTEAMS\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .type(\"TEAMS\")\n                .uri(\"\u003cmsteams_uri\u003e\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sPLUNK:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      eventSelector:\n        include:\n          - equinix.fabric.connection.*\n      metricSelector:\n        include:\n          - equinix.fabric.connection.*\n      sink:\n        credential:\n          accessToken: \u003csplunk_access_token\u003e\n          type: ACCESS_TOKEN\n        settings:\n          eventIndex: \u003csplunk_event_index\u003e\n          metricIndex: \u003csplunk_metric_index\u003e\n          source: \u003csplunk_source\u003e\n        type: SPLUNK_HEC\n        uri: \u003csplunk_uri\u003e\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  sLACK:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        type: SLACK\n        uri: \u003cslack_uri\u003e\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  pAGERDUTY:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        credential:\n          integrationKey: \u003cpager_duty_integration_key\u003e\n          type: INTEGRATION_KEY\n        host: \u003cpager_duty_host\n        settings:\n          alertUri: \u003cpager_duty_alert_uri\u003e\n          changeUri: \u003cpager_duty_change_uri\u003e\n        type: PAGERDUTY\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  dATADOG:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        credential:\n          apiKey: \u003cdatadog_api_key\u003e\n          type: API_KEY\n        host: \u003cdatadog_host\u003e\n        settings:\n          applicationKey: \u003cdatadog_application_key\u003e\n          eventUri: \u003cdatadog_event_uri\u003e\n          metricUri: \u003cdatadog_metric_uri\u003e\n          source: Equinix\n        type: DATADOG\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  mSTEAMS:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        type: TEAMS\n        uri: \u003cmsteams_uri\u003e\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Subscriptions\n\nAdditional Documentation:\n* Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm\n* API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.StreamSubscription;\nimport com.pulumi.equinix.fabric.StreamSubscriptionArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionEventSelectorArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionMetricSelectorArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionSinkArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionSinkCredentialArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamSubscriptionSinkSettingsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sPLUNK = new StreamSubscription(\"sPLUNK\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .eventSelector(StreamSubscriptionEventSelectorArgs.builder()\n                .include(\"equinix.fabric.connection.*\")\n                .build())\n            .metricSelector(StreamSubscriptionMetricSelectorArgs.builder()\n                .include(\"equinix.fabric.connection.*\")\n                .build())\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .credential(StreamSubscriptionSinkCredentialArgs.builder()\n                    .accessToken(\"\u003csplunk_access_token\u003e\")\n                    .type(\"ACCESS_TOKEN\")\n                    .build())\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .eventIndex(\"\u003csplunk_event_index\u003e\")\n                    .metricIndex(\"\u003csplunk_metric_index\u003e\")\n                    .source(\"\u003csplunk_source\u003e\")\n                    .build())\n                .type(\"SPLUNK_HEC\")\n                .uri(\"\u003csplunk_uri\u003e\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var sLACK = new StreamSubscription(\"sLACK\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .type(\"SLACK\")\n                .uri(\"\u003cslack_uri\u003e\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var pAGERDUTY = new StreamSubscription(\"pAGERDUTY\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .credential(StreamSubscriptionSinkCredentialArgs.builder()\n                    .integrationKey(\"\u003cpager_duty_integration_key\u003e\")\n                    .type(\"INTEGRATION_KEY\")\n                    .build())\n                .host(\"\u003cpager_duty_host\")\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .alertUri(\"\u003cpager_duty_alert_uri\u003e\")\n                    .changeUri(\"\u003cpager_duty_change_uri\u003e\")\n                    .build())\n                .type(\"PAGERDUTY\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var dATADOG = new StreamSubscription(\"dATADOG\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .credential(StreamSubscriptionSinkCredentialArgs.builder()\n                    .apiKey(\"\u003cdatadog_api_key\u003e\")\n                    .type(\"API_KEY\")\n                    .build())\n                .host(\"\u003cdatadog_host\u003e\")\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .applicationKey(\"\u003cdatadog_application_key\u003e\")\n                    .eventUri(\"\u003cdatadog_event_uri\u003e\")\n                    .metricUri(\"\u003cdatadog_metric_uri\u003e\")\n                    .source(\"Equinix\")\n                    .build())\n                .type(\"DATADOG\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var mSTEAMS = new StreamSubscription(\"mSTEAMS\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .type(\"TEAMS\")\n                .uri(\"\u003cmsteams_uri\u003e\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var servicenow = new StreamSubscription(\"servicenow\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .credential(StreamSubscriptionSinkCredentialArgs.builder()\n                    .password(\"\u003cservicenow_password\u003e\")\n                    .type(\"USERNAME_PASSWORD\")\n                    .username(\"\u003cservicenow_username\u003e\")\n                    .build())\n                .host(\"\u003cservicenow_host\u003e\")\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .source(\"Equinix\")\n                    .build())\n                .type(\"SERVICENOW\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var webhook = new StreamSubscription(\"webhook\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .eventUri(\"\u003cwebhook_event_uri\u003e\")\n                    .format(\"\u003cwebhook_format\u003e\")\n                    .metricUri(\"\u003cwebhook_metric_uri\u003e\")\n                    .build())\n                .type(\"WEBHOOK\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n        var grafana = new StreamSubscription(\"grafana\", StreamSubscriptionArgs.builder()\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .sink(StreamSubscriptionSinkArgs.builder()\n                .settings(StreamSubscriptionSinkSettingsArgs.builder()\n                    .eventUri(\"\u003cgrafana_event_uri\u003e\")\n                    .format(\"OPENTELEMETRY\")\n                    .metricUri(\"\u003cgrafana_metric_uri\u003e\")\n                    .build())\n                .type(\"WEBHOOK\")\n                .build())\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"STREAM_SUBSCRIPTION\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sPLUNK:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      eventSelector:\n        include:\n          - equinix.fabric.connection.*\n      metricSelector:\n        include:\n          - equinix.fabric.connection.*\n      sink:\n        credential:\n          accessToken: \u003csplunk_access_token\u003e\n          type: ACCESS_TOKEN\n        settings:\n          eventIndex: \u003csplunk_event_index\u003e\n          metricIndex: \u003csplunk_metric_index\u003e\n          source: \u003csplunk_source\u003e\n        type: SPLUNK_HEC\n        uri: \u003csplunk_uri\u003e\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  sLACK:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        type: SLACK\n        uri: \u003cslack_uri\u003e\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  pAGERDUTY:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        credential:\n          integrationKey: \u003cpager_duty_integration_key\u003e\n          type: INTEGRATION_KEY\n        host: \u003cpager_duty_host\n        settings:\n          alertUri: \u003cpager_duty_alert_uri\u003e\n          changeUri: \u003cpager_duty_change_uri\u003e\n        type: PAGERDUTY\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  dATADOG:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        credential:\n          apiKey: \u003cdatadog_api_key\u003e\n          type: API_KEY\n        host: \u003cdatadog_host\u003e\n        settings:\n          applicationKey: \u003cdatadog_application_key\u003e\n          eventUri: \u003cdatadog_event_uri\u003e\n          metricUri: \u003cdatadog_metric_uri\u003e\n          source: Equinix\n        type: DATADOG\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  mSTEAMS:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        type: TEAMS\n        uri: \u003cmsteams_uri\u003e\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  servicenow:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        credential:\n          password: \u003cservicenow_password\u003e\n          type: USERNAME_PASSWORD\n          username: \u003cservicenow_username\u003e\n        host: \u003cservicenow_host\u003e\n        settings:\n          source: Equinix\n        type: SERVICENOW\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  webhook:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        settings:\n          eventUri: \u003cwebhook_event_uri\u003e\n          format: \u003cwebhook_format\u003e\n          metricUri: \u003cwebhook_metric_uri\u003e\n        type: WEBHOOK\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n  grafana:\n    type: equinix:fabric:StreamSubscription\n    properties:\n      description: \u003cdescription\u003e\n      enabled: true\n      sink:\n        settings:\n          eventUri: \u003cgrafana_event_uri\u003e\n          format: OPENTELEMETRY\n          metricUri: \u003cgrafana_metric_uri\u003e\n        type: WEBHOOK\n      streamId: \u003cstream_id\u003e\n      type: STREAM_SUBSCRIPTION\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "changeLog": {
                     "$ref": "#/types/equinix:fabric/StreamSubscriptionChangeLog:StreamSubscriptionChangeLog",

@@ -15538,6 +15538,7 @@ if not MYPY:
         application_key: NotRequired[pulumi.Input[str]]
         event_index: NotRequired[pulumi.Input[str]]
         event_uri: NotRequired[pulumi.Input[str]]
+        format: NotRequired[pulumi.Input[str]]
         metric_index: NotRequired[pulumi.Input[str]]
         metric_uri: NotRequired[pulumi.Input[str]]
         source: NotRequired[pulumi.Input[str]]
@@ -15550,6 +15551,7 @@ class StreamSubscriptionSinkSettingsArgs:
                  application_key: Optional[pulumi.Input[str]] = None,
                  event_index: Optional[pulumi.Input[str]] = None,
                  event_uri: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
                  metric_index: Optional[pulumi.Input[str]] = None,
                  metric_uri: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -15559,6 +15561,8 @@ class StreamSubscriptionSinkSettingsArgs:
             pulumi.set(__self__, "event_index", event_index)
         if event_uri is not None:
             pulumi.set(__self__, "event_uri", event_uri)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if metric_index is not None:
             pulumi.set(__self__, "metric_index", metric_index)
         if metric_uri is not None:
@@ -15592,6 +15596,15 @@ class StreamSubscriptionSinkSettingsArgs:
     @event_uri.setter
     def event_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "event_uri", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
 
     @property
     @pulumi.getter(name="metricIndex")
