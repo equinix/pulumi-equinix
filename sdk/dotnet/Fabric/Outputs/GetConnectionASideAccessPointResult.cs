@@ -58,6 +58,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string ProviderConnectionId;
         /// <summary>
+        /// Network role
+        /// </summary>
+        public readonly string? Role;
+        /// <summary>
         /// Cloud Router access point information that replaces `gateway`
         /// </summary>
         public readonly Outputs.GetConnectionASideAccessPointRouterResult? Router;
@@ -98,6 +102,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string providerConnectionId,
 
+            string? role,
+
             Outputs.GetConnectionASideAccessPointRouterResult? router,
 
             string? sellerRegion,
@@ -117,6 +123,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Port = port;
             Profile = profile;
             ProviderConnectionId = providerConnectionId;
+            Role = role;
             Router = router;
             SellerRegion = sellerRegion;
             Type = type;
