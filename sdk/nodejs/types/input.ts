@@ -214,6 +214,10 @@ export namespace fabric {
          */
         providerConnectionId?: pulumi.Input<string>;
         /**
+         * Network role
+         */
+        role?: pulumi.Input<string>;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointRouter>;
@@ -753,6 +757,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId?: pulumi.Input<string>;
+        /**
+         * Network role
+         */
+        role?: pulumi.Input<string>;
         /**
          * Cloud Router access point information that replaces `gateway`
          */

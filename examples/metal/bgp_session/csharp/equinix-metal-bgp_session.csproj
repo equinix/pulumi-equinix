@@ -7,7 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Pulumi" Version="3.*" />
-		<PackageReference Include="Pulumi.Equinix" Version="(, 1.0.0)" />
+		<PackageReference Include="Pulumi.Equinix" Version="0.26.0" />
 		<PackageReference Include="Pulumi.Null" Version="0.0.12" />
 	</ItemGroup>
 

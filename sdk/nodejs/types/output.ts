@@ -214,6 +214,10 @@ export namespace fabric {
          */
         providerConnectionId: string;
         /**
+         * Network role
+         */
+        role?: string;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: outputs.fabric.ConnectionASideAccessPointRouter;
@@ -753,6 +757,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId: string;
+        /**
+         * Network role
+         */
+        role?: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -1472,6 +1480,10 @@ export namespace fabric {
          */
         providerConnectionId: string;
         /**
+         * Network role
+         */
+        role?: string;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: outputs.fabric.GetConnectionASideAccessPointRouter;
@@ -2089,6 +2101,10 @@ export namespace fabric {
          */
         providerConnectionId: string;
         /**
+         * Network role
+         */
+        role?: string;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: outputs.fabric.GetConnectionZSideAccessPointRouter;
@@ -2489,6 +2505,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId: string;
+        /**
+         * Network role
+         */
+        role?: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -3010,6 +3030,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId: string;
+        /**
+         * Network role
+         */
+        role?: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */

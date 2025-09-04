@@ -1517,6 +1517,8 @@ type ConnectionASideAccessPoint struct {
 	Profile *ConnectionASideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId *string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *ConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -1563,6 +1565,8 @@ type ConnectionASideAccessPointArgs struct {
 	Profile ConnectionASideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringPtrInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router ConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -1705,6 +1709,11 @@ func (o ConnectionASideAccessPointOutput) Profile() ConnectionASideAccessPointPr
 // Provider assigned Connection Id
 func (o ConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.ProviderConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionASideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -1860,6 +1869,16 @@ func (o ConnectionASideAccessPointPtrOutput) ProviderConnectionId() pulumi.Strin
 			return nil
 		}
 		return v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionASideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6480,6 +6499,8 @@ type ConnectionZSideAccessPoint struct {
 	Profile *ConnectionZSideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId *string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *ConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -6526,6 +6547,8 @@ type ConnectionZSideAccessPointArgs struct {
 	Profile ConnectionZSideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringPtrInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router ConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -6668,6 +6691,11 @@ func (o ConnectionZSideAccessPointOutput) Profile() ConnectionZSideAccessPointPr
 // Provider assigned Connection Id
 func (o ConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.ProviderConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionZSideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -6823,6 +6851,16 @@ func (o ConnectionZSideAccessPointPtrOutput) ProviderConnectionId() pulumi.Strin
 			return nil
 		}
 		return v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionZSideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29559,6 +29597,8 @@ type GetConnectionASideAccessPoint struct {
 	Profile *GetConnectionASideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -29605,6 +29645,8 @@ type GetConnectionASideAccessPointArgs struct {
 	Profile GetConnectionASideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -29749,6 +29791,11 @@ func (o GetConnectionASideAccessPointOutput) Profile() GetConnectionASideAccessP
 // Provider assigned Connection Id
 func (o GetConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
+}
+
+// Network role
+func (o GetConnectionASideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionASideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -29906,6 +29953,16 @@ func (o GetConnectionASideAccessPointPtrOutput) ProviderConnectionId() pulumi.St
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionASideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33912,6 +33969,8 @@ type GetConnectionZSideAccessPoint struct {
 	Profile *GetConnectionZSideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -33958,6 +34017,8 @@ type GetConnectionZSideAccessPointArgs struct {
 	Profile GetConnectionZSideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -34102,6 +34163,11 @@ func (o GetConnectionZSideAccessPointOutput) Profile() GetConnectionZSideAccessP
 // Provider assigned Connection Id
 func (o GetConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
+}
+
+// Network role
+func (o GetConnectionZSideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionZSideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -34259,6 +34325,16 @@ func (o GetConnectionZSideAccessPointPtrOutput) ProviderConnectionId() pulumi.St
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionZSideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37037,6 +37113,8 @@ type GetConnectionsDataASideAccessPoint struct {
 	Profile *GetConnectionsDataASideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionsDataASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -37083,6 +37161,8 @@ type GetConnectionsDataASideAccessPointArgs struct {
 	Profile GetConnectionsDataASideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionsDataASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -37241,6 +37321,11 @@ func (o GetConnectionsDataASideAccessPointOutput) ProviderConnectionId() pulumi.
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
 }
 
+// Network role
+func (o GetConnectionsDataASideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
 // Cloud Router access point information that replaces `gateway`
 func (o GetConnectionsDataASideAccessPointOutput) Router() GetConnectionsDataASideAccessPointRouterPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointRouter { return v.Router }).(GetConnectionsDataASideAccessPointRouterPtrOutput)
@@ -37396,6 +37481,16 @@ func (o GetConnectionsDataASideAccessPointPtrOutput) ProviderConnectionId() pulu
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionsDataASideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41096,6 +41191,8 @@ type GetConnectionsDataZSideAccessPoint struct {
 	Profile *GetConnectionsDataZSideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionsDataZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -41142,6 +41239,8 @@ type GetConnectionsDataZSideAccessPointArgs struct {
 	Profile GetConnectionsDataZSideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionsDataZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -41300,6 +41399,11 @@ func (o GetConnectionsDataZSideAccessPointOutput) ProviderConnectionId() pulumi.
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
 }
 
+// Network role
+func (o GetConnectionsDataZSideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
 // Cloud Router access point information that replaces `gateway`
 func (o GetConnectionsDataZSideAccessPointOutput) Router() GetConnectionsDataZSideAccessPointRouterPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointRouter { return v.Router }).(GetConnectionsDataZSideAccessPointRouterPtrOutput)
@@ -41455,6 +41559,16 @@ func (o GetConnectionsDataZSideAccessPointPtrOutput) ProviderConnectionId() pulu
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 

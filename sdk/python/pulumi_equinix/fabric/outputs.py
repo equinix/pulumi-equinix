@@ -1150,6 +1150,7 @@ class ConnectionASideAccessPoint(dict):
                  port: Optional['outputs.ConnectionASideAccessPointPort'] = None,
                  profile: Optional['outputs.ConnectionASideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.ConnectionASideAccessPointRouter'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -1166,6 +1167,7 @@ class ConnectionASideAccessPoint(dict):
         :param 'ConnectionASideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionASideAccessPointProfileArgs' profile: Service Profile
         :param str provider_connection_id: Provider assigned Connection Id
+        :param str role: Network role
         :param 'ConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -1193,6 +1195,8 @@ class ConnectionASideAccessPoint(dict):
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -1290,6 +1294,14 @@ class ConnectionASideAccessPoint(dict):
         Provider assigned Connection Id
         """
         return pulumi.get(self, "provider_connection_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -3014,6 +3026,7 @@ class ConnectionZSideAccessPoint(dict):
                  port: Optional['outputs.ConnectionZSideAccessPointPort'] = None,
                  profile: Optional['outputs.ConnectionZSideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.ConnectionZSideAccessPointRouter'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -3030,6 +3043,7 @@ class ConnectionZSideAccessPoint(dict):
         :param 'ConnectionZSideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionZSideAccessPointProfileArgs' profile: Service Profile
         :param str provider_connection_id: Provider assigned Connection Id
+        :param str role: Network role
         :param 'ConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -3057,6 +3071,8 @@ class ConnectionZSideAccessPoint(dict):
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -3154,6 +3170,14 @@ class ConnectionZSideAccessPoint(dict):
         Provider assigned Connection Id
         """
         return pulumi.get(self, "provider_connection_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -12948,6 +12972,7 @@ class GetConnectionASideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionASideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionASideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionASideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -12964,6 +12989,7 @@ class GetConnectionASideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionASideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionASideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -12988,6 +13014,8 @@ class GetConnectionASideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -13085,6 +13113,14 @@ class GetConnectionASideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -14632,6 +14668,7 @@ class GetConnectionZSideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionZSideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionZSideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionZSideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -14648,6 +14685,7 @@ class GetConnectionZSideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionZSideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionZSideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -14672,6 +14710,8 @@ class GetConnectionZSideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -14769,6 +14809,14 @@ class GetConnectionZSideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -15735,6 +15783,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionsDataASideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionsDataASideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionsDataASideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -15751,6 +15800,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionsDataASideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionsDataASideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionsDataASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -15775,6 +15825,8 @@ class GetConnectionsDataASideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -15872,6 +15924,14 @@ class GetConnectionsDataASideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -17160,6 +17220,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionsDataZSideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionsDataZSideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionsDataZSideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -17176,6 +17237,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionsDataZSideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionsDataZSideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionsDataZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -17200,6 +17262,8 @@ class GetConnectionsDataZSideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -17297,6 +17361,14 @@ class GetConnectionsDataZSideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
