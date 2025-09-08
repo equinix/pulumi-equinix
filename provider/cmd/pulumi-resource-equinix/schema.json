@@ -413,6 +413,10 @@
                     "type": "string",
                     "description": "Provider assigned Connection Id\n"
                 },
+                "role": {
+                    "type": "string",
+                    "description": "Network role\n"
+                },
                 "router": {
                     "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointRouter:ConnectionASideAccessPointRouter",
                     "description": "Cloud Router access point information that replaces `gateway`\n"
@@ -1308,6 +1312,10 @@
                 "providerConnectionId": {
                     "type": "string",
                     "description": "Provider assigned Connection Id\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Network role\n"
                 },
                 "router": {
                     "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointRouter:ConnectionZSideAccessPointRouter",
@@ -5920,6 +5928,10 @@
                     "type": "string",
                     "description": "Provider assigned Connection Id\n"
                 },
+                "role": {
+                    "type": "string",
+                    "description": "Network role\n"
+                },
                 "router": {
                     "$ref": "#/types/equinix:fabric/getConnectionASideAccessPointRouter:getConnectionASideAccessPointRouter",
                     "description": "Cloud Router access point information that replaces `gateway`\n"
@@ -6908,6 +6920,10 @@
                     "type": "string",
                     "description": "Provider assigned Connection Id\n"
                 },
+                "role": {
+                    "type": "string",
+                    "description": "Network role\n"
+                },
                 "router": {
                     "$ref": "#/types/equinix:fabric/getConnectionZSideAccessPointRouter:getConnectionZSideAccessPointRouter",
                     "description": "Cloud Router access point information that replaces `gateway`\n"
@@ -7552,6 +7568,10 @@
                 "providerConnectionId": {
                     "type": "string",
                     "description": "Provider assigned Connection Id\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Network role\n"
                 },
                 "router": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataASideAccessPointRouter:getConnectionsDataASideAccessPointRouter",
@@ -8387,6 +8407,10 @@
                 "providerConnectionId": {
                     "type": "string",
                     "description": "Provider assigned Connection Id\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Network role\n"
                 },
                 "router": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataZSideAccessPointRouter:getConnectionsDataZSideAccessPointRouter",

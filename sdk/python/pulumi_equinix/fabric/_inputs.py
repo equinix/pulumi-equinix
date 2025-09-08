@@ -1188,6 +1188,10 @@ if not MYPY:
         """
         Provider assigned Connection Id
         """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        Network role
+        """
         router: NotRequired[pulumi.Input['ConnectionASideAccessPointRouterArgsDict']]
         """
         Cloud Router access point information that replaces `gateway`
@@ -1221,6 +1225,7 @@ class ConnectionASideAccessPointArgs:
                  port: Optional[pulumi.Input['ConnectionASideAccessPointPortArgs']] = None,
                  profile: Optional[pulumi.Input['ConnectionASideAccessPointProfileArgs']] = None,
                  provider_connection_id: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input['ConnectionASideAccessPointRouterArgs']] = None,
                  seller_region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[Union[str, 'AccessPointType']]] = None,
@@ -1237,6 +1242,7 @@ class ConnectionASideAccessPointArgs:
         :param pulumi.Input['ConnectionASideAccessPointPortArgs'] port: Port access point information
         :param pulumi.Input['ConnectionASideAccessPointProfileArgs'] profile: Service Profile
         :param pulumi.Input[str] provider_connection_id: Provider assigned Connection Id
+        :param pulumi.Input[str] role: Network role
         :param pulumi.Input['ConnectionASideAccessPointRouterArgs'] router: Cloud Router access point information that replaces `gateway`
         :param pulumi.Input[str] seller_region: Access point seller region
         :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -1267,6 +1273,8 @@ class ConnectionASideAccessPointArgs:
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -1408,6 +1416,18 @@ class ConnectionASideAccessPointArgs:
     @provider_connection_id.setter
     def provider_connection_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provider_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
     @property
     @pulumi.getter
@@ -3798,6 +3818,10 @@ if not MYPY:
         """
         Provider assigned Connection Id
         """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        Network role
+        """
         router: NotRequired[pulumi.Input['ConnectionZSideAccessPointRouterArgsDict']]
         """
         Cloud Router access point information that replaces `gateway`
@@ -3831,6 +3855,7 @@ class ConnectionZSideAccessPointArgs:
                  port: Optional[pulumi.Input['ConnectionZSideAccessPointPortArgs']] = None,
                  profile: Optional[pulumi.Input['ConnectionZSideAccessPointProfileArgs']] = None,
                  provider_connection_id: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input['ConnectionZSideAccessPointRouterArgs']] = None,
                  seller_region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[Union[str, 'AccessPointType']]] = None,
@@ -3847,6 +3872,7 @@ class ConnectionZSideAccessPointArgs:
         :param pulumi.Input['ConnectionZSideAccessPointPortArgs'] port: Port access point information
         :param pulumi.Input['ConnectionZSideAccessPointProfileArgs'] profile: Service Profile
         :param pulumi.Input[str] provider_connection_id: Provider assigned Connection Id
+        :param pulumi.Input[str] role: Network role
         :param pulumi.Input['ConnectionZSideAccessPointRouterArgs'] router: Cloud Router access point information that replaces `gateway`
         :param pulumi.Input[str] seller_region: Access point seller region
         :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -3877,6 +3903,8 @@ class ConnectionZSideAccessPointArgs:
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -4018,6 +4046,18 @@ class ConnectionZSideAccessPointArgs:
     @provider_connection_id.setter
     def provider_connection_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provider_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
     @property
     @pulumi.getter

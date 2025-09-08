@@ -79,6 +79,12 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? ProviderConnectionId { get; set; }
 
         /// <summary>
+        /// Network role
+        /// </summary>
+        [Input("role")]
+        public Input<string>? Role { get; set; }
+
+        /// <summary>
         /// Cloud Router access point information that replaces `gateway`
         /// </summary>
         [Input("router")]
