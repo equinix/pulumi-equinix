@@ -202,6 +202,21 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Network role
+     * 
+     */
+    @Import(name="role")
+    private @Nullable Output<String> role;
+
+    /**
+     * @return Network role
+     * 
+     */
+    public Optional<Output<String>> role() {
+        return Optional.ofNullable(this.role);
+    }
+
+    /**
      * Cloud Router access point information that replaces `gateway`
      * 
      */
@@ -275,6 +290,7 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         this.port = $.port;
         this.profile = $.profile;
         this.providerConnectionId = $.providerConnectionId;
+        this.role = $.role;
         this.router = $.router;
         this.sellerRegion = $.sellerRegion;
         this.type = $.type;
@@ -556,6 +572,27 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
          */
         public Builder providerConnectionId(String providerConnectionId) {
             return providerConnectionId(Output.of(providerConnectionId));
+        }
+
+        /**
+         * @param role Network role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder role(@Nullable Output<String> role) {
+            $.role = role;
+            return this;
+        }
+
+        /**
+         * @param role Network role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder role(String role) {
+            return role(Output.of(role));
         }
 
         /**
