@@ -167,6 +167,9 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_stream_alert_rule": {
 				Tok: makeEquinixResource(fabricMod, "StreamAlertRule"),
 			},
+			"equinix_fabric_port": {
+				Tok: makeEquinixResource(fabricMod, "Port"),
+			},
 			"equinix_fabric_route_filter": {
 				Tok: makeEquinixResource(fabricMod, "RouteFilter"),
 			},
