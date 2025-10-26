@@ -5,7 +5,7 @@ go 1.22.0
 toolchain go1.24.4
 
 require (
-	github.com/equinix/pulumi-equinix/sdk v0.22.0
+	github.com/equinix/pulumi-equinix/sdk v0.23.0
 	github.com/pulumi/pulumi-null/sdk v0.0.11
 	github.com/pulumi/pulumi/sdk/v3 v3.160.0
 )
