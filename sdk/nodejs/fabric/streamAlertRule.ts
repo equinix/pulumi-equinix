@@ -119,6 +119,15 @@ export class StreamAlertRule extends pulumi.CustomResource {
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
+            if ((!args || args.detectionMethod === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'detectionMethod'");
+            }
+            if ((!args || args.metricSelector === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'metricSelector'");
+            }
+            if ((!args || args.resourceSelector === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resourceSelector'");
+            }
             if ((!args || args.streamId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'streamId'");
             }
@@ -210,7 +219,7 @@ export interface StreamAlertRuleArgs {
     /**
      * Detection method for stream alert rule
      */
-    detectionMethod?: pulumi.Input<inputs.fabric.StreamAlertRuleDetectionMethod>;
+    detectionMethod: pulumi.Input<inputs.fabric.StreamAlertRuleDetectionMethod>;
     /**
      * Stream alert rule enabled status
      */
@@ -218,7 +227,7 @@ export interface StreamAlertRuleArgs {
     /**
      * Metric selector for the stream alert rule
      */
-    metricSelector?: pulumi.Input<inputs.fabric.StreamAlertRuleMetricSelector>;
+    metricSelector: pulumi.Input<inputs.fabric.StreamAlertRuleMetricSelector>;
     /**
      * Customer-provided stream alert rule name
      */
@@ -226,7 +235,7 @@ export interface StreamAlertRuleArgs {
     /**
      * Resource selector for the stream alert rule
      */
-    resourceSelector?: pulumi.Input<inputs.fabric.StreamAlertRuleResourceSelector>;
+    resourceSelector: pulumi.Input<inputs.fabric.StreamAlertRuleResourceSelector>;
     /**
      * The stream UUID that contains this alert rule
      */

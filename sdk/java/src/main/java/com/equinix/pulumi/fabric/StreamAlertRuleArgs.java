@@ -40,15 +40,15 @@ public final class StreamAlertRuleArgs extends com.pulumi.resources.ResourceArgs
      * Detection method for stream alert rule
      * 
      */
-    @Import(name="detectionMethod")
-    private @Nullable Output<StreamAlertRuleDetectionMethodArgs> detectionMethod;
+    @Import(name="detectionMethod", required=true)
+    private Output<StreamAlertRuleDetectionMethodArgs> detectionMethod;
 
     /**
      * @return Detection method for stream alert rule
      * 
      */
-    public Optional<Output<StreamAlertRuleDetectionMethodArgs>> detectionMethod() {
-        return Optional.ofNullable(this.detectionMethod);
+    public Output<StreamAlertRuleDetectionMethodArgs> detectionMethod() {
+        return this.detectionMethod;
     }
 
     /**
@@ -70,15 +70,15 @@ public final class StreamAlertRuleArgs extends com.pulumi.resources.ResourceArgs
      * Metric selector for the stream alert rule
      * 
      */
-    @Import(name="metricSelector")
-    private @Nullable Output<StreamAlertRuleMetricSelectorArgs> metricSelector;
+    @Import(name="metricSelector", required=true)
+    private Output<StreamAlertRuleMetricSelectorArgs> metricSelector;
 
     /**
      * @return Metric selector for the stream alert rule
      * 
      */
-    public Optional<Output<StreamAlertRuleMetricSelectorArgs>> metricSelector() {
-        return Optional.ofNullable(this.metricSelector);
+    public Output<StreamAlertRuleMetricSelectorArgs> metricSelector() {
+        return this.metricSelector;
     }
 
     /**
@@ -100,15 +100,15 @@ public final class StreamAlertRuleArgs extends com.pulumi.resources.ResourceArgs
      * Resource selector for the stream alert rule
      * 
      */
-    @Import(name="resourceSelector")
-    private @Nullable Output<StreamAlertRuleResourceSelectorArgs> resourceSelector;
+    @Import(name="resourceSelector", required=true)
+    private Output<StreamAlertRuleResourceSelectorArgs> resourceSelector;
 
     /**
      * @return Resource selector for the stream alert rule
      * 
      */
-    public Optional<Output<StreamAlertRuleResourceSelectorArgs>> resourceSelector() {
-        return Optional.ofNullable(this.resourceSelector);
+    public Output<StreamAlertRuleResourceSelectorArgs> resourceSelector() {
+        return this.resourceSelector;
     }
 
     /**
@@ -207,7 +207,7 @@ public final class StreamAlertRuleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder detectionMethod(@Nullable Output<StreamAlertRuleDetectionMethodArgs> detectionMethod) {
+        public Builder detectionMethod(Output<StreamAlertRuleDetectionMethodArgs> detectionMethod) {
             $.detectionMethod = detectionMethod;
             return this;
         }
@@ -249,7 +249,7 @@ public final class StreamAlertRuleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder metricSelector(@Nullable Output<StreamAlertRuleMetricSelectorArgs> metricSelector) {
+        public Builder metricSelector(Output<StreamAlertRuleMetricSelectorArgs> metricSelector) {
             $.metricSelector = metricSelector;
             return this;
         }
@@ -291,7 +291,7 @@ public final class StreamAlertRuleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder resourceSelector(@Nullable Output<StreamAlertRuleResourceSelectorArgs> resourceSelector) {
+        public Builder resourceSelector(Output<StreamAlertRuleResourceSelectorArgs> resourceSelector) {
             $.resourceSelector = resourceSelector;
             return this;
         }
@@ -360,6 +360,15 @@ public final class StreamAlertRuleArgs extends com.pulumi.resources.ResourceArgs
         public StreamAlertRuleArgs build() {
             if ($.description == null) {
                 throw new MissingRequiredPropertyException("StreamAlertRuleArgs", "description");
+            }
+            if ($.detectionMethod == null) {
+                throw new MissingRequiredPropertyException("StreamAlertRuleArgs", "detectionMethod");
+            }
+            if ($.metricSelector == null) {
+                throw new MissingRequiredPropertyException("StreamAlertRuleArgs", "metricSelector");
+            }
+            if ($.resourceSelector == null) {
+                throw new MissingRequiredPropertyException("StreamAlertRuleArgs", "resourceSelector");
             }
             if ($.streamId == null) {
                 throw new MissingRequiredPropertyException("StreamAlertRuleArgs", "streamId");

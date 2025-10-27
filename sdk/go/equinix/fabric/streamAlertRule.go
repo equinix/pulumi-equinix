@@ -54,6 +54,15 @@ func NewStreamAlertRule(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
+	if args.DetectionMethod == nil {
+		return nil, errors.New("invalid value for required argument 'DetectionMethod'")
+	}
+	if args.MetricSelector == nil {
+		return nil, errors.New("invalid value for required argument 'MetricSelector'")
+	}
+	if args.ResourceSelector == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceSelector'")
+	}
 	if args.StreamId == nil {
 		return nil, errors.New("invalid value for required argument 'StreamId'")
 	}
@@ -146,15 +155,15 @@ type streamAlertRuleArgs struct {
 	// Customer-provided stream alert rule description
 	Description string `pulumi:"description"`
 	// Detection method for stream alert rule
-	DetectionMethod *StreamAlertRuleDetectionMethod `pulumi:"detectionMethod"`
+	DetectionMethod StreamAlertRuleDetectionMethod `pulumi:"detectionMethod"`
 	// Stream alert rule enabled status
 	Enabled *bool `pulumi:"enabled"`
 	// Metric selector for the stream alert rule
-	MetricSelector *StreamAlertRuleMetricSelector `pulumi:"metricSelector"`
+	MetricSelector StreamAlertRuleMetricSelector `pulumi:"metricSelector"`
 	// Customer-provided stream alert rule name
 	Name *string `pulumi:"name"`
 	// Resource selector for the stream alert rule
-	ResourceSelector *StreamAlertRuleResourceSelector `pulumi:"resourceSelector"`
+	ResourceSelector StreamAlertRuleResourceSelector `pulumi:"resourceSelector"`
 	// The stream UUID that contains this alert rule
 	StreamId string                   `pulumi:"streamId"`
 	Timeouts *StreamAlertRuleTimeouts `pulumi:"timeouts"`
@@ -167,15 +176,15 @@ type StreamAlertRuleArgs struct {
 	// Customer-provided stream alert rule description
 	Description pulumi.StringInput
 	// Detection method for stream alert rule
-	DetectionMethod StreamAlertRuleDetectionMethodPtrInput
+	DetectionMethod StreamAlertRuleDetectionMethodInput
 	// Stream alert rule enabled status
 	Enabled pulumi.BoolPtrInput
 	// Metric selector for the stream alert rule
-	MetricSelector StreamAlertRuleMetricSelectorPtrInput
+	MetricSelector StreamAlertRuleMetricSelectorInput
 	// Customer-provided stream alert rule name
 	Name pulumi.StringPtrInput
 	// Resource selector for the stream alert rule
-	ResourceSelector StreamAlertRuleResourceSelectorPtrInput
+	ResourceSelector StreamAlertRuleResourceSelectorInput
 	// The stream UUID that contains this alert rule
 	StreamId pulumi.StringInput
 	Timeouts StreamAlertRuleTimeoutsPtrInput

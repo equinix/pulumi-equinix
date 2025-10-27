@@ -22,23 +22,22 @@ __all__ = ['StreamArgs', 'Stream']
 class StreamArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
+                 project: pulumi.Input['StreamProjectArgs'],
                  type: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input['StreamProjectArgs']] = None,
                  timeouts: Optional[pulumi.Input['StreamTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Stream resource.
         :param pulumi.Input[str] description: Customer-provided description of the stream resource
+        :param pulumi.Input['StreamProjectArgs'] project: Equinix Project attribute object
         :param pulumi.Input[str] type: Equinix defined Streaming Type
         :param pulumi.Input[str] name: Customer-provided name of the stream resource
-        :param pulumi.Input['StreamProjectArgs'] project: Equinix Project attribute object
         """
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type", type)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
 
@@ -53,6 +52,18 @@ class StreamArgs:
     @description.setter
     def description(self, value: pulumi.Input[str]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input['StreamProjectArgs']:
+        """
+        Equinix Project attribute object
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input['StreamProjectArgs']):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -77,18 +88,6 @@ class StreamArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input['StreamProjectArgs']]:
-        """
-        Equinix Project attribute object
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input['StreamProjectArgs']]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -351,6 +350,8 @@ class Stream(pulumi.CustomResource):
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["timeouts"] = timeouts
             if type is None and not opts.urn:

@@ -146,8 +146,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Detection method for stream alert rule
         /// </summary>
-        [Input("detectionMethod")]
-        public Input<Inputs.StreamAlertRuleDetectionMethodArgs>? DetectionMethod { get; set; }
+        [Input("detectionMethod", required: true)]
+        public Input<Inputs.StreamAlertRuleDetectionMethodArgs> DetectionMethod { get; set; } = null!;
 
         /// <summary>
         /// Stream alert rule enabled status
@@ -158,8 +158,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Metric selector for the stream alert rule
         /// </summary>
-        [Input("metricSelector")]
-        public Input<Inputs.StreamAlertRuleMetricSelectorArgs>? MetricSelector { get; set; }
+        [Input("metricSelector", required: true)]
+        public Input<Inputs.StreamAlertRuleMetricSelectorArgs> MetricSelector { get; set; } = null!;
 
         /// <summary>
         /// Customer-provided stream alert rule name
@@ -170,8 +170,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Resource selector for the stream alert rule
         /// </summary>
-        [Input("resourceSelector")]
-        public Input<Inputs.StreamAlertRuleResourceSelectorArgs>? ResourceSelector { get; set; }
+        [Input("resourceSelector", required: true)]
+        public Input<Inputs.StreamAlertRuleResourceSelectorArgs> ResourceSelector { get; set; } = null!;
 
         /// <summary>
         /// The stream UUID that contains this alert rule

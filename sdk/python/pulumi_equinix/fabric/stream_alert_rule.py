@@ -22,38 +22,35 @@ __all__ = ['StreamAlertRuleArgs', 'StreamAlertRule']
 class StreamAlertRuleArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
+                 detection_method: pulumi.Input['StreamAlertRuleDetectionMethodArgs'],
+                 metric_selector: pulumi.Input['StreamAlertRuleMetricSelectorArgs'],
+                 resource_selector: pulumi.Input['StreamAlertRuleResourceSelectorArgs'],
                  stream_id: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 detection_method: Optional[pulumi.Input['StreamAlertRuleDetectionMethodArgs']] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 metric_selector: Optional[pulumi.Input['StreamAlertRuleMetricSelectorArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 resource_selector: Optional[pulumi.Input['StreamAlertRuleResourceSelectorArgs']] = None,
                  timeouts: Optional[pulumi.Input['StreamAlertRuleTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a StreamAlertRule resource.
         :param pulumi.Input[str] description: Customer-provided stream alert rule description
+        :param pulumi.Input['StreamAlertRuleDetectionMethodArgs'] detection_method: Detection method for stream alert rule
+        :param pulumi.Input['StreamAlertRuleMetricSelectorArgs'] metric_selector: Metric selector for the stream alert rule
+        :param pulumi.Input['StreamAlertRuleResourceSelectorArgs'] resource_selector: Resource selector for the stream alert rule
         :param pulumi.Input[str] stream_id: The stream UUID that contains this alert rule
         :param pulumi.Input[str] type: Type of the stream alert rule
-        :param pulumi.Input['StreamAlertRuleDetectionMethodArgs'] detection_method: Detection method for stream alert rule
         :param pulumi.Input[bool] enabled: Stream alert rule enabled status
-        :param pulumi.Input['StreamAlertRuleMetricSelectorArgs'] metric_selector: Metric selector for the stream alert rule
         :param pulumi.Input[str] name: Customer-provided stream alert rule name
-        :param pulumi.Input['StreamAlertRuleResourceSelectorArgs'] resource_selector: Resource selector for the stream alert rule
         """
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "detection_method", detection_method)
+        pulumi.set(__self__, "metric_selector", metric_selector)
+        pulumi.set(__self__, "resource_selector", resource_selector)
         pulumi.set(__self__, "stream_id", stream_id)
         pulumi.set(__self__, "type", type)
-        if detection_method is not None:
-            pulumi.set(__self__, "detection_method", detection_method)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if metric_selector is not None:
-            pulumi.set(__self__, "metric_selector", metric_selector)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if resource_selector is not None:
-            pulumi.set(__self__, "resource_selector", resource_selector)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
 
@@ -68,6 +65,42 @@ class StreamAlertRuleArgs:
     @description.setter
     def description(self, value: pulumi.Input[str]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="detectionMethod")
+    def detection_method(self) -> pulumi.Input['StreamAlertRuleDetectionMethodArgs']:
+        """
+        Detection method for stream alert rule
+        """
+        return pulumi.get(self, "detection_method")
+
+    @detection_method.setter
+    def detection_method(self, value: pulumi.Input['StreamAlertRuleDetectionMethodArgs']):
+        pulumi.set(self, "detection_method", value)
+
+    @property
+    @pulumi.getter(name="metricSelector")
+    def metric_selector(self) -> pulumi.Input['StreamAlertRuleMetricSelectorArgs']:
+        """
+        Metric selector for the stream alert rule
+        """
+        return pulumi.get(self, "metric_selector")
+
+    @metric_selector.setter
+    def metric_selector(self, value: pulumi.Input['StreamAlertRuleMetricSelectorArgs']):
+        pulumi.set(self, "metric_selector", value)
+
+    @property
+    @pulumi.getter(name="resourceSelector")
+    def resource_selector(self) -> pulumi.Input['StreamAlertRuleResourceSelectorArgs']:
+        """
+        Resource selector for the stream alert rule
+        """
+        return pulumi.get(self, "resource_selector")
+
+    @resource_selector.setter
+    def resource_selector(self, value: pulumi.Input['StreamAlertRuleResourceSelectorArgs']):
+        pulumi.set(self, "resource_selector", value)
 
     @property
     @pulumi.getter(name="streamId")
@@ -94,18 +127,6 @@ class StreamAlertRuleArgs:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter(name="detectionMethod")
-    def detection_method(self) -> Optional[pulumi.Input['StreamAlertRuleDetectionMethodArgs']]:
-        """
-        Detection method for stream alert rule
-        """
-        return pulumi.get(self, "detection_method")
-
-    @detection_method.setter
-    def detection_method(self, value: Optional[pulumi.Input['StreamAlertRuleDetectionMethodArgs']]):
-        pulumi.set(self, "detection_method", value)
-
-    @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -118,18 +139,6 @@ class StreamAlertRuleArgs:
         pulumi.set(self, "enabled", value)
 
     @property
-    @pulumi.getter(name="metricSelector")
-    def metric_selector(self) -> Optional[pulumi.Input['StreamAlertRuleMetricSelectorArgs']]:
-        """
-        Metric selector for the stream alert rule
-        """
-        return pulumi.get(self, "metric_selector")
-
-    @metric_selector.setter
-    def metric_selector(self, value: Optional[pulumi.Input['StreamAlertRuleMetricSelectorArgs']]):
-        pulumi.set(self, "metric_selector", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -140,18 +149,6 @@ class StreamAlertRuleArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="resourceSelector")
-    def resource_selector(self) -> Optional[pulumi.Input['StreamAlertRuleResourceSelectorArgs']]:
-        """
-        Resource selector for the stream alert rule
-        """
-        return pulumi.get(self, "resource_selector")
-
-    @resource_selector.setter
-    def resource_selector(self, value: Optional[pulumi.Input['StreamAlertRuleResourceSelectorArgs']]):
-        pulumi.set(self, "resource_selector", value)
 
     @property
     @pulumi.getter
@@ -449,10 +446,16 @@ class StreamAlertRule(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            if detection_method is None and not opts.urn:
+                raise TypeError("Missing required property 'detection_method'")
             __props__.__dict__["detection_method"] = detection_method
             __props__.__dict__["enabled"] = enabled
+            if metric_selector is None and not opts.urn:
+                raise TypeError("Missing required property 'metric_selector'")
             __props__.__dict__["metric_selector"] = metric_selector
             __props__.__dict__["name"] = name
+            if resource_selector is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_selector'")
             __props__.__dict__["resource_selector"] = resource_selector
             if stream_id is None and not opts.urn:
                 raise TypeError("Missing required property 'stream_id'")

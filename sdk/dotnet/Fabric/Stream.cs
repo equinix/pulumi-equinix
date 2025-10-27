@@ -144,8 +144,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Equinix Project attribute object
         /// </summary>
-        [Input("project")]
-        public Input<Inputs.StreamProjectArgs>? Project { get; set; }
+        [Input("project", required: true)]
+        public Input<Inputs.StreamProjectArgs> Project { get; set; } = null!;
 
         [Input("timeouts")]
         public Input<Inputs.StreamTimeoutsArgs>? Timeouts { get; set; }

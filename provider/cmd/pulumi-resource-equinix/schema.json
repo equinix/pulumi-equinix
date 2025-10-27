@@ -24803,6 +24803,7 @@
             },
             "requiredInputs": [
                 "description",
+                "project",
                 "type"
             ],
             "stateInputs": {
@@ -24856,7 +24857,7 @@
             }
         },
         "equinix:fabric/streamAlertRule:StreamAlertRule": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  newStreamAlertRule:\n    type: equinix:fabric:StreamAlertRule\n    properties:\n      streamId: \u003cstream_id\u003e\n      type: METRIC_ALERT\n      description: \u003cdescription\u003e\n      enabled: true\n      operand: ABOVE\n      windowSize: \u003cwindow_size\u003e\n      warningThreshold: \u003cwarning_threshold\u003e\n      criticalThreshold: \u003ccritical_threshold\u003e\n      metricName: equinix.fabric.connection.bandwidth_tx.usage\n      resourceSelector:\n        include:\n          - '*/connections/\u003cconnection_id\u003e'\noutputs:\n  streamAlertRuleType: ${newStreamAlertRule.type}\n  streamAlertRuleId: ${newStreamAlertRule.uuid}\n  streamAlertRuleStreamId: ${newStreamAlertRule.streamId}\n  streamAlertRuleState: ${newStreamAlertRule.state}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.fabric.StreamAlertRule;\nimport com.pulumi.equinix.fabric.StreamAlertRuleArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamAlertRuleMetricSelectorArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamAlertRuleDetectionMethodArgs;\nimport com.pulumi.equinix.fabric.inputs.StreamAlertRuleResourceSelectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newStreamAlertRule = new StreamAlertRule(\"newStreamAlertRule\", StreamAlertRuleArgs.builder()\n            .streamId(\"\u003cstream_id\u003e\")\n            .type(\"METRIC_ALERT\")\n            .description(\"\u003cdescription\u003e\")\n            .enabled(true)\n            .metricSelector(StreamAlertRuleMetricSelectorArgs.builder()\n                .include(\"equinix.fabric.connection.bandwidth_tx.usage\")\n                .build())\n            .detectionMethod(StreamAlertRuleDetectionMethodArgs.builder()\n                .operand(\"ABOVE\")\n                .window_size(\"\u003cwindow_size\u003e\")\n                .warning_threshold(\"\u003cwarning_threshold\u003e\")\n                .critical_threshold(\"\u003ccritical_threshold\u003e\")\n                .build())\n            .resourceSelector(StreamAlertRuleResourceSelectorArgs.builder()\n                .include(\"*/connections/\u003cconnection_id\u003e\")\n                .build())\n            .build());\n\n        ctx.export(\"streamAlertRuleType\", newStreamAlertRule.type());\n        ctx.export(\"streamAlertRuleId\", newStreamAlertRule.uuid());\n        ctx.export(\"streamAlertRuleStreamId\", newStreamAlertRule.streamId());\n        ctx.export(\"streamAlertRuleState\", newStreamAlertRule.state());\n    }\n}\n```\n```yaml\nresources:\n  newStreamAlertRule:\n    type: equinix:fabric:StreamAlertRule\n    properties:\n      streamId: \u003cstream_id\u003e\n      type: METRIC_ALERT\n      description: \u003cdescription\u003e\n      enabled: true\n      metricSelector:\n        include:\n          - equinix.fabric.connection.bandwidth_tx.usage\n      detectionMethod:\n        operand: ABOVE\n        window_size: \u003cwindow_size\u003e\n        warning_threshold: \u003cwarning_threshold\u003e\n        critical_threshold: \u003ccritical_threshold\u003e\n      resourceSelector:\n        include:\n          - '*/connections/\u003cconnection_id\u003e'\noutputs:\n  streamAlertRuleType: ${newStreamAlertRule.type}\n  streamAlertRuleId: ${newStreamAlertRule.uuid}\n  streamAlertRuleStreamId: ${newStreamAlertRule.streamId}\n  streamAlertRuleState: ${newStreamAlertRule.state}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "changeLog": {
                     "$ref": "#/types/equinix:fabric/StreamAlertRuleChangeLog:StreamAlertRuleChangeLog",
@@ -24963,6 +24964,9 @@
             },
             "requiredInputs": [
                 "description",
+                "detectionMethod",
+                "metricSelector",
+                "resourceSelector",
                 "streamId",
                 "type"
             ],
