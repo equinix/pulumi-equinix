@@ -220,6 +220,11 @@ export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 
+export { PortArgs, PortState } from "./port";
+export type Port = import("./port").Port;
+export const Port: typeof import("./port").Port = null as any;
+utilities.lazyLoad(exports, ["Port"], () => require("./port"));
+
 export { PrecisionTimeServiceArgs, PrecisionTimeServiceState } from "./precisionTimeService";
 export type PrecisionTimeService = import("./precisionTimeService").PrecisionTimeService;
 export const PrecisionTimeService: typeof import("./precisionTimeService").PrecisionTimeService = null as any;
@@ -298,6 +303,8 @@ const _module = {
                 return new ConnectionRouteFilter(name, <any>undefined, { urn })
             case "equinix:fabric/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "equinix:fabric/port:Port":
+                return new Port(name, <any>undefined, { urn })
             case "equinix:fabric/precisionTimeService:PrecisionTimeService":
                 return new PrecisionTimeService(name, <any>undefined, { urn })
             case "equinix:fabric/routeAggregation:RouteAggregation":
@@ -332,6 +339,7 @@ pulumi.runtime.registerResourceModule("equinix", "fabric/connection", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteAggregation", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteFilter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/network", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/port", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/precisionTimeService", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routeAggregation", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routeAggregationRule", _module)

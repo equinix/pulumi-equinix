@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetStreamAlertRuleResult',
@@ -27,19 +28,19 @@ class GetStreamAlertRuleResult:
     """
     A collection of values returned by getStreamAlertRule.
     """
-    def __init__(__self__, alert_rule_id=None, change_log=None, critical_threshold=None, description=None, enabled=None, href=None, id=None, metric_name=None, name=None, operand=None, resource_selector=None, state=None, stream_id=None, type=None, uuid=None, warning_threshold=None, window_size=None):
+    def __init__(__self__, alert_rule_id=None, change_log=None, description=None, detection_method=None, enabled=None, href=None, id=None, metric_selector=None, name=None, resource_selector=None, state=None, stream_id=None, type=None, uuid=None):
         if alert_rule_id and not isinstance(alert_rule_id, str):
             raise TypeError("Expected argument 'alert_rule_id' to be a str")
         pulumi.set(__self__, "alert_rule_id", alert_rule_id)
         if change_log and not isinstance(change_log, dict):
             raise TypeError("Expected argument 'change_log' to be a dict")
         pulumi.set(__self__, "change_log", change_log)
-        if critical_threshold and not isinstance(critical_threshold, str):
-            raise TypeError("Expected argument 'critical_threshold' to be a str")
-        pulumi.set(__self__, "critical_threshold", critical_threshold)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if detection_method and not isinstance(detection_method, dict):
+            raise TypeError("Expected argument 'detection_method' to be a dict")
+        pulumi.set(__self__, "detection_method", detection_method)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
@@ -49,15 +50,12 @@ class GetStreamAlertRuleResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if metric_name and not isinstance(metric_name, str):
-            raise TypeError("Expected argument 'metric_name' to be a str")
-        pulumi.set(__self__, "metric_name", metric_name)
+        if metric_selector and not isinstance(metric_selector, dict):
+            raise TypeError("Expected argument 'metric_selector' to be a dict")
+        pulumi.set(__self__, "metric_selector", metric_selector)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if operand and not isinstance(operand, str):
-            raise TypeError("Expected argument 'operand' to be a str")
-        pulumi.set(__self__, "operand", operand)
         if resource_selector and not isinstance(resource_selector, dict):
             raise TypeError("Expected argument 'resource_selector' to be a dict")
         pulumi.set(__self__, "resource_selector", resource_selector)
@@ -73,12 +71,6 @@ class GetStreamAlertRuleResult:
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
-        if warning_threshold and not isinstance(warning_threshold, str):
-            raise TypeError("Expected argument 'warning_threshold' to be a str")
-        pulumi.set(__self__, "warning_threshold", warning_threshold)
-        if window_size and not isinstance(window_size, str):
-            raise TypeError("Expected argument 'window_size' to be a str")
-        pulumi.set(__self__, "window_size", window_size)
 
     @property
     @pulumi.getter(name="alertRuleId")
@@ -97,20 +89,20 @@ class GetStreamAlertRuleResult:
         return pulumi.get(self, "change_log")
 
     @property
-    @pulumi.getter(name="criticalThreshold")
-    def critical_threshold(self) -> str:
-        """
-        Stream alert rule metric critical threshold
-        """
-        return pulumi.get(self, "critical_threshold")
-
-    @property
     @pulumi.getter
     def description(self) -> str:
         """
         Customer-provided stream alert rule description
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="detectionMethod")
+    def detection_method(self) -> 'outputs.GetStreamAlertRuleDetectionMethodResult':
+        """
+        Detection method for stream alert rule
+        """
+        return pulumi.get(self, "detection_method")
 
     @property
     @pulumi.getter
@@ -137,12 +129,12 @@ class GetStreamAlertRuleResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="metricName")
-    def metric_name(self) -> str:
+    @pulumi.getter(name="metricSelector")
+    def metric_selector(self) -> 'outputs.GetStreamAlertRuleMetricSelectorResult':
         """
-        Stream alert rule metric name
+        Metric selector for the stream alert rule
         """
-        return pulumi.get(self, "metric_name")
+        return pulumi.get(self, "metric_selector")
 
     @property
     @pulumi.getter
@@ -151,14 +143,6 @@ class GetStreamAlertRuleResult:
         Customer-provided stream alert rule name
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def operand(self) -> str:
-        """
-        Stream alert rule metric operand
-        """
-        return pulumi.get(self, "operand")
 
     @property
     @pulumi.getter(name="resourceSelector")
@@ -200,22 +184,6 @@ class GetStreamAlertRuleResult:
         """
         return pulumi.get(self, "uuid")
 
-    @property
-    @pulumi.getter(name="warningThreshold")
-    def warning_threshold(self) -> str:
-        """
-        Stream alert rule metric warning threshold
-        """
-        return pulumi.get(self, "warning_threshold")
-
-    @property
-    @pulumi.getter(name="windowSize")
-    def window_size(self) -> str:
-        """
-        Stream alert rule metric window size
-        """
-        return pulumi.get(self, "window_size")
-
 
 class AwaitableGetStreamAlertRuleResult(GetStreamAlertRuleResult):
     # pylint: disable=using-constant-test
@@ -225,39 +193,38 @@ class AwaitableGetStreamAlertRuleResult(GetStreamAlertRuleResult):
         return GetStreamAlertRuleResult(
             alert_rule_id=self.alert_rule_id,
             change_log=self.change_log,
-            critical_threshold=self.critical_threshold,
             description=self.description,
+            detection_method=self.detection_method,
             enabled=self.enabled,
             href=self.href,
             id=self.id,
-            metric_name=self.metric_name,
+            metric_selector=self.metric_selector,
             name=self.name,
-            operand=self.operand,
             resource_selector=self.resource_selector,
             state=self.state,
             stream_id=self.stream_id,
             type=self.type,
-            uuid=self.uuid,
-            warning_threshold=self.warning_threshold,
-            window_size=self.window_size)
+            uuid=self.uuid)
 
 
 def get_stream_alert_rule(alert_rule_id: Optional[str] = None,
+                          detection_method: Optional[Union['GetStreamAlertRuleDetectionMethodArgs', 'GetStreamAlertRuleDetectionMethodArgsDict']] = None,
+                          metric_selector: Optional[Union['GetStreamAlertRuleMetricSelectorArgs', 'GetStreamAlertRuleMetricSelectorArgsDict']] = None,
                           stream_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStreamAlertRuleResult:
     """
-    Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-
-    Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+    ## Example Usage
 
 
     :param str alert_rule_id: The uuid of the stream alert rule
+    :param Union['GetStreamAlertRuleDetectionMethodArgs', 'GetStreamAlertRuleDetectionMethodArgsDict'] detection_method: Detection method for stream alert rule
+    :param Union['GetStreamAlertRuleMetricSelectorArgs', 'GetStreamAlertRuleMetricSelectorArgsDict'] metric_selector: Metric selector for the stream alert rule
     :param str stream_id: The uuid of the stream that is the target of the stream alert rule
     """
     __args__ = dict()
     __args__['alertRuleId'] = alert_rule_id
+    __args__['detectionMethod'] = detection_method
+    __args__['metricSelector'] = metric_selector
     __args__['streamId'] = stream_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getStreamAlertRule:getStreamAlertRule', __args__, opts=opts, typ=GetStreamAlertRuleResult).value
@@ -265,55 +232,51 @@ def get_stream_alert_rule(alert_rule_id: Optional[str] = None,
     return AwaitableGetStreamAlertRuleResult(
         alert_rule_id=pulumi.get(__ret__, 'alert_rule_id'),
         change_log=pulumi.get(__ret__, 'change_log'),
-        critical_threshold=pulumi.get(__ret__, 'critical_threshold'),
         description=pulumi.get(__ret__, 'description'),
+        detection_method=pulumi.get(__ret__, 'detection_method'),
         enabled=pulumi.get(__ret__, 'enabled'),
         href=pulumi.get(__ret__, 'href'),
         id=pulumi.get(__ret__, 'id'),
-        metric_name=pulumi.get(__ret__, 'metric_name'),
+        metric_selector=pulumi.get(__ret__, 'metric_selector'),
         name=pulumi.get(__ret__, 'name'),
-        operand=pulumi.get(__ret__, 'operand'),
         resource_selector=pulumi.get(__ret__, 'resource_selector'),
         state=pulumi.get(__ret__, 'state'),
         stream_id=pulumi.get(__ret__, 'stream_id'),
         type=pulumi.get(__ret__, 'type'),
-        uuid=pulumi.get(__ret__, 'uuid'),
-        warning_threshold=pulumi.get(__ret__, 'warning_threshold'),
-        window_size=pulumi.get(__ret__, 'window_size'))
+        uuid=pulumi.get(__ret__, 'uuid'))
 def get_stream_alert_rule_output(alert_rule_id: Optional[pulumi.Input[str]] = None,
+                                 detection_method: Optional[pulumi.Input[Optional[Union['GetStreamAlertRuleDetectionMethodArgs', 'GetStreamAlertRuleDetectionMethodArgsDict']]]] = None,
+                                 metric_selector: Optional[pulumi.Input[Optional[Union['GetStreamAlertRuleMetricSelectorArgs', 'GetStreamAlertRuleMetricSelectorArgsDict']]]] = None,
                                  stream_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamAlertRuleResult]:
     """
-    Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-
-    Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+    ## Example Usage
 
 
     :param str alert_rule_id: The uuid of the stream alert rule
+    :param Union['GetStreamAlertRuleDetectionMethodArgs', 'GetStreamAlertRuleDetectionMethodArgsDict'] detection_method: Detection method for stream alert rule
+    :param Union['GetStreamAlertRuleMetricSelectorArgs', 'GetStreamAlertRuleMetricSelectorArgsDict'] metric_selector: Metric selector for the stream alert rule
     :param str stream_id: The uuid of the stream that is the target of the stream alert rule
     """
     __args__ = dict()
     __args__['alertRuleId'] = alert_rule_id
+    __args__['detectionMethod'] = detection_method
+    __args__['metricSelector'] = metric_selector
     __args__['streamId'] = stream_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getStreamAlertRule:getStreamAlertRule', __args__, opts=opts, typ=GetStreamAlertRuleResult)
     return __ret__.apply(lambda __response__: GetStreamAlertRuleResult(
         alert_rule_id=pulumi.get(__response__, 'alert_rule_id'),
         change_log=pulumi.get(__response__, 'change_log'),
-        critical_threshold=pulumi.get(__response__, 'critical_threshold'),
         description=pulumi.get(__response__, 'description'),
+        detection_method=pulumi.get(__response__, 'detection_method'),
         enabled=pulumi.get(__response__, 'enabled'),
         href=pulumi.get(__response__, 'href'),
         id=pulumi.get(__response__, 'id'),
-        metric_name=pulumi.get(__response__, 'metric_name'),
+        metric_selector=pulumi.get(__response__, 'metric_selector'),
         name=pulumi.get(__response__, 'name'),
-        operand=pulumi.get(__response__, 'operand'),
         resource_selector=pulumi.get(__response__, 'resource_selector'),
         state=pulumi.get(__response__, 'state'),
         stream_id=pulumi.get(__response__, 'stream_id'),
         type=pulumi.get(__response__, 'type'),
-        uuid=pulumi.get(__response__, 'uuid'),
-        warning_threshold=pulumi.get(__response__, 'warning_threshold'),
-        window_size=pulumi.get(__response__, 'window_size')))
+        uuid=pulumi.get(__response__, 'uuid')))

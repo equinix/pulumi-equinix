@@ -12,25 +12,25 @@ namespace Pulumi.Equinix.Metal
     public static class GetVirtualCircuit
     {
         /// <summary>
-        /// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+        /// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
         /// 
-        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        /// See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
         /// </summary>
         public static Task<GetVirtualCircuitResult> InvokeAsync(GetVirtualCircuitArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+        /// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
         /// 
-        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        /// See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
         /// </summary>
         public static Output<GetVirtualCircuitResult> Invoke(GetVirtualCircuitInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+        /// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
         /// 
-        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        /// See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
         /// </summary>
         public static Output<GetVirtualCircuitResult> Invoke(GetVirtualCircuitInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitInvokeArgs(), options.WithDefaults());
@@ -146,11 +146,11 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// Nni VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         /// </summary>
         public readonly int NniVlan;
         /// <summary>
-        /// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         /// </summary>
         public readonly int NniVnid;
         /// <summary>
@@ -198,7 +198,7 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string VlanId;
         /// <summary>
-        /// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         /// </summary>
         public readonly int Vnid;
         /// <summary>

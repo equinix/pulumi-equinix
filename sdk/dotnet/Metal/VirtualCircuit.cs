@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
-    /// Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
+    /// Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
     /// 
-    /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+    /// See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
     /// 
     /// ## Example Usage
     /// ```csharp
@@ -114,7 +114,7 @@ namespace Pulumi.Equinix.Metal
         public Output<int> NniVlan { get; private set; } = null!;
 
         /// <summary>
-        /// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         /// </summary>
         [Output("nniVnid")]
         public Output<int> NniVnid { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         /// </summary>
         [Output("vnid")]
         public Output<int> Vnid { get; private set; } = null!;
@@ -453,7 +453,7 @@ namespace Pulumi.Equinix.Metal
         public Input<int>? NniVlan { get; set; }
 
         /// <summary>
-        /// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         /// </summary>
         [Input("nniVnid")]
         public Input<int>? NniVnid { get; set; }
@@ -529,7 +529,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? VlanId { get; set; }
 
         /// <summary>
-        /// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        /// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         /// </summary>
         [Input("vnid")]
         public Input<int>? Vnid { get; set; }

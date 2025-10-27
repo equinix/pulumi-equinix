@@ -18,13 +18,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly Outputs.GetStreamAlertRulesDataChangeLogResult ChangeLog;
         /// <summary>
-        /// Stream alert rule metric critical threshold
-        /// </summary>
-        public readonly string CriticalThreshold;
-        /// <summary>
         /// Customer-provided stream alert rule description
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Detection method for stream alert rule
+        /// </summary>
+        public readonly Outputs.GetStreamAlertRulesDataDetectionMethodResult DetectionMethod;
         /// <summary>
         /// Stream subscription enabled status
         /// </summary>
@@ -34,17 +34,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string Href;
         /// <summary>
-        /// Stream alert rule metric name
+        /// Metric selector for the stream alert rule
         /// </summary>
-        public readonly string MetricName;
+        public readonly Outputs.GetStreamAlertRulesDataMetricSelectorResult MetricSelector;
         /// <summary>
         /// Customer-provided stream alert rule name
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Stream alert rule metric operand
-        /// </summary>
-        public readonly string Operand;
         /// <summary>
         /// Lists of metrics to be included/excluded on the stream alert rule
         /// </summary>
@@ -61,32 +57,22 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Equinix assigned unique identifier of the stream subscription resource
         /// </summary>
         public readonly string Uuid;
-        /// <summary>
-        /// Stream alert rule metric warning threshold
-        /// </summary>
-        public readonly string WarningThreshold;
-        /// <summary>
-        /// Stream alert rule metric window size
-        /// </summary>
-        public readonly string WindowSize;
 
         [OutputConstructor]
         private GetStreamAlertRulesDataResult(
             Outputs.GetStreamAlertRulesDataChangeLogResult changeLog,
 
-            string criticalThreshold,
-
             string description,
+
+            Outputs.GetStreamAlertRulesDataDetectionMethodResult detectionMethod,
 
             bool enabled,
 
             string href,
 
-            string metricName,
+            Outputs.GetStreamAlertRulesDataMetricSelectorResult metricSelector,
 
             string name,
-
-            string operand,
 
             Outputs.GetStreamAlertRulesDataResourceSelectorResult resourceSelector,
 
@@ -94,26 +80,19 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string type,
 
-            string uuid,
-
-            string warningThreshold,
-
-            string windowSize)
+            string uuid)
         {
             ChangeLog = changeLog;
-            CriticalThreshold = criticalThreshold;
             Description = description;
+            DetectionMethod = detectionMethod;
             Enabled = enabled;
             Href = href;
-            MetricName = metricName;
+            MetricSelector = metricSelector;
             Name = name;
-            Operand = operand;
             ResourceSelector = resourceSelector;
             State = state;
             Type = type;
             Uuid = uuid;
-            WarningThreshold = warningThreshold;
-            WindowSize = windowSize;
         }
     }
 }

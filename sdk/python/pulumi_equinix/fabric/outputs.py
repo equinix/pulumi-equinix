@@ -74,11 +74,31 @@ __all__ = [
     'NetworkNotification',
     'NetworkOperation',
     'NetworkProject',
+    'PortAccount',
+    'PortAdditionalInfo',
+    'PortChangeLog',
+    'PortDevice',
+    'PortDeviceRedundancy',
+    'PortEncapsulation',
+    'PortLocation',
+    'PortNotification',
+    'PortOrder',
+    'PortOrderPurchaseOrder',
+    'PortOrderSignature',
+    'PortOrderSignatureDelegate',
+    'PortPhysicalPort',
+    'PortPhysicalPortDemarcationPoint',
+    'PortPhysicalPortInterface',
+    'PortProject',
+    'PortRedundancy',
+    'PortSettings',
+    'PortTimeouts',
     'PrecisionTimeServiceAccount',
     'PrecisionTimeServiceChangeLog',
     'PrecisionTimeServiceConnection',
     'PrecisionTimeServiceIpv4',
     'PrecisionTimeServiceNtpAdvancedConfiguration',
+    'PrecisionTimeServiceOperation',
     'PrecisionTimeServiceOrder',
     'PrecisionTimeServicePackage',
     'PrecisionTimeServicePrecisionTimePrice',
@@ -148,6 +168,8 @@ __all__ = [
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorPortLocation',
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevice',
     'StreamAlertRuleChangeLog',
+    'StreamAlertRuleDetectionMethod',
+    'StreamAlertRuleMetricSelector',
     'StreamAlertRuleResourceSelector',
     'StreamAlertRuleTimeouts',
     'StreamAttachmentTimeouts',
@@ -320,6 +342,7 @@ __all__ = [
     'GetPrecisionTimeServiceConnectionResult',
     'GetPrecisionTimeServiceIpv4Result',
     'GetPrecisionTimeServiceNtpAdvancedConfigurationResult',
+    'GetPrecisionTimeServiceOperationResult',
     'GetPrecisionTimeServiceOrderResult',
     'GetPrecisionTimeServicePackageResult',
     'GetPrecisionTimeServicePrecisionTimePriceResult',
@@ -332,6 +355,7 @@ __all__ = [
     'GetPrecisionTimeServicesDataConnectionResult',
     'GetPrecisionTimeServicesDataIpv4Result',
     'GetPrecisionTimeServicesDataNtpAdvancedConfigurationResult',
+    'GetPrecisionTimeServicesDataOperationResult',
     'GetPrecisionTimeServicesDataOrderResult',
     'GetPrecisionTimeServicesDataPackageResult',
     'GetPrecisionTimeServicesDataPrecisionTimePriceResult',
@@ -469,9 +493,13 @@ __all__ = [
     'GetServiceTokensFilterResult',
     'GetServiceTokensPaginationResult',
     'GetStreamAlertRuleChangeLogResult',
+    'GetStreamAlertRuleDetectionMethodResult',
+    'GetStreamAlertRuleMetricSelectorResult',
     'GetStreamAlertRuleResourceSelectorResult',
     'GetStreamAlertRulesDataResult',
     'GetStreamAlertRulesDataChangeLogResult',
+    'GetStreamAlertRulesDataDetectionMethodResult',
+    'GetStreamAlertRulesDataMetricSelectorResult',
     'GetStreamAlertRulesDataResourceSelectorResult',
     'GetStreamAlertRulesPaginationResult',
     'GetStreamAttachmentsDataResult',
@@ -1150,6 +1178,7 @@ class ConnectionASideAccessPoint(dict):
                  port: Optional['outputs.ConnectionASideAccessPointPort'] = None,
                  profile: Optional['outputs.ConnectionASideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.ConnectionASideAccessPointRouter'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -1166,6 +1195,7 @@ class ConnectionASideAccessPoint(dict):
         :param 'ConnectionASideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionASideAccessPointProfileArgs' profile: Service Profile
         :param str provider_connection_id: Provider assigned Connection Id
+        :param str role: Network role
         :param 'ConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -1193,6 +1223,8 @@ class ConnectionASideAccessPoint(dict):
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -1290,6 +1322,14 @@ class ConnectionASideAccessPoint(dict):
         Provider assigned Connection Id
         """
         return pulumi.get(self, "provider_connection_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -3014,6 +3054,7 @@ class ConnectionZSideAccessPoint(dict):
                  port: Optional['outputs.ConnectionZSideAccessPointPort'] = None,
                  profile: Optional['outputs.ConnectionZSideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.ConnectionZSideAccessPointRouter'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -3030,6 +3071,7 @@ class ConnectionZSideAccessPoint(dict):
         :param 'ConnectionZSideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionZSideAccessPointProfileArgs' profile: Service Profile
         :param str provider_connection_id: Provider assigned Connection Id
+        :param str role: Network role
         :param 'ConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -3057,6 +3099,8 @@ class ConnectionZSideAccessPoint(dict):
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -3154,6 +3198,14 @@ class ConnectionZSideAccessPoint(dict):
         Provider assigned Connection Id
         """
         return pulumi.get(self, "provider_connection_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -4409,6 +4461,1087 @@ class NetworkProject(dict):
 
 
 @pulumi.output_type
+class PortAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountNumber":
+            suggest = "account_number"
+        elif key == "accountName":
+            suggest = "account_name"
+        elif key == "ucmId":
+            suggest = "ucm_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_number: int,
+                 account_name: Optional[str] = None,
+                 ucm_id: Optional[str] = None):
+        """
+        :param int account_number: Account number the port will be created for
+        :param str account_name: Legal name of the accountholder.
+        :param str ucm_id: Enterprise datastore id
+        """
+        pulumi.set(__self__, "account_number", account_number)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> int:
+        """
+        Account number the port will be created for
+        """
+        return pulumi.get(self, "account_number")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[str]:
+        """
+        Legal name of the accountholder.
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[str]:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
+
+
+@pulumi.output_type
+class PortAdditionalInfo(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The key name of the key/value pair
+        :param str value: The value of the key/value pair
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key name of the key/value pair
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the key/value pair
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class PortChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: User name of creator of the port resource
+        :param str created_by_email: Email of creator of the port resource
+        :param str created_by_full_name: Legal name of creator of the port resource
+        :param str created_date_time: Creation time of the port resource
+        :param str deleted_by: User name of deleter of the port resource
+        :param str deleted_by_email: Email of deleter of the port resource
+        :param str deleted_by_full_name: Legal name of deleter of the port resource
+        :param str deleted_date_time: Deletion time of the port resource
+        :param str updated_by: User name of last updater of the port resource
+        :param str updated_by_email: Email of last updater of the port resource
+        :param str updated_by_full_name: Legal name of last updater of the port resource
+        :param str updated_date_time: Last update time of the port resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        User name of creator of the port resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Email of creator of the port resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of creator of the port resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Creation time of the port resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        User name of deleter of the port resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Email of deleter of the port resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of deleter of the port resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deletion time of the port resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        User name of last updater of the port resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Email of last updater of the port resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Legal name of last updater of the port resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Last update time of the port resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class PortDevice(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 redundancy: Optional['outputs.PortDeviceRedundancy'] = None):
+        """
+        :param str name: Device name for the port
+        :param 'PortDeviceRedundancyArgs' redundancy: Device redundancy configuration
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if redundancy is not None:
+            pulumi.set(__self__, "redundancy", redundancy)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Device name for the port
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def redundancy(self) -> Optional['outputs.PortDeviceRedundancy']:
+        """
+        Device redundancy configuration
+        """
+        return pulumi.get(self, "redundancy")
+
+
+@pulumi.output_type
+class PortDeviceRedundancy(dict):
+    def __init__(__self__, *,
+                 group: Optional[str] = None,
+                 priority: Optional[str] = None):
+        """
+        :param str group: Redundancy group identifier
+        :param str priority: Redundancy priority (PRIMARY or SECONDARY)
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        Redundancy group identifier
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[str]:
+        """
+        Redundancy priority (PRIMARY or SECONDARY)
+        """
+        return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class PortEncapsulation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagProtocolId":
+            suggest = "tag_protocol_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortEncapsulation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortEncapsulation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortEncapsulation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_protocol_id: str,
+                 type: str):
+        """
+        :param str tag_protocol_id: Port encapsulation tag protocol identifier
+        :param str type: Port encapsulation protocol type
+        """
+        pulumi.set(__self__, "tag_protocol_id", tag_protocol_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="tagProtocolId")
+    def tag_protocol_id(self) -> str:
+        """
+        Port encapsulation tag protocol identifier
+        """
+        return pulumi.get(self, "tag_protocol_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Port encapsulation protocol type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PortLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metroCode":
+            suggest = "metro_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metro_code: str):
+        """
+        :param str metro_code: Metro code the port will be created in
+        """
+        pulumi.set(__self__, "metro_code", metro_code)
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> str:
+        """
+        Metro code the port will be created in
+        """
+        return pulumi.get(self, "metro_code")
+
+
+@pulumi.output_type
+class PortNotification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "registeredUsers":
+            suggest = "registered_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortNotification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortNotification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortNotification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 registered_users: Sequence[str],
+                 type: str):
+        """
+        :param Sequence[str] registered_users: Array of registered users that will receive this notification type on the port
+        :param str type: Notification Type
+        """
+        pulumi.set(__self__, "registered_users", registered_users)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="registeredUsers")
+    def registered_users(self) -> Sequence[str]:
+        """
+        Array of registered users that will receive this notification type on the port
+        """
+        return pulumi.get(self, "registered_users")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Notification Type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PortOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerReferenceId":
+            suggest = "customer_reference_id"
+        elif key == "orderId":
+            suggest = "order_id"
+        elif key == "orderNumber":
+            suggest = "order_number"
+        elif key == "purchaseOrder":
+            suggest = "purchase_order"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_reference_id: Optional[str] = None,
+                 order_id: Optional[str] = None,
+                 order_number: Optional[str] = None,
+                 purchase_order: Optional['outputs.PortOrderPurchaseOrder'] = None,
+                 signature: Optional['outputs.PortOrderSignature'] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str customer_reference_id: Customer order reference Id
+        :param str order_id: Order Identification
+        :param str order_number: Order Reference Number
+        :param 'PortOrderPurchaseOrderArgs' purchase_order: Purchase order details
+        :param 'PortOrderSignatureArgs' signature: Port order confirmation signature details
+        :param str uuid: Equinix-assigned order identifier, this is a derived response attribute
+        """
+        if customer_reference_id is not None:
+            pulumi.set(__self__, "customer_reference_id", customer_reference_id)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+        if order_number is not None:
+            pulumi.set(__self__, "order_number", order_number)
+        if purchase_order is not None:
+            pulumi.set(__self__, "purchase_order", purchase_order)
+        if signature is not None:
+            pulumi.set(__self__, "signature", signature)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="customerReferenceId")
+    def customer_reference_id(self) -> Optional[str]:
+        """
+        Customer order reference Id
+        """
+        return pulumi.get(self, "customer_reference_id")
+
+    @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[str]:
+        """
+        Order Identification
+        """
+        return pulumi.get(self, "order_id")
+
+    @property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> Optional[str]:
+        """
+        Order Reference Number
+        """
+        return pulumi.get(self, "order_number")
+
+    @property
+    @pulumi.getter(name="purchaseOrder")
+    def purchase_order(self) -> Optional['outputs.PortOrderPurchaseOrder']:
+        """
+        Purchase order details
+        """
+        return pulumi.get(self, "purchase_order")
+
+    @property
+    @pulumi.getter
+    def signature(self) -> Optional['outputs.PortOrderSignature']:
+        """
+        Port order confirmation signature details
+        """
+        return pulumi.get(self, "signature")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned order identifier, this is a derived response attribute
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class PortOrderPurchaseOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attachmentId":
+            suggest = "attachment_id"
+        elif key == "endDate":
+            suggest = "end_date"
+        elif key == "startDate":
+            suggest = "start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortOrderPurchaseOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortOrderPurchaseOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortOrderPurchaseOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 amount: Optional[str] = None,
+                 attachment_id: Optional[str] = None,
+                 end_date: Optional[str] = None,
+                 number: Optional[str] = None,
+                 start_date: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str amount: purchase order amount
+        :param str attachment_id: purchase order attachment id
+        :param str end_date: purchase order end date
+        :param str number: purchase order number
+        :param str start_date: purchase order start date
+        :param str type: purchase order type
+        """
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if attachment_id is not None:
+            pulumi.set(__self__, "attachment_id", attachment_id)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if number is not None:
+            pulumi.set(__self__, "number", number)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def amount(self) -> Optional[str]:
+        """
+        purchase order amount
+        """
+        return pulumi.get(self, "amount")
+
+    @property
+    @pulumi.getter(name="attachmentId")
+    def attachment_id(self) -> Optional[str]:
+        """
+        purchase order attachment id
+        """
+        return pulumi.get(self, "attachment_id")
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[str]:
+        """
+        purchase order end date
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter
+    def number(self) -> Optional[str]:
+        """
+        purchase order number
+        """
+        return pulumi.get(self, "number")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[str]:
+        """
+        purchase order start date
+        """
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        purchase order type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PortOrderSignature(dict):
+    def __init__(__self__, *,
+                 delegate: 'outputs.PortOrderSignatureDelegate',
+                 signatory: str):
+        """
+        :param 'PortOrderSignatureDelegateArgs' delegate: delegate order details
+        :param str signatory: Port signature Type
+        """
+        pulumi.set(__self__, "delegate", delegate)
+        pulumi.set(__self__, "signatory", signatory)
+
+    @property
+    @pulumi.getter
+    def delegate(self) -> 'outputs.PortOrderSignatureDelegate':
+        """
+        delegate order details
+        """
+        return pulumi.get(self, "delegate")
+
+    @property
+    @pulumi.getter
+    def signatory(self) -> str:
+        """
+        Port signature Type
+        """
+        return pulumi.get(self, "signatory")
+
+
+@pulumi.output_type
+class PortOrderSignatureDelegate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "firstName":
+            suggest = "first_name"
+        elif key == "lastName":
+            suggest = "last_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortOrderSignatureDelegate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortOrderSignatureDelegate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortOrderSignatureDelegate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email: str,
+                 first_name: Optional[str] = None,
+                 last_name: Optional[str] = None):
+        """
+        :param str email: Email of the signatory
+        :param str first_name: First name of the signatory
+        :param str last_name: Last name of the signatory
+        """
+        pulumi.set(__self__, "email", email)
+        if first_name is not None:
+            pulumi.set(__self__, "first_name", first_name)
+        if last_name is not None:
+            pulumi.set(__self__, "last_name", last_name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Email of the signatory
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="firstName")
+    def first_name(self) -> Optional[str]:
+        """
+        First name of the signatory
+        """
+        return pulumi.get(self, "first_name")
+
+    @property
+    @pulumi.getter(name="lastName")
+    def last_name(self) -> Optional[str]:
+        """
+        Last name of the signatory
+        """
+        return pulumi.get(self, "last_name")
+
+
+@pulumi.output_type
+class PortPhysicalPort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "demarcationPoint":
+            suggest = "demarcation_point"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortPhysicalPort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortPhysicalPort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortPhysicalPort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 demarcation_point: 'outputs.PortPhysicalPortDemarcationPoint',
+                 type: str,
+                 interface: Optional['outputs.PortPhysicalPortInterface'] = None):
+        """
+        :param 'PortPhysicalPortDemarcationPointArgs' demarcation_point: Customer physical port
+        :param str type: Physical Port type
+        :param 'PortPhysicalPortInterfaceArgs' interface: Physical port interface
+        """
+        pulumi.set(__self__, "demarcation_point", demarcation_point)
+        pulumi.set(__self__, "type", type)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+
+    @property
+    @pulumi.getter(name="demarcationPoint")
+    def demarcation_point(self) -> 'outputs.PortPhysicalPortDemarcationPoint':
+        """
+        Customer physical port
+        """
+        return pulumi.get(self, "demarcation_point")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Physical Port type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional['outputs.PortPhysicalPortInterface']:
+        """
+        Physical port interface
+        """
+        return pulumi.get(self, "interface")
+
+
+@pulumi.output_type
+class PortPhysicalPortDemarcationPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cabinetUniqueSpaceId":
+            suggest = "cabinet_unique_space_id"
+        elif key == "cageUniqueSpaceId":
+            suggest = "cage_unique_space_id"
+        elif key == "connectorType":
+            suggest = "connector_type"
+        elif key == "patchPanel":
+            suggest = "patch_panel"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortPhysicalPortDemarcationPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortPhysicalPortDemarcationPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortPhysicalPortDemarcationPoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cabinet_unique_space_id: str,
+                 cage_unique_space_id: str,
+                 connector_type: str,
+                 ibx: str,
+                 patch_panel: str):
+        """
+        :param str cabinet_unique_space_id: Port cabinet unique space id
+        :param str cage_unique_space_id: Port cage unique space id
+        :param str connector_type: Port connector type
+        :param str ibx: IBX Metro code for the physical port
+        :param str patch_panel: Port patch panel
+        """
+        pulumi.set(__self__, "cabinet_unique_space_id", cabinet_unique_space_id)
+        pulumi.set(__self__, "cage_unique_space_id", cage_unique_space_id)
+        pulumi.set(__self__, "connector_type", connector_type)
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "patch_panel", patch_panel)
+
+    @property
+    @pulumi.getter(name="cabinetUniqueSpaceId")
+    def cabinet_unique_space_id(self) -> str:
+        """
+        Port cabinet unique space id
+        """
+        return pulumi.get(self, "cabinet_unique_space_id")
+
+    @property
+    @pulumi.getter(name="cageUniqueSpaceId")
+    def cage_unique_space_id(self) -> str:
+        """
+        Port cage unique space id
+        """
+        return pulumi.get(self, "cage_unique_space_id")
+
+    @property
+    @pulumi.getter(name="connectorType")
+    def connector_type(self) -> str:
+        """
+        Port connector type
+        """
+        return pulumi.get(self, "connector_type")
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> str:
+        """
+        IBX Metro code for the physical port
+        """
+        return pulumi.get(self, "ibx")
+
+    @property
+    @pulumi.getter(name="patchPanel")
+    def patch_panel(self) -> str:
+        """
+        Port patch panel
+        """
+        return pulumi.get(self, "patch_panel")
+
+
+@pulumi.output_type
+class PortPhysicalPortInterface(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None):
+        """
+        :param str type: Interface type for the physical port
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Interface type for the physical port
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PortProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Project id the port will be created in
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Project id the port will be created in
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class PortRedundancy(dict):
+    def __init__(__self__, *,
+                 priority: str):
+        """
+        :param str priority: Port redundancy priority value
+        """
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        """
+        Port redundancy priority value
+        """
+        return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class PortSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packageType":
+            suggest = "package_type"
+        elif key == "sharedPortType":
+            suggest = "shared_port_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 package_type: str,
+                 shared_port_type: bool):
+        """
+        :param str package_type: Billing package for the port being ordered
+        :param bool shared_port_type: Indicates whether this is a dedicated customer cage or a shared neutral cage
+        """
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "shared_port_type", shared_port_type)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        Billing package for the port being ordered
+        """
+        return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter(name="sharedPortType")
+    def shared_port_type(self) -> bool:
+        """
+        Indicates whether this is a dedicated customer cage or a shared neutral cage
+        """
+        return pulumi.get(self, "shared_port_type")
+
+
+@pulumi.output_type
+class PortTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 read: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class PrecisionTimeServiceAccount(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4962,6 +6095,42 @@ class PrecisionTimeServiceNtpAdvancedConfiguration(dict):
         md5 Authentication type
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PrecisionTimeServiceOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operationalStatus":
+            suggest = "operational_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrecisionTimeServiceOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrecisionTimeServiceOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrecisionTimeServiceOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operational_status: Optional[str] = None):
+        """
+        :param str operational_status: Current operational status of the Precision Time Service
+        """
+        if operational_status is not None:
+            pulumi.set(__self__, "operational_status", operational_status)
+
+    @property
+    @pulumi.getter(name="operationalStatus")
+    def operational_status(self) -> Optional[str]:
+        """
+        Current operational status of the Precision Time Service
+        """
+        return pulumi.get(self, "operational_status")
 
 
 @pulumi.output_type
@@ -10798,6 +11967,111 @@ class StreamAlertRuleChangeLog(dict):
 
 
 @pulumi.output_type
+class StreamAlertRuleDetectionMethod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "criticalThreshold":
+            suggest = "critical_threshold"
+        elif key == "warningThreshold":
+            suggest = "warning_threshold"
+        elif key == "windowSize":
+            suggest = "window_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamAlertRuleDetectionMethod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamAlertRuleDetectionMethod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamAlertRuleDetectionMethod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 critical_threshold: Optional[str] = None,
+                 operand: Optional[str] = None,
+                 warning_threshold: Optional[str] = None,
+                 window_size: Optional[str] = None):
+        """
+        :param str type: Stream Alert Rule detection method type
+        :param str critical_threshold: Stream alert rule metric critical threshold
+        :param str operand: Stream alert rule metric operand
+        :param str warning_threshold: Stream alert rule metric warning threshold
+        :param str window_size: Stream alert rule metric window size
+        """
+        pulumi.set(__self__, "type", type)
+        if critical_threshold is not None:
+            pulumi.set(__self__, "critical_threshold", critical_threshold)
+        if operand is not None:
+            pulumi.set(__self__, "operand", operand)
+        if warning_threshold is not None:
+            pulumi.set(__self__, "warning_threshold", warning_threshold)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Stream Alert Rule detection method type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="criticalThreshold")
+    def critical_threshold(self) -> Optional[str]:
+        """
+        Stream alert rule metric critical threshold
+        """
+        return pulumi.get(self, "critical_threshold")
+
+    @property
+    @pulumi.getter
+    def operand(self) -> Optional[str]:
+        """
+        Stream alert rule metric operand
+        """
+        return pulumi.get(self, "operand")
+
+    @property
+    @pulumi.getter(name="warningThreshold")
+    def warning_threshold(self) -> Optional[str]:
+        """
+        Stream alert rule metric warning threshold
+        """
+        return pulumi.get(self, "warning_threshold")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[str]:
+        """
+        Stream alert rule metric window size
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class StreamAlertRuleMetricSelector(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
 class StreamAlertRuleResourceSelector(dict):
     def __init__(__self__, *,
                  includes: Sequence[str]):
@@ -12214,6 +13488,7 @@ class GetCloudRoutersDataResult(dict):
                  connections_count: int,
                  description: str,
                  equinix_asn: int,
+                 gateway_attachments_count: int,
                  href: str,
                  locations: Sequence['outputs.GetCloudRoutersDataLocationResult'],
                  marketplace_subscriptions: Sequence['outputs.GetCloudRoutersDataMarketplaceSubscriptionResult'],
@@ -12231,6 +13506,7 @@ class GetCloudRoutersDataResult(dict):
         :param int connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param str description: Customer-provided Fabric Cloud Router description
         :param int equinix_asn: Equinix ASN
+        :param int gateway_attachments_count: Number of gateway attachments associated with this Access point
         :param str href: Fabric Cloud Router URI information
         :param Sequence['GetCloudRoutersDataLocationArgs'] locations: Fabric Cloud Router location
         :param Sequence['GetCloudRoutersDataMarketplaceSubscriptionArgs'] marketplace_subscriptions: Equinix Fabric Entity for Marketplace Subscription
@@ -12248,6 +13524,7 @@ class GetCloudRoutersDataResult(dict):
         pulumi.set(__self__, "connections_count", connections_count)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "equinix_asn", equinix_asn)
+        pulumi.set(__self__, "gateway_attachments_count", gateway_attachments_count)
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "locations", locations)
         pulumi.set(__self__, "marketplace_subscriptions", marketplace_subscriptions)
@@ -12299,6 +13576,14 @@ class GetCloudRoutersDataResult(dict):
         Equinix ASN
         """
         return pulumi.get(self, "equinix_asn")
+
+    @property
+    @pulumi.getter(name="gatewayAttachmentsCount")
+    def gateway_attachments_count(self) -> int:
+        """
+        Number of gateway attachments associated with this Access point
+        """
+        return pulumi.get(self, "gateway_attachments_count")
 
     @property
     @pulumi.getter
@@ -12948,6 +14233,7 @@ class GetConnectionASideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionASideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionASideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionASideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -12964,6 +14250,7 @@ class GetConnectionASideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionASideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionASideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -12988,6 +14275,8 @@ class GetConnectionASideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -13085,6 +14374,14 @@ class GetConnectionASideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -14632,6 +15929,7 @@ class GetConnectionZSideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionZSideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionZSideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionZSideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -14648,6 +15946,7 @@ class GetConnectionZSideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionZSideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionZSideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -14672,6 +15971,8 @@ class GetConnectionZSideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -14769,6 +16070,14 @@ class GetConnectionZSideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -15735,6 +17044,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionsDataASideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionsDataASideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionsDataASideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -15751,6 +17061,7 @@ class GetConnectionsDataASideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionsDataASideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionsDataASideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionsDataASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -15775,6 +17086,8 @@ class GetConnectionsDataASideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -15872,6 +17185,14 @@ class GetConnectionsDataASideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -17160,6 +18481,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionsDataZSideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionsDataZSideAccessPointProfileResult'] = None,
+                 role: Optional[str] = None,
                  router: Optional['outputs.GetConnectionsDataZSideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -17176,6 +18498,7 @@ class GetConnectionsDataZSideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionsDataZSideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionsDataZSideAccessPointProfileArgs' profile: Service Profile
+        :param str role: Network role
         :param 'GetConnectionsDataZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK, METAL_NETWORK
@@ -17200,6 +18523,8 @@ class GetConnectionsDataZSideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -17297,6 +18622,14 @@ class GetConnectionsDataZSideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
@@ -20984,6 +22317,18 @@ class GetPrecisionTimeServiceNtpAdvancedConfigurationResult(dict):
 
 
 @pulumi.output_type
+class GetPrecisionTimeServiceOperationResult(dict):
+    def __init__(__self__, *,
+                 operational_status: str):
+        pulumi.set(__self__, "operational_status", operational_status)
+
+    @property
+    @pulumi.getter(name="operationalStatus")
+    def operational_status(self) -> str:
+        return pulumi.get(self, "operational_status")
+
+
+@pulumi.output_type
 class GetPrecisionTimeServiceOrderResult(dict):
     def __init__(__self__, *,
                  customer_reference_number: str,
@@ -21252,6 +22597,7 @@ class GetPrecisionTimeServicesDataResult(dict):
                  href: str,
                  ipv4: 'outputs.GetPrecisionTimeServicesDataIpv4Result',
                  name: str,
+                 operation: 'outputs.GetPrecisionTimeServicesDataOperationResult',
                  order: 'outputs.GetPrecisionTimeServicesDataOrderResult',
                  package: 'outputs.GetPrecisionTimeServicesDataPackageResult',
                  precision_time_price: 'outputs.GetPrecisionTimeServicesDataPrecisionTimePriceResult',
@@ -21268,6 +22614,7 @@ class GetPrecisionTimeServicesDataResult(dict):
         :param str href: Equinix generated Portal link for the created Precision Time Service
         :param 'GetPrecisionTimeServicesDataIpv4Args' ipv4: An object that has Network IP Configurations for Timing Master Servers.
         :param str name: Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
+        :param 'GetPrecisionTimeServicesDataOperationArgs' operation: Precision Time Service Operation
         :param 'GetPrecisionTimeServicesDataOrderArgs' order: Precision Time Order
         :param 'GetPrecisionTimeServicesDataPackageArgs' package: Precision Time Service Package Details
         :param 'GetPrecisionTimeServicesDataPrecisionTimePriceArgs' precision_time_price: Precision Time Service Price
@@ -21284,6 +22631,7 @@ class GetPrecisionTimeServicesDataResult(dict):
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "ipv4", ipv4)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation", operation)
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "package", package)
         pulumi.set(__self__, "precision_time_price", precision_time_price)
@@ -21344,6 +22692,14 @@ class GetPrecisionTimeServicesDataResult(dict):
         Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> 'outputs.GetPrecisionTimeServicesDataOperationResult':
+        """
+        Precision Time Service Operation
+        """
+        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter
@@ -21832,6 +23188,18 @@ class GetPrecisionTimeServicesDataNtpAdvancedConfigurationResult(dict):
         md5 Authentication type
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrecisionTimeServicesDataOperationResult(dict):
+    def __init__(__self__, *,
+                 operational_status: str):
+        pulumi.set(__self__, "operational_status", operational_status)
+
+    @property
+    @pulumi.getter(name="operationalStatus")
+    def operational_status(self) -> str:
+        return pulumi.get(self, "operational_status")
 
 
 @pulumi.output_type
@@ -31087,6 +32455,86 @@ class GetStreamAlertRuleChangeLogResult(dict):
 
 
 @pulumi.output_type
+class GetStreamAlertRuleDetectionMethodResult(dict):
+    def __init__(__self__, *,
+                 critical_threshold: str,
+                 operand: str,
+                 type: str,
+                 warning_threshold: str,
+                 window_size: str):
+        """
+        :param str critical_threshold: Stream alert rule metric critical threshold
+        :param str operand: Stream alert rule metric operand
+        :param str type: Stream Alert Rule detection method type
+        :param str warning_threshold: Stream alert rule metric warning threshold
+        :param str window_size: Stream alert rule metric window size
+        """
+        pulumi.set(__self__, "critical_threshold", critical_threshold)
+        pulumi.set(__self__, "operand", operand)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "warning_threshold", warning_threshold)
+        pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter(name="criticalThreshold")
+    def critical_threshold(self) -> str:
+        """
+        Stream alert rule metric critical threshold
+        """
+        return pulumi.get(self, "critical_threshold")
+
+    @property
+    @pulumi.getter
+    def operand(self) -> str:
+        """
+        Stream alert rule metric operand
+        """
+        return pulumi.get(self, "operand")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Stream Alert Rule detection method type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="warningThreshold")
+    def warning_threshold(self) -> str:
+        """
+        Stream alert rule metric warning threshold
+        """
+        return pulumi.get(self, "warning_threshold")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> str:
+        """
+        Stream alert rule metric window size
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class GetStreamAlertRuleMetricSelectorResult(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
 class GetStreamAlertRuleResourceSelectorResult(dict):
     def __init__(__self__, *,
                  includes: Sequence[str]):
@@ -31108,49 +32556,40 @@ class GetStreamAlertRuleResourceSelectorResult(dict):
 class GetStreamAlertRulesDataResult(dict):
     def __init__(__self__, *,
                  change_log: 'outputs.GetStreamAlertRulesDataChangeLogResult',
-                 critical_threshold: str,
                  description: str,
+                 detection_method: 'outputs.GetStreamAlertRulesDataDetectionMethodResult',
                  enabled: bool,
                  href: str,
-                 metric_name: str,
+                 metric_selector: 'outputs.GetStreamAlertRulesDataMetricSelectorResult',
                  name: str,
-                 operand: str,
                  resource_selector: 'outputs.GetStreamAlertRulesDataResourceSelectorResult',
                  state: str,
                  type: str,
-                 uuid: str,
-                 warning_threshold: str,
-                 window_size: str):
+                 uuid: str):
         """
         :param 'GetStreamAlertRulesDataChangeLogArgs' change_log: Details of the last change on the stream resource
-        :param str critical_threshold: Stream alert rule metric critical threshold
         :param str description: Customer-provided stream alert rule description
+        :param 'GetStreamAlertRulesDataDetectionMethodArgs' detection_method: Detection method for stream alert rule
         :param bool enabled: Stream subscription enabled status
         :param str href: Equinix assigned URI of the stream alert rule resource
-        :param str metric_name: Stream alert rule metric name
+        :param 'GetStreamAlertRulesDataMetricSelectorArgs' metric_selector: Metric selector for the stream alert rule
         :param str name: Customer-provided stream alert rule name
-        :param str operand: Stream alert rule metric operand
         :param 'GetStreamAlertRulesDataResourceSelectorArgs' resource_selector: Lists of metrics to be included/excluded on the stream alert rule
         :param str state: Value representing provisioning status for the stream resource
         :param str type: Type of the stream alert rule
         :param str uuid: Equinix assigned unique identifier of the stream subscription resource
-        :param str warning_threshold: Stream alert rule metric warning threshold
-        :param str window_size: Stream alert rule metric window size
         """
         pulumi.set(__self__, "change_log", change_log)
-        pulumi.set(__self__, "critical_threshold", critical_threshold)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "detection_method", detection_method)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "metric_selector", metric_selector)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "operand", operand)
         pulumi.set(__self__, "resource_selector", resource_selector)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
-        pulumi.set(__self__, "warning_threshold", warning_threshold)
-        pulumi.set(__self__, "window_size", window_size)
 
     @property
     @pulumi.getter(name="changeLog")
@@ -31161,20 +32600,20 @@ class GetStreamAlertRulesDataResult(dict):
         return pulumi.get(self, "change_log")
 
     @property
-    @pulumi.getter(name="criticalThreshold")
-    def critical_threshold(self) -> str:
-        """
-        Stream alert rule metric critical threshold
-        """
-        return pulumi.get(self, "critical_threshold")
-
-    @property
     @pulumi.getter
     def description(self) -> str:
         """
         Customer-provided stream alert rule description
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="detectionMethod")
+    def detection_method(self) -> 'outputs.GetStreamAlertRulesDataDetectionMethodResult':
+        """
+        Detection method for stream alert rule
+        """
+        return pulumi.get(self, "detection_method")
 
     @property
     @pulumi.getter
@@ -31193,12 +32632,12 @@ class GetStreamAlertRulesDataResult(dict):
         return pulumi.get(self, "href")
 
     @property
-    @pulumi.getter(name="metricName")
-    def metric_name(self) -> str:
+    @pulumi.getter(name="metricSelector")
+    def metric_selector(self) -> 'outputs.GetStreamAlertRulesDataMetricSelectorResult':
         """
-        Stream alert rule metric name
+        Metric selector for the stream alert rule
         """
-        return pulumi.get(self, "metric_name")
+        return pulumi.get(self, "metric_selector")
 
     @property
     @pulumi.getter
@@ -31207,14 +32646,6 @@ class GetStreamAlertRulesDataResult(dict):
         Customer-provided stream alert rule name
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def operand(self) -> str:
-        """
-        Stream alert rule metric operand
-        """
-        return pulumi.get(self, "operand")
 
     @property
     @pulumi.getter(name="resourceSelector")
@@ -31247,22 +32678,6 @@ class GetStreamAlertRulesDataResult(dict):
         Equinix assigned unique identifier of the stream subscription resource
         """
         return pulumi.get(self, "uuid")
-
-    @property
-    @pulumi.getter(name="warningThreshold")
-    def warning_threshold(self) -> str:
-        """
-        Stream alert rule metric warning threshold
-        """
-        return pulumi.get(self, "warning_threshold")
-
-    @property
-    @pulumi.getter(name="windowSize")
-    def window_size(self) -> str:
-        """
-        Stream alert rule metric window size
-        """
-        return pulumi.get(self, "window_size")
 
 
 @pulumi.output_type
@@ -31402,6 +32817,86 @@ class GetStreamAlertRulesDataChangeLogResult(dict):
         Last update time of the stream resource
         """
         return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetStreamAlertRulesDataDetectionMethodResult(dict):
+    def __init__(__self__, *,
+                 critical_threshold: str,
+                 operand: str,
+                 type: str,
+                 warning_threshold: str,
+                 window_size: str):
+        """
+        :param str critical_threshold: Stream alert rule metric critical threshold
+        :param str operand: Stream alert rule metric operand
+        :param str type: Stream Alert Rule detection method type
+        :param str warning_threshold: Stream alert rule metric warning threshold
+        :param str window_size: Stream alert rule metric window size
+        """
+        pulumi.set(__self__, "critical_threshold", critical_threshold)
+        pulumi.set(__self__, "operand", operand)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "warning_threshold", warning_threshold)
+        pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter(name="criticalThreshold")
+    def critical_threshold(self) -> str:
+        """
+        Stream alert rule metric critical threshold
+        """
+        return pulumi.get(self, "critical_threshold")
+
+    @property
+    @pulumi.getter
+    def operand(self) -> str:
+        """
+        Stream alert rule metric operand
+        """
+        return pulumi.get(self, "operand")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Stream Alert Rule detection method type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="warningThreshold")
+    def warning_threshold(self) -> str:
+        """
+        Stream alert rule metric warning threshold
+        """
+        return pulumi.get(self, "warning_threshold")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> str:
+        """
+        Stream alert rule metric window size
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class GetStreamAlertRulesDataMetricSelectorResult(dict):
+    def __init__(__self__, *,
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
 
 
 @pulumi.output_type

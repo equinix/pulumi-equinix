@@ -3610,6 +3610,352 @@ variables:
 {{% /example %}}
 
 {{% example %}}
+### example aruba edgeconnect ha device wth purchase order
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const aRUBAEDGECONNECTAM = new equinix.networkedge.Device("ARUBA-EDGECONNECT-AM", {
+    name: "TF_Aruba_Edge_Connect",
+    projectId: "XXXXX",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "EDGECONNECT-SDWAN",
+    selfManaged: true,
+    byol: true,
+    packageCode: "EC-V",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "9.4.2.3",
+    coreCount: 2,
+    termLength: 1,
+    additionalBandwidth: 50,
+    interfaceCount: 32,
+    aclTemplateId: "XXXXXXX",
+    purchaseOrderNumber: "PO-Primary-Account-123",
+    vendorConfiguration: {
+        accountKey: "xxxxx",
+        accountName: "xxxx",
+        applianceTag: "tests",
+        hostname: "test",
+    },
+    secondaryDevice: {
+        name: "TF_CHECKPOINT",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        purchaseOrderNumber: "PO-Secondary-Account-123",
+        aclTemplateId: "XXXXXXX",
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            accountKey: "xxxxx",
+            accountName: "xxxx",
+            applianceTag: "test",
+            hostname: "test",
+        },
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+    name="TF_Aruba_Edge_Connect",
+    project_id="XXXXX",
+    metro_code=sv.metro_code,
+    type_code="EDGECONNECT-SDWAN",
+    self_managed=True,
+    byol=True,
+    package_code="EC-V",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="9.4.2.3",
+    core_count=2,
+    term_length=1,
+    additional_bandwidth=50,
+    interface_count=32,
+    acl_template_id="XXXXXXX",
+    purchase_order_number="PO-Primary-Account-123",
+    vendor_configuration={
+        "accountKey": "xxxxx",
+        "accountName": "xxxx",
+        "applianceTag": "tests",
+        "hostname": "test",
+    },
+    secondary_device={
+        "name": "TF_CHECKPOINT",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "purchase_order_number": "PO-Secondary-Account-123",
+        "acl_template_id": "XXXXXXX",
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "accountKey": "xxxxx",
+            "accountName": "xxxx",
+            "applianceTag": "test",
+            "hostname": "test",
+        },
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "ARUBA-EDGECONNECT-AM", &networkedge.DeviceArgs{
+			Name:      pulumi.String("TF_Aruba_Edge_Connect"),
+			ProjectId: pulumi.String("XXXXX"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:    pulumi.String("EDGECONNECT-SDWAN"),
+			SelfManaged: pulumi.Bool(true),
+			Byol:        pulumi.Bool(true),
+			PackageCode: pulumi.String("EC-V"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:             pulumi.String("9.4.2.3"),
+			CoreCount:           pulumi.Int(2),
+			TermLength:          pulumi.Int(1),
+			AdditionalBandwidth: pulumi.Int(50),
+			InterfaceCount:      pulumi.Int(32),
+			AclTemplateId:       pulumi.String("XXXXXXX"),
+			PurchaseOrderNumber: pulumi.String("PO-Primary-Account-123"),
+			VendorConfiguration: pulumi.StringMap{
+				"accountKey":   pulumi.String("xxxxx"),
+				"accountName":  pulumi.String("xxxx"),
+				"applianceTag": pulumi.String("tests"),
+				"hostname":     pulumi.String("test"),
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("TF_CHECKPOINT"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				PurchaseOrderNumber: pulumi.String("PO-Secondary-Account-123"),
+				AclTemplateId:       pulumi.String("XXXXXXX"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				VendorConfiguration: pulumi.StringMap{
+					"accountKey":   pulumi.String("xxxxx"),
+					"accountName":  pulumi.String("xxxx"),
+					"applianceTag": pulumi.String("test"),
+					"hostname":     pulumi.String("test"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var aRUBAEDGECONNECTAM = new Equinix.NetworkEdge.Device("ARUBA-EDGECONNECT-AM", new()
+    {
+        Name = "TF_Aruba_Edge_Connect",
+        ProjectId = "XXXXX",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "EDGECONNECT-SDWAN",
+        SelfManaged = true,
+        Byol = true,
+        PackageCode = "EC-V",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "9.4.2.3",
+        CoreCount = 2,
+        TermLength = 1,
+        AdditionalBandwidth = 50,
+        InterfaceCount = 32,
+        AclTemplateId = "XXXXXXX",
+        PurchaseOrderNumber = "PO-Primary-Account-123",
+        VendorConfiguration = 
+        {
+            { "accountKey", "xxxxx" },
+            { "accountName", "xxxx" },
+            { "applianceTag", "tests" },
+            { "hostname", "test" },
+        },
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_CHECKPOINT",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            PurchaseOrderNumber = "PO-Secondary-Account-123",
+            AclTemplateId = "XXXXXXX",
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "accountKey", "xxxxx" },
+                { "accountName", "xxxx" },
+                { "applianceTag", "test" },
+                { "hostname", "test" },
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var aRUBAEDGECONNECTAM = new Device("aRUBAEDGECONNECTAM", DeviceArgs.builder()
+            .name("TF_Aruba_Edge_Connect")
+            .projectId("XXXXX")
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .typeCode("EDGECONNECT-SDWAN")
+            .selfManaged(true)
+            .byol(true)
+            .packageCode("EC-V")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .version("9.4.2.3")
+            .coreCount(2)
+            .termLength(1)
+            .additionalBandwidth(50)
+            .interfaceCount(32)
+            .aclTemplateId("XXXXXXX")
+            .purchaseOrderNumber("PO-Primary-Account-123")
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("accountKey", "xxxxx"),
+                Map.entry("accountName", "xxxx"),
+                Map.entry("applianceTag", "tests"),
+                Map.entry("hostname", "test")
+            ))
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_CHECKPOINT")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .purchaseOrderNumber("PO-Secondary-Account-123")
+                .aclTemplateId("XXXXXXX")
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("accountKey", "xxxxx"),
+                    Map.entry("accountName", "xxxx"),
+                    Map.entry("applianceTag", "test"),
+                    Map.entry("hostname", "test")
+                ))
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  ARUBA-EDGECONNECT-AM:
+    type: equinix:networkedge:Device
+    properties:
+      name: TF_Aruba_Edge_Connect
+      projectId: XXXXX
+      metroCode: ${sv.metroCode}
+      typeCode: EDGECONNECT-SDWAN
+      selfManaged: true
+      byol: true
+      packageCode: EC-V
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: 9.4.2.3
+      coreCount: 2
+      termLength: 1
+      additionalBandwidth: 50
+      interfaceCount: 32
+      aclTemplateId: XXXXXXX
+      purchaseOrderNumber: PO-Primary-Account-123
+      vendorConfiguration:
+        accountKey: xxxxx
+        accountName: xxxx
+        applianceTag: tests
+        hostname: test
+      secondaryDevice:
+        name: TF_CHECKPOINT
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        purchaseOrderNumber: PO-Secondary-Account-123
+        aclTemplateId: XXXXXXX
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          accountKey: xxxxx
+          accountName: xxxx
+          applianceTag: test
+          hostname: test
+variables:
+  # Create Aruba Edgeconnect SDWAN HA device with 2different account numbers with purchase orders
+  sv:
+    fn::invoke:
+      function: equinix:networkedge:getAccount
+      arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
 ### example c8000v byol without default password
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -3626,7 +3972,7 @@ const c8000VByolWithtoutDefaultPassword = new equinix.networkedge.Device("c8000v
     selfManaged: true,
     byol: true,
     generateDefaultPassword: false,
-    packageCode: "VM100",
+    packageCode: "network-essentials",
     notifications: [
         "john@equinix.com",
         "marry@equinix.com",
@@ -3657,7 +4003,7 @@ c8000_v_byol_withtout_default_password = equinix.networkedge.Device("c8000v-byol
     self_managed=True,
     byol=True,
     generate_default_password=False,
-    package_code="VM100",
+    package_code="network-essentials",
     notifications=[
         "john@equinix.com",
         "marry@equinix.com",
@@ -3697,7 +4043,7 @@ func main() {
 			SelfManaged:             pulumi.Bool(true),
 			Byol:                    pulumi.Bool(true),
 			GenerateDefaultPassword: pulumi.Bool(false),
-			PackageCode:             pulumi.String("VM100"),
+			PackageCode:             pulumi.String("network-essentials"),
 			Notifications: pulumi.StringArray{
 				pulumi.String("john@equinix.com"),
 				pulumi.String("marry@equinix.com"),
@@ -3745,7 +4091,7 @@ return await Deployment.RunAsync(() =>
         SelfManaged = true,
         Byol = true,
         GenerateDefaultPassword = false,
-        PackageCode = "VM100",
+        PackageCode = "network-essentials",
         Notifications = new[]
         {
             "john@equinix.com",
@@ -3803,7 +4149,7 @@ public class App {
             .selfManaged(true)
             .byol(true)
             .generateDefaultPassword(false)
-            .packageCode("VM100")
+            .packageCode("network-essentials")
             .notifications(            
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -3835,7 +4181,7 @@ resources:
       selfManaged: true
       byol: true
       generateDefaultPassword: false
-      packageCode: VM100
+      packageCode: network-essentials
       notifications:
         - john@equinix.com
         - marry@equinix.com
@@ -3876,7 +4222,7 @@ const c8000VByolThroughput = new equinix.networkedge.Device("c8000v-byol-through
     typeCode: "C8000V",
     selfManaged: true,
     byol: true,
-    packageCode: "VM100",
+    packageCode: "network-essentials",
     notifications: [
         "john@equinix.com",
         "marry@equinix.com",
@@ -3907,7 +4253,7 @@ c8000_v_byol_throughput = equinix.networkedge.Device("c8000v-byol-throughput",
     type_code="C8000V",
     self_managed=True,
     byol=True,
-    package_code="VM100",
+    package_code="network-essentials",
     notifications=[
         "john@equinix.com",
         "marry@equinix.com",
@@ -3947,7 +4293,7 @@ func main() {
 			TypeCode:    pulumi.String("C8000V"),
 			SelfManaged: pulumi.Bool(true),
 			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("VM100"),
+			PackageCode: pulumi.String("network-essentials"),
 			Notifications: pulumi.StringArray{
 				pulumi.String("john@equinix.com"),
 				pulumi.String("marry@equinix.com"),
@@ -3995,7 +4341,7 @@ return await Deployment.RunAsync(() =>
         TypeCode = "C8000V",
         SelfManaged = true,
         Byol = true,
-        PackageCode = "VM100",
+        PackageCode = "network-essentials",
         Notifications = new[]
         {
             "john@equinix.com",
@@ -4053,7 +4399,7 @@ public class App {
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
-            .packageCode("VM100")
+            .packageCode("network-essentials")
             .notifications(            
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -4085,7 +4431,7 @@ resources:
       typeCode: C8000V
       selfManaged: true
       byol: true
-      packageCode: VM100
+      packageCode: network-essentials
       notifications:
         - john@equinix.com
         - marry@equinix.com
@@ -4127,7 +4473,7 @@ const c8000VByolTier = new equinix.networkedge.Device("c8000v-byol-tier", {
     typeCode: "C8000V",
     selfManaged: true,
     byol: true,
-    packageCode: "VM100",
+    packageCode: "network-essentials",
     notifications: [
         "john@equinix.com",
         "marry@equinix.com",
@@ -4157,7 +4503,7 @@ c8000_v_byol_tier = equinix.networkedge.Device("c8000v-byol-tier",
     type_code="C8000V",
     self_managed=True,
     byol=True,
-    package_code="VM100",
+    package_code="network-essentials",
     notifications=[
         "john@equinix.com",
         "marry@equinix.com",
@@ -4196,7 +4542,7 @@ func main() {
 			TypeCode:    pulumi.String("C8000V"),
 			SelfManaged: pulumi.Bool(true),
 			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("VM100"),
+			PackageCode: pulumi.String("network-essentials"),
 			Notifications: pulumi.StringArray{
 				pulumi.String("john@equinix.com"),
 				pulumi.String("marry@equinix.com"),
@@ -4243,7 +4589,7 @@ return await Deployment.RunAsync(() =>
         TypeCode = "C8000V",
         SelfManaged = true,
         Byol = true,
-        PackageCode = "VM100",
+        PackageCode = "network-essentials",
         Notifications = new[]
         {
             "john@equinix.com",
@@ -4300,7 +4646,7 @@ public class App {
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
-            .packageCode("VM100")
+            .packageCode("network-essentials")
             .notifications(            
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -4331,7 +4677,7 @@ resources:
       typeCode: C8000V
       selfManaged: true
       byol: true
-      packageCode: VM100
+      packageCode: network-essentials
       notifications:
         - john@equinix.com
         - marry@equinix.com
@@ -4348,6 +4694,359 @@ resources:
       aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
 variables:
   # Create C8000V BYOL device with bandwidth tier information
+  sv:
+    fn::invoke:
+      function: equinix:networkedge:getAccount
+      arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
+### example c8000v ha with cloud init rest api support
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const c8000VByol = new equinix.networkedge.Device("c8000v-byol", {
+    name: "tf-c8000v-byol",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "C8000V",
+    selfManaged: true,
+    byol: true,
+    generateDefaultPassword: true,
+    packageCode: "network-essentials",
+    notifications: [
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    termLength: 12,
+    accountNumber: sv.apply(sv => sv.number),
+    version: "17.11.01a",
+    interfaceCount: 10,
+    coreCount: 2,
+    tier: 1,
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
+    vendorConfiguration: {
+        restApiSupportRequirement: "true",
+    },
+    aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    secondaryDevice: {
+        name: "tf-c8000v-byol-secondary",
+        metroCode: sv.apply(sv => sv.metroCode),
+        hostname: "csr1000v-s",
+        notifications: [
+            "john@equinix.com",
+            "marry@equinix.com",
+        ],
+        accountNumber: sv.apply(sv => sv.number),
+        vendorConfiguration: {
+            restApiSupportRequirement: "true",
+        },
+        aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+    name="tf-c8000v-byol",
+    metro_code=sv.metro_code,
+    type_code="C8000V",
+    self_managed=True,
+    byol=True,
+    generate_default_password=True,
+    package_code="network-essentials",
+    notifications=[
+        "john@equinix.com",
+        "marry@equinix.com",
+        "fred@equinix.com",
+    ],
+    term_length=12,
+    account_number=sv.number,
+    version="17.11.01a",
+    interface_count=10,
+    core_count=2,
+    tier=1,
+    ssh_key={
+        "username": "test",
+        "key_name": "test-key",
+    },
+    vendor_configuration={
+        "restApiSupportRequirement": "true",
+    },
+    acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    secondary_device={
+        "name": "tf-c8000v-byol-secondary",
+        "metro_code": sv.metro_code,
+        "hostname": "csr1000v-s",
+        "notifications": [
+            "john@equinix.com",
+            "marry@equinix.com",
+        ],
+        "account_number": sv.number,
+        "vendor_configuration": {
+            "restApiSupportRequirement": "true",
+        },
+        "acl_template_id": "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "c8000v-byol", &networkedge.DeviceArgs{
+			Name: pulumi.String("tf-c8000v-byol"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:                pulumi.String("C8000V"),
+			SelfManaged:             pulumi.Bool(true),
+			Byol:                    pulumi.Bool(true),
+			GenerateDefaultPassword: pulumi.Bool(true),
+			PackageCode:             pulumi.String("network-essentials"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("john@equinix.com"),
+				pulumi.String("marry@equinix.com"),
+				pulumi.String("fred@equinix.com"),
+			},
+			TermLength: pulumi.Int(12),
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:        pulumi.String("17.11.01a"),
+			InterfaceCount: pulumi.Int(10),
+			CoreCount:      pulumi.Int(2),
+			Tier:           pulumi.Int(1),
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
+			VendorConfiguration: pulumi.StringMap{
+				"restApiSupportRequirement": pulumi.String("true"),
+			},
+			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("tf-c8000v-byol-secondary"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				Hostname: pulumi.String("csr1000v-s"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("john@equinix.com"),
+					pulumi.String("marry@equinix.com"),
+				},
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				VendorConfiguration: pulumi.StringMap{
+					"restApiSupportRequirement": pulumi.String("true"),
+				},
+				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var c8000VByol = new Equinix.NetworkEdge.Device("c8000v-byol", new()
+    {
+        Name = "tf-c8000v-byol",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "C8000V",
+        SelfManaged = true,
+        Byol = true,
+        GenerateDefaultPassword = true,
+        PackageCode = "network-essentials",
+        Notifications = new[]
+        {
+            "john@equinix.com",
+            "marry@equinix.com",
+            "fred@equinix.com",
+        },
+        TermLength = 12,
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "17.11.01a",
+        InterfaceCount = 10,
+        CoreCount = 2,
+        Tier = 1,
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
+        VendorConfiguration = 
+        {
+            { "restApiSupportRequirement", "true" },
+        },
+        AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "tf-c8000v-byol-secondary",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            Hostname = "csr1000v-s",
+            Notifications = new[]
+            {
+                "john@equinix.com",
+                "marry@equinix.com",
+            },
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            VendorConfiguration = 
+            {
+                { "restApiSupportRequirement", "true" },
+            },
+            AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
+            .name("tf-c8000v-byol")
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .typeCode("C8000V")
+            .selfManaged(true)
+            .byol(true)
+            .generateDefaultPassword(true)
+            .packageCode("network-essentials")
+            .notifications(            
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com")
+            .termLength(12)
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .version("17.11.01a")
+            .interfaceCount(10)
+            .coreCount(2)
+            .tier(1)
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
+            .vendorConfiguration(Map.of("restApiSupportRequirement", "true"))
+            .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("tf-c8000v-byol-secondary")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .hostname("csr1000v-s")
+                .notifications(                
+                    "john@equinix.com",
+                    "marry@equinix.com")
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .vendorConfiguration(Map.of("restApiSupportRequirement", "true"))
+                .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  c8000v-byol:
+    type: equinix:networkedge:Device
+    properties:
+      name: tf-c8000v-byol
+      metroCode: ${sv.metroCode}
+      typeCode: C8000V
+      selfManaged: true
+      byol: true
+      generateDefaultPassword: true
+      packageCode: network-essentials
+      notifications:
+        - john@equinix.com
+        - marry@equinix.com
+        - fred@equinix.com
+      termLength: 12
+      accountNumber: ${sv.number}
+      version: 17.11.01a
+      interfaceCount: 10
+      coreCount: 2
+      tier: 1
+      sshKey:
+        username: test
+        keyName: test-key
+      vendorConfiguration:
+        restApiSupportRequirement: 'true'
+      aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
+      secondaryDevice:
+        name: tf-c8000v-byol-secondary
+        metroCode: ${sv.metroCode}
+        hostname: csr1000v-s
+        notifications:
+          - john@equinix.com
+          - marry@equinix.com
+        accountNumber: ${sv.number}
+        vendorConfiguration:
+          restApiSupportRequirement: 'true'
+        aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
+variables:
+  # Create C8000V HA - BYOL device with cloud init rest api support
   sv:
     fn::invoke:
       function: equinix:networkedge:getAccount

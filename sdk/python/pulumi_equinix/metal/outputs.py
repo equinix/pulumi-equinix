@@ -1006,7 +1006,7 @@ class GetDevicesDeviceResult(dict):
         :param Sequence['GetDevicesDevicePortArgs'] ports: Ports assigned to the device
         :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
         :param str root_password: Root password to the server (if still available)
-        :param str sos_hostname: The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        :param str sos_hostname: The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         :param Sequence[str] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
         :param str state: The state of the device
         :param Sequence[str] tags: Tags attached to the device
@@ -1187,7 +1187,7 @@ class GetDevicesDeviceResult(dict):
     @pulumi.getter(name="sosHostname")
     def sos_hostname(self) -> str:
         """
-        The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         """
         return pulumi.get(self, "sos_hostname")
 

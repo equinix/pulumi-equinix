@@ -91,12 +91,6 @@ def get_stream_alert_rules(pagination: Optional[Union['GetStreamAlertRulesPagina
                            stream_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStreamAlertRulesResult:
     """
-    Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
-
-    Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-
     ## Example Usage
 
     ```python
@@ -133,12 +127,6 @@ def get_stream_alert_rules_output(pagination: Optional[pulumi.Input[Union['GetSt
                                   stream_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamAlertRulesResult]:
     """
-    Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
-
-    Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-
     ## Example Usage
 
     ```python

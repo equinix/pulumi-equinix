@@ -101,6 +101,21 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Number of gateway attachments associated with this Access point
+     * 
+     */
+    @Import(name="gatewayAttachmentsCount")
+    private @Nullable Output<Integer> gatewayAttachmentsCount;
+
+    /**
+     * @return Number of gateway attachments associated with this Access point
+     * 
+     */
+    public Optional<Output<Integer>> gatewayAttachmentsCount() {
+        return Optional.ofNullable(this.gatewayAttachmentsCount);
+    }
+
+    /**
      * Fabric Cloud Router URI information
      * 
      */
@@ -273,6 +288,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         this.connectionsCount = $.connectionsCount;
         this.description = $.description;
         this.equinixAsn = $.equinixAsn;
+        this.gatewayAttachmentsCount = $.gatewayAttachmentsCount;
         this.href = $.href;
         this.location = $.location;
         this.marketplaceSubscription = $.marketplaceSubscription;
@@ -417,6 +433,27 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder equinixAsn(Integer equinixAsn) {
             return equinixAsn(Output.of(equinixAsn));
+        }
+
+        /**
+         * @param gatewayAttachmentsCount Number of gateway attachments associated with this Access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayAttachmentsCount(@Nullable Output<Integer> gatewayAttachmentsCount) {
+            $.gatewayAttachmentsCount = gatewayAttachmentsCount;
+            return this;
+        }
+
+        /**
+         * @param gatewayAttachmentsCount Number of gateway attachments associated with this Access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayAttachmentsCount(Integer gatewayAttachmentsCount) {
+            return gatewayAttachmentsCount(Output.of(gatewayAttachmentsCount));
         }
 
         /**

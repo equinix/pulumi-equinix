@@ -235,6 +235,10 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPrecisionTimeServiceNtpAdvancedConfigurationResult> NtpAdvancedConfigurations;
         /// <summary>
+        /// Precision Time Service Operation
+        /// </summary>
+        public readonly Outputs.GetPrecisionTimeServiceOperationResult Operation;
+        /// <summary>
         /// Precision Time Order
         /// </summary>
         public readonly Outputs.GetPrecisionTimeServiceOrderResult Order;
@@ -287,6 +291,8 @@ namespace Pulumi.Equinix.Fabric
 
             ImmutableArray<Outputs.GetPrecisionTimeServiceNtpAdvancedConfigurationResult> ntpAdvancedConfigurations,
 
+            Outputs.GetPrecisionTimeServiceOperationResult operation,
+
             Outputs.GetPrecisionTimeServiceOrderResult order,
 
             Outputs.GetPrecisionTimeServicePackageResult package,
@@ -312,6 +318,7 @@ namespace Pulumi.Equinix.Fabric
             Ipv4 = ipv4;
             Name = name;
             NtpAdvancedConfigurations = ntpAdvancedConfigurations;
+            Operation = operation;
             Order = order;
             Package = package;
             PrecisionTimePrice = precisionTimePrice;

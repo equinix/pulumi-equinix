@@ -60,12 +60,12 @@ public final class GetVirtualCircuitResult {
      */
     private String name;
     /**
-     * @return Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return Nni VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     private Integer nniVlan;
     /**
-     * @return Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     private Integer nniVnid;
@@ -124,7 +124,7 @@ public final class GetVirtualCircuitResult {
      */
     private String vlanId;
     /**
-     * @return VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     private Integer vnid;
@@ -199,14 +199,14 @@ public final class GetVirtualCircuitResult {
         return this.name;
     }
     /**
-     * @return Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return Nni VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     public Integer nniVlan() {
         return this.nniVlan;
     }
     /**
-     * @return Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     public Integer nniVnid() {
@@ -287,7 +287,7 @@ public final class GetVirtualCircuitResult {
         return this.vlanId;
     }
     /**
-     * @return VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     public Integer vnid() {

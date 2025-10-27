@@ -4,6 +4,8 @@
 package com.equinix.pulumi.fabric.inputs;
 
 import com.equinix.pulumi.fabric.inputs.StreamAlertRuleChangeLogArgs;
+import com.equinix.pulumi.fabric.inputs.StreamAlertRuleDetectionMethodArgs;
+import com.equinix.pulumi.fabric.inputs.StreamAlertRuleMetricSelectorArgs;
 import com.equinix.pulumi.fabric.inputs.StreamAlertRuleResourceSelectorArgs;
 import com.equinix.pulumi.fabric.inputs.StreamAlertRuleTimeoutsArgs;
 import com.pulumi.core.Output;
@@ -35,21 +37,6 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Stream alert rule metric critical threshold
-     * 
-     */
-    @Import(name="criticalThreshold")
-    private @Nullable Output<String> criticalThreshold;
-
-    /**
-     * @return Stream alert rule metric critical threshold
-     * 
-     */
-    public Optional<Output<String>> criticalThreshold() {
-        return Optional.ofNullable(this.criticalThreshold);
-    }
-
-    /**
      * Customer-provided stream alert rule description
      * 
      */
@@ -62,6 +49,21 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Detection method for stream alert rule
+     * 
+     */
+    @Import(name="detectionMethod")
+    private @Nullable Output<StreamAlertRuleDetectionMethodArgs> detectionMethod;
+
+    /**
+     * @return Detection method for stream alert rule
+     * 
+     */
+    public Optional<Output<StreamAlertRuleDetectionMethodArgs>> detectionMethod() {
+        return Optional.ofNullable(this.detectionMethod);
     }
 
     /**
@@ -95,18 +97,18 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Stream alert rule metric name
+     * Metric selector for the stream alert rule
      * 
      */
-    @Import(name="metricName")
-    private @Nullable Output<String> metricName;
+    @Import(name="metricSelector")
+    private @Nullable Output<StreamAlertRuleMetricSelectorArgs> metricSelector;
 
     /**
-     * @return Stream alert rule metric name
+     * @return Metric selector for the stream alert rule
      * 
      */
-    public Optional<Output<String>> metricName() {
-        return Optional.ofNullable(this.metricName);
+    public Optional<Output<StreamAlertRuleMetricSelectorArgs>> metricSelector() {
+        return Optional.ofNullable(this.metricSelector);
     }
 
     /**
@@ -122,21 +124,6 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * Stream alert rule metric operand
-     * 
-     */
-    @Import(name="operand")
-    private @Nullable Output<String> operand;
-
-    /**
-     * @return Stream alert rule metric operand
-     * 
-     */
-    public Optional<Output<String>> operand() {
-        return Optional.ofNullable(this.operand);
     }
 
     /**
@@ -221,55 +208,22 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.uuid);
     }
 
-    /**
-     * Stream alert rule metric warning threshold
-     * 
-     */
-    @Import(name="warningThreshold")
-    private @Nullable Output<String> warningThreshold;
-
-    /**
-     * @return Stream alert rule metric warning threshold
-     * 
-     */
-    public Optional<Output<String>> warningThreshold() {
-        return Optional.ofNullable(this.warningThreshold);
-    }
-
-    /**
-     * Stream alert rule metric window size
-     * 
-     */
-    @Import(name="windowSize")
-    private @Nullable Output<String> windowSize;
-
-    /**
-     * @return Stream alert rule metric window size
-     * 
-     */
-    public Optional<Output<String>> windowSize() {
-        return Optional.ofNullable(this.windowSize);
-    }
-
     private StreamAlertRuleState() {}
 
     private StreamAlertRuleState(StreamAlertRuleState $) {
         this.changeLog = $.changeLog;
-        this.criticalThreshold = $.criticalThreshold;
         this.description = $.description;
+        this.detectionMethod = $.detectionMethod;
         this.enabled = $.enabled;
         this.href = $.href;
-        this.metricName = $.metricName;
+        this.metricSelector = $.metricSelector;
         this.name = $.name;
-        this.operand = $.operand;
         this.resourceSelector = $.resourceSelector;
         this.state = $.state;
         this.streamId = $.streamId;
         this.timeouts = $.timeouts;
         this.type = $.type;
         this.uuid = $.uuid;
-        this.warningThreshold = $.warningThreshold;
-        this.windowSize = $.windowSize;
     }
 
     public static Builder builder() {
@@ -312,27 +266,6 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param criticalThreshold Stream alert rule metric critical threshold
-         * 
-         * @return builder
-         * 
-         */
-        public Builder criticalThreshold(@Nullable Output<String> criticalThreshold) {
-            $.criticalThreshold = criticalThreshold;
-            return this;
-        }
-
-        /**
-         * @param criticalThreshold Stream alert rule metric critical threshold
-         * 
-         * @return builder
-         * 
-         */
-        public Builder criticalThreshold(String criticalThreshold) {
-            return criticalThreshold(Output.of(criticalThreshold));
-        }
-
-        /**
          * @param description Customer-provided stream alert rule description
          * 
          * @return builder
@@ -351,6 +284,27 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param detectionMethod Detection method for stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectionMethod(@Nullable Output<StreamAlertRuleDetectionMethodArgs> detectionMethod) {
+            $.detectionMethod = detectionMethod;
+            return this;
+        }
+
+        /**
+         * @param detectionMethod Detection method for stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectionMethod(StreamAlertRuleDetectionMethodArgs detectionMethod) {
+            return detectionMethod(Output.of(detectionMethod));
         }
 
         /**
@@ -396,24 +350,24 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param metricName Stream alert rule metric name
+         * @param metricSelector Metric selector for the stream alert rule
          * 
          * @return builder
          * 
          */
-        public Builder metricName(@Nullable Output<String> metricName) {
-            $.metricName = metricName;
+        public Builder metricSelector(@Nullable Output<StreamAlertRuleMetricSelectorArgs> metricSelector) {
+            $.metricSelector = metricSelector;
             return this;
         }
 
         /**
-         * @param metricName Stream alert rule metric name
+         * @param metricSelector Metric selector for the stream alert rule
          * 
          * @return builder
          * 
          */
-        public Builder metricName(String metricName) {
-            return metricName(Output.of(metricName));
+        public Builder metricSelector(StreamAlertRuleMetricSelectorArgs metricSelector) {
+            return metricSelector(Output.of(metricSelector));
         }
 
         /**
@@ -435,27 +389,6 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param operand Stream alert rule metric operand
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operand(@Nullable Output<String> operand) {
-            $.operand = operand;
-            return this;
-        }
-
-        /**
-         * @param operand Stream alert rule metric operand
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operand(String operand) {
-            return operand(Output.of(operand));
         }
 
         /**
@@ -570,48 +503,6 @@ public final class StreamAlertRuleState extends com.pulumi.resources.ResourceArg
          */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
-        }
-
-        /**
-         * @param warningThreshold Stream alert rule metric warning threshold
-         * 
-         * @return builder
-         * 
-         */
-        public Builder warningThreshold(@Nullable Output<String> warningThreshold) {
-            $.warningThreshold = warningThreshold;
-            return this;
-        }
-
-        /**
-         * @param warningThreshold Stream alert rule metric warning threshold
-         * 
-         * @return builder
-         * 
-         */
-        public Builder warningThreshold(String warningThreshold) {
-            return warningThreshold(Output.of(warningThreshold));
-        }
-
-        /**
-         * @param windowSize Stream alert rule metric window size
-         * 
-         * @return builder
-         * 
-         */
-        public Builder windowSize(@Nullable Output<String> windowSize) {
-            $.windowSize = windowSize;
-            return this;
-        }
-
-        /**
-         * @param windowSize Stream alert rule metric window size
-         * 
-         * @return builder
-         * 
-         */
-        public Builder windowSize(String windowSize) {
-            return windowSize(Output.of(windowSize));
         }
 
         public StreamAlertRuleState build() {

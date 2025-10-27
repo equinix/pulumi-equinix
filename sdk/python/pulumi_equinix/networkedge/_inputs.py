@@ -1933,6 +1933,10 @@ if not MYPY:
         """
         Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         """
+        purchase_order_number: NotRequired[pulumi.Input[str]]
+        """
+        Purchase order number associated with a device order.
+        """
         redundancy_type: NotRequired[pulumi.Input[str]]
         """
         Device redundancy type applicable for HA devices, either primary or secondary.
@@ -2000,6 +2004,7 @@ class DeviceSecondaryDeviceArgs:
                  license_token: Optional[pulumi.Input[str]] = None,
                  mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 purchase_order_number: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
                  redundant_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -2030,6 +2035,7 @@ class DeviceSecondaryDeviceArgs:
         :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on a secondary device.
                * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
+        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
@@ -2072,6 +2078,8 @@ class DeviceSecondaryDeviceArgs:
             pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if purchase_order_number is not None:
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
         if redundancy_type is not None:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
         if redundant_id is not None:
@@ -2299,6 +2307,18 @@ class DeviceSecondaryDeviceArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Purchase order number associated with a device order.
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+    @purchase_order_number.setter
+    def purchase_order_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purchase_order_number", value)
 
     @property
     @pulumi.getter(name="redundancyType")

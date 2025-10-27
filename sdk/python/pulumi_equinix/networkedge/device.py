@@ -1819,6 +1819,50 @@ class Device(pulumi.CustomResource):
                 },
             })
         ```
+        ### example aruba edgeconnect ha device wth purchase order
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+            name="TF_Aruba_Edge_Connect",
+            project_id="XXXXX",
+            metro_code=sv.metro_code,
+            type_code="EDGECONNECT-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="EC-V",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.4.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            interface_count=32,
+            acl_template_id="XXXXXXX",
+            purchase_order_number="PO-Primary-Account-123",
+            vendor_configuration={
+                "accountKey": "xxxxx",
+                "accountName": "xxxx",
+                "applianceTag": "tests",
+                "hostname": "test",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "purchase_order_number": "PO-Secondary-Account-123",
+                "acl_template_id": "XXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "accountKey": "xxxxx",
+                    "accountName": "xxxx",
+                    "applianceTag": "test",
+                    "hostname": "test",
+                },
+            })
+        ```
         ### example c8000v byol without default password
         ```python
         import pulumi
@@ -1832,7 +1876,7 @@ class Device(pulumi.CustomResource):
             self_managed=True,
             byol=True,
             generate_default_password=False,
-            package_code="VM100",
+            package_code="network-essentials",
             notifications=[
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -1862,7 +1906,7 @@ class Device(pulumi.CustomResource):
             type_code="C8000V",
             self_managed=True,
             byol=True,
-            package_code="VM100",
+            package_code="network-essentials",
             notifications=[
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -1893,7 +1937,7 @@ class Device(pulumi.CustomResource):
             type_code="C8000V",
             self_managed=True,
             byol=True,
-            package_code="VM100",
+            package_code="network-essentials",
             notifications=[
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -1910,6 +1954,54 @@ class Device(pulumi.CustomResource):
                 "key_name": "test-key",
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example c8000v ha with cloud init rest api support
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            generate_default_password=True,
+            package_code="network-essentials",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+            },
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "csr1000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                },
+                "acl_template_id": "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+            })
         ```
         ### example checkpoint single device
         ```python
@@ -2792,6 +2884,50 @@ class Device(pulumi.CustomResource):
                 },
             })
         ```
+        ### example aruba edgeconnect ha device wth purchase order
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+            name="TF_Aruba_Edge_Connect",
+            project_id="XXXXX",
+            metro_code=sv.metro_code,
+            type_code="EDGECONNECT-SDWAN",
+            self_managed=True,
+            byol=True,
+            package_code="EC-V",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="9.4.2.3",
+            core_count=2,
+            term_length=1,
+            additional_bandwidth=50,
+            interface_count=32,
+            acl_template_id="XXXXXXX",
+            purchase_order_number="PO-Primary-Account-123",
+            vendor_configuration={
+                "accountKey": "xxxxx",
+                "accountName": "xxxx",
+                "applianceTag": "tests",
+                "hostname": "test",
+            },
+            secondary_device={
+                "name": "TF_CHECKPOINT",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "purchase_order_number": "PO-Secondary-Account-123",
+                "acl_template_id": "XXXXXXX",
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "accountKey": "xxxxx",
+                    "accountName": "xxxx",
+                    "applianceTag": "test",
+                    "hostname": "test",
+                },
+            })
+        ```
         ### example c8000v byol without default password
         ```python
         import pulumi
@@ -2805,7 +2941,7 @@ class Device(pulumi.CustomResource):
             self_managed=True,
             byol=True,
             generate_default_password=False,
-            package_code="VM100",
+            package_code="network-essentials",
             notifications=[
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -2835,7 +2971,7 @@ class Device(pulumi.CustomResource):
             type_code="C8000V",
             self_managed=True,
             byol=True,
-            package_code="VM100",
+            package_code="network-essentials",
             notifications=[
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -2866,7 +3002,7 @@ class Device(pulumi.CustomResource):
             type_code="C8000V",
             self_managed=True,
             byol=True,
-            package_code="VM100",
+            package_code="network-essentials",
             notifications=[
                 "john@equinix.com",
                 "marry@equinix.com",
@@ -2883,6 +3019,54 @@ class Device(pulumi.CustomResource):
                 "key_name": "test-key",
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+        ```
+        ### example c8000v ha with cloud init rest api support
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            generate_default_password=True,
+            package_code="network-essentials",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+            },
+            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "csr1000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                },
+                "acl_template_id": "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+            })
         ```
         ### example checkpoint single device
         ```python

@@ -107,59 +107,7 @@ namespace Pulumi.Equinix.Metal
     ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
     ///         ProjectId = projectId,
     ///         HardwareReservationId = "next-available",
-    ///         Storage = @"{
-    ///   \""disks\"": [
-    ///     {
-    ///       \""device\"": \""/dev/sda\"",
-    ///       \""wipeTable\"": true,
-    ///       \""partitions\"": [
-    ///         {
-    ///           \""label\"": \""BIOS\"",
-    ///           \""number\"": 1,
-    ///           \""size\"": \""4096\""
-    ///         },
-    ///         {
-    ///           \""label\"": \""SWAP\"",
-    ///           \""number\"": 2,
-    ///           \""size\"": \""3993600\""
-    ///         },
-    ///         {
-    ///           \""label\"": \""ROOT\"",
-    ///           \""number\"": 3,
-    ///           \""size\"": \""0\""
-    ///         }
-    ///       ]
-    ///     }
-    ///   ],
-    ///   \""filesystems\"": [
-    ///     {
-    ///       \""mount\"": {
-    ///         \""device\"": \""/dev/sda3\"",
-    ///         \""format\"": \""ext4\"",
-    ///         \""point\"": \""/\"",
-    ///         \""create\"": {
-    ///           \""options\"": [
-    ///             \""-L\"",
-    ///             \""ROOT\""
-    ///           ]
-    ///         }
-    ///       }
-    ///     },
-    ///     {
-    ///       \""mount\"": {
-    ///         \""device\"": \""/dev/sda2\"",
-    ///         \""format\"": \""swap\"",
-    ///         \""point\"": \""none\"",
-    ///         \""create\"": {
-    ///           \""options\"": [
-    ///             \""-L\"",
-    ///             \""SWAP\""
-    ///           ]
-    ///         }
-    ///       }
-    ///     }
-    ///   ]
-    /// }
+    ///         Storage = @"{  \""disks\"": [    {      \""device\"": \""/dev/sda\"",      \""wipeTable\"": true,      \""partitions\"": [        {          \""label\"": \""BIOS\"",          \""number\"": 1,          \""size\"": \""4096\""        },        {          \""label\"": \""SWAP\"",          \""number\"": 2,          \""size\"": \""3993600\""        },        {          \""label\"": \""ROOT\"",          \""number\"": 3,          \""size\"": \""0\""        }      ]    }  ],  \""filesystems\"": [    {      \""mount\"": {        \""device\"": \""/dev/sda3\"",        \""format\"": \""ext4\"",        \""point\"": \""/\"",        \""create\"": {          \""options\"": [            \""-L\"",            \""ROOT\""          ]        }      }    },    {      \""mount\"": {        \""device\"": \""/dev/sda2\"",        \""format\"": \""swap\"",        \""point\"": \""none\"",        \""create\"": {          \""options\"": [            \""-L\"",            \""SWAP\""          ]        }      }    }  ]}
     /// ",
     ///     });
     /// 
@@ -332,7 +280,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> OperatingSystem { get; private set; } = null!;
 
         /// <summary>
-        /// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        /// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -365,7 +313,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> RootPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        /// The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         /// </summary>
         [Output("sosHostname")]
         public Output<string> SosHostname { get; private set; } = null!;
@@ -582,7 +530,7 @@ namespace Pulumi.Equinix.Metal
         public InputUnion<string, Pulumi.Equinix.Metal.OperatingSystem> OperatingSystem { get; set; } = null!;
 
         /// <summary>
-        /// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        /// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         /// </summary>
         [Input("plan", required: true)]
         public InputUnion<string, Pulumi.Equinix.Metal.Plan> Plan { get; set; } = null!;
@@ -833,7 +781,7 @@ namespace Pulumi.Equinix.Metal
         public InputUnion<string, Pulumi.Equinix.Metal.OperatingSystem>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        /// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         /// </summary>
         [Input("plan")]
         public InputUnion<string, Pulumi.Equinix.Metal.Plan>? Plan { get; set; }
@@ -888,7 +836,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        /// The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         /// </summary>
         [Input("sosHostname")]
         public Input<string>? SosHostname { get; set; }

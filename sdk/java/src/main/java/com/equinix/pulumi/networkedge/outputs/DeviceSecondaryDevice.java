@@ -104,6 +104,11 @@ public final class DeviceSecondaryDevice {
      */
     private @Nullable String projectId;
     /**
+     * @return Purchase order number associated with a device order.
+     * 
+     */
+    private @Nullable String purchaseOrderNumber;
+    /**
      * @return Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
@@ -281,6 +286,13 @@ public final class DeviceSecondaryDevice {
         return Optional.ofNullable(this.projectId);
     }
     /**
+     * @return Purchase order number associated with a device order.
+     * 
+     */
+    public Optional<String> purchaseOrderNumber() {
+        return Optional.ofNullable(this.purchaseOrderNumber);
+    }
+    /**
      * @return Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
@@ -384,6 +396,7 @@ public final class DeviceSecondaryDevice {
         private String name;
         private List<String> notifications;
         private @Nullable String projectId;
+        private @Nullable String purchaseOrderNumber;
         private @Nullable String redundancyType;
         private @Nullable String redundantId;
         private @Nullable String region;
@@ -415,6 +428,7 @@ public final class DeviceSecondaryDevice {
     	      this.name = defaults.name;
     	      this.notifications = defaults.notifications;
     	      this.projectId = defaults.projectId;
+    	      this.purchaseOrderNumber = defaults.purchaseOrderNumber;
     	      this.redundancyType = defaults.redundancyType;
     	      this.redundantId = defaults.redundantId;
     	      this.region = defaults.region;
@@ -545,6 +559,12 @@ public final class DeviceSecondaryDevice {
             return this;
         }
         @CustomType.Setter
+        public Builder purchaseOrderNumber(@Nullable String purchaseOrderNumber) {
+
+            this.purchaseOrderNumber = purchaseOrderNumber;
+            return this;
+        }
+        @CustomType.Setter
         public Builder redundancyType(@Nullable String redundancyType) {
 
             this.redundancyType = redundancyType;
@@ -629,6 +649,7 @@ public final class DeviceSecondaryDevice {
             _resultValue.name = name;
             _resultValue.notifications = notifications;
             _resultValue.projectId = projectId;
+            _resultValue.purchaseOrderNumber = purchaseOrderNumber;
             _resultValue.redundancyType = redundancyType;
             _resultValue.redundantId = redundantId;
             _resultValue.region = region;

@@ -156,6 +156,7 @@ class _PrecisionTimeServiceState:
                  ipv4: Optional[pulumi.Input['PrecisionTimeServiceIpv4Args']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ntp_advanced_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServiceNtpAdvancedConfigurationArgs']]]] = None,
+                 operation: Optional[pulumi.Input['PrecisionTimeServiceOperationArgs']] = None,
                  order: Optional[pulumi.Input['PrecisionTimeServiceOrderArgs']] = None,
                  package: Optional[pulumi.Input['PrecisionTimeServicePackageArgs']] = None,
                  precision_time_price: Optional[pulumi.Input['PrecisionTimeServicePrecisionTimePriceArgs']] = None,
@@ -174,6 +175,7 @@ class _PrecisionTimeServiceState:
         :param pulumi.Input['PrecisionTimeServiceIpv4Args'] ipv4: An object that has Network IP Configurations for Timing Master Servers.
         :param pulumi.Input[str] name: Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
         :param pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServiceNtpAdvancedConfigurationArgs']]] ntp_advanced_configurations: NTP Advanced configuration
+        :param pulumi.Input['PrecisionTimeServiceOperationArgs'] operation: Precision Time Service Operation
         :param pulumi.Input['PrecisionTimeServiceOrderArgs'] order: Precision Time Order
         :param pulumi.Input['PrecisionTimeServicePackageArgs'] package: Precision Time Service Package Details
         :param pulumi.Input['PrecisionTimeServicePrecisionTimePriceArgs'] precision_time_price: Precision Time Service Price
@@ -197,6 +199,8 @@ class _PrecisionTimeServiceState:
             pulumi.set(__self__, "name", name)
         if ntp_advanced_configurations is not None:
             pulumi.set(__self__, "ntp_advanced_configurations", ntp_advanced_configurations)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
         if order is not None:
             pulumi.set(__self__, "order", order)
         if package is not None:
@@ -299,6 +303,18 @@ class _PrecisionTimeServiceState:
     @ntp_advanced_configurations.setter
     def ntp_advanced_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrecisionTimeServiceNtpAdvancedConfigurationArgs']]]]):
         pulumi.set(self, "ntp_advanced_configurations", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input['PrecisionTimeServiceOperationArgs']]:
+        """
+        Precision Time Service Operation
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input['PrecisionTimeServiceOperationArgs']]):
+        pulumi.set(self, "operation", value)
 
     @property
     @pulumi.getter
@@ -499,6 +515,7 @@ class PrecisionTimeService(pulumi.CustomResource):
             __props__.__dict__["account"] = None
             __props__.__dict__["change_log"] = None
             __props__.__dict__["href"] = None
+            __props__.__dict__["operation"] = None
             __props__.__dict__["order"] = None
             __props__.__dict__["precision_time_price"] = None
             __props__.__dict__["project"] = None
@@ -521,6 +538,7 @@ class PrecisionTimeService(pulumi.CustomResource):
             ipv4: Optional[pulumi.Input[Union['PrecisionTimeServiceIpv4Args', 'PrecisionTimeServiceIpv4ArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ntp_advanced_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrecisionTimeServiceNtpAdvancedConfigurationArgs', 'PrecisionTimeServiceNtpAdvancedConfigurationArgsDict']]]]] = None,
+            operation: Optional[pulumi.Input[Union['PrecisionTimeServiceOperationArgs', 'PrecisionTimeServiceOperationArgsDict']]] = None,
             order: Optional[pulumi.Input[Union['PrecisionTimeServiceOrderArgs', 'PrecisionTimeServiceOrderArgsDict']]] = None,
             package: Optional[pulumi.Input[Union['PrecisionTimeServicePackageArgs', 'PrecisionTimeServicePackageArgsDict']]] = None,
             precision_time_price: Optional[pulumi.Input[Union['PrecisionTimeServicePrecisionTimePriceArgs', 'PrecisionTimeServicePrecisionTimePriceArgsDict']]] = None,
@@ -544,6 +562,7 @@ class PrecisionTimeService(pulumi.CustomResource):
         :param pulumi.Input[Union['PrecisionTimeServiceIpv4Args', 'PrecisionTimeServiceIpv4ArgsDict']] ipv4: An object that has Network IP Configurations for Timing Master Servers.
         :param pulumi.Input[str] name: Name of Precision Time Service. Applicable values: Maximum: 24 characters; Allowed characters: alpha-numeric, hyphens ('-') and underscores ('_')
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrecisionTimeServiceNtpAdvancedConfigurationArgs', 'PrecisionTimeServiceNtpAdvancedConfigurationArgsDict']]]] ntp_advanced_configurations: NTP Advanced configuration
+        :param pulumi.Input[Union['PrecisionTimeServiceOperationArgs', 'PrecisionTimeServiceOperationArgsDict']] operation: Precision Time Service Operation
         :param pulumi.Input[Union['PrecisionTimeServiceOrderArgs', 'PrecisionTimeServiceOrderArgsDict']] order: Precision Time Order
         :param pulumi.Input[Union['PrecisionTimeServicePackageArgs', 'PrecisionTimeServicePackageArgsDict']] package: Precision Time Service Package Details
         :param pulumi.Input[Union['PrecisionTimeServicePrecisionTimePriceArgs', 'PrecisionTimeServicePrecisionTimePriceArgsDict']] precision_time_price: Precision Time Service Price
@@ -564,6 +583,7 @@ class PrecisionTimeService(pulumi.CustomResource):
         __props__.__dict__["ipv4"] = ipv4
         __props__.__dict__["name"] = name
         __props__.__dict__["ntp_advanced_configurations"] = ntp_advanced_configurations
+        __props__.__dict__["operation"] = operation
         __props__.__dict__["order"] = order
         __props__.__dict__["package"] = package
         __props__.__dict__["precision_time_price"] = precision_time_price
@@ -630,6 +650,14 @@ class PrecisionTimeService(pulumi.CustomResource):
         NTP Advanced configuration
         """
         return pulumi.get(self, "ntp_advanced_configurations")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Output['outputs.PrecisionTimeServiceOperation']:
+        """
+        Precision Time Service Operation
+        """
+        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter

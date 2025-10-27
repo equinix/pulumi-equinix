@@ -49,6 +49,7 @@ from .get_stream_subscription import *
 from .get_stream_subscriptions import *
 from .get_streams import *
 from .network import *
+from .port import *
 from .precision_time_service import *
 from .route_aggregation import *
 from .route_aggregation_rule import *

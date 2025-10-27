@@ -214,6 +214,10 @@ export namespace fabric {
          */
         providerConnectionId: string;
         /**
+         * Network role
+         */
+        role?: string;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: outputs.fabric.ConnectionASideAccessPointRouter;
@@ -754,6 +758,10 @@ export namespace fabric {
          */
         providerConnectionId: string;
         /**
+         * Network role
+         */
+        role?: string;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: outputs.fabric.ConnectionZSideAccessPointRouter;
@@ -1179,6 +1187,10 @@ export namespace fabric {
          */
         equinixAsn: number;
         /**
+         * Number of gateway attachments associated with this Access point
+         */
+        gatewayAttachmentsCount: number;
+        /**
          * Fabric Cloud Router URI information
          */
         href: string;
@@ -1471,6 +1483,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId: string;
+        /**
+         * Network role
+         */
+        role?: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -2089,6 +2105,10 @@ export namespace fabric {
          */
         providerConnectionId: string;
         /**
+         * Network role
+         */
+        role?: string;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: outputs.fabric.GetConnectionZSideAccessPointRouter;
@@ -2489,6 +2509,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId: string;
+        /**
+         * Network role
+         */
+        role?: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -3010,6 +3034,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId: string;
+        /**
+         * Network role
+         */
+        role?: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -4366,6 +4394,10 @@ export namespace fabric {
         type?: string;
     }
 
+    export interface GetPrecisionTimeServiceOperation {
+        operationalStatus: string;
+    }
+
     export interface GetPrecisionTimeServiceOrder {
         /**
          * Customer reference number
@@ -4489,6 +4521,10 @@ export namespace fabric {
          * NTP Advanced configuration
          */
         ntpAdvancedConfigurations?: outputs.fabric.GetPrecisionTimeServicesDataNtpAdvancedConfiguration[];
+        /**
+         * Precision Time Service Operation
+         */
+        operation: outputs.fabric.GetPrecisionTimeServicesDataOperation;
         /**
          * Precision Time Order
          */
@@ -4674,6 +4710,10 @@ export namespace fabric {
          * md5 Authentication type
          */
         type?: string;
+    }
+
+    export interface GetPrecisionTimeServicesDataOperation {
+        operationalStatus: string;
     }
 
     export interface GetPrecisionTimeServicesDataOrder {
@@ -8049,6 +8089,36 @@ export namespace fabric {
         updatedDateTime: string;
     }
 
+    export interface GetStreamAlertRuleDetectionMethod {
+        /**
+         * Stream alert rule metric critical threshold
+         */
+        criticalThreshold: string;
+        /**
+         * Stream alert rule metric operand
+         */
+        operand: string;
+        /**
+         * Stream Alert Rule detection method type
+         */
+        type: string;
+        /**
+         * Stream alert rule metric warning threshold
+         */
+        warningThreshold: string;
+        /**
+         * Stream alert rule metric window size
+         */
+        windowSize: string;
+    }
+
+    export interface GetStreamAlertRuleMetricSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
     export interface GetStreamAlertRuleResourceSelector {
         /**
          * List of metrics to include
@@ -8062,13 +8132,13 @@ export namespace fabric {
          */
         changeLog: outputs.fabric.GetStreamAlertRulesDataChangeLog;
         /**
-         * Stream alert rule metric critical threshold
-         */
-        criticalThreshold: string;
-        /**
          * Customer-provided stream alert rule description
          */
         description: string;
+        /**
+         * Detection method for stream alert rule
+         */
+        detectionMethod: outputs.fabric.GetStreamAlertRulesDataDetectionMethod;
         /**
          * Stream subscription enabled status
          */
@@ -8078,17 +8148,13 @@ export namespace fabric {
          */
         href: string;
         /**
-         * Stream alert rule metric name
+         * Metric selector for the stream alert rule
          */
-        metricName: string;
+        metricSelector: outputs.fabric.GetStreamAlertRulesDataMetricSelector;
         /**
          * Customer-provided stream alert rule name
          */
         name: string;
-        /**
-         * Stream alert rule metric operand
-         */
-        operand: string;
         /**
          * Lists of metrics to be included/excluded on the stream alert rule
          */
@@ -8105,14 +8171,6 @@ export namespace fabric {
          * Equinix assigned unique identifier of the stream subscription resource
          */
         uuid: string;
-        /**
-         * Stream alert rule metric warning threshold
-         */
-        warningThreshold: string;
-        /**
-         * Stream alert rule metric window size
-         */
-        windowSize: string;
     }
 
     export interface GetStreamAlertRulesDataChangeLog {
@@ -8164,6 +8222,36 @@ export namespace fabric {
          * Last update time of the stream resource
          */
         updatedDateTime: string;
+    }
+
+    export interface GetStreamAlertRulesDataDetectionMethod {
+        /**
+         * Stream alert rule metric critical threshold
+         */
+        criticalThreshold: string;
+        /**
+         * Stream alert rule metric operand
+         */
+        operand: string;
+        /**
+         * Stream Alert Rule detection method type
+         */
+        type: string;
+        /**
+         * Stream alert rule metric warning threshold
+         */
+        warningThreshold: string;
+        /**
+         * Stream alert rule metric window size
+         */
+        windowSize: string;
+    }
+
+    export interface GetStreamAlertRulesDataMetricSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
     }
 
     export interface GetStreamAlertRulesDataResourceSelector {
@@ -8929,6 +9017,303 @@ export namespace fabric {
         projectId: string;
     }
 
+    export interface PortAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName: string;
+        /**
+         * Account number the port will be created for
+         */
+        accountNumber: number;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId: string;
+    }
+
+    export interface PortAdditionalInfo {
+        /**
+         * The key name of the key/value pair
+         */
+        key: string;
+        /**
+         * The value of the key/value pair
+         */
+        value: string;
+    }
+
+    export interface PortChangeLog {
+        /**
+         * User name of creator of the port resource
+         */
+        createdBy: string;
+        /**
+         * Email of creator of the port resource
+         */
+        createdByEmail: string;
+        /**
+         * Legal name of creator of the port resource
+         */
+        createdByFullName: string;
+        /**
+         * Creation time of the port resource
+         */
+        createdDateTime: string;
+        /**
+         * User name of deleter of the port resource
+         */
+        deletedBy: string;
+        /**
+         * Email of deleter of the port resource
+         */
+        deletedByEmail: string;
+        /**
+         * Legal name of deleter of the port resource
+         */
+        deletedByFullName: string;
+        /**
+         * Deletion time of the port resource
+         */
+        deletedDateTime: string;
+        /**
+         * User name of last updater of the port resource
+         */
+        updatedBy: string;
+        /**
+         * Email of last updater of the port resource
+         */
+        updatedByEmail: string;
+        /**
+         * Legal name of last updater of the port resource
+         */
+        updatedByFullName: string;
+        /**
+         * Last update time of the port resource
+         */
+        updatedDateTime: string;
+    }
+
+    export interface PortDevice {
+        /**
+         * Device name for the port
+         */
+        name?: string;
+        /**
+         * Device redundancy configuration
+         */
+        redundancy?: outputs.fabric.PortDeviceRedundancy;
+    }
+
+    export interface PortDeviceRedundancy {
+        /**
+         * Redundancy group identifier
+         */
+        group?: string;
+        /**
+         * Redundancy priority (PRIMARY or SECONDARY)
+         */
+        priority?: string;
+    }
+
+    export interface PortEncapsulation {
+        /**
+         * Port encapsulation tag protocol identifier
+         */
+        tagProtocolId: string;
+        /**
+         * Port encapsulation protocol type
+         */
+        type: string;
+    }
+
+    export interface PortLocation {
+        /**
+         * Metro code the port will be created in
+         */
+        metroCode: string;
+    }
+
+    export interface PortNotification {
+        /**
+         * Array of registered users that will receive this notification type on the port
+         */
+        registeredUsers: string[];
+        /**
+         * Notification Type
+         */
+        type: string;
+    }
+
+    export interface PortOrder {
+        /**
+         * Customer order reference Id
+         */
+        customerReferenceId?: string;
+        /**
+         * Order Identification
+         */
+        orderId: string;
+        /**
+         * Order Reference Number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order details
+         */
+        purchaseOrder?: outputs.fabric.PortOrderPurchaseOrder;
+        /**
+         * Port order confirmation signature details
+         */
+        signature?: outputs.fabric.PortOrderSignature;
+        /**
+         * Equinix-assigned order identifier, this is a derived response attribute
+         */
+        uuid: string;
+    }
+
+    export interface PortOrderPurchaseOrder {
+        /**
+         * purchase order amount
+         */
+        amount: string;
+        /**
+         * purchase order attachment id
+         */
+        attachmentId: string;
+        /**
+         * purchase order end date
+         */
+        endDate: string;
+        /**
+         * purchase order number
+         */
+        number: string;
+        /**
+         * purchase order start date
+         */
+        startDate: string;
+        /**
+         * purchase order type
+         */
+        type: string;
+    }
+
+    export interface PortOrderSignature {
+        /**
+         * delegate order details
+         */
+        delegate: outputs.fabric.PortOrderSignatureDelegate;
+        /**
+         * Port signature Type
+         */
+        signatory: string;
+    }
+
+    export interface PortOrderSignatureDelegate {
+        /**
+         * Email of the signatory
+         */
+        email: string;
+        /**
+         * First name of the signatory
+         */
+        firstName?: string;
+        /**
+         * Last name of the signatory
+         */
+        lastName?: string;
+    }
+
+    export interface PortPhysicalPort {
+        /**
+         * Customer physical port
+         */
+        demarcationPoint: outputs.fabric.PortPhysicalPortDemarcationPoint;
+        /**
+         * Physical port interface
+         */
+        interface?: outputs.fabric.PortPhysicalPortInterface;
+        /**
+         * Physical Port type
+         */
+        type: string;
+    }
+
+    export interface PortPhysicalPortDemarcationPoint {
+        /**
+         * Port cabinet unique space id
+         */
+        cabinetUniqueSpaceId: string;
+        /**
+         * Port cage unique space id
+         */
+        cageUniqueSpaceId: string;
+        /**
+         * Port connector type
+         */
+        connectorType: string;
+        /**
+         * IBX Metro code for the physical port
+         */
+        ibx: string;
+        /**
+         * Port patch panel
+         */
+        patchPanel: string;
+    }
+
+    export interface PortPhysicalPortInterface {
+        /**
+         * Interface type for the physical port
+         */
+        type: string;
+    }
+
+    export interface PortProject {
+        /**
+         * Project id the port will be created in
+         */
+        projectId: string;
+    }
+
+    export interface PortRedundancy {
+        /**
+         * Port redundancy priority value
+         */
+        priority: string;
+    }
+
+    export interface PortSettings {
+        /**
+         * Billing package for the port being ordered
+         */
+        packageType: string;
+        /**
+         * Indicates whether this is a dedicated customer cage or a shared neutral cage
+         */
+        sharedPortType: boolean;
+    }
+
+    export interface PortTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
     export interface PrecisionTimeServiceAccount {
         /**
          * Account Name
@@ -9080,6 +9465,13 @@ export namespace fabric {
          * md5 Authentication type
          */
         type?: string;
+    }
+
+    export interface PrecisionTimeServiceOperation {
+        /**
+         * Current operational status of the Precision Time Service
+         */
+        operationalStatus: string;
     }
 
     export interface PrecisionTimeServiceOrder {
@@ -10701,6 +11093,36 @@ export namespace fabric {
         updatedDateTime: string;
     }
 
+    export interface StreamAlertRuleDetectionMethod {
+        /**
+         * Stream alert rule metric critical threshold
+         */
+        criticalThreshold: string;
+        /**
+         * Stream alert rule metric operand
+         */
+        operand: string;
+        /**
+         * Stream Alert Rule detection method type
+         */
+        type: string;
+        /**
+         * Stream alert rule metric warning threshold
+         */
+        warningThreshold: string;
+        /**
+         * Stream alert rule metric window size
+         */
+        windowSize: string;
+    }
+
+    export interface StreamAlertRuleMetricSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
     export interface StreamAlertRuleResourceSelector {
         /**
          * List of metrics to include
@@ -11265,7 +11687,7 @@ export namespace metal {
          */
         rootPassword: string;
         /**
-         * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+         * The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
          */
         sosHostname: string;
         /**
@@ -12084,6 +12506,10 @@ export namespace networkedge {
          * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          */
         projectId: string;
+        /**
+         * Purchase order number associated with a device order.
+         */
+        purchaseOrderNumber?: string;
         /**
          * Device redundancy type applicable for HA devices, either primary or secondary.
          */

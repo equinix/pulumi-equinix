@@ -10,12 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Fabric
 {
     /// <summary>
-    /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Alert Rules'
-    /// }
-    /// 
-    /// Additional Documentation:
-    /// * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+    /// ## Example Usage
     /// </summary>
     [EquinixResourceType("equinix:fabric/streamAlertRule:StreamAlertRule")]
     public partial class StreamAlertRule : global::Pulumi.CustomResource
@@ -27,16 +22,16 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.StreamAlertRuleChangeLog> ChangeLog { get; private set; } = null!;
 
         /// <summary>
-        /// Stream alert rule metric critical threshold
-        /// </summary>
-        [Output("criticalThreshold")]
-        public Output<string> CriticalThreshold { get; private set; } = null!;
-
-        /// <summary>
         /// Customer-provided stream alert rule description
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Detection method for stream alert rule
+        /// </summary>
+        [Output("detectionMethod")]
+        public Output<Outputs.StreamAlertRuleDetectionMethod> DetectionMethod { get; private set; } = null!;
 
         /// <summary>
         /// Stream alert rule enabled status
@@ -51,22 +46,16 @@ namespace Pulumi.Equinix.Fabric
         public Output<string> Href { get; private set; } = null!;
 
         /// <summary>
-        /// Stream alert rule metric name
+        /// Metric selector for the stream alert rule
         /// </summary>
-        [Output("metricName")]
-        public Output<string> MetricName { get; private set; } = null!;
+        [Output("metricSelector")]
+        public Output<Outputs.StreamAlertRuleMetricSelector> MetricSelector { get; private set; } = null!;
 
         /// <summary>
         /// Customer-provided stream alert rule name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// Stream alert rule metric operand
-        /// </summary>
-        [Output("operand")]
-        public Output<string> Operand { get; private set; } = null!;
 
         /// <summary>
         /// Resource selector for the stream alert rule
@@ -100,18 +89,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
-
-        /// <summary>
-        /// Stream alert rule metric warning threshold
-        /// </summary>
-        [Output("warningThreshold")]
-        public Output<string> WarningThreshold { get; private set; } = null!;
-
-        /// <summary>
-        /// Stream alert rule metric window size
-        /// </summary>
-        [Output("windowSize")]
-        public Output<string> WindowSize { get; private set; } = null!;
 
 
         /// <summary>
@@ -161,16 +138,16 @@ namespace Pulumi.Equinix.Fabric
     public sealed class StreamAlertRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Stream alert rule metric critical threshold
-        /// </summary>
-        [Input("criticalThreshold", required: true)]
-        public Input<string> CriticalThreshold { get; set; } = null!;
-
-        /// <summary>
         /// Customer-provided stream alert rule description
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
+
+        /// <summary>
+        /// Detection method for stream alert rule
+        /// </summary>
+        [Input("detectionMethod")]
+        public Input<Inputs.StreamAlertRuleDetectionMethodArgs>? DetectionMethod { get; set; }
 
         /// <summary>
         /// Stream alert rule enabled status
@@ -179,22 +156,16 @@ namespace Pulumi.Equinix.Fabric
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Stream alert rule metric name
+        /// Metric selector for the stream alert rule
         /// </summary>
-        [Input("metricName", required: true)]
-        public Input<string> MetricName { get; set; } = null!;
+        [Input("metricSelector")]
+        public Input<Inputs.StreamAlertRuleMetricSelectorArgs>? MetricSelector { get; set; }
 
         /// <summary>
         /// Customer-provided stream alert rule name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Stream alert rule metric operand
-        /// </summary>
-        [Input("operand", required: true)]
-        public Input<string> Operand { get; set; } = null!;
 
         /// <summary>
         /// Resource selector for the stream alert rule
@@ -217,18 +188,6 @@ namespace Pulumi.Equinix.Fabric
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        /// <summary>
-        /// Stream alert rule metric warning threshold
-        /// </summary>
-        [Input("warningThreshold", required: true)]
-        public Input<string> WarningThreshold { get; set; } = null!;
-
-        /// <summary>
-        /// Stream alert rule metric window size
-        /// </summary>
-        [Input("windowSize", required: true)]
-        public Input<string> WindowSize { get; set; } = null!;
-
         public StreamAlertRuleArgs()
         {
         }
@@ -244,16 +203,16 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.StreamAlertRuleChangeLogGetArgs>? ChangeLog { get; set; }
 
         /// <summary>
-        /// Stream alert rule metric critical threshold
-        /// </summary>
-        [Input("criticalThreshold")]
-        public Input<string>? CriticalThreshold { get; set; }
-
-        /// <summary>
         /// Customer-provided stream alert rule description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Detection method for stream alert rule
+        /// </summary>
+        [Input("detectionMethod")]
+        public Input<Inputs.StreamAlertRuleDetectionMethodGetArgs>? DetectionMethod { get; set; }
 
         /// <summary>
         /// Stream alert rule enabled status
@@ -268,22 +227,16 @@ namespace Pulumi.Equinix.Fabric
         public Input<string>? Href { get; set; }
 
         /// <summary>
-        /// Stream alert rule metric name
+        /// Metric selector for the stream alert rule
         /// </summary>
-        [Input("metricName")]
-        public Input<string>? MetricName { get; set; }
+        [Input("metricSelector")]
+        public Input<Inputs.StreamAlertRuleMetricSelectorGetArgs>? MetricSelector { get; set; }
 
         /// <summary>
         /// Customer-provided stream alert rule name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Stream alert rule metric operand
-        /// </summary>
-        [Input("operand")]
-        public Input<string>? Operand { get; set; }
 
         /// <summary>
         /// Resource selector for the stream alert rule
@@ -317,18 +270,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
-
-        /// <summary>
-        /// Stream alert rule metric warning threshold
-        /// </summary>
-        [Input("warningThreshold")]
-        public Input<string>? WarningThreshold { get; set; }
-
-        /// <summary>
-        /// Stream alert rule metric window size
-        /// </summary>
-        [Input("windowSize")]
-        public Input<string>? WindowSize { get; set; }
 
         public StreamAlertRuleState()
         {

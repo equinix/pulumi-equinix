@@ -6775,12 +6775,6 @@ public final class FabricFunctions {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getStream:getStream", TypeShape.of(GetStreamResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -6826,12 +6820,6 @@ public final class FabricFunctions {
         return getStreamAlertRule(args, InvokeOptions.Empty);
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -6877,12 +6865,6 @@ public final class FabricFunctions {
         return getStreamAlertRulePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -6928,12 +6910,6 @@ public final class FabricFunctions {
         return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRule:getStreamAlertRule", TypeShape.of(GetStreamAlertRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -6979,12 +6955,6 @@ public final class FabricFunctions {
         return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRule:getStreamAlertRule", TypeShape.of(GetStreamAlertRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7030,12 +7000,6 @@ public final class FabricFunctions {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getStreamAlertRule:getStreamAlertRule", TypeShape.of(GetStreamAlertRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7085,12 +7049,6 @@ public final class FabricFunctions {
         return getStreamAlertRules(args, InvokeOptions.Empty);
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7140,12 +7098,6 @@ public final class FabricFunctions {
         return getStreamAlertRulesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7195,12 +7147,6 @@ public final class FabricFunctions {
         return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRules:getStreamAlertRules", TypeShape.of(GetStreamAlertRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7250,12 +7196,6 @@ public final class FabricFunctions {
         return Deployment.getInstance().invoke("equinix:fabric/getStreamAlertRules:getStreamAlertRules", TypeShape.of(GetStreamAlertRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
-     * 
-     * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;

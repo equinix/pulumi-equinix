@@ -11,6 +11,7 @@ import com.equinix.pulumi.fabric.outputs.PrecisionTimeServiceChangeLog;
 import com.equinix.pulumi.fabric.outputs.PrecisionTimeServiceConnection;
 import com.equinix.pulumi.fabric.outputs.PrecisionTimeServiceIpv4;
 import com.equinix.pulumi.fabric.outputs.PrecisionTimeServiceNtpAdvancedConfiguration;
+import com.equinix.pulumi.fabric.outputs.PrecisionTimeServiceOperation;
 import com.equinix.pulumi.fabric.outputs.PrecisionTimeServiceOrder;
 import com.equinix.pulumi.fabric.outputs.PrecisionTimeServicePackage;
 import com.equinix.pulumi.fabric.outputs.PrecisionTimeServicePrecisionTimePrice;
@@ -188,6 +189,20 @@ public class PrecisionTimeService extends com.pulumi.resources.CustomResource {
      */
     public Output<List<PrecisionTimeServiceNtpAdvancedConfiguration>> ntpAdvancedConfigurations() {
         return this.ntpAdvancedConfigurations;
+    }
+    /**
+     * Precision Time Service Operation
+     * 
+     */
+    @Export(name="operation", refs={PrecisionTimeServiceOperation.class}, tree="[0]")
+    private Output<PrecisionTimeServiceOperation> operation;
+
+    /**
+     * @return Precision Time Service Operation
+     * 
+     */
+    public Output<PrecisionTimeServiceOperation> operation() {
+        return this.operation;
     }
     /**
      * Precision Time Order

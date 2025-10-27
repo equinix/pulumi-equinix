@@ -3,10 +3,14 @@
 
 package com.equinix.pulumi.fabric.inputs;
 
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRuleDetectionMethod;
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRuleMetricSelector;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetStreamAlertRulePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,6 +33,36 @@ public final class GetStreamAlertRulePlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
+     * Detection method for stream alert rule
+     * 
+     */
+    @Import(name="detectionMethod")
+    private @Nullable GetStreamAlertRuleDetectionMethod detectionMethod;
+
+    /**
+     * @return Detection method for stream alert rule
+     * 
+     */
+    public Optional<GetStreamAlertRuleDetectionMethod> detectionMethod() {
+        return Optional.ofNullable(this.detectionMethod);
+    }
+
+    /**
+     * Metric selector for the stream alert rule
+     * 
+     */
+    @Import(name="metricSelector")
+    private @Nullable GetStreamAlertRuleMetricSelector metricSelector;
+
+    /**
+     * @return Metric selector for the stream alert rule
+     * 
+     */
+    public Optional<GetStreamAlertRuleMetricSelector> metricSelector() {
+        return Optional.ofNullable(this.metricSelector);
+    }
+
+    /**
      * The uuid of the stream that is the target of the stream alert rule
      * 
      */
@@ -47,6 +81,8 @@ public final class GetStreamAlertRulePlainArgs extends com.pulumi.resources.Invo
 
     private GetStreamAlertRulePlainArgs(GetStreamAlertRulePlainArgs $) {
         this.alertRuleId = $.alertRuleId;
+        this.detectionMethod = $.detectionMethod;
+        this.metricSelector = $.metricSelector;
         this.streamId = $.streamId;
     }
 
@@ -76,6 +112,28 @@ public final class GetStreamAlertRulePlainArgs extends com.pulumi.resources.Invo
          */
         public Builder alertRuleId(String alertRuleId) {
             $.alertRuleId = alertRuleId;
+            return this;
+        }
+
+        /**
+         * @param detectionMethod Detection method for stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectionMethod(@Nullable GetStreamAlertRuleDetectionMethod detectionMethod) {
+            $.detectionMethod = detectionMethod;
+            return this;
+        }
+
+        /**
+         * @param metricSelector Metric selector for the stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricSelector(@Nullable GetStreamAlertRuleMetricSelector metricSelector) {
+            $.metricSelector = metricSelector;
             return this;
         }
 

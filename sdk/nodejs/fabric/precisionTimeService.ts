@@ -70,6 +70,10 @@ export class PrecisionTimeService extends pulumi.CustomResource {
      */
     public readonly ntpAdvancedConfigurations!: pulumi.Output<outputs.fabric.PrecisionTimeServiceNtpAdvancedConfiguration[]>;
     /**
+     * Precision Time Service Operation
+     */
+    public /*out*/ readonly operation!: pulumi.Output<outputs.fabric.PrecisionTimeServiceOperation>;
+    /**
      * Precision Time Order
      */
     public /*out*/ readonly order!: pulumi.Output<outputs.fabric.PrecisionTimeServiceOrder>;
@@ -123,6 +127,7 @@ export class PrecisionTimeService extends pulumi.CustomResource {
             resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ntpAdvancedConfigurations"] = state ? state.ntpAdvancedConfigurations : undefined;
+            resourceInputs["operation"] = state ? state.operation : undefined;
             resourceInputs["order"] = state ? state.order : undefined;
             resourceInputs["package"] = state ? state.package : undefined;
             resourceInputs["precisionTimePrice"] = state ? state.precisionTimePrice : undefined;
@@ -157,6 +162,7 @@ export class PrecisionTimeService extends pulumi.CustomResource {
             resourceInputs["account"] = undefined /*out*/;
             resourceInputs["changeLog"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["order"] = undefined /*out*/;
             resourceInputs["precisionTimePrice"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -200,6 +206,10 @@ export interface PrecisionTimeServiceState {
      * NTP Advanced configuration
      */
     ntpAdvancedConfigurations?: pulumi.Input<pulumi.Input<inputs.fabric.PrecisionTimeServiceNtpAdvancedConfiguration>[]>;
+    /**
+     * Precision Time Service Operation
+     */
+    operation?: pulumi.Input<inputs.fabric.PrecisionTimeServiceOperation>;
     /**
      * Precision Time Order
      */

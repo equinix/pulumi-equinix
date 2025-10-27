@@ -12,7 +12,7 @@ const c8000VByolWithtoutDefaultPassword = new equinix.networkedge.Device("c8000v
     selfManaged: true,
     byol: true,
     generateDefaultPassword: false,
-    packageCode: "VM100",
+    packageCode: "network-essentials",
     notifications: [
         "john@equinix.com",
         "marry@equinix.com",

@@ -49,7 +49,7 @@ class DeviceArgs:
         """
         The set of arguments for constructing a Device resource.
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[bool] always_pxe: If true, a device with OS custom_ipxe will
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
@@ -136,7 +136,7 @@ class DeviceArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[Union[str, 'Plan']]:
         """
-        The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         """
         return pulumi.get(self, "plan")
 
@@ -468,12 +468,12 @@ class _DeviceState:
         :param pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
         :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]] ports: Ports assigned to the device
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
         :param pulumi.Input[str] root_password: Root password to the server (disabled after 24 hours)
-        :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
         :param pulumi.Input[str] state: The status of the device
         :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
@@ -838,7 +838,7 @@ class _DeviceState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[Union[str, 'Plan']]]:
         """
-        The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         """
         return pulumi.get(self, "plan")
 
@@ -907,7 +907,7 @@ class _DeviceState:
     @pulumi.getter(name="sosHostname")
     def sos_hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         """
         return pulumi.get(self, "sos_hostname")
 
@@ -1119,60 +1119,8 @@ class Device(pulumi.CustomResource):
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
             hardware_reservation_id="next-available",
-            storage=\"\"\"{
-          \\"disks\\": [
-            {
-              \\"device\\": \\"/dev/sda\\",
-              \\"wipeTable\\": true,
-              \\"partitions\\": [
-                {
-                  \\"label\\": \\"BIOS\\",
-                  \\"number\\": 1,
-                  \\"size\\": \\"4096\\"
-                },
-                {
-                  \\"label\\": \\"SWAP\\",
-                  \\"number\\": 2,
-                  \\"size\\": \\"3993600\\"
-                },
-                {
-                  \\"label\\": \\"ROOT\\",
-                  \\"number\\": 3,
-                  \\"size\\": \\"0\\"
-                }
-              ]
-            }
-          ],
-          \\"filesystems\\": [
-            {
-              \\"mount\\": {
-                \\"device\\": \\"/dev/sda3\\",
-                \\"format\\": \\"ext4\\",
-                \\"point\\": \\"/\\",
-                \\"create\\": {
-                  \\"options\\": [
-                    \\"-L\\",
-                    \\"ROOT\\"
-                  ]
-                }
-              }
-            },
-            {
-              \\"mount\\": {
-                \\"device\\": \\"/dev/sda2\\",
-                \\"format\\": \\"swap\\",
-                \\"point\\": \\"none\\",
-                \\"create\\": {
-                  \\"options\\": [
-                    \\"-L\\",
-                    \\"SWAP\\"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-        \"\"\")
+            storage="{  \\\\"disks\\\\": [    {      \\\\"device\\\\": \\\\"/dev/sda\\\\",      \\\\"wipeTable\\\\": true,      \\\\"partitions\\\\": [        {          \\\\"label\\\\": \\\\"BIOS\\\\",          \\\\"number\\\\": 1,          \\\\"size\\\\": \\\\"4096\\\\"        },        {          \\\\"label\\\\": \\\\"SWAP\\\\",          \\\\"number\\\\": 2,          \\\\"size\\\\": \\\\"3993600\\\\"        },        {          \\\\"label\\\\": \\\\"ROOT\\\\",          \\\\"number\\\\": 3,          \\\\"size\\\\": \\\\"0\\\\"        }      ]    }  ],  \\\\"filesystems\\\\": [    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda3\\\\",        \\\\"format\\\\": \\\\"ext4\\\\",        \\\\"point\\\\": \\\\"/\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"ROOT\\\\"          ]        }      }    },    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda2\\\\",        \\\\"format\\\\": \\\\"swap\\\\",        \\\\"point\\\\": \\\\"none\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"SWAP\\\\"          ]        }      }    }  ]}
+        ")
         ```
         ### example 5
         ```python
@@ -1213,7 +1161,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
         :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
@@ -1294,60 +1242,8 @@ class Device(pulumi.CustomResource):
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
             hardware_reservation_id="next-available",
-            storage=\"\"\"{
-          \\"disks\\": [
-            {
-              \\"device\\": \\"/dev/sda\\",
-              \\"wipeTable\\": true,
-              \\"partitions\\": [
-                {
-                  \\"label\\": \\"BIOS\\",
-                  \\"number\\": 1,
-                  \\"size\\": \\"4096\\"
-                },
-                {
-                  \\"label\\": \\"SWAP\\",
-                  \\"number\\": 2,
-                  \\"size\\": \\"3993600\\"
-                },
-                {
-                  \\"label\\": \\"ROOT\\",
-                  \\"number\\": 3,
-                  \\"size\\": \\"0\\"
-                }
-              ]
-            }
-          ],
-          \\"filesystems\\": [
-            {
-              \\"mount\\": {
-                \\"device\\": \\"/dev/sda3\\",
-                \\"format\\": \\"ext4\\",
-                \\"point\\": \\"/\\",
-                \\"create\\": {
-                  \\"options\\": [
-                    \\"-L\\",
-                    \\"ROOT\\"
-                  ]
-                }
-              }
-            },
-            {
-              \\"mount\\": {
-                \\"device\\": \\"/dev/sda2\\",
-                \\"format\\": \\"swap\\",
-                \\"point\\": \\"none\\",
-                \\"create\\": {
-                  \\"options\\": [
-                    \\"-L\\",
-                    \\"SWAP\\"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-        \"\"\")
+            storage="{  \\\\"disks\\\\": [    {      \\\\"device\\\\": \\\\"/dev/sda\\\\",      \\\\"wipeTable\\\\": true,      \\\\"partitions\\\\": [        {          \\\\"label\\\\": \\\\"BIOS\\\\",          \\\\"number\\\\": 1,          \\\\"size\\\\": \\\\"4096\\\\"        },        {          \\\\"label\\\\": \\\\"SWAP\\\\",          \\\\"number\\\\": 2,          \\\\"size\\\\": \\\\"3993600\\\\"        },        {          \\\\"label\\\\": \\\\"ROOT\\\\",          \\\\"number\\\\": 3,          \\\\"size\\\\": \\\\"0\\\\"        }      ]    }  ],  \\\\"filesystems\\\\": [    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda3\\\\",        \\\\"format\\\\": \\\\"ext4\\\\",        \\\\"point\\\\": \\\\"/\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"ROOT\\\\"          ]        }      }    },    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda2\\\\",        \\\\"format\\\\": \\\\"swap\\\\",        \\\\"point\\\\": \\\\"none\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"SWAP\\\\"          ]        }      }    }  ]}
+        ")
         ```
         ### example 5
         ```python
@@ -1543,12 +1439,12 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceNetworkArgs', 'DeviceNetworkArgsDict']]]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
         :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePortArgs', 'DevicePortArgsDict']]]] ports: Ports assigned to the device
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
         :param pulumi.Input[str] root_password: Root password to the server (disabled after 24 hours)
-        :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
         :param pulumi.Input[str] state: The status of the device
         :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
@@ -1783,7 +1679,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+        The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         """
         return pulumi.get(self, "plan")
 
@@ -1828,7 +1724,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="sosHostname")
     def sos_hostname(self) -> pulumi.Output[str]:
         """
-        The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         """
         return pulumi.get(self, "sos_hostname")
 

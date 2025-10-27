@@ -2441,6 +2441,8 @@ type DeviceSecondaryDevice struct {
 	Notifications []string `pulumi:"notifications"`
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
+	// Purchase order number associated with a device order.
+	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType *string `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices.
@@ -2512,6 +2514,8 @@ type DeviceSecondaryDeviceArgs struct {
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Purchase order number associated with a device order.
+	PurchaseOrderNumber pulumi.StringPtrInput `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType pulumi.StringPtrInput `pulumi:"redundancyType"`
 	// Unique identifier for a redundant device applicable for HA devices.
@@ -2697,6 +2701,11 @@ func (o DeviceSecondaryDeviceOutput) Notifications() pulumi.StringArrayOutput {
 // Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 func (o DeviceSecondaryDeviceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Purchase order number associated with a device order.
+func (o DeviceSecondaryDeviceOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.PurchaseOrderNumber }).(pulumi.StringPtrOutput)
 }
 
 // Device redundancy type applicable for HA devices, either primary or secondary.
@@ -2946,6 +2955,16 @@ func (o DeviceSecondaryDevicePtrOutput) ProjectId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Purchase order number associated with a device order.
+func (o DeviceSecondaryDevicePtrOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PurchaseOrderNumber
 	}).(pulumi.StringPtrOutput)
 }
 

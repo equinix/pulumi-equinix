@@ -61,6 +61,12 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.PrecisionTimeServiceNtpAdvancedConfiguration>> NtpAdvancedConfigurations { get; private set; } = null!;
 
         /// <summary>
+        /// Precision Time Service Operation
+        /// </summary>
+        [Output("operation")]
+        public Output<Outputs.PrecisionTimeServiceOperation> Operation { get; private set; } = null!;
+
+        /// <summary>
         /// Precision Time Order
         /// </summary>
         [Output("order")]
@@ -276,6 +282,12 @@ namespace Pulumi.Equinix.Fabric
             get => _ntpAdvancedConfigurations ?? (_ntpAdvancedConfigurations = new InputList<Inputs.PrecisionTimeServiceNtpAdvancedConfigurationGetArgs>());
             set => _ntpAdvancedConfigurations = value;
         }
+
+        /// <summary>
+        /// Precision Time Service Operation
+        /// </summary>
+        [Input("operation")]
+        public Input<Inputs.PrecisionTimeServiceOperationGetArgs>? Operation { get; set; }
 
         /// <summary>
         /// Precision Time Order

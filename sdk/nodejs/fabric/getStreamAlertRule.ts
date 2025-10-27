@@ -8,16 +8,14 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
- *
- * Additional Documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+ * ## Example Usage
  */
 export function getStreamAlertRule(args: GetStreamAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getStreamAlertRule:getStreamAlertRule", {
         "alertRuleId": args.alertRuleId,
+        "detectionMethod": args.detectionMethod,
+        "metricSelector": args.metricSelector,
         "streamId": args.streamId,
     }, opts);
 }
@@ -30,6 +28,14 @@ export interface GetStreamAlertRuleArgs {
      * The uuid of the stream alert rule
      */
     alertRuleId: string;
+    /**
+     * Detection method for stream alert rule
+     */
+    detectionMethod?: inputs.fabric.GetStreamAlertRuleDetectionMethod;
+    /**
+     * Metric selector for the stream alert rule
+     */
+    metricSelector?: inputs.fabric.GetStreamAlertRuleMetricSelector;
     /**
      * The uuid of the stream that is the target of the stream alert rule
      */
@@ -49,13 +55,13 @@ export interface GetStreamAlertRuleResult {
      */
     readonly changeLog: outputs.fabric.GetStreamAlertRuleChangeLog;
     /**
-     * Stream alert rule metric critical threshold
-     */
-    readonly criticalThreshold: string;
-    /**
      * Customer-provided stream alert rule description
      */
     readonly description: string;
+    /**
+     * Detection method for stream alert rule
+     */
+    readonly detectionMethod: outputs.fabric.GetStreamAlertRuleDetectionMethod;
     /**
      * Stream subscription enabled status
      */
@@ -69,17 +75,13 @@ export interface GetStreamAlertRuleResult {
      */
     readonly id: string;
     /**
-     * Stream alert rule metric name
+     * Metric selector for the stream alert rule
      */
-    readonly metricName: string;
+    readonly metricSelector: outputs.fabric.GetStreamAlertRuleMetricSelector;
     /**
      * Customer-provided stream alert rule name
      */
     readonly name: string;
-    /**
-     * Stream alert rule metric operand
-     */
-    readonly operand: string;
     /**
      * Lists of metrics to be included/excluded on the stream alert rule
      */
@@ -100,26 +102,16 @@ export interface GetStreamAlertRuleResult {
      * Equinix assigned unique identifier of the stream subscription resource
      */
     readonly uuid: string;
-    /**
-     * Stream alert rule metric warning threshold
-     */
-    readonly warningThreshold: string;
-    /**
-     * Stream alert rule metric window size
-     */
-    readonly windowSize: string;
 }
 /**
- * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
- *
- * Additional Documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+ * ## Example Usage
  */
 export function getStreamAlertRuleOutput(args: GetStreamAlertRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getStreamAlertRule:getStreamAlertRule", {
         "alertRuleId": args.alertRuleId,
+        "detectionMethod": args.detectionMethod,
+        "metricSelector": args.metricSelector,
         "streamId": args.streamId,
     }, opts);
 }
@@ -132,6 +124,14 @@ export interface GetStreamAlertRuleOutputArgs {
      * The uuid of the stream alert rule
      */
     alertRuleId: pulumi.Input<string>;
+    /**
+     * Detection method for stream alert rule
+     */
+    detectionMethod?: pulumi.Input<inputs.fabric.GetStreamAlertRuleDetectionMethodArgs>;
+    /**
+     * Metric selector for the stream alert rule
+     */
+    metricSelector?: pulumi.Input<inputs.fabric.GetStreamAlertRuleMetricSelectorArgs>;
     /**
      * The uuid of the stream that is the target of the stream alert rule
      */

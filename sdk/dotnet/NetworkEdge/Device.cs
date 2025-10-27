@@ -684,6 +684,71 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// });
     /// ```
+    /// ### example aruba edgeconnect ha device wth purchase order
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var aRUBAEDGECONNECTAM = new Equinix.NetworkEdge.Device("ARUBA-EDGECONNECT-AM", new()
+    ///     {
+    ///         Name = "TF_Aruba_Edge_Connect",
+    ///         ProjectId = "XXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "EDGECONNECT-SDWAN",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "EC-V",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "9.4.2.3",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         AdditionalBandwidth = 50,
+    ///         InterfaceCount = 32,
+    ///         AclTemplateId = "XXXXXXX",
+    ///         PurchaseOrderNumber = "PO-Primary-Account-123",
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "accountKey", "xxxxx" },
+    ///             { "accountName", "xxxx" },
+    ///             { "applianceTag", "tests" },
+    ///             { "hostname", "test" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "TF_CHECKPOINT",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             PurchaseOrderNumber = "PO-Secondary-Account-123",
+    ///             AclTemplateId = "XXXXXXX",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "test@eq.com",
+    ///             },
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "accountKey", "xxxxx" },
+    ///                 { "accountName", "xxxx" },
+    ///                 { "applianceTag", "test" },
+    ///                 { "hostname", "test" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example c8000v byol without default password
     /// ```csharp
     /// using System.Collections.Generic;
@@ -706,7 +771,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         SelfManaged = true,
     ///         Byol = true,
     ///         GenerateDefaultPassword = false,
-    ///         PackageCode = "VM100",
+    ///         PackageCode = "network-essentials",
     ///         Notifications = new[]
     ///         {
     ///             "john@equinix.com",
@@ -750,7 +815,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         TypeCode = "C8000V",
     ///         SelfManaged = true,
     ///         Byol = true,
-    ///         PackageCode = "VM100",
+    ///         PackageCode = "network-essentials",
     ///         Notifications = new[]
     ///         {
     ///             "john@equinix.com",
@@ -795,7 +860,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         TypeCode = "C8000V",
     ///         SelfManaged = true,
     ///         Byol = true,
-    ///         PackageCode = "VM100",
+    ///         PackageCode = "network-essentials",
     ///         Notifications = new[]
     ///         {
     ///             "john@equinix.com",
@@ -814,6 +879,72 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             KeyName = "test-key",
     ///         },
     ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example c8000v ha with cloud init rest api support
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var c8000VByol = new Equinix.NetworkEdge.Device("c8000v-byol", new()
+    ///     {
+    ///         Name = "tf-c8000v-byol",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "C8000V",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         GenerateDefaultPassword = true,
+    ///         PackageCode = "network-essentials",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///             "marry@equinix.com",
+    ///             "fred@equinix.com",
+    ///         },
+    ///         TermLength = 12,
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "17.11.01a",
+    ///         InterfaceCount = 10,
+    ///         CoreCount = 2,
+    ///         Tier = 1,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test",
+    ///             KeyName = "test-key",
+    ///         },
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "restApiSupportRequirement", "true" },
+    ///         },
+    ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "tf-c8000v-byol-secondary",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "csr1000v-s",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "restApiSupportRequirement", "true" },
+    ///             },
+    ///             AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
+    ///         },
     ///     });
     /// 
     /// });

@@ -28,7 +28,7 @@ class GetPrecisionTimeServiceResult:
     """
     A collection of values returned by getPrecisionTimeService.
     """
-    def __init__(__self__, account=None, change_log=None, connections=None, ept_service_id=None, href=None, id=None, ipv4=None, name=None, ntp_advanced_configurations=None, order=None, package=None, precision_time_price=None, project=None, ptp_advanced_configuration=None, state=None, type=None, uuid=None):
+    def __init__(__self__, account=None, change_log=None, connections=None, ept_service_id=None, href=None, id=None, ipv4=None, name=None, ntp_advanced_configurations=None, operation=None, order=None, package=None, precision_time_price=None, project=None, ptp_advanced_configuration=None, state=None, type=None, uuid=None):
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
@@ -56,6 +56,9 @@ class GetPrecisionTimeServiceResult:
         if ntp_advanced_configurations and not isinstance(ntp_advanced_configurations, list):
             raise TypeError("Expected argument 'ntp_advanced_configurations' to be a list")
         pulumi.set(__self__, "ntp_advanced_configurations", ntp_advanced_configurations)
+        if operation and not isinstance(operation, dict):
+            raise TypeError("Expected argument 'operation' to be a dict")
+        pulumi.set(__self__, "operation", operation)
         if order and not isinstance(order, dict):
             raise TypeError("Expected argument 'order' to be a dict")
         pulumi.set(__self__, "order", order)
@@ -155,6 +158,14 @@ class GetPrecisionTimeServiceResult:
 
     @property
     @pulumi.getter
+    def operation(self) -> 'outputs.GetPrecisionTimeServiceOperationResult':
+        """
+        Precision Time Service Operation
+        """
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter
     def order(self) -> 'outputs.GetPrecisionTimeServiceOrderResult':
         """
         Precision Time Order
@@ -233,6 +244,7 @@ class AwaitableGetPrecisionTimeServiceResult(GetPrecisionTimeServiceResult):
             ipv4=self.ipv4,
             name=self.name,
             ntp_advanced_configurations=self.ntp_advanced_configurations,
+            operation=self.operation,
             order=self.order,
             package=self.package,
             precision_time_price=self.precision_time_price,
@@ -292,6 +304,7 @@ def get_precision_time_service(ept_service_id: Optional[str] = None,
         ipv4=pulumi.get(__ret__, 'ipv4'),
         name=pulumi.get(__ret__, 'name'),
         ntp_advanced_configurations=pulumi.get(__ret__, 'ntp_advanced_configurations'),
+        operation=pulumi.get(__ret__, 'operation'),
         order=pulumi.get(__ret__, 'order'),
         package=pulumi.get(__ret__, 'package'),
         precision_time_price=pulumi.get(__ret__, 'precision_time_price'),
@@ -348,6 +361,7 @@ def get_precision_time_service_output(ept_service_id: Optional[pulumi.Input[str]
         ipv4=pulumi.get(__response__, 'ipv4'),
         name=pulumi.get(__response__, 'name'),
         ntp_advanced_configurations=pulumi.get(__response__, 'ntp_advanced_configurations'),
+        operation=pulumi.get(__response__, 'operation'),
         order=pulumi.get(__response__, 'order'),
         package=pulumi.get(__response__, 'package'),
         precision_time_price=pulumi.get(__response__, 'precision_time_price'),

@@ -173,7 +173,7 @@ class GetVirtualCircuitResult:
     @pulumi.getter(name="nniVlan")
     def nni_vlan(self) -> int:
         """
-        Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        Nni VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         """
         return pulumi.get(self, "nni_vlan")
 
@@ -181,7 +181,7 @@ class GetVirtualCircuitResult:
     @pulumi.getter(name="nniVnid")
     def nni_vnid(self) -> int:
         """
-        Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         """
         return pulumi.get(self, "nni_vnid")
 
@@ -273,7 +273,7 @@ class GetVirtualCircuitResult:
     @pulumi.getter
     def vnid(self) -> int:
         """
-        VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         """
         return pulumi.get(self, "vnid")
 
@@ -323,9 +323,9 @@ def get_virtual_circuit(customer_ipv6: Optional[str] = None,
                         virtual_circuit_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualCircuitResult:
     """
-    Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+    Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
 
-    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+    See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
 
 
     :param str customer_ipv6: The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.
@@ -373,9 +373,9 @@ def get_virtual_circuit_output(customer_ipv6: Optional[pulumi.Input[Optional[str
                                virtual_circuit_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualCircuitResult]:
     """
-    Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+    Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
 
-    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+    See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
 
 
     :param str customer_ipv6: The Customer IPv6 address which the CSR switch will peer with. Will default to the other usable IP in the IPv6 subnet.

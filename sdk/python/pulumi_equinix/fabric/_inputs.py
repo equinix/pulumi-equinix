@@ -129,6 +129,44 @@ __all__ = [
     'NetworkOperationArgsDict',
     'NetworkProjectArgs',
     'NetworkProjectArgsDict',
+    'PortAccountArgs',
+    'PortAccountArgsDict',
+    'PortAdditionalInfoArgs',
+    'PortAdditionalInfoArgsDict',
+    'PortChangeLogArgs',
+    'PortChangeLogArgsDict',
+    'PortDeviceArgs',
+    'PortDeviceArgsDict',
+    'PortDeviceRedundancyArgs',
+    'PortDeviceRedundancyArgsDict',
+    'PortEncapsulationArgs',
+    'PortEncapsulationArgsDict',
+    'PortLocationArgs',
+    'PortLocationArgsDict',
+    'PortNotificationArgs',
+    'PortNotificationArgsDict',
+    'PortOrderArgs',
+    'PortOrderArgsDict',
+    'PortOrderPurchaseOrderArgs',
+    'PortOrderPurchaseOrderArgsDict',
+    'PortOrderSignatureArgs',
+    'PortOrderSignatureArgsDict',
+    'PortOrderSignatureDelegateArgs',
+    'PortOrderSignatureDelegateArgsDict',
+    'PortPhysicalPortArgs',
+    'PortPhysicalPortArgsDict',
+    'PortPhysicalPortDemarcationPointArgs',
+    'PortPhysicalPortDemarcationPointArgsDict',
+    'PortPhysicalPortInterfaceArgs',
+    'PortPhysicalPortInterfaceArgsDict',
+    'PortProjectArgs',
+    'PortProjectArgsDict',
+    'PortRedundancyArgs',
+    'PortRedundancyArgsDict',
+    'PortSettingsArgs',
+    'PortSettingsArgsDict',
+    'PortTimeoutsArgs',
+    'PortTimeoutsArgsDict',
     'PrecisionTimeServiceAccountArgs',
     'PrecisionTimeServiceAccountArgsDict',
     'PrecisionTimeServiceChangeLogArgs',
@@ -139,6 +177,8 @@ __all__ = [
     'PrecisionTimeServiceIpv4ArgsDict',
     'PrecisionTimeServiceNtpAdvancedConfigurationArgs',
     'PrecisionTimeServiceNtpAdvancedConfigurationArgsDict',
+    'PrecisionTimeServiceOperationArgs',
+    'PrecisionTimeServiceOperationArgsDict',
     'PrecisionTimeServiceOrderArgs',
     'PrecisionTimeServiceOrderArgsDict',
     'PrecisionTimeServicePackageArgs',
@@ -277,6 +317,10 @@ __all__ = [
     'ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgsDict',
     'StreamAlertRuleChangeLogArgs',
     'StreamAlertRuleChangeLogArgsDict',
+    'StreamAlertRuleDetectionMethodArgs',
+    'StreamAlertRuleDetectionMethodArgsDict',
+    'StreamAlertRuleMetricSelectorArgs',
+    'StreamAlertRuleMetricSelectorArgsDict',
     'StreamAlertRuleResourceSelectorArgs',
     'StreamAlertRuleResourceSelectorArgsDict',
     'StreamAlertRuleTimeoutsArgs',
@@ -363,6 +407,10 @@ __all__ = [
     'GetServiceTokensFilterArgsDict',
     'GetServiceTokensPaginationArgs',
     'GetServiceTokensPaginationArgsDict',
+    'GetStreamAlertRuleDetectionMethodArgs',
+    'GetStreamAlertRuleDetectionMethodArgsDict',
+    'GetStreamAlertRuleMetricSelectorArgs',
+    'GetStreamAlertRuleMetricSelectorArgsDict',
     'GetStreamAlertRulesPaginationArgs',
     'GetStreamAlertRulesPaginationArgsDict',
     'GetStreamAttachmentsFilterArgs',
@@ -1188,6 +1236,10 @@ if not MYPY:
         """
         Provider assigned Connection Id
         """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        Network role
+        """
         router: NotRequired[pulumi.Input['ConnectionASideAccessPointRouterArgsDict']]
         """
         Cloud Router access point information that replaces `gateway`
@@ -1221,6 +1273,7 @@ class ConnectionASideAccessPointArgs:
                  port: Optional[pulumi.Input['ConnectionASideAccessPointPortArgs']] = None,
                  profile: Optional[pulumi.Input['ConnectionASideAccessPointProfileArgs']] = None,
                  provider_connection_id: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input['ConnectionASideAccessPointRouterArgs']] = None,
                  seller_region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[Union[str, 'AccessPointType']]] = None,
@@ -1237,6 +1290,7 @@ class ConnectionASideAccessPointArgs:
         :param pulumi.Input['ConnectionASideAccessPointPortArgs'] port: Port access point information
         :param pulumi.Input['ConnectionASideAccessPointProfileArgs'] profile: Service Profile
         :param pulumi.Input[str] provider_connection_id: Provider assigned Connection Id
+        :param pulumi.Input[str] role: Network role
         :param pulumi.Input['ConnectionASideAccessPointRouterArgs'] router: Cloud Router access point information that replaces `gateway`
         :param pulumi.Input[str] seller_region: Access point seller region
         :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -1267,6 +1321,8 @@ class ConnectionASideAccessPointArgs:
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -1408,6 +1464,18 @@ class ConnectionASideAccessPointArgs:
     @provider_connection_id.setter
     def provider_connection_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provider_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
     @property
     @pulumi.getter
@@ -3798,6 +3866,10 @@ if not MYPY:
         """
         Provider assigned Connection Id
         """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        Network role
+        """
         router: NotRequired[pulumi.Input['ConnectionZSideAccessPointRouterArgsDict']]
         """
         Cloud Router access point information that replaces `gateway`
@@ -3831,6 +3903,7 @@ class ConnectionZSideAccessPointArgs:
                  port: Optional[pulumi.Input['ConnectionZSideAccessPointPortArgs']] = None,
                  profile: Optional[pulumi.Input['ConnectionZSideAccessPointProfileArgs']] = None,
                  provider_connection_id: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input['ConnectionZSideAccessPointRouterArgs']] = None,
                  seller_region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[Union[str, 'AccessPointType']]] = None,
@@ -3847,6 +3920,7 @@ class ConnectionZSideAccessPointArgs:
         :param pulumi.Input['ConnectionZSideAccessPointPortArgs'] port: Port access point information
         :param pulumi.Input['ConnectionZSideAccessPointProfileArgs'] profile: Service Profile
         :param pulumi.Input[str] provider_connection_id: Provider assigned Connection Id
+        :param pulumi.Input[str] role: Network role
         :param pulumi.Input['ConnectionZSideAccessPointRouterArgs'] router: Cloud Router access point information that replaces `gateway`
         :param pulumi.Input[str] seller_region: Access point seller region
         :param pulumi.Input[Union[str, 'AccessPointType']] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD*ROUTER, NETWORK, METAL*NETWORK
@@ -3877,6 +3951,8 @@ class ConnectionZSideAccessPointArgs:
             pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -4018,6 +4094,18 @@ class ConnectionZSideAccessPointArgs:
     @provider_connection_id.setter
     def provider_connection_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provider_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network role
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
     @property
     @pulumi.getter
@@ -5785,6 +5873,1412 @@ class NetworkProjectArgs:
 
 
 if not MYPY:
+    class PortAccountArgsDict(TypedDict):
+        account_number: pulumi.Input[int]
+        """
+        Account number the port will be created for
+        """
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of the accountholder.
+        """
+        ucm_id: NotRequired[pulumi.Input[str]]
+        """
+        Enterprise datastore id
+        """
+elif False:
+    PortAccountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortAccountArgs:
+    def __init__(__self__, *,
+                 account_number: pulumi.Input[int],
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 ucm_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] account_number: Account number the port will be created for
+        :param pulumi.Input[str] account_name: Legal name of the accountholder.
+        :param pulumi.Input[str] ucm_id: Enterprise datastore id
+        """
+        pulumi.set(__self__, "account_number", account_number)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> pulumi.Input[int]:
+        """
+        Account number the port will be created for
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: pulumi.Input[int]):
+        pulumi.set(self, "account_number", value)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of the accountholder.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
+
+    @ucm_id.setter
+    def ucm_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ucm_id", value)
+
+
+if not MYPY:
+    class PortAdditionalInfoArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key name of the key/value pair
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the key/value pair
+        """
+elif False:
+    PortAdditionalInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortAdditionalInfoArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The key name of the key/value pair
+        :param pulumi.Input[str] value: The value of the key/value pair
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The key name of the key/value pair
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the key/value pair
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class PortChangeLogArgsDict(TypedDict):
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of creator of the port resource
+        """
+        created_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of creator of the port resource
+        """
+        created_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of creator of the port resource
+        """
+        created_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Creation time of the port resource
+        """
+        deleted_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of deleter of the port resource
+        """
+        deleted_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of deleter of the port resource
+        """
+        deleted_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of deleter of the port resource
+        """
+        deleted_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Deletion time of the port resource
+        """
+        updated_by: NotRequired[pulumi.Input[str]]
+        """
+        User name of last updater of the port resource
+        """
+        updated_by_email: NotRequired[pulumi.Input[str]]
+        """
+        Email of last updater of the port resource
+        """
+        updated_by_full_name: NotRequired[pulumi.Input[str]]
+        """
+        Legal name of last updater of the port resource
+        """
+        updated_date_time: NotRequired[pulumi.Input[str]]
+        """
+        Last update time of the port resource
+        """
+elif False:
+    PortChangeLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortChangeLogArgs:
+    def __init__(__self__, *,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_by_email: Optional[pulumi.Input[str]] = None,
+                 created_by_full_name: Optional[pulumi.Input[str]] = None,
+                 created_date_time: Optional[pulumi.Input[str]] = None,
+                 deleted_by: Optional[pulumi.Input[str]] = None,
+                 deleted_by_email: Optional[pulumi.Input[str]] = None,
+                 deleted_by_full_name: Optional[pulumi.Input[str]] = None,
+                 deleted_date_time: Optional[pulumi.Input[str]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 updated_by_email: Optional[pulumi.Input[str]] = None,
+                 updated_by_full_name: Optional[pulumi.Input[str]] = None,
+                 updated_date_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_by: User name of creator of the port resource
+        :param pulumi.Input[str] created_by_email: Email of creator of the port resource
+        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the port resource
+        :param pulumi.Input[str] created_date_time: Creation time of the port resource
+        :param pulumi.Input[str] deleted_by: User name of deleter of the port resource
+        :param pulumi.Input[str] deleted_by_email: Email of deleter of the port resource
+        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the port resource
+        :param pulumi.Input[str] deleted_date_time: Deletion time of the port resource
+        :param pulumi.Input[str] updated_by: User name of last updater of the port resource
+        :param pulumi.Input[str] updated_by_email: Email of last updater of the port resource
+        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the port resource
+        :param pulumi.Input[str] updated_date_time: Last update time of the port resource
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of creator of the port resource
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of creator of the port resource
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @created_by_email.setter
+    def created_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_email", value)
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of creator of the port resource
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @created_by_full_name.setter
+    def created_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time of the port resource
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of deleter of the port resource
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @deleted_by.setter
+    def deleted_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by", value)
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of deleter of the port resource
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @deleted_by_email.setter
+    def deleted_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_email", value)
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of deleter of the port resource
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @deleted_by_full_name.setter
+    def deleted_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion time of the port resource
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name of last updater of the port resource
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of last updater of the port resource
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @updated_by_email.setter
+    def updated_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_email", value)
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legal name of last updater of the port resource
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @updated_by_full_name.setter
+    def updated_by_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by_full_name", value)
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last update time of the port resource
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+if not MYPY:
+    class PortDeviceArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Device name for the port
+        """
+        redundancy: NotRequired[pulumi.Input['PortDeviceRedundancyArgsDict']]
+        """
+        Device redundancy configuration
+        """
+elif False:
+    PortDeviceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortDeviceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 redundancy: Optional[pulumi.Input['PortDeviceRedundancyArgs']] = None):
+        """
+        :param pulumi.Input[str] name: Device name for the port
+        :param pulumi.Input['PortDeviceRedundancyArgs'] redundancy: Device redundancy configuration
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if redundancy is not None:
+            pulumi.set(__self__, "redundancy", redundancy)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Device name for the port
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def redundancy(self) -> Optional[pulumi.Input['PortDeviceRedundancyArgs']]:
+        """
+        Device redundancy configuration
+        """
+        return pulumi.get(self, "redundancy")
+
+    @redundancy.setter
+    def redundancy(self, value: Optional[pulumi.Input['PortDeviceRedundancyArgs']]):
+        pulumi.set(self, "redundancy", value)
+
+
+if not MYPY:
+    class PortDeviceRedundancyArgsDict(TypedDict):
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Redundancy group identifier
+        """
+        priority: NotRequired[pulumi.Input[str]]
+        """
+        Redundancy priority (PRIMARY or SECONDARY)
+        """
+elif False:
+    PortDeviceRedundancyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortDeviceRedundancyArgs:
+    def __init__(__self__, *,
+                 group: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] group: Redundancy group identifier
+        :param pulumi.Input[str] priority: Redundancy priority (PRIMARY or SECONDARY)
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Redundancy group identifier
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Redundancy priority (PRIMARY or SECONDARY)
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "priority", value)
+
+
+if not MYPY:
+    class PortEncapsulationArgsDict(TypedDict):
+        tag_protocol_id: pulumi.Input[str]
+        """
+        Port encapsulation tag protocol identifier
+        """
+        type: pulumi.Input[str]
+        """
+        Port encapsulation protocol type
+        """
+elif False:
+    PortEncapsulationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortEncapsulationArgs:
+    def __init__(__self__, *,
+                 tag_protocol_id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] tag_protocol_id: Port encapsulation tag protocol identifier
+        :param pulumi.Input[str] type: Port encapsulation protocol type
+        """
+        pulumi.set(__self__, "tag_protocol_id", tag_protocol_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="tagProtocolId")
+    def tag_protocol_id(self) -> pulumi.Input[str]:
+        """
+        Port encapsulation tag protocol identifier
+        """
+        return pulumi.get(self, "tag_protocol_id")
+
+    @tag_protocol_id.setter
+    def tag_protocol_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_protocol_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Port encapsulation protocol type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PortLocationArgsDict(TypedDict):
+        metro_code: pulumi.Input[str]
+        """
+        Metro code the port will be created in
+        """
+elif False:
+    PortLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortLocationArgs:
+    def __init__(__self__, *,
+                 metro_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] metro_code: Metro code the port will be created in
+        """
+        pulumi.set(__self__, "metro_code", metro_code)
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> pulumi.Input[str]:
+        """
+        Metro code the port will be created in
+        """
+        return pulumi.get(self, "metro_code")
+
+    @metro_code.setter
+    def metro_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metro_code", value)
+
+
+if not MYPY:
+    class PortNotificationArgsDict(TypedDict):
+        registered_users: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Array of registered users that will receive this notification type on the port
+        """
+        type: pulumi.Input[str]
+        """
+        Notification Type
+        """
+elif False:
+    PortNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortNotificationArgs:
+    def __init__(__self__, *,
+                 registered_users: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] registered_users: Array of registered users that will receive this notification type on the port
+        :param pulumi.Input[str] type: Notification Type
+        """
+        pulumi.set(__self__, "registered_users", registered_users)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="registeredUsers")
+    def registered_users(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Array of registered users that will receive this notification type on the port
+        """
+        return pulumi.get(self, "registered_users")
+
+    @registered_users.setter
+    def registered_users(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "registered_users", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Notification Type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PortOrderArgsDict(TypedDict):
+        customer_reference_id: NotRequired[pulumi.Input[str]]
+        """
+        Customer order reference Id
+        """
+        order_id: NotRequired[pulumi.Input[str]]
+        """
+        Order Identification
+        """
+        order_number: NotRequired[pulumi.Input[str]]
+        """
+        Order Reference Number
+        """
+        purchase_order: NotRequired[pulumi.Input['PortOrderPurchaseOrderArgsDict']]
+        """
+        Purchase order details
+        """
+        signature: NotRequired[pulumi.Input['PortOrderSignatureArgsDict']]
+        """
+        Port order confirmation signature details
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        Equinix-assigned order identifier, this is a derived response attribute
+        """
+elif False:
+    PortOrderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortOrderArgs:
+    def __init__(__self__, *,
+                 customer_reference_id: Optional[pulumi.Input[str]] = None,
+                 order_id: Optional[pulumi.Input[str]] = None,
+                 order_number: Optional[pulumi.Input[str]] = None,
+                 purchase_order: Optional[pulumi.Input['PortOrderPurchaseOrderArgs']] = None,
+                 signature: Optional[pulumi.Input['PortOrderSignatureArgs']] = None,
+                 uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] customer_reference_id: Customer order reference Id
+        :param pulumi.Input[str] order_id: Order Identification
+        :param pulumi.Input[str] order_number: Order Reference Number
+        :param pulumi.Input['PortOrderPurchaseOrderArgs'] purchase_order: Purchase order details
+        :param pulumi.Input['PortOrderSignatureArgs'] signature: Port order confirmation signature details
+        :param pulumi.Input[str] uuid: Equinix-assigned order identifier, this is a derived response attribute
+        """
+        if customer_reference_id is not None:
+            pulumi.set(__self__, "customer_reference_id", customer_reference_id)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+        if order_number is not None:
+            pulumi.set(__self__, "order_number", order_number)
+        if purchase_order is not None:
+            pulumi.set(__self__, "purchase_order", purchase_order)
+        if signature is not None:
+            pulumi.set(__self__, "signature", signature)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="customerReferenceId")
+    def customer_reference_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer order reference Id
+        """
+        return pulumi.get(self, "customer_reference_id")
+
+    @customer_reference_id.setter
+    def customer_reference_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_reference_id", value)
+
+    @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Order Identification
+        """
+        return pulumi.get(self, "order_id")
+
+    @order_id.setter
+    def order_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_id", value)
+
+    @property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Order Reference Number
+        """
+        return pulumi.get(self, "order_number")
+
+    @order_number.setter
+    def order_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_number", value)
+
+    @property
+    @pulumi.getter(name="purchaseOrder")
+    def purchase_order(self) -> Optional[pulumi.Input['PortOrderPurchaseOrderArgs']]:
+        """
+        Purchase order details
+        """
+        return pulumi.get(self, "purchase_order")
+
+    @purchase_order.setter
+    def purchase_order(self, value: Optional[pulumi.Input['PortOrderPurchaseOrderArgs']]):
+        pulumi.set(self, "purchase_order", value)
+
+    @property
+    @pulumi.getter
+    def signature(self) -> Optional[pulumi.Input['PortOrderSignatureArgs']]:
+        """
+        Port order confirmation signature details
+        """
+        return pulumi.get(self, "signature")
+
+    @signature.setter
+    def signature(self, value: Optional[pulumi.Input['PortOrderSignatureArgs']]):
+        pulumi.set(self, "signature", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned order identifier, this is a derived response attribute
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class PortOrderPurchaseOrderArgsDict(TypedDict):
+        amount: NotRequired[pulumi.Input[str]]
+        """
+        purchase order amount
+        """
+        attachment_id: NotRequired[pulumi.Input[str]]
+        """
+        purchase order attachment id
+        """
+        end_date: NotRequired[pulumi.Input[str]]
+        """
+        purchase order end date
+        """
+        number: NotRequired[pulumi.Input[str]]
+        """
+        purchase order number
+        """
+        start_date: NotRequired[pulumi.Input[str]]
+        """
+        purchase order start date
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        purchase order type
+        """
+elif False:
+    PortOrderPurchaseOrderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortOrderPurchaseOrderArgs:
+    def __init__(__self__, *,
+                 amount: Optional[pulumi.Input[str]] = None,
+                 attachment_id: Optional[pulumi.Input[str]] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 number: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] amount: purchase order amount
+        :param pulumi.Input[str] attachment_id: purchase order attachment id
+        :param pulumi.Input[str] end_date: purchase order end date
+        :param pulumi.Input[str] number: purchase order number
+        :param pulumi.Input[str] start_date: purchase order start date
+        :param pulumi.Input[str] type: purchase order type
+        """
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if attachment_id is not None:
+            pulumi.set(__self__, "attachment_id", attachment_id)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if number is not None:
+            pulumi.set(__self__, "number", number)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def amount(self) -> Optional[pulumi.Input[str]]:
+        """
+        purchase order amount
+        """
+        return pulumi.get(self, "amount")
+
+    @amount.setter
+    def amount(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "amount", value)
+
+    @property
+    @pulumi.getter(name="attachmentId")
+    def attachment_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        purchase order attachment id
+        """
+        return pulumi.get(self, "attachment_id")
+
+    @attachment_id.setter
+    def attachment_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attachment_id", value)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        purchase order end date
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter
+    def number(self) -> Optional[pulumi.Input[str]]:
+        """
+        purchase order number
+        """
+        return pulumi.get(self, "number")
+
+    @number.setter
+    def number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "number", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        purchase order start date
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_date", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        purchase order type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PortOrderSignatureArgsDict(TypedDict):
+        delegate: pulumi.Input['PortOrderSignatureDelegateArgsDict']
+        """
+        delegate order details
+        """
+        signatory: pulumi.Input[str]
+        """
+        Port signature Type
+        """
+elif False:
+    PortOrderSignatureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortOrderSignatureArgs:
+    def __init__(__self__, *,
+                 delegate: pulumi.Input['PortOrderSignatureDelegateArgs'],
+                 signatory: pulumi.Input[str]):
+        """
+        :param pulumi.Input['PortOrderSignatureDelegateArgs'] delegate: delegate order details
+        :param pulumi.Input[str] signatory: Port signature Type
+        """
+        pulumi.set(__self__, "delegate", delegate)
+        pulumi.set(__self__, "signatory", signatory)
+
+    @property
+    @pulumi.getter
+    def delegate(self) -> pulumi.Input['PortOrderSignatureDelegateArgs']:
+        """
+        delegate order details
+        """
+        return pulumi.get(self, "delegate")
+
+    @delegate.setter
+    def delegate(self, value: pulumi.Input['PortOrderSignatureDelegateArgs']):
+        pulumi.set(self, "delegate", value)
+
+    @property
+    @pulumi.getter
+    def signatory(self) -> pulumi.Input[str]:
+        """
+        Port signature Type
+        """
+        return pulumi.get(self, "signatory")
+
+    @signatory.setter
+    def signatory(self, value: pulumi.Input[str]):
+        pulumi.set(self, "signatory", value)
+
+
+if not MYPY:
+    class PortOrderSignatureDelegateArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Email of the signatory
+        """
+        first_name: NotRequired[pulumi.Input[str]]
+        """
+        First name of the signatory
+        """
+        last_name: NotRequired[pulumi.Input[str]]
+        """
+        Last name of the signatory
+        """
+elif False:
+    PortOrderSignatureDelegateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortOrderSignatureDelegateArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 first_name: Optional[pulumi.Input[str]] = None,
+                 last_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] email: Email of the signatory
+        :param pulumi.Input[str] first_name: First name of the signatory
+        :param pulumi.Input[str] last_name: Last name of the signatory
+        """
+        pulumi.set(__self__, "email", email)
+        if first_name is not None:
+            pulumi.set(__self__, "first_name", first_name)
+        if last_name is not None:
+            pulumi.set(__self__, "last_name", last_name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        Email of the signatory
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="firstName")
+    def first_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        First name of the signatory
+        """
+        return pulumi.get(self, "first_name")
+
+    @first_name.setter
+    def first_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "first_name", value)
+
+    @property
+    @pulumi.getter(name="lastName")
+    def last_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last name of the signatory
+        """
+        return pulumi.get(self, "last_name")
+
+    @last_name.setter
+    def last_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_name", value)
+
+
+if not MYPY:
+    class PortPhysicalPortArgsDict(TypedDict):
+        demarcation_point: pulumi.Input['PortPhysicalPortDemarcationPointArgsDict']
+        """
+        Customer physical port
+        """
+        type: pulumi.Input[str]
+        """
+        Physical Port type
+        """
+        interface: NotRequired[pulumi.Input['PortPhysicalPortInterfaceArgsDict']]
+        """
+        Physical port interface
+        """
+elif False:
+    PortPhysicalPortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortPhysicalPortArgs:
+    def __init__(__self__, *,
+                 demarcation_point: pulumi.Input['PortPhysicalPortDemarcationPointArgs'],
+                 type: pulumi.Input[str],
+                 interface: Optional[pulumi.Input['PortPhysicalPortInterfaceArgs']] = None):
+        """
+        :param pulumi.Input['PortPhysicalPortDemarcationPointArgs'] demarcation_point: Customer physical port
+        :param pulumi.Input[str] type: Physical Port type
+        :param pulumi.Input['PortPhysicalPortInterfaceArgs'] interface: Physical port interface
+        """
+        pulumi.set(__self__, "demarcation_point", demarcation_point)
+        pulumi.set(__self__, "type", type)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+
+    @property
+    @pulumi.getter(name="demarcationPoint")
+    def demarcation_point(self) -> pulumi.Input['PortPhysicalPortDemarcationPointArgs']:
+        """
+        Customer physical port
+        """
+        return pulumi.get(self, "demarcation_point")
+
+    @demarcation_point.setter
+    def demarcation_point(self, value: pulumi.Input['PortPhysicalPortDemarcationPointArgs']):
+        pulumi.set(self, "demarcation_point", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Physical Port type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input['PortPhysicalPortInterfaceArgs']]:
+        """
+        Physical port interface
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input['PortPhysicalPortInterfaceArgs']]):
+        pulumi.set(self, "interface", value)
+
+
+if not MYPY:
+    class PortPhysicalPortDemarcationPointArgsDict(TypedDict):
+        cabinet_unique_space_id: pulumi.Input[str]
+        """
+        Port cabinet unique space id
+        """
+        cage_unique_space_id: pulumi.Input[str]
+        """
+        Port cage unique space id
+        """
+        connector_type: pulumi.Input[str]
+        """
+        Port connector type
+        """
+        ibx: pulumi.Input[str]
+        """
+        IBX Metro code for the physical port
+        """
+        patch_panel: pulumi.Input[str]
+        """
+        Port patch panel
+        """
+elif False:
+    PortPhysicalPortDemarcationPointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortPhysicalPortDemarcationPointArgs:
+    def __init__(__self__, *,
+                 cabinet_unique_space_id: pulumi.Input[str],
+                 cage_unique_space_id: pulumi.Input[str],
+                 connector_type: pulumi.Input[str],
+                 ibx: pulumi.Input[str],
+                 patch_panel: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cabinet_unique_space_id: Port cabinet unique space id
+        :param pulumi.Input[str] cage_unique_space_id: Port cage unique space id
+        :param pulumi.Input[str] connector_type: Port connector type
+        :param pulumi.Input[str] ibx: IBX Metro code for the physical port
+        :param pulumi.Input[str] patch_panel: Port patch panel
+        """
+        pulumi.set(__self__, "cabinet_unique_space_id", cabinet_unique_space_id)
+        pulumi.set(__self__, "cage_unique_space_id", cage_unique_space_id)
+        pulumi.set(__self__, "connector_type", connector_type)
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "patch_panel", patch_panel)
+
+    @property
+    @pulumi.getter(name="cabinetUniqueSpaceId")
+    def cabinet_unique_space_id(self) -> pulumi.Input[str]:
+        """
+        Port cabinet unique space id
+        """
+        return pulumi.get(self, "cabinet_unique_space_id")
+
+    @cabinet_unique_space_id.setter
+    def cabinet_unique_space_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cabinet_unique_space_id", value)
+
+    @property
+    @pulumi.getter(name="cageUniqueSpaceId")
+    def cage_unique_space_id(self) -> pulumi.Input[str]:
+        """
+        Port cage unique space id
+        """
+        return pulumi.get(self, "cage_unique_space_id")
+
+    @cage_unique_space_id.setter
+    def cage_unique_space_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cage_unique_space_id", value)
+
+    @property
+    @pulumi.getter(name="connectorType")
+    def connector_type(self) -> pulumi.Input[str]:
+        """
+        Port connector type
+        """
+        return pulumi.get(self, "connector_type")
+
+    @connector_type.setter
+    def connector_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connector_type", value)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> pulumi.Input[str]:
+        """
+        IBX Metro code for the physical port
+        """
+        return pulumi.get(self, "ibx")
+
+    @ibx.setter
+    def ibx(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ibx", value)
+
+    @property
+    @pulumi.getter(name="patchPanel")
+    def patch_panel(self) -> pulumi.Input[str]:
+        """
+        Port patch panel
+        """
+        return pulumi.get(self, "patch_panel")
+
+    @patch_panel.setter
+    def patch_panel(self, value: pulumi.Input[str]):
+        pulumi.set(self, "patch_panel", value)
+
+
+if not MYPY:
+    class PortPhysicalPortInterfaceArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Interface type for the physical port
+        """
+elif False:
+    PortPhysicalPortInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortPhysicalPortInterfaceArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Interface type for the physical port
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Interface type for the physical port
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PortProjectArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        Project id the port will be created in
+        """
+elif False:
+    PortProjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortProjectArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] project_id: Project id the port will be created in
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        Project id the port will be created in
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class PortRedundancyArgsDict(TypedDict):
+        priority: pulumi.Input[str]
+        """
+        Port redundancy priority value
+        """
+elif False:
+    PortRedundancyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortRedundancyArgs:
+    def __init__(__self__, *,
+                 priority: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] priority: Port redundancy priority value
+        """
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[str]:
+        """
+        Port redundancy priority value
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[str]):
+        pulumi.set(self, "priority", value)
+
+
+if not MYPY:
+    class PortSettingsArgsDict(TypedDict):
+        package_type: pulumi.Input[str]
+        """
+        Billing package for the port being ordered
+        """
+        shared_port_type: pulumi.Input[bool]
+        """
+        Indicates whether this is a dedicated customer cage or a shared neutral cage
+        """
+elif False:
+    PortSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortSettingsArgs:
+    def __init__(__self__, *,
+                 package_type: pulumi.Input[str],
+                 shared_port_type: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[str] package_type: Billing package for the port being ordered
+        :param pulumi.Input[bool] shared_port_type: Indicates whether this is a dedicated customer cage or a shared neutral cage
+        """
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "shared_port_type", shared_port_type)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> pulumi.Input[str]:
+        """
+        Billing package for the port being ordered
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_type", value)
+
+    @property
+    @pulumi.getter(name="sharedPortType")
+    def shared_port_type(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether this is a dedicated customer cage or a shared neutral cage
+        """
+        return pulumi.get(self, "shared_port_type")
+
+    @shared_port_type.setter
+    def shared_port_type(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "shared_port_type", value)
+
+
+if not MYPY:
+    class PortTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    PortTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PortTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[str]] = None,
+                 delete: Optional[pulumi.Input[str]] = None,
+                 read: Optional[pulumi.Input[str]] = None,
+                 update: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class PrecisionTimeServiceAccountArgsDict(TypedDict):
         account_name: NotRequired[pulumi.Input[str]]
         """
@@ -6523,6 +8017,38 @@ class PrecisionTimeServiceNtpAdvancedConfigurationArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class PrecisionTimeServiceOperationArgsDict(TypedDict):
+        operational_status: NotRequired[pulumi.Input[str]]
+        """
+        Current operational status of the Precision Time Service
+        """
+elif False:
+    PrecisionTimeServiceOperationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrecisionTimeServiceOperationArgs:
+    def __init__(__self__, *,
+                 operational_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] operational_status: Current operational status of the Precision Time Service
+        """
+        if operational_status is not None:
+            pulumi.set(__self__, "operational_status", operational_status)
+
+    @property
+    @pulumi.getter(name="operationalStatus")
+    def operational_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current operational status of the Precision Time Service
+        """
+        return pulumi.get(self, "operational_status")
+
+    @operational_status.setter
+    def operational_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operational_status", value)
 
 
 if not MYPY:
@@ -14380,6 +15906,148 @@ class StreamAlertRuleChangeLogArgs:
 
 
 if not MYPY:
+    class StreamAlertRuleDetectionMethodArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Stream Alert Rule detection method type
+        """
+        critical_threshold: NotRequired[pulumi.Input[str]]
+        """
+        Stream alert rule metric critical threshold
+        """
+        operand: NotRequired[pulumi.Input[str]]
+        """
+        Stream alert rule metric operand
+        """
+        warning_threshold: NotRequired[pulumi.Input[str]]
+        """
+        Stream alert rule metric warning threshold
+        """
+        window_size: NotRequired[pulumi.Input[str]]
+        """
+        Stream alert rule metric window size
+        """
+elif False:
+    StreamAlertRuleDetectionMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamAlertRuleDetectionMethodArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 critical_threshold: Optional[pulumi.Input[str]] = None,
+                 operand: Optional[pulumi.Input[str]] = None,
+                 warning_threshold: Optional[pulumi.Input[str]] = None,
+                 window_size: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Stream Alert Rule detection method type
+        :param pulumi.Input[str] critical_threshold: Stream alert rule metric critical threshold
+        :param pulumi.Input[str] operand: Stream alert rule metric operand
+        :param pulumi.Input[str] warning_threshold: Stream alert rule metric warning threshold
+        :param pulumi.Input[str] window_size: Stream alert rule metric window size
+        """
+        pulumi.set(__self__, "type", type)
+        if critical_threshold is not None:
+            pulumi.set(__self__, "critical_threshold", critical_threshold)
+        if operand is not None:
+            pulumi.set(__self__, "operand", operand)
+        if warning_threshold is not None:
+            pulumi.set(__self__, "warning_threshold", warning_threshold)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Stream Alert Rule detection method type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="criticalThreshold")
+    def critical_threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stream alert rule metric critical threshold
+        """
+        return pulumi.get(self, "critical_threshold")
+
+    @critical_threshold.setter
+    def critical_threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "critical_threshold", value)
+
+    @property
+    @pulumi.getter
+    def operand(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stream alert rule metric operand
+        """
+        return pulumi.get(self, "operand")
+
+    @operand.setter
+    def operand(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operand", value)
+
+    @property
+    @pulumi.getter(name="warningThreshold")
+    def warning_threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stream alert rule metric warning threshold
+        """
+        return pulumi.get(self, "warning_threshold")
+
+    @warning_threshold.setter
+    def warning_threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warning_threshold", value)
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stream alert rule metric window size
+        """
+        return pulumi.get(self, "window_size")
+
+    @window_size.setter
+    def window_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "window_size", value)
+
+
+if not MYPY:
+    class StreamAlertRuleMetricSelectorArgsDict(TypedDict):
+        includes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of metrics to include
+        """
+elif False:
+    StreamAlertRuleMetricSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamAlertRuleMetricSelectorArgs:
+    def __init__(__self__, *,
+                 includes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "includes", value)
+
+
+if not MYPY:
     class StreamAlertRuleResourceSelectorArgsDict(TypedDict):
         includes: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
@@ -18046,6 +19714,144 @@ class GetServiceTokensPaginationArgs:
     @total.setter
     def total(self, value: int):
         pulumi.set(self, "total", value)
+
+
+if not MYPY:
+    class GetStreamAlertRuleDetectionMethodArgsDict(TypedDict):
+        critical_threshold: str
+        """
+        Stream alert rule metric critical threshold
+        """
+        operand: str
+        """
+        Stream alert rule metric operand
+        """
+        type: str
+        """
+        Stream Alert Rule detection method type
+        """
+        warning_threshold: str
+        """
+        Stream alert rule metric warning threshold
+        """
+        window_size: str
+        """
+        Stream alert rule metric window size
+        """
+elif False:
+    GetStreamAlertRuleDetectionMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStreamAlertRuleDetectionMethodArgs:
+    def __init__(__self__, *,
+                 critical_threshold: str,
+                 operand: str,
+                 type: str,
+                 warning_threshold: str,
+                 window_size: str):
+        """
+        :param str critical_threshold: Stream alert rule metric critical threshold
+        :param str operand: Stream alert rule metric operand
+        :param str type: Stream Alert Rule detection method type
+        :param str warning_threshold: Stream alert rule metric warning threshold
+        :param str window_size: Stream alert rule metric window size
+        """
+        pulumi.set(__self__, "critical_threshold", critical_threshold)
+        pulumi.set(__self__, "operand", operand)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "warning_threshold", warning_threshold)
+        pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter(name="criticalThreshold")
+    def critical_threshold(self) -> str:
+        """
+        Stream alert rule metric critical threshold
+        """
+        return pulumi.get(self, "critical_threshold")
+
+    @critical_threshold.setter
+    def critical_threshold(self, value: str):
+        pulumi.set(self, "critical_threshold", value)
+
+    @property
+    @pulumi.getter
+    def operand(self) -> str:
+        """
+        Stream alert rule metric operand
+        """
+        return pulumi.get(self, "operand")
+
+    @operand.setter
+    def operand(self, value: str):
+        pulumi.set(self, "operand", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Stream Alert Rule detection method type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="warningThreshold")
+    def warning_threshold(self) -> str:
+        """
+        Stream alert rule metric warning threshold
+        """
+        return pulumi.get(self, "warning_threshold")
+
+    @warning_threshold.setter
+    def warning_threshold(self, value: str):
+        pulumi.set(self, "warning_threshold", value)
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> str:
+        """
+        Stream alert rule metric window size
+        """
+        return pulumi.get(self, "window_size")
+
+    @window_size.setter
+    def window_size(self, value: str):
+        pulumi.set(self, "window_size", value)
+
+
+if not MYPY:
+    class GetStreamAlertRuleMetricSelectorArgsDict(TypedDict):
+        includes: Sequence[str]
+        """
+        List of metrics to include
+        """
+elif False:
+    GetStreamAlertRuleMetricSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStreamAlertRuleMetricSelectorArgs:
+    def __init__(__self__, *,
+                 includes: Sequence[str]):
+        """
+        :param Sequence[str] includes: List of metrics to include
+        """
+        pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Sequence[str]:
+        """
+        List of metrics to include
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: Sequence[str]):
+        pulumi.set(self, "includes", value)
 
 
 if not MYPY:

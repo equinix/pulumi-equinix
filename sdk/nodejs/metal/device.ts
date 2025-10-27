@@ -75,60 +75,8 @@ import * as utilities from "../utilities";
  *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: projectId,
  *     hardwareReservationId: "next-available",
- *     storage: `{
- *   \"disks\": [
- *     {
- *       \"device\": \"/dev/sda\",
- *       \"wipeTable\": true,
- *       \"partitions\": [
- *         {
- *           \"label\": \"BIOS\",
- *           \"number\": 1,
- *           \"size\": \"4096\"
- *         },
- *         {
- *           \"label\": \"SWAP\",
- *           \"number\": 2,
- *           \"size\": \"3993600\"
- *         },
- *         {
- *           \"label\": \"ROOT\",
- *           \"number\": 3,
- *           \"size\": \"0\"
- *         }
- *       ]
- *     }
- *   ],
- *   \"filesystems\": [
- *     {
- *       \"mount\": {
- *         \"device\": \"/dev/sda3\",
- *         \"format\": \"ext4\",
- *         \"point\": \"/\",
- *         \"create\": {
- *           \"options\": [
- *             \"-L\",
- *             \"ROOT\"
- *           ]
- *         }
- *       }
- *     },
- *     {
- *       \"mount\": {
- *         \"device\": \"/dev/sda2\",
- *         \"format\": \"swap\",
- *         \"point\": \"none\",
- *         \"create\": {
- *           \"options\": [
- *             \"-L\",
- *             \"SWAP\"
- *           ]
- *         }
- *       }
- *     }
- *   ]
- * }
- * `,
+ *     storage: "{  \\"disks\\": [    {      \\"device\\": \\"/dev/sda\\",      \\"wipeTable\\": true,      \\"partitions\\": [        {          \\"label\\": \\"BIOS\\",          \\"number\\": 1,          \\"size\\": \\"4096\\"        },        {          \\"label\\": \\"SWAP\\",          \\"number\\": 2,          \\"size\\": \\"3993600\\"        },        {          \\"label\\": \\"ROOT\\",          \\"number\\": 3,          \\"size\\": \\"0\\"        }      ]    }  ],  \\"filesystems\\": [    {      \\"mount\\": {        \\"device\\": \\"/dev/sda3\\",        \\"format\\": \\"ext4\\",        \\"point\\": \\"/\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"ROOT\\"          ]        }      }    },    {      \\"mount\\": {        \\"device\\": \\"/dev/sda2\\",        \\"format\\": \\"swap\\",        \\"point\\": \\"none\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"SWAP\\"          ]        }      }    }  ]}
+ * ",
  * });
  * ```
  * ### example 5
@@ -276,7 +224,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly operatingSystem!: pulumi.Output<string>;
     /**
-     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -297,7 +245,7 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly rootPassword!: pulumi.Output<string>;
     /**
-     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
      */
     public /*out*/ readonly sosHostname!: pulumi.Output<string>;
     /**
@@ -541,7 +489,7 @@ export interface DeviceState {
      */
     operatingSystem?: pulumi.Input<string | enums.metal.OperatingSystem>;
     /**
-     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      */
     plan?: pulumi.Input<string | enums.metal.Plan>;
     /**
@@ -562,7 +510,7 @@ export interface DeviceState {
      */
     rootPassword?: pulumi.Input<string>;
     /**
-     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
      */
     sosHostname?: pulumi.Input<string>;
     /**
@@ -663,7 +611,7 @@ export interface DeviceArgs {
      */
     operatingSystem: pulumi.Input<string | enums.metal.OperatingSystem>;
     /**
-     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      */
     plan: pulumi.Input<string | enums.metal.Plan>;
     /**

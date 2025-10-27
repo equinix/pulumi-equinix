@@ -135,61 +135,9 @@ import (
 //				BillingCycle:          pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:             pulumi.Any(projectId),
 //				HardwareReservationId: pulumi.String("next-available"),
-//				Storage: pulumi.String(`{
-//	  \"disks\": [
-//	    {
-//	      \"device\": \"/dev/sda\",
-//	      \"wipeTable\": true,
-//	      \"partitions\": [
-//	        {
-//	          \"label\": \"BIOS\",
-//	          \"number\": 1,
-//	          \"size\": \"4096\"
-//	        },
-//	        {
-//	          \"label\": \"SWAP\",
-//	          \"number\": 2,
-//	          \"size\": \"3993600\"
-//	        },
-//	        {
-//	          \"label\": \"ROOT\",
-//	          \"number\": 3,
-//	          \"size\": \"0\"
-//	        }
-//	      ]
-//	    }
-//	  ],
-//	  \"filesystems\": [
-//	    {
-//	      \"mount\": {
-//	        \"device\": \"/dev/sda3\",
-//	        \"format\": \"ext4\",
-//	        \"point\": \"/\",
-//	        \"create\": {
-//	          \"options\": [
-//	            \"-L\",
-//	            \"ROOT\"
-//	          ]
-//	        }
-//	      }
-//	    },
-//	    {
-//	      \"mount\": {
-//	        \"device\": \"/dev/sda2\",
-//	        \"format\": \"swap\",
-//	        \"point\": \"none\",
-//	        \"create\": {
-//	          \"options\": [
-//	            \"-L\",
-//	            \"SWAP\"
-//	          ]
-//	        }
-//	      }
-//	    }
-//	  ]
-//	}
+//				Storage:               pulumi.String("{  \\"disks\\": [    {      \\"device\\": \\"/dev/sda\\",      \\"wipeTable\\": true,      \\"partitions\\": [        {          \\"label\\": \\"BIOS\\",          \\"number\\": 1,          \\"size\\": \\"4096\\"        },        {          \\"label\\": \\"SWAP\\",          \\"number\\": 2,          \\"size\\": \\"3993600\\"        },        {          \\"label\\": \\"ROOT\\",          \\"number\\": 3,          \\"size\\": \\"0\\"        }      ]    }  ],  \\"filesystems\\": [    {      \\"mount\\": {        \\"device\\": \\"/dev/sda3\\",        \\"format\\": \\"ext4\\",        \\"point\\": \\"/\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"ROOT\\"          ]        }      }    },    {      \\"mount\\": {        \\"device\\": \\"/dev/sda2\\",        \\"format\\": \\"swap\\",        \\"point\\": \\"none\\",        \\"create\\": {          \\"options\\": [            \\"-L\\",            \\"SWAP\\"          ]        }      }    }  ]}
 //
-// `),
+// "),
 //
 //			})
 //			if err != nil {
@@ -291,7 +239,7 @@ type Device struct {
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
 	OperatingSystem pulumi.StringOutput `pulumi:"operatingSystem"`
-	// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+	// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// Ports assigned to the device
 	Ports DevicePortArrayOutput `pulumi:"ports"`
@@ -302,7 +250,7 @@ type Device struct {
 	Reinstall        DeviceReinstallPtrOutput `pulumi:"reinstall"`
 	// Root password to the server (disabled after 24 hours)
 	RootPassword pulumi.StringOutput `pulumi:"rootPassword"`
-	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	// The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
 	SosHostname pulumi.StringOutput `pulumi:"sosHostname"`
 	// List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
 	SshKeyIds pulumi.StringArrayOutput `pulumi:"sshKeyIds"`
@@ -424,7 +372,7 @@ type deviceState struct {
 	NetworkType *string `pulumi:"networkType"`
 	// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
 	OperatingSystem *string `pulumi:"operatingSystem"`
-	// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+	// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
 	Plan *string `pulumi:"plan"`
 	// Ports assigned to the device
 	Ports []DevicePort `pulumi:"ports"`
@@ -435,7 +383,7 @@ type deviceState struct {
 	Reinstall        *DeviceReinstall `pulumi:"reinstall"`
 	// Root password to the server (disabled after 24 hours)
 	RootPassword *string `pulumi:"rootPassword"`
-	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	// The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
 	SosHostname *string `pulumi:"sosHostname"`
 	// List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
 	SshKeyIds []string `pulumi:"sshKeyIds"`
@@ -507,7 +455,7 @@ type DeviceState struct {
 	NetworkType pulumi.StringPtrInput
 	// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
 	OperatingSystem pulumi.StringPtrInput
-	// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+	// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
 	Plan pulumi.StringPtrInput
 	// Ports assigned to the device
 	Ports DevicePortArrayInput
@@ -518,7 +466,7 @@ type DeviceState struct {
 	Reinstall        DeviceReinstallPtrInput
 	// Root password to the server (disabled after 24 hours)
 	RootPassword pulumi.StringPtrInput
-	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	// The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
 	SosHostname pulumi.StringPtrInput
 	// List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
 	SshKeyIds pulumi.StringArrayInput
@@ -574,7 +522,7 @@ type deviceArgs struct {
 	Metro *string `pulumi:"metro"`
 	// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
 	OperatingSystem string `pulumi:"operatingSystem"`
-	// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+	// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
 	Plan string `pulumi:"plan"`
 	// The ID of the project in which to create the device
 	ProjectId string `pulumi:"projectId"`
@@ -626,7 +574,7 @@ type DeviceArgs struct {
 	Metro pulumi.StringPtrInput
 	// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
 	OperatingSystem pulumi.StringInput
-	// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+	// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
 	Plan pulumi.StringInput
 	// The ID of the project in which to create the device
 	ProjectId pulumi.StringInput
@@ -849,7 +797,7 @@ func (o DeviceOutput) OperatingSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.OperatingSystem }).(pulumi.StringOutput)
 }
 
-// The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+// The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
 func (o DeviceOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
@@ -878,7 +826,7 @@ func (o DeviceOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.RootPassword }).(pulumi.StringOutput)
 }
 
-// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+// The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
 func (o DeviceOutput) SosHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.SosHostname }).(pulumi.StringOutput)
 }

@@ -83,6 +83,11 @@ public final class GetConnectionZSideAccessPoint {
      */
     private String providerConnectionId;
     /**
+     * @return Network role
+     * 
+     */
+    private @Nullable String role;
+    /**
      * @return Cloud Router access point information that replaces `gateway`
      * 
      */
@@ -186,6 +191,13 @@ public final class GetConnectionZSideAccessPoint {
         return this.providerConnectionId;
     }
     /**
+     * @return Network role
+     * 
+     */
+    public Optional<String> role() {
+        return Optional.ofNullable(this.role);
+    }
+    /**
      * @return Cloud Router access point information that replaces `gateway`
      * 
      */
@@ -234,6 +246,7 @@ public final class GetConnectionZSideAccessPoint {
         private @Nullable GetConnectionZSideAccessPointPort port;
         private @Nullable GetConnectionZSideAccessPointProfile profile;
         private String providerConnectionId;
+        private @Nullable String role;
         private @Nullable GetConnectionZSideAccessPointRouter router;
         private @Nullable String sellerRegion;
         private @Nullable String type;
@@ -252,6 +265,7 @@ public final class GetConnectionZSideAccessPoint {
     	      this.port = defaults.port;
     	      this.profile = defaults.profile;
     	      this.providerConnectionId = defaults.providerConnectionId;
+    	      this.role = defaults.role;
     	      this.router = defaults.router;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.type = defaults.type;
@@ -334,6 +348,12 @@ public final class GetConnectionZSideAccessPoint {
             return this;
         }
         @CustomType.Setter
+        public Builder role(@Nullable String role) {
+
+            this.role = role;
+            return this;
+        }
+        @CustomType.Setter
         public Builder router(@Nullable GetConnectionZSideAccessPointRouter router) {
 
             this.router = router;
@@ -370,6 +390,7 @@ public final class GetConnectionZSideAccessPoint {
             _resultValue.port = port;
             _resultValue.profile = profile;
             _resultValue.providerConnectionId = providerConnectionId;
+            _resultValue.role = role;
             _resultValue.router = router;
             _resultValue.sellerRegion = sellerRegion;
             _resultValue.type = type;

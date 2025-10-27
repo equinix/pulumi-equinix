@@ -1427,6 +1427,8 @@ class DeviceSecondaryDevice(dict):
             suggest = "mgmt_acl_template_uuid"
         elif key == "projectId":
             suggest = "project_id"
+        elif key == "purchaseOrderNumber":
+            suggest = "purchase_order_number"
         elif key == "redundancyType":
             suggest = "redundancy_type"
         elif key == "redundantId":
@@ -1473,6 +1475,7 @@ class DeviceSecondaryDevice(dict):
                  license_token: Optional[str] = None,
                  mgmt_acl_template_uuid: Optional[str] = None,
                  project_id: Optional[str] = None,
+                 purchase_order_number: Optional[str] = None,
                  redundancy_type: Optional[str] = None,
                  redundant_id: Optional[str] = None,
                  region: Optional[str] = None,
@@ -1503,6 +1506,7 @@ class DeviceSecondaryDevice(dict):
         :param str mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on a secondary device.
                * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
         :param str project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
+        :param str purchase_order_number: Purchase order number associated with a device order.
         :param str redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param str redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param str region: Device location region.
@@ -1545,6 +1549,8 @@ class DeviceSecondaryDevice(dict):
             pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if purchase_order_number is not None:
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
         if redundancy_type is not None:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
         if redundant_id is not None:
@@ -1704,6 +1710,14 @@ class DeviceSecondaryDevice(dict):
         Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> Optional[str]:
+        """
+        Purchase order number associated with a device order.
+        """
+        return pulumi.get(self, "purchase_order_number")
 
     @property
     @pulumi.getter(name="redundancyType")

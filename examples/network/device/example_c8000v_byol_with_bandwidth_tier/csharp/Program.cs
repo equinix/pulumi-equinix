@@ -17,7 +17,7 @@ return await Deployment.RunAsync(() =>
         TypeCode = "C8000V",
         SelfManaged = true,
         Byol = true,
-        PackageCode = "VM100",
+        PackageCode = "network-essentials",
         Notifications = new[]
         {
             "john@equinix.com",

@@ -226,6 +226,20 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return this.equinixAsn;
     }
     /**
+     * Number of gateway attachments associated with this Access point
+     * 
+     */
+    @Export(name="gatewayAttachmentsCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> gatewayAttachmentsCount;
+
+    /**
+     * @return Number of gateway attachments associated with this Access point
+     * 
+     */
+    public Output<Integer> gatewayAttachmentsCount() {
+        return this.gatewayAttachmentsCount;
+    }
+    /**
      * Fabric Cloud Router URI information
      * 
      */

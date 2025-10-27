@@ -2,10 +2,10 @@ module equinix-network-device-example_aruba_edgeconnect_ha_device
 
 go 1.22.0
 
-toolchain go1.23.0
+toolchain go1.24.9
 
 require (
-	github.com/equinix/pulumi-equinix/sdk latest
+	github.com/equinix/pulumi-equinix/sdk v0.26.0
 	github.com/pulumi/pulumi/sdk/v3 v3.153.1
 )
 

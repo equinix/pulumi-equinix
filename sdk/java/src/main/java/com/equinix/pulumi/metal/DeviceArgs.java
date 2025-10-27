@@ -237,14 +237,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      * 
      */
     @Import(name="plan", required=true)
     private Output<Either<String,Plan>> plan;
 
     /**
-     * @return The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * @return The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      * 
      */
     public Output<Either<String,Plan>> plan() {
@@ -780,7 +780,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -791,7 +791,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -801,7 +801,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -811,7 +811,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			portDataName, err := fabric.GetPort(ctx, &fabric.GetPortArgs{
+//			portDataName, err := fabric.LookupPort(ctx, &fabric.LookupPortArgs{
 //				Uuid: "<uuid_of_port>",
 //			}, nil)
 //			if err != nil {
@@ -56,9 +56,9 @@ import (
 //	}
 //
 // ```
-func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
+func LookupPort(ctx *pulumi.Context, args *LookupPortArgs, opts ...pulumi.InvokeOption) (*LookupPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetPortResult
+	var rv LookupPortResult
 	err := ctx.Invoke("equinix:fabric/getPort:getPort", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -67,13 +67,13 @@ func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption
 }
 
 // A collection of arguments for invoking getPort.
-type GetPortArgs struct {
+type LookupPortArgs struct {
 	// Equinix-assigned port identifier
 	Uuid string `pulumi:"uuid"`
 }
 
 // A collection of values returned by getPort.
-type GetPortResult struct {
+type LookupPortResult struct {
 	// Customer account information that is associated with this port
 	Account GetPortAccount `pulumi:"account"`
 	// Port available bandwidth in Mbps
@@ -114,135 +114,135 @@ type GetPortResult struct {
 	Uuid string `pulumi:"uuid"`
 }
 
-func GetPortOutput(ctx *pulumi.Context, args GetPortOutputArgs, opts ...pulumi.InvokeOption) GetPortResultOutput {
+func LookupPortOutput(ctx *pulumi.Context, args LookupPortOutputArgs, opts ...pulumi.InvokeOption) LookupPortResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPortResultOutput, error) {
-			args := v.(GetPortArgs)
+		ApplyT(func(v interface{}) (LookupPortResultOutput, error) {
+			args := v.(LookupPortArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("equinix:fabric/getPort:getPort", args, GetPortResultOutput{}, options).(GetPortResultOutput), nil
-		}).(GetPortResultOutput)
+			return ctx.InvokeOutput("equinix:fabric/getPort:getPort", args, LookupPortResultOutput{}, options).(LookupPortResultOutput), nil
+		}).(LookupPortResultOutput)
 }
 
 // A collection of arguments for invoking getPort.
-type GetPortOutputArgs struct {
+type LookupPortOutputArgs struct {
 	// Equinix-assigned port identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
-func (GetPortOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortArgs)(nil)).Elem()
+func (LookupPortOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPortArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getPort.
-type GetPortResultOutput struct{ *pulumi.OutputState }
+type LookupPortResultOutput struct{ *pulumi.OutputState }
 
-func (GetPortResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortResult)(nil)).Elem()
+func (LookupPortResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPortResult)(nil)).Elem()
 }
 
-func (o GetPortResultOutput) ToGetPortResultOutput() GetPortResultOutput {
+func (o LookupPortResultOutput) ToLookupPortResultOutput() LookupPortResultOutput {
 	return o
 }
 
-func (o GetPortResultOutput) ToGetPortResultOutputWithContext(ctx context.Context) GetPortResultOutput {
+func (o LookupPortResultOutput) ToLookupPortResultOutputWithContext(ctx context.Context) LookupPortResultOutput {
 	return o
 }
 
 // Customer account information that is associated with this port
-func (o GetPortResultOutput) Account() GetPortAccountOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortAccount { return v.Account }).(GetPortAccountOutput)
+func (o LookupPortResultOutput) Account() GetPortAccountOutput {
+	return o.ApplyT(func(v LookupPortResult) GetPortAccount { return v.Account }).(GetPortAccountOutput)
 }
 
 // Port available bandwidth in Mbps
-func (o GetPortResultOutput) AvailableBandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortResult) int { return v.AvailableBandwidth }).(pulumi.IntOutput)
+func (o LookupPortResultOutput) AvailableBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPortResult) int { return v.AvailableBandwidth }).(pulumi.IntOutput)
 }
 
 // Port bandwidth in Mbps
-func (o GetPortResultOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortResult) int { return v.Bandwidth }).(pulumi.IntOutput)
+func (o LookupPortResultOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPortResult) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // Captures port lifecycle change information
-func (o GetPortResultOutput) ChangeLog() GetPortChangeLogOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortChangeLog { return v.ChangeLog }).(GetPortChangeLogOutput)
+func (o LookupPortResultOutput) ChangeLog() GetPortChangeLogOutput {
+	return o.ApplyT(func(v LookupPortResult) GetPortChangeLog { return v.ChangeLog }).(GetPortChangeLogOutput)
 }
 
 // Port description
-func (o GetPortResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Port device
-func (o GetPortResultOutput) Device() GetPortDeviceOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortDevice { return v.Device }).(GetPortDeviceOutput)
+func (o LookupPortResultOutput) Device() GetPortDeviceOutput {
+	return o.ApplyT(func(v LookupPortResult) GetPortDevice { return v.Device }).(GetPortDeviceOutput)
 }
 
 // Port encapsulation protocol
-func (o GetPortResultOutput) Encapsulation() GetPortEncapsulationOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortEncapsulation { return v.Encapsulation }).(GetPortEncapsulationOutput)
+func (o LookupPortResultOutput) Encapsulation() GetPortEncapsulationOutput {
+	return o.ApplyT(func(v LookupPortResult) GetPortEncapsulation { return v.Encapsulation }).(GetPortEncapsulationOutput)
 }
 
 // Port URI information
-func (o GetPortResultOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.Href }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.Href }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetPortResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Port Lag
-func (o GetPortResultOutput) LagEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPortResult) bool { return v.LagEnabled }).(pulumi.BoolOutput)
+func (o LookupPortResultOutput) LagEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPortResult) bool { return v.LagEnabled }).(pulumi.BoolOutput)
 }
 
 // Port location information
-func (o GetPortResultOutput) Location() GetPortLocationOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortLocation { return v.Location }).(GetPortLocationOutput)
+func (o LookupPortResultOutput) Location() GetPortLocationOutput {
+	return o.ApplyT(func(v LookupPortResult) GetPortLocation { return v.Location }).(GetPortLocationOutput)
 }
 
 // Port name
-func (o GetPortResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Port specific operational data
-func (o GetPortResultOutput) Operation() GetPortOperationOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortOperation { return v.Operation }).(GetPortOperationOutput)
+func (o LookupPortResultOutput) Operation() GetPortOperationOutput {
+	return o.ApplyT(func(v LookupPortResult) GetPortOperation { return v.Operation }).(GetPortOperationOutput)
 }
 
 // Port redundancy information
-func (o GetPortResultOutput) Redundancy() GetPortRedundancyOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortRedundancy { return v.Redundancy }).(GetPortRedundancyOutput)
+func (o LookupPortResultOutput) Redundancy() GetPortRedundancyOutput {
+	return o.ApplyT(func(v LookupPortResult) GetPortRedundancy { return v.Redundancy }).(GetPortRedundancyOutput)
 }
 
 // Port service type
-func (o GetPortResultOutput) ServiceType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.ServiceType }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
 // Port state
-func (o GetPortResultOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.State }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Port type
-func (o GetPortResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.Type }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Port used bandwidth in Mbps
-func (o GetPortResultOutput) UsedBandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortResult) int { return v.UsedBandwidth }).(pulumi.IntOutput)
+func (o LookupPortResultOutput) UsedBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPortResult) int { return v.UsedBandwidth }).(pulumi.IntOutput)
 }
 
 // Equinix-assigned port identifier
-func (o GetPortResultOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortResult) string { return v.Uuid }).(pulumi.StringOutput)
+func (o LookupPortResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPortResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetPortResultOutput{})
+	pulumi.RegisterOutputType(LookupPortResultOutput{})
 }

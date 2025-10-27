@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceChangeLog;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceConnection;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceIpv4;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceNtpAdvancedConfiguration;
+import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceOperation;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceOrder;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServicePackage;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServicePrecisionTimePrice;
@@ -68,6 +69,11 @@ public final class GetPrecisionTimeServiceResult {
      * 
      */
     private @Nullable List<GetPrecisionTimeServiceNtpAdvancedConfiguration> ntpAdvancedConfigurations;
+    /**
+     * @return Precision Time Service Operation
+     * 
+     */
+    private GetPrecisionTimeServiceOperation operation;
     /**
      * @return Precision Time Order
      * 
@@ -174,6 +180,13 @@ public final class GetPrecisionTimeServiceResult {
         return this.ntpAdvancedConfigurations == null ? List.of() : this.ntpAdvancedConfigurations;
     }
     /**
+     * @return Precision Time Service Operation
+     * 
+     */
+    public GetPrecisionTimeServiceOperation operation() {
+        return this.operation;
+    }
+    /**
      * @return Precision Time Order
      * 
      */
@@ -248,6 +261,7 @@ public final class GetPrecisionTimeServiceResult {
         private GetPrecisionTimeServiceIpv4 ipv4;
         private String name;
         private @Nullable List<GetPrecisionTimeServiceNtpAdvancedConfiguration> ntpAdvancedConfigurations;
+        private GetPrecisionTimeServiceOperation operation;
         private GetPrecisionTimeServiceOrder order;
         private GetPrecisionTimeServicePackage package_;
         private GetPrecisionTimeServicePrecisionTimePrice precisionTimePrice;
@@ -268,6 +282,7 @@ public final class GetPrecisionTimeServiceResult {
     	      this.ipv4 = defaults.ipv4;
     	      this.name = defaults.name;
     	      this.ntpAdvancedConfigurations = defaults.ntpAdvancedConfigurations;
+    	      this.operation = defaults.operation;
     	      this.order = defaults.order;
     	      this.package_ = defaults.package_;
     	      this.precisionTimePrice = defaults.precisionTimePrice;
@@ -355,6 +370,14 @@ public final class GetPrecisionTimeServiceResult {
             return ntpAdvancedConfigurations(List.of(ntpAdvancedConfigurations));
         }
         @CustomType.Setter
+        public Builder operation(GetPrecisionTimeServiceOperation operation) {
+            if (operation == null) {
+              throw new MissingRequiredPropertyException("GetPrecisionTimeServiceResult", "operation");
+            }
+            this.operation = operation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder order(GetPrecisionTimeServiceOrder order) {
             if (order == null) {
               throw new MissingRequiredPropertyException("GetPrecisionTimeServiceResult", "order");
@@ -425,6 +448,7 @@ public final class GetPrecisionTimeServiceResult {
             _resultValue.ipv4 = ipv4;
             _resultValue.name = name;
             _resultValue.ntpAdvancedConfigurations = ntpAdvancedConfigurations;
+            _resultValue.operation = operation;
             _resultValue.order = order;
             _resultValue.package_ = package_;
             _resultValue.precisionTimePrice = precisionTimePrice;

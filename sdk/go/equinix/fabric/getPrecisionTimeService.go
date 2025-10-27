@@ -88,6 +88,8 @@ type LookupPrecisionTimeServiceResult struct {
 	Name string `pulumi:"name"`
 	// NTP Advanced configuration
 	NtpAdvancedConfigurations []GetPrecisionTimeServiceNtpAdvancedConfiguration `pulumi:"ntpAdvancedConfigurations"`
+	// Precision Time Service Operation
+	Operation GetPrecisionTimeServiceOperation `pulumi:"operation"`
 	// Precision Time Order
 	Order GetPrecisionTimeServiceOrder `pulumi:"order"`
 	// Precision Time Service Package Details
@@ -191,6 +193,11 @@ func (o LookupPrecisionTimeServiceResultOutput) NtpAdvancedConfigurations() GetP
 	return o.ApplyT(func(v LookupPrecisionTimeServiceResult) []GetPrecisionTimeServiceNtpAdvancedConfiguration {
 		return v.NtpAdvancedConfigurations
 	}).(GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput)
+}
+
+// Precision Time Service Operation
+func (o LookupPrecisionTimeServiceResultOutput) Operation() GetPrecisionTimeServiceOperationOutput {
+	return o.ApplyT(func(v LookupPrecisionTimeServiceResult) GetPrecisionTimeServiceOperation { return v.Operation }).(GetPrecisionTimeServiceOperationOutput)
 }
 
 // Precision Time Order

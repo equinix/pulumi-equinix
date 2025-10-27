@@ -3,11 +3,15 @@
 
 package com.equinix.pulumi.fabric.inputs;
 
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRuleDetectionMethodArgs;
+import com.equinix.pulumi.fabric.inputs.GetStreamAlertRuleMetricSelectorArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetStreamAlertRuleArgs extends com.pulumi.resources.InvokeArgs {
@@ -30,6 +34,36 @@ public final class GetStreamAlertRuleArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
+     * Detection method for stream alert rule
+     * 
+     */
+    @Import(name="detectionMethod")
+    private @Nullable Output<GetStreamAlertRuleDetectionMethodArgs> detectionMethod;
+
+    /**
+     * @return Detection method for stream alert rule
+     * 
+     */
+    public Optional<Output<GetStreamAlertRuleDetectionMethodArgs>> detectionMethod() {
+        return Optional.ofNullable(this.detectionMethod);
+    }
+
+    /**
+     * Metric selector for the stream alert rule
+     * 
+     */
+    @Import(name="metricSelector")
+    private @Nullable Output<GetStreamAlertRuleMetricSelectorArgs> metricSelector;
+
+    /**
+     * @return Metric selector for the stream alert rule
+     * 
+     */
+    public Optional<Output<GetStreamAlertRuleMetricSelectorArgs>> metricSelector() {
+        return Optional.ofNullable(this.metricSelector);
+    }
+
+    /**
      * The uuid of the stream that is the target of the stream alert rule
      * 
      */
@@ -48,6 +82,8 @@ public final class GetStreamAlertRuleArgs extends com.pulumi.resources.InvokeArg
 
     private GetStreamAlertRuleArgs(GetStreamAlertRuleArgs $) {
         this.alertRuleId = $.alertRuleId;
+        this.detectionMethod = $.detectionMethod;
+        this.metricSelector = $.metricSelector;
         this.streamId = $.streamId;
     }
 
@@ -88,6 +124,48 @@ public final class GetStreamAlertRuleArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder alertRuleId(String alertRuleId) {
             return alertRuleId(Output.of(alertRuleId));
+        }
+
+        /**
+         * @param detectionMethod Detection method for stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectionMethod(@Nullable Output<GetStreamAlertRuleDetectionMethodArgs> detectionMethod) {
+            $.detectionMethod = detectionMethod;
+            return this;
+        }
+
+        /**
+         * @param detectionMethod Detection method for stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectionMethod(GetStreamAlertRuleDetectionMethodArgs detectionMethod) {
+            return detectionMethod(Output.of(detectionMethod));
+        }
+
+        /**
+         * @param metricSelector Metric selector for the stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricSelector(@Nullable Output<GetStreamAlertRuleMetricSelectorArgs> metricSelector) {
+            $.metricSelector = metricSelector;
+            return this;
+        }
+
+        /**
+         * @param metricSelector Metric selector for the stream alert rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricSelector(GetStreamAlertRuleMetricSelectorArgs metricSelector) {
+            return metricSelector(Output.of(metricSelector));
         }
 
         /**

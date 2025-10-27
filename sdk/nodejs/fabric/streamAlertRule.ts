@@ -8,12 +8,7 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Alert Rules'
- * }
- *
- * Additional Documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+ * ## Example Usage
  */
 export class StreamAlertRule extends pulumi.CustomResource {
     /**
@@ -48,13 +43,13 @@ export class StreamAlertRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly changeLog!: pulumi.Output<outputs.fabric.StreamAlertRuleChangeLog>;
     /**
-     * Stream alert rule metric critical threshold
-     */
-    public readonly criticalThreshold!: pulumi.Output<string>;
-    /**
      * Customer-provided stream alert rule description
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Detection method for stream alert rule
+     */
+    public readonly detectionMethod!: pulumi.Output<outputs.fabric.StreamAlertRuleDetectionMethod>;
     /**
      * Stream alert rule enabled status
      */
@@ -64,17 +59,13 @@ export class StreamAlertRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly href!: pulumi.Output<string>;
     /**
-     * Stream alert rule metric name
+     * Metric selector for the stream alert rule
      */
-    public readonly metricName!: pulumi.Output<string>;
+    public readonly metricSelector!: pulumi.Output<outputs.fabric.StreamAlertRuleMetricSelector>;
     /**
      * Customer-provided stream alert rule name
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Stream alert rule metric operand
-     */
-    public readonly operand!: pulumi.Output<string>;
     /**
      * Resource selector for the stream alert rule
      */
@@ -96,14 +87,6 @@ export class StreamAlertRule extends pulumi.CustomResource {
      * Equinix assigned unique identifier for the stream alert rule
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
-    /**
-     * Stream alert rule metric warning threshold
-     */
-    public readonly warningThreshold!: pulumi.Output<string>;
-    /**
-     * Stream alert rule metric window size
-     */
-    public readonly windowSize!: pulumi.Output<string>;
 
     /**
      * Create a StreamAlertRule resource with the given unique name, arguments, and options.
@@ -119,34 +102,22 @@ export class StreamAlertRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StreamAlertRuleState | undefined;
             resourceInputs["changeLog"] = state ? state.changeLog : undefined;
-            resourceInputs["criticalThreshold"] = state ? state.criticalThreshold : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["detectionMethod"] = state ? state.detectionMethod : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
-            resourceInputs["metricName"] = state ? state.metricName : undefined;
+            resourceInputs["metricSelector"] = state ? state.metricSelector : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operand"] = state ? state.operand : undefined;
             resourceInputs["resourceSelector"] = state ? state.resourceSelector : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["streamId"] = state ? state.streamId : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
-            resourceInputs["warningThreshold"] = state ? state.warningThreshold : undefined;
-            resourceInputs["windowSize"] = state ? state.windowSize : undefined;
         } else {
             const args = argsOrState as StreamAlertRuleArgs | undefined;
-            if ((!args || args.criticalThreshold === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'criticalThreshold'");
-            }
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
-            }
-            if ((!args || args.metricName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metricName'");
-            }
-            if ((!args || args.operand === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'operand'");
             }
             if ((!args || args.streamId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'streamId'");
@@ -154,24 +125,15 @@ export class StreamAlertRule extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.warningThreshold === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'warningThreshold'");
-            }
-            if ((!args || args.windowSize === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'windowSize'");
-            }
-            resourceInputs["criticalThreshold"] = args ? args.criticalThreshold : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["detectionMethod"] = args ? args.detectionMethod : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["metricName"] = args ? args.metricName : undefined;
+            resourceInputs["metricSelector"] = args ? args.metricSelector : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operand"] = args ? args.operand : undefined;
             resourceInputs["resourceSelector"] = args ? args.resourceSelector : undefined;
             resourceInputs["streamId"] = args ? args.streamId : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["warningThreshold"] = args ? args.warningThreshold : undefined;
-            resourceInputs["windowSize"] = args ? args.windowSize : undefined;
             resourceInputs["changeLog"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -191,13 +153,13 @@ export interface StreamAlertRuleState {
      */
     changeLog?: pulumi.Input<inputs.fabric.StreamAlertRuleChangeLog>;
     /**
-     * Stream alert rule metric critical threshold
-     */
-    criticalThreshold?: pulumi.Input<string>;
-    /**
      * Customer-provided stream alert rule description
      */
     description?: pulumi.Input<string>;
+    /**
+     * Detection method for stream alert rule
+     */
+    detectionMethod?: pulumi.Input<inputs.fabric.StreamAlertRuleDetectionMethod>;
     /**
      * Stream alert rule enabled status
      */
@@ -207,17 +169,13 @@ export interface StreamAlertRuleState {
      */
     href?: pulumi.Input<string>;
     /**
-     * Stream alert rule metric name
+     * Metric selector for the stream alert rule
      */
-    metricName?: pulumi.Input<string>;
+    metricSelector?: pulumi.Input<inputs.fabric.StreamAlertRuleMetricSelector>;
     /**
      * Customer-provided stream alert rule name
      */
     name?: pulumi.Input<string>;
-    /**
-     * Stream alert rule metric operand
-     */
-    operand?: pulumi.Input<string>;
     /**
      * Resource selector for the stream alert rule
      */
@@ -239,14 +197,6 @@ export interface StreamAlertRuleState {
      * Equinix assigned unique identifier for the stream alert rule
      */
     uuid?: pulumi.Input<string>;
-    /**
-     * Stream alert rule metric warning threshold
-     */
-    warningThreshold?: pulumi.Input<string>;
-    /**
-     * Stream alert rule metric window size
-     */
-    windowSize?: pulumi.Input<string>;
 }
 
 /**
@@ -254,29 +204,25 @@ export interface StreamAlertRuleState {
  */
 export interface StreamAlertRuleArgs {
     /**
-     * Stream alert rule metric critical threshold
-     */
-    criticalThreshold: pulumi.Input<string>;
-    /**
      * Customer-provided stream alert rule description
      */
     description: pulumi.Input<string>;
+    /**
+     * Detection method for stream alert rule
+     */
+    detectionMethod?: pulumi.Input<inputs.fabric.StreamAlertRuleDetectionMethod>;
     /**
      * Stream alert rule enabled status
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Stream alert rule metric name
+     * Metric selector for the stream alert rule
      */
-    metricName: pulumi.Input<string>;
+    metricSelector?: pulumi.Input<inputs.fabric.StreamAlertRuleMetricSelector>;
     /**
      * Customer-provided stream alert rule name
      */
     name?: pulumi.Input<string>;
-    /**
-     * Stream alert rule metric operand
-     */
-    operand: pulumi.Input<string>;
     /**
      * Resource selector for the stream alert rule
      */
@@ -290,12 +236,4 @@ export interface StreamAlertRuleArgs {
      * Type of the stream alert rule
      */
     type: pulumi.Input<string>;
-    /**
-     * Stream alert rule metric warning threshold
-     */
-    warningThreshold: pulumi.Input<string>;
-    /**
-     * Stream alert rule metric window size
-     */
-    windowSize: pulumi.Input<string>;
 }

@@ -153,14 +153,14 @@ public final class VirtualCircuitState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     @Import(name="nniVnid")
     private @Nullable Output<Integer> nniVnid;
 
     /**
-     * @return Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     public Optional<Output<Integer>> nniVnid() {
@@ -326,14 +326,14 @@ public final class VirtualCircuitState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     @Import(name="vnid")
     private @Nullable Output<Integer> vnid;
 
     /**
-     * @return VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     public Optional<Output<Integer>> vnid() {
@@ -590,7 +590,7 @@ public final class VirtualCircuitState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nniVnid Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+         * @param nniVnid Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class VirtualCircuitState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nniVnid Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+         * @param nniVnid Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
          * 
          * @return builder
          * 
@@ -839,7 +839,7 @@ public final class VirtualCircuitState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vnid VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+         * @param vnid VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
          * 
          * @return builder
          * 
@@ -850,7 +850,7 @@ public final class VirtualCircuitState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vnid VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+         * @param vnid VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
          * 
          * @return builder
          * 

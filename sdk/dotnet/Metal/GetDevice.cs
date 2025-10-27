@@ -303,7 +303,7 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string RootPassword;
         /// <summary>
-        /// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        /// The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         /// </summary>
         public readonly string SosHostname;
         /// <summary>
