@@ -11,11 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rule by Stream Id and Alert Rule Id
-//
-// Additional Documentation:
-// * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-// * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+// ## Example Usage
 func LookupStreamAlertRule(ctx *pulumi.Context, args *LookupStreamAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupStreamAlertRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamAlertRuleResult
@@ -30,6 +26,10 @@ func LookupStreamAlertRule(ctx *pulumi.Context, args *LookupStreamAlertRuleArgs,
 type LookupStreamAlertRuleArgs struct {
 	// The uuid of the stream alert rule
 	AlertRuleId string `pulumi:"alertRuleId"`
+	// Detection method for stream alert rule
+	DetectionMethod *GetStreamAlertRuleDetectionMethod `pulumi:"detectionMethod"`
+	// Metric selector for the stream alert rule
+	MetricSelector *GetStreamAlertRuleMetricSelector `pulumi:"metricSelector"`
 	// The uuid of the stream that is the target of the stream alert rule
 	StreamId string `pulumi:"streamId"`
 }
@@ -40,22 +40,20 @@ type LookupStreamAlertRuleResult struct {
 	AlertRuleId string `pulumi:"alertRuleId"`
 	// Details of the last change on the stream resource
 	ChangeLog GetStreamAlertRuleChangeLog `pulumi:"changeLog"`
-	// Stream alert rule metric critical threshold
-	CriticalThreshold string `pulumi:"criticalThreshold"`
 	// Customer-provided stream alert rule description
 	Description string `pulumi:"description"`
+	// Detection method for stream alert rule
+	DetectionMethod GetStreamAlertRuleDetectionMethod `pulumi:"detectionMethod"`
 	// Stream subscription enabled status
 	Enabled bool `pulumi:"enabled"`
 	// Equinix assigned URI of the stream alert rule resource
 	Href string `pulumi:"href"`
 	// The unique identifier of the resource
 	Id string `pulumi:"id"`
-	// Stream alert rule metric name
-	MetricName string `pulumi:"metricName"`
+	// Metric selector for the stream alert rule
+	MetricSelector GetStreamAlertRuleMetricSelector `pulumi:"metricSelector"`
 	// Customer-provided stream alert rule name
 	Name string `pulumi:"name"`
-	// Stream alert rule metric operand
-	Operand string `pulumi:"operand"`
 	// Lists of metrics to be included/excluded on the stream alert rule
 	ResourceSelector GetStreamAlertRuleResourceSelector `pulumi:"resourceSelector"`
 	// Value representing provisioning status for the stream resource
@@ -66,10 +64,6 @@ type LookupStreamAlertRuleResult struct {
 	Type string `pulumi:"type"`
 	// Equinix assigned unique identifier of the stream subscription resource
 	Uuid string `pulumi:"uuid"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold string `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize string `pulumi:"windowSize"`
 }
 
 func LookupStreamAlertRuleOutput(ctx *pulumi.Context, args LookupStreamAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupStreamAlertRuleResultOutput {
@@ -85,6 +79,10 @@ func LookupStreamAlertRuleOutput(ctx *pulumi.Context, args LookupStreamAlertRule
 type LookupStreamAlertRuleOutputArgs struct {
 	// The uuid of the stream alert rule
 	AlertRuleId pulumi.StringInput `pulumi:"alertRuleId"`
+	// Detection method for stream alert rule
+	DetectionMethod GetStreamAlertRuleDetectionMethodPtrInput `pulumi:"detectionMethod"`
+	// Metric selector for the stream alert rule
+	MetricSelector GetStreamAlertRuleMetricSelectorPtrInput `pulumi:"metricSelector"`
 	// The uuid of the stream that is the target of the stream alert rule
 	StreamId pulumi.StringInput `pulumi:"streamId"`
 }
@@ -118,14 +116,14 @@ func (o LookupStreamAlertRuleResultOutput) ChangeLog() GetStreamAlertRuleChangeL
 	return o.ApplyT(func(v LookupStreamAlertRuleResult) GetStreamAlertRuleChangeLog { return v.ChangeLog }).(GetStreamAlertRuleChangeLogOutput)
 }
 
-// Stream alert rule metric critical threshold
-func (o LookupStreamAlertRuleResultOutput) CriticalThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.CriticalThreshold }).(pulumi.StringOutput)
-}
-
 // Customer-provided stream alert rule description
 func (o LookupStreamAlertRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Detection method for stream alert rule
+func (o LookupStreamAlertRuleResultOutput) DetectionMethod() GetStreamAlertRuleDetectionMethodOutput {
+	return o.ApplyT(func(v LookupStreamAlertRuleResult) GetStreamAlertRuleDetectionMethod { return v.DetectionMethod }).(GetStreamAlertRuleDetectionMethodOutput)
 }
 
 // Stream subscription enabled status
@@ -143,19 +141,14 @@ func (o LookupStreamAlertRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Stream alert rule metric name
-func (o LookupStreamAlertRuleResultOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.MetricName }).(pulumi.StringOutput)
+// Metric selector for the stream alert rule
+func (o LookupStreamAlertRuleResultOutput) MetricSelector() GetStreamAlertRuleMetricSelectorOutput {
+	return o.ApplyT(func(v LookupStreamAlertRuleResult) GetStreamAlertRuleMetricSelector { return v.MetricSelector }).(GetStreamAlertRuleMetricSelectorOutput)
 }
 
 // Customer-provided stream alert rule name
 func (o LookupStreamAlertRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric operand
-func (o LookupStreamAlertRuleResultOutput) Operand() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.Operand }).(pulumi.StringOutput)
 }
 
 // Lists of metrics to be included/excluded on the stream alert rule
@@ -181,16 +174,6 @@ func (o LookupStreamAlertRuleResultOutput) Type() pulumi.StringOutput {
 // Equinix assigned unique identifier of the stream subscription resource
 func (o LookupStreamAlertRuleResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric warning threshold
-func (o LookupStreamAlertRuleResultOutput) WarningThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.WarningThreshold }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric window size
-func (o LookupStreamAlertRuleResultOutput) WindowSize() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamAlertRuleResult) string { return v.WindowSize }).(pulumi.StringOutput)
 }
 
 func init() {

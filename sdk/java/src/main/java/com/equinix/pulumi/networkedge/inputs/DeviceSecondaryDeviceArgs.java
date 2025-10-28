@@ -279,6 +279,21 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Purchase order number associated with a device order.
+     * 
+     */
+    @Import(name="purchaseOrderNumber")
+    private @Nullable Output<String> purchaseOrderNumber;
+
+    /**
+     * @return Purchase order number associated with a device order.
+     * 
+     */
+    public Optional<Output<String>> purchaseOrderNumber() {
+        return Optional.ofNullable(this.purchaseOrderNumber);
+    }
+
+    /**
      * Device redundancy type applicable for HA devices, either primary or secondary.
      * 
      */
@@ -463,6 +478,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         this.name = $.name;
         this.notifications = $.notifications;
         this.projectId = $.projectId;
+        this.purchaseOrderNumber = $.purchaseOrderNumber;
         this.redundancyType = $.redundancyType;
         this.redundantId = $.redundantId;
         this.region = $.region;
@@ -871,6 +887,27 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param purchaseOrderNumber Purchase order number associated with a device order.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purchaseOrderNumber(@Nullable Output<String> purchaseOrderNumber) {
+            $.purchaseOrderNumber = purchaseOrderNumber;
+            return this;
+        }
+
+        /**
+         * @param purchaseOrderNumber Purchase order number associated with a device order.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purchaseOrderNumber(String purchaseOrderNumber) {
+            return purchaseOrderNumber(Output.of(purchaseOrderNumber));
         }
 
         /**

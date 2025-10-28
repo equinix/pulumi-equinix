@@ -53,8 +53,8 @@ require (
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/equinix/equinix-sdk-go v0.56.0 // indirect
-	github.com/equinix/ne-go v1.20.0 // indirect
+	github.com/equinix/equinix-sdk-go v0.61.0 // indirect
+	github.com/equinix/ne-go v1.21.0 // indirect
 	github.com/equinix/rest-go v1.3.0 // indirect
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/fatih/color v1.16.0 // indirect
@@ -102,7 +102,7 @@ require (
 	github.com/hashicorp/terraform-plugin-go v0.28.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.37.0 // indirect
-	github.com/hashicorp/terraform-plugin-testing v1.13.2 // indirect
+	github.com/hashicorp/terraform-plugin-testing v1.13.3 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.5 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect

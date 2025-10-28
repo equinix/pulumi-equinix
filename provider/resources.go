@@ -167,6 +167,9 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_stream_alert_rule": {
 				Tok: makeEquinixResource(fabricMod, "StreamAlertRule"),
 			},
+			"equinix_fabric_port": {
+				Tok: makeEquinixResource(fabricMod, "Port"),
+			},
 			"equinix_fabric_route_filter": {
 				Tok: makeEquinixResource(fabricMod, "RouteFilter"),
 			},
@@ -1816,12 +1819,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_project_ssh_key":     {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
-			"equinix_metal_reserved_ip_block":   {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
-			"equinix_metal_spot_market_price":   {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
-			"equinix_metal_virtual_circuit":     {Tok: makeEquinixDataSource(metalMod, "VirtualCircuit")},
-			"equinix_metal_vlan":                {Tok: makeEquinixDataSource(metalMod, "Vlan")},
-			"equinix_metal_vrf":                 {Tok: makeEquinixDataSource(metalMod, "Vrf")},
+			"equinix_metal_project_ssh_key":   {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
+			"equinix_metal_reserved_ip_block": {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
+			"equinix_metal_spot_market_price": {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
+			"equinix_metal_virtual_circuit":   {Tok: makeEquinixDataSource(metalMod, "VirtualCircuit")},
+			"equinix_metal_vlan":              {Tok: makeEquinixDataSource(metalMod, "Vlan")},
+			"equinix_metal_vrf":               {Tok: makeEquinixDataSource(metalMod, "Vrf")},
 			// Network Edge v1
 			"equinix_network_account": {Tok: makeEquinixDataSource(networkEdgeMod, "Account")},
 			"equinix_network_device": {

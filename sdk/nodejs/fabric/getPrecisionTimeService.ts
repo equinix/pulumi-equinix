@@ -102,6 +102,10 @@ export interface GetPrecisionTimeServiceResult {
      */
     readonly ntpAdvancedConfigurations?: outputs.fabric.GetPrecisionTimeServiceNtpAdvancedConfiguration[];
     /**
+     * Precision Time Service Operation
+     */
+    readonly operation: outputs.fabric.GetPrecisionTimeServiceOperation;
+    /**
      * Precision Time Order
      */
     readonly order: outputs.fabric.GetPrecisionTimeServiceOrder;

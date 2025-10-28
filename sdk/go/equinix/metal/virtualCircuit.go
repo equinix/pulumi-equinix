@@ -13,9 +13,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
+// Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
 //
-// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+// See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
 //
 // ## Example Usage
 // ```go
@@ -88,7 +88,7 @@ type VirtualCircuit struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
 	NniVlan pulumi.IntOutput `pulumi:"nniVlan"`
-	// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	NniVnid pulumi.IntOutput `pulumi:"nniVnid"`
 	// The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the localAsn of the VRF.
 	PeerAsn pulumi.IntPtrOutput `pulumi:"peerAsn"`
@@ -114,7 +114,7 @@ type VirtualCircuit struct {
 	VirtualCircuitId pulumi.StringPtrOutput `pulumi:"virtualCircuitId"`
 	// UUID of the VLAN to associate
 	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
-	// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	Vnid pulumi.IntOutput `pulumi:"vnid"`
 	// UUID of the VRF to associate
 	VrfId pulumi.StringPtrOutput `pulumi:"vrfId"`
@@ -181,7 +181,7 @@ type virtualCircuitState struct {
 	Name *string `pulumi:"name"`
 	// Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
 	NniVlan *int `pulumi:"nniVlan"`
-	// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	NniVnid *int `pulumi:"nniVnid"`
 	// The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the localAsn of the VRF.
 	PeerAsn *int `pulumi:"peerAsn"`
@@ -207,7 +207,7 @@ type virtualCircuitState struct {
 	VirtualCircuitId *string `pulumi:"virtualCircuitId"`
 	// UUID of the VLAN to associate
 	VlanId *string `pulumi:"vlanId"`
-	// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	Vnid *int `pulumi:"vnid"`
 	// UUID of the VRF to associate
 	VrfId *string `pulumi:"vrfId"`
@@ -232,7 +232,7 @@ type VirtualCircuitState struct {
 	Name pulumi.StringPtrInput
 	// Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
 	NniVlan pulumi.IntPtrInput
-	// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	NniVnid pulumi.IntPtrInput
 	// The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the localAsn of the VRF.
 	PeerAsn pulumi.IntPtrInput
@@ -258,7 +258,7 @@ type VirtualCircuitState struct {
 	VirtualCircuitId pulumi.StringPtrInput
 	// UUID of the VLAN to associate
 	VlanId pulumi.StringPtrInput
-	// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	Vnid pulumi.IntPtrInput
 	// UUID of the VRF to associate
 	VrfId pulumi.StringPtrInput
@@ -491,7 +491,7 @@ func (o VirtualCircuitOutput) NniVlan() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualCircuit) pulumi.IntOutput { return v.NniVlan }).(pulumi.IntOutput)
 }
 
-// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 func (o VirtualCircuitOutput) NniVnid() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualCircuit) pulumi.IntOutput { return v.NniVnid }).(pulumi.IntOutput)
 }
@@ -550,7 +550,7 @@ func (o VirtualCircuitOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualCircuit) pulumi.StringPtrOutput { return v.VlanId }).(pulumi.StringPtrOutput)
 }
 
-// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 func (o VirtualCircuitOutput) Vnid() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualCircuit) pulumi.IntOutput { return v.Vnid }).(pulumi.IntOutput)
 }

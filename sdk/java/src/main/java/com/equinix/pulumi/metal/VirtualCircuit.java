@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
+ * Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
  * 
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
  * <pre>
@@ -210,14 +210,14 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
         return this.nniVlan;
     }
     /**
-     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     @Export(name="nniVnid", refs={Integer.class}, tree="[0]")
     private Output<Integer> nniVnid;
 
     /**
-     * @return Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     public Output<Integer> nniVnid() {
@@ -372,14 +372,14 @@ public class VirtualCircuit extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vlanId);
     }
     /**
-     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     @Export(name="vnid", refs={Integer.class}, tree="[0]")
     private Output<Integer> vnid;
 
     /**
-     * @return VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * @return VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      * 
      */
     public Output<Integer> vnid() {

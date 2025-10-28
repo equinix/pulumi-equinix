@@ -128,6 +128,12 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
+        /// Purchase order number associated with a device order.
+        /// </summary>
+        [Input("purchaseOrderNumber")]
+        public Input<string>? PurchaseOrderNumber { get; set; }
+
+        /// <summary>
         /// Device redundancy type applicable for HA devices, either primary or secondary.
         /// </summary>
         [Input("redundancyType")]

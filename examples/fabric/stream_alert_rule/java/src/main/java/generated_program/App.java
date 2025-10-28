@@ -5,6 +5,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.StreamAlertRule;
 import com.pulumi.equinix.fabric.StreamAlertRuleArgs;
+import com.pulumi.equinix.fabric.inputs.StreamAlertRuleMetricSelectorArgs;
+import com.pulumi.equinix.fabric.inputs.StreamAlertRuleDetectionMethodArgs;
 import com.pulumi.equinix.fabric.inputs.StreamAlertRuleResourceSelectorArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,11 +27,15 @@ public class App {
             .type("METRIC_ALERT")
             .description("<description>")
             .enabled(true)
-            .operand("ABOVE")
-            .windowSize("<window_size>")
-            .warningThreshold("<warning_threshold>")
-            .criticalThreshold("<critical_threshold>")
-            .metricName("equinix.fabric.connection.bandwidth_tx.usage")
+            .metricSelector(StreamAlertRuleMetricSelectorArgs.builder()
+                .includes("equinix.fabric.connection.bandwidth_tx.usage")
+                .build())
+            .detectionMethod(StreamAlertRuleDetectionMethodArgs.builder()
+                .operand("ABOVE")
+                .windowSize("<window_size>")
+                .warningThreshold("<warning_threshold>")
+                .criticalThreshold("<critical_threshold>")
+                .build())
             .resourceSelector(StreamAlertRuleResourceSelectorArgs.builder()
                 .includes("*/connections/<connection_id>")
                 .build())

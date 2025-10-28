@@ -8,7 +8,7 @@ c8000_v_byol_throughput = equinix.networkedge.Device("c8000v-byol-throughput",
     type_code="C8000V",
     self_managed=True,
     byol=True,
-    package_code="VM100",
+    package_code="network-essentials",
     notifications=[
         "john@equinix.com",
         "marry@equinix.com",

@@ -9,7 +9,7 @@ c8000_v_byol_withtout_default_password = equinix.networkedge.Device("c8000v-byol
     self_managed=True,
     byol=True,
     generate_default_password=False,
-    package_code="VM100",
+    package_code="network-essentials",
     notifications=[
         "john@equinix.com",
         "marry@equinix.com",

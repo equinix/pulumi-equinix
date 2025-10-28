@@ -6,6 +6,7 @@
             "equinix:fabric/connectionRouteAggregation:ConnectionRouteAggregation": 1,
             "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter": 0,
             "equinix:fabric/network:Network": 0,
+            "equinix:fabric/port:Port": 1,
             "equinix:fabric/precisionTimeService:PrecisionTimeService": 1,
             "equinix:fabric/routeAggregation:RouteAggregation": 1,
             "equinix:fabric/routeAggregationRule:RouteAggregationRule": 1,

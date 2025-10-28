@@ -32,7 +32,7 @@ public class App {
             .selfManaged(true)
             .byol(true)
             .generateDefaultPassword(false)
-            .packageCode("VM100")
+            .packageCode("network-essentials")
             .notifications(            
                 "john@equinix.com",
                 "marry@equinix.com",

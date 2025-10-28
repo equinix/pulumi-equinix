@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+// Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
 //
-// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+// See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
 func LookupVirtualCircuit(ctx *pulumi.Context, args *LookupVirtualCircuitArgs, opts ...pulumi.InvokeOption) (*LookupVirtualCircuitResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualCircuitResult
@@ -58,9 +58,9 @@ type LookupVirtualCircuitResult struct {
 	MetalIpv6 *string `pulumi:"metalIpv6"`
 	// Name of the virtual circuit
 	Name string `pulumi:"name"`
-	// Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// Nni VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	NniVlan int `pulumi:"nniVlan"`
-	// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	NniVnid int `pulumi:"nniVnid"`
 	// The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the localAsn of the VRF.
 	PeerAsn int `pulumi:"peerAsn"`
@@ -86,7 +86,7 @@ type LookupVirtualCircuitResult struct {
 	VirtualCircuitId string `pulumi:"virtualCircuitId"`
 	// UUID of the associated VLAN
 	VlanId string `pulumi:"vlanId"`
-	// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+	// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 	Vnid int `pulumi:"vnid"`
 	// UUID of the associated VRF
 	VrfId string `pulumi:"vrfId"`
@@ -179,12 +179,12 @@ func (o LookupVirtualCircuitResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+// Nni VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 func (o LookupVirtualCircuitResultOutput) NniVlan() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.NniVlan }).(pulumi.IntOutput)
 }
 
-// Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+// Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 func (o LookupVirtualCircuitResultOutput) NniVnid() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.NniVnid }).(pulumi.IntOutput)
 }
@@ -243,7 +243,7 @@ func (o LookupVirtualCircuitResultOutput) VlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.VlanId }).(pulumi.StringOutput)
 }
 
-// VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+// VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
 func (o LookupVirtualCircuitResultOutput) Vnid() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.Vnid }).(pulumi.IntOutput)
 }

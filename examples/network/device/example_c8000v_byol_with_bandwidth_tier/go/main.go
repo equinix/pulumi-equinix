@@ -18,7 +18,7 @@ func main() {
 			TypeCode:    pulumi.String("C8000V"),
 			SelfManaged: pulumi.Bool(true),
 			Byol:        pulumi.Bool(true),
-			PackageCode: pulumi.String("VM100"),
+			PackageCode: pulumi.String("network-essentials"),
 			Notifications: pulumi.StringArray{
 				pulumi.String("john@equinix.com"),
 				pulumi.String("marry@equinix.com"),

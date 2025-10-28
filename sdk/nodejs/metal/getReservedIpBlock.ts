@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
  *
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  */
 export function getReservedIpBlock(args?: GetReservedIpBlockArgs, opts?: pulumi.InvokeOptions): Promise<GetReservedIpBlockResult> {
     args = args || {};
@@ -76,7 +76,7 @@ export interface GetReservedIpBlockResult {
  *
  * > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
  *
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  */
 export function getReservedIpBlockOutput(args?: GetReservedIpBlockOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReservedIpBlockResult> {
     args = args || {};

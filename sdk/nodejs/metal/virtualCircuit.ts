@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
+ * Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
  *
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
  * ```typescript
@@ -103,7 +103,7 @@ export class VirtualCircuit extends pulumi.CustomResource {
      */
     public readonly nniVlan!: pulumi.Output<number>;
     /**
-     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      */
     public /*out*/ readonly nniVnid!: pulumi.Output<number>;
     /**
@@ -151,7 +151,7 @@ export class VirtualCircuit extends pulumi.CustomResource {
      */
     public readonly vlanId!: pulumi.Output<string | undefined>;
     /**
-     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      */
     public /*out*/ readonly vnid!: pulumi.Output<number>;
     /**
@@ -273,7 +273,7 @@ export interface VirtualCircuitState {
      */
     nniVlan?: pulumi.Input<number>;
     /**
-     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      */
     nniVnid?: pulumi.Input<number>;
     /**
@@ -321,7 +321,7 @@ export interface VirtualCircuitState {
      */
     vlanId?: pulumi.Input<string>;
     /**
-     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      */
     vnid?: pulumi.Input<number>;
     /**

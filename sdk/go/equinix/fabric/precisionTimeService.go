@@ -34,6 +34,8 @@ type PrecisionTimeService struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NTP Advanced configuration
 	NtpAdvancedConfigurations PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput `pulumi:"ntpAdvancedConfigurations"`
+	// Precision Time Service Operation
+	Operation PrecisionTimeServiceOperationOutput `pulumi:"operation"`
 	// Precision Time Order
 	Order PrecisionTimeServiceOrderOutput `pulumi:"order"`
 	// Precision Time Service Package Details
@@ -109,6 +111,8 @@ type precisionTimeServiceState struct {
 	Name *string `pulumi:"name"`
 	// NTP Advanced configuration
 	NtpAdvancedConfigurations []PrecisionTimeServiceNtpAdvancedConfiguration `pulumi:"ntpAdvancedConfigurations"`
+	// Precision Time Service Operation
+	Operation *PrecisionTimeServiceOperation `pulumi:"operation"`
 	// Precision Time Order
 	Order *PrecisionTimeServiceOrder `pulumi:"order"`
 	// Precision Time Service Package Details
@@ -143,6 +147,8 @@ type PrecisionTimeServiceState struct {
 	Name pulumi.StringPtrInput
 	// NTP Advanced configuration
 	NtpAdvancedConfigurations PrecisionTimeServiceNtpAdvancedConfigurationArrayInput
+	// Precision Time Service Operation
+	Operation PrecisionTimeServiceOperationPtrInput
 	// Precision Time Order
 	Order PrecisionTimeServiceOrderPtrInput
 	// Precision Time Service Package Details
@@ -325,6 +331,11 @@ func (o PrecisionTimeServiceOutput) NtpAdvancedConfigurations() PrecisionTimeSer
 	return o.ApplyT(func(v *PrecisionTimeService) PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput {
 		return v.NtpAdvancedConfigurations
 	}).(PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput)
+}
+
+// Precision Time Service Operation
+func (o PrecisionTimeServiceOutput) Operation() PrecisionTimeServiceOperationOutput {
+	return o.ApplyT(func(v *PrecisionTimeService) PrecisionTimeServiceOperationOutput { return v.Operation }).(PrecisionTimeServiceOperationOutput)
 }
 
 // Precision Time Order

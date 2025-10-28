@@ -7,6 +7,8 @@ import com.equinix.pulumi.Utilities;
 import com.equinix.pulumi.fabric.StreamAlertRuleArgs;
 import com.equinix.pulumi.fabric.inputs.StreamAlertRuleState;
 import com.equinix.pulumi.fabric.outputs.StreamAlertRuleChangeLog;
+import com.equinix.pulumi.fabric.outputs.StreamAlertRuleDetectionMethod;
+import com.equinix.pulumi.fabric.outputs.StreamAlertRuleMetricSelector;
 import com.equinix.pulumi.fabric.outputs.StreamAlertRuleResourceSelector;
 import com.equinix.pulumi.fabric.outputs.StreamAlertRuleTimeouts;
 import com.pulumi.core.Output;
@@ -19,13 +21,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Alert Rules&#39;
- * }
- * 
- * Additional Documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -38,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.StreamAlertRule;
  * import com.pulumi.equinix.fabric.StreamAlertRuleArgs;
+ * import com.pulumi.equinix.fabric.inputs.StreamAlertRuleMetricSelectorArgs;
+ * import com.pulumi.equinix.fabric.inputs.StreamAlertRuleDetectionMethodArgs;
  * import com.pulumi.equinix.fabric.inputs.StreamAlertRuleResourceSelectorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -57,11 +54,15 @@ import javax.annotation.Nullable;
  *             .type("METRIC_ALERT")
  *             .description("<description>")
  *             .enabled(true)
- *             .operand("ABOVE")
- *             .windowSize("<window_size>")
- *             .warningThreshold("<warning_threshold>")
- *             .criticalThreshold("<critical_threshold>")
- *             .metricName("equinix.fabric.connection.bandwidth_tx.usage")
+ *             .metricSelector(StreamAlertRuleMetricSelectorArgs.builder()
+ *                 .include("equinix.fabric.connection.bandwidth_tx.usage")
+ *                 .build())
+ *             .detectionMethod(StreamAlertRuleDetectionMethodArgs.builder()
+ *                 .operand("ABOVE")
+ *                 .window_size("<window_size>")
+ *                 .warning_threshold("<warning_threshold>")
+ *                 .critical_threshold("<critical_threshold>")
+ *                 .build())
  *             .resourceSelector(StreamAlertRuleResourceSelectorArgs.builder()
  *                 .include("*}&#47;{@code connections/<connection_id>")
  *                 .build())
@@ -95,20 +96,6 @@ public class StreamAlertRule extends com.pulumi.resources.CustomResource {
         return this.changeLog;
     }
     /**
-     * Stream alert rule metric critical threshold
-     * 
-     */
-    @Export(name="criticalThreshold", refs={String.class}, tree="[0]")
-    private Output<String> criticalThreshold;
-
-    /**
-     * @return Stream alert rule metric critical threshold
-     * 
-     */
-    public Output<String> criticalThreshold() {
-        return this.criticalThreshold;
-    }
-    /**
      * Customer-provided stream alert rule description
      * 
      */
@@ -121,6 +108,20 @@ public class StreamAlertRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * Detection method for stream alert rule
+     * 
+     */
+    @Export(name="detectionMethod", refs={StreamAlertRuleDetectionMethod.class}, tree="[0]")
+    private Output<StreamAlertRuleDetectionMethod> detectionMethod;
+
+    /**
+     * @return Detection method for stream alert rule
+     * 
+     */
+    public Output<StreamAlertRuleDetectionMethod> detectionMethod() {
+        return this.detectionMethod;
     }
     /**
      * Stream alert rule enabled status
@@ -151,18 +152,18 @@ public class StreamAlertRule extends com.pulumi.resources.CustomResource {
         return this.href;
     }
     /**
-     * Stream alert rule metric name
+     * Metric selector for the stream alert rule
      * 
      */
-    @Export(name="metricName", refs={String.class}, tree="[0]")
-    private Output<String> metricName;
+    @Export(name="metricSelector", refs={StreamAlertRuleMetricSelector.class}, tree="[0]")
+    private Output<StreamAlertRuleMetricSelector> metricSelector;
 
     /**
-     * @return Stream alert rule metric name
+     * @return Metric selector for the stream alert rule
      * 
      */
-    public Output<String> metricName() {
-        return this.metricName;
+    public Output<StreamAlertRuleMetricSelector> metricSelector() {
+        return this.metricSelector;
     }
     /**
      * Customer-provided stream alert rule name
@@ -177,20 +178,6 @@ public class StreamAlertRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
-    }
-    /**
-     * Stream alert rule metric operand
-     * 
-     */
-    @Export(name="operand", refs={String.class}, tree="[0]")
-    private Output<String> operand;
-
-    /**
-     * @return Stream alert rule metric operand
-     * 
-     */
-    public Output<String> operand() {
-        return this.operand;
     }
     /**
      * Resource selector for the stream alert rule
@@ -267,34 +254,6 @@ public class StreamAlertRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uuid() {
         return this.uuid;
-    }
-    /**
-     * Stream alert rule metric warning threshold
-     * 
-     */
-    @Export(name="warningThreshold", refs={String.class}, tree="[0]")
-    private Output<String> warningThreshold;
-
-    /**
-     * @return Stream alert rule metric warning threshold
-     * 
-     */
-    public Output<String> warningThreshold() {
-        return this.warningThreshold;
-    }
-    /**
-     * Stream alert rule metric window size
-     * 
-     */
-    @Export(name="windowSize", refs={String.class}, tree="[0]")
-    private Output<String> windowSize;
-
-    /**
-     * @return Stream alert rule metric window size
-     * 
-     */
-    public Output<String> windowSize() {
-        return this.windowSize;
     }
 
     /**

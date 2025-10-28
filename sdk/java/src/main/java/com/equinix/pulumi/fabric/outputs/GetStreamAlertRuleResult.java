@@ -4,6 +4,8 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetStreamAlertRuleChangeLog;
+import com.equinix.pulumi.fabric.outputs.GetStreamAlertRuleDetectionMethod;
+import com.equinix.pulumi.fabric.outputs.GetStreamAlertRuleMetricSelector;
 import com.equinix.pulumi.fabric.outputs.GetStreamAlertRuleResourceSelector;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -24,15 +26,15 @@ public final class GetStreamAlertRuleResult {
      */
     private GetStreamAlertRuleChangeLog changeLog;
     /**
-     * @return Stream alert rule metric critical threshold
-     * 
-     */
-    private String criticalThreshold;
-    /**
      * @return Customer-provided stream alert rule description
      * 
      */
     private String description;
+    /**
+     * @return Detection method for stream alert rule
+     * 
+     */
+    private GetStreamAlertRuleDetectionMethod detectionMethod;
     /**
      * @return Stream subscription enabled status
      * 
@@ -49,20 +51,15 @@ public final class GetStreamAlertRuleResult {
      */
     private String id;
     /**
-     * @return Stream alert rule metric name
+     * @return Metric selector for the stream alert rule
      * 
      */
-    private String metricName;
+    private GetStreamAlertRuleMetricSelector metricSelector;
     /**
      * @return Customer-provided stream alert rule name
      * 
      */
     private String name;
-    /**
-     * @return Stream alert rule metric operand
-     * 
-     */
-    private String operand;
     /**
      * @return Lists of metrics to be included/excluded on the stream alert rule
      * 
@@ -88,16 +85,6 @@ public final class GetStreamAlertRuleResult {
      * 
      */
     private String uuid;
-    /**
-     * @return Stream alert rule metric warning threshold
-     * 
-     */
-    private String warningThreshold;
-    /**
-     * @return Stream alert rule metric window size
-     * 
-     */
-    private String windowSize;
 
     private GetStreamAlertRuleResult() {}
     /**
@@ -115,18 +102,18 @@ public final class GetStreamAlertRuleResult {
         return this.changeLog;
     }
     /**
-     * @return Stream alert rule metric critical threshold
-     * 
-     */
-    public String criticalThreshold() {
-        return this.criticalThreshold;
-    }
-    /**
      * @return Customer-provided stream alert rule description
      * 
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Detection method for stream alert rule
+     * 
+     */
+    public GetStreamAlertRuleDetectionMethod detectionMethod() {
+        return this.detectionMethod;
     }
     /**
      * @return Stream subscription enabled status
@@ -150,11 +137,11 @@ public final class GetStreamAlertRuleResult {
         return this.id;
     }
     /**
-     * @return Stream alert rule metric name
+     * @return Metric selector for the stream alert rule
      * 
      */
-    public String metricName() {
-        return this.metricName;
+    public GetStreamAlertRuleMetricSelector metricSelector() {
+        return this.metricSelector;
     }
     /**
      * @return Customer-provided stream alert rule name
@@ -162,13 +149,6 @@ public final class GetStreamAlertRuleResult {
      */
     public String name() {
         return this.name;
-    }
-    /**
-     * @return Stream alert rule metric operand
-     * 
-     */
-    public String operand() {
-        return this.operand;
     }
     /**
      * @return Lists of metrics to be included/excluded on the stream alert rule
@@ -205,20 +185,6 @@ public final class GetStreamAlertRuleResult {
     public String uuid() {
         return this.uuid;
     }
-    /**
-     * @return Stream alert rule metric warning threshold
-     * 
-     */
-    public String warningThreshold() {
-        return this.warningThreshold;
-    }
-    /**
-     * @return Stream alert rule metric window size
-     * 
-     */
-    public String windowSize() {
-        return this.windowSize;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -231,41 +197,35 @@ public final class GetStreamAlertRuleResult {
     public static final class Builder {
         private String alertRuleId;
         private GetStreamAlertRuleChangeLog changeLog;
-        private String criticalThreshold;
         private String description;
+        private GetStreamAlertRuleDetectionMethod detectionMethod;
         private Boolean enabled;
         private String href;
         private String id;
-        private String metricName;
+        private GetStreamAlertRuleMetricSelector metricSelector;
         private String name;
-        private String operand;
         private GetStreamAlertRuleResourceSelector resourceSelector;
         private String state;
         private String streamId;
         private String type;
         private String uuid;
-        private String warningThreshold;
-        private String windowSize;
         public Builder() {}
         public Builder(GetStreamAlertRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertRuleId = defaults.alertRuleId;
     	      this.changeLog = defaults.changeLog;
-    	      this.criticalThreshold = defaults.criticalThreshold;
     	      this.description = defaults.description;
+    	      this.detectionMethod = defaults.detectionMethod;
     	      this.enabled = defaults.enabled;
     	      this.href = defaults.href;
     	      this.id = defaults.id;
-    	      this.metricName = defaults.metricName;
+    	      this.metricSelector = defaults.metricSelector;
     	      this.name = defaults.name;
-    	      this.operand = defaults.operand;
     	      this.resourceSelector = defaults.resourceSelector;
     	      this.state = defaults.state;
     	      this.streamId = defaults.streamId;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
-    	      this.warningThreshold = defaults.warningThreshold;
-    	      this.windowSize = defaults.windowSize;
         }
 
         @CustomType.Setter
@@ -285,19 +245,19 @@ public final class GetStreamAlertRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder criticalThreshold(String criticalThreshold) {
-            if (criticalThreshold == null) {
-              throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "criticalThreshold");
-            }
-            this.criticalThreshold = criticalThreshold;
-            return this;
-        }
-        @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
               throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder detectionMethod(GetStreamAlertRuleDetectionMethod detectionMethod) {
+            if (detectionMethod == null) {
+              throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "detectionMethod");
+            }
+            this.detectionMethod = detectionMethod;
             return this;
         }
         @CustomType.Setter
@@ -325,11 +285,11 @@ public final class GetStreamAlertRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder metricName(String metricName) {
-            if (metricName == null) {
-              throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "metricName");
+        public Builder metricSelector(GetStreamAlertRuleMetricSelector metricSelector) {
+            if (metricSelector == null) {
+              throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "metricSelector");
             }
-            this.metricName = metricName;
+            this.metricSelector = metricSelector;
             return this;
         }
         @CustomType.Setter
@@ -338,14 +298,6 @@ public final class GetStreamAlertRuleResult {
               throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "name");
             }
             this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder operand(String operand) {
-            if (operand == null) {
-              throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "operand");
-            }
-            this.operand = operand;
             return this;
         }
         @CustomType.Setter
@@ -388,41 +340,22 @@ public final class GetStreamAlertRuleResult {
             this.uuid = uuid;
             return this;
         }
-        @CustomType.Setter
-        public Builder warningThreshold(String warningThreshold) {
-            if (warningThreshold == null) {
-              throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "warningThreshold");
-            }
-            this.warningThreshold = warningThreshold;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder windowSize(String windowSize) {
-            if (windowSize == null) {
-              throw new MissingRequiredPropertyException("GetStreamAlertRuleResult", "windowSize");
-            }
-            this.windowSize = windowSize;
-            return this;
-        }
         public GetStreamAlertRuleResult build() {
             final var _resultValue = new GetStreamAlertRuleResult();
             _resultValue.alertRuleId = alertRuleId;
             _resultValue.changeLog = changeLog;
-            _resultValue.criticalThreshold = criticalThreshold;
             _resultValue.description = description;
+            _resultValue.detectionMethod = detectionMethod;
             _resultValue.enabled = enabled;
             _resultValue.href = href;
             _resultValue.id = id;
-            _resultValue.metricName = metricName;
+            _resultValue.metricSelector = metricSelector;
             _resultValue.name = name;
-            _resultValue.operand = operand;
             _resultValue.resourceSelector = resourceSelector;
             _resultValue.state = state;
             _resultValue.streamId = streamId;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
-            _resultValue.warningThreshold = warningThreshold;
-            _resultValue.windowSize = windowSize;
             return _resultValue;
         }
     }

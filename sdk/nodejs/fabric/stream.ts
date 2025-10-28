@@ -113,6 +113,9 @@ export class Stream extends pulumi.CustomResource {
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
+            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -195,7 +198,7 @@ export interface StreamArgs {
     /**
      * Equinix Project attribute object
      */
-    project?: pulumi.Input<inputs.fabric.StreamProject>;
+    project: pulumi.Input<inputs.fabric.StreamProject>;
     timeouts?: pulumi.Input<inputs.fabric.StreamTimeouts>;
     /**
      * Equinix defined Streaming Type

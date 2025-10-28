@@ -59,6 +59,7 @@
         "fabric/getStreams.ts",
         "fabric/index.ts",
         "fabric/network.ts",
+        "fabric/port.ts",
         "fabric/precisionTimeService.ts",
         "fabric/routeAggregation.ts",
         "fabric/routeAggregationRule.ts",

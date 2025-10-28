@@ -1517,6 +1517,8 @@ type ConnectionASideAccessPoint struct {
 	Profile *ConnectionASideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId *string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *ConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -1563,6 +1565,8 @@ type ConnectionASideAccessPointArgs struct {
 	Profile ConnectionASideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringPtrInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router ConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -1705,6 +1709,11 @@ func (o ConnectionASideAccessPointOutput) Profile() ConnectionASideAccessPointPr
 // Provider assigned Connection Id
 func (o ConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.ProviderConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionASideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -1860,6 +1869,16 @@ func (o ConnectionASideAccessPointPtrOutput) ProviderConnectionId() pulumi.Strin
 			return nil
 		}
 		return v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionASideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6480,6 +6499,8 @@ type ConnectionZSideAccessPoint struct {
 	Profile *ConnectionZSideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId *string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *ConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -6526,6 +6547,8 @@ type ConnectionZSideAccessPointArgs struct {
 	Profile ConnectionZSideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringPtrInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router ConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -6668,6 +6691,11 @@ func (o ConnectionZSideAccessPointOutput) Profile() ConnectionZSideAccessPointPr
 // Provider assigned Connection Id
 func (o ConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.ProviderConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionZSideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -6823,6 +6851,16 @@ func (o ConnectionZSideAccessPointPtrOutput) ProviderConnectionId() pulumi.Strin
 			return nil
 		}
 		return v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o ConnectionZSideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10478,6 +10516,3103 @@ func (o NetworkProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PortAccount struct {
+	// Legal name of the accountholder.
+	AccountName *string `pulumi:"accountName"`
+	// Account number the port will be created for
+	AccountNumber int `pulumi:"accountNumber"`
+	// Enterprise datastore id
+	UcmId *string `pulumi:"ucmId"`
+}
+
+// PortAccountInput is an input type that accepts PortAccountArgs and PortAccountOutput values.
+// You can construct a concrete instance of `PortAccountInput` via:
+//
+//	PortAccountArgs{...}
+type PortAccountInput interface {
+	pulumi.Input
+
+	ToPortAccountOutput() PortAccountOutput
+	ToPortAccountOutputWithContext(context.Context) PortAccountOutput
+}
+
+type PortAccountArgs struct {
+	// Legal name of the accountholder.
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// Account number the port will be created for
+	AccountNumber pulumi.IntInput `pulumi:"accountNumber"`
+	// Enterprise datastore id
+	UcmId pulumi.StringPtrInput `pulumi:"ucmId"`
+}
+
+func (PortAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortAccount)(nil)).Elem()
+}
+
+func (i PortAccountArgs) ToPortAccountOutput() PortAccountOutput {
+	return i.ToPortAccountOutputWithContext(context.Background())
+}
+
+func (i PortAccountArgs) ToPortAccountOutputWithContext(ctx context.Context) PortAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortAccountOutput)
+}
+
+func (i PortAccountArgs) ToPortAccountPtrOutput() PortAccountPtrOutput {
+	return i.ToPortAccountPtrOutputWithContext(context.Background())
+}
+
+func (i PortAccountArgs) ToPortAccountPtrOutputWithContext(ctx context.Context) PortAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortAccountOutput).ToPortAccountPtrOutputWithContext(ctx)
+}
+
+// PortAccountPtrInput is an input type that accepts PortAccountArgs, PortAccountPtr and PortAccountPtrOutput values.
+// You can construct a concrete instance of `PortAccountPtrInput` via:
+//
+//	        PortAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortAccountPtrInput interface {
+	pulumi.Input
+
+	ToPortAccountPtrOutput() PortAccountPtrOutput
+	ToPortAccountPtrOutputWithContext(context.Context) PortAccountPtrOutput
+}
+
+type portAccountPtrType PortAccountArgs
+
+func PortAccountPtr(v *PortAccountArgs) PortAccountPtrInput {
+	return (*portAccountPtrType)(v)
+}
+
+func (*portAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortAccount)(nil)).Elem()
+}
+
+func (i *portAccountPtrType) ToPortAccountPtrOutput() PortAccountPtrOutput {
+	return i.ToPortAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *portAccountPtrType) ToPortAccountPtrOutputWithContext(ctx context.Context) PortAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortAccountPtrOutput)
+}
+
+type PortAccountOutput struct{ *pulumi.OutputState }
+
+func (PortAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortAccount)(nil)).Elem()
+}
+
+func (o PortAccountOutput) ToPortAccountOutput() PortAccountOutput {
+	return o
+}
+
+func (o PortAccountOutput) ToPortAccountOutputWithContext(ctx context.Context) PortAccountOutput {
+	return o
+}
+
+func (o PortAccountOutput) ToPortAccountPtrOutput() PortAccountPtrOutput {
+	return o.ToPortAccountPtrOutputWithContext(context.Background())
+}
+
+func (o PortAccountOutput) ToPortAccountPtrOutputWithContext(ctx context.Context) PortAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortAccount) *PortAccount {
+		return &v
+	}).(PortAccountPtrOutput)
+}
+
+// Legal name of the accountholder.
+func (o PortAccountOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortAccount) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// Account number the port will be created for
+func (o PortAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v PortAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+// Enterprise datastore id
+func (o PortAccountOutput) UcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortAccount) *string { return v.UcmId }).(pulumi.StringPtrOutput)
+}
+
+type PortAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (PortAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortAccount)(nil)).Elem()
+}
+
+func (o PortAccountPtrOutput) ToPortAccountPtrOutput() PortAccountPtrOutput {
+	return o
+}
+
+func (o PortAccountPtrOutput) ToPortAccountPtrOutputWithContext(ctx context.Context) PortAccountPtrOutput {
+	return o
+}
+
+func (o PortAccountPtrOutput) Elem() PortAccountOutput {
+	return o.ApplyT(func(v *PortAccount) PortAccount {
+		if v != nil {
+			return *v
+		}
+		var ret PortAccount
+		return ret
+	}).(PortAccountOutput)
+}
+
+// Legal name of the accountholder.
+func (o PortAccountPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Account number the port will be created for
+func (o PortAccountPtrOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PortAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.AccountNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enterprise datastore id
+func (o PortAccountPtrOutput) UcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UcmId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortAdditionalInfo struct {
+	// The key name of the key/value pair
+	Key string `pulumi:"key"`
+	// The value of the key/value pair
+	Value string `pulumi:"value"`
+}
+
+// PortAdditionalInfoInput is an input type that accepts PortAdditionalInfoArgs and PortAdditionalInfoOutput values.
+// You can construct a concrete instance of `PortAdditionalInfoInput` via:
+//
+//	PortAdditionalInfoArgs{...}
+type PortAdditionalInfoInput interface {
+	pulumi.Input
+
+	ToPortAdditionalInfoOutput() PortAdditionalInfoOutput
+	ToPortAdditionalInfoOutputWithContext(context.Context) PortAdditionalInfoOutput
+}
+
+type PortAdditionalInfoArgs struct {
+	// The key name of the key/value pair
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the key/value pair
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (PortAdditionalInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortAdditionalInfo)(nil)).Elem()
+}
+
+func (i PortAdditionalInfoArgs) ToPortAdditionalInfoOutput() PortAdditionalInfoOutput {
+	return i.ToPortAdditionalInfoOutputWithContext(context.Background())
+}
+
+func (i PortAdditionalInfoArgs) ToPortAdditionalInfoOutputWithContext(ctx context.Context) PortAdditionalInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortAdditionalInfoOutput)
+}
+
+// PortAdditionalInfoArrayInput is an input type that accepts PortAdditionalInfoArray and PortAdditionalInfoArrayOutput values.
+// You can construct a concrete instance of `PortAdditionalInfoArrayInput` via:
+//
+//	PortAdditionalInfoArray{ PortAdditionalInfoArgs{...} }
+type PortAdditionalInfoArrayInput interface {
+	pulumi.Input
+
+	ToPortAdditionalInfoArrayOutput() PortAdditionalInfoArrayOutput
+	ToPortAdditionalInfoArrayOutputWithContext(context.Context) PortAdditionalInfoArrayOutput
+}
+
+type PortAdditionalInfoArray []PortAdditionalInfoInput
+
+func (PortAdditionalInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortAdditionalInfo)(nil)).Elem()
+}
+
+func (i PortAdditionalInfoArray) ToPortAdditionalInfoArrayOutput() PortAdditionalInfoArrayOutput {
+	return i.ToPortAdditionalInfoArrayOutputWithContext(context.Background())
+}
+
+func (i PortAdditionalInfoArray) ToPortAdditionalInfoArrayOutputWithContext(ctx context.Context) PortAdditionalInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortAdditionalInfoArrayOutput)
+}
+
+type PortAdditionalInfoOutput struct{ *pulumi.OutputState }
+
+func (PortAdditionalInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortAdditionalInfo)(nil)).Elem()
+}
+
+func (o PortAdditionalInfoOutput) ToPortAdditionalInfoOutput() PortAdditionalInfoOutput {
+	return o
+}
+
+func (o PortAdditionalInfoOutput) ToPortAdditionalInfoOutputWithContext(ctx context.Context) PortAdditionalInfoOutput {
+	return o
+}
+
+// The key name of the key/value pair
+func (o PortAdditionalInfoOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PortAdditionalInfo) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the key/value pair
+func (o PortAdditionalInfoOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v PortAdditionalInfo) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type PortAdditionalInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (PortAdditionalInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortAdditionalInfo)(nil)).Elem()
+}
+
+func (o PortAdditionalInfoArrayOutput) ToPortAdditionalInfoArrayOutput() PortAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o PortAdditionalInfoArrayOutput) ToPortAdditionalInfoArrayOutputWithContext(ctx context.Context) PortAdditionalInfoArrayOutput {
+	return o
+}
+
+func (o PortAdditionalInfoArrayOutput) Index(i pulumi.IntInput) PortAdditionalInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortAdditionalInfo {
+		return vs[0].([]PortAdditionalInfo)[vs[1].(int)]
+	}).(PortAdditionalInfoOutput)
+}
+
+type PortChangeLog struct {
+	// User name of creator of the port resource
+	CreatedBy *string `pulumi:"createdBy"`
+	// Email of creator of the port resource
+	CreatedByEmail *string `pulumi:"createdByEmail"`
+	// Legal name of creator of the port resource
+	CreatedByFullName *string `pulumi:"createdByFullName"`
+	// Creation time of the port resource
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// User name of deleter of the port resource
+	DeletedBy *string `pulumi:"deletedBy"`
+	// Email of deleter of the port resource
+	DeletedByEmail *string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the port resource
+	DeletedByFullName *string `pulumi:"deletedByFullName"`
+	// Deletion time of the port resource
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// User name of last updater of the port resource
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Email of last updater of the port resource
+	UpdatedByEmail *string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the port resource
+	UpdatedByFullName *string `pulumi:"updatedByFullName"`
+	// Last update time of the port resource
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// PortChangeLogInput is an input type that accepts PortChangeLogArgs and PortChangeLogOutput values.
+// You can construct a concrete instance of `PortChangeLogInput` via:
+//
+//	PortChangeLogArgs{...}
+type PortChangeLogInput interface {
+	pulumi.Input
+
+	ToPortChangeLogOutput() PortChangeLogOutput
+	ToPortChangeLogOutputWithContext(context.Context) PortChangeLogOutput
+}
+
+type PortChangeLogArgs struct {
+	// User name of creator of the port resource
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Email of creator of the port resource
+	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the port resource
+	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
+	// Creation time of the port resource
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// User name of deleter of the port resource
+	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
+	// Email of deleter of the port resource
+	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the port resource
+	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
+	// Deletion time of the port resource
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the port resource
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Email of last updater of the port resource
+	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the port resource
+	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
+	// Last update time of the port resource
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (PortChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortChangeLog)(nil)).Elem()
+}
+
+func (i PortChangeLogArgs) ToPortChangeLogOutput() PortChangeLogOutput {
+	return i.ToPortChangeLogOutputWithContext(context.Background())
+}
+
+func (i PortChangeLogArgs) ToPortChangeLogOutputWithContext(ctx context.Context) PortChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortChangeLogOutput)
+}
+
+func (i PortChangeLogArgs) ToPortChangeLogPtrOutput() PortChangeLogPtrOutput {
+	return i.ToPortChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i PortChangeLogArgs) ToPortChangeLogPtrOutputWithContext(ctx context.Context) PortChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortChangeLogOutput).ToPortChangeLogPtrOutputWithContext(ctx)
+}
+
+// PortChangeLogPtrInput is an input type that accepts PortChangeLogArgs, PortChangeLogPtr and PortChangeLogPtrOutput values.
+// You can construct a concrete instance of `PortChangeLogPtrInput` via:
+//
+//	        PortChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToPortChangeLogPtrOutput() PortChangeLogPtrOutput
+	ToPortChangeLogPtrOutputWithContext(context.Context) PortChangeLogPtrOutput
+}
+
+type portChangeLogPtrType PortChangeLogArgs
+
+func PortChangeLogPtr(v *PortChangeLogArgs) PortChangeLogPtrInput {
+	return (*portChangeLogPtrType)(v)
+}
+
+func (*portChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortChangeLog)(nil)).Elem()
+}
+
+func (i *portChangeLogPtrType) ToPortChangeLogPtrOutput() PortChangeLogPtrOutput {
+	return i.ToPortChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *portChangeLogPtrType) ToPortChangeLogPtrOutputWithContext(ctx context.Context) PortChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortChangeLogPtrOutput)
+}
+
+type PortChangeLogOutput struct{ *pulumi.OutputState }
+
+func (PortChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortChangeLog)(nil)).Elem()
+}
+
+func (o PortChangeLogOutput) ToPortChangeLogOutput() PortChangeLogOutput {
+	return o
+}
+
+func (o PortChangeLogOutput) ToPortChangeLogOutputWithContext(ctx context.Context) PortChangeLogOutput {
+	return o
+}
+
+func (o PortChangeLogOutput) ToPortChangeLogPtrOutput() PortChangeLogPtrOutput {
+	return o.ToPortChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o PortChangeLogOutput) ToPortChangeLogPtrOutputWithContext(ctx context.Context) PortChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortChangeLog) *PortChangeLog {
+		return &v
+	}).(PortChangeLogPtrOutput)
+}
+
+// User name of creator of the port resource
+func (o PortChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the port resource
+func (o PortChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the port resource
+func (o PortChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the port resource
+func (o PortChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the port resource
+func (o PortChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the port resource
+func (o PortChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the port resource
+func (o PortChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the port resource
+func (o PortChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the port resource
+func (o PortChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the port resource
+func (o PortChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the port resource
+func (o PortChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the port resource
+func (o PortChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type PortChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (PortChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortChangeLog)(nil)).Elem()
+}
+
+func (o PortChangeLogPtrOutput) ToPortChangeLogPtrOutput() PortChangeLogPtrOutput {
+	return o
+}
+
+func (o PortChangeLogPtrOutput) ToPortChangeLogPtrOutputWithContext(ctx context.Context) PortChangeLogPtrOutput {
+	return o
+}
+
+func (o PortChangeLogPtrOutput) Elem() PortChangeLogOutput {
+	return o.ApplyT(func(v *PortChangeLog) PortChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret PortChangeLog
+		return ret
+	}).(PortChangeLogOutput)
+}
+
+// User name of creator of the port resource
+func (o PortChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of creator of the port resource
+func (o PortChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of creator of the port resource
+func (o PortChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation time of the port resource
+func (o PortChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of deleter of the port resource
+func (o PortChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of deleter of the port resource
+func (o PortChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of deleter of the port resource
+func (o PortChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion time of the port resource
+func (o PortChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name of last updater of the port resource
+func (o PortChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of last updater of the port resource
+func (o PortChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Legal name of last updater of the port resource
+func (o PortChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update time of the port resource
+func (o PortChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortDevice struct {
+	// Device name for the port
+	Name *string `pulumi:"name"`
+	// Device redundancy configuration
+	Redundancy *PortDeviceRedundancy `pulumi:"redundancy"`
+}
+
+// PortDeviceInput is an input type that accepts PortDeviceArgs and PortDeviceOutput values.
+// You can construct a concrete instance of `PortDeviceInput` via:
+//
+//	PortDeviceArgs{...}
+type PortDeviceInput interface {
+	pulumi.Input
+
+	ToPortDeviceOutput() PortDeviceOutput
+	ToPortDeviceOutputWithContext(context.Context) PortDeviceOutput
+}
+
+type PortDeviceArgs struct {
+	// Device name for the port
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Device redundancy configuration
+	Redundancy PortDeviceRedundancyPtrInput `pulumi:"redundancy"`
+}
+
+func (PortDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortDevice)(nil)).Elem()
+}
+
+func (i PortDeviceArgs) ToPortDeviceOutput() PortDeviceOutput {
+	return i.ToPortDeviceOutputWithContext(context.Background())
+}
+
+func (i PortDeviceArgs) ToPortDeviceOutputWithContext(ctx context.Context) PortDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortDeviceOutput)
+}
+
+func (i PortDeviceArgs) ToPortDevicePtrOutput() PortDevicePtrOutput {
+	return i.ToPortDevicePtrOutputWithContext(context.Background())
+}
+
+func (i PortDeviceArgs) ToPortDevicePtrOutputWithContext(ctx context.Context) PortDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortDeviceOutput).ToPortDevicePtrOutputWithContext(ctx)
+}
+
+// PortDevicePtrInput is an input type that accepts PortDeviceArgs, PortDevicePtr and PortDevicePtrOutput values.
+// You can construct a concrete instance of `PortDevicePtrInput` via:
+//
+//	        PortDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortDevicePtrInput interface {
+	pulumi.Input
+
+	ToPortDevicePtrOutput() PortDevicePtrOutput
+	ToPortDevicePtrOutputWithContext(context.Context) PortDevicePtrOutput
+}
+
+type portDevicePtrType PortDeviceArgs
+
+func PortDevicePtr(v *PortDeviceArgs) PortDevicePtrInput {
+	return (*portDevicePtrType)(v)
+}
+
+func (*portDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortDevice)(nil)).Elem()
+}
+
+func (i *portDevicePtrType) ToPortDevicePtrOutput() PortDevicePtrOutput {
+	return i.ToPortDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *portDevicePtrType) ToPortDevicePtrOutputWithContext(ctx context.Context) PortDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortDevicePtrOutput)
+}
+
+type PortDeviceOutput struct{ *pulumi.OutputState }
+
+func (PortDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortDevice)(nil)).Elem()
+}
+
+func (o PortDeviceOutput) ToPortDeviceOutput() PortDeviceOutput {
+	return o
+}
+
+func (o PortDeviceOutput) ToPortDeviceOutputWithContext(ctx context.Context) PortDeviceOutput {
+	return o
+}
+
+func (o PortDeviceOutput) ToPortDevicePtrOutput() PortDevicePtrOutput {
+	return o.ToPortDevicePtrOutputWithContext(context.Background())
+}
+
+func (o PortDeviceOutput) ToPortDevicePtrOutputWithContext(ctx context.Context) PortDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortDevice) *PortDevice {
+		return &v
+	}).(PortDevicePtrOutput)
+}
+
+// Device name for the port
+func (o PortDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Device redundancy configuration
+func (o PortDeviceOutput) Redundancy() PortDeviceRedundancyPtrOutput {
+	return o.ApplyT(func(v PortDevice) *PortDeviceRedundancy { return v.Redundancy }).(PortDeviceRedundancyPtrOutput)
+}
+
+type PortDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (PortDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortDevice)(nil)).Elem()
+}
+
+func (o PortDevicePtrOutput) ToPortDevicePtrOutput() PortDevicePtrOutput {
+	return o
+}
+
+func (o PortDevicePtrOutput) ToPortDevicePtrOutputWithContext(ctx context.Context) PortDevicePtrOutput {
+	return o
+}
+
+func (o PortDevicePtrOutput) Elem() PortDeviceOutput {
+	return o.ApplyT(func(v *PortDevice) PortDevice {
+		if v != nil {
+			return *v
+		}
+		var ret PortDevice
+		return ret
+	}).(PortDeviceOutput)
+}
+
+// Device name for the port
+func (o PortDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Device redundancy configuration
+func (o PortDevicePtrOutput) Redundancy() PortDeviceRedundancyPtrOutput {
+	return o.ApplyT(func(v *PortDevice) *PortDeviceRedundancy {
+		if v == nil {
+			return nil
+		}
+		return v.Redundancy
+	}).(PortDeviceRedundancyPtrOutput)
+}
+
+type PortDeviceRedundancy struct {
+	// Redundancy group identifier
+	Group *string `pulumi:"group"`
+	// Redundancy priority (PRIMARY or SECONDARY)
+	Priority *string `pulumi:"priority"`
+}
+
+// PortDeviceRedundancyInput is an input type that accepts PortDeviceRedundancyArgs and PortDeviceRedundancyOutput values.
+// You can construct a concrete instance of `PortDeviceRedundancyInput` via:
+//
+//	PortDeviceRedundancyArgs{...}
+type PortDeviceRedundancyInput interface {
+	pulumi.Input
+
+	ToPortDeviceRedundancyOutput() PortDeviceRedundancyOutput
+	ToPortDeviceRedundancyOutputWithContext(context.Context) PortDeviceRedundancyOutput
+}
+
+type PortDeviceRedundancyArgs struct {
+	// Redundancy group identifier
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Redundancy priority (PRIMARY or SECONDARY)
+	Priority pulumi.StringPtrInput `pulumi:"priority"`
+}
+
+func (PortDeviceRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortDeviceRedundancy)(nil)).Elem()
+}
+
+func (i PortDeviceRedundancyArgs) ToPortDeviceRedundancyOutput() PortDeviceRedundancyOutput {
+	return i.ToPortDeviceRedundancyOutputWithContext(context.Background())
+}
+
+func (i PortDeviceRedundancyArgs) ToPortDeviceRedundancyOutputWithContext(ctx context.Context) PortDeviceRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortDeviceRedundancyOutput)
+}
+
+func (i PortDeviceRedundancyArgs) ToPortDeviceRedundancyPtrOutput() PortDeviceRedundancyPtrOutput {
+	return i.ToPortDeviceRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i PortDeviceRedundancyArgs) ToPortDeviceRedundancyPtrOutputWithContext(ctx context.Context) PortDeviceRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortDeviceRedundancyOutput).ToPortDeviceRedundancyPtrOutputWithContext(ctx)
+}
+
+// PortDeviceRedundancyPtrInput is an input type that accepts PortDeviceRedundancyArgs, PortDeviceRedundancyPtr and PortDeviceRedundancyPtrOutput values.
+// You can construct a concrete instance of `PortDeviceRedundancyPtrInput` via:
+//
+//	        PortDeviceRedundancyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortDeviceRedundancyPtrInput interface {
+	pulumi.Input
+
+	ToPortDeviceRedundancyPtrOutput() PortDeviceRedundancyPtrOutput
+	ToPortDeviceRedundancyPtrOutputWithContext(context.Context) PortDeviceRedundancyPtrOutput
+}
+
+type portDeviceRedundancyPtrType PortDeviceRedundancyArgs
+
+func PortDeviceRedundancyPtr(v *PortDeviceRedundancyArgs) PortDeviceRedundancyPtrInput {
+	return (*portDeviceRedundancyPtrType)(v)
+}
+
+func (*portDeviceRedundancyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortDeviceRedundancy)(nil)).Elem()
+}
+
+func (i *portDeviceRedundancyPtrType) ToPortDeviceRedundancyPtrOutput() PortDeviceRedundancyPtrOutput {
+	return i.ToPortDeviceRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i *portDeviceRedundancyPtrType) ToPortDeviceRedundancyPtrOutputWithContext(ctx context.Context) PortDeviceRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortDeviceRedundancyPtrOutput)
+}
+
+type PortDeviceRedundancyOutput struct{ *pulumi.OutputState }
+
+func (PortDeviceRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortDeviceRedundancy)(nil)).Elem()
+}
+
+func (o PortDeviceRedundancyOutput) ToPortDeviceRedundancyOutput() PortDeviceRedundancyOutput {
+	return o
+}
+
+func (o PortDeviceRedundancyOutput) ToPortDeviceRedundancyOutputWithContext(ctx context.Context) PortDeviceRedundancyOutput {
+	return o
+}
+
+func (o PortDeviceRedundancyOutput) ToPortDeviceRedundancyPtrOutput() PortDeviceRedundancyPtrOutput {
+	return o.ToPortDeviceRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (o PortDeviceRedundancyOutput) ToPortDeviceRedundancyPtrOutputWithContext(ctx context.Context) PortDeviceRedundancyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortDeviceRedundancy) *PortDeviceRedundancy {
+		return &v
+	}).(PortDeviceRedundancyPtrOutput)
+}
+
+// Redundancy group identifier
+func (o PortDeviceRedundancyOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortDeviceRedundancy) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Redundancy priority (PRIMARY or SECONDARY)
+func (o PortDeviceRedundancyOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortDeviceRedundancy) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+type PortDeviceRedundancyPtrOutput struct{ *pulumi.OutputState }
+
+func (PortDeviceRedundancyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortDeviceRedundancy)(nil)).Elem()
+}
+
+func (o PortDeviceRedundancyPtrOutput) ToPortDeviceRedundancyPtrOutput() PortDeviceRedundancyPtrOutput {
+	return o
+}
+
+func (o PortDeviceRedundancyPtrOutput) ToPortDeviceRedundancyPtrOutputWithContext(ctx context.Context) PortDeviceRedundancyPtrOutput {
+	return o
+}
+
+func (o PortDeviceRedundancyPtrOutput) Elem() PortDeviceRedundancyOutput {
+	return o.ApplyT(func(v *PortDeviceRedundancy) PortDeviceRedundancy {
+		if v != nil {
+			return *v
+		}
+		var ret PortDeviceRedundancy
+		return ret
+	}).(PortDeviceRedundancyOutput)
+}
+
+// Redundancy group identifier
+func (o PortDeviceRedundancyPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortDeviceRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redundancy priority (PRIMARY or SECONDARY)
+func (o PortDeviceRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortDeviceRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortEncapsulation struct {
+	// Port encapsulation tag protocol identifier
+	TagProtocolId string `pulumi:"tagProtocolId"`
+	// Port encapsulation protocol type
+	Type string `pulumi:"type"`
+}
+
+// PortEncapsulationInput is an input type that accepts PortEncapsulationArgs and PortEncapsulationOutput values.
+// You can construct a concrete instance of `PortEncapsulationInput` via:
+//
+//	PortEncapsulationArgs{...}
+type PortEncapsulationInput interface {
+	pulumi.Input
+
+	ToPortEncapsulationOutput() PortEncapsulationOutput
+	ToPortEncapsulationOutputWithContext(context.Context) PortEncapsulationOutput
+}
+
+type PortEncapsulationArgs struct {
+	// Port encapsulation tag protocol identifier
+	TagProtocolId pulumi.StringInput `pulumi:"tagProtocolId"`
+	// Port encapsulation protocol type
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PortEncapsulationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortEncapsulation)(nil)).Elem()
+}
+
+func (i PortEncapsulationArgs) ToPortEncapsulationOutput() PortEncapsulationOutput {
+	return i.ToPortEncapsulationOutputWithContext(context.Background())
+}
+
+func (i PortEncapsulationArgs) ToPortEncapsulationOutputWithContext(ctx context.Context) PortEncapsulationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortEncapsulationOutput)
+}
+
+func (i PortEncapsulationArgs) ToPortEncapsulationPtrOutput() PortEncapsulationPtrOutput {
+	return i.ToPortEncapsulationPtrOutputWithContext(context.Background())
+}
+
+func (i PortEncapsulationArgs) ToPortEncapsulationPtrOutputWithContext(ctx context.Context) PortEncapsulationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortEncapsulationOutput).ToPortEncapsulationPtrOutputWithContext(ctx)
+}
+
+// PortEncapsulationPtrInput is an input type that accepts PortEncapsulationArgs, PortEncapsulationPtr and PortEncapsulationPtrOutput values.
+// You can construct a concrete instance of `PortEncapsulationPtrInput` via:
+//
+//	        PortEncapsulationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortEncapsulationPtrInput interface {
+	pulumi.Input
+
+	ToPortEncapsulationPtrOutput() PortEncapsulationPtrOutput
+	ToPortEncapsulationPtrOutputWithContext(context.Context) PortEncapsulationPtrOutput
+}
+
+type portEncapsulationPtrType PortEncapsulationArgs
+
+func PortEncapsulationPtr(v *PortEncapsulationArgs) PortEncapsulationPtrInput {
+	return (*portEncapsulationPtrType)(v)
+}
+
+func (*portEncapsulationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortEncapsulation)(nil)).Elem()
+}
+
+func (i *portEncapsulationPtrType) ToPortEncapsulationPtrOutput() PortEncapsulationPtrOutput {
+	return i.ToPortEncapsulationPtrOutputWithContext(context.Background())
+}
+
+func (i *portEncapsulationPtrType) ToPortEncapsulationPtrOutputWithContext(ctx context.Context) PortEncapsulationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortEncapsulationPtrOutput)
+}
+
+type PortEncapsulationOutput struct{ *pulumi.OutputState }
+
+func (PortEncapsulationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortEncapsulation)(nil)).Elem()
+}
+
+func (o PortEncapsulationOutput) ToPortEncapsulationOutput() PortEncapsulationOutput {
+	return o
+}
+
+func (o PortEncapsulationOutput) ToPortEncapsulationOutputWithContext(ctx context.Context) PortEncapsulationOutput {
+	return o
+}
+
+func (o PortEncapsulationOutput) ToPortEncapsulationPtrOutput() PortEncapsulationPtrOutput {
+	return o.ToPortEncapsulationPtrOutputWithContext(context.Background())
+}
+
+func (o PortEncapsulationOutput) ToPortEncapsulationPtrOutputWithContext(ctx context.Context) PortEncapsulationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortEncapsulation) *PortEncapsulation {
+		return &v
+	}).(PortEncapsulationPtrOutput)
+}
+
+// Port encapsulation tag protocol identifier
+func (o PortEncapsulationOutput) TagProtocolId() pulumi.StringOutput {
+	return o.ApplyT(func(v PortEncapsulation) string { return v.TagProtocolId }).(pulumi.StringOutput)
+}
+
+// Port encapsulation protocol type
+func (o PortEncapsulationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PortEncapsulation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PortEncapsulationPtrOutput struct{ *pulumi.OutputState }
+
+func (PortEncapsulationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortEncapsulation)(nil)).Elem()
+}
+
+func (o PortEncapsulationPtrOutput) ToPortEncapsulationPtrOutput() PortEncapsulationPtrOutput {
+	return o
+}
+
+func (o PortEncapsulationPtrOutput) ToPortEncapsulationPtrOutputWithContext(ctx context.Context) PortEncapsulationPtrOutput {
+	return o
+}
+
+func (o PortEncapsulationPtrOutput) Elem() PortEncapsulationOutput {
+	return o.ApplyT(func(v *PortEncapsulation) PortEncapsulation {
+		if v != nil {
+			return *v
+		}
+		var ret PortEncapsulation
+		return ret
+	}).(PortEncapsulationOutput)
+}
+
+// Port encapsulation tag protocol identifier
+func (o PortEncapsulationPtrOutput) TagProtocolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortEncapsulation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagProtocolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port encapsulation protocol type
+func (o PortEncapsulationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortEncapsulation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortLocation struct {
+	// Metro code the port will be created in
+	MetroCode string `pulumi:"metroCode"`
+}
+
+// PortLocationInput is an input type that accepts PortLocationArgs and PortLocationOutput values.
+// You can construct a concrete instance of `PortLocationInput` via:
+//
+//	PortLocationArgs{...}
+type PortLocationInput interface {
+	pulumi.Input
+
+	ToPortLocationOutput() PortLocationOutput
+	ToPortLocationOutputWithContext(context.Context) PortLocationOutput
+}
+
+type PortLocationArgs struct {
+	// Metro code the port will be created in
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+}
+
+func (PortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortLocation)(nil)).Elem()
+}
+
+func (i PortLocationArgs) ToPortLocationOutput() PortLocationOutput {
+	return i.ToPortLocationOutputWithContext(context.Background())
+}
+
+func (i PortLocationArgs) ToPortLocationOutputWithContext(ctx context.Context) PortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortLocationOutput)
+}
+
+func (i PortLocationArgs) ToPortLocationPtrOutput() PortLocationPtrOutput {
+	return i.ToPortLocationPtrOutputWithContext(context.Background())
+}
+
+func (i PortLocationArgs) ToPortLocationPtrOutputWithContext(ctx context.Context) PortLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortLocationOutput).ToPortLocationPtrOutputWithContext(ctx)
+}
+
+// PortLocationPtrInput is an input type that accepts PortLocationArgs, PortLocationPtr and PortLocationPtrOutput values.
+// You can construct a concrete instance of `PortLocationPtrInput` via:
+//
+//	        PortLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortLocationPtrInput interface {
+	pulumi.Input
+
+	ToPortLocationPtrOutput() PortLocationPtrOutput
+	ToPortLocationPtrOutputWithContext(context.Context) PortLocationPtrOutput
+}
+
+type portLocationPtrType PortLocationArgs
+
+func PortLocationPtr(v *PortLocationArgs) PortLocationPtrInput {
+	return (*portLocationPtrType)(v)
+}
+
+func (*portLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortLocation)(nil)).Elem()
+}
+
+func (i *portLocationPtrType) ToPortLocationPtrOutput() PortLocationPtrOutput {
+	return i.ToPortLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *portLocationPtrType) ToPortLocationPtrOutputWithContext(ctx context.Context) PortLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortLocationPtrOutput)
+}
+
+type PortLocationOutput struct{ *pulumi.OutputState }
+
+func (PortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortLocation)(nil)).Elem()
+}
+
+func (o PortLocationOutput) ToPortLocationOutput() PortLocationOutput {
+	return o
+}
+
+func (o PortLocationOutput) ToPortLocationOutputWithContext(ctx context.Context) PortLocationOutput {
+	return o
+}
+
+func (o PortLocationOutput) ToPortLocationPtrOutput() PortLocationPtrOutput {
+	return o.ToPortLocationPtrOutputWithContext(context.Background())
+}
+
+func (o PortLocationOutput) ToPortLocationPtrOutputWithContext(ctx context.Context) PortLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortLocation) *PortLocation {
+		return &v
+	}).(PortLocationPtrOutput)
+}
+
+// Metro code the port will be created in
+func (o PortLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PortLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+type PortLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (PortLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortLocation)(nil)).Elem()
+}
+
+func (o PortLocationPtrOutput) ToPortLocationPtrOutput() PortLocationPtrOutput {
+	return o
+}
+
+func (o PortLocationPtrOutput) ToPortLocationPtrOutputWithContext(ctx context.Context) PortLocationPtrOutput {
+	return o
+}
+
+func (o PortLocationPtrOutput) Elem() PortLocationOutput {
+	return o.ApplyT(func(v *PortLocation) PortLocation {
+		if v != nil {
+			return *v
+		}
+		var ret PortLocation
+		return ret
+	}).(PortLocationOutput)
+}
+
+// Metro code the port will be created in
+func (o PortLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortNotification struct {
+	// Array of registered users that will receive this notification type on the port
+	RegisteredUsers []string `pulumi:"registeredUsers"`
+	// Notification Type
+	Type string `pulumi:"type"`
+}
+
+// PortNotificationInput is an input type that accepts PortNotificationArgs and PortNotificationOutput values.
+// You can construct a concrete instance of `PortNotificationInput` via:
+//
+//	PortNotificationArgs{...}
+type PortNotificationInput interface {
+	pulumi.Input
+
+	ToPortNotificationOutput() PortNotificationOutput
+	ToPortNotificationOutputWithContext(context.Context) PortNotificationOutput
+}
+
+type PortNotificationArgs struct {
+	// Array of registered users that will receive this notification type on the port
+	RegisteredUsers pulumi.StringArrayInput `pulumi:"registeredUsers"`
+	// Notification Type
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PortNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortNotification)(nil)).Elem()
+}
+
+func (i PortNotificationArgs) ToPortNotificationOutput() PortNotificationOutput {
+	return i.ToPortNotificationOutputWithContext(context.Background())
+}
+
+func (i PortNotificationArgs) ToPortNotificationOutputWithContext(ctx context.Context) PortNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortNotificationOutput)
+}
+
+// PortNotificationArrayInput is an input type that accepts PortNotificationArray and PortNotificationArrayOutput values.
+// You can construct a concrete instance of `PortNotificationArrayInput` via:
+//
+//	PortNotificationArray{ PortNotificationArgs{...} }
+type PortNotificationArrayInput interface {
+	pulumi.Input
+
+	ToPortNotificationArrayOutput() PortNotificationArrayOutput
+	ToPortNotificationArrayOutputWithContext(context.Context) PortNotificationArrayOutput
+}
+
+type PortNotificationArray []PortNotificationInput
+
+func (PortNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortNotification)(nil)).Elem()
+}
+
+func (i PortNotificationArray) ToPortNotificationArrayOutput() PortNotificationArrayOutput {
+	return i.ToPortNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i PortNotificationArray) ToPortNotificationArrayOutputWithContext(ctx context.Context) PortNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortNotificationArrayOutput)
+}
+
+type PortNotificationOutput struct{ *pulumi.OutputState }
+
+func (PortNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortNotification)(nil)).Elem()
+}
+
+func (o PortNotificationOutput) ToPortNotificationOutput() PortNotificationOutput {
+	return o
+}
+
+func (o PortNotificationOutput) ToPortNotificationOutputWithContext(ctx context.Context) PortNotificationOutput {
+	return o
+}
+
+// Array of registered users that will receive this notification type on the port
+func (o PortNotificationOutput) RegisteredUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PortNotification) []string { return v.RegisteredUsers }).(pulumi.StringArrayOutput)
+}
+
+// Notification Type
+func (o PortNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PortNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PortNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (PortNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortNotification)(nil)).Elem()
+}
+
+func (o PortNotificationArrayOutput) ToPortNotificationArrayOutput() PortNotificationArrayOutput {
+	return o
+}
+
+func (o PortNotificationArrayOutput) ToPortNotificationArrayOutputWithContext(ctx context.Context) PortNotificationArrayOutput {
+	return o
+}
+
+func (o PortNotificationArrayOutput) Index(i pulumi.IntInput) PortNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortNotification {
+		return vs[0].([]PortNotification)[vs[1].(int)]
+	}).(PortNotificationOutput)
+}
+
+type PortOrder struct {
+	// Customer order reference Id
+	CustomerReferenceId *string `pulumi:"customerReferenceId"`
+	// Order Identification
+	OrderId *string `pulumi:"orderId"`
+	// Order Reference Number
+	OrderNumber *string `pulumi:"orderNumber"`
+	// Purchase order details
+	PurchaseOrder *PortOrderPurchaseOrder `pulumi:"purchaseOrder"`
+	// Port order confirmation signature details
+	Signature *PortOrderSignature `pulumi:"signature"`
+	// Equinix-assigned order identifier, this is a derived response attribute
+	Uuid *string `pulumi:"uuid"`
+}
+
+// PortOrderInput is an input type that accepts PortOrderArgs and PortOrderOutput values.
+// You can construct a concrete instance of `PortOrderInput` via:
+//
+//	PortOrderArgs{...}
+type PortOrderInput interface {
+	pulumi.Input
+
+	ToPortOrderOutput() PortOrderOutput
+	ToPortOrderOutputWithContext(context.Context) PortOrderOutput
+}
+
+type PortOrderArgs struct {
+	// Customer order reference Id
+	CustomerReferenceId pulumi.StringPtrInput `pulumi:"customerReferenceId"`
+	// Order Identification
+	OrderId pulumi.StringPtrInput `pulumi:"orderId"`
+	// Order Reference Number
+	OrderNumber pulumi.StringPtrInput `pulumi:"orderNumber"`
+	// Purchase order details
+	PurchaseOrder PortOrderPurchaseOrderPtrInput `pulumi:"purchaseOrder"`
+	// Port order confirmation signature details
+	Signature PortOrderSignaturePtrInput `pulumi:"signature"`
+	// Equinix-assigned order identifier, this is a derived response attribute
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (PortOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrder)(nil)).Elem()
+}
+
+func (i PortOrderArgs) ToPortOrderOutput() PortOrderOutput {
+	return i.ToPortOrderOutputWithContext(context.Background())
+}
+
+func (i PortOrderArgs) ToPortOrderOutputWithContext(ctx context.Context) PortOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderOutput)
+}
+
+func (i PortOrderArgs) ToPortOrderPtrOutput() PortOrderPtrOutput {
+	return i.ToPortOrderPtrOutputWithContext(context.Background())
+}
+
+func (i PortOrderArgs) ToPortOrderPtrOutputWithContext(ctx context.Context) PortOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderOutput).ToPortOrderPtrOutputWithContext(ctx)
+}
+
+// PortOrderPtrInput is an input type that accepts PortOrderArgs, PortOrderPtr and PortOrderPtrOutput values.
+// You can construct a concrete instance of `PortOrderPtrInput` via:
+//
+//	        PortOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortOrderPtrInput interface {
+	pulumi.Input
+
+	ToPortOrderPtrOutput() PortOrderPtrOutput
+	ToPortOrderPtrOutputWithContext(context.Context) PortOrderPtrOutput
+}
+
+type portOrderPtrType PortOrderArgs
+
+func PortOrderPtr(v *PortOrderArgs) PortOrderPtrInput {
+	return (*portOrderPtrType)(v)
+}
+
+func (*portOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrder)(nil)).Elem()
+}
+
+func (i *portOrderPtrType) ToPortOrderPtrOutput() PortOrderPtrOutput {
+	return i.ToPortOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *portOrderPtrType) ToPortOrderPtrOutputWithContext(ctx context.Context) PortOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderPtrOutput)
+}
+
+type PortOrderOutput struct{ *pulumi.OutputState }
+
+func (PortOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrder)(nil)).Elem()
+}
+
+func (o PortOrderOutput) ToPortOrderOutput() PortOrderOutput {
+	return o
+}
+
+func (o PortOrderOutput) ToPortOrderOutputWithContext(ctx context.Context) PortOrderOutput {
+	return o
+}
+
+func (o PortOrderOutput) ToPortOrderPtrOutput() PortOrderPtrOutput {
+	return o.ToPortOrderPtrOutputWithContext(context.Background())
+}
+
+func (o PortOrderOutput) ToPortOrderPtrOutputWithContext(ctx context.Context) PortOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortOrder) *PortOrder {
+		return &v
+	}).(PortOrderPtrOutput)
+}
+
+// Customer order reference Id
+func (o PortOrderOutput) CustomerReferenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrder) *string { return v.CustomerReferenceId }).(pulumi.StringPtrOutput)
+}
+
+// Order Identification
+func (o PortOrderOutput) OrderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrder) *string { return v.OrderId }).(pulumi.StringPtrOutput)
+}
+
+// Order Reference Number
+func (o PortOrderOutput) OrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrder) *string { return v.OrderNumber }).(pulumi.StringPtrOutput)
+}
+
+// Purchase order details
+func (o PortOrderOutput) PurchaseOrder() PortOrderPurchaseOrderPtrOutput {
+	return o.ApplyT(func(v PortOrder) *PortOrderPurchaseOrder { return v.PurchaseOrder }).(PortOrderPurchaseOrderPtrOutput)
+}
+
+// Port order confirmation signature details
+func (o PortOrderOutput) Signature() PortOrderSignaturePtrOutput {
+	return o.ApplyT(func(v PortOrder) *PortOrderSignature { return v.Signature }).(PortOrderSignaturePtrOutput)
+}
+
+// Equinix-assigned order identifier, this is a derived response attribute
+func (o PortOrderOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrder) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type PortOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (PortOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrder)(nil)).Elem()
+}
+
+func (o PortOrderPtrOutput) ToPortOrderPtrOutput() PortOrderPtrOutput {
+	return o
+}
+
+func (o PortOrderPtrOutput) ToPortOrderPtrOutputWithContext(ctx context.Context) PortOrderPtrOutput {
+	return o
+}
+
+func (o PortOrderPtrOutput) Elem() PortOrderOutput {
+	return o.ApplyT(func(v *PortOrder) PortOrder {
+		if v != nil {
+			return *v
+		}
+		var ret PortOrder
+		return ret
+	}).(PortOrderOutput)
+}
+
+// Customer order reference Id
+func (o PortOrderPtrOutput) CustomerReferenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerReferenceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Order Identification
+func (o PortOrderPtrOutput) OrderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Order Reference Number
+func (o PortOrderPtrOutput) OrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Purchase order details
+func (o PortOrderPtrOutput) PurchaseOrder() PortOrderPurchaseOrderPtrOutput {
+	return o.ApplyT(func(v *PortOrder) *PortOrderPurchaseOrder {
+		if v == nil {
+			return nil
+		}
+		return v.PurchaseOrder
+	}).(PortOrderPurchaseOrderPtrOutput)
+}
+
+// Port order confirmation signature details
+func (o PortOrderPtrOutput) Signature() PortOrderSignaturePtrOutput {
+	return o.ApplyT(func(v *PortOrder) *PortOrderSignature {
+		if v == nil {
+			return nil
+		}
+		return v.Signature
+	}).(PortOrderSignaturePtrOutput)
+}
+
+// Equinix-assigned order identifier, this is a derived response attribute
+func (o PortOrderPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortOrderPurchaseOrder struct {
+	// purchase order amount
+	Amount *string `pulumi:"amount"`
+	// purchase order attachment id
+	AttachmentId *string `pulumi:"attachmentId"`
+	// purchase order end date
+	EndDate *string `pulumi:"endDate"`
+	// purchase order number
+	Number *string `pulumi:"number"`
+	// purchase order start date
+	StartDate *string `pulumi:"startDate"`
+	// purchase order type
+	Type *string `pulumi:"type"`
+}
+
+// PortOrderPurchaseOrderInput is an input type that accepts PortOrderPurchaseOrderArgs and PortOrderPurchaseOrderOutput values.
+// You can construct a concrete instance of `PortOrderPurchaseOrderInput` via:
+//
+//	PortOrderPurchaseOrderArgs{...}
+type PortOrderPurchaseOrderInput interface {
+	pulumi.Input
+
+	ToPortOrderPurchaseOrderOutput() PortOrderPurchaseOrderOutput
+	ToPortOrderPurchaseOrderOutputWithContext(context.Context) PortOrderPurchaseOrderOutput
+}
+
+type PortOrderPurchaseOrderArgs struct {
+	// purchase order amount
+	Amount pulumi.StringPtrInput `pulumi:"amount"`
+	// purchase order attachment id
+	AttachmentId pulumi.StringPtrInput `pulumi:"attachmentId"`
+	// purchase order end date
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// purchase order number
+	Number pulumi.StringPtrInput `pulumi:"number"`
+	// purchase order start date
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+	// purchase order type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (PortOrderPurchaseOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrderPurchaseOrder)(nil)).Elem()
+}
+
+func (i PortOrderPurchaseOrderArgs) ToPortOrderPurchaseOrderOutput() PortOrderPurchaseOrderOutput {
+	return i.ToPortOrderPurchaseOrderOutputWithContext(context.Background())
+}
+
+func (i PortOrderPurchaseOrderArgs) ToPortOrderPurchaseOrderOutputWithContext(ctx context.Context) PortOrderPurchaseOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderPurchaseOrderOutput)
+}
+
+func (i PortOrderPurchaseOrderArgs) ToPortOrderPurchaseOrderPtrOutput() PortOrderPurchaseOrderPtrOutput {
+	return i.ToPortOrderPurchaseOrderPtrOutputWithContext(context.Background())
+}
+
+func (i PortOrderPurchaseOrderArgs) ToPortOrderPurchaseOrderPtrOutputWithContext(ctx context.Context) PortOrderPurchaseOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderPurchaseOrderOutput).ToPortOrderPurchaseOrderPtrOutputWithContext(ctx)
+}
+
+// PortOrderPurchaseOrderPtrInput is an input type that accepts PortOrderPurchaseOrderArgs, PortOrderPurchaseOrderPtr and PortOrderPurchaseOrderPtrOutput values.
+// You can construct a concrete instance of `PortOrderPurchaseOrderPtrInput` via:
+//
+//	        PortOrderPurchaseOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortOrderPurchaseOrderPtrInput interface {
+	pulumi.Input
+
+	ToPortOrderPurchaseOrderPtrOutput() PortOrderPurchaseOrderPtrOutput
+	ToPortOrderPurchaseOrderPtrOutputWithContext(context.Context) PortOrderPurchaseOrderPtrOutput
+}
+
+type portOrderPurchaseOrderPtrType PortOrderPurchaseOrderArgs
+
+func PortOrderPurchaseOrderPtr(v *PortOrderPurchaseOrderArgs) PortOrderPurchaseOrderPtrInput {
+	return (*portOrderPurchaseOrderPtrType)(v)
+}
+
+func (*portOrderPurchaseOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrderPurchaseOrder)(nil)).Elem()
+}
+
+func (i *portOrderPurchaseOrderPtrType) ToPortOrderPurchaseOrderPtrOutput() PortOrderPurchaseOrderPtrOutput {
+	return i.ToPortOrderPurchaseOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *portOrderPurchaseOrderPtrType) ToPortOrderPurchaseOrderPtrOutputWithContext(ctx context.Context) PortOrderPurchaseOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderPurchaseOrderPtrOutput)
+}
+
+type PortOrderPurchaseOrderOutput struct{ *pulumi.OutputState }
+
+func (PortOrderPurchaseOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrderPurchaseOrder)(nil)).Elem()
+}
+
+func (o PortOrderPurchaseOrderOutput) ToPortOrderPurchaseOrderOutput() PortOrderPurchaseOrderOutput {
+	return o
+}
+
+func (o PortOrderPurchaseOrderOutput) ToPortOrderPurchaseOrderOutputWithContext(ctx context.Context) PortOrderPurchaseOrderOutput {
+	return o
+}
+
+func (o PortOrderPurchaseOrderOutput) ToPortOrderPurchaseOrderPtrOutput() PortOrderPurchaseOrderPtrOutput {
+	return o.ToPortOrderPurchaseOrderPtrOutputWithContext(context.Background())
+}
+
+func (o PortOrderPurchaseOrderOutput) ToPortOrderPurchaseOrderPtrOutputWithContext(ctx context.Context) PortOrderPurchaseOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortOrderPurchaseOrder) *PortOrderPurchaseOrder {
+		return &v
+	}).(PortOrderPurchaseOrderPtrOutput)
+}
+
+// purchase order amount
+func (o PortOrderPurchaseOrderOutput) Amount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderPurchaseOrder) *string { return v.Amount }).(pulumi.StringPtrOutput)
+}
+
+// purchase order attachment id
+func (o PortOrderPurchaseOrderOutput) AttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderPurchaseOrder) *string { return v.AttachmentId }).(pulumi.StringPtrOutput)
+}
+
+// purchase order end date
+func (o PortOrderPurchaseOrderOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderPurchaseOrder) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// purchase order number
+func (o PortOrderPurchaseOrderOutput) Number() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderPurchaseOrder) *string { return v.Number }).(pulumi.StringPtrOutput)
+}
+
+// purchase order start date
+func (o PortOrderPurchaseOrderOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderPurchaseOrder) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// purchase order type
+func (o PortOrderPurchaseOrderOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderPurchaseOrder) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PortOrderPurchaseOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (PortOrderPurchaseOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrderPurchaseOrder)(nil)).Elem()
+}
+
+func (o PortOrderPurchaseOrderPtrOutput) ToPortOrderPurchaseOrderPtrOutput() PortOrderPurchaseOrderPtrOutput {
+	return o
+}
+
+func (o PortOrderPurchaseOrderPtrOutput) ToPortOrderPurchaseOrderPtrOutputWithContext(ctx context.Context) PortOrderPurchaseOrderPtrOutput {
+	return o
+}
+
+func (o PortOrderPurchaseOrderPtrOutput) Elem() PortOrderPurchaseOrderOutput {
+	return o.ApplyT(func(v *PortOrderPurchaseOrder) PortOrderPurchaseOrder {
+		if v != nil {
+			return *v
+		}
+		var ret PortOrderPurchaseOrder
+		return ret
+	}).(PortOrderPurchaseOrderOutput)
+}
+
+// purchase order amount
+func (o PortOrderPurchaseOrderPtrOutput) Amount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderPurchaseOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.StringPtrOutput)
+}
+
+// purchase order attachment id
+func (o PortOrderPurchaseOrderPtrOutput) AttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderPurchaseOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AttachmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// purchase order end date
+func (o PortOrderPurchaseOrderPtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderPurchaseOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// purchase order number
+func (o PortOrderPurchaseOrderPtrOutput) Number() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderPurchaseOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Number
+	}).(pulumi.StringPtrOutput)
+}
+
+// purchase order start date
+func (o PortOrderPurchaseOrderPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderPurchaseOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// purchase order type
+func (o PortOrderPurchaseOrderPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderPurchaseOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortOrderSignature struct {
+	// delegate order details
+	Delegate PortOrderSignatureDelegate `pulumi:"delegate"`
+	// Port signature Type
+	Signatory string `pulumi:"signatory"`
+}
+
+// PortOrderSignatureInput is an input type that accepts PortOrderSignatureArgs and PortOrderSignatureOutput values.
+// You can construct a concrete instance of `PortOrderSignatureInput` via:
+//
+//	PortOrderSignatureArgs{...}
+type PortOrderSignatureInput interface {
+	pulumi.Input
+
+	ToPortOrderSignatureOutput() PortOrderSignatureOutput
+	ToPortOrderSignatureOutputWithContext(context.Context) PortOrderSignatureOutput
+}
+
+type PortOrderSignatureArgs struct {
+	// delegate order details
+	Delegate PortOrderSignatureDelegateInput `pulumi:"delegate"`
+	// Port signature Type
+	Signatory pulumi.StringInput `pulumi:"signatory"`
+}
+
+func (PortOrderSignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrderSignature)(nil)).Elem()
+}
+
+func (i PortOrderSignatureArgs) ToPortOrderSignatureOutput() PortOrderSignatureOutput {
+	return i.ToPortOrderSignatureOutputWithContext(context.Background())
+}
+
+func (i PortOrderSignatureArgs) ToPortOrderSignatureOutputWithContext(ctx context.Context) PortOrderSignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderSignatureOutput)
+}
+
+func (i PortOrderSignatureArgs) ToPortOrderSignaturePtrOutput() PortOrderSignaturePtrOutput {
+	return i.ToPortOrderSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i PortOrderSignatureArgs) ToPortOrderSignaturePtrOutputWithContext(ctx context.Context) PortOrderSignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderSignatureOutput).ToPortOrderSignaturePtrOutputWithContext(ctx)
+}
+
+// PortOrderSignaturePtrInput is an input type that accepts PortOrderSignatureArgs, PortOrderSignaturePtr and PortOrderSignaturePtrOutput values.
+// You can construct a concrete instance of `PortOrderSignaturePtrInput` via:
+//
+//	        PortOrderSignatureArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortOrderSignaturePtrInput interface {
+	pulumi.Input
+
+	ToPortOrderSignaturePtrOutput() PortOrderSignaturePtrOutput
+	ToPortOrderSignaturePtrOutputWithContext(context.Context) PortOrderSignaturePtrOutput
+}
+
+type portOrderSignaturePtrType PortOrderSignatureArgs
+
+func PortOrderSignaturePtr(v *PortOrderSignatureArgs) PortOrderSignaturePtrInput {
+	return (*portOrderSignaturePtrType)(v)
+}
+
+func (*portOrderSignaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrderSignature)(nil)).Elem()
+}
+
+func (i *portOrderSignaturePtrType) ToPortOrderSignaturePtrOutput() PortOrderSignaturePtrOutput {
+	return i.ToPortOrderSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i *portOrderSignaturePtrType) ToPortOrderSignaturePtrOutputWithContext(ctx context.Context) PortOrderSignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderSignaturePtrOutput)
+}
+
+type PortOrderSignatureOutput struct{ *pulumi.OutputState }
+
+func (PortOrderSignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrderSignature)(nil)).Elem()
+}
+
+func (o PortOrderSignatureOutput) ToPortOrderSignatureOutput() PortOrderSignatureOutput {
+	return o
+}
+
+func (o PortOrderSignatureOutput) ToPortOrderSignatureOutputWithContext(ctx context.Context) PortOrderSignatureOutput {
+	return o
+}
+
+func (o PortOrderSignatureOutput) ToPortOrderSignaturePtrOutput() PortOrderSignaturePtrOutput {
+	return o.ToPortOrderSignaturePtrOutputWithContext(context.Background())
+}
+
+func (o PortOrderSignatureOutput) ToPortOrderSignaturePtrOutputWithContext(ctx context.Context) PortOrderSignaturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortOrderSignature) *PortOrderSignature {
+		return &v
+	}).(PortOrderSignaturePtrOutput)
+}
+
+// delegate order details
+func (o PortOrderSignatureOutput) Delegate() PortOrderSignatureDelegateOutput {
+	return o.ApplyT(func(v PortOrderSignature) PortOrderSignatureDelegate { return v.Delegate }).(PortOrderSignatureDelegateOutput)
+}
+
+// Port signature Type
+func (o PortOrderSignatureOutput) Signatory() pulumi.StringOutput {
+	return o.ApplyT(func(v PortOrderSignature) string { return v.Signatory }).(pulumi.StringOutput)
+}
+
+type PortOrderSignaturePtrOutput struct{ *pulumi.OutputState }
+
+func (PortOrderSignaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrderSignature)(nil)).Elem()
+}
+
+func (o PortOrderSignaturePtrOutput) ToPortOrderSignaturePtrOutput() PortOrderSignaturePtrOutput {
+	return o
+}
+
+func (o PortOrderSignaturePtrOutput) ToPortOrderSignaturePtrOutputWithContext(ctx context.Context) PortOrderSignaturePtrOutput {
+	return o
+}
+
+func (o PortOrderSignaturePtrOutput) Elem() PortOrderSignatureOutput {
+	return o.ApplyT(func(v *PortOrderSignature) PortOrderSignature {
+		if v != nil {
+			return *v
+		}
+		var ret PortOrderSignature
+		return ret
+	}).(PortOrderSignatureOutput)
+}
+
+// delegate order details
+func (o PortOrderSignaturePtrOutput) Delegate() PortOrderSignatureDelegatePtrOutput {
+	return o.ApplyT(func(v *PortOrderSignature) *PortOrderSignatureDelegate {
+		if v == nil {
+			return nil
+		}
+		return &v.Delegate
+	}).(PortOrderSignatureDelegatePtrOutput)
+}
+
+// Port signature Type
+func (o PortOrderSignaturePtrOutput) Signatory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderSignature) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Signatory
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortOrderSignatureDelegate struct {
+	// Email of the signatory
+	Email string `pulumi:"email"`
+	// First name of the signatory
+	FirstName *string `pulumi:"firstName"`
+	// Last name of the signatory
+	LastName *string `pulumi:"lastName"`
+}
+
+// PortOrderSignatureDelegateInput is an input type that accepts PortOrderSignatureDelegateArgs and PortOrderSignatureDelegateOutput values.
+// You can construct a concrete instance of `PortOrderSignatureDelegateInput` via:
+//
+//	PortOrderSignatureDelegateArgs{...}
+type PortOrderSignatureDelegateInput interface {
+	pulumi.Input
+
+	ToPortOrderSignatureDelegateOutput() PortOrderSignatureDelegateOutput
+	ToPortOrderSignatureDelegateOutputWithContext(context.Context) PortOrderSignatureDelegateOutput
+}
+
+type PortOrderSignatureDelegateArgs struct {
+	// Email of the signatory
+	Email pulumi.StringInput `pulumi:"email"`
+	// First name of the signatory
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	// Last name of the signatory
+	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+}
+
+func (PortOrderSignatureDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrderSignatureDelegate)(nil)).Elem()
+}
+
+func (i PortOrderSignatureDelegateArgs) ToPortOrderSignatureDelegateOutput() PortOrderSignatureDelegateOutput {
+	return i.ToPortOrderSignatureDelegateOutputWithContext(context.Background())
+}
+
+func (i PortOrderSignatureDelegateArgs) ToPortOrderSignatureDelegateOutputWithContext(ctx context.Context) PortOrderSignatureDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderSignatureDelegateOutput)
+}
+
+func (i PortOrderSignatureDelegateArgs) ToPortOrderSignatureDelegatePtrOutput() PortOrderSignatureDelegatePtrOutput {
+	return i.ToPortOrderSignatureDelegatePtrOutputWithContext(context.Background())
+}
+
+func (i PortOrderSignatureDelegateArgs) ToPortOrderSignatureDelegatePtrOutputWithContext(ctx context.Context) PortOrderSignatureDelegatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderSignatureDelegateOutput).ToPortOrderSignatureDelegatePtrOutputWithContext(ctx)
+}
+
+// PortOrderSignatureDelegatePtrInput is an input type that accepts PortOrderSignatureDelegateArgs, PortOrderSignatureDelegatePtr and PortOrderSignatureDelegatePtrOutput values.
+// You can construct a concrete instance of `PortOrderSignatureDelegatePtrInput` via:
+//
+//	        PortOrderSignatureDelegateArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortOrderSignatureDelegatePtrInput interface {
+	pulumi.Input
+
+	ToPortOrderSignatureDelegatePtrOutput() PortOrderSignatureDelegatePtrOutput
+	ToPortOrderSignatureDelegatePtrOutputWithContext(context.Context) PortOrderSignatureDelegatePtrOutput
+}
+
+type portOrderSignatureDelegatePtrType PortOrderSignatureDelegateArgs
+
+func PortOrderSignatureDelegatePtr(v *PortOrderSignatureDelegateArgs) PortOrderSignatureDelegatePtrInput {
+	return (*portOrderSignatureDelegatePtrType)(v)
+}
+
+func (*portOrderSignatureDelegatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrderSignatureDelegate)(nil)).Elem()
+}
+
+func (i *portOrderSignatureDelegatePtrType) ToPortOrderSignatureDelegatePtrOutput() PortOrderSignatureDelegatePtrOutput {
+	return i.ToPortOrderSignatureDelegatePtrOutputWithContext(context.Background())
+}
+
+func (i *portOrderSignatureDelegatePtrType) ToPortOrderSignatureDelegatePtrOutputWithContext(ctx context.Context) PortOrderSignatureDelegatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortOrderSignatureDelegatePtrOutput)
+}
+
+type PortOrderSignatureDelegateOutput struct{ *pulumi.OutputState }
+
+func (PortOrderSignatureDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortOrderSignatureDelegate)(nil)).Elem()
+}
+
+func (o PortOrderSignatureDelegateOutput) ToPortOrderSignatureDelegateOutput() PortOrderSignatureDelegateOutput {
+	return o
+}
+
+func (o PortOrderSignatureDelegateOutput) ToPortOrderSignatureDelegateOutputWithContext(ctx context.Context) PortOrderSignatureDelegateOutput {
+	return o
+}
+
+func (o PortOrderSignatureDelegateOutput) ToPortOrderSignatureDelegatePtrOutput() PortOrderSignatureDelegatePtrOutput {
+	return o.ToPortOrderSignatureDelegatePtrOutputWithContext(context.Background())
+}
+
+func (o PortOrderSignatureDelegateOutput) ToPortOrderSignatureDelegatePtrOutputWithContext(ctx context.Context) PortOrderSignatureDelegatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortOrderSignatureDelegate) *PortOrderSignatureDelegate {
+		return &v
+	}).(PortOrderSignatureDelegatePtrOutput)
+}
+
+// Email of the signatory
+func (o PortOrderSignatureDelegateOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v PortOrderSignatureDelegate) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// First name of the signatory
+func (o PortOrderSignatureDelegateOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderSignatureDelegate) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Last name of the signatory
+func (o PortOrderSignatureDelegateOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortOrderSignatureDelegate) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+type PortOrderSignatureDelegatePtrOutput struct{ *pulumi.OutputState }
+
+func (PortOrderSignatureDelegatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortOrderSignatureDelegate)(nil)).Elem()
+}
+
+func (o PortOrderSignatureDelegatePtrOutput) ToPortOrderSignatureDelegatePtrOutput() PortOrderSignatureDelegatePtrOutput {
+	return o
+}
+
+func (o PortOrderSignatureDelegatePtrOutput) ToPortOrderSignatureDelegatePtrOutputWithContext(ctx context.Context) PortOrderSignatureDelegatePtrOutput {
+	return o
+}
+
+func (o PortOrderSignatureDelegatePtrOutput) Elem() PortOrderSignatureDelegateOutput {
+	return o.ApplyT(func(v *PortOrderSignatureDelegate) PortOrderSignatureDelegate {
+		if v != nil {
+			return *v
+		}
+		var ret PortOrderSignatureDelegate
+		return ret
+	}).(PortOrderSignatureDelegateOutput)
+}
+
+// Email of the signatory
+func (o PortOrderSignatureDelegatePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderSignatureDelegate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// First name of the signatory
+func (o PortOrderSignatureDelegatePtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderSignatureDelegate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last name of the signatory
+func (o PortOrderSignatureDelegatePtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortOrderSignatureDelegate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortPhysicalPort struct {
+	// Customer physical port
+	DemarcationPoint PortPhysicalPortDemarcationPoint `pulumi:"demarcationPoint"`
+	// Physical port interface
+	Interface *PortPhysicalPortInterface `pulumi:"interface"`
+	// Physical Port type
+	Type string `pulumi:"type"`
+}
+
+// PortPhysicalPortInput is an input type that accepts PortPhysicalPortArgs and PortPhysicalPortOutput values.
+// You can construct a concrete instance of `PortPhysicalPortInput` via:
+//
+//	PortPhysicalPortArgs{...}
+type PortPhysicalPortInput interface {
+	pulumi.Input
+
+	ToPortPhysicalPortOutput() PortPhysicalPortOutput
+	ToPortPhysicalPortOutputWithContext(context.Context) PortPhysicalPortOutput
+}
+
+type PortPhysicalPortArgs struct {
+	// Customer physical port
+	DemarcationPoint PortPhysicalPortDemarcationPointInput `pulumi:"demarcationPoint"`
+	// Physical port interface
+	Interface PortPhysicalPortInterfacePtrInput `pulumi:"interface"`
+	// Physical Port type
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PortPhysicalPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortPhysicalPort)(nil)).Elem()
+}
+
+func (i PortPhysicalPortArgs) ToPortPhysicalPortOutput() PortPhysicalPortOutput {
+	return i.ToPortPhysicalPortOutputWithContext(context.Background())
+}
+
+func (i PortPhysicalPortArgs) ToPortPhysicalPortOutputWithContext(ctx context.Context) PortPhysicalPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortPhysicalPortOutput)
+}
+
+// PortPhysicalPortArrayInput is an input type that accepts PortPhysicalPortArray and PortPhysicalPortArrayOutput values.
+// You can construct a concrete instance of `PortPhysicalPortArrayInput` via:
+//
+//	PortPhysicalPortArray{ PortPhysicalPortArgs{...} }
+type PortPhysicalPortArrayInput interface {
+	pulumi.Input
+
+	ToPortPhysicalPortArrayOutput() PortPhysicalPortArrayOutput
+	ToPortPhysicalPortArrayOutputWithContext(context.Context) PortPhysicalPortArrayOutput
+}
+
+type PortPhysicalPortArray []PortPhysicalPortInput
+
+func (PortPhysicalPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortPhysicalPort)(nil)).Elem()
+}
+
+func (i PortPhysicalPortArray) ToPortPhysicalPortArrayOutput() PortPhysicalPortArrayOutput {
+	return i.ToPortPhysicalPortArrayOutputWithContext(context.Background())
+}
+
+func (i PortPhysicalPortArray) ToPortPhysicalPortArrayOutputWithContext(ctx context.Context) PortPhysicalPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortPhysicalPortArrayOutput)
+}
+
+type PortPhysicalPortOutput struct{ *pulumi.OutputState }
+
+func (PortPhysicalPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortPhysicalPort)(nil)).Elem()
+}
+
+func (o PortPhysicalPortOutput) ToPortPhysicalPortOutput() PortPhysicalPortOutput {
+	return o
+}
+
+func (o PortPhysicalPortOutput) ToPortPhysicalPortOutputWithContext(ctx context.Context) PortPhysicalPortOutput {
+	return o
+}
+
+// Customer physical port
+func (o PortPhysicalPortOutput) DemarcationPoint() PortPhysicalPortDemarcationPointOutput {
+	return o.ApplyT(func(v PortPhysicalPort) PortPhysicalPortDemarcationPoint { return v.DemarcationPoint }).(PortPhysicalPortDemarcationPointOutput)
+}
+
+// Physical port interface
+func (o PortPhysicalPortOutput) Interface() PortPhysicalPortInterfacePtrOutput {
+	return o.ApplyT(func(v PortPhysicalPort) *PortPhysicalPortInterface { return v.Interface }).(PortPhysicalPortInterfacePtrOutput)
+}
+
+// Physical Port type
+func (o PortPhysicalPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PortPhysicalPort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PortPhysicalPortArrayOutput struct{ *pulumi.OutputState }
+
+func (PortPhysicalPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PortPhysicalPort)(nil)).Elem()
+}
+
+func (o PortPhysicalPortArrayOutput) ToPortPhysicalPortArrayOutput() PortPhysicalPortArrayOutput {
+	return o
+}
+
+func (o PortPhysicalPortArrayOutput) ToPortPhysicalPortArrayOutputWithContext(ctx context.Context) PortPhysicalPortArrayOutput {
+	return o
+}
+
+func (o PortPhysicalPortArrayOutput) Index(i pulumi.IntInput) PortPhysicalPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortPhysicalPort {
+		return vs[0].([]PortPhysicalPort)[vs[1].(int)]
+	}).(PortPhysicalPortOutput)
+}
+
+type PortPhysicalPortDemarcationPoint struct {
+	// Port cabinet unique space id
+	CabinetUniqueSpaceId string `pulumi:"cabinetUniqueSpaceId"`
+	// Port cage unique space id
+	CageUniqueSpaceId string `pulumi:"cageUniqueSpaceId"`
+	// Port connector type
+	ConnectorType string `pulumi:"connectorType"`
+	// IBX Metro code for the physical port
+	Ibx string `pulumi:"ibx"`
+	// Port patch panel
+	PatchPanel string `pulumi:"patchPanel"`
+}
+
+// PortPhysicalPortDemarcationPointInput is an input type that accepts PortPhysicalPortDemarcationPointArgs and PortPhysicalPortDemarcationPointOutput values.
+// You can construct a concrete instance of `PortPhysicalPortDemarcationPointInput` via:
+//
+//	PortPhysicalPortDemarcationPointArgs{...}
+type PortPhysicalPortDemarcationPointInput interface {
+	pulumi.Input
+
+	ToPortPhysicalPortDemarcationPointOutput() PortPhysicalPortDemarcationPointOutput
+	ToPortPhysicalPortDemarcationPointOutputWithContext(context.Context) PortPhysicalPortDemarcationPointOutput
+}
+
+type PortPhysicalPortDemarcationPointArgs struct {
+	// Port cabinet unique space id
+	CabinetUniqueSpaceId pulumi.StringInput `pulumi:"cabinetUniqueSpaceId"`
+	// Port cage unique space id
+	CageUniqueSpaceId pulumi.StringInput `pulumi:"cageUniqueSpaceId"`
+	// Port connector type
+	ConnectorType pulumi.StringInput `pulumi:"connectorType"`
+	// IBX Metro code for the physical port
+	Ibx pulumi.StringInput `pulumi:"ibx"`
+	// Port patch panel
+	PatchPanel pulumi.StringInput `pulumi:"patchPanel"`
+}
+
+func (PortPhysicalPortDemarcationPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortPhysicalPortDemarcationPoint)(nil)).Elem()
+}
+
+func (i PortPhysicalPortDemarcationPointArgs) ToPortPhysicalPortDemarcationPointOutput() PortPhysicalPortDemarcationPointOutput {
+	return i.ToPortPhysicalPortDemarcationPointOutputWithContext(context.Background())
+}
+
+func (i PortPhysicalPortDemarcationPointArgs) ToPortPhysicalPortDemarcationPointOutputWithContext(ctx context.Context) PortPhysicalPortDemarcationPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortPhysicalPortDemarcationPointOutput)
+}
+
+type PortPhysicalPortDemarcationPointOutput struct{ *pulumi.OutputState }
+
+func (PortPhysicalPortDemarcationPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortPhysicalPortDemarcationPoint)(nil)).Elem()
+}
+
+func (o PortPhysicalPortDemarcationPointOutput) ToPortPhysicalPortDemarcationPointOutput() PortPhysicalPortDemarcationPointOutput {
+	return o
+}
+
+func (o PortPhysicalPortDemarcationPointOutput) ToPortPhysicalPortDemarcationPointOutputWithContext(ctx context.Context) PortPhysicalPortDemarcationPointOutput {
+	return o
+}
+
+// Port cabinet unique space id
+func (o PortPhysicalPortDemarcationPointOutput) CabinetUniqueSpaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PortPhysicalPortDemarcationPoint) string { return v.CabinetUniqueSpaceId }).(pulumi.StringOutput)
+}
+
+// Port cage unique space id
+func (o PortPhysicalPortDemarcationPointOutput) CageUniqueSpaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PortPhysicalPortDemarcationPoint) string { return v.CageUniqueSpaceId }).(pulumi.StringOutput)
+}
+
+// Port connector type
+func (o PortPhysicalPortDemarcationPointOutput) ConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v PortPhysicalPortDemarcationPoint) string { return v.ConnectorType }).(pulumi.StringOutput)
+}
+
+// IBX Metro code for the physical port
+func (o PortPhysicalPortDemarcationPointOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v PortPhysicalPortDemarcationPoint) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+// Port patch panel
+func (o PortPhysicalPortDemarcationPointOutput) PatchPanel() pulumi.StringOutput {
+	return o.ApplyT(func(v PortPhysicalPortDemarcationPoint) string { return v.PatchPanel }).(pulumi.StringOutput)
+}
+
+type PortPhysicalPortInterface struct {
+	// Interface type for the physical port
+	Type *string `pulumi:"type"`
+}
+
+// PortPhysicalPortInterfaceInput is an input type that accepts PortPhysicalPortInterfaceArgs and PortPhysicalPortInterfaceOutput values.
+// You can construct a concrete instance of `PortPhysicalPortInterfaceInput` via:
+//
+//	PortPhysicalPortInterfaceArgs{...}
+type PortPhysicalPortInterfaceInput interface {
+	pulumi.Input
+
+	ToPortPhysicalPortInterfaceOutput() PortPhysicalPortInterfaceOutput
+	ToPortPhysicalPortInterfaceOutputWithContext(context.Context) PortPhysicalPortInterfaceOutput
+}
+
+type PortPhysicalPortInterfaceArgs struct {
+	// Interface type for the physical port
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (PortPhysicalPortInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortPhysicalPortInterface)(nil)).Elem()
+}
+
+func (i PortPhysicalPortInterfaceArgs) ToPortPhysicalPortInterfaceOutput() PortPhysicalPortInterfaceOutput {
+	return i.ToPortPhysicalPortInterfaceOutputWithContext(context.Background())
+}
+
+func (i PortPhysicalPortInterfaceArgs) ToPortPhysicalPortInterfaceOutputWithContext(ctx context.Context) PortPhysicalPortInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortPhysicalPortInterfaceOutput)
+}
+
+func (i PortPhysicalPortInterfaceArgs) ToPortPhysicalPortInterfacePtrOutput() PortPhysicalPortInterfacePtrOutput {
+	return i.ToPortPhysicalPortInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i PortPhysicalPortInterfaceArgs) ToPortPhysicalPortInterfacePtrOutputWithContext(ctx context.Context) PortPhysicalPortInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortPhysicalPortInterfaceOutput).ToPortPhysicalPortInterfacePtrOutputWithContext(ctx)
+}
+
+// PortPhysicalPortInterfacePtrInput is an input type that accepts PortPhysicalPortInterfaceArgs, PortPhysicalPortInterfacePtr and PortPhysicalPortInterfacePtrOutput values.
+// You can construct a concrete instance of `PortPhysicalPortInterfacePtrInput` via:
+//
+//	        PortPhysicalPortInterfaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortPhysicalPortInterfacePtrInput interface {
+	pulumi.Input
+
+	ToPortPhysicalPortInterfacePtrOutput() PortPhysicalPortInterfacePtrOutput
+	ToPortPhysicalPortInterfacePtrOutputWithContext(context.Context) PortPhysicalPortInterfacePtrOutput
+}
+
+type portPhysicalPortInterfacePtrType PortPhysicalPortInterfaceArgs
+
+func PortPhysicalPortInterfacePtr(v *PortPhysicalPortInterfaceArgs) PortPhysicalPortInterfacePtrInput {
+	return (*portPhysicalPortInterfacePtrType)(v)
+}
+
+func (*portPhysicalPortInterfacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortPhysicalPortInterface)(nil)).Elem()
+}
+
+func (i *portPhysicalPortInterfacePtrType) ToPortPhysicalPortInterfacePtrOutput() PortPhysicalPortInterfacePtrOutput {
+	return i.ToPortPhysicalPortInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i *portPhysicalPortInterfacePtrType) ToPortPhysicalPortInterfacePtrOutputWithContext(ctx context.Context) PortPhysicalPortInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortPhysicalPortInterfacePtrOutput)
+}
+
+type PortPhysicalPortInterfaceOutput struct{ *pulumi.OutputState }
+
+func (PortPhysicalPortInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortPhysicalPortInterface)(nil)).Elem()
+}
+
+func (o PortPhysicalPortInterfaceOutput) ToPortPhysicalPortInterfaceOutput() PortPhysicalPortInterfaceOutput {
+	return o
+}
+
+func (o PortPhysicalPortInterfaceOutput) ToPortPhysicalPortInterfaceOutputWithContext(ctx context.Context) PortPhysicalPortInterfaceOutput {
+	return o
+}
+
+func (o PortPhysicalPortInterfaceOutput) ToPortPhysicalPortInterfacePtrOutput() PortPhysicalPortInterfacePtrOutput {
+	return o.ToPortPhysicalPortInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o PortPhysicalPortInterfaceOutput) ToPortPhysicalPortInterfacePtrOutputWithContext(ctx context.Context) PortPhysicalPortInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortPhysicalPortInterface) *PortPhysicalPortInterface {
+		return &v
+	}).(PortPhysicalPortInterfacePtrOutput)
+}
+
+// Interface type for the physical port
+func (o PortPhysicalPortInterfaceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortPhysicalPortInterface) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PortPhysicalPortInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (PortPhysicalPortInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortPhysicalPortInterface)(nil)).Elem()
+}
+
+func (o PortPhysicalPortInterfacePtrOutput) ToPortPhysicalPortInterfacePtrOutput() PortPhysicalPortInterfacePtrOutput {
+	return o
+}
+
+func (o PortPhysicalPortInterfacePtrOutput) ToPortPhysicalPortInterfacePtrOutputWithContext(ctx context.Context) PortPhysicalPortInterfacePtrOutput {
+	return o
+}
+
+func (o PortPhysicalPortInterfacePtrOutput) Elem() PortPhysicalPortInterfaceOutput {
+	return o.ApplyT(func(v *PortPhysicalPortInterface) PortPhysicalPortInterface {
+		if v != nil {
+			return *v
+		}
+		var ret PortPhysicalPortInterface
+		return ret
+	}).(PortPhysicalPortInterfaceOutput)
+}
+
+// Interface type for the physical port
+func (o PortPhysicalPortInterfacePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortPhysicalPortInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortProject struct {
+	// Project id the port will be created in
+	ProjectId string `pulumi:"projectId"`
+}
+
+// PortProjectInput is an input type that accepts PortProjectArgs and PortProjectOutput values.
+// You can construct a concrete instance of `PortProjectInput` via:
+//
+//	PortProjectArgs{...}
+type PortProjectInput interface {
+	pulumi.Input
+
+	ToPortProjectOutput() PortProjectOutput
+	ToPortProjectOutputWithContext(context.Context) PortProjectOutput
+}
+
+type PortProjectArgs struct {
+	// Project id the port will be created in
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (PortProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortProject)(nil)).Elem()
+}
+
+func (i PortProjectArgs) ToPortProjectOutput() PortProjectOutput {
+	return i.ToPortProjectOutputWithContext(context.Background())
+}
+
+func (i PortProjectArgs) ToPortProjectOutputWithContext(ctx context.Context) PortProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortProjectOutput)
+}
+
+func (i PortProjectArgs) ToPortProjectPtrOutput() PortProjectPtrOutput {
+	return i.ToPortProjectPtrOutputWithContext(context.Background())
+}
+
+func (i PortProjectArgs) ToPortProjectPtrOutputWithContext(ctx context.Context) PortProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortProjectOutput).ToPortProjectPtrOutputWithContext(ctx)
+}
+
+// PortProjectPtrInput is an input type that accepts PortProjectArgs, PortProjectPtr and PortProjectPtrOutput values.
+// You can construct a concrete instance of `PortProjectPtrInput` via:
+//
+//	        PortProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortProjectPtrInput interface {
+	pulumi.Input
+
+	ToPortProjectPtrOutput() PortProjectPtrOutput
+	ToPortProjectPtrOutputWithContext(context.Context) PortProjectPtrOutput
+}
+
+type portProjectPtrType PortProjectArgs
+
+func PortProjectPtr(v *PortProjectArgs) PortProjectPtrInput {
+	return (*portProjectPtrType)(v)
+}
+
+func (*portProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortProject)(nil)).Elem()
+}
+
+func (i *portProjectPtrType) ToPortProjectPtrOutput() PortProjectPtrOutput {
+	return i.ToPortProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *portProjectPtrType) ToPortProjectPtrOutputWithContext(ctx context.Context) PortProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortProjectPtrOutput)
+}
+
+type PortProjectOutput struct{ *pulumi.OutputState }
+
+func (PortProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortProject)(nil)).Elem()
+}
+
+func (o PortProjectOutput) ToPortProjectOutput() PortProjectOutput {
+	return o
+}
+
+func (o PortProjectOutput) ToPortProjectOutputWithContext(ctx context.Context) PortProjectOutput {
+	return o
+}
+
+func (o PortProjectOutput) ToPortProjectPtrOutput() PortProjectPtrOutput {
+	return o.ToPortProjectPtrOutputWithContext(context.Background())
+}
+
+func (o PortProjectOutput) ToPortProjectPtrOutputWithContext(ctx context.Context) PortProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortProject) *PortProject {
+		return &v
+	}).(PortProjectPtrOutput)
+}
+
+// Project id the port will be created in
+func (o PortProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v PortProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type PortProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (PortProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortProject)(nil)).Elem()
+}
+
+func (o PortProjectPtrOutput) ToPortProjectPtrOutput() PortProjectPtrOutput {
+	return o
+}
+
+func (o PortProjectPtrOutput) ToPortProjectPtrOutputWithContext(ctx context.Context) PortProjectPtrOutput {
+	return o
+}
+
+func (o PortProjectPtrOutput) Elem() PortProjectOutput {
+	return o.ApplyT(func(v *PortProject) PortProject {
+		if v != nil {
+			return *v
+		}
+		var ret PortProject
+		return ret
+	}).(PortProjectOutput)
+}
+
+// Project id the port will be created in
+func (o PortProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortRedundancy struct {
+	// Port redundancy priority value
+	Priority string `pulumi:"priority"`
+}
+
+// PortRedundancyInput is an input type that accepts PortRedundancyArgs and PortRedundancyOutput values.
+// You can construct a concrete instance of `PortRedundancyInput` via:
+//
+//	PortRedundancyArgs{...}
+type PortRedundancyInput interface {
+	pulumi.Input
+
+	ToPortRedundancyOutput() PortRedundancyOutput
+	ToPortRedundancyOutputWithContext(context.Context) PortRedundancyOutput
+}
+
+type PortRedundancyArgs struct {
+	// Port redundancy priority value
+	Priority pulumi.StringInput `pulumi:"priority"`
+}
+
+func (PortRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortRedundancy)(nil)).Elem()
+}
+
+func (i PortRedundancyArgs) ToPortRedundancyOutput() PortRedundancyOutput {
+	return i.ToPortRedundancyOutputWithContext(context.Background())
+}
+
+func (i PortRedundancyArgs) ToPortRedundancyOutputWithContext(ctx context.Context) PortRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortRedundancyOutput)
+}
+
+func (i PortRedundancyArgs) ToPortRedundancyPtrOutput() PortRedundancyPtrOutput {
+	return i.ToPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i PortRedundancyArgs) ToPortRedundancyPtrOutputWithContext(ctx context.Context) PortRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortRedundancyOutput).ToPortRedundancyPtrOutputWithContext(ctx)
+}
+
+// PortRedundancyPtrInput is an input type that accepts PortRedundancyArgs, PortRedundancyPtr and PortRedundancyPtrOutput values.
+// You can construct a concrete instance of `PortRedundancyPtrInput` via:
+//
+//	        PortRedundancyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortRedundancyPtrInput interface {
+	pulumi.Input
+
+	ToPortRedundancyPtrOutput() PortRedundancyPtrOutput
+	ToPortRedundancyPtrOutputWithContext(context.Context) PortRedundancyPtrOutput
+}
+
+type portRedundancyPtrType PortRedundancyArgs
+
+func PortRedundancyPtr(v *PortRedundancyArgs) PortRedundancyPtrInput {
+	return (*portRedundancyPtrType)(v)
+}
+
+func (*portRedundancyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortRedundancy)(nil)).Elem()
+}
+
+func (i *portRedundancyPtrType) ToPortRedundancyPtrOutput() PortRedundancyPtrOutput {
+	return i.ToPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i *portRedundancyPtrType) ToPortRedundancyPtrOutputWithContext(ctx context.Context) PortRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortRedundancyPtrOutput)
+}
+
+type PortRedundancyOutput struct{ *pulumi.OutputState }
+
+func (PortRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortRedundancy)(nil)).Elem()
+}
+
+func (o PortRedundancyOutput) ToPortRedundancyOutput() PortRedundancyOutput {
+	return o
+}
+
+func (o PortRedundancyOutput) ToPortRedundancyOutputWithContext(ctx context.Context) PortRedundancyOutput {
+	return o
+}
+
+func (o PortRedundancyOutput) ToPortRedundancyPtrOutput() PortRedundancyPtrOutput {
+	return o.ToPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (o PortRedundancyOutput) ToPortRedundancyPtrOutputWithContext(ctx context.Context) PortRedundancyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortRedundancy) *PortRedundancy {
+		return &v
+	}).(PortRedundancyPtrOutput)
+}
+
+// Port redundancy priority value
+func (o PortRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v PortRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type PortRedundancyPtrOutput struct{ *pulumi.OutputState }
+
+func (PortRedundancyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortRedundancy)(nil)).Elem()
+}
+
+func (o PortRedundancyPtrOutput) ToPortRedundancyPtrOutput() PortRedundancyPtrOutput {
+	return o
+}
+
+func (o PortRedundancyPtrOutput) ToPortRedundancyPtrOutputWithContext(ctx context.Context) PortRedundancyPtrOutput {
+	return o
+}
+
+func (o PortRedundancyPtrOutput) Elem() PortRedundancyOutput {
+	return o.ApplyT(func(v *PortRedundancy) PortRedundancy {
+		if v != nil {
+			return *v
+		}
+		var ret PortRedundancy
+		return ret
+	}).(PortRedundancyOutput)
+}
+
+// Port redundancy priority value
+func (o PortRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
+type PortSettings struct {
+	// Billing package for the port being ordered
+	PackageType string `pulumi:"packageType"`
+	// Indicates whether this is a dedicated customer cage or a shared neutral cage
+	SharedPortType bool `pulumi:"sharedPortType"`
+}
+
+// PortSettingsInput is an input type that accepts PortSettingsArgs and PortSettingsOutput values.
+// You can construct a concrete instance of `PortSettingsInput` via:
+//
+//	PortSettingsArgs{...}
+type PortSettingsInput interface {
+	pulumi.Input
+
+	ToPortSettingsOutput() PortSettingsOutput
+	ToPortSettingsOutputWithContext(context.Context) PortSettingsOutput
+}
+
+type PortSettingsArgs struct {
+	// Billing package for the port being ordered
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// Indicates whether this is a dedicated customer cage or a shared neutral cage
+	SharedPortType pulumi.BoolInput `pulumi:"sharedPortType"`
+}
+
+func (PortSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortSettings)(nil)).Elem()
+}
+
+func (i PortSettingsArgs) ToPortSettingsOutput() PortSettingsOutput {
+	return i.ToPortSettingsOutputWithContext(context.Background())
+}
+
+func (i PortSettingsArgs) ToPortSettingsOutputWithContext(ctx context.Context) PortSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortSettingsOutput)
+}
+
+func (i PortSettingsArgs) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
+	return i.ToPortSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PortSettingsArgs) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortSettingsOutput).ToPortSettingsPtrOutputWithContext(ctx)
+}
+
+// PortSettingsPtrInput is an input type that accepts PortSettingsArgs, PortSettingsPtr and PortSettingsPtrOutput values.
+// You can construct a concrete instance of `PortSettingsPtrInput` via:
+//
+//	        PortSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortSettingsPtrInput interface {
+	pulumi.Input
+
+	ToPortSettingsPtrOutput() PortSettingsPtrOutput
+	ToPortSettingsPtrOutputWithContext(context.Context) PortSettingsPtrOutput
+}
+
+type portSettingsPtrType PortSettingsArgs
+
+func PortSettingsPtr(v *PortSettingsArgs) PortSettingsPtrInput {
+	return (*portSettingsPtrType)(v)
+}
+
+func (*portSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortSettings)(nil)).Elem()
+}
+
+func (i *portSettingsPtrType) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
+	return i.ToPortSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *portSettingsPtrType) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortSettingsPtrOutput)
+}
+
+type PortSettingsOutput struct{ *pulumi.OutputState }
+
+func (PortSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortSettings)(nil)).Elem()
+}
+
+func (o PortSettingsOutput) ToPortSettingsOutput() PortSettingsOutput {
+	return o
+}
+
+func (o PortSettingsOutput) ToPortSettingsOutputWithContext(ctx context.Context) PortSettingsOutput {
+	return o
+}
+
+func (o PortSettingsOutput) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
+	return o.ToPortSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PortSettingsOutput) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortSettings) *PortSettings {
+		return &v
+	}).(PortSettingsPtrOutput)
+}
+
+// Billing package for the port being ordered
+func (o PortSettingsOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PortSettings) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is a dedicated customer cage or a shared neutral cage
+func (o PortSettingsOutput) SharedPortType() pulumi.BoolOutput {
+	return o.ApplyT(func(v PortSettings) bool { return v.SharedPortType }).(pulumi.BoolOutput)
+}
+
+type PortSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PortSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortSettings)(nil)).Elem()
+}
+
+func (o PortSettingsPtrOutput) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
+	return o
+}
+
+func (o PortSettingsPtrOutput) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
+	return o
+}
+
+func (o PortSettingsPtrOutput) Elem() PortSettingsOutput {
+	return o.ApplyT(func(v *PortSettings) PortSettings {
+		if v != nil {
+			return *v
+		}
+		var ret PortSettings
+		return ret
+	}).(PortSettingsOutput)
+}
+
+// Billing package for the port being ordered
+func (o PortSettingsPtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether this is a dedicated customer cage or a shared neutral cage
+func (o PortSettingsPtrOutput) SharedPortType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PortSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SharedPortType
+	}).(pulumi.BoolPtrOutput)
+}
+
+type PortTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// PortTimeoutsInput is an input type that accepts PortTimeoutsArgs and PortTimeoutsOutput values.
+// You can construct a concrete instance of `PortTimeoutsInput` via:
+//
+//	PortTimeoutsArgs{...}
+type PortTimeoutsInput interface {
+	pulumi.Input
+
+	ToPortTimeoutsOutput() PortTimeoutsOutput
+	ToPortTimeoutsOutputWithContext(context.Context) PortTimeoutsOutput
+}
+
+type PortTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (PortTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortTimeouts)(nil)).Elem()
+}
+
+func (i PortTimeoutsArgs) ToPortTimeoutsOutput() PortTimeoutsOutput {
+	return i.ToPortTimeoutsOutputWithContext(context.Background())
+}
+
+func (i PortTimeoutsArgs) ToPortTimeoutsOutputWithContext(ctx context.Context) PortTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortTimeoutsOutput)
+}
+
+func (i PortTimeoutsArgs) ToPortTimeoutsPtrOutput() PortTimeoutsPtrOutput {
+	return i.ToPortTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i PortTimeoutsArgs) ToPortTimeoutsPtrOutputWithContext(ctx context.Context) PortTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortTimeoutsOutput).ToPortTimeoutsPtrOutputWithContext(ctx)
+}
+
+// PortTimeoutsPtrInput is an input type that accepts PortTimeoutsArgs, PortTimeoutsPtr and PortTimeoutsPtrOutput values.
+// You can construct a concrete instance of `PortTimeoutsPtrInput` via:
+//
+//	        PortTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToPortTimeoutsPtrOutput() PortTimeoutsPtrOutput
+	ToPortTimeoutsPtrOutputWithContext(context.Context) PortTimeoutsPtrOutput
+}
+
+type portTimeoutsPtrType PortTimeoutsArgs
+
+func PortTimeoutsPtr(v *PortTimeoutsArgs) PortTimeoutsPtrInput {
+	return (*portTimeoutsPtrType)(v)
+}
+
+func (*portTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortTimeouts)(nil)).Elem()
+}
+
+func (i *portTimeoutsPtrType) ToPortTimeoutsPtrOutput() PortTimeoutsPtrOutput {
+	return i.ToPortTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *portTimeoutsPtrType) ToPortTimeoutsPtrOutputWithContext(ctx context.Context) PortTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortTimeoutsPtrOutput)
+}
+
+type PortTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (PortTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortTimeouts)(nil)).Elem()
+}
+
+func (o PortTimeoutsOutput) ToPortTimeoutsOutput() PortTimeoutsOutput {
+	return o
+}
+
+func (o PortTimeoutsOutput) ToPortTimeoutsOutputWithContext(ctx context.Context) PortTimeoutsOutput {
+	return o
+}
+
+func (o PortTimeoutsOutput) ToPortTimeoutsPtrOutput() PortTimeoutsPtrOutput {
+	return o.ToPortTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o PortTimeoutsOutput) ToPortTimeoutsPtrOutputWithContext(ctx context.Context) PortTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortTimeouts) *PortTimeouts {
+		return &v
+	}).(PortTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PortTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PortTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PortTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PortTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type PortTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (PortTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortTimeouts)(nil)).Elem()
+}
+
+func (o PortTimeoutsPtrOutput) ToPortTimeoutsPtrOutput() PortTimeoutsPtrOutput {
+	return o
+}
+
+func (o PortTimeoutsPtrOutput) ToPortTimeoutsPtrOutputWithContext(ctx context.Context) PortTimeoutsPtrOutput {
+	return o
+}
+
+func (o PortTimeoutsPtrOutput) Elem() PortTimeoutsOutput {
+	return o.ApplyT(func(v *PortTimeouts) PortTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret PortTimeouts
+		return ret
+	}).(PortTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PortTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PortTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PortTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PortTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type PrecisionTimeServiceAccount struct {
 	// Account Name
 	AccountName *string `pulumi:"accountName"`
@@ -11598,6 +14733,143 @@ func (o PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrecisionTimeServiceNtpAdvancedConfiguration {
 		return vs[0].([]PrecisionTimeServiceNtpAdvancedConfiguration)[vs[1].(int)]
 	}).(PrecisionTimeServiceNtpAdvancedConfigurationOutput)
+}
+
+type PrecisionTimeServiceOperation struct {
+	// Current operational status of the Precision Time Service
+	OperationalStatus *string `pulumi:"operationalStatus"`
+}
+
+// PrecisionTimeServiceOperationInput is an input type that accepts PrecisionTimeServiceOperationArgs and PrecisionTimeServiceOperationOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceOperationInput` via:
+//
+//	PrecisionTimeServiceOperationArgs{...}
+type PrecisionTimeServiceOperationInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceOperationOutput() PrecisionTimeServiceOperationOutput
+	ToPrecisionTimeServiceOperationOutputWithContext(context.Context) PrecisionTimeServiceOperationOutput
+}
+
+type PrecisionTimeServiceOperationArgs struct {
+	// Current operational status of the Precision Time Service
+	OperationalStatus pulumi.StringPtrInput `pulumi:"operationalStatus"`
+}
+
+func (PrecisionTimeServiceOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceOperation)(nil)).Elem()
+}
+
+func (i PrecisionTimeServiceOperationArgs) ToPrecisionTimeServiceOperationOutput() PrecisionTimeServiceOperationOutput {
+	return i.ToPrecisionTimeServiceOperationOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceOperationArgs) ToPrecisionTimeServiceOperationOutputWithContext(ctx context.Context) PrecisionTimeServiceOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceOperationOutput)
+}
+
+func (i PrecisionTimeServiceOperationArgs) ToPrecisionTimeServiceOperationPtrOutput() PrecisionTimeServiceOperationPtrOutput {
+	return i.ToPrecisionTimeServiceOperationPtrOutputWithContext(context.Background())
+}
+
+func (i PrecisionTimeServiceOperationArgs) ToPrecisionTimeServiceOperationPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceOperationOutput).ToPrecisionTimeServiceOperationPtrOutputWithContext(ctx)
+}
+
+// PrecisionTimeServiceOperationPtrInput is an input type that accepts PrecisionTimeServiceOperationArgs, PrecisionTimeServiceOperationPtr and PrecisionTimeServiceOperationPtrOutput values.
+// You can construct a concrete instance of `PrecisionTimeServiceOperationPtrInput` via:
+//
+//	        PrecisionTimeServiceOperationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrecisionTimeServiceOperationPtrInput interface {
+	pulumi.Input
+
+	ToPrecisionTimeServiceOperationPtrOutput() PrecisionTimeServiceOperationPtrOutput
+	ToPrecisionTimeServiceOperationPtrOutputWithContext(context.Context) PrecisionTimeServiceOperationPtrOutput
+}
+
+type precisionTimeServiceOperationPtrType PrecisionTimeServiceOperationArgs
+
+func PrecisionTimeServiceOperationPtr(v *PrecisionTimeServiceOperationArgs) PrecisionTimeServiceOperationPtrInput {
+	return (*precisionTimeServiceOperationPtrType)(v)
+}
+
+func (*precisionTimeServiceOperationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceOperation)(nil)).Elem()
+}
+
+func (i *precisionTimeServiceOperationPtrType) ToPrecisionTimeServiceOperationPtrOutput() PrecisionTimeServiceOperationPtrOutput {
+	return i.ToPrecisionTimeServiceOperationPtrOutputWithContext(context.Background())
+}
+
+func (i *precisionTimeServiceOperationPtrType) ToPrecisionTimeServiceOperationPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrecisionTimeServiceOperationPtrOutput)
+}
+
+type PrecisionTimeServiceOperationOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrecisionTimeServiceOperation)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceOperationOutput) ToPrecisionTimeServiceOperationOutput() PrecisionTimeServiceOperationOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOperationOutput) ToPrecisionTimeServiceOperationOutputWithContext(ctx context.Context) PrecisionTimeServiceOperationOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOperationOutput) ToPrecisionTimeServiceOperationPtrOutput() PrecisionTimeServiceOperationPtrOutput {
+	return o.ToPrecisionTimeServiceOperationPtrOutputWithContext(context.Background())
+}
+
+func (o PrecisionTimeServiceOperationOutput) ToPrecisionTimeServiceOperationPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOperationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrecisionTimeServiceOperation) *PrecisionTimeServiceOperation {
+		return &v
+	}).(PrecisionTimeServiceOperationPtrOutput)
+}
+
+// Current operational status of the Precision Time Service
+func (o PrecisionTimeServiceOperationOutput) OperationalStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrecisionTimeServiceOperation) *string { return v.OperationalStatus }).(pulumi.StringPtrOutput)
+}
+
+type PrecisionTimeServiceOperationPtrOutput struct{ *pulumi.OutputState }
+
+func (PrecisionTimeServiceOperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrecisionTimeServiceOperation)(nil)).Elem()
+}
+
+func (o PrecisionTimeServiceOperationPtrOutput) ToPrecisionTimeServiceOperationPtrOutput() PrecisionTimeServiceOperationPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOperationPtrOutput) ToPrecisionTimeServiceOperationPtrOutputWithContext(ctx context.Context) PrecisionTimeServiceOperationPtrOutput {
+	return o
+}
+
+func (o PrecisionTimeServiceOperationPtrOutput) Elem() PrecisionTimeServiceOperationOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceOperation) PrecisionTimeServiceOperation {
+		if v != nil {
+			return *v
+		}
+		var ret PrecisionTimeServiceOperation
+		return ret
+	}).(PrecisionTimeServiceOperationOutput)
+}
+
+// Current operational status of the Precision Time Service
+func (o PrecisionTimeServiceOperationPtrOutput) OperationalStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrecisionTimeServiceOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationalStatus
+	}).(pulumi.StringPtrOutput)
 }
 
 type PrecisionTimeServiceOrder struct {
@@ -24067,6 +27339,356 @@ func (o StreamAlertRuleChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type StreamAlertRuleDetectionMethod struct {
+	// Stream alert rule metric critical threshold
+	CriticalThreshold *string `pulumi:"criticalThreshold"`
+	// Stream alert rule metric operand
+	Operand *string `pulumi:"operand"`
+	// Stream Alert Rule detection method type
+	Type string `pulumi:"type"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold *string `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize *string `pulumi:"windowSize"`
+}
+
+// StreamAlertRuleDetectionMethodInput is an input type that accepts StreamAlertRuleDetectionMethodArgs and StreamAlertRuleDetectionMethodOutput values.
+// You can construct a concrete instance of `StreamAlertRuleDetectionMethodInput` via:
+//
+//	StreamAlertRuleDetectionMethodArgs{...}
+type StreamAlertRuleDetectionMethodInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleDetectionMethodOutput() StreamAlertRuleDetectionMethodOutput
+	ToStreamAlertRuleDetectionMethodOutputWithContext(context.Context) StreamAlertRuleDetectionMethodOutput
+}
+
+type StreamAlertRuleDetectionMethodArgs struct {
+	// Stream alert rule metric critical threshold
+	CriticalThreshold pulumi.StringPtrInput `pulumi:"criticalThreshold"`
+	// Stream alert rule metric operand
+	Operand pulumi.StringPtrInput `pulumi:"operand"`
+	// Stream Alert Rule detection method type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold pulumi.StringPtrInput `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
+}
+
+func (StreamAlertRuleDetectionMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (i StreamAlertRuleDetectionMethodArgs) ToStreamAlertRuleDetectionMethodOutput() StreamAlertRuleDetectionMethodOutput {
+	return i.ToStreamAlertRuleDetectionMethodOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleDetectionMethodArgs) ToStreamAlertRuleDetectionMethodOutputWithContext(ctx context.Context) StreamAlertRuleDetectionMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleDetectionMethodOutput)
+}
+
+func (i StreamAlertRuleDetectionMethodArgs) ToStreamAlertRuleDetectionMethodPtrOutput() StreamAlertRuleDetectionMethodPtrOutput {
+	return i.ToStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleDetectionMethodArgs) ToStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) StreamAlertRuleDetectionMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleDetectionMethodOutput).ToStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx)
+}
+
+// StreamAlertRuleDetectionMethodPtrInput is an input type that accepts StreamAlertRuleDetectionMethodArgs, StreamAlertRuleDetectionMethodPtr and StreamAlertRuleDetectionMethodPtrOutput values.
+// You can construct a concrete instance of `StreamAlertRuleDetectionMethodPtrInput` via:
+//
+//	        StreamAlertRuleDetectionMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamAlertRuleDetectionMethodPtrInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleDetectionMethodPtrOutput() StreamAlertRuleDetectionMethodPtrOutput
+	ToStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Context) StreamAlertRuleDetectionMethodPtrOutput
+}
+
+type streamAlertRuleDetectionMethodPtrType StreamAlertRuleDetectionMethodArgs
+
+func StreamAlertRuleDetectionMethodPtr(v *StreamAlertRuleDetectionMethodArgs) StreamAlertRuleDetectionMethodPtrInput {
+	return (*streamAlertRuleDetectionMethodPtrType)(v)
+}
+
+func (*streamAlertRuleDetectionMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (i *streamAlertRuleDetectionMethodPtrType) ToStreamAlertRuleDetectionMethodPtrOutput() StreamAlertRuleDetectionMethodPtrOutput {
+	return i.ToStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *streamAlertRuleDetectionMethodPtrType) ToStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) StreamAlertRuleDetectionMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleDetectionMethodPtrOutput)
+}
+
+type StreamAlertRuleDetectionMethodOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleDetectionMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (o StreamAlertRuleDetectionMethodOutput) ToStreamAlertRuleDetectionMethodOutput() StreamAlertRuleDetectionMethodOutput {
+	return o
+}
+
+func (o StreamAlertRuleDetectionMethodOutput) ToStreamAlertRuleDetectionMethodOutputWithContext(ctx context.Context) StreamAlertRuleDetectionMethodOutput {
+	return o
+}
+
+func (o StreamAlertRuleDetectionMethodOutput) ToStreamAlertRuleDetectionMethodPtrOutput() StreamAlertRuleDetectionMethodPtrOutput {
+	return o.ToStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
+}
+
+func (o StreamAlertRuleDetectionMethodOutput) ToStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) StreamAlertRuleDetectionMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamAlertRuleDetectionMethod) *StreamAlertRuleDetectionMethod {
+		return &v
+	}).(StreamAlertRuleDetectionMethodPtrOutput)
+}
+
+// Stream alert rule metric critical threshold
+func (o StreamAlertRuleDetectionMethodOutput) CriticalThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleDetectionMethod) *string { return v.CriticalThreshold }).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric operand
+func (o StreamAlertRuleDetectionMethodOutput) Operand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleDetectionMethod) *string { return v.Operand }).(pulumi.StringPtrOutput)
+}
+
+// Stream Alert Rule detection method type
+func (o StreamAlertRuleDetectionMethodOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamAlertRuleDetectionMethod) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric warning threshold
+func (o StreamAlertRuleDetectionMethodOutput) WarningThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleDetectionMethod) *string { return v.WarningThreshold }).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric window size
+func (o StreamAlertRuleDetectionMethodOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamAlertRuleDetectionMethod) *string { return v.WindowSize }).(pulumi.StringPtrOutput)
+}
+
+type StreamAlertRuleDetectionMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleDetectionMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (o StreamAlertRuleDetectionMethodPtrOutput) ToStreamAlertRuleDetectionMethodPtrOutput() StreamAlertRuleDetectionMethodPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleDetectionMethodPtrOutput) ToStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) StreamAlertRuleDetectionMethodPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleDetectionMethodPtrOutput) Elem() StreamAlertRuleDetectionMethodOutput {
+	return o.ApplyT(func(v *StreamAlertRuleDetectionMethod) StreamAlertRuleDetectionMethod {
+		if v != nil {
+			return *v
+		}
+		var ret StreamAlertRuleDetectionMethod
+		return ret
+	}).(StreamAlertRuleDetectionMethodOutput)
+}
+
+// Stream alert rule metric critical threshold
+func (o StreamAlertRuleDetectionMethodPtrOutput) CriticalThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CriticalThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric operand
+func (o StreamAlertRuleDetectionMethodPtrOutput) Operand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operand
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream Alert Rule detection method type
+func (o StreamAlertRuleDetectionMethodPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric warning threshold
+func (o StreamAlertRuleDetectionMethodPtrOutput) WarningThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarningThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric window size
+func (o StreamAlertRuleDetectionMethodPtrOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamAlertRuleMetricSelector struct {
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// StreamAlertRuleMetricSelectorInput is an input type that accepts StreamAlertRuleMetricSelectorArgs and StreamAlertRuleMetricSelectorOutput values.
+// You can construct a concrete instance of `StreamAlertRuleMetricSelectorInput` via:
+//
+//	StreamAlertRuleMetricSelectorArgs{...}
+type StreamAlertRuleMetricSelectorInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleMetricSelectorOutput() StreamAlertRuleMetricSelectorOutput
+	ToStreamAlertRuleMetricSelectorOutputWithContext(context.Context) StreamAlertRuleMetricSelectorOutput
+}
+
+type StreamAlertRuleMetricSelectorArgs struct {
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (StreamAlertRuleMetricSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (i StreamAlertRuleMetricSelectorArgs) ToStreamAlertRuleMetricSelectorOutput() StreamAlertRuleMetricSelectorOutput {
+	return i.ToStreamAlertRuleMetricSelectorOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleMetricSelectorArgs) ToStreamAlertRuleMetricSelectorOutputWithContext(ctx context.Context) StreamAlertRuleMetricSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleMetricSelectorOutput)
+}
+
+func (i StreamAlertRuleMetricSelectorArgs) ToStreamAlertRuleMetricSelectorPtrOutput() StreamAlertRuleMetricSelectorPtrOutput {
+	return i.ToStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i StreamAlertRuleMetricSelectorArgs) ToStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleMetricSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleMetricSelectorOutput).ToStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx)
+}
+
+// StreamAlertRuleMetricSelectorPtrInput is an input type that accepts StreamAlertRuleMetricSelectorArgs, StreamAlertRuleMetricSelectorPtr and StreamAlertRuleMetricSelectorPtrOutput values.
+// You can construct a concrete instance of `StreamAlertRuleMetricSelectorPtrInput` via:
+//
+//	        StreamAlertRuleMetricSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamAlertRuleMetricSelectorPtrInput interface {
+	pulumi.Input
+
+	ToStreamAlertRuleMetricSelectorPtrOutput() StreamAlertRuleMetricSelectorPtrOutput
+	ToStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Context) StreamAlertRuleMetricSelectorPtrOutput
+}
+
+type streamAlertRuleMetricSelectorPtrType StreamAlertRuleMetricSelectorArgs
+
+func StreamAlertRuleMetricSelectorPtr(v *StreamAlertRuleMetricSelectorArgs) StreamAlertRuleMetricSelectorPtrInput {
+	return (*streamAlertRuleMetricSelectorPtrType)(v)
+}
+
+func (*streamAlertRuleMetricSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (i *streamAlertRuleMetricSelectorPtrType) ToStreamAlertRuleMetricSelectorPtrOutput() StreamAlertRuleMetricSelectorPtrOutput {
+	return i.ToStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *streamAlertRuleMetricSelectorPtrType) ToStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleMetricSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamAlertRuleMetricSelectorPtrOutput)
+}
+
+type StreamAlertRuleMetricSelectorOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleMetricSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (o StreamAlertRuleMetricSelectorOutput) ToStreamAlertRuleMetricSelectorOutput() StreamAlertRuleMetricSelectorOutput {
+	return o
+}
+
+func (o StreamAlertRuleMetricSelectorOutput) ToStreamAlertRuleMetricSelectorOutputWithContext(ctx context.Context) StreamAlertRuleMetricSelectorOutput {
+	return o
+}
+
+func (o StreamAlertRuleMetricSelectorOutput) ToStreamAlertRuleMetricSelectorPtrOutput() StreamAlertRuleMetricSelectorPtrOutput {
+	return o.ToStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o StreamAlertRuleMetricSelectorOutput) ToStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleMetricSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamAlertRuleMetricSelector) *StreamAlertRuleMetricSelector {
+		return &v
+	}).(StreamAlertRuleMetricSelectorPtrOutput)
+}
+
+// List of metrics to include
+func (o StreamAlertRuleMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamAlertRuleMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type StreamAlertRuleMetricSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamAlertRuleMetricSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (o StreamAlertRuleMetricSelectorPtrOutput) ToStreamAlertRuleMetricSelectorPtrOutput() StreamAlertRuleMetricSelectorPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleMetricSelectorPtrOutput) ToStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) StreamAlertRuleMetricSelectorPtrOutput {
+	return o
+}
+
+func (o StreamAlertRuleMetricSelectorPtrOutput) Elem() StreamAlertRuleMetricSelectorOutput {
+	return o.ApplyT(func(v *StreamAlertRuleMetricSelector) StreamAlertRuleMetricSelector {
+		if v != nil {
+			return *v
+		}
+		var ret StreamAlertRuleMetricSelector
+		return ret
+	}).(StreamAlertRuleMetricSelectorOutput)
+}
+
+// List of metrics to include
+func (o StreamAlertRuleMetricSelectorPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamAlertRuleMetricSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
 type StreamAlertRuleResourceSelector struct {
 	// List of metrics to include
 	Includes []string `pulumi:"includes"`
@@ -27831,6 +31453,8 @@ type GetCloudRoutersData struct {
 	Description string `pulumi:"description"`
 	// Equinix ASN
 	EquinixAsn int `pulumi:"equinixAsn"`
+	// Number of gateway attachments associated with this Access point
+	GatewayAttachmentsCount int `pulumi:"gatewayAttachmentsCount"`
 	// Fabric Cloud Router URI information
 	Href string `pulumi:"href"`
 	// Fabric Cloud Router location
@@ -27877,6 +31501,8 @@ type GetCloudRoutersDataArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Equinix ASN
 	EquinixAsn pulumi.IntInput `pulumi:"equinixAsn"`
+	// Number of gateway attachments associated with this Access point
+	GatewayAttachmentsCount pulumi.IntInput `pulumi:"gatewayAttachmentsCount"`
 	// Fabric Cloud Router URI information
 	Href pulumi.StringInput `pulumi:"href"`
 	// Fabric Cloud Router location
@@ -27975,6 +31601,11 @@ func (o GetCloudRoutersDataOutput) Description() pulumi.StringOutput {
 // Equinix ASN
 func (o GetCloudRoutersDataOutput) EquinixAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCloudRoutersData) int { return v.EquinixAsn }).(pulumi.IntOutput)
+}
+
+// Number of gateway attachments associated with this Access point
+func (o GetCloudRoutersDataOutput) GatewayAttachmentsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudRoutersData) int { return v.GatewayAttachmentsCount }).(pulumi.IntOutput)
 }
 
 // Fabric Cloud Router URI information
@@ -29559,6 +33190,8 @@ type GetConnectionASideAccessPoint struct {
 	Profile *GetConnectionASideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -29605,6 +33238,8 @@ type GetConnectionASideAccessPointArgs struct {
 	Profile GetConnectionASideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -29749,6 +33384,11 @@ func (o GetConnectionASideAccessPointOutput) Profile() GetConnectionASideAccessP
 // Provider assigned Connection Id
 func (o GetConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
+}
+
+// Network role
+func (o GetConnectionASideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionASideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -29906,6 +33546,16 @@ func (o GetConnectionASideAccessPointPtrOutput) ProviderConnectionId() pulumi.St
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionASideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33912,6 +37562,8 @@ type GetConnectionZSideAccessPoint struct {
 	Profile *GetConnectionZSideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -33958,6 +37610,8 @@ type GetConnectionZSideAccessPointArgs struct {
 	Profile GetConnectionZSideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -34102,6 +37756,11 @@ func (o GetConnectionZSideAccessPointOutput) Profile() GetConnectionZSideAccessP
 // Provider assigned Connection Id
 func (o GetConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
+}
+
+// Network role
+func (o GetConnectionZSideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionZSideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -34259,6 +37918,16 @@ func (o GetConnectionZSideAccessPointPtrOutput) ProviderConnectionId() pulumi.St
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionZSideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37037,6 +40706,8 @@ type GetConnectionsDataASideAccessPoint struct {
 	Profile *GetConnectionsDataASideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionsDataASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -37083,6 +40754,8 @@ type GetConnectionsDataASideAccessPointArgs struct {
 	Profile GetConnectionsDataASideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionsDataASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -37241,6 +40914,11 @@ func (o GetConnectionsDataASideAccessPointOutput) ProviderConnectionId() pulumi.
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
 }
 
+// Network role
+func (o GetConnectionsDataASideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
 // Cloud Router access point information that replaces `gateway`
 func (o GetConnectionsDataASideAccessPointOutput) Router() GetConnectionsDataASideAccessPointRouterPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataASideAccessPoint) *GetConnectionsDataASideAccessPointRouter { return v.Router }).(GetConnectionsDataASideAccessPointRouterPtrOutput)
@@ -37396,6 +41074,16 @@ func (o GetConnectionsDataASideAccessPointPtrOutput) ProviderConnectionId() pulu
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionsDataASideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41096,6 +44784,8 @@ type GetConnectionsDataZSideAccessPoint struct {
 	Profile *GetConnectionsDataZSideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId string `pulumi:"providerConnectionId"`
+	// Network role
+	Role *string `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionsDataZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -41142,6 +44832,8 @@ type GetConnectionsDataZSideAccessPointArgs struct {
 	Profile GetConnectionsDataZSideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
 	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
+	// Network role
+	Role pulumi.StringPtrInput `pulumi:"role"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionsDataZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -41300,6 +44992,11 @@ func (o GetConnectionsDataZSideAccessPointOutput) ProviderConnectionId() pulumi.
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
 }
 
+// Network role
+func (o GetConnectionsDataZSideAccessPointOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
 // Cloud Router access point information that replaces `gateway`
 func (o GetConnectionsDataZSideAccessPointOutput) Router() GetConnectionsDataZSideAccessPointRouterPtrOutput {
 	return o.ApplyT(func(v GetConnectionsDataZSideAccessPoint) *GetConnectionsDataZSideAccessPointRouter { return v.Router }).(GetConnectionsDataZSideAccessPointRouterPtrOutput)
@@ -41455,6 +45152,16 @@ func (o GetConnectionsDataZSideAccessPointPtrOutput) ProviderConnectionId() pulu
 			return nil
 		}
 		return &v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network role
+func (o GetConnectionsDataZSideAccessPointPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionsDataZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -49807,6 +53514,55 @@ func (o GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput) Index(i pulu
 	}).(GetPrecisionTimeServiceNtpAdvancedConfigurationOutput)
 }
 
+type GetPrecisionTimeServiceOperation struct {
+	OperationalStatus string `pulumi:"operationalStatus"`
+}
+
+// GetPrecisionTimeServiceOperationInput is an input type that accepts GetPrecisionTimeServiceOperationArgs and GetPrecisionTimeServiceOperationOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServiceOperationInput` via:
+//
+//	GetPrecisionTimeServiceOperationArgs{...}
+type GetPrecisionTimeServiceOperationInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServiceOperationOutput() GetPrecisionTimeServiceOperationOutput
+	ToGetPrecisionTimeServiceOperationOutputWithContext(context.Context) GetPrecisionTimeServiceOperationOutput
+}
+
+type GetPrecisionTimeServiceOperationArgs struct {
+	OperationalStatus pulumi.StringInput `pulumi:"operationalStatus"`
+}
+
+func (GetPrecisionTimeServiceOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceOperation)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServiceOperationArgs) ToGetPrecisionTimeServiceOperationOutput() GetPrecisionTimeServiceOperationOutput {
+	return i.ToGetPrecisionTimeServiceOperationOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServiceOperationArgs) ToGetPrecisionTimeServiceOperationOutputWithContext(ctx context.Context) GetPrecisionTimeServiceOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServiceOperationOutput)
+}
+
+type GetPrecisionTimeServiceOperationOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServiceOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServiceOperation)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServiceOperationOutput) ToGetPrecisionTimeServiceOperationOutput() GetPrecisionTimeServiceOperationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceOperationOutput) ToGetPrecisionTimeServiceOperationOutputWithContext(ctx context.Context) GetPrecisionTimeServiceOperationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServiceOperationOutput) OperationalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServiceOperation) string { return v.OperationalStatus }).(pulumi.StringOutput)
+}
+
 type GetPrecisionTimeServiceOrder struct {
 	// Customer reference number
 	CustomerReferenceNumber string `pulumi:"customerReferenceNumber"`
@@ -50548,6 +54304,8 @@ type GetPrecisionTimeServicesData struct {
 	Name string `pulumi:"name"`
 	// NTP Advanced configuration
 	NtpAdvancedConfigurations []GetPrecisionTimeServicesDataNtpAdvancedConfiguration `pulumi:"ntpAdvancedConfigurations"`
+	// Precision Time Service Operation
+	Operation GetPrecisionTimeServicesDataOperation `pulumi:"operation"`
 	// Precision Time Order
 	Order GetPrecisionTimeServicesDataOrder `pulumi:"order"`
 	// Precision Time Service Package Details
@@ -50592,6 +54350,8 @@ type GetPrecisionTimeServicesDataArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// NTP Advanced configuration
 	NtpAdvancedConfigurations GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayInput `pulumi:"ntpAdvancedConfigurations"`
+	// Precision Time Service Operation
+	Operation GetPrecisionTimeServicesDataOperationInput `pulumi:"operation"`
 	// Precision Time Order
 	Order GetPrecisionTimeServicesDataOrderInput `pulumi:"order"`
 	// Precision Time Service Package Details
@@ -50696,6 +54456,11 @@ func (o GetPrecisionTimeServicesDataOutput) NtpAdvancedConfigurations() GetPreci
 	return o.ApplyT(func(v GetPrecisionTimeServicesData) []GetPrecisionTimeServicesDataNtpAdvancedConfiguration {
 		return v.NtpAdvancedConfigurations
 	}).(GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput)
+}
+
+// Precision Time Service Operation
+func (o GetPrecisionTimeServicesDataOutput) Operation() GetPrecisionTimeServicesDataOperationOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesData) GetPrecisionTimeServicesDataOperation { return v.Operation }).(GetPrecisionTimeServicesDataOperationOutput)
 }
 
 // Precision Time Order
@@ -51377,6 +55142,55 @@ func (o GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrecisionTimeServicesDataNtpAdvancedConfiguration {
 		return vs[0].([]GetPrecisionTimeServicesDataNtpAdvancedConfiguration)[vs[1].(int)]
 	}).(GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput)
+}
+
+type GetPrecisionTimeServicesDataOperation struct {
+	OperationalStatus string `pulumi:"operationalStatus"`
+}
+
+// GetPrecisionTimeServicesDataOperationInput is an input type that accepts GetPrecisionTimeServicesDataOperationArgs and GetPrecisionTimeServicesDataOperationOutput values.
+// You can construct a concrete instance of `GetPrecisionTimeServicesDataOperationInput` via:
+//
+//	GetPrecisionTimeServicesDataOperationArgs{...}
+type GetPrecisionTimeServicesDataOperationInput interface {
+	pulumi.Input
+
+	ToGetPrecisionTimeServicesDataOperationOutput() GetPrecisionTimeServicesDataOperationOutput
+	ToGetPrecisionTimeServicesDataOperationOutputWithContext(context.Context) GetPrecisionTimeServicesDataOperationOutput
+}
+
+type GetPrecisionTimeServicesDataOperationArgs struct {
+	OperationalStatus pulumi.StringInput `pulumi:"operationalStatus"`
+}
+
+func (GetPrecisionTimeServicesDataOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataOperation)(nil)).Elem()
+}
+
+func (i GetPrecisionTimeServicesDataOperationArgs) ToGetPrecisionTimeServicesDataOperationOutput() GetPrecisionTimeServicesDataOperationOutput {
+	return i.ToGetPrecisionTimeServicesDataOperationOutputWithContext(context.Background())
+}
+
+func (i GetPrecisionTimeServicesDataOperationArgs) ToGetPrecisionTimeServicesDataOperationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrecisionTimeServicesDataOperationOutput)
+}
+
+type GetPrecisionTimeServicesDataOperationOutput struct{ *pulumi.OutputState }
+
+func (GetPrecisionTimeServicesDataOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrecisionTimeServicesDataOperation)(nil)).Elem()
+}
+
+func (o GetPrecisionTimeServicesDataOperationOutput) ToGetPrecisionTimeServicesDataOperationOutput() GetPrecisionTimeServicesDataOperationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataOperationOutput) ToGetPrecisionTimeServicesDataOperationOutputWithContext(ctx context.Context) GetPrecisionTimeServicesDataOperationOutput {
+	return o
+}
+
+func (o GetPrecisionTimeServicesDataOperationOutput) OperationalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrecisionTimeServicesDataOperation) string { return v.OperationalStatus }).(pulumi.StringOutput)
 }
 
 type GetPrecisionTimeServicesDataOrder struct {
@@ -71794,6 +75608,356 @@ func (o GetStreamAlertRuleChangeLogOutput) UpdatedDateTime() pulumi.StringOutput
 	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
 }
 
+type GetStreamAlertRuleDetectionMethod struct {
+	// Stream alert rule metric critical threshold
+	CriticalThreshold string `pulumi:"criticalThreshold"`
+	// Stream alert rule metric operand
+	Operand string `pulumi:"operand"`
+	// Stream Alert Rule detection method type
+	Type string `pulumi:"type"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold string `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize string `pulumi:"windowSize"`
+}
+
+// GetStreamAlertRuleDetectionMethodInput is an input type that accepts GetStreamAlertRuleDetectionMethodArgs and GetStreamAlertRuleDetectionMethodOutput values.
+// You can construct a concrete instance of `GetStreamAlertRuleDetectionMethodInput` via:
+//
+//	GetStreamAlertRuleDetectionMethodArgs{...}
+type GetStreamAlertRuleDetectionMethodInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRuleDetectionMethodOutput() GetStreamAlertRuleDetectionMethodOutput
+	ToGetStreamAlertRuleDetectionMethodOutputWithContext(context.Context) GetStreamAlertRuleDetectionMethodOutput
+}
+
+type GetStreamAlertRuleDetectionMethodArgs struct {
+	// Stream alert rule metric critical threshold
+	CriticalThreshold pulumi.StringInput `pulumi:"criticalThreshold"`
+	// Stream alert rule metric operand
+	Operand pulumi.StringInput `pulumi:"operand"`
+	// Stream Alert Rule detection method type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold pulumi.StringInput `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize pulumi.StringInput `pulumi:"windowSize"`
+}
+
+func (GetStreamAlertRuleDetectionMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodOutput() GetStreamAlertRuleDetectionMethodOutput {
+	return i.ToGetStreamAlertRuleDetectionMethodOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleDetectionMethodOutput)
+}
+
+func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
+	return i.ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleDetectionMethodOutput).ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx)
+}
+
+// GetStreamAlertRuleDetectionMethodPtrInput is an input type that accepts GetStreamAlertRuleDetectionMethodArgs, GetStreamAlertRuleDetectionMethodPtr and GetStreamAlertRuleDetectionMethodPtrOutput values.
+// You can construct a concrete instance of `GetStreamAlertRuleDetectionMethodPtrInput` via:
+//
+//	        GetStreamAlertRuleDetectionMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetStreamAlertRuleDetectionMethodPtrInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput
+	ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Context) GetStreamAlertRuleDetectionMethodPtrOutput
+}
+
+type getStreamAlertRuleDetectionMethodPtrType GetStreamAlertRuleDetectionMethodArgs
+
+func GetStreamAlertRuleDetectionMethodPtr(v *GetStreamAlertRuleDetectionMethodArgs) GetStreamAlertRuleDetectionMethodPtrInput {
+	return (*getStreamAlertRuleDetectionMethodPtrType)(v)
+}
+
+func (*getStreamAlertRuleDetectionMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetStreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (i *getStreamAlertRuleDetectionMethodPtrType) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
+	return i.ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *getStreamAlertRuleDetectionMethodPtrType) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleDetectionMethodPtrOutput)
+}
+
+type GetStreamAlertRuleDetectionMethodOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRuleDetectionMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodOutput() GetStreamAlertRuleDetectionMethodOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
+	return o.ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
+}
+
+func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetStreamAlertRuleDetectionMethod) *GetStreamAlertRuleDetectionMethod {
+		return &v
+	}).(GetStreamAlertRuleDetectionMethodPtrOutput)
+}
+
+// Stream alert rule metric critical threshold
+func (o GetStreamAlertRuleDetectionMethodOutput) CriticalThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.CriticalThreshold }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric operand
+func (o GetStreamAlertRuleDetectionMethodOutput) Operand() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.Operand }).(pulumi.StringOutput)
+}
+
+// Stream Alert Rule detection method type
+func (o GetStreamAlertRuleDetectionMethodOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric warning threshold
+func (o GetStreamAlertRuleDetectionMethodOutput) WarningThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.WarningThreshold }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric window size
+func (o GetStreamAlertRuleDetectionMethodOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.WindowSize }).(pulumi.StringOutput)
+}
+
+type GetStreamAlertRuleDetectionMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRuleDetectionMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetStreamAlertRuleDetectionMethod)(nil)).Elem()
+}
+
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) Elem() GetStreamAlertRuleDetectionMethodOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) GetStreamAlertRuleDetectionMethod {
+		if v != nil {
+			return *v
+		}
+		var ret GetStreamAlertRuleDetectionMethod
+		return ret
+	}).(GetStreamAlertRuleDetectionMethodOutput)
+}
+
+// Stream alert rule metric critical threshold
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) CriticalThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CriticalThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric operand
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) Operand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operand
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream Alert Rule detection method type
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric warning threshold
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) WarningThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WarningThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream alert rule metric window size
+func (o GetStreamAlertRuleDetectionMethodPtrOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetStreamAlertRuleMetricSelector struct {
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamAlertRuleMetricSelectorInput is an input type that accepts GetStreamAlertRuleMetricSelectorArgs and GetStreamAlertRuleMetricSelectorOutput values.
+// You can construct a concrete instance of `GetStreamAlertRuleMetricSelectorInput` via:
+//
+//	GetStreamAlertRuleMetricSelectorArgs{...}
+type GetStreamAlertRuleMetricSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRuleMetricSelectorOutput() GetStreamAlertRuleMetricSelectorOutput
+	ToGetStreamAlertRuleMetricSelectorOutputWithContext(context.Context) GetStreamAlertRuleMetricSelectorOutput
+}
+
+type GetStreamAlertRuleMetricSelectorArgs struct {
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamAlertRuleMetricSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorOutput() GetStreamAlertRuleMetricSelectorOutput {
+	return i.ToGetStreamAlertRuleMetricSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleMetricSelectorOutput)
+}
+
+func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
+	return i.ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleMetricSelectorOutput).ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx)
+}
+
+// GetStreamAlertRuleMetricSelectorPtrInput is an input type that accepts GetStreamAlertRuleMetricSelectorArgs, GetStreamAlertRuleMetricSelectorPtr and GetStreamAlertRuleMetricSelectorPtrOutput values.
+// You can construct a concrete instance of `GetStreamAlertRuleMetricSelectorPtrInput` via:
+//
+//	        GetStreamAlertRuleMetricSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetStreamAlertRuleMetricSelectorPtrInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput
+	ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Context) GetStreamAlertRuleMetricSelectorPtrOutput
+}
+
+type getStreamAlertRuleMetricSelectorPtrType GetStreamAlertRuleMetricSelectorArgs
+
+func GetStreamAlertRuleMetricSelectorPtr(v *GetStreamAlertRuleMetricSelectorArgs) GetStreamAlertRuleMetricSelectorPtrInput {
+	return (*getStreamAlertRuleMetricSelectorPtrType)(v)
+}
+
+func (*getStreamAlertRuleMetricSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetStreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (i *getStreamAlertRuleMetricSelectorPtrType) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
+	return i.ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *getStreamAlertRuleMetricSelectorPtrType) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleMetricSelectorPtrOutput)
+}
+
+type GetStreamAlertRuleMetricSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRuleMetricSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorOutput() GetStreamAlertRuleMetricSelectorOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
+	return o.ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetStreamAlertRuleMetricSelector) *GetStreamAlertRuleMetricSelector {
+		return &v
+	}).(GetStreamAlertRuleMetricSelectorPtrOutput)
+}
+
+// List of metrics to include
+func (o GetStreamAlertRuleMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamAlertRuleMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamAlertRuleMetricSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRuleMetricSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetStreamAlertRuleMetricSelector)(nil)).Elem()
+}
+
+func (o GetStreamAlertRuleMetricSelectorPtrOutput) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleMetricSelectorPtrOutput) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
+	return o
+}
+
+func (o GetStreamAlertRuleMetricSelectorPtrOutput) Elem() GetStreamAlertRuleMetricSelectorOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleMetricSelector) GetStreamAlertRuleMetricSelector {
+		if v != nil {
+			return *v
+		}
+		var ret GetStreamAlertRuleMetricSelector
+		return ret
+	}).(GetStreamAlertRuleMetricSelectorOutput)
+}
+
+// List of metrics to include
+func (o GetStreamAlertRuleMetricSelectorPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetStreamAlertRuleMetricSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetStreamAlertRuleResourceSelector struct {
 	// List of metrics to include
 	Includes []string `pulumi:"includes"`
@@ -71849,20 +76013,18 @@ func (o GetStreamAlertRuleResourceSelectorOutput) Includes() pulumi.StringArrayO
 type GetStreamAlertRulesData struct {
 	// Details of the last change on the stream resource
 	ChangeLog GetStreamAlertRulesDataChangeLog `pulumi:"changeLog"`
-	// Stream alert rule metric critical threshold
-	CriticalThreshold string `pulumi:"criticalThreshold"`
 	// Customer-provided stream alert rule description
 	Description string `pulumi:"description"`
+	// Detection method for stream alert rule
+	DetectionMethod GetStreamAlertRulesDataDetectionMethod `pulumi:"detectionMethod"`
 	// Stream subscription enabled status
 	Enabled bool `pulumi:"enabled"`
 	// Equinix assigned URI of the stream alert rule resource
 	Href string `pulumi:"href"`
-	// Stream alert rule metric name
-	MetricName string `pulumi:"metricName"`
+	// Metric selector for the stream alert rule
+	MetricSelector GetStreamAlertRulesDataMetricSelector `pulumi:"metricSelector"`
 	// Customer-provided stream alert rule name
 	Name string `pulumi:"name"`
-	// Stream alert rule metric operand
-	Operand string `pulumi:"operand"`
 	// Lists of metrics to be included/excluded on the stream alert rule
 	ResourceSelector GetStreamAlertRulesDataResourceSelector `pulumi:"resourceSelector"`
 	// Value representing provisioning status for the stream resource
@@ -71871,10 +76033,6 @@ type GetStreamAlertRulesData struct {
 	Type string `pulumi:"type"`
 	// Equinix assigned unique identifier of the stream subscription resource
 	Uuid string `pulumi:"uuid"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold string `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize string `pulumi:"windowSize"`
 }
 
 // GetStreamAlertRulesDataInput is an input type that accepts GetStreamAlertRulesDataArgs and GetStreamAlertRulesDataOutput values.
@@ -71891,20 +76049,18 @@ type GetStreamAlertRulesDataInput interface {
 type GetStreamAlertRulesDataArgs struct {
 	// Details of the last change on the stream resource
 	ChangeLog GetStreamAlertRulesDataChangeLogInput `pulumi:"changeLog"`
-	// Stream alert rule metric critical threshold
-	CriticalThreshold pulumi.StringInput `pulumi:"criticalThreshold"`
 	// Customer-provided stream alert rule description
 	Description pulumi.StringInput `pulumi:"description"`
+	// Detection method for stream alert rule
+	DetectionMethod GetStreamAlertRulesDataDetectionMethodInput `pulumi:"detectionMethod"`
 	// Stream subscription enabled status
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Equinix assigned URI of the stream alert rule resource
 	Href pulumi.StringInput `pulumi:"href"`
-	// Stream alert rule metric name
-	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Metric selector for the stream alert rule
+	MetricSelector GetStreamAlertRulesDataMetricSelectorInput `pulumi:"metricSelector"`
 	// Customer-provided stream alert rule name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Stream alert rule metric operand
-	Operand pulumi.StringInput `pulumi:"operand"`
 	// Lists of metrics to be included/excluded on the stream alert rule
 	ResourceSelector GetStreamAlertRulesDataResourceSelectorInput `pulumi:"resourceSelector"`
 	// Value representing provisioning status for the stream resource
@@ -71913,10 +76069,6 @@ type GetStreamAlertRulesDataArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix assigned unique identifier of the stream subscription resource
 	Uuid pulumi.StringInput `pulumi:"uuid"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold pulumi.StringInput `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize pulumi.StringInput `pulumi:"windowSize"`
 }
 
 func (GetStreamAlertRulesDataArgs) ElementType() reflect.Type {
@@ -71975,14 +76127,14 @@ func (o GetStreamAlertRulesDataOutput) ChangeLog() GetStreamAlertRulesDataChange
 	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataChangeLog { return v.ChangeLog }).(GetStreamAlertRulesDataChangeLogOutput)
 }
 
-// Stream alert rule metric critical threshold
-func (o GetStreamAlertRulesDataOutput) CriticalThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.CriticalThreshold }).(pulumi.StringOutput)
-}
-
 // Customer-provided stream alert rule description
 func (o GetStreamAlertRulesDataOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Detection method for stream alert rule
+func (o GetStreamAlertRulesDataOutput) DetectionMethod() GetStreamAlertRulesDataDetectionMethodOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataDetectionMethod { return v.DetectionMethod }).(GetStreamAlertRulesDataDetectionMethodOutput)
 }
 
 // Stream subscription enabled status
@@ -71995,19 +76147,14 @@ func (o GetStreamAlertRulesDataOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Href }).(pulumi.StringOutput)
 }
 
-// Stream alert rule metric name
-func (o GetStreamAlertRulesDataOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.MetricName }).(pulumi.StringOutput)
+// Metric selector for the stream alert rule
+func (o GetStreamAlertRulesDataOutput) MetricSelector() GetStreamAlertRulesDataMetricSelectorOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataMetricSelector { return v.MetricSelector }).(GetStreamAlertRulesDataMetricSelectorOutput)
 }
 
 // Customer-provided stream alert rule name
 func (o GetStreamAlertRulesDataOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric operand
-func (o GetStreamAlertRulesDataOutput) Operand() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Operand }).(pulumi.StringOutput)
 }
 
 // Lists of metrics to be included/excluded on the stream alert rule
@@ -72028,16 +76175,6 @@ func (o GetStreamAlertRulesDataOutput) Type() pulumi.StringOutput {
 // Equinix assigned unique identifier of the stream subscription resource
 func (o GetStreamAlertRulesDataOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric warning threshold
-func (o GetStreamAlertRulesDataOutput) WarningThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.WarningThreshold }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric window size
-func (o GetStreamAlertRulesDataOutput) WindowSize() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.WindowSize }).(pulumi.StringOutput)
 }
 
 type GetStreamAlertRulesDataArrayOutput struct{ *pulumi.OutputState }
@@ -72209,6 +76346,146 @@ func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedByFullName() pulumi.Strin
 // Last update time of the stream resource
 func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetStreamAlertRulesDataDetectionMethod struct {
+	// Stream alert rule metric critical threshold
+	CriticalThreshold string `pulumi:"criticalThreshold"`
+	// Stream alert rule metric operand
+	Operand string `pulumi:"operand"`
+	// Stream Alert Rule detection method type
+	Type string `pulumi:"type"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold string `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize string `pulumi:"windowSize"`
+}
+
+// GetStreamAlertRulesDataDetectionMethodInput is an input type that accepts GetStreamAlertRulesDataDetectionMethodArgs and GetStreamAlertRulesDataDetectionMethodOutput values.
+// You can construct a concrete instance of `GetStreamAlertRulesDataDetectionMethodInput` via:
+//
+//	GetStreamAlertRulesDataDetectionMethodArgs{...}
+type GetStreamAlertRulesDataDetectionMethodInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRulesDataDetectionMethodOutput() GetStreamAlertRulesDataDetectionMethodOutput
+	ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(context.Context) GetStreamAlertRulesDataDetectionMethodOutput
+}
+
+type GetStreamAlertRulesDataDetectionMethodArgs struct {
+	// Stream alert rule metric critical threshold
+	CriticalThreshold pulumi.StringInput `pulumi:"criticalThreshold"`
+	// Stream alert rule metric operand
+	Operand pulumi.StringInput `pulumi:"operand"`
+	// Stream Alert Rule detection method type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Stream alert rule metric warning threshold
+	WarningThreshold pulumi.StringInput `pulumi:"warningThreshold"`
+	// Stream alert rule metric window size
+	WindowSize pulumi.StringInput `pulumi:"windowSize"`
+}
+
+func (GetStreamAlertRulesDataDetectionMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataDetectionMethod)(nil)).Elem()
+}
+
+func (i GetStreamAlertRulesDataDetectionMethodArgs) ToGetStreamAlertRulesDataDetectionMethodOutput() GetStreamAlertRulesDataDetectionMethodOutput {
+	return i.ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRulesDataDetectionMethodArgs) ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRulesDataDetectionMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataDetectionMethodOutput)
+}
+
+type GetStreamAlertRulesDataDetectionMethodOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRulesDataDetectionMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataDetectionMethod)(nil)).Elem()
+}
+
+func (o GetStreamAlertRulesDataDetectionMethodOutput) ToGetStreamAlertRulesDataDetectionMethodOutput() GetStreamAlertRulesDataDetectionMethodOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesDataDetectionMethodOutput) ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRulesDataDetectionMethodOutput {
+	return o
+}
+
+// Stream alert rule metric critical threshold
+func (o GetStreamAlertRulesDataDetectionMethodOutput) CriticalThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.CriticalThreshold }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric operand
+func (o GetStreamAlertRulesDataDetectionMethodOutput) Operand() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.Operand }).(pulumi.StringOutput)
+}
+
+// Stream Alert Rule detection method type
+func (o GetStreamAlertRulesDataDetectionMethodOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric warning threshold
+func (o GetStreamAlertRulesDataDetectionMethodOutput) WarningThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.WarningThreshold }).(pulumi.StringOutput)
+}
+
+// Stream alert rule metric window size
+func (o GetStreamAlertRulesDataDetectionMethodOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.WindowSize }).(pulumi.StringOutput)
+}
+
+type GetStreamAlertRulesDataMetricSelector struct {
+	// List of metrics to include
+	Includes []string `pulumi:"includes"`
+}
+
+// GetStreamAlertRulesDataMetricSelectorInput is an input type that accepts GetStreamAlertRulesDataMetricSelectorArgs and GetStreamAlertRulesDataMetricSelectorOutput values.
+// You can construct a concrete instance of `GetStreamAlertRulesDataMetricSelectorInput` via:
+//
+//	GetStreamAlertRulesDataMetricSelectorArgs{...}
+type GetStreamAlertRulesDataMetricSelectorInput interface {
+	pulumi.Input
+
+	ToGetStreamAlertRulesDataMetricSelectorOutput() GetStreamAlertRulesDataMetricSelectorOutput
+	ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(context.Context) GetStreamAlertRulesDataMetricSelectorOutput
+}
+
+type GetStreamAlertRulesDataMetricSelectorArgs struct {
+	// List of metrics to include
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetStreamAlertRulesDataMetricSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataMetricSelector)(nil)).Elem()
+}
+
+func (i GetStreamAlertRulesDataMetricSelectorArgs) ToGetStreamAlertRulesDataMetricSelectorOutput() GetStreamAlertRulesDataMetricSelectorOutput {
+	return i.ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(context.Background())
+}
+
+func (i GetStreamAlertRulesDataMetricSelectorArgs) ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataMetricSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataMetricSelectorOutput)
+}
+
+type GetStreamAlertRulesDataMetricSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAlertRulesDataMetricSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAlertRulesDataMetricSelector)(nil)).Elem()
+}
+
+func (o GetStreamAlertRulesDataMetricSelectorOutput) ToGetStreamAlertRulesDataMetricSelectorOutput() GetStreamAlertRulesDataMetricSelectorOutput {
+	return o
+}
+
+func (o GetStreamAlertRulesDataMetricSelectorOutput) ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataMetricSelectorOutput {
+	return o
+}
+
+// List of metrics to include
+func (o GetStreamAlertRulesDataMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamAlertRulesDataMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
 type GetStreamAlertRulesDataResourceSelector struct {
@@ -74035,860 +78312,6 @@ func (o GetStreamSubscriptionsDataMetricSelectorOutput) Includes() pulumi.String
 	return o.ApplyT(func(v GetStreamSubscriptionsDataMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
-type GetStreamSubscriptionsDataSink struct {
-	// Boolean switch enabling batch delivery of data
-	BatchEnabled bool `pulumi:"batchEnabled"`
-	// Maximum size of the batch delivery if enabled
-	BatchSizeMax int `pulumi:"batchSizeMax"`
-	// Maximum time to wait for batch delivery if enabled
-	BatchWaitTimeMax int `pulumi:"batchWaitTimeMax"`
-	// Access details for the specified sink type
-	Credential GetStreamSubscriptionsDataSinkCredential `pulumi:"credential"`
-	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
-	Host string `pulumi:"host"`
-	// Stream subscription sink settings
-	Settings GetStreamSubscriptionsDataSinkSettings `pulumi:"settings"`
-	// Type of the subscriber
-	Type string `pulumi:"type"`
-	// Publicly reachable http endpoint destination for data stream
-	Uri string `pulumi:"uri"`
-}
-
-// GetStreamSubscriptionsDataSinkInput is an input type that accepts GetStreamSubscriptionsDataSinkArgs and GetStreamSubscriptionsDataSinkOutput values.
-// You can construct a concrete instance of `GetStreamSubscriptionsDataSinkInput` via:
-//
-//	GetStreamSubscriptionsDataSinkArgs{...}
-type GetStreamSubscriptionsDataSinkInput interface {
-	pulumi.Input
-
-	ToGetStreamSubscriptionsDataSinkOutput() GetStreamSubscriptionsDataSinkOutput
-	ToGetStreamSubscriptionsDataSinkOutputWithContext(context.Context) GetStreamSubscriptionsDataSinkOutput
-}
-
-type GetStreamSubscriptionsDataSinkArgs struct {
-	// Boolean switch enabling batch delivery of data
-	BatchEnabled pulumi.BoolInput `pulumi:"batchEnabled"`
-	// Maximum size of the batch delivery if enabled
-	BatchSizeMax pulumi.IntInput `pulumi:"batchSizeMax"`
-	// Maximum time to wait for batch delivery if enabled
-	BatchWaitTimeMax pulumi.IntInput `pulumi:"batchWaitTimeMax"`
-	// Access details for the specified sink type
-	Credential GetStreamSubscriptionsDataSinkCredentialInput `pulumi:"credential"`
-	// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
-	Host pulumi.StringInput `pulumi:"host"`
-	// Stream subscription sink settings
-	Settings GetStreamSubscriptionsDataSinkSettingsInput `pulumi:"settings"`
-	// Type of the subscriber
-	Type pulumi.StringInput `pulumi:"type"`
-	// Publicly reachable http endpoint destination for data stream
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (GetStreamSubscriptionsDataSinkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsDataSink)(nil)).Elem()
-}
-
-func (i GetStreamSubscriptionsDataSinkArgs) ToGetStreamSubscriptionsDataSinkOutput() GetStreamSubscriptionsDataSinkOutput {
-	return i.ToGetStreamSubscriptionsDataSinkOutputWithContext(context.Background())
-}
-
-func (i GetStreamSubscriptionsDataSinkArgs) ToGetStreamSubscriptionsDataSinkOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataSinkOutput)
-}
-
-type GetStreamSubscriptionsDataSinkOutput struct{ *pulumi.OutputState }
-
-func (GetStreamSubscriptionsDataSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsDataSink)(nil)).Elem()
-}
-
-func (o GetStreamSubscriptionsDataSinkOutput) ToGetStreamSubscriptionsDataSinkOutput() GetStreamSubscriptionsDataSinkOutput {
-	return o
-}
-
-func (o GetStreamSubscriptionsDataSinkOutput) ToGetStreamSubscriptionsDataSinkOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkOutput {
-	return o
-}
-
-// Boolean switch enabling batch delivery of data
-func (o GetStreamSubscriptionsDataSinkOutput) BatchEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) bool { return v.BatchEnabled }).(pulumi.BoolOutput)
-}
-
-// Maximum size of the batch delivery if enabled
-func (o GetStreamSubscriptionsDataSinkOutput) BatchSizeMax() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) int { return v.BatchSizeMax }).(pulumi.IntOutput)
-}
-
-// Maximum time to wait for batch delivery if enabled
-func (o GetStreamSubscriptionsDataSinkOutput) BatchWaitTimeMax() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) int { return v.BatchWaitTimeMax }).(pulumi.IntOutput)
-}
-
-// Access details for the specified sink type
-func (o GetStreamSubscriptionsDataSinkOutput) Credential() GetStreamSubscriptionsDataSinkCredentialOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) GetStreamSubscriptionsDataSinkCredential { return v.Credential }).(GetStreamSubscriptionsDataSinkCredentialOutput)
-}
-
-// Known hostname of certain data stream subscription products. Not to be confused with a variable URI
-func (o GetStreamSubscriptionsDataSinkOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) string { return v.Host }).(pulumi.StringOutput)
-}
-
-// Stream subscription sink settings
-func (o GetStreamSubscriptionsDataSinkOutput) Settings() GetStreamSubscriptionsDataSinkSettingsOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) GetStreamSubscriptionsDataSinkSettings { return v.Settings }).(GetStreamSubscriptionsDataSinkSettingsOutput)
-}
-
-// Type of the subscriber
-func (o GetStreamSubscriptionsDataSinkOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Publicly reachable http endpoint destination for data stream
-func (o GetStreamSubscriptionsDataSinkOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSink) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type GetStreamSubscriptionsDataSinkCredential struct {
-	// Passed as Authorization header value
-	AccessToken string `pulumi:"accessToken"`
-	// Passed as Authorization header value
-	ApiKey string `pulumi:"apiKey"`
-	// Passed as Authorization header value
-	IntegrationKey string `pulumi:"integrationKey"`
-	// Passed as Authorization header value
-	Password string `pulumi:"password"`
-	// Type of the credential being passed
-	Type string `pulumi:"type"`
-	// Passed as Authorization header value
-	Username string `pulumi:"username"`
-}
-
-// GetStreamSubscriptionsDataSinkCredentialInput is an input type that accepts GetStreamSubscriptionsDataSinkCredentialArgs and GetStreamSubscriptionsDataSinkCredentialOutput values.
-// You can construct a concrete instance of `GetStreamSubscriptionsDataSinkCredentialInput` via:
-//
-//	GetStreamSubscriptionsDataSinkCredentialArgs{...}
-type GetStreamSubscriptionsDataSinkCredentialInput interface {
-	pulumi.Input
-
-	ToGetStreamSubscriptionsDataSinkCredentialOutput() GetStreamSubscriptionsDataSinkCredentialOutput
-	ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(context.Context) GetStreamSubscriptionsDataSinkCredentialOutput
-}
-
-type GetStreamSubscriptionsDataSinkCredentialArgs struct {
-	// Passed as Authorization header value
-	AccessToken pulumi.StringInput `pulumi:"accessToken"`
-	// Passed as Authorization header value
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// Passed as Authorization header value
-	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
-	// Passed as Authorization header value
-	Password pulumi.StringInput `pulumi:"password"`
-	// Type of the credential being passed
-	Type pulumi.StringInput `pulumi:"type"`
-	// Passed as Authorization header value
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (GetStreamSubscriptionsDataSinkCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkCredential)(nil)).Elem()
-}
-
-func (i GetStreamSubscriptionsDataSinkCredentialArgs) ToGetStreamSubscriptionsDataSinkCredentialOutput() GetStreamSubscriptionsDataSinkCredentialOutput {
-	return i.ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(context.Background())
-}
-
-func (i GetStreamSubscriptionsDataSinkCredentialArgs) ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataSinkCredentialOutput)
-}
-
-type GetStreamSubscriptionsDataSinkCredentialOutput struct{ *pulumi.OutputState }
-
-func (GetStreamSubscriptionsDataSinkCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkCredential)(nil)).Elem()
-}
-
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) ToGetStreamSubscriptionsDataSinkCredentialOutput() GetStreamSubscriptionsDataSinkCredentialOutput {
-	return o
-}
-
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) ToGetStreamSubscriptionsDataSinkCredentialOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkCredentialOutput {
-	return o
-}
-
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) AccessToken() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.AccessToken }).(pulumi.StringOutput)
-}
-
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.ApiKey }).(pulumi.StringOutput)
-}
-
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) IntegrationKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.IntegrationKey }).(pulumi.StringOutput)
-}
-
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.Password }).(pulumi.StringOutput)
-}
-
-// Type of the credential being passed
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Passed as Authorization header value
-func (o GetStreamSubscriptionsDataSinkCredentialOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkCredential) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type GetStreamSubscriptionsDataSinkSettings struct {
-	ApplicationKey string `pulumi:"applicationKey"`
-	EventIndex     string `pulumi:"eventIndex"`
-	EventUri       string `pulumi:"eventUri"`
-	Format         string `pulumi:"format"`
-	MetricIndex    string `pulumi:"metricIndex"`
-	MetricUri      string `pulumi:"metricUri"`
-	Source         string `pulumi:"source"`
-}
-
-// GetStreamSubscriptionsDataSinkSettingsInput is an input type that accepts GetStreamSubscriptionsDataSinkSettingsArgs and GetStreamSubscriptionsDataSinkSettingsOutput values.
-// You can construct a concrete instance of `GetStreamSubscriptionsDataSinkSettingsInput` via:
-//
-//	GetStreamSubscriptionsDataSinkSettingsArgs{...}
-type GetStreamSubscriptionsDataSinkSettingsInput interface {
-	pulumi.Input
-
-	ToGetStreamSubscriptionsDataSinkSettingsOutput() GetStreamSubscriptionsDataSinkSettingsOutput
-	ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(context.Context) GetStreamSubscriptionsDataSinkSettingsOutput
-}
-
-type GetStreamSubscriptionsDataSinkSettingsArgs struct {
-	ApplicationKey pulumi.StringInput `pulumi:"applicationKey"`
-	EventIndex     pulumi.StringInput `pulumi:"eventIndex"`
-	EventUri       pulumi.StringInput `pulumi:"eventUri"`
-	Format         pulumi.StringInput `pulumi:"format"`
-	MetricIndex    pulumi.StringInput `pulumi:"metricIndex"`
-	MetricUri      pulumi.StringInput `pulumi:"metricUri"`
-	Source         pulumi.StringInput `pulumi:"source"`
-}
-
-func (GetStreamSubscriptionsDataSinkSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkSettings)(nil)).Elem()
-}
-
-func (i GetStreamSubscriptionsDataSinkSettingsArgs) ToGetStreamSubscriptionsDataSinkSettingsOutput() GetStreamSubscriptionsDataSinkSettingsOutput {
-	return i.ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(context.Background())
-}
-
-func (i GetStreamSubscriptionsDataSinkSettingsArgs) ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsDataSinkSettingsOutput)
-}
-
-type GetStreamSubscriptionsDataSinkSettingsOutput struct{ *pulumi.OutputState }
-
-func (GetStreamSubscriptionsDataSinkSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsDataSinkSettings)(nil)).Elem()
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) ToGetStreamSubscriptionsDataSinkSettingsOutput() GetStreamSubscriptionsDataSinkSettingsOutput {
-	return o
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) ToGetStreamSubscriptionsDataSinkSettingsOutputWithContext(ctx context.Context) GetStreamSubscriptionsDataSinkSettingsOutput {
-	return o
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) ApplicationKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.ApplicationKey }).(pulumi.StringOutput)
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) EventIndex() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.EventIndex }).(pulumi.StringOutput)
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) EventUri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.EventUri }).(pulumi.StringOutput)
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Format }).(pulumi.StringOutput)
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) MetricIndex() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.MetricIndex }).(pulumi.StringOutput)
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) MetricUri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.MetricUri }).(pulumi.StringOutput)
-}
-
-func (o GetStreamSubscriptionsDataSinkSettingsOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsDataSinkSettings) string { return v.Source }).(pulumi.StringOutput)
-}
-
-type GetStreamSubscriptionsPagination struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit int `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next string `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset int `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous string `pulumi:"previous"`
-	// The total number of streams available to the user making the request
-	Total int `pulumi:"total"`
-}
-
-// GetStreamSubscriptionsPaginationInput is an input type that accepts GetStreamSubscriptionsPaginationArgs and GetStreamSubscriptionsPaginationOutput values.
-// You can construct a concrete instance of `GetStreamSubscriptionsPaginationInput` via:
-//
-//	GetStreamSubscriptionsPaginationArgs{...}
-type GetStreamSubscriptionsPaginationInput interface {
-	pulumi.Input
-
-	ToGetStreamSubscriptionsPaginationOutput() GetStreamSubscriptionsPaginationOutput
-	ToGetStreamSubscriptionsPaginationOutputWithContext(context.Context) GetStreamSubscriptionsPaginationOutput
-}
-
-type GetStreamSubscriptionsPaginationArgs struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit pulumi.IntInput `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next pulumi.StringInput `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset pulumi.IntInput `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous pulumi.StringInput `pulumi:"previous"`
-	// The total number of streams available to the user making the request
-	Total pulumi.IntInput `pulumi:"total"`
-}
-
-func (GetStreamSubscriptionsPaginationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsPagination)(nil)).Elem()
-}
-
-func (i GetStreamSubscriptionsPaginationArgs) ToGetStreamSubscriptionsPaginationOutput() GetStreamSubscriptionsPaginationOutput {
-	return i.ToGetStreamSubscriptionsPaginationOutputWithContext(context.Background())
-}
-
-func (i GetStreamSubscriptionsPaginationArgs) ToGetStreamSubscriptionsPaginationOutputWithContext(ctx context.Context) GetStreamSubscriptionsPaginationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamSubscriptionsPaginationOutput)
-}
-
-type GetStreamSubscriptionsPaginationOutput struct{ *pulumi.OutputState }
-
-func (GetStreamSubscriptionsPaginationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamSubscriptionsPagination)(nil)).Elem()
-}
-
-func (o GetStreamSubscriptionsPaginationOutput) ToGetStreamSubscriptionsPaginationOutput() GetStreamSubscriptionsPaginationOutput {
-	return o
-}
-
-func (o GetStreamSubscriptionsPaginationOutput) ToGetStreamSubscriptionsPaginationOutputWithContext(ctx context.Context) GetStreamSubscriptionsPaginationOutput {
-	return o
-}
-
-// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-func (o GetStreamSubscriptionsPaginationOutput) Limit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsPagination) int { return v.Limit }).(pulumi.IntOutput)
-}
-
-// The URL relative to the next item in the response
-func (o GetStreamSubscriptionsPaginationOutput) Next() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsPagination) string { return v.Next }).(pulumi.StringOutput)
-}
-
-// Index of the first item returned in the response. The default is 0
-func (o GetStreamSubscriptionsPaginationOutput) Offset() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsPagination) int { return v.Offset }).(pulumi.IntOutput)
-}
-
-// The URL relative to the previous item in the response
-func (o GetStreamSubscriptionsPaginationOutput) Previous() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsPagination) string { return v.Previous }).(pulumi.StringOutput)
-}
-
-// The total number of streams available to the user making the request
-func (o GetStreamSubscriptionsPaginationOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamSubscriptionsPagination) int { return v.Total }).(pulumi.IntOutput)
-}
-
-type GetStreamsData struct {
-	// Count of the streaming assets attached to the stream resource
-	AssetsCount int `pulumi:"assetsCount"`
-	// Details of the last change on the stream resource
-	ChangeLog GetStreamsDataChangeLog `pulumi:"changeLog"`
-	// Customer-provided description of the stream resource
-	Description string `pulumi:"description"`
-	// Equinix auto generated URI to the stream resource in Equinix Portal
-	Href string `pulumi:"href"`
-	// Customer-provided name of the stream resource
-	Name string `pulumi:"name"`
-	// Equinix Project attribute object
-	Project GetStreamsDataProject `pulumi:"project"`
-	// Value representing provisioning status for the stream resource
-	State string `pulumi:"state"`
-	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount int `pulumi:"streamSubscriptionsCount"`
-	// Equinix defined Streaming Type
-	Type string `pulumi:"type"`
-	// Equinix-assigned unique id for the stream resource
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetStreamsDataInput is an input type that accepts GetStreamsDataArgs and GetStreamsDataOutput values.
-// You can construct a concrete instance of `GetStreamsDataInput` via:
-//
-//	GetStreamsDataArgs{...}
-type GetStreamsDataInput interface {
-	pulumi.Input
-
-	ToGetStreamsDataOutput() GetStreamsDataOutput
-	ToGetStreamsDataOutputWithContext(context.Context) GetStreamsDataOutput
-}
-
-type GetStreamsDataArgs struct {
-	// Count of the streaming assets attached to the stream resource
-	AssetsCount pulumi.IntInput `pulumi:"assetsCount"`
-	// Details of the last change on the stream resource
-	ChangeLog GetStreamsDataChangeLogInput `pulumi:"changeLog"`
-	// Customer-provided description of the stream resource
-	Description pulumi.StringInput `pulumi:"description"`
-	// Equinix auto generated URI to the stream resource in Equinix Portal
-	Href pulumi.StringInput `pulumi:"href"`
-	// Customer-provided name of the stream resource
-	Name pulumi.StringInput `pulumi:"name"`
-	// Equinix Project attribute object
-	Project GetStreamsDataProjectInput `pulumi:"project"`
-	// Value representing provisioning status for the stream resource
-	State pulumi.StringInput `pulumi:"state"`
-	// Count of the client subscriptions on the stream resource
-	StreamSubscriptionsCount pulumi.IntInput `pulumi:"streamSubscriptionsCount"`
-	// Equinix defined Streaming Type
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned unique id for the stream resource
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetStreamsDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsData)(nil)).Elem()
-}
-
-func (i GetStreamsDataArgs) ToGetStreamsDataOutput() GetStreamsDataOutput {
-	return i.ToGetStreamsDataOutputWithContext(context.Background())
-}
-
-func (i GetStreamsDataArgs) ToGetStreamsDataOutputWithContext(ctx context.Context) GetStreamsDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataOutput)
-}
-
-// GetStreamsDataArrayInput is an input type that accepts GetStreamsDataArray and GetStreamsDataArrayOutput values.
-// You can construct a concrete instance of `GetStreamsDataArrayInput` via:
-//
-//	GetStreamsDataArray{ GetStreamsDataArgs{...} }
-type GetStreamsDataArrayInput interface {
-	pulumi.Input
-
-	ToGetStreamsDataArrayOutput() GetStreamsDataArrayOutput
-	ToGetStreamsDataArrayOutputWithContext(context.Context) GetStreamsDataArrayOutput
-}
-
-type GetStreamsDataArray []GetStreamsDataInput
-
-func (GetStreamsDataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamsData)(nil)).Elem()
-}
-
-func (i GetStreamsDataArray) ToGetStreamsDataArrayOutput() GetStreamsDataArrayOutput {
-	return i.ToGetStreamsDataArrayOutputWithContext(context.Background())
-}
-
-func (i GetStreamsDataArray) ToGetStreamsDataArrayOutputWithContext(ctx context.Context) GetStreamsDataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataArrayOutput)
-}
-
-type GetStreamsDataOutput struct{ *pulumi.OutputState }
-
-func (GetStreamsDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsData)(nil)).Elem()
-}
-
-func (o GetStreamsDataOutput) ToGetStreamsDataOutput() GetStreamsDataOutput {
-	return o
-}
-
-func (o GetStreamsDataOutput) ToGetStreamsDataOutputWithContext(ctx context.Context) GetStreamsDataOutput {
-	return o
-}
-
-// Count of the streaming assets attached to the stream resource
-func (o GetStreamsDataOutput) AssetsCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamsData) int { return v.AssetsCount }).(pulumi.IntOutput)
-}
-
-// Details of the last change on the stream resource
-func (o GetStreamsDataOutput) ChangeLog() GetStreamsDataChangeLogOutput {
-	return o.ApplyT(func(v GetStreamsData) GetStreamsDataChangeLog { return v.ChangeLog }).(GetStreamsDataChangeLogOutput)
-}
-
-// Customer-provided description of the stream resource
-func (o GetStreamsDataOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsData) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Equinix auto generated URI to the stream resource in Equinix Portal
-func (o GetStreamsDataOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsData) string { return v.Href }).(pulumi.StringOutput)
-}
-
-// Customer-provided name of the stream resource
-func (o GetStreamsDataOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsData) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Equinix Project attribute object
-func (o GetStreamsDataOutput) Project() GetStreamsDataProjectOutput {
-	return o.ApplyT(func(v GetStreamsData) GetStreamsDataProject { return v.Project }).(GetStreamsDataProjectOutput)
-}
-
-// Value representing provisioning status for the stream resource
-func (o GetStreamsDataOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsData) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Count of the client subscriptions on the stream resource
-func (o GetStreamsDataOutput) StreamSubscriptionsCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamsData) int { return v.StreamSubscriptionsCount }).(pulumi.IntOutput)
-}
-
-// Equinix defined Streaming Type
-func (o GetStreamsDataOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsData) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Equinix-assigned unique id for the stream resource
-func (o GetStreamsDataOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsData) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetStreamsDataArrayOutput struct{ *pulumi.OutputState }
-
-func (GetStreamsDataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamsData)(nil)).Elem()
-}
-
-func (o GetStreamsDataArrayOutput) ToGetStreamsDataArrayOutput() GetStreamsDataArrayOutput {
-	return o
-}
-
-func (o GetStreamsDataArrayOutput) ToGetStreamsDataArrayOutputWithContext(ctx context.Context) GetStreamsDataArrayOutput {
-	return o
-}
-
-func (o GetStreamsDataArrayOutput) Index(i pulumi.IntInput) GetStreamsDataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamsData {
-		return vs[0].([]GetStreamsData)[vs[1].(int)]
-	}).(GetStreamsDataOutput)
-}
-
-type GetStreamsDataChangeLog struct {
-	// User name of creator of the stream resource
-	CreatedBy string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime string `pulumi:"updatedDateTime"`
-}
-
-// GetStreamsDataChangeLogInput is an input type that accepts GetStreamsDataChangeLogArgs and GetStreamsDataChangeLogOutput values.
-// You can construct a concrete instance of `GetStreamsDataChangeLogInput` via:
-//
-//	GetStreamsDataChangeLogArgs{...}
-type GetStreamsDataChangeLogInput interface {
-	pulumi.Input
-
-	ToGetStreamsDataChangeLogOutput() GetStreamsDataChangeLogOutput
-	ToGetStreamsDataChangeLogOutputWithContext(context.Context) GetStreamsDataChangeLogOutput
-}
-
-type GetStreamsDataChangeLogArgs struct {
-	// User name of creator of the stream resource
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
-}
-
-func (GetStreamsDataChangeLogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsDataChangeLog)(nil)).Elem()
-}
-
-func (i GetStreamsDataChangeLogArgs) ToGetStreamsDataChangeLogOutput() GetStreamsDataChangeLogOutput {
-	return i.ToGetStreamsDataChangeLogOutputWithContext(context.Background())
-}
-
-func (i GetStreamsDataChangeLogArgs) ToGetStreamsDataChangeLogOutputWithContext(ctx context.Context) GetStreamsDataChangeLogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataChangeLogOutput)
-}
-
-type GetStreamsDataChangeLogOutput struct{ *pulumi.OutputState }
-
-func (GetStreamsDataChangeLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsDataChangeLog)(nil)).Elem()
-}
-
-func (o GetStreamsDataChangeLogOutput) ToGetStreamsDataChangeLogOutput() GetStreamsDataChangeLogOutput {
-	return o
-}
-
-func (o GetStreamsDataChangeLogOutput) ToGetStreamsDataChangeLogOutputWithContext(ctx context.Context) GetStreamsDataChangeLogOutput {
-	return o
-}
-
-// User name of creator of the stream resource
-func (o GetStreamsDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// Email of creator of the stream resource
-func (o GetStreamsDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of creator of the stream resource
-func (o GetStreamsDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
-}
-
-// Creation time of the stream resource
-func (o GetStreamsDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of deleter of the stream resource
-func (o GetStreamsDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
-}
-
-// Email of deleter of the stream resource
-func (o GetStreamsDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of deleter of the stream resource
-func (o GetStreamsDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
-}
-
-// Deletion time of the stream resource
-func (o GetStreamsDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of last updater of the stream resource
-func (o GetStreamsDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// Email of last updater of the stream resource
-func (o GetStreamsDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of last updater of the stream resource
-func (o GetStreamsDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
-}
-
-// Last update time of the stream resource
-func (o GetStreamsDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
-}
-
-type GetStreamsDataProject struct {
-	// Equinix Subscriber-assigned project ID
-	ProjectId string `pulumi:"projectId"`
-}
-
-// GetStreamsDataProjectInput is an input type that accepts GetStreamsDataProjectArgs and GetStreamsDataProjectOutput values.
-// You can construct a concrete instance of `GetStreamsDataProjectInput` via:
-//
-//	GetStreamsDataProjectArgs{...}
-type GetStreamsDataProjectInput interface {
-	pulumi.Input
-
-	ToGetStreamsDataProjectOutput() GetStreamsDataProjectOutput
-	ToGetStreamsDataProjectOutputWithContext(context.Context) GetStreamsDataProjectOutput
-}
-
-type GetStreamsDataProjectArgs struct {
-	// Equinix Subscriber-assigned project ID
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-}
-
-func (GetStreamsDataProjectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsDataProject)(nil)).Elem()
-}
-
-func (i GetStreamsDataProjectArgs) ToGetStreamsDataProjectOutput() GetStreamsDataProjectOutput {
-	return i.ToGetStreamsDataProjectOutputWithContext(context.Background())
-}
-
-func (i GetStreamsDataProjectArgs) ToGetStreamsDataProjectOutputWithContext(ctx context.Context) GetStreamsDataProjectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsDataProjectOutput)
-}
-
-type GetStreamsDataProjectOutput struct{ *pulumi.OutputState }
-
-func (GetStreamsDataProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsDataProject)(nil)).Elem()
-}
-
-func (o GetStreamsDataProjectOutput) ToGetStreamsDataProjectOutput() GetStreamsDataProjectOutput {
-	return o
-}
-
-func (o GetStreamsDataProjectOutput) ToGetStreamsDataProjectOutputWithContext(ctx context.Context) GetStreamsDataProjectOutput {
-	return o
-}
-
-// Equinix Subscriber-assigned project ID
-func (o GetStreamsDataProjectOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-type GetStreamsPagination struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit int `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next string `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset int `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous string `pulumi:"previous"`
-	// The total number of streams available to the user making the request
-	Total int `pulumi:"total"`
-}
-
-// GetStreamsPaginationInput is an input type that accepts GetStreamsPaginationArgs and GetStreamsPaginationOutput values.
-// You can construct a concrete instance of `GetStreamsPaginationInput` via:
-//
-//	GetStreamsPaginationArgs{...}
-type GetStreamsPaginationInput interface {
-	pulumi.Input
-
-	ToGetStreamsPaginationOutput() GetStreamsPaginationOutput
-	ToGetStreamsPaginationOutputWithContext(context.Context) GetStreamsPaginationOutput
-}
-
-type GetStreamsPaginationArgs struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit pulumi.IntInput `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next pulumi.StringInput `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset pulumi.IntInput `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous pulumi.StringInput `pulumi:"previous"`
-	// The total number of streams available to the user making the request
-	Total pulumi.IntInput `pulumi:"total"`
-}
-
-func (GetStreamsPaginationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsPagination)(nil)).Elem()
-}
-
-func (i GetStreamsPaginationArgs) ToGetStreamsPaginationOutput() GetStreamsPaginationOutput {
-	return i.ToGetStreamsPaginationOutputWithContext(context.Background())
-}
-
-func (i GetStreamsPaginationArgs) ToGetStreamsPaginationOutputWithContext(ctx context.Context) GetStreamsPaginationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamsPaginationOutput)
-}
-
-type GetStreamsPaginationOutput struct{ *pulumi.OutputState }
-
-func (GetStreamsPaginationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamsPagination)(nil)).Elem()
-}
-
-func (o GetStreamsPaginationOutput) ToGetStreamsPaginationOutput() GetStreamsPaginationOutput {
-	return o
-}
-
-func (o GetStreamsPaginationOutput) ToGetStreamsPaginationOutputWithContext(ctx context.Context) GetStreamsPaginationOutput {
-	return o
-}
-
-// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-func (o GetStreamsPaginationOutput) Limit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamsPagination) int { return v.Limit }).(pulumi.IntOutput)
-}
-
-// The URL relative to the next item in the response
-func (o GetStreamsPaginationOutput) Next() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsPagination) string { return v.Next }).(pulumi.StringOutput)
-}
-
-// Index of the first item returned in the response. The default is 0
-func (o GetStreamsPaginationOutput) Offset() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamsPagination) int { return v.Offset }).(pulumi.IntOutput)
-}
-
-// The URL relative to the previous item in the response
-func (o GetStreamsPaginationOutput) Previous() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamsPagination) string { return v.Previous }).(pulumi.StringOutput)
-}
-
-// The total number of streams available to the user making the request
-func (o GetStreamsPaginationOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamsPagination) int { return v.Total }).(pulumi.IntOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountInput)(nil)).Elem(), CloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountPtrInput)(nil)).Elem(), CloudRouterAccountArgs{})
@@ -75002,6 +78425,43 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkOperationPtrInput)(nil)).Elem(), NetworkOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProjectInput)(nil)).Elem(), NetworkProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkProjectPtrInput)(nil)).Elem(), NetworkProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortAccountInput)(nil)).Elem(), PortAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortAccountPtrInput)(nil)).Elem(), PortAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortAdditionalInfoInput)(nil)).Elem(), PortAdditionalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortAdditionalInfoArrayInput)(nil)).Elem(), PortAdditionalInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortChangeLogInput)(nil)).Elem(), PortChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortChangeLogPtrInput)(nil)).Elem(), PortChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortDeviceInput)(nil)).Elem(), PortDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortDevicePtrInput)(nil)).Elem(), PortDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortDeviceRedundancyInput)(nil)).Elem(), PortDeviceRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortDeviceRedundancyPtrInput)(nil)).Elem(), PortDeviceRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortEncapsulationInput)(nil)).Elem(), PortEncapsulationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortEncapsulationPtrInput)(nil)).Elem(), PortEncapsulationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortLocationInput)(nil)).Elem(), PortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortLocationPtrInput)(nil)).Elem(), PortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortNotificationInput)(nil)).Elem(), PortNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortNotificationArrayInput)(nil)).Elem(), PortNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderInput)(nil)).Elem(), PortOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderPtrInput)(nil)).Elem(), PortOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderPurchaseOrderInput)(nil)).Elem(), PortOrderPurchaseOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderPurchaseOrderPtrInput)(nil)).Elem(), PortOrderPurchaseOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderSignatureInput)(nil)).Elem(), PortOrderSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderSignaturePtrInput)(nil)).Elem(), PortOrderSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderSignatureDelegateInput)(nil)).Elem(), PortOrderSignatureDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortOrderSignatureDelegatePtrInput)(nil)).Elem(), PortOrderSignatureDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortPhysicalPortInput)(nil)).Elem(), PortPhysicalPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortPhysicalPortArrayInput)(nil)).Elem(), PortPhysicalPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortPhysicalPortDemarcationPointInput)(nil)).Elem(), PortPhysicalPortDemarcationPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortPhysicalPortInterfaceInput)(nil)).Elem(), PortPhysicalPortInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortPhysicalPortInterfacePtrInput)(nil)).Elem(), PortPhysicalPortInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortProjectInput)(nil)).Elem(), PortProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortProjectPtrInput)(nil)).Elem(), PortProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortRedundancyInput)(nil)).Elem(), PortRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortRedundancyPtrInput)(nil)).Elem(), PortRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortSettingsInput)(nil)).Elem(), PortSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortSettingsPtrInput)(nil)).Elem(), PortSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortTimeoutsInput)(nil)).Elem(), PortTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortTimeoutsPtrInput)(nil)).Elem(), PortTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceAccountInput)(nil)).Elem(), PrecisionTimeServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceAccountPtrInput)(nil)).Elem(), PrecisionTimeServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceChangeLogInput)(nil)).Elem(), PrecisionTimeServiceChangeLogArgs{})
@@ -75012,6 +78472,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceIpv4PtrInput)(nil)).Elem(), PrecisionTimeServiceIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceNtpAdvancedConfigurationInput)(nil)).Elem(), PrecisionTimeServiceNtpAdvancedConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceNtpAdvancedConfigurationArrayInput)(nil)).Elem(), PrecisionTimeServiceNtpAdvancedConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceOperationInput)(nil)).Elem(), PrecisionTimeServiceOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceOperationPtrInput)(nil)).Elem(), PrecisionTimeServiceOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceOrderInput)(nil)).Elem(), PrecisionTimeServiceOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceOrderPtrInput)(nil)).Elem(), PrecisionTimeServiceOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServicePackageInput)(nil)).Elem(), PrecisionTimeServicePackageArgs{})
@@ -75150,6 +78612,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleChangeLogInput)(nil)).Elem(), StreamAlertRuleChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleChangeLogPtrInput)(nil)).Elem(), StreamAlertRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleDetectionMethodInput)(nil)).Elem(), StreamAlertRuleDetectionMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleDetectionMethodPtrInput)(nil)).Elem(), StreamAlertRuleDetectionMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleMetricSelectorInput)(nil)).Elem(), StreamAlertRuleMetricSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleMetricSelectorPtrInput)(nil)).Elem(), StreamAlertRuleMetricSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleResourceSelectorInput)(nil)).Elem(), StreamAlertRuleResourceSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleResourceSelectorPtrInput)(nil)).Elem(), StreamAlertRuleResourceSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamAlertRuleTimeoutsInput)(nil)).Elem(), StreamAlertRuleTimeoutsArgs{})
@@ -75467,6 +78933,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceIpv4Input)(nil)).Elem(), GetPrecisionTimeServiceIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceNtpAdvancedConfigurationInput)(nil)).Elem(), GetPrecisionTimeServiceNtpAdvancedConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceNtpAdvancedConfigurationArrayInput)(nil)).Elem(), GetPrecisionTimeServiceNtpAdvancedConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceOperationInput)(nil)).Elem(), GetPrecisionTimeServiceOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServiceOrderInput)(nil)).Elem(), GetPrecisionTimeServiceOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePackageInput)(nil)).Elem(), GetPrecisionTimeServicePackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicePrecisionTimePriceInput)(nil)).Elem(), GetPrecisionTimeServicePrecisionTimePriceArgs{})
@@ -75485,6 +78952,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataIpv4Input)(nil)).Elem(), GetPrecisionTimeServicesDataIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataNtpAdvancedConfigurationInput)(nil)).Elem(), GetPrecisionTimeServicesDataNtpAdvancedConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayInput)(nil)).Elem(), GetPrecisionTimeServicesDataNtpAdvancedConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataOperationInput)(nil)).Elem(), GetPrecisionTimeServicesDataOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataOrderInput)(nil)).Elem(), GetPrecisionTimeServicesDataOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPackageInput)(nil)).Elem(), GetPrecisionTimeServicesDataPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrecisionTimeServicesDataPrecisionTimePriceInput)(nil)).Elem(), GetPrecisionTimeServicesDataPrecisionTimePriceArgs{})
@@ -75730,10 +79198,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationPtrInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleChangeLogInput)(nil)).Elem(), GetStreamAlertRuleChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleDetectionMethodInput)(nil)).Elem(), GetStreamAlertRuleDetectionMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleDetectionMethodPtrInput)(nil)).Elem(), GetStreamAlertRuleDetectionMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleMetricSelectorInput)(nil)).Elem(), GetStreamAlertRuleMetricSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleMetricSelectorPtrInput)(nil)).Elem(), GetStreamAlertRuleMetricSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleResourceSelectorInput)(nil)).Elem(), GetStreamAlertRuleResourceSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataInput)(nil)).Elem(), GetStreamAlertRulesDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataArrayInput)(nil)).Elem(), GetStreamAlertRulesDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataChangeLogInput)(nil)).Elem(), GetStreamAlertRulesDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataDetectionMethodInput)(nil)).Elem(), GetStreamAlertRulesDataDetectionMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataMetricSelectorInput)(nil)).Elem(), GetStreamAlertRulesDataMetricSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataResourceSelectorInput)(nil)).Elem(), GetStreamAlertRulesDataResourceSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesPaginationInput)(nil)).Elem(), GetStreamAlertRulesPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataInput)(nil)).Elem(), GetStreamAttachmentsDataArgs{})
@@ -75756,15 +79230,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataChangeLogInput)(nil)).Elem(), GetStreamSubscriptionsDataChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataEventSelectorInput)(nil)).Elem(), GetStreamSubscriptionsDataEventSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataMetricSelectorInput)(nil)).Elem(), GetStreamSubscriptionsDataMetricSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataSinkInput)(nil)).Elem(), GetStreamSubscriptionsDataSinkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataSinkCredentialInput)(nil)).Elem(), GetStreamSubscriptionsDataSinkCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsDataSinkSettingsInput)(nil)).Elem(), GetStreamSubscriptionsDataSinkSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionsPaginationInput)(nil)).Elem(), GetStreamSubscriptionsPaginationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataInput)(nil)).Elem(), GetStreamsDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataArrayInput)(nil)).Elem(), GetStreamsDataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataChangeLogInput)(nil)).Elem(), GetStreamsDataChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataProjectInput)(nil)).Elem(), GetStreamsDataProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsPaginationInput)(nil)).Elem(), GetStreamsPaginationArgs{})
 	pulumi.RegisterOutputType(CloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(CloudRouterAccountPtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterChangeLogOutput{})
@@ -75877,6 +79342,43 @@ func init() {
 	pulumi.RegisterOutputType(NetworkOperationPtrOutput{})
 	pulumi.RegisterOutputType(NetworkProjectOutput{})
 	pulumi.RegisterOutputType(NetworkProjectPtrOutput{})
+	pulumi.RegisterOutputType(PortAccountOutput{})
+	pulumi.RegisterOutputType(PortAccountPtrOutput{})
+	pulumi.RegisterOutputType(PortAdditionalInfoOutput{})
+	pulumi.RegisterOutputType(PortAdditionalInfoArrayOutput{})
+	pulumi.RegisterOutputType(PortChangeLogOutput{})
+	pulumi.RegisterOutputType(PortChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(PortDeviceOutput{})
+	pulumi.RegisterOutputType(PortDevicePtrOutput{})
+	pulumi.RegisterOutputType(PortDeviceRedundancyOutput{})
+	pulumi.RegisterOutputType(PortDeviceRedundancyPtrOutput{})
+	pulumi.RegisterOutputType(PortEncapsulationOutput{})
+	pulumi.RegisterOutputType(PortEncapsulationPtrOutput{})
+	pulumi.RegisterOutputType(PortLocationOutput{})
+	pulumi.RegisterOutputType(PortLocationPtrOutput{})
+	pulumi.RegisterOutputType(PortNotificationOutput{})
+	pulumi.RegisterOutputType(PortNotificationArrayOutput{})
+	pulumi.RegisterOutputType(PortOrderOutput{})
+	pulumi.RegisterOutputType(PortOrderPtrOutput{})
+	pulumi.RegisterOutputType(PortOrderPurchaseOrderOutput{})
+	pulumi.RegisterOutputType(PortOrderPurchaseOrderPtrOutput{})
+	pulumi.RegisterOutputType(PortOrderSignatureOutput{})
+	pulumi.RegisterOutputType(PortOrderSignaturePtrOutput{})
+	pulumi.RegisterOutputType(PortOrderSignatureDelegateOutput{})
+	pulumi.RegisterOutputType(PortOrderSignatureDelegatePtrOutput{})
+	pulumi.RegisterOutputType(PortPhysicalPortOutput{})
+	pulumi.RegisterOutputType(PortPhysicalPortArrayOutput{})
+	pulumi.RegisterOutputType(PortPhysicalPortDemarcationPointOutput{})
+	pulumi.RegisterOutputType(PortPhysicalPortInterfaceOutput{})
+	pulumi.RegisterOutputType(PortPhysicalPortInterfacePtrOutput{})
+	pulumi.RegisterOutputType(PortProjectOutput{})
+	pulumi.RegisterOutputType(PortProjectPtrOutput{})
+	pulumi.RegisterOutputType(PortRedundancyOutput{})
+	pulumi.RegisterOutputType(PortRedundancyPtrOutput{})
+	pulumi.RegisterOutputType(PortSettingsOutput{})
+	pulumi.RegisterOutputType(PortSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PortTimeoutsOutput{})
+	pulumi.RegisterOutputType(PortTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceAccountOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceChangeLogOutput{})
@@ -75887,6 +79389,8 @@ func init() {
 	pulumi.RegisterOutputType(PrecisionTimeServiceIpv4PtrOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceNtpAdvancedConfigurationOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceNtpAdvancedConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceOperationOutput{})
+	pulumi.RegisterOutputType(PrecisionTimeServiceOperationPtrOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceOrderOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceOrderPtrOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServicePackageOutput{})
@@ -76025,6 +79529,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTokenServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
 	pulumi.RegisterOutputType(StreamAlertRuleChangeLogOutput{})
 	pulumi.RegisterOutputType(StreamAlertRuleChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleDetectionMethodOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleDetectionMethodPtrOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleMetricSelectorOutput{})
+	pulumi.RegisterOutputType(StreamAlertRuleMetricSelectorPtrOutput{})
 	pulumi.RegisterOutputType(StreamAlertRuleResourceSelectorOutput{})
 	pulumi.RegisterOutputType(StreamAlertRuleResourceSelectorPtrOutput{})
 	pulumi.RegisterOutputType(StreamAlertRuleTimeoutsOutput{})
@@ -76342,6 +79850,7 @@ func init() {
 	pulumi.RegisterOutputType(GetPrecisionTimeServiceIpv4Output{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServiceNtpAdvancedConfigurationOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServiceNtpAdvancedConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServiceOperationOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServiceOrderOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServicePackageOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServicePrecisionTimePriceOutput{})
@@ -76360,6 +79869,7 @@ func init() {
 	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataIpv4Output{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataNtpAdvancedConfigurationOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataNtpAdvancedConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataOperationOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataOrderOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPackageOutput{})
 	pulumi.RegisterOutputType(GetPrecisionTimeServicesDataPrecisionTimePriceOutput{})
@@ -76605,10 +80115,16 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTokensPaginationOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensPaginationPtrOutput{})
 	pulumi.RegisterOutputType(GetStreamAlertRuleChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRuleDetectionMethodOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRuleDetectionMethodPtrOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRuleMetricSelectorOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRuleMetricSelectorPtrOutput{})
 	pulumi.RegisterOutputType(GetStreamAlertRuleResourceSelectorOutput{})
 	pulumi.RegisterOutputType(GetStreamAlertRulesDataOutput{})
 	pulumi.RegisterOutputType(GetStreamAlertRulesDataArrayOutput{})
 	pulumi.RegisterOutputType(GetStreamAlertRulesDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRulesDataDetectionMethodOutput{})
+	pulumi.RegisterOutputType(GetStreamAlertRulesDataMetricSelectorOutput{})
 	pulumi.RegisterOutputType(GetStreamAlertRulesDataResourceSelectorOutput{})
 	pulumi.RegisterOutputType(GetStreamAlertRulesPaginationOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsDataOutput{})
@@ -76631,13 +80147,4 @@ func init() {
 	pulumi.RegisterOutputType(GetStreamSubscriptionsDataChangeLogOutput{})
 	pulumi.RegisterOutputType(GetStreamSubscriptionsDataEventSelectorOutput{})
 	pulumi.RegisterOutputType(GetStreamSubscriptionsDataMetricSelectorOutput{})
-	pulumi.RegisterOutputType(GetStreamSubscriptionsDataSinkOutput{})
-	pulumi.RegisterOutputType(GetStreamSubscriptionsDataSinkCredentialOutput{})
-	pulumi.RegisterOutputType(GetStreamSubscriptionsDataSinkSettingsOutput{})
-	pulumi.RegisterOutputType(GetStreamSubscriptionsPaginationOutput{})
-	pulumi.RegisterOutputType(GetStreamsDataOutput{})
-	pulumi.RegisterOutputType(GetStreamsDataArrayOutput{})
-	pulumi.RegisterOutputType(GetStreamsDataChangeLogOutput{})
-	pulumi.RegisterOutputType(GetStreamsDataProjectOutput{})
-	pulumi.RegisterOutputType(GetStreamsPaginationOutput{})
 }

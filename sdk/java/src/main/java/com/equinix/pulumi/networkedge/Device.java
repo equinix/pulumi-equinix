@@ -827,6 +827,79 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### example aruba edgeconnect ha device wth purchase order
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var aRUBAEDGECONNECTAM = new Device("aRUBAEDGECONNECTAM", DeviceArgs.builder()
+ *             .name("TF_Aruba_Edge_Connect")
+ *             .projectId("XXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("EDGECONNECT-SDWAN")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("EC-V")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("9.4.2.3")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .additionalBandwidth(50)
+ *             .interfaceCount(32)
+ *             .aclTemplateId("XXXXXXX")
+ *             .purchaseOrderNumber("PO-Primary-Account-123")
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("accountKey", "xxxxx"),
+ *                 Map.entry("accountName", "xxxx"),
+ *                 Map.entry("applianceTag", "tests"),
+ *                 Map.entry("hostname", "test")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("TF_CHECKPOINT")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .purchaseOrderNumber("PO-Secondary-Account-123")
+ *                 .aclTemplateId("XXXXXXX")
+ *                 .notifications("test}{@literal @}{@code eq.com")
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("accountKey", "xxxxx"),
+ *                     Map.entry("accountName", "xxxx"),
+ *                     Map.entry("applianceTag", "test"),
+ *                     Map.entry("hostname", "test")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ### example c8000v byol without default password
  * <pre>
  * {@code
@@ -864,7 +937,7 @@ import javax.annotation.Nullable;
  *             .selfManaged(true)
  *             .byol(true)
  *             .generateDefaultPassword(false)
- *             .packageCode("VM100")
+ *             .packageCode("network-essentials")
  *             .notifications(            
  *                 "john}{@literal @}{@code equinix.com",
  *                 "marry}{@literal @}{@code equinix.com",
@@ -922,7 +995,7 @@ import javax.annotation.Nullable;
  *             .typeCode("C8000V")
  *             .selfManaged(true)
  *             .byol(true)
- *             .packageCode("VM100")
+ *             .packageCode("network-essentials")
  *             .notifications(            
  *                 "john}{@literal @}{@code equinix.com",
  *                 "marry}{@literal @}{@code equinix.com",
@@ -981,7 +1054,7 @@ import javax.annotation.Nullable;
  *             .typeCode("C8000V")
  *             .selfManaged(true)
  *             .byol(true)
- *             .packageCode("VM100")
+ *             .packageCode("network-essentials")
  *             .notifications(            
  *                 "john}{@literal @}{@code equinix.com",
  *                 "marry}{@literal @}{@code equinix.com",
@@ -997,6 +1070,78 @@ import javax.annotation.Nullable;
  *                 .keyName("test-key")
  *                 .build())
  *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example c8000v ha with cloud init rest api support
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
+ *             .name("tf-c8000v-byol")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("C8000V")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .generateDefaultPassword(true)
+ *             .packageCode("network-essentials")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("17.11.01a")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .tier(1)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .vendorConfiguration(Map.of("restApiSupportRequirement", "true"))
+ *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("tf-c8000v-byol-secondary")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .hostname("csr1000v-s")
+ *                 .notifications(                
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .vendorConfiguration(Map.of("restApiSupportRequirement", "true"))
+ *                 .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code

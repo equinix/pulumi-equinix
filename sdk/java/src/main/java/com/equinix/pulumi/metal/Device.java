@@ -175,59 +175,7 @@ import javax.annotation.Nullable;
  *             .projectId(projectId)
  *             .hardwareReservationId("next-available")
  *             .storage("""
- * {
- *   \"disks\": [
- *     {
- *       \"device\": \"/dev/sda\",
- *       \"wipeTable\": true,
- *       \"partitions\": [
- *         {
- *           \"label\": \"BIOS\",
- *           \"number\": 1,
- *           \"size\": \"4096\"
- *         },
- *         {
- *           \"label\": \"SWAP\",
- *           \"number\": 2,
- *           \"size\": \"3993600\"
- *         },
- *         {
- *           \"label\": \"ROOT\",
- *           \"number\": 3,
- *           \"size\": \"0\"
- *         }
- *       ]
- *     }
- *   ],
- *   \"filesystems\": [
- *     {
- *       \"mount\": {
- *         \"device\": \"/dev/sda3\",
- *         \"format\": \"ext4\",
- *         \"point\": \"/\",
- *         \"create\": {
- *           \"options\": [
- *             \"-L\",
- *             \"ROOT\"
- *           ]
- *         }
- *       }
- *     },
- *     {
- *       \"mount\": {
- *         \"device\": \"/dev/sda2\",
- *         \"format\": \"swap\",
- *         \"point\": \"none\",
- *         \"create\": {
- *           \"options\": [
- *             \"-L\",
- *             \"SWAP\"
- *           ]
- *         }
- *       }
- *     }
- *   ]
- * }
+ * {  \"disks\": [    {      \"device\": \"/dev/sda\",      \"wipeTable\": true,      \"partitions\": [        {          \"label\": \"BIOS\",          \"number\": 1,          \"size\": \"4096\"        },        {          \"label\": \"SWAP\",          \"number\": 2,          \"size\": \"3993600\"        },        {          \"label\": \"ROOT\",          \"number\": 3,          \"size\": \"0\"        }      ]    }  ],  \"filesystems\": [    {      \"mount\": {        \"device\": \"/dev/sda3\",        \"format\": \"ext4\",        \"point\": \"/\",        \"create\": {          \"options\": [            \"-L\",            \"ROOT\"          ]        }      }    },    {      \"mount\": {        \"device\": \"/dev/sda2\",        \"format\": \"swap\",        \"point\": \"none\",        \"create\": {          \"options\": [            \"-L\",            \"SWAP\"          ]        }      }    }  ]}
  *             """)
  *             .build());
  * 
@@ -598,14 +546,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.operatingSystem;
     }
     /**
-     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
-     * @return The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * @return The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      * 
      */
     public Output<String> plan() {
@@ -674,14 +622,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.rootPassword;
     }
     /**
-     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
      * 
      */
     @Export(name="sosHostname", refs={String.class}, tree="[0]")
     private Output<String> sosHostname;
 
     /**
-     * @return The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * @return The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
      * 
      */
     public Output<String> sosHostname() {

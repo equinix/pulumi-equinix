@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+ * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
  *
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  */
 export function getVirtualCircuit(args: GetVirtualCircuitArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualCircuitResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,11 +84,11 @@ export interface GetVirtualCircuitResult {
      */
     readonly name: string;
     /**
-     * Nni VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * Nni VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      */
     readonly nniVlan: number;
     /**
-     * Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      */
     readonly nniVnid: number;
     /**
@@ -136,7 +136,7 @@ export interface GetVirtualCircuitResult {
      */
     readonly vlanId: string;
     /**
-     * VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+     * VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
      */
     readonly vnid: number;
     /**
@@ -145,9 +145,9 @@ export interface GetVirtualCircuitResult {
     readonly vrfId: string;
 }
 /**
- * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/)
+ * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
  *
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  */
 export function getVirtualCircuitOutput(args: GetVirtualCircuitOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualCircuitResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

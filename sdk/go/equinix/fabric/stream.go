@@ -54,6 +54,9 @@ func NewStream(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -137,7 +140,7 @@ type streamArgs struct {
 	// Customer-provided name of the stream resource
 	Name *string `pulumi:"name"`
 	// Equinix Project attribute object
-	Project  *StreamProject  `pulumi:"project"`
+	Project  StreamProject   `pulumi:"project"`
 	Timeouts *StreamTimeouts `pulumi:"timeouts"`
 	// Equinix defined Streaming Type
 	Type string `pulumi:"type"`
@@ -150,7 +153,7 @@ type StreamArgs struct {
 	// Customer-provided name of the stream resource
 	Name pulumi.StringPtrInput
 	// Equinix Project attribute object
-	Project  StreamProjectPtrInput
+	Project  StreamProjectInput
 	Timeouts StreamTimeoutsPtrInput
 	// Equinix defined Streaming Type
 	Type pulumi.StringInput

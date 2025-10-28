@@ -8,16 +8,22 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		newStreamAlertRule, err := fabric.NewStreamAlertRule(ctx, "newStreamAlertRule", &fabric.StreamAlertRuleArgs{
-			StreamId:          pulumi.String("<stream_id>"),
-			Name:              pulumi.String("<name>"),
-			Type:              pulumi.String("METRIC_ALERT"),
-			Description:       pulumi.String("<description>"),
-			Enabled:           pulumi.Bool(true),
-			Operand:           pulumi.String("ABOVE"),
-			WindowSize:        pulumi.String("<window_size>"),
-			WarningThreshold:  pulumi.String("<warning_threshold>"),
-			CriticalThreshold: pulumi.String("<critical_threshold>"),
-			MetricName:        pulumi.String("equinix.fabric.connection.bandwidth_tx.usage"),
+			StreamId:    pulumi.String("<stream_id>"),
+			Name:        pulumi.String("<name>"),
+			Type:        pulumi.String("METRIC_ALERT"),
+			Description: pulumi.String("<description>"),
+			Enabled:     pulumi.Bool(true),
+			MetricSelector: &fabric.StreamAlertRuleMetricSelectorArgs{
+				Includes: pulumi.StringArray{
+					pulumi.String("equinix.fabric.connection.bandwidth_tx.usage"),
+				},
+			},
+			DetectionMethod: &fabric.StreamAlertRuleDetectionMethodArgs{
+				Operand:           pulumi.String("ABOVE"),
+				WindowSize:        pulumi.String("<window_size>"),
+				WarningThreshold:  pulumi.String("<warning_threshold>"),
+				CriticalThreshold: pulumi.String("<critical_threshold>"),
+			},
 			ResourceSelector: &fabric.StreamAlertRuleResourceSelectorArgs{
 				Includes: pulumi.StringArray{
 					pulumi.String("*/connections/<connection_id>"),

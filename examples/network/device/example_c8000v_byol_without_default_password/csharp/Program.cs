@@ -18,7 +18,7 @@ return await Deployment.RunAsync(() =>
         SelfManaged = true,
         Byol = true,
         GenerateDefaultPassword = false,
-        PackageCode = "VM100",
+        PackageCode = "network-essentials",
         Notifications = new[]
         {
             "john@equinix.com",

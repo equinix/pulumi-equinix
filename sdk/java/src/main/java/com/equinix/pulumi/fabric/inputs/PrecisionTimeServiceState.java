@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.inputs.PrecisionTimeServiceChangeLogArgs;
 import com.equinix.pulumi.fabric.inputs.PrecisionTimeServiceConnectionArgs;
 import com.equinix.pulumi.fabric.inputs.PrecisionTimeServiceIpv4Args;
 import com.equinix.pulumi.fabric.inputs.PrecisionTimeServiceNtpAdvancedConfigurationArgs;
+import com.equinix.pulumi.fabric.inputs.PrecisionTimeServiceOperationArgs;
 import com.equinix.pulumi.fabric.inputs.PrecisionTimeServiceOrderArgs;
 import com.equinix.pulumi.fabric.inputs.PrecisionTimeServicePackageArgs;
 import com.equinix.pulumi.fabric.inputs.PrecisionTimeServicePrecisionTimePriceArgs;
@@ -130,6 +131,21 @@ public final class PrecisionTimeServiceState extends com.pulumi.resources.Resour
      */
     public Optional<Output<List<PrecisionTimeServiceNtpAdvancedConfigurationArgs>>> ntpAdvancedConfigurations() {
         return Optional.ofNullable(this.ntpAdvancedConfigurations);
+    }
+
+    /**
+     * Precision Time Service Operation
+     * 
+     */
+    @Import(name="operation")
+    private @Nullable Output<PrecisionTimeServiceOperationArgs> operation;
+
+    /**
+     * @return Precision Time Service Operation
+     * 
+     */
+    public Optional<Output<PrecisionTimeServiceOperationArgs>> operation() {
+        return Optional.ofNullable(this.operation);
     }
 
     /**
@@ -269,6 +285,7 @@ public final class PrecisionTimeServiceState extends com.pulumi.resources.Resour
         this.ipv4 = $.ipv4;
         this.name = $.name;
         this.ntpAdvancedConfigurations = $.ntpAdvancedConfigurations;
+        this.operation = $.operation;
         this.order = $.order;
         this.package_ = $.package_;
         this.precisionTimePrice = $.precisionTimePrice;
@@ -463,6 +480,27 @@ public final class PrecisionTimeServiceState extends com.pulumi.resources.Resour
          */
         public Builder ntpAdvancedConfigurations(PrecisionTimeServiceNtpAdvancedConfigurationArgs... ntpAdvancedConfigurations) {
             return ntpAdvancedConfigurations(List.of(ntpAdvancedConfigurations));
+        }
+
+        /**
+         * @param operation Precision Time Service Operation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operation(@Nullable Output<PrecisionTimeServiceOperationArgs> operation) {
+            $.operation = operation;
+            return this;
+        }
+
+        /**
+         * @param operation Precision Time Service Operation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operation(PrecisionTimeServiceOperationArgs operation) {
+            return operation(Output.of(operation));
         }
 
         /**

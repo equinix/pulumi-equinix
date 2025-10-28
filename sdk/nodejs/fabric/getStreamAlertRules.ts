@@ -8,12 +8,6 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
- *
- * Additional Documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
- *
  * ## Example Usage
  *
  * ```typescript
@@ -77,12 +71,6 @@ export interface GetStreamAlertRulesResult {
     readonly streamId: string;
 }
 /**
- * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Alert Rules with pagination
- *
- * Additional Documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
- *
  * ## Example Usage
  *
  * ```typescript

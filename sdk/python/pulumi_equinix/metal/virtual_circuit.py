@@ -370,7 +370,7 @@ class _VirtualCircuitState:
         :param pulumi.Input[str] metal_ipv6: The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
         :param pulumi.Input[str] name: Name of the Virtual Circuit resource
         :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
-        :param pulumi.Input[int] nni_vnid: Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        :param pulumi.Input[int] nni_vnid: Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         :param pulumi.Input[int] peer_asn: The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
         :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to
         :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to
@@ -385,7 +385,7 @@ class _VirtualCircuitState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the virtual circuit
         :param pulumi.Input[str] virtual_circuit_id: UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
         :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate
-        :param pulumi.Input[int] vnid: VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        :param pulumi.Input[int] vnid: VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         :param pulumi.Input[str] vrf_id: UUID of the VRF to associate
         """
         if connection_id is not None:
@@ -545,7 +545,7 @@ class _VirtualCircuitState:
     @pulumi.getter(name="nniVnid")
     def nni_vnid(self) -> Optional[pulumi.Input[int]]:
         """
-        Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         """
         return pulumi.get(self, "nni_vnid")
 
@@ -681,7 +681,7 @@ class _VirtualCircuitState:
     @pulumi.getter
     def vnid(self) -> Optional[pulumi.Input[int]]:
         """
-        VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         """
         return pulumi.get(self, "vnid")
 
@@ -728,9 +728,9 @@ class VirtualCircuit(pulumi.CustomResource):
                  vrf_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
+        Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
 
-        See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
 
         ## Example Usage
         ```python
@@ -790,9 +790,9 @@ class VirtualCircuit(pulumi.CustomResource):
                  args: VirtualCircuitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
+        Use this resource to associate VLAN with a Dedicated Port from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/#associating-a-vlan-with-a-dedicated-port).
 
-        See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+        See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
 
         ## Example Usage
         ```python
@@ -938,7 +938,7 @@ class VirtualCircuit(pulumi.CustomResource):
         :param pulumi.Input[str] metal_ipv6: The Metal IPv6 address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the IPv6 subnet.
         :param pulumi.Input[str] name: Name of the Virtual Circuit resource
         :param pulumi.Input[int] nni_vlan: Equinix Metal network-to-network VLAN ID (optional when the connection has mode=tunnel)
-        :param pulumi.Input[int] nni_vnid: Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        :param pulumi.Input[int] nni_vnid: Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         :param pulumi.Input[int] peer_asn: The BGP ASN of the peer. The same ASN may be the used across several VCs, but it cannot be the same as the local_asn of the VRF.
         :param pulumi.Input[str] port_id: UUID of the Connection Port where the VC is scoped to
         :param pulumi.Input[str] project_id: UUID of the Project where the VC is scoped to
@@ -953,7 +953,7 @@ class VirtualCircuit(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the virtual circuit
         :param pulumi.Input[str] virtual_circuit_id: UUID of an existing VC to configure. Used in the case of shared interconnections where the VC has already been created.
         :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate
-        :param pulumi.Input[int] vnid: VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        :param pulumi.Input[int] vnid: VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         :param pulumi.Input[str] vrf_id: UUID of the VRF to associate
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1060,7 +1060,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter(name="nniVnid")
     def nni_vnid(self) -> pulumi.Output[int]:
         """
-        Nni VLAN ID parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        Nni VLAN ID parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         """
         return pulumi.get(self, "nni_vnid")
 
@@ -1152,7 +1152,7 @@ class VirtualCircuit(pulumi.CustomResource):
     @pulumi.getter
     def vnid(self) -> pulumi.Output[int]:
         """
-        VNID VLAN parameter, see https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
+        VNID VLAN parameter, see https://docs.equinix.com/metal/interconnections/introduction/
         """
         return pulumi.get(self, "vnid")
 

@@ -10,11 +10,15 @@ const newStreamAlertRule = new equinix.fabric.StreamAlertRule("newStreamAlertRul
     type: "METRIC_ALERT",
     description: "<description>",
     enabled: true,
-    operand: "ABOVE",
-    windowSize: "<window_size>",
-    warningThreshold: "<warning_threshold>",
-    criticalThreshold: "<critical_threshold>",
-    metricName: "equinix.fabric.connection.bandwidth_tx.usage",
+    metricSelector: {
+        includes: ["equinix.fabric.connection.bandwidth_tx.usage"],
+    },
+    detectionMethod: {
+        operand: "ABOVE",
+        windowSize: "<window_size>",
+        warningThreshold: "<warning_threshold>",
+        criticalThreshold: "<critical_threshold>",
+    },
     resourceSelector: {
         includes: ["*/connections/<connection_id>"],
     },
@@ -34,11 +38,15 @@ new_stream_alert_rule = equinix.fabric.StreamAlertRule("newStreamAlertRule",
     type="METRIC_ALERT",
     description="<description>",
     enabled=True,
-    operand="ABOVE",
-    window_size="<window_size>",
-    warning_threshold="<warning_threshold>",
-    critical_threshold="<critical_threshold>",
-    metric_name="equinix.fabric.connection.bandwidth_tx.usage",
+    metric_selector={
+        "includes": ["equinix.fabric.connection.bandwidth_tx.usage"],
+    },
+    detection_method={
+        "operand": "ABOVE",
+        "window_size": "<window_size>",
+        "warning_threshold": "<warning_threshold>",
+        "critical_threshold": "<critical_threshold>",
+    },
     resource_selector={
         "includes": ["*/connections/<connection_id>"],
     })
@@ -58,16 +66,22 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		newStreamAlertRule, err := fabric.NewStreamAlertRule(ctx, "newStreamAlertRule", &fabric.StreamAlertRuleArgs{
-			StreamId:          pulumi.String("<stream_id>"),
-			Name:              pulumi.String("<name>"),
-			Type:              pulumi.String("METRIC_ALERT"),
-			Description:       pulumi.String("<description>"),
-			Enabled:           pulumi.Bool(true),
-			Operand:           pulumi.String("ABOVE"),
-			WindowSize:        pulumi.String("<window_size>"),
-			WarningThreshold:  pulumi.String("<warning_threshold>"),
-			CriticalThreshold: pulumi.String("<critical_threshold>"),
-			MetricName:        pulumi.String("equinix.fabric.connection.bandwidth_tx.usage"),
+			StreamId:    pulumi.String("<stream_id>"),
+			Name:        pulumi.String("<name>"),
+			Type:        pulumi.String("METRIC_ALERT"),
+			Description: pulumi.String("<description>"),
+			Enabled:     pulumi.Bool(true),
+			MetricSelector: &fabric.StreamAlertRuleMetricSelectorArgs{
+				Includes: pulumi.StringArray{
+					pulumi.String("equinix.fabric.connection.bandwidth_tx.usage"),
+				},
+			},
+			DetectionMethod: &fabric.StreamAlertRuleDetectionMethodArgs{
+				Operand:           pulumi.String("ABOVE"),
+				WindowSize:        pulumi.String("<window_size>"),
+				WarningThreshold:  pulumi.String("<warning_threshold>"),
+				CriticalThreshold: pulumi.String("<critical_threshold>"),
+			},
 			ResourceSelector: &fabric.StreamAlertRuleResourceSelectorArgs{
 				Includes: pulumi.StringArray{
 					pulumi.String("*/connections/<connection_id>"),
@@ -100,11 +114,20 @@ return await Deployment.RunAsync(() =>
         Type = "METRIC_ALERT",
         Description = "<description>",
         Enabled = true,
-        Operand = "ABOVE",
-        WindowSize = "<window_size>",
-        WarningThreshold = "<warning_threshold>",
-        CriticalThreshold = "<critical_threshold>",
-        MetricName = "equinix.fabric.connection.bandwidth_tx.usage",
+        MetricSelector = new Equinix.Fabric.Inputs.StreamAlertRuleMetricSelectorArgs
+        {
+            Includes = new[]
+            {
+                "equinix.fabric.connection.bandwidth_tx.usage",
+            },
+        },
+        DetectionMethod = new Equinix.Fabric.Inputs.StreamAlertRuleDetectionMethodArgs
+        {
+            Operand = "ABOVE",
+            WindowSize = "<window_size>",
+            WarningThreshold = "<warning_threshold>",
+            CriticalThreshold = "<critical_threshold>",
+        },
         ResourceSelector = new Equinix.Fabric.Inputs.StreamAlertRuleResourceSelectorArgs
         {
             Includes = new[]
@@ -131,6 +154,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.StreamAlertRule;
 import com.pulumi.equinix.fabric.StreamAlertRuleArgs;
+import com.pulumi.equinix.fabric.inputs.StreamAlertRuleMetricSelectorArgs;
+import com.pulumi.equinix.fabric.inputs.StreamAlertRuleDetectionMethodArgs;
 import com.pulumi.equinix.fabric.inputs.StreamAlertRuleResourceSelectorArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -151,11 +176,15 @@ public class App {
             .type("METRIC_ALERT")
             .description("<description>")
             .enabled(true)
-            .operand("ABOVE")
-            .windowSize("<window_size>")
-            .warningThreshold("<warning_threshold>")
-            .criticalThreshold("<critical_threshold>")
-            .metricName("equinix.fabric.connection.bandwidth_tx.usage")
+            .metricSelector(StreamAlertRuleMetricSelectorArgs.builder()
+                .includes("equinix.fabric.connection.bandwidth_tx.usage")
+                .build())
+            .detectionMethod(StreamAlertRuleDetectionMethodArgs.builder()
+                .operand("ABOVE")
+                .windowSize("<window_size>")
+                .warningThreshold("<warning_threshold>")
+                .criticalThreshold("<critical_threshold>")
+                .build())
             .resourceSelector(StreamAlertRuleResourceSelectorArgs.builder()
                 .includes("*/connections/<connection_id>")
                 .build())
@@ -179,11 +208,14 @@ resources:
       type: METRIC_ALERT
       description: <description>
       enabled: true
-      operand: ABOVE
-      windowSize: <window_size>
-      warningThreshold: <warning_threshold>
-      criticalThreshold: <critical_threshold>
-      metricName: equinix.fabric.connection.bandwidth_tx.usage
+      metricSelector:
+        includes:
+          - equinix.fabric.connection.bandwidth_tx.usage
+      detectionMethod:
+        operand: ABOVE
+        windowSize: <window_size>
+        warningThreshold: <warning_threshold>
+        criticalThreshold: <critical_threshold>
       resourceSelector:
         includes:
           - '*/connections/<connection_id>'

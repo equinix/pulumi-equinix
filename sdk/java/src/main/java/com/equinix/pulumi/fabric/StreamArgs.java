@@ -52,15 +52,15 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
      * Equinix Project attribute object
      * 
      */
-    @Import(name="project")
-    private @Nullable Output<StreamProjectArgs> project;
+    @Import(name="project", required=true)
+    private Output<StreamProjectArgs> project;
 
     /**
      * @return Equinix Project attribute object
      * 
      */
-    public Optional<Output<StreamProjectArgs>> project() {
-        return Optional.ofNullable(this.project);
+    public Output<StreamProjectArgs> project() {
+        return this.project;
     }
 
     @Import(name="timeouts")
@@ -161,7 +161,7 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder project(@Nullable Output<StreamProjectArgs> project) {
+        public Builder project(Output<StreamProjectArgs> project) {
             $.project = project;
             return this;
         }
@@ -209,6 +209,9 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         public StreamArgs build() {
             if ($.description == null) {
                 throw new MissingRequiredPropertyException("StreamArgs", "description");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("StreamArgs", "project");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("StreamArgs", "type");

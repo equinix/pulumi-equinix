@@ -7,11 +7,15 @@ new_stream_alert_rule = equinix.fabric.StreamAlertRule("newStreamAlertRule",
     type="METRIC_ALERT",
     description="<description>",
     enabled=True,
-    operand="ABOVE",
-    window_size="<window_size>",
-    warning_threshold="<warning_threshold>",
-    critical_threshold="<critical_threshold>",
-    metric_name="equinix.fabric.connection.bandwidth_tx.usage",
+    metric_selector={
+        "includes": ["equinix.fabric.connection.bandwidth_tx.usage"],
+    },
+    detection_method={
+        "operand": "ABOVE",
+        "window_size": "<window_size>",
+        "warning_threshold": "<warning_threshold>",
+        "critical_threshold": "<critical_threshold>",
+    },
     resource_selector={
         "includes": ["*/connections/<connection_id>"],
     })

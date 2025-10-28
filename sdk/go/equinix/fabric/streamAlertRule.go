@@ -13,31 +13,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream Alert Rules'
-// }
-//
-// Additional Documentation:
-// * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-// * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Alert-Rules
+// ## Example Usage
 type StreamAlertRule struct {
 	pulumi.CustomResourceState
 
 	// Details of the last change on the stream resource
 	ChangeLog StreamAlertRuleChangeLogOutput `pulumi:"changeLog"`
-	// Stream alert rule metric critical threshold
-	CriticalThreshold pulumi.StringOutput `pulumi:"criticalThreshold"`
 	// Customer-provided stream alert rule description
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Detection method for stream alert rule
+	DetectionMethod StreamAlertRuleDetectionMethodOutput `pulumi:"detectionMethod"`
 	// Stream alert rule enabled status
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Equinix assigned URI of the stream alert rule
 	Href pulumi.StringOutput `pulumi:"href"`
-	// Stream alert rule metric name
-	MetricName pulumi.StringOutput `pulumi:"metricName"`
+	// Metric selector for the stream alert rule
+	MetricSelector StreamAlertRuleMetricSelectorOutput `pulumi:"metricSelector"`
 	// Customer-provided stream alert rule name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Stream alert rule metric operand
-	Operand pulumi.StringOutput `pulumi:"operand"`
 	// Resource selector for the stream alert rule
 	ResourceSelector StreamAlertRuleResourceSelectorOutput `pulumi:"resourceSelector"`
 	// Value representing provisioning status for the stream alert rule
@@ -49,10 +42,6 @@ type StreamAlertRule struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Equinix assigned unique identifier for the stream alert rule
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold pulumi.StringOutput `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
 }
 
 // NewStreamAlertRule registers a new resource with the given unique name, arguments, and options.
@@ -62,29 +51,23 @@ func NewStreamAlertRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CriticalThreshold == nil {
-		return nil, errors.New("invalid value for required argument 'CriticalThreshold'")
-	}
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
-	if args.MetricName == nil {
-		return nil, errors.New("invalid value for required argument 'MetricName'")
+	if args.DetectionMethod == nil {
+		return nil, errors.New("invalid value for required argument 'DetectionMethod'")
 	}
-	if args.Operand == nil {
-		return nil, errors.New("invalid value for required argument 'Operand'")
+	if args.MetricSelector == nil {
+		return nil, errors.New("invalid value for required argument 'MetricSelector'")
+	}
+	if args.ResourceSelector == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceSelector'")
 	}
 	if args.StreamId == nil {
 		return nil, errors.New("invalid value for required argument 'StreamId'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
-	}
-	if args.WarningThreshold == nil {
-		return nil, errors.New("invalid value for required argument 'WarningThreshold'")
-	}
-	if args.WindowSize == nil {
-		return nil, errors.New("invalid value for required argument 'WindowSize'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StreamAlertRule
@@ -111,20 +94,18 @@ func GetStreamAlertRule(ctx *pulumi.Context,
 type streamAlertRuleState struct {
 	// Details of the last change on the stream resource
 	ChangeLog *StreamAlertRuleChangeLog `pulumi:"changeLog"`
-	// Stream alert rule metric critical threshold
-	CriticalThreshold *string `pulumi:"criticalThreshold"`
 	// Customer-provided stream alert rule description
 	Description *string `pulumi:"description"`
+	// Detection method for stream alert rule
+	DetectionMethod *StreamAlertRuleDetectionMethod `pulumi:"detectionMethod"`
 	// Stream alert rule enabled status
 	Enabled *bool `pulumi:"enabled"`
 	// Equinix assigned URI of the stream alert rule
 	Href *string `pulumi:"href"`
-	// Stream alert rule metric name
-	MetricName *string `pulumi:"metricName"`
+	// Metric selector for the stream alert rule
+	MetricSelector *StreamAlertRuleMetricSelector `pulumi:"metricSelector"`
 	// Customer-provided stream alert rule name
 	Name *string `pulumi:"name"`
-	// Stream alert rule metric operand
-	Operand *string `pulumi:"operand"`
 	// Resource selector for the stream alert rule
 	ResourceSelector *StreamAlertRuleResourceSelector `pulumi:"resourceSelector"`
 	// Value representing provisioning status for the stream alert rule
@@ -136,29 +117,23 @@ type streamAlertRuleState struct {
 	Type *string `pulumi:"type"`
 	// Equinix assigned unique identifier for the stream alert rule
 	Uuid *string `pulumi:"uuid"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold *string `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize *string `pulumi:"windowSize"`
 }
 
 type StreamAlertRuleState struct {
 	// Details of the last change on the stream resource
 	ChangeLog StreamAlertRuleChangeLogPtrInput
-	// Stream alert rule metric critical threshold
-	CriticalThreshold pulumi.StringPtrInput
 	// Customer-provided stream alert rule description
 	Description pulumi.StringPtrInput
+	// Detection method for stream alert rule
+	DetectionMethod StreamAlertRuleDetectionMethodPtrInput
 	// Stream alert rule enabled status
 	Enabled pulumi.BoolPtrInput
 	// Equinix assigned URI of the stream alert rule
 	Href pulumi.StringPtrInput
-	// Stream alert rule metric name
-	MetricName pulumi.StringPtrInput
+	// Metric selector for the stream alert rule
+	MetricSelector StreamAlertRuleMetricSelectorPtrInput
 	// Customer-provided stream alert rule name
 	Name pulumi.StringPtrInput
-	// Stream alert rule metric operand
-	Operand pulumi.StringPtrInput
 	// Resource selector for the stream alert rule
 	ResourceSelector StreamAlertRuleResourceSelectorPtrInput
 	// Value representing provisioning status for the stream alert rule
@@ -170,10 +145,6 @@ type StreamAlertRuleState struct {
 	Type pulumi.StringPtrInput
 	// Equinix assigned unique identifier for the stream alert rule
 	Uuid pulumi.StringPtrInput
-	// Stream alert rule metric warning threshold
-	WarningThreshold pulumi.StringPtrInput
-	// Stream alert rule metric window size
-	WindowSize pulumi.StringPtrInput
 }
 
 func (StreamAlertRuleState) ElementType() reflect.Type {
@@ -181,56 +152,44 @@ func (StreamAlertRuleState) ElementType() reflect.Type {
 }
 
 type streamAlertRuleArgs struct {
-	// Stream alert rule metric critical threshold
-	CriticalThreshold string `pulumi:"criticalThreshold"`
 	// Customer-provided stream alert rule description
 	Description string `pulumi:"description"`
+	// Detection method for stream alert rule
+	DetectionMethod StreamAlertRuleDetectionMethod `pulumi:"detectionMethod"`
 	// Stream alert rule enabled status
 	Enabled *bool `pulumi:"enabled"`
-	// Stream alert rule metric name
-	MetricName string `pulumi:"metricName"`
+	// Metric selector for the stream alert rule
+	MetricSelector StreamAlertRuleMetricSelector `pulumi:"metricSelector"`
 	// Customer-provided stream alert rule name
 	Name *string `pulumi:"name"`
-	// Stream alert rule metric operand
-	Operand string `pulumi:"operand"`
 	// Resource selector for the stream alert rule
-	ResourceSelector *StreamAlertRuleResourceSelector `pulumi:"resourceSelector"`
+	ResourceSelector StreamAlertRuleResourceSelector `pulumi:"resourceSelector"`
 	// The stream UUID that contains this alert rule
 	StreamId string                   `pulumi:"streamId"`
 	Timeouts *StreamAlertRuleTimeouts `pulumi:"timeouts"`
 	// Type of the stream alert rule
 	Type string `pulumi:"type"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold string `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize string `pulumi:"windowSize"`
 }
 
 // The set of arguments for constructing a StreamAlertRule resource.
 type StreamAlertRuleArgs struct {
-	// Stream alert rule metric critical threshold
-	CriticalThreshold pulumi.StringInput
 	// Customer-provided stream alert rule description
 	Description pulumi.StringInput
+	// Detection method for stream alert rule
+	DetectionMethod StreamAlertRuleDetectionMethodInput
 	// Stream alert rule enabled status
 	Enabled pulumi.BoolPtrInput
-	// Stream alert rule metric name
-	MetricName pulumi.StringInput
+	// Metric selector for the stream alert rule
+	MetricSelector StreamAlertRuleMetricSelectorInput
 	// Customer-provided stream alert rule name
 	Name pulumi.StringPtrInput
-	// Stream alert rule metric operand
-	Operand pulumi.StringInput
 	// Resource selector for the stream alert rule
-	ResourceSelector StreamAlertRuleResourceSelectorPtrInput
+	ResourceSelector StreamAlertRuleResourceSelectorInput
 	// The stream UUID that contains this alert rule
 	StreamId pulumi.StringInput
 	Timeouts StreamAlertRuleTimeoutsPtrInput
 	// Type of the stream alert rule
 	Type pulumi.StringInput
-	// Stream alert rule metric warning threshold
-	WarningThreshold pulumi.StringInput
-	// Stream alert rule metric window size
-	WindowSize pulumi.StringInput
 }
 
 func (StreamAlertRuleArgs) ElementType() reflect.Type {
@@ -325,14 +284,14 @@ func (o StreamAlertRuleOutput) ChangeLog() StreamAlertRuleChangeLogOutput {
 	return o.ApplyT(func(v *StreamAlertRule) StreamAlertRuleChangeLogOutput { return v.ChangeLog }).(StreamAlertRuleChangeLogOutput)
 }
 
-// Stream alert rule metric critical threshold
-func (o StreamAlertRuleOutput) CriticalThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.CriticalThreshold }).(pulumi.StringOutput)
-}
-
 // Customer-provided stream alert rule description
 func (o StreamAlertRuleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Detection method for stream alert rule
+func (o StreamAlertRuleOutput) DetectionMethod() StreamAlertRuleDetectionMethodOutput {
+	return o.ApplyT(func(v *StreamAlertRule) StreamAlertRuleDetectionMethodOutput { return v.DetectionMethod }).(StreamAlertRuleDetectionMethodOutput)
 }
 
 // Stream alert rule enabled status
@@ -345,19 +304,14 @@ func (o StreamAlertRuleOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.Href }).(pulumi.StringOutput)
 }
 
-// Stream alert rule metric name
-func (o StreamAlertRuleOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.MetricName }).(pulumi.StringOutput)
+// Metric selector for the stream alert rule
+func (o StreamAlertRuleOutput) MetricSelector() StreamAlertRuleMetricSelectorOutput {
+	return o.ApplyT(func(v *StreamAlertRule) StreamAlertRuleMetricSelectorOutput { return v.MetricSelector }).(StreamAlertRuleMetricSelectorOutput)
 }
 
 // Customer-provided stream alert rule name
 func (o StreamAlertRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric operand
-func (o StreamAlertRuleOutput) Operand() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.Operand }).(pulumi.StringOutput)
 }
 
 // Resource selector for the stream alert rule
@@ -387,16 +341,6 @@ func (o StreamAlertRuleOutput) Type() pulumi.StringOutput {
 // Equinix assigned unique identifier for the stream alert rule
 func (o StreamAlertRuleOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric warning threshold
-func (o StreamAlertRuleOutput) WarningThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.WarningThreshold }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric window size
-func (o StreamAlertRuleOutput) WindowSize() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamAlertRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
 }
 
 type StreamAlertRuleArrayOutput struct{ *pulumi.OutputState }

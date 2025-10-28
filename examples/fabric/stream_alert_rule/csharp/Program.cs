@@ -12,11 +12,20 @@ return await Deployment.RunAsync(() =>
         Type = "METRIC_ALERT",
         Description = "<description>",
         Enabled = true,
-        Operand = "ABOVE",
-        WindowSize = "<window_size>",
-        WarningThreshold = "<warning_threshold>",
-        CriticalThreshold = "<critical_threshold>",
-        MetricName = "equinix.fabric.connection.bandwidth_tx.usage",
+        MetricSelector = new Equinix.Fabric.Inputs.StreamAlertRuleMetricSelectorArgs
+        {
+            Includes = new[]
+            {
+                "equinix.fabric.connection.bandwidth_tx.usage",
+            },
+        },
+        DetectionMethod = new Equinix.Fabric.Inputs.StreamAlertRuleDetectionMethodArgs
+        {
+            Operand = "ABOVE",
+            WindowSize = "<window_size>",
+            WarningThreshold = "<warning_threshold>",
+            CriticalThreshold = "<critical_threshold>",
+        },
         ResourceSelector = new Equinix.Fabric.Inputs.StreamAlertRuleResourceSelectorArgs
         {
             Includes = new[]

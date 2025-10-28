@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
  *
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
  *
@@ -77,7 +77,7 @@ export interface GetGatewayResult {
 /**
  * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
  *
- * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
+ * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
  *

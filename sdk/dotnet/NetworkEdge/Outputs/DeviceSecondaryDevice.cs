@@ -83,6 +83,10 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
+        /// Purchase order number associated with a device order.
+        /// </summary>
+        public readonly string? PurchaseOrderNumber;
+        /// <summary>
         /// Device redundancy type applicable for HA devices, either primary or secondary.
         /// </summary>
         public readonly string? RedundancyType;
@@ -163,6 +167,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             string? projectId,
 
+            string? purchaseOrderNumber,
+
             string? redundancyType,
 
             string? redundantId,
@@ -202,6 +208,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             Name = name;
             Notifications = notifications;
             ProjectId = projectId;
+            PurchaseOrderNumber = purchaseOrderNumber;
             RedundancyType = redundancyType;
             RedundantId = redundantId;
             Region = region;

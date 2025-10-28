@@ -34,6 +34,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly int EquinixAsn;
         /// <summary>
+        /// Number of gateway attachments associated with this Access point
+        /// </summary>
+        public readonly int GatewayAttachmentsCount;
+        /// <summary>
         /// Fabric Cloud Router URI information
         /// </summary>
         public readonly string Href;
@@ -90,6 +94,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             int equinixAsn,
 
+            int gatewayAttachmentsCount,
+
             string href,
 
             ImmutableArray<Outputs.GetCloudRoutersDataLocationResult> locations,
@@ -117,6 +123,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             ConnectionsCount = connectionsCount;
             Description = description;
             EquinixAsn = equinixAsn;
+            GatewayAttachmentsCount = gatewayAttachmentsCount;
             Href = href;
             Locations = locations;
             MarketplaceSubscriptions = marketplaceSubscriptions;

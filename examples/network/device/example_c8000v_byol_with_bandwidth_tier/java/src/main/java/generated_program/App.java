@@ -31,7 +31,7 @@ public class App {
             .typeCode("C8000V")
             .selfManaged(true)
             .byol(true)
-            .packageCode("VM100")
+            .packageCode("network-essentials")
             .notifications(            
                 "john@equinix.com",
                 "marry@equinix.com",

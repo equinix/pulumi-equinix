@@ -130,6 +130,10 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public /*out*/ readonly equinixAsn!: pulumi.Output<number>;
     /**
+     * Number of gateway attachments associated with this Access point
+     */
+    public /*out*/ readonly gatewayAttachmentsCount!: pulumi.Output<number>;
+    /**
      * Fabric Cloud Router URI information
      */
     public readonly href!: pulumi.Output<string>;
@@ -192,6 +196,7 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["connectionsCount"] = state ? state.connectionsCount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["equinixAsn"] = state ? state.equinixAsn : undefined;
+            resourceInputs["gatewayAttachmentsCount"] = state ? state.gatewayAttachmentsCount : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["marketplaceSubscription"] = state ? state.marketplaceSubscription : undefined;
@@ -235,6 +240,7 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["changeLogs"] = undefined /*out*/;
             resourceInputs["connectionsCount"] = undefined /*out*/;
             resourceInputs["equinixAsn"] = undefined /*out*/;
+            resourceInputs["gatewayAttachmentsCount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -266,6 +272,10 @@ export interface CloudRouterState {
      * Equinix ASN
      */
     equinixAsn?: pulumi.Input<number>;
+    /**
+     * Number of gateway attachments associated with this Access point
+     */
+    gatewayAttachmentsCount?: pulumi.Input<number>;
     /**
      * Fabric Cloud Router URI information
      */

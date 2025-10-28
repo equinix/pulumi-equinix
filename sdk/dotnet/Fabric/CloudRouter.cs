@@ -151,6 +151,12 @@ namespace Pulumi.Equinix.Fabric
         public Output<int> EquinixAsn { get; private set; } = null!;
 
         /// <summary>
+        /// Number of gateway attachments associated with this Access point
+        /// </summary>
+        [Output("gatewayAttachmentsCount")]
+        public Output<int> GatewayAttachmentsCount { get; private set; } = null!;
+
+        /// <summary>
         /// Fabric Cloud Router URI information
         /// </summary>
         [Output("href")]
@@ -384,6 +390,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("equinixAsn")]
         public Input<int>? EquinixAsn { get; set; }
+
+        /// <summary>
+        /// Number of gateway attachments associated with this Access point
+        /// </summary>
+        [Input("gatewayAttachmentsCount")]
+        public Input<int>? GatewayAttachmentsCount { get; set; }
 
         /// <summary>
         /// Fabric Cloud Router URI information

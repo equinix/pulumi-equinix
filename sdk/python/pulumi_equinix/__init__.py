@@ -69,6 +69,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/port",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/port:Port": "Port"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/precisionTimeService",
   "fqn": "pulumi_equinix.fabric",
   "classes": {

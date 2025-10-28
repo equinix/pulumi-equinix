@@ -214,6 +214,10 @@ export namespace fabric {
          */
         providerConnectionId?: pulumi.Input<string>;
         /**
+         * Network role
+         */
+        role?: pulumi.Input<string>;
+        /**
          * Cloud Router access point information that replaces `gateway`
          */
         router?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointRouter>;
@@ -753,6 +757,10 @@ export namespace fabric {
          * Provider assigned Connection Id
          */
         providerConnectionId?: pulumi.Input<string>;
+        /**
+         * Network role
+         */
+        role?: pulumi.Input<string>;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -1965,6 +1973,66 @@ export namespace fabric {
         total?: pulumi.Input<number>;
     }
 
+    export interface GetStreamAlertRuleDetectionMethod {
+        /**
+         * Stream alert rule metric critical threshold
+         */
+        criticalThreshold?: string;
+        /**
+         * Stream alert rule metric operand
+         */
+        operand?: string;
+        /**
+         * Stream Alert Rule detection method type
+         */
+        type: string;
+        /**
+         * Stream alert rule metric warning threshold
+         */
+        warningThreshold?: string;
+        /**
+         * Stream alert rule metric window size
+         */
+        windowSize?: string;
+    }
+
+    export interface GetStreamAlertRuleDetectionMethodArgs {
+        /**
+         * Stream alert rule metric critical threshold
+         */
+        criticalThreshold?: pulumi.Input<string>;
+        /**
+         * Stream alert rule metric operand
+         */
+        operand?: pulumi.Input<string>;
+        /**
+         * Stream Alert Rule detection method type
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Stream alert rule metric warning threshold
+         */
+        warningThreshold?: pulumi.Input<string>;
+        /**
+         * Stream alert rule metric window size
+         */
+        windowSize?: pulumi.Input<string>;
+    }
+
+    export interface GetStreamAlertRuleMetricSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: string[];
+    }
+
+    export interface GetStreamAlertRuleMetricSelectorArgs {
+        /**
+         * List of metrics to include
+         */
+        includes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface GetStreamAlertRulesPagination {
         /**
          * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
@@ -2324,6 +2392,303 @@ export namespace fabric {
         projectId: pulumi.Input<string>;
     }
 
+    export interface PortAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName?: pulumi.Input<string>;
+        /**
+         * Account number the port will be created for
+         */
+        accountNumber: pulumi.Input<number>;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId?: pulumi.Input<string>;
+    }
+
+    export interface PortAdditionalInfo {
+        /**
+         * The key name of the key/value pair
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the key/value pair
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface PortChangeLog {
+        /**
+         * User name of creator of the port resource
+         */
+        createdBy?: pulumi.Input<string>;
+        /**
+         * Email of creator of the port resource
+         */
+        createdByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of creator of the port resource
+         */
+        createdByFullName?: pulumi.Input<string>;
+        /**
+         * Creation time of the port resource
+         */
+        createdDateTime?: pulumi.Input<string>;
+        /**
+         * User name of deleter of the port resource
+         */
+        deletedBy?: pulumi.Input<string>;
+        /**
+         * Email of deleter of the port resource
+         */
+        deletedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of deleter of the port resource
+         */
+        deletedByFullName?: pulumi.Input<string>;
+        /**
+         * Deletion time of the port resource
+         */
+        deletedDateTime?: pulumi.Input<string>;
+        /**
+         * User name of last updater of the port resource
+         */
+        updatedBy?: pulumi.Input<string>;
+        /**
+         * Email of last updater of the port resource
+         */
+        updatedByEmail?: pulumi.Input<string>;
+        /**
+         * Legal name of last updater of the port resource
+         */
+        updatedByFullName?: pulumi.Input<string>;
+        /**
+         * Last update time of the port resource
+         */
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface PortDevice {
+        /**
+         * Device name for the port
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Device redundancy configuration
+         */
+        redundancy?: pulumi.Input<inputs.fabric.PortDeviceRedundancy>;
+    }
+
+    export interface PortDeviceRedundancy {
+        /**
+         * Redundancy group identifier
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Redundancy priority (PRIMARY or SECONDARY)
+         */
+        priority?: pulumi.Input<string>;
+    }
+
+    export interface PortEncapsulation {
+        /**
+         * Port encapsulation tag protocol identifier
+         */
+        tagProtocolId: pulumi.Input<string>;
+        /**
+         * Port encapsulation protocol type
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface PortLocation {
+        /**
+         * Metro code the port will be created in
+         */
+        metroCode: pulumi.Input<string>;
+    }
+
+    export interface PortNotification {
+        /**
+         * Array of registered users that will receive this notification type on the port
+         */
+        registeredUsers: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Notification Type
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface PortOrder {
+        /**
+         * Customer order reference Id
+         */
+        customerReferenceId?: pulumi.Input<string>;
+        /**
+         * Order Identification
+         */
+        orderId?: pulumi.Input<string>;
+        /**
+         * Order Reference Number
+         */
+        orderNumber?: pulumi.Input<string>;
+        /**
+         * Purchase order details
+         */
+        purchaseOrder?: pulumi.Input<inputs.fabric.PortOrderPurchaseOrder>;
+        /**
+         * Port order confirmation signature details
+         */
+        signature?: pulumi.Input<inputs.fabric.PortOrderSignature>;
+        /**
+         * Equinix-assigned order identifier, this is a derived response attribute
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface PortOrderPurchaseOrder {
+        /**
+         * purchase order amount
+         */
+        amount?: pulumi.Input<string>;
+        /**
+         * purchase order attachment id
+         */
+        attachmentId?: pulumi.Input<string>;
+        /**
+         * purchase order end date
+         */
+        endDate?: pulumi.Input<string>;
+        /**
+         * purchase order number
+         */
+        number?: pulumi.Input<string>;
+        /**
+         * purchase order start date
+         */
+        startDate?: pulumi.Input<string>;
+        /**
+         * purchase order type
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface PortOrderSignature {
+        /**
+         * delegate order details
+         */
+        delegate: pulumi.Input<inputs.fabric.PortOrderSignatureDelegate>;
+        /**
+         * Port signature Type
+         */
+        signatory: pulumi.Input<string>;
+    }
+
+    export interface PortOrderSignatureDelegate {
+        /**
+         * Email of the signatory
+         */
+        email: pulumi.Input<string>;
+        /**
+         * First name of the signatory
+         */
+        firstName?: pulumi.Input<string>;
+        /**
+         * Last name of the signatory
+         */
+        lastName?: pulumi.Input<string>;
+    }
+
+    export interface PortPhysicalPort {
+        /**
+         * Customer physical port
+         */
+        demarcationPoint: pulumi.Input<inputs.fabric.PortPhysicalPortDemarcationPoint>;
+        /**
+         * Physical port interface
+         */
+        interface?: pulumi.Input<inputs.fabric.PortPhysicalPortInterface>;
+        /**
+         * Physical Port type
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface PortPhysicalPortDemarcationPoint {
+        /**
+         * Port cabinet unique space id
+         */
+        cabinetUniqueSpaceId: pulumi.Input<string>;
+        /**
+         * Port cage unique space id
+         */
+        cageUniqueSpaceId: pulumi.Input<string>;
+        /**
+         * Port connector type
+         */
+        connectorType: pulumi.Input<string>;
+        /**
+         * IBX Metro code for the physical port
+         */
+        ibx: pulumi.Input<string>;
+        /**
+         * Port patch panel
+         */
+        patchPanel: pulumi.Input<string>;
+    }
+
+    export interface PortPhysicalPortInterface {
+        /**
+         * Interface type for the physical port
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface PortProject {
+        /**
+         * Project id the port will be created in
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface PortRedundancy {
+        /**
+         * Port redundancy priority value
+         */
+        priority: pulumi.Input<string>;
+    }
+
+    export interface PortSettings {
+        /**
+         * Billing package for the port being ordered
+         */
+        packageType: pulumi.Input<string>;
+        /**
+         * Indicates whether this is a dedicated customer cage or a shared neutral cage
+         */
+        sharedPortType: pulumi.Input<boolean>;
+    }
+
+    export interface PortTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
     export interface PrecisionTimeServiceAccount {
         /**
          * Account Name
@@ -2475,6 +2840,13 @@ export namespace fabric {
          * md5 Authentication type
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface PrecisionTimeServiceOperation {
+        /**
+         * Current operational status of the Precision Time Service
+         */
+        operationalStatus?: pulumi.Input<string>;
     }
 
     export interface PrecisionTimeServiceOrder {
@@ -4096,6 +4468,36 @@ export namespace fabric {
         updatedDateTime?: pulumi.Input<string>;
     }
 
+    export interface StreamAlertRuleDetectionMethod {
+        /**
+         * Stream alert rule metric critical threshold
+         */
+        criticalThreshold?: pulumi.Input<string>;
+        /**
+         * Stream alert rule metric operand
+         */
+        operand?: pulumi.Input<string>;
+        /**
+         * Stream Alert Rule detection method type
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Stream alert rule metric warning threshold
+         */
+        warningThreshold?: pulumi.Input<string>;
+        /**
+         * Stream alert rule metric window size
+         */
+        windowSize?: pulumi.Input<string>;
+    }
+
+    export interface StreamAlertRuleMetricSelector {
+        /**
+         * List of metrics to include
+         */
+        includes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface StreamAlertRuleResourceSelector {
         /**
          * List of metrics to include
@@ -5160,6 +5562,10 @@ export namespace networkedge {
          * Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
          */
         projectId?: pulumi.Input<string>;
+        /**
+         * Purchase order number associated with a device order.
+         */
+        purchaseOrderNumber?: pulumi.Input<string>;
         /**
          * Device redundancy type applicable for HA devices, either primary or secondary.
          */

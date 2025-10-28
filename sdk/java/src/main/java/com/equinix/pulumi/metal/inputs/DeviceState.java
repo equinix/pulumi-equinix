@@ -375,14 +375,14 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      * 
      */
     @Import(name="plan")
     private @Nullable Output<Either<String,Plan>> plan;
 
     /**
-     * @return The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+     * @return The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
      * 
      */
     public Optional<Output<Either<String,Plan>>> plan() {
@@ -457,14 +457,14 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
      * 
      */
     @Import(name="sosHostname")
     private @Nullable Output<String> sosHostname;
 
     /**
-     * @return The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * @return The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
      * 
      */
     public Optional<Output<String>> sosHostname() {
@@ -1244,7 +1244,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -1255,7 +1255,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -1265,7 +1265,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -1275,7 +1275,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit the [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/)
+         * @param plan The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
          * 
          * @return builder
          * 
@@ -1398,7 +1398,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sosHostname The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+         * @param sosHostname The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
          * 
          * @return builder
          * 
@@ -1409,7 +1409,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sosHostname The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+         * @param sosHostname The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
          * 
          * @return builder
          * 
