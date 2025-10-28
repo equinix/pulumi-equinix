@@ -1,7 +1,7 @@
 {
 	"name": "equinix-network-device-example_infoblox_single_device",
 	"devDependencies": {
-		"@types/node": "^14"
+		"@types/node": "^18"
 	},
 	"dependencies": {
 		"typescript": "^4.0.0",
