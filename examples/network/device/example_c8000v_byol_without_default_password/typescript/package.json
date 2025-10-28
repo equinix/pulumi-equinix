@@ -1,7 +1,7 @@
 {
 	"name": "equinix-network-device-example_c8000v_byol_without_default_password",
 	"devDependencies": {
-		"@types/node": "^14"
+		"@types/node": "^18"
 	},
 	"dependencies": {
 		"typescript": "^4.0.0",
