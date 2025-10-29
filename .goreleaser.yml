@@ -26,7 +26,7 @@ builds:
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
       - -X github.com/equinix/pulumi-equinix/provider/pkg/version.Version={{.Tag }}
-      - -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion|={{.Tag}}
+      - -X github.com/equinix/terraform-provider-equinix/version.ProviderVersion={{.Version}}
     main: ./cmd/pulumi-resource-equinix/
 changelog:
   disable: true
