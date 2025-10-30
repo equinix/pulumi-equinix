@@ -2,10 +2,8 @@ module equinix-network-device-example_c8000v_ha_with_cloud_init_rest_api_support
 
 go 1.22.0
 
-toolchain go1.24.9
-
 require (
-	github.com/equinix/pulumi-equinix/sdk v0.26.0
+	github.com/equinix/pulumi-equinix/sdk latest
 	github.com/pulumi/pulumi/sdk/v3 v3.153.1
 )
 
