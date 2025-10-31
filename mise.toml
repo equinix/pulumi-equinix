@@ -1,0 +1,7 @@
+# Overwrites mise configuration at .config/mise.toml
+[tools]
+dotnet = "6.0"
+java = "corretto-11"
+gradle = "7.6"
+nodejs = "22.13.1"
+python = "3.11.8"
