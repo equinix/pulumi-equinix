@@ -30,3 +30,7 @@ sdk/java/gradlew
 sdk/java/gradlew.bat
 go.work
 go.work.sum
+
+
+# Ignore local build tracking directory
+.make
