@@ -1,0 +1,35 @@
+[[tools."github:pulumi/pulumictl"]]
+version = "0.0.50"
+backend = "github:pulumi/pulumictl"
+
+[[tools."github:pulumi/schema-tools"]]
+version = "0.6.0"
+backend = "github:pulumi/schema-tools"
+
+[[tools.go]]
+version = "1.23.7"
+backend = "core:go"
+
+[[tools.golangci-lint]]
+version = "1.64.8"
+backend = "aqua:golangci/golangci-lint"
+
+[[tools."npm:yarn"]]
+version = "1.22.22"
+backend = "npm:yarn"
+
+[[tools.pulumi]]
+version = "3.153.1"
+backend = "aqua:pulumi/pulumi"
+
+[[tools."vfox-pulumi:pulumi/pulumi-converter-terraform"]]
+version = "1.2.4"
+backend = "vfox-pulumi:pulumi/pulumi-converter-terraform"
+
+[[tools."vfox-pulumi:pulumi/pulumi-random"]]
+version = "4.18.4"
+backend = "vfox-pulumi:pulumi/pulumi-random"
+
+[[tools."vfox-pulumi:pulumi/pulumi-tls"]]
+version = "5.2.2"
+backend = "vfox-pulumi:pulumi/pulumi-tls"
