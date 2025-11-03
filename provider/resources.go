@@ -1878,8 +1878,7 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 		Java: &tfbridge.JavaInfo{
-			BasePackage: "com.equinix",
-			BuildFiles:  "gradle",
+			BasePackage: "com.equinix.pulumi",
 		},
 	}
 
