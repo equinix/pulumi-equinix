@@ -1,6 +1,6 @@
 module equinix-network-device-example_infoblox_cluster_device
 
-go 1.22.0
+go 1.23
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

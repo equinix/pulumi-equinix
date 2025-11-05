@@ -1,6 +1,6 @@
 module equinix-metal-connection-example_metal_billed_metal_to_fabric_port
 
-go 1.22.0
+go 1.23
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
