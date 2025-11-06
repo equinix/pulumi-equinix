@@ -1,0 +1,17 @@
+template: external-bridged-provider
+provider: equinix
+organization: equinix
+upstreamProviderOrg: equinix
+providerDefaultBranch: main
+major-version: 0
+pulumiConvert: 1
+testMasterAndReleaseWorkflows: false
+publish:
+    cdn: false
+registryDocs: true
+publishRegistry: false
+clean-github-workflows: false
+# override default env to avoid bringing in
+# pulumi-internal environment variables
+env:
+    TF_APPEND_USER_AGENT: pulumi

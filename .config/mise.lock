@@ -1,0 +1,33 @@
+[[tools."github:pulumi/pulumictl"]]
+version = "0.0.50"
+backend = "github:pulumi/pulumictl"
+
+[[tools."github:pulumi/schema-tools"]]
+version = "0.6.0"
+backend = "github:pulumi/schema-tools"
+
+[[tools.go]]
+version = "1.23.11"
+backend = "core:go"
+
+[tools.go.platforms.macos-arm64]
+checksum = "sha256:d3c2c69a79eb3e2a06e5d8bbca692c9166b27421f7251ccbafcada0ba35a05ee"
+size = 71665541
+url = "https://dl.google.com/go/go1.23.11.darwin-arm64.tar.gz"
+
+[[tools.golangci-lint]]
+version = "1.64.8"
+backend = "aqua:golangci/golangci-lint"
+
+[[tools."npm:yarn"]]
+version = "1.22.22"
+backend = "npm:yarn"
+
+[[tools.pulumi]]
+version = "3.190.0"
+backend = "aqua:pulumi/pulumi"
+
+[tools.pulumi.platforms.macos-arm64]
+checksum = "sha256:f46926be063eb3b042fe524a3375364da507cb02f34142854a5b1a86aee005ee"
+size = 84664371
+url = "https://github.com/pulumi/pulumi/releases/download/v3.190.0/pulumi-v3.190.0-darwin-arm64.tar.gz"
