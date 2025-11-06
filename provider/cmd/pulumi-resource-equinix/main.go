@@ -21,7 +21,7 @@ import (
 	_ "embed"
 
 	equinix "github.com/equinix/pulumi-equinix/provider"
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 )
 
 //go:embed schema-embed.json
@@ -29,5 +29,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	pf.MainWithMuxer(context.Background(), "equinix", equinix.Provider(), pulumiSchema)
+	tfbridge.MainWithMuxer(context.Background(), "equinix", equinix.Provider(), pulumiSchema)
 }
