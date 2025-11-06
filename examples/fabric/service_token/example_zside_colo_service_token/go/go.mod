@@ -1,6 +1,6 @@
 module equinix-fabric-service_token-example_zside_colo_service_token
 
-go 1.22.0
+go 1.23
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

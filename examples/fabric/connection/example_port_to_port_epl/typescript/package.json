@@ -1,7 +1,7 @@
 {
 	"name": "equinix-fabric-connection-example_port_to_port_epl",
 	"devDependencies": {
-		"@types/node": "^14"
+		"@types/node": "^18"
 	},
 	"dependencies": {
 		"typescript": "^4.0.0",

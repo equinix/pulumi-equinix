@@ -1,6 +1,6 @@
 module equinix-network-device-example_c8000v_byol_without_default_password
 
-go 1.22.0
+go 1.23
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest

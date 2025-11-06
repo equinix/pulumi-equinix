@@ -19,7 +19,6 @@ PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 TFGEN            := pulumi-tfgen-${PACK}
 PROVIDER         := pulumi-resource-${PACK}
-JAVA_GEN         := pulumi-java-gen
 JAVA_GROUP_ID    := com.${ORG}.pulumi
 JAVA_ARTIFACT_ID := ${PACK}
 TESTPARALLELISM  := 4
@@ -57,9 +56,6 @@ build_schema build_schema_post_examples:
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
-
-bin/pulumi-java-gen: .pulumi-java-gen.version $(PULUMICTL_BIN)
-	$(PULUMICTL_BIN) download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
 
 provider: tfgen install_plugins # build the provider binary
 provider: only_provider
@@ -108,8 +104,8 @@ build_go:: upstream
 	go install golang.org/x/tools/cmd/goimports@latest
 	cd sdk && goimports -w . && go list "$$(grep -e "^module" go.mod | cut -d ' ' -f 2)/go/..." | xargs go build
 
-build_java: bin/pulumi-java-gen upstream $(PULUMICTL_BIN)
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/${PROVIDER}/schema.json --out sdk/java --build gradle-nexus
+build_java: upstream
+	$(WORKING_DIR)/bin/$(TFGEN) java --out sdk/java
 	cd sdk/java/ && \
 		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		gradle --console=plain build && \

@@ -5,7 +5,6 @@
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const aSide = equinix.fabric.getPortsOutput({
     filter: {
@@ -296,12 +295,12 @@ import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.FabricFunctions;
 import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
 import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
-import com.pulumi.equinix.metal.Vlan;
-import com.pulumi.equinix.metal.VlanArgs;
-import com.pulumi.equinix.metal.Interconnection;
-import com.pulumi.equinix.metal.InterconnectionArgs;
-import com.pulumi.equinix.fabric.Connection;
-import com.pulumi.equinix.fabric.ConnectionArgs;
+import com.equinix.pulumi.equinix.metal.Vlan;
+import com.equinix.pulumi.equinix.metal.VlanArgs;
+import com.equinix.pulumi.equinix.metal.Interconnection;
+import com.equinix.pulumi.equinix.metal.InterconnectionArgs;
+import com.equinix.pulumi.equinix.fabric.Connection;
+import com.equinix.pulumi.equinix.fabric.ConnectionArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
@@ -677,12 +676,12 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Vlan;
-import com.pulumi.equinix.metal.VlanArgs;
-import com.pulumi.equinix.metal.Interconnection;
-import com.pulumi.equinix.metal.InterconnectionArgs;
-import com.pulumi.equinix.fabric.Connection;
-import com.pulumi.equinix.fabric.ConnectionArgs;
+import com.equinix.pulumi.equinix.metal.Vlan;
+import com.equinix.pulumi.equinix.metal.VlanArgs;
+import com.equinix.pulumi.equinix.metal.Interconnection;
+import com.equinix.pulumi.equinix.metal.InterconnectionArgs;
+import com.equinix.pulumi.equinix.fabric.Connection;
+import com.equinix.pulumi.equinix.fabric.ConnectionArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
@@ -1066,12 +1065,12 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Vrf;
-import com.pulumi.equinix.metal.VrfArgs;
-import com.pulumi.equinix.metal.Interconnection;
-import com.pulumi.equinix.metal.InterconnectionArgs;
-import com.pulumi.equinix.fabric.Connection;
-import com.pulumi.equinix.fabric.ConnectionArgs;
+import com.equinix.pulumi.equinix.metal.Vrf;
+import com.equinix.pulumi.equinix.metal.VrfArgs;
+import com.equinix.pulumi.equinix.metal.Interconnection;
+import com.equinix.pulumi.equinix.metal.InterconnectionArgs;
+import com.equinix.pulumi.equinix.fabric.Connection;
+import com.equinix.pulumi.equinix.fabric.ConnectionArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
@@ -1203,7 +1202,6 @@ resources:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const aSide = equinix.fabric.getPortsOutput({
     filter: {
@@ -1465,10 +1463,10 @@ import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.FabricFunctions;
 import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
 import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
-import com.pulumi.equinix.metal.Interconnection;
-import com.pulumi.equinix.metal.InterconnectionArgs;
-import com.pulumi.equinix.fabric.Connection;
-import com.pulumi.equinix.fabric.ConnectionArgs;
+import com.equinix.pulumi.equinix.metal.Interconnection;
+import com.equinix.pulumi.equinix.metal.InterconnectionArgs;
+import com.equinix.pulumi.equinix.fabric.Connection;
+import com.equinix.pulumi.equinix.fabric.ConnectionArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionProjectArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;

@@ -1,7 +1,7 @@
 {
 	"name": "equinix-network-device-example_aruba_edgeconnect_ha_device_wth_purchase_order",
 	"devDependencies": {
-		"@types/node": "^14"
+		"@types/node": "^18"
 	},
 	"dependencies": {
 		"typescript": "^4.0.0",

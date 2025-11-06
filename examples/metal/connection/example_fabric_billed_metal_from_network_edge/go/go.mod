@@ -1,6 +1,6 @@
 module equinix-metal-connection-example_fabric_billed_metal_from_network_edge
 
-go 1.22.0
+go 1.23
 
 require (
 	github.com/equinix/pulumi-equinix/sdk latest
