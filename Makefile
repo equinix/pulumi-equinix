@@ -108,49 +108,12 @@ build_go:: upstream
 	go install golang.org/x/tools/cmd/goimports@latest
 	cd sdk && goimports -w . && go list "$$(grep -e "^module" go.mod | cut -d ' ' -f 2)/go/..." | xargs go build
 
-build_java: bin/pulumi-java-gen patch_java_schema upstream $(PULUMICTL_BIN)
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
-	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
-	echo "patch_java: find and replace invocations of pulumi:fabric/metal/networkedge" && \
-		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java" -print -exec sed -i.bak 's/pulumi:fabric/equinix:fabric/g; s/pulumi:metal/equinix:metal/g; s/pulumi:networkedge/equinix:networkedge/g' {} \;
-	echo "patch_java: remove backup files" && \
-		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java.bak" -exec /bin/rm {} \;
-	echo "patch_java: replace pulumi provider refs added in patch_java_schema" && \
-		cd sdk/java/src/main/java/com/equinix/pulumi/ && \
-		sed -i.bak -e 's/pulumi:providers:pulumi/pulumi:providers:equinix/g' \
-			-e 's/"pulumi", name/"equinix", name/g' ./Provider.java && \
-		rm -f Provider.java.bak && \
-		sed -i.bak -e 's/"pulumi"/"equinix"/g' ./Config.java && \
-		rm -f Config.java.bak && \
-		sed -i.bak -e 's/pulumi\/pulumi/equinix\/pulumi/g' ./Utilities.java && \
-		rm -f Utilities.java.bak
-	echo "patch_java: update gradle info" && \
-		cd ./sdk/java/ && \
-		awk '/def resolvedVersion/ && !x {print "group = \"$(JAVA_GROUP_ID)\"\n";x=1}1' ./build.gradle > ./build.gradle.tmp && \
-		mv build.gradle.tmp build.gradle && \
-		sed -i.bak -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' \
-			-e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' \
-			-e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' \
-			-e 's/inceptionYear = .*/inceptionYear = "2023"/g' \
-			-e 's/description = .*/description = "A Pulumi package for creating and managing equinix cloud resources."/g' ./build.gradle && \
-		sed -i.bak -E '/inceptionYear/,/packaging/s/(name = ).*/\1"$(PACK)"/' ./build.gradle && \
-		rm -f build.gradle.bak
+build_java: bin/pulumi-java-gen upstream $(PULUMICTL_BIN)
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/${PROVIDER}/schema.json --out sdk/java --build gradle-nexus
 	cd sdk/java/ && \
 		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		gradle --console=plain build && \
 		gradle --console=plain javadoc
-
-patch_java_schema:
-	echo "patch_java_schema: copy schema.json to schema-java.json " && \
-		cp provider/cmd/$(PROVIDER)/schema.json provider/cmd/$(PROVIDER)/schema-java.json
-	echo "patch_java_schema: update schema-java.json to generate the SDK with pulumi as root package" && \
-		sed -i.bak -e 's/"name": "equinix",/"name": "pulumi",/g' \
-			-e 's/equinix:index/pulumi:index/g' \
-			-e 's/"equinix": "Equinix",/"pulumi": "Pulumi",/g' \
-			-e 's/equinix:metal/pulumi:metal/g' \
-			-e 's/equinix:fabric/pulumi:fabric/g' \
-			-e 's/equinix:networkedge/pulumi:networkedge/g' ./provider/cmd/$(PROVIDER)/schema-java.json && \
-		rm -f ./provider/cmd/$(PROVIDER)/schema-java.json.bak
 
 lint_provider: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml

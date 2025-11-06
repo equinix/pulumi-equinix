@@ -8,8 +8,6 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
 }
 
-group = "com.equinix"
-
 group = "com.equinix.pulumi"
 
 def resolvedVersion = System.getenv("PACKAGE_VERSION") ?:
@@ -71,7 +69,7 @@ def genPulumiResources = tasks.register('genPulumiResources') {
         def builder = new groovy.json.JsonBuilder()
         builder {
             resource true
-            name "pulumi"
+            name "equinix"
             server "github://api.github.com/equinix"
             version resolvedVersion
         }
@@ -95,8 +93,8 @@ publishing {
             artifact javadocJar
 
             pom {
-                inceptionYear = "2023"
-                name = "equinix"
+                inceptionYear = ""
+                name = ""
                 packaging = "jar"
                 description = "A Pulumi package for creating and managing equinix cloud resources."
 
