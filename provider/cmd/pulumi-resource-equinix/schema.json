@@ -37,8 +37,8 @@
             "generateExtraInputTypes": true
         },
         "java": {
-            "basePackage": "com.equinix",
-            "buildFiles": "gradle",
+            "basePackage": "com.equinix.pulumi",
+            "buildFiles": "",
             "gradleNexusPublishPluginVersion": "",
             "gradleTest": ""
         },
