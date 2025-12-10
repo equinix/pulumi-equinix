@@ -5,7 +5,6 @@
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const dc = equinix.networkedge.getAccountOutput({
     metroCode: "DC",
@@ -208,8 +207,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -318,7 +317,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -537,8 +535,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
@@ -653,7 +651,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 import * as std from "@pulumi/std";
 
 const config = new pulumi.Config();
@@ -701,7 +698,7 @@ sv = equinix.networkedge.get_account_output(metro_code="SV")
 aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
     file_name="TF-AVX-cloud-init-file.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
-    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+    metro_code=sv.metro_code,
     device_type_code="AVIATRIX_EDGE_10",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
@@ -848,12 +845,12 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.NetworkFile;
-import com.pulumi.equinix.networkedge.NetworkFileArgs;
+import com.equinix.pulumi.equinix.networkedge.NetworkFile;
+import com.equinix.pulumi.equinix.networkedge.NetworkFileArgs;
 import com.pulumi.std.StdFunctions;
 import com.pulumi.std.inputs.FileArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -959,7 +956,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
@@ -1113,8 +1109,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -1200,7 +1196,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
@@ -1358,8 +1353,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -1447,7 +1442,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
@@ -1667,10 +1661,10 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.SshKey;
-import com.pulumi.equinix.networkedge.SshKeyArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.SshKey;
+import com.equinix.pulumi.equinix.networkedge.SshKeyArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
@@ -1786,7 +1780,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
@@ -2052,10 +2045,10 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.SshKey;
-import com.pulumi.equinix.networkedge.SshKeyArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.SshKey;
+import com.equinix.pulumi.equinix.networkedge.SshKeyArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
@@ -2191,7 +2184,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 import * as std from "@pulumi/std";
 
 const sv = equinix.networkedge.getAccountOutput({
@@ -2253,7 +2245,7 @@ sv = equinix.networkedge.get_account_output(name="account-name",
 bluecat_edge_service_point_cloudinit_primary_file = equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile",
     file_name="TF-BLUECAT-ESP-cloud-init-file.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
-    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+    metro_code=sv.metro_code,
     device_type_code="BLUECAT-EDGE-SERVICE-POINT",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
@@ -2261,7 +2253,7 @@ bluecat_edge_service_point_cloudinit_primary_file = equinix.networkedge.NetworkF
 bluecat_edge_service_point_cloudinit_secondary_file = equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile",
     file_name="TF-BLUECAT-ESP-cloud-init-file.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
-    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+    metro_code=sv.metro_code,
     device_type_code="BLUECAT-EDGE-SERVICE-POINT",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
@@ -2465,12 +2457,12 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.NetworkFile;
-import com.pulumi.equinix.networkedge.NetworkFileArgs;
+import com.equinix.pulumi.equinix.networkedge.NetworkFile;
+import com.equinix.pulumi.equinix.networkedge.NetworkFileArgs;
 import com.pulumi.std.StdFunctions;
 import com.pulumi.std.inputs.FileArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -2615,7 +2607,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -2850,8 +2841,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
@@ -2975,7 +2966,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 import * as std from "@pulumi/std";
 
 const config = new pulumi.Config();
@@ -3023,7 +3013,7 @@ sv = equinix.networkedge.get_account_output(metro_code="SV")
 aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
     file_name="TF-AVX-cloud-init-file.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
-    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+    metro_code=sv.metro_code,
     device_type_code="AVIATRIX_TRANSIT_EDGE",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
@@ -3170,12 +3160,12 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.NetworkFile;
-import com.pulumi.equinix.networkedge.NetworkFileArgs;
+import com.equinix.pulumi.equinix.networkedge.NetworkFile;
+import com.equinix.pulumi.equinix.networkedge.NetworkFileArgs;
 import com.pulumi.std.StdFunctions;
 import com.pulumi.std.inputs.FileArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -3280,7 +3270,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -3501,8 +3490,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -3614,7 +3603,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -3843,8 +3831,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -3960,7 +3948,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -4122,8 +4109,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -4211,7 +4198,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -4373,8 +4359,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -4462,7 +4448,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -4620,8 +4605,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -4707,7 +4692,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -4945,8 +4929,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
@@ -5060,7 +5044,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -5210,8 +5193,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -5294,7 +5277,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -5500,8 +5482,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
@@ -5611,7 +5593,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -5773,8 +5754,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -5861,7 +5842,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -6011,8 +5991,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -6094,7 +6074,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -6300,8 +6279,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
 import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
@@ -6410,7 +6389,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -6619,8 +6597,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -6726,7 +6704,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -6876,8 +6853,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -6959,7 +6936,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -7184,8 +7160,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -7299,7 +7275,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -7491,8 +7466,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
 import java.util.List;
@@ -7592,7 +7567,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -7767,8 +7741,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
@@ -7861,7 +7835,6 @@ variables:
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
@@ -8036,8 +8009,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
 import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.equinix.pulumi.equinix.networkedge.Device;
+import com.equinix.pulumi.equinix.networkedge.DeviceArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;

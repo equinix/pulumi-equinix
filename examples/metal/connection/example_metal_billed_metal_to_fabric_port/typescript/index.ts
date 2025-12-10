@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const aSide = equinix.fabric.getPortsOutput({
     filter: {
