@@ -3,7 +3,6 @@
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
 const connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
@@ -121,10 +120,10 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.metal.MetalFunctions;
 import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
-import com.pulumi.equinix.metal.Vlan;
-import com.pulumi.equinix.metal.VlanArgs;
-import com.pulumi.equinix.metal.VirtualCircuit;
-import com.pulumi.equinix.metal.VirtualCircuitArgs;
+import com.equinix.pulumi.equinix.metal.Vlan;
+import com.equinix.pulumi.equinix.metal.VlanArgs;
+import com.equinix.pulumi.equinix.metal.VirtualCircuit;
+import com.equinix.pulumi.equinix.metal.VirtualCircuitArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;

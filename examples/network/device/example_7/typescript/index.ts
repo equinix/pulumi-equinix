@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",

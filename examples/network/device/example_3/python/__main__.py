@@ -10,7 +10,7 @@ sv = equinix.networkedge.get_account_output(metro_code="SV")
 aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
     file_name="TF-AVX-cloud-init-file.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
-    metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),
+    metro_code=sv.metro_code,
     device_type_code="AVIATRIX_EDGE_10",
     process_type=equinix.networkedge.FileType.CLOUD_INIT,
     self_managed=True,
