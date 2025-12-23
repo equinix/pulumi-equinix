@@ -3,7 +3,7 @@ name: equinix-fabric-precision_time_service
 runtime: yaml
 resources:
   ptp:
-    type: equinix:fabric:PrecisionTimeService
+    type: equinix:fabricPrecisionTimeService
     properties:
       type: PTP
       name: tf_acc_eptptp_PFCR

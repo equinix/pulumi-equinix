@@ -3,7 +3,7 @@ name: equinix-fabric-stream_alert_rule
 runtime: yaml
 resources:
   newStreamAlertRule:
-    type: equinix:fabric:StreamAlertRule
+    type: equinix:fabricStreamAlertRule
     name: new_stream_alert_rule
     properties:
       streamId: <stream_id>
@@ -12,7 +12,7 @@ resources:
       description: <description>
       enabled: true
       metricSelector:
-        includes:
+        include:
           - equinix.fabric.connection.bandwidth_tx.usage
       detectionMethod:
         operand: ABOVE
@@ -20,7 +20,7 @@ resources:
         warningThreshold: <warning_threshold>
         criticalThreshold: <critical_threshold>
       resourceSelector:
-        includes:
+        include:
           - '*/connections/<connection_id>'
 outputs:
   streamAlertRuleType: ${newStreamAlertRule.type}
