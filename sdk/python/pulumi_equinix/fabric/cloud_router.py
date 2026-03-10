@@ -221,7 +221,6 @@ class _CloudRouterState:
                  connections_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  equinix_asn: Optional[pulumi.Input[int]] = None,
-                 gateway_attachments_count: Optional[pulumi.Input[int]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input['CloudRouterLocationArgs']] = None,
                  marketplace_subscription: Optional[pulumi.Input['CloudRouterMarketplaceSubscriptionArgs']] = None,
@@ -240,7 +239,6 @@ class _CloudRouterState:
         :param pulumi.Input[int] connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[int] equinix_asn: Equinix ASN
-        :param pulumi.Input[int] gateway_attachments_count: Number of gateway attachments associated with this Access point
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
         :param pulumi.Input['CloudRouterMarketplaceSubscriptionArgs'] marketplace_subscription: Equinix Fabric Entity for Marketplace Subscription
@@ -263,8 +261,6 @@ class _CloudRouterState:
             pulumi.set(__self__, "description", description)
         if equinix_asn is not None:
             pulumi.set(__self__, "equinix_asn", equinix_asn)
-        if gateway_attachments_count is not None:
-            pulumi.set(__self__, "gateway_attachments_count", gateway_attachments_count)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if location is not None:
@@ -347,18 +343,6 @@ class _CloudRouterState:
     @equinix_asn.setter
     def equinix_asn(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "equinix_asn", value)
-
-    @property
-    @pulumi.getter(name="gatewayAttachmentsCount")
-    def gateway_attachments_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of gateway attachments associated with this Access point
-        """
-        return pulumi.get(self, "gateway_attachments_count")
-
-    @gateway_attachments_count.setter
-    def gateway_attachments_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "gateway_attachments_count", value)
 
     @property
     @pulumi.getter
@@ -550,38 +534,6 @@ class CloudRouter(pulumi.CustomResource):
                 "account_number": 203612,
             })
         ```
-        ### example 2
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
-            name="Router-SV",
-            type="XF_ROUTER",
-            notifications=[{
-                "type": "ALL",
-                "emails": [
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            }],
-            order={
-                "purchase_order_number": "1-323292",
-            },
-            location={
-                "metro_code": "SV",
-            },
-            package={
-                "code": "STANDARD",
-            },
-            project={
-                "project_id": "776847000642406",
-            },
-            marketplace_subscription={
-                "type": "AWS_MARKETPLACE_SUBSCRIPTION",
-                "uuid": "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -641,38 +593,6 @@ class CloudRouter(pulumi.CustomResource):
             },
             account={
                 "account_number": 203612,
-            })
-        ```
-        ### example 2
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
-            name="Router-SV",
-            type="XF_ROUTER",
-            notifications=[{
-                "type": "ALL",
-                "emails": [
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            }],
-            order={
-                "purchase_order_number": "1-323292",
-            },
-            location={
-                "metro_code": "SV",
-            },
-            package={
-                "code": "STANDARD",
-            },
-            project={
-                "project_id": "776847000642406",
-            },
-            marketplace_subscription={
-                "type": "AWS_MARKETPLACE_SUBSCRIPTION",
-                "uuid": "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
             })
         ```
 
@@ -737,7 +657,6 @@ class CloudRouter(pulumi.CustomResource):
             __props__.__dict__["change_logs"] = None
             __props__.__dict__["connections_count"] = None
             __props__.__dict__["equinix_asn"] = None
-            __props__.__dict__["gateway_attachments_count"] = None
             __props__.__dict__["state"] = None
         super(CloudRouter, __self__).__init__(
             'equinix:fabric/cloudRouter:CloudRouter',
@@ -754,7 +673,6 @@ class CloudRouter(pulumi.CustomResource):
             connections_count: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             equinix_asn: Optional[pulumi.Input[int]] = None,
-            gateway_attachments_count: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']]] = None,
             marketplace_subscription: Optional[pulumi.Input[Union['CloudRouterMarketplaceSubscriptionArgs', 'CloudRouterMarketplaceSubscriptionArgsDict']]] = None,
@@ -778,7 +696,6 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[int] connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[int] equinix_asn: Equinix ASN
-        :param pulumi.Input[int] gateway_attachments_count: Number of gateway attachments associated with this Access point
         :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input[Union['CloudRouterLocationArgs', 'CloudRouterLocationArgsDict']] location: Fabric Cloud Router location
         :param pulumi.Input[Union['CloudRouterMarketplaceSubscriptionArgs', 'CloudRouterMarketplaceSubscriptionArgsDict']] marketplace_subscription: Equinix Fabric Entity for Marketplace Subscription
@@ -800,7 +717,6 @@ class CloudRouter(pulumi.CustomResource):
         __props__.__dict__["connections_count"] = connections_count
         __props__.__dict__["description"] = description
         __props__.__dict__["equinix_asn"] = equinix_asn
-        __props__.__dict__["gateway_attachments_count"] = gateway_attachments_count
         __props__.__dict__["href"] = href
         __props__.__dict__["location"] = location
         __props__.__dict__["marketplace_subscription"] = marketplace_subscription
@@ -853,14 +769,6 @@ class CloudRouter(pulumi.CustomResource):
         Equinix ASN
         """
         return pulumi.get(self, "equinix_asn")
-
-    @property
-    @pulumi.getter(name="gatewayAttachmentsCount")
-    def gateway_attachments_count(self) -> pulumi.Output[int]:
-        """
-        Number of gateway attachments associated with this Access point
-        """
-        return pulumi.get(self, "gateway_attachments_count")
 
     @property
     @pulumi.getter

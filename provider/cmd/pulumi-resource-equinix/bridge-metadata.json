@@ -47,6 +47,7 @@
             "equinix:networkedge/sshUser:SshUser": 0
         },
         "functions": {
+            "equinix:fabric/getAdvertisedRoutes:getAdvertisedRoutes": 1,
             "equinix:fabric/getCloudRouter:getCloudRouter": 0,
             "equinix:fabric/getCloudRouters:getCloudRouters": 0,
             "equinix:fabric/getConnection:getConnection": 0,
@@ -64,6 +65,7 @@
             "equinix:fabric/getPorts:getPorts": 0,
             "equinix:fabric/getPrecisionTimeService:getPrecisionTimeService": 1,
             "equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices": 1,
+            "equinix:fabric/getReceivedRoutes:getReceivedRoutes": 1,
             "equinix:fabric/getRouteAggregation:getRouteAggregation": 1,
             "equinix:fabric/getRouteAggregationRule:getRouteAggregationRule": 1,
             "equinix:fabric/getRouteAggregationRules:getRouteAggregationRules": 1,

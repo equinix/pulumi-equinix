@@ -58,6 +58,10 @@ export interface GetMetroResult {
      */
     readonly connectedMetros: outputs.fabric.GetMetroConnectedMetro[];
     /**
+     * Country in which the data center is located
+     */
+    readonly country: string;
+    /**
      * Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
      */
     readonly equinixAsn: number;

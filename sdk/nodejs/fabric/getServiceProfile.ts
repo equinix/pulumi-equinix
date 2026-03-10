@@ -126,7 +126,7 @@ export interface GetServiceProfileResult {
      */
     readonly tags: string[];
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
      */
     readonly type: string;
     /**

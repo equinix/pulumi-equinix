@@ -101,6 +101,19 @@ Object.defineProperty(exports, "responseMaxPageSize", {
 });
 
 /**
+ * The STS API base URL to point to the desired environment. This argument can also be specified with the
+ * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+ * an alpha feature and not available for all users.
+ */
+export declare const stsEndpoint: string | undefined;
+Object.defineProperty(exports, "stsEndpoint", {
+    get() {
+        return __config.get("stsEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * API tokens are generated from API Consumer clients using the [OAuth2
  * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
  * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
@@ -109,6 +122,46 @@ export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {
         return __config.get("token");
+    },
+    enumerable: true,
+});
+
+/**
+ * The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
+ * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+ * token exchange is an alpha feature and not available for all users.
+ */
+export declare const tokenExchangeScope: string | undefined;
+Object.defineProperty(exports, "tokenExchangeScope", {
+    get() {
+        return __config.get("tokenExchangeScope");
+    },
+    enumerable: true,
+});
+
+/**
+ * The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+ * by Equinix STS. If not set, the provider will use the environment variable specified in
+ * `tokenExchangeSubjectTokenEnvVar`. Please note that token exchange is an alpha feature and not available for all users.
+ */
+export declare const tokenExchangeSubjectToken: string | undefined;
+Object.defineProperty(exports, "tokenExchangeSubjectToken", {
+    get() {
+        return __config.get("tokenExchangeSubjectToken");
+    },
+    enumerable: true,
+});
+
+/**
+ * The name of the environment variable containing the subject token for token exchange. This argument can also be
+ * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+ * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+ * users.
+ */
+export declare const tokenExchangeSubjectTokenEnvVar: string | undefined;
+Object.defineProperty(exports, "tokenExchangeSubjectTokenEnvVar", {
+    get() {
+        return __config.get("tokenExchangeSubjectTokenEnvVar");
     },
     enumerable: true,
 });

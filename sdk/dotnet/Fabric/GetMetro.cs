@@ -156,6 +156,10 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMetroConnectedMetroResult> ConnectedMetros;
         /// <summary>
+        /// Country in which the data center is located
+        /// </summary>
+        public readonly string Country;
+        /// <summary>
         /// Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
         /// </summary>
         public readonly int EquinixAsn;
@@ -202,6 +206,8 @@ namespace Pulumi.Equinix.Fabric
 
             ImmutableArray<Outputs.GetMetroConnectedMetroResult> connectedMetros,
 
+            string country,
+
             int equinixAsn,
 
             Outputs.GetMetroGeoCoordinatesResult geoCoordinates,
@@ -224,6 +230,7 @@ namespace Pulumi.Equinix.Fabric
         {
             Code = code;
             ConnectedMetros = connectedMetros;
+            Country = country;
             EquinixAsn = equinixAsn;
             GeoCoordinates = geoCoordinates;
             GeoScopes = geoScopes;

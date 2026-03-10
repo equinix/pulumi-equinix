@@ -58,6 +58,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly Outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult? LinkProtocolConfig;
         /// <summary>
+        /// Optional redundant connections
+        /// </summary>
+        public readonly bool? SelectiveRedundancy;
+        /// <summary>
         /// Supported bandwidths
         /// </summary>
         public readonly ImmutableArray<int> SupportedBandwidths;
@@ -94,6 +98,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             Outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult? linkProtocolConfig,
 
+            bool? selectiveRedundancy,
+
             ImmutableArray<int> supportedBandwidths,
 
             string type,
@@ -111,6 +117,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             ConnectionRedundancyRequired = connectionRedundancyRequired;
             EnableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
             LinkProtocolConfig = linkProtocolConfig;
+            SelectiveRedundancy = selectiveRedundancy;
             SupportedBandwidths = supportedBandwidths;
             Type = type;
             Uuid = uuid;

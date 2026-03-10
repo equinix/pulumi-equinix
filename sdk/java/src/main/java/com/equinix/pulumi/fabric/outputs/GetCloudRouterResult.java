@@ -46,11 +46,6 @@ public final class GetCloudRouterResult {
      */
     private Integer equinixAsn;
     /**
-     * @return Number of gateway attachments associated with this Access point
-     * 
-     */
-    private Integer gatewayAttachmentsCount;
-    /**
      * @return Fabric Cloud Router URI information
      * 
      */
@@ -146,13 +141,6 @@ public final class GetCloudRouterResult {
      */
     public Integer equinixAsn() {
         return this.equinixAsn;
-    }
-    /**
-     * @return Number of gateway attachments associated with this Access point
-     * 
-     */
-    public Integer gatewayAttachmentsCount() {
-        return this.gatewayAttachmentsCount;
     }
     /**
      * @return Fabric Cloud Router URI information
@@ -253,7 +241,6 @@ public final class GetCloudRouterResult {
         private Integer connectionsCount;
         private String description;
         private Integer equinixAsn;
-        private Integer gatewayAttachmentsCount;
         private String href;
         private String id;
         private List<GetCloudRouterLocation> locations;
@@ -274,7 +261,6 @@ public final class GetCloudRouterResult {
     	      this.connectionsCount = defaults.connectionsCount;
     	      this.description = defaults.description;
     	      this.equinixAsn = defaults.equinixAsn;
-    	      this.gatewayAttachmentsCount = defaults.gatewayAttachmentsCount;
     	      this.href = defaults.href;
     	      this.id = defaults.id;
     	      this.locations = defaults.locations;
@@ -333,14 +319,6 @@ public final class GetCloudRouterResult {
               throw new MissingRequiredPropertyException("GetCloudRouterResult", "equinixAsn");
             }
             this.equinixAsn = equinixAsn;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder gatewayAttachmentsCount(Integer gatewayAttachmentsCount) {
-            if (gatewayAttachmentsCount == null) {
-              throw new MissingRequiredPropertyException("GetCloudRouterResult", "gatewayAttachmentsCount");
-            }
-            this.gatewayAttachmentsCount = gatewayAttachmentsCount;
             return this;
         }
         @CustomType.Setter
@@ -464,7 +442,6 @@ public final class GetCloudRouterResult {
             _resultValue.connectionsCount = connectionsCount;
             _resultValue.description = description;
             _resultValue.equinixAsn = equinixAsn;
-            _resultValue.gatewayAttachmentsCount = gatewayAttachmentsCount;
             _resultValue.href = href;
             _resultValue.id = id;
             _resultValue.locations = locations;
