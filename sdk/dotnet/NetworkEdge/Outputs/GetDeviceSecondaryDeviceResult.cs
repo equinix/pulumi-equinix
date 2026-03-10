@@ -140,7 +140,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string Uuid;
         /// <summary>
-        /// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+        /// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, managementInterfaceId, ipAddressType)
         /// </summary>
         public readonly ImmutableDictionary<string, string> VendorConfiguration;
         /// <summary>

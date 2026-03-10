@@ -27,7 +27,11 @@ class ProviderArgs:
                  max_retry_wait_seconds: Optional[pulumi.Input[int]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  response_max_page_size: Optional[pulumi.Input[int]] = None,
-                 token: Optional[pulumi.Input[str]] = None):
+                 sts_endpoint: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 token_exchange_scope: Optional[pulumi.Input[str]] = None,
+                 token_exchange_subject_token: Optional[pulumi.Input[str]] = None,
+                 token_exchange_subject_token_env_var: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] auth_token: The Equinix Metal API auth key for API operations
@@ -43,9 +47,23 @@ class ProviderArgs:
                Canceled requests may still result in provisioned resources. (Defaults to `30`)
         :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
                specific)
+        :param pulumi.Input[str] sts_endpoint: The STS API base URL to point to the desired environment. This argument can also be specified with the
+               `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+               an alpha feature and not available for all users.
         :param pulumi.Input[str] token: API tokens are generated from API Consumer clients using the [OAuth2
                API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
                This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+        :param pulumi.Input[str] token_exchange_scope: The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
+               This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+               token exchange is an alpha feature and not available for all users.
+        :param pulumi.Input[str] token_exchange_subject_token: The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+               by Equinix STS. If not set, the provider will use the environment variable specified in
+               `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+               users.
+        :param pulumi.Input[str] token_exchange_subject_token_env_var: The name of the environment variable containing the subject token for token exchange. This argument can also be
+               specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+               `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+               users.
         """
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
@@ -63,8 +81,16 @@ class ProviderArgs:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if response_max_page_size is not None:
             pulumi.set(__self__, "response_max_page_size", response_max_page_size)
+        if sts_endpoint is not None:
+            pulumi.set(__self__, "sts_endpoint", sts_endpoint)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if token_exchange_scope is not None:
+            pulumi.set(__self__, "token_exchange_scope", token_exchange_scope)
+        if token_exchange_subject_token is not None:
+            pulumi.set(__self__, "token_exchange_subject_token", token_exchange_subject_token)
+        if token_exchange_subject_token_env_var is not None:
+            pulumi.set(__self__, "token_exchange_subject_token_env_var", token_exchange_subject_token_env_var)
 
     @property
     @pulumi.getter(name="authToken")
@@ -168,6 +194,20 @@ class ProviderArgs:
         pulumi.set(self, "response_max_page_size", value)
 
     @property
+    @pulumi.getter(name="stsEndpoint")
+    def sts_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The STS API base URL to point to the desired environment. This argument can also be specified with the
+        `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+        an alpha feature and not available for all users.
+        """
+        return pulumi.get(self, "sts_endpoint")
+
+    @sts_endpoint.setter
+    def sts_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sts_endpoint", value)
+
+    @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
@@ -180,6 +220,50 @@ class ProviderArgs:
     @token.setter
     def token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="tokenExchangeScope")
+    def token_exchange_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
+        This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+        token exchange is an alpha feature and not available for all users.
+        """
+        return pulumi.get(self, "token_exchange_scope")
+
+    @token_exchange_scope.setter
+    def token_exchange_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_exchange_scope", value)
+
+    @property
+    @pulumi.getter(name="tokenExchangeSubjectToken")
+    def token_exchange_subject_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+        by Equinix STS. If not set, the provider will use the environment variable specified in
+        `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+        users.
+        """
+        return pulumi.get(self, "token_exchange_subject_token")
+
+    @token_exchange_subject_token.setter
+    def token_exchange_subject_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_exchange_subject_token", value)
+
+    @property
+    @pulumi.getter(name="tokenExchangeSubjectTokenEnvVar")
+    def token_exchange_subject_token_env_var(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the environment variable containing the subject token for token exchange. This argument can also be
+        specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+        `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+        users.
+        """
+        return pulumi.get(self, "token_exchange_subject_token_env_var")
+
+    @token_exchange_subject_token_env_var.setter
+    def token_exchange_subject_token_env_var(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_exchange_subject_token_env_var", value)
 
 
 class Provider(pulumi.ProviderResource):
@@ -195,7 +279,11 @@ class Provider(pulumi.ProviderResource):
                  max_retry_wait_seconds: Optional[pulumi.Input[int]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  response_max_page_size: Optional[pulumi.Input[int]] = None,
+                 sts_endpoint: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
+                 token_exchange_scope: Optional[pulumi.Input[str]] = None,
+                 token_exchange_subject_token: Optional[pulumi.Input[str]] = None,
+                 token_exchange_subject_token_env_var: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the equinix package. By default, resources use package-wide configuration
@@ -218,9 +306,23 @@ class Provider(pulumi.ProviderResource):
                Canceled requests may still result in provisioned resources. (Defaults to `30`)
         :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
                specific)
+        :param pulumi.Input[str] sts_endpoint: The STS API base URL to point to the desired environment. This argument can also be specified with the
+               `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+               an alpha feature and not available for all users.
         :param pulumi.Input[str] token: API tokens are generated from API Consumer clients using the [OAuth2
                API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
                This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+        :param pulumi.Input[str] token_exchange_scope: The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
+               This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+               token exchange is an alpha feature and not available for all users.
+        :param pulumi.Input[str] token_exchange_subject_token: The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+               by Equinix STS. If not set, the provider will use the environment variable specified in
+               `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+               users.
+        :param pulumi.Input[str] token_exchange_subject_token_env_var: The name of the environment variable containing the subject token for token exchange. This argument can also be
+               specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+               `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+               users.
         """
         ...
     @overload
@@ -257,7 +359,11 @@ class Provider(pulumi.ProviderResource):
                  max_retry_wait_seconds: Optional[pulumi.Input[int]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  response_max_page_size: Optional[pulumi.Input[int]] = None,
+                 sts_endpoint: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
+                 token_exchange_scope: Optional[pulumi.Input[str]] = None,
+                 token_exchange_subject_token: Optional[pulumi.Input[str]] = None,
+                 token_exchange_subject_token_env_var: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -275,7 +381,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["max_retry_wait_seconds"] = pulumi.Output.from_input(max_retry_wait_seconds).apply(pulumi.runtime.to_json) if max_retry_wait_seconds is not None else None
             __props__.__dict__["request_timeout"] = pulumi.Output.from_input(request_timeout).apply(pulumi.runtime.to_json) if request_timeout is not None else None
             __props__.__dict__["response_max_page_size"] = pulumi.Output.from_input(response_max_page_size).apply(pulumi.runtime.to_json) if response_max_page_size is not None else None
+            __props__.__dict__["sts_endpoint"] = sts_endpoint
             __props__.__dict__["token"] = token
+            __props__.__dict__["token_exchange_scope"] = token_exchange_scope
+            __props__.__dict__["token_exchange_subject_token"] = token_exchange_subject_token
+            __props__.__dict__["token_exchange_subject_token_env_var"] = token_exchange_subject_token_env_var
         super(Provider, __self__).__init__(
             'equinix',
             resource_name,
@@ -318,6 +428,16 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "endpoint")
 
     @property
+    @pulumi.getter(name="stsEndpoint")
+    def sts_endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        The STS API base URL to point to the desired environment. This argument can also be specified with the
+        `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+        an alpha feature and not available for all users.
+        """
+        return pulumi.get(self, "sts_endpoint")
+
+    @property
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         """
@@ -326,4 +446,36 @@ class Provider(pulumi.ProviderResource):
         This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         """
         return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="tokenExchangeScope")
+    def token_exchange_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
+        This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+        token exchange is an alpha feature and not available for all users.
+        """
+        return pulumi.get(self, "token_exchange_scope")
+
+    @property
+    @pulumi.getter(name="tokenExchangeSubjectToken")
+    def token_exchange_subject_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+        by Equinix STS. If not set, the provider will use the environment variable specified in
+        `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+        users.
+        """
+        return pulumi.get(self, "token_exchange_subject_token")
+
+    @property
+    @pulumi.getter(name="tokenExchangeSubjectTokenEnvVar")
+    def token_exchange_subject_token_env_var(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the environment variable containing the subject token for token exchange. This argument can also be
+        specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+        `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+        users.
+        """
+        return pulumi.get(self, "token_exchange_subject_token_env_var")
 

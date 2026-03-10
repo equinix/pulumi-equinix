@@ -6,8 +6,10 @@ package com.equinix.pulumi.fabric.inputs;
 import com.equinix.pulumi.fabric.inputs.GetPortsFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,24 +17,48 @@ public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetPortsArgs Empty = new GetPortsArgs();
 
     /**
-     * name
+     * (Deprecated) Use &#39;filter&#39; instead.
+     * 
+     * @deprecated
+     * Use &#39;filter&#39; instead.
      * 
      */
-    @Import(name="filter", required=true)
-    private Output<GetPortsFilterArgs> filter;
+    @Deprecated /* Use 'filter' instead. */
+    @Import(name="filter")
+    private @Nullable Output<GetPortsFilterArgs> filter;
 
     /**
-     * @return name
+     * @return (Deprecated) Use &#39;filter&#39; instead.
+     * 
+     * @deprecated
+     * Use &#39;filter&#39; instead.
      * 
      */
-    public Output<GetPortsFilterArgs> filter() {
-        return this.filter;
+    @Deprecated /* Use 'filter' instead. */
+    public Optional<Output<GetPortsFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
+     * List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<List<GetPortsFilterArgs>> filters;
+
+    /**
+     * @return List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+     * 
+     */
+    public Optional<Output<List<GetPortsFilterArgs>>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     private GetPortsArgs() {}
 
     private GetPortsArgs(GetPortsArgs $) {
         this.filter = $.filter;
+        this.filters = $.filters;
     }
 
     public static Builder builder() {
@@ -54,30 +80,66 @@ public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filter name
+         * @param filter (Deprecated) Use &#39;filter&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use &#39;filter&#39; instead.
+         * 
          */
-        public Builder filter(Output<GetPortsFilterArgs> filter) {
+        @Deprecated /* Use 'filter' instead. */
+        public Builder filter(@Nullable Output<GetPortsFilterArgs> filter) {
             $.filter = filter;
             return this;
         }
 
         /**
-         * @param filter name
+         * @param filter (Deprecated) Use &#39;filter&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use &#39;filter&#39; instead.
+         * 
          */
+        @Deprecated /* Use 'filter' instead. */
         public Builder filter(GetPortsFilterArgs filter) {
             return filter(Output.of(filter));
         }
 
+        /**
+         * @param filters List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<List<GetPortsFilterArgs>> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(List<GetPortsFilterArgs> filters) {
+            return filters(Output.of(filters));
+        }
+
+        /**
+         * @param filters List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(GetPortsFilterArgs... filters) {
+            return filters(List.of(filters));
+        }
+
         public GetPortsArgs build() {
-            if ($.filter == null) {
-                throw new MissingRequiredPropertyException("GetPortsArgs", "filter");
-            }
             return $;
         }
     }

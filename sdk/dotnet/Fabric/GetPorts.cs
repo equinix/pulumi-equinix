@@ -12,7 +12,7 @@ namespace Pulumi.Equinix.Fabric
     public static class GetPorts
     {
         /// <summary>
-        /// Fabric V4 API compatible data resource that allow user to fetch port by name
+        /// Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
         /// 
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -56,11 +56,11 @@ namespace Pulumi.Equinix.Fabric
         /// });
         /// ```
         /// </summary>
-        public static Task<GetPortsResult> InvokeAsync(GetPortsArgs args, InvokeOptions? options = null)
+        public static Task<GetPortsResult> InvokeAsync(GetPortsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Fabric V4 API compatible data resource that allow user to fetch port by name
+        /// Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
         /// 
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -104,11 +104,11 @@ namespace Pulumi.Equinix.Fabric
         /// });
         /// ```
         /// </summary>
-        public static Output<GetPortsResult> Invoke(GetPortsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetPortsResult> Invoke(GetPortsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Fabric V4 API compatible data resource that allow user to fetch port by name
+        /// Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
         /// 
         /// Additional documentation:
         /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -160,10 +160,22 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetPortsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// name
+        /// (Deprecated) Use 'filter' instead.
         /// </summary>
-        [Input("filter", required: true)]
-        public Inputs.GetPortsFilterArgs Filter { get; set; } = null!;
+        [Input("filter")]
+        public Inputs.GetPortsFilterArgs? Filter { get; set; }
+
+        [Input("filters")]
+        private List<Inputs.GetPortsFilterArgs>? _filters;
+
+        /// <summary>
+        /// List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+        /// </summary>
+        public List<Inputs.GetPortsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new List<Inputs.GetPortsFilterArgs>());
+            set => _filters = value;
+        }
 
         public GetPortsArgs()
         {
@@ -174,10 +186,22 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetPortsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// name
+        /// (Deprecated) Use 'filter' instead.
         /// </summary>
-        [Input("filter", required: true)]
-        public Input<Inputs.GetPortsFilterInputArgs> Filter { get; set; } = null!;
+        [Input("filter")]
+        public Input<Inputs.GetPortsFilterInputArgs>? Filter { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetPortsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+        /// </summary>
+        public InputList<Inputs.GetPortsFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetPortsFilterInputArgs>());
+            set => _filters = value;
+        }
 
         public GetPortsInvokeArgs()
         {
@@ -194,9 +218,13 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumResult> Data;
         /// <summary>
-        /// name
+        /// (Deprecated) Use 'filter' instead.
         /// </summary>
-        public readonly Outputs.GetPortsFilterResult Filter;
+        public readonly Outputs.GetPortsFilterResult? Filter;
+        /// <summary>
+        /// List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetPortsFilterResult> Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -206,12 +234,15 @@ namespace Pulumi.Equinix.Fabric
         private GetPortsResult(
             ImmutableArray<Outputs.GetPortsDatumResult> data,
 
-            Outputs.GetPortsFilterResult filter,
+            Outputs.GetPortsFilterResult? filter,
+
+            ImmutableArray<Outputs.GetPortsFilterResult> filters,
 
             string id)
         {
             Data = data;
             Filter = filter;
+            Filters = filters;
             Id = id;
         }
     }

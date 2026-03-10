@@ -78,7 +78,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+        /// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE, IX_PROFILE
         /// </summary>
         public readonly string Type;
         /// <summary>

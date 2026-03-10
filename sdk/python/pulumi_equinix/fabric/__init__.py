@@ -10,6 +10,7 @@ from .cloud_router import *
 from .connection import *
 from .connection_route_aggregation import *
 from .connection_route_filter import *
+from .get_advertised_routes import *
 from .get_cloud_router import *
 from .get_cloud_routers import *
 from .get_connection import *
@@ -27,6 +28,7 @@ from .get_port import *
 from .get_ports import *
 from .get_precision_time_service import *
 from .get_precision_time_services import *
+from .get_received_routes import *
 from .get_route_aggregation import *
 from .get_route_aggregation_rule import *
 from .get_route_aggregation_rules import *

@@ -167,7 +167,7 @@ public final class GetDeviceSecondaryDevice {
      */
     private String uuid;
     /**
-     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, managementInterfaceId, ipAddressType)
      * 
      */
     private Map<String,String> vendorConfiguration;
@@ -385,7 +385,7 @@ public final class GetDeviceSecondaryDevice {
         return this.uuid;
     }
     /**
-     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, managementInterfaceId, ipAddressType)
      * 
      */
     public Map<String,String> vendorConfiguration() {
