@@ -240,7 +240,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         public readonly string Type;
         /// <summary>

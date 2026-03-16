@@ -117,18 +117,6 @@ namespace Pulumi.Equinix
             set => _responseMaxPageSize.Set(value);
         }
 
-        private static readonly __Value<string?> _stsEndpoint = new __Value<string?>(() => __config.Get("stsEndpoint"));
-        /// <summary>
-        /// The STS API base URL to point to the desired environment. This argument can also be specified with the
-        /// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-        /// an alpha feature and not available for all users.
-        /// </summary>
-        public static string? StsEndpoint
-        {
-            get => _stsEndpoint.Get();
-            set => _stsEndpoint.Set(value);
-        }
-
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
         /// API tokens are generated from API Consumer clients using the [OAuth2
@@ -139,44 +127,6 @@ namespace Pulumi.Equinix
         {
             get => _token.Get();
             set => _token.Set(value);
-        }
-
-        private static readonly __Value<string?> _tokenExchangeScope = new __Value<string?>(() => __config.Get("tokenExchangeScope"));
-        /// <summary>
-        /// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
-        /// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-        /// token exchange is an alpha feature and not available for all users.
-        /// </summary>
-        public static string? TokenExchangeScope
-        {
-            get => _tokenExchangeScope.Get();
-            set => _tokenExchangeScope.Set(value);
-        }
-
-        private static readonly __Value<string?> _tokenExchangeSubjectToken = new __Value<string?>(() => __config.Get("tokenExchangeSubjectToken"));
-        /// <summary>
-        /// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-        /// by Equinix STS. If not set, the provider will use the environment variable specified in
-        /// `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
-        /// users.
-        /// </summary>
-        public static string? TokenExchangeSubjectToken
-        {
-            get => _tokenExchangeSubjectToken.Get();
-            set => _tokenExchangeSubjectToken.Set(value);
-        }
-
-        private static readonly __Value<string?> _tokenExchangeSubjectTokenEnvVar = new __Value<string?>(() => __config.Get("tokenExchangeSubjectTokenEnvVar"));
-        /// <summary>
-        /// The name of the environment variable containing the subject token for token exchange. This argument can also be
-        /// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-        /// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-        /// users.
-        /// </summary>
-        public static string? TokenExchangeSubjectTokenEnvVar
-        {
-            get => _tokenExchangeSubjectTokenEnvVar.Get();
-            set => _tokenExchangeSubjectTokenEnvVar.Set(value);
         }
 
     }

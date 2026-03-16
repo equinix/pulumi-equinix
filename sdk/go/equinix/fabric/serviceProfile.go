@@ -114,7 +114,7 @@ type ServiceProfile struct {
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Tags attached to the connection
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -194,7 +194,7 @@ type serviceProfileState struct {
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type *string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid *string `pulumi:"uuid"`
@@ -239,7 +239,7 @@ type ServiceProfileState struct {
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringPtrInput
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringPtrInput
@@ -282,7 +282,7 @@ type serviceProfileArgs struct {
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint *string `pulumi:"viewPoint"`
@@ -320,7 +320,7 @@ type ServiceProfileArgs struct {
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 	Type pulumi.StringInput
 	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint pulumi.StringPtrInput
@@ -499,7 +499,7 @@ func (o ServiceProfileOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
 func (o ServiceProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

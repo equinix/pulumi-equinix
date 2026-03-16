@@ -27,7 +27,7 @@ class GetCloudRouterResult:
     """
     A collection of values returned by getCloudRouter.
     """
-    def __init__(__self__, accounts=None, change_logs=None, connections_count=None, description=None, equinix_asn=None, href=None, id=None, locations=None, marketplace_subscriptions=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
+    def __init__(__self__, accounts=None, change_logs=None, connections_count=None, description=None, equinix_asn=None, gateway_attachments_count=None, href=None, id=None, locations=None, marketplace_subscriptions=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
@@ -43,6 +43,9 @@ class GetCloudRouterResult:
         if equinix_asn and not isinstance(equinix_asn, int):
             raise TypeError("Expected argument 'equinix_asn' to be a int")
         pulumi.set(__self__, "equinix_asn", equinix_asn)
+        if gateway_attachments_count and not isinstance(gateway_attachments_count, int):
+            raise TypeError("Expected argument 'gateway_attachments_count' to be a int")
+        pulumi.set(__self__, "gateway_attachments_count", gateway_attachments_count)
         if href and not isinstance(href, str):
             raise TypeError("Expected argument 'href' to be a str")
         pulumi.set(__self__, "href", href)
@@ -119,6 +122,14 @@ class GetCloudRouterResult:
         Equinix ASN
         """
         return pulumi.get(self, "equinix_asn")
+
+    @property
+    @pulumi.getter(name="gatewayAttachmentsCount")
+    def gateway_attachments_count(self) -> int:
+        """
+        Number of gateway attachments associated with this Access point
+        """
+        return pulumi.get(self, "gateway_attachments_count")
 
     @property
     @pulumi.getter
@@ -228,6 +239,7 @@ class AwaitableGetCloudRouterResult(GetCloudRouterResult):
             connections_count=self.connections_count,
             description=self.description,
             equinix_asn=self.equinix_asn,
+            gateway_attachments_count=self.gateway_attachments_count,
             href=self.href,
             id=self.id,
             locations=self.locations,
@@ -284,6 +296,7 @@ def get_cloud_router(uuid: Optional[str] = None,
         connections_count=pulumi.get(__ret__, 'connections_count'),
         description=pulumi.get(__ret__, 'description'),
         equinix_asn=pulumi.get(__ret__, 'equinix_asn'),
+        gateway_attachments_count=pulumi.get(__ret__, 'gateway_attachments_count'),
         href=pulumi.get(__ret__, 'href'),
         id=pulumi.get(__ret__, 'id'),
         locations=pulumi.get(__ret__, 'locations'),
@@ -337,6 +350,7 @@ def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
         connections_count=pulumi.get(__response__, 'connections_count'),
         description=pulumi.get(__response__, 'description'),
         equinix_asn=pulumi.get(__response__, 'equinix_asn'),
+        gateway_attachments_count=pulumi.get(__response__, 'gateway_attachments_count'),
         href=pulumi.get(__response__, 'href'),
         id=pulumi.get(__response__, 'id'),
         locations=pulumi.get(__response__, 'locations'),

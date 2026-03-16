@@ -243,6 +243,10 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly int EquinixAsn;
         /// <summary>
+        /// Number of gateway attachments associated with this Access point
+        /// </summary>
+        public readonly int GatewayAttachmentsCount;
+        /// <summary>
         /// Fabric Cloud Router URI information
         /// </summary>
         public readonly string Href;
@@ -303,6 +307,8 @@ namespace Pulumi.Equinix.Fabric
 
             int equinixAsn,
 
+            int gatewayAttachmentsCount,
+
             string href,
 
             string id,
@@ -332,6 +338,7 @@ namespace Pulumi.Equinix.Fabric
             ConnectionsCount = connectionsCount;
             Description = description;
             EquinixAsn = equinixAsn;
+            GatewayAttachmentsCount = gatewayAttachmentsCount;
             Href = href;
             Id = id;
             Locations = locations;

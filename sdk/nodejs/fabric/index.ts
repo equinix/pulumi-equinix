@@ -25,11 +25,6 @@ export type ConnectionRouteFilter = import("./connectionRouteFilter").Connection
 export const ConnectionRouteFilter: typeof import("./connectionRouteFilter").ConnectionRouteFilter = null as any;
 utilities.lazyLoad(exports, ["ConnectionRouteFilter"], () => require("./connectionRouteFilter"));
 
-export { GetAdvertisedRoutesArgs, GetAdvertisedRoutesResult, GetAdvertisedRoutesOutputArgs } from "./getAdvertisedRoutes";
-export const getAdvertisedRoutes: typeof import("./getAdvertisedRoutes").getAdvertisedRoutes = null as any;
-export const getAdvertisedRoutesOutput: typeof import("./getAdvertisedRoutes").getAdvertisedRoutesOutput = null as any;
-utilities.lazyLoad(exports, ["getAdvertisedRoutes","getAdvertisedRoutesOutput"], () => require("./getAdvertisedRoutes"));
-
 export { GetCloudRouterArgs, GetCloudRouterResult, GetCloudRouterOutputArgs } from "./getCloudRouter";
 export const getCloudRouter: typeof import("./getCloudRouter").getCloudRouter = null as any;
 export const getCloudRouterOutput: typeof import("./getCloudRouter").getCloudRouterOutput = null as any;
@@ -114,11 +109,6 @@ export { GetPrecisionTimeServicesArgs, GetPrecisionTimeServicesResult, GetPrecis
 export const getPrecisionTimeServices: typeof import("./getPrecisionTimeServices").getPrecisionTimeServices = null as any;
 export const getPrecisionTimeServicesOutput: typeof import("./getPrecisionTimeServices").getPrecisionTimeServicesOutput = null as any;
 utilities.lazyLoad(exports, ["getPrecisionTimeServices","getPrecisionTimeServicesOutput"], () => require("./getPrecisionTimeServices"));
-
-export { GetReceivedRoutesArgs, GetReceivedRoutesResult, GetReceivedRoutesOutputArgs } from "./getReceivedRoutes";
-export const getReceivedRoutes: typeof import("./getReceivedRoutes").getReceivedRoutes = null as any;
-export const getReceivedRoutesOutput: typeof import("./getReceivedRoutes").getReceivedRoutesOutput = null as any;
-utilities.lazyLoad(exports, ["getReceivedRoutes","getReceivedRoutesOutput"], () => require("./getReceivedRoutes"));
 
 export { GetRouteAggregationArgs, GetRouteAggregationResult, GetRouteAggregationOutputArgs } from "./getRouteAggregation";
 export const getRouteAggregation: typeof import("./getRouteAggregation").getRouteAggregation = null as any;

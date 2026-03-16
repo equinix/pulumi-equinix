@@ -29,27 +29,10 @@ type Provider struct {
 	// The Equinix API base URL to point out desired environment. This argument can also be specified with the
 	// `EQUINIX_API_ENDPOINT` shell environment variable. (Defaults to `https://api.equinix.com`)
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
-	// The STS API base URL to point to the desired environment. This argument can also be specified with the
-	// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-	// an alpha feature and not available for all users.
-	StsEndpoint pulumi.StringPtrOutput `pulumi:"stsEndpoint"`
 	// API tokens are generated from API Consumer clients using the [OAuth2
 	// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
 	// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
-	// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
-	// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-	// token exchange is an alpha feature and not available for all users.
-	TokenExchangeScope pulumi.StringPtrOutput `pulumi:"tokenExchangeScope"`
-	// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-	// by Equinix STS. If not set, the provider will use the environment variable specified in
-	// `tokenExchangeSubjectTokenEnvVar`. Please note that token exchange is an alpha feature and not available for all users.
-	TokenExchangeSubjectToken pulumi.StringPtrOutput `pulumi:"tokenExchangeSubjectToken"`
-	// The name of the environment variable containing the subject token for token exchange. This argument can also be
-	// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-	// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-	// users.
-	TokenExchangeSubjectTokenEnvVar pulumi.StringPtrOutput `pulumi:"tokenExchangeSubjectTokenEnvVar"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -90,27 +73,10 @@ type providerArgs struct {
 	// The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
 	// specific)
 	ResponseMaxPageSize *int `pulumi:"responseMaxPageSize"`
-	// The STS API base URL to point to the desired environment. This argument can also be specified with the
-	// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-	// an alpha feature and not available for all users.
-	StsEndpoint *string `pulumi:"stsEndpoint"`
 	// API tokens are generated from API Consumer clients using the [OAuth2
 	// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
 	// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
 	Token *string `pulumi:"token"`
-	// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
-	// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-	// token exchange is an alpha feature and not available for all users.
-	TokenExchangeScope *string `pulumi:"tokenExchangeScope"`
-	// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-	// by Equinix STS. If not set, the provider will use the environment variable specified in
-	// `tokenExchangeSubjectTokenEnvVar`. Please note that token exchange is an alpha feature and not available for all users.
-	TokenExchangeSubjectToken *string `pulumi:"tokenExchangeSubjectToken"`
-	// The name of the environment variable containing the subject token for token exchange. This argument can also be
-	// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-	// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-	// users.
-	TokenExchangeSubjectTokenEnvVar *string `pulumi:"tokenExchangeSubjectTokenEnvVar"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -136,27 +102,10 @@ type ProviderArgs struct {
 	// The maximum number of records in a single response for REST queries that produce paginated responses. (Default is client
 	// specific)
 	ResponseMaxPageSize pulumi.IntPtrInput
-	// The STS API base URL to point to the desired environment. This argument can also be specified with the
-	// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-	// an alpha feature and not available for all users.
-	StsEndpoint pulumi.StringPtrInput
 	// API tokens are generated from API Consumer clients using the [OAuth2
 	// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
 	// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
 	Token pulumi.StringPtrInput
-	// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
-	// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-	// token exchange is an alpha feature and not available for all users.
-	TokenExchangeScope pulumi.StringPtrInput
-	// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-	// by Equinix STS. If not set, the provider will use the environment variable specified in
-	// `tokenExchangeSubjectTokenEnvVar`. Please note that token exchange is an alpha feature and not available for all users.
-	TokenExchangeSubjectToken pulumi.StringPtrInput
-	// The name of the environment variable containing the subject token for token exchange. This argument can also be
-	// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-	// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-	// users.
-	TokenExchangeSubjectTokenEnvVar pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -219,40 +168,11 @@ func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The STS API base URL to point to the desired environment. This argument can also be specified with the
-// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-// an alpha feature and not available for all users.
-func (o ProviderOutput) StsEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StsEndpoint }).(pulumi.StringPtrOutput)
-}
-
 // API tokens are generated from API Consumer clients using the [OAuth2
 // API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
 // This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
 func (o ProviderOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
-}
-
-// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
-// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-// token exchange is an alpha feature and not available for all users.
-func (o ProviderOutput) TokenExchangeScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenExchangeScope }).(pulumi.StringPtrOutput)
-}
-
-// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-// by Equinix STS. If not set, the provider will use the environment variable specified in
-// `tokenExchangeSubjectTokenEnvVar`. Please note that token exchange is an alpha feature and not available for all users.
-func (o ProviderOutput) TokenExchangeSubjectToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenExchangeSubjectToken }).(pulumi.StringPtrOutput)
-}
-
-// The name of the environment variable containing the subject token for token exchange. This argument can also be
-// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-// users.
-func (o ProviderOutput) TokenExchangeSubjectTokenEnvVar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenExchangeSubjectTokenEnvVar }).(pulumi.StringPtrOutput)
 }
 
 func init() {

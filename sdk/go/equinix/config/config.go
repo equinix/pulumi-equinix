@@ -56,38 +56,9 @@ func GetResponseMaxPageSize(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "equinix:responseMaxPageSize")
 }
 
-// The STS API base URL to point to the desired environment. This argument can also be specified with the
-// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-// an alpha feature and not available for all users.
-func GetStsEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "equinix:stsEndpoint")
-}
-
 // API tokens are generated from API Consumer clients using the [OAuth2
 // API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
 // This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "equinix:token")
-}
-
-// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
-// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-// token exchange is an alpha feature and not available for all users.
-func GetTokenExchangeScope(ctx *pulumi.Context) string {
-	return config.Get(ctx, "equinix:tokenExchangeScope")
-}
-
-// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-// by Equinix STS. If not set, the provider will use the environment variable specified in
-// `tokenExchangeSubjectTokenEnvVar`. Please note that token exchange is an alpha feature and not available for all users.
-func GetTokenExchangeSubjectToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "equinix:tokenExchangeSubjectToken")
-}
-
-// The name of the environment variable containing the subject token for token exchange. This argument can also be
-// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-// users.
-func GetTokenExchangeSubjectTokenEnvVar(ctx *pulumi.Context) string {
-	return config.Get(ctx, "equinix:tokenExchangeSubjectTokenEnvVar")
 }

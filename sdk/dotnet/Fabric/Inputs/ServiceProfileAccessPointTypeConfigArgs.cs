@@ -78,12 +78,6 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("linkProtocolConfig")]
         public Input<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>? LinkProtocolConfig { get; set; }
 
-        /// <summary>
-        /// Optional redundant connections
-        /// </summary>
-        [Input("selectiveRedundancy")]
-        public Input<bool>? SelectiveRedundancy { get; set; }
-
         [Input("supportedBandwidths")]
         private InputList<int>? _supportedBandwidths;
 

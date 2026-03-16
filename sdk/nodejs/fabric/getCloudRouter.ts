@@ -77,6 +77,10 @@ export interface GetCloudRouterResult {
      */
     readonly equinixAsn: number;
     /**
+     * Number of gateway attachments associated with this Access point
+     */
+    readonly gatewayAttachmentsCount: number;
+    /**
      * Fabric Cloud Router URI information
      */
     readonly href: string;

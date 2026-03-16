@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPortsResult {
@@ -21,19 +19,10 @@ public final class GetPortsResult {
      */
     private List<GetPortsDatum> data;
     /**
-     * @return (Deprecated) Use &#39;filter&#39; instead.
-     * 
-     * @deprecated
-     * Use &#39;filter&#39; instead.
+     * @return name
      * 
      */
-    @Deprecated /* Use 'filter' instead. */
-    private @Nullable GetPortsFilter filter;
-    /**
-     * @return List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-     * 
-     */
-    private @Nullable List<GetPortsFilter> filters;
+    private GetPortsFilter filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -49,22 +38,11 @@ public final class GetPortsResult {
         return this.data;
     }
     /**
-     * @return (Deprecated) Use &#39;filter&#39; instead.
-     * 
-     * @deprecated
-     * Use &#39;filter&#39; instead.
+     * @return name
      * 
      */
-    @Deprecated /* Use 'filter' instead. */
-    public Optional<GetPortsFilter> filter() {
-        return Optional.ofNullable(this.filter);
-    }
-    /**
-     * @return List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-     * 
-     */
-    public List<GetPortsFilter> filters() {
-        return this.filters == null ? List.of() : this.filters;
+    public GetPortsFilter filter() {
+        return this.filter;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -84,15 +62,13 @@ public final class GetPortsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPortsDatum> data;
-        private @Nullable GetPortsFilter filter;
-        private @Nullable List<GetPortsFilter> filters;
+        private GetPortsFilter filter;
         private String id;
         public Builder() {}
         public Builder(GetPortsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.data = defaults.data;
     	      this.filter = defaults.filter;
-    	      this.filters = defaults.filters;
     	      this.id = defaults.id;
         }
 
@@ -108,19 +84,12 @@ public final class GetPortsResult {
             return data(List.of(data));
         }
         @CustomType.Setter
-        public Builder filter(@Nullable GetPortsFilter filter) {
-
+        public Builder filter(GetPortsFilter filter) {
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("GetPortsResult", "filter");
+            }
             this.filter = filter;
             return this;
-        }
-        @CustomType.Setter
-        public Builder filters(@Nullable List<GetPortsFilter> filters) {
-
-            this.filters = filters;
-            return this;
-        }
-        public Builder filters(GetPortsFilter... filters) {
-            return filters(List.of(filters));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -134,7 +103,6 @@ public final class GetPortsResult {
             final var _resultValue = new GetPortsResult();
             _resultValue.data = data;
             _resultValue.filter = filter;
-            _resultValue.filters = filters;
             _resultValue.id = id;
             return _resultValue;
         }
