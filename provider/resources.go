@@ -26,7 +26,7 @@ import (
 
 	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
-	pftfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -82,7 +82,7 @@ func makeEquinixToken(moduleTitle, res string) string {
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
 // for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
+func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 	return nil
 }
 
@@ -90,8 +90,11 @@ func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	upstreamProvider := equinixShim.NewUpstreamProvider(version.Version)
-	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider)
-	p := pftfbridge.MuxShimWithDisjointgPF(context.Background(), v2p, upstreamProvider.PluginFrameworkProvider)
+	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider,
+		shimv2.WithDiffStrategy(shimv2.PlanState),
+		shimv2.WithPlanResourceChange(func(s string) bool { return true }),
+	)
+	p := pfbridge.MuxShimWithDisjointgPF(context.Background(), v2p, upstreamProvider.PluginFrameworkProvider)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
