@@ -46,46 +46,12 @@ namespace Pulumi.Equinix
         public Output<string?> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The STS API base URL to point to the desired environment. This argument can also be specified with the
-        /// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-        /// an alpha feature and not available for all users.
-        /// </summary>
-        [Output("stsEndpoint")]
-        public Output<string?> StsEndpoint { get; private set; } = null!;
-
-        /// <summary>
         /// API tokens are generated from API Consumer clients using the [OAuth2
         /// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
         /// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
-
-        /// <summary>
-        /// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
-        /// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-        /// token exchange is an alpha feature and not available for all users.
-        /// </summary>
-        [Output("tokenExchangeScope")]
-        public Output<string?> TokenExchangeScope { get; private set; } = null!;
-
-        /// <summary>
-        /// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-        /// by Equinix STS. If not set, the provider will use the environment variable specified in
-        /// `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
-        /// users.
-        /// </summary>
-        [Output("tokenExchangeSubjectToken")]
-        public Output<string?> TokenExchangeSubjectToken { get; private set; } = null!;
-
-        /// <summary>
-        /// The name of the environment variable containing the subject token for token exchange. This argument can also be
-        /// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-        /// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-        /// users.
-        /// </summary>
-        [Output("tokenExchangeSubjectTokenEnvVar")]
-        public Output<string?> TokenExchangeSubjectTokenEnvVar { get; private set; } = null!;
 
 
         /// <summary>
@@ -170,46 +136,12 @@ namespace Pulumi.Equinix
         public Input<int>? ResponseMaxPageSize { get; set; }
 
         /// <summary>
-        /// The STS API base URL to point to the desired environment. This argument can also be specified with the
-        /// `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
-        /// an alpha feature and not available for all users.
-        /// </summary>
-        [Input("stsEndpoint")]
-        public Input<string>? StsEndpoint { get; set; }
-
-        /// <summary>
         /// API tokens are generated from API Consumer clients using the [OAuth2
         /// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
         /// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
-
-        /// <summary>
-        /// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
-        /// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
-        /// token exchange is an alpha feature and not available for all users.
-        /// </summary>
-        [Input("tokenExchangeScope")]
-        public Input<string>? TokenExchangeScope { get; set; }
-
-        /// <summary>
-        /// The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
-        /// by Equinix STS. If not set, the provider will use the environment variable specified in
-        /// `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
-        /// users.
-        /// </summary>
-        [Input("tokenExchangeSubjectToken")]
-        public Input<string>? TokenExchangeSubjectToken { get; set; }
-
-        /// <summary>
-        /// The name of the environment variable containing the subject token for token exchange. This argument can also be
-        /// specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
-        /// `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
-        /// users.
-        /// </summary>
-        [Input("tokenExchangeSubjectTokenEnvVar")]
-        public Input<string>? TokenExchangeSubjectTokenEnvVar { get; set; }
 
         public ProviderArgs()
         {

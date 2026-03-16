@@ -28,16 +28,13 @@ class GetPortsResult:
     """
     A collection of values returned by getPorts.
     """
-    def __init__(__self__, data=None, filter=None, filters=None, id=None):
+    def __init__(__self__, data=None, filter=None, id=None):
         if data and not isinstance(data, list):
             raise TypeError("Expected argument 'data' to be a list")
         pulumi.set(__self__, "data", data)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
-        if filters and not isinstance(filters, list):
-            raise TypeError("Expected argument 'filters' to be a list")
-        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,20 +49,11 @@ class GetPortsResult:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Use 'filter' instead.""")
-    def filter(self) -> Optional['outputs.GetPortsFilterResult']:
+    def filter(self) -> 'outputs.GetPortsFilterResult':
         """
-        (Deprecated) Use 'filter' instead.
+        name
         """
         return pulumi.get(self, "filter")
-
-    @property
-    @pulumi.getter
-    def filters(self) -> Optional[Sequence['outputs.GetPortsFilterResult']]:
-        """
-        List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-        """
-        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
@@ -84,15 +72,13 @@ class AwaitableGetPortsResult(GetPortsResult):
         return GetPortsResult(
             data=self.data,
             filter=self.filter,
-            filters=self.filters,
             id=self.id)
 
 
 def get_ports(filter: Optional[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']] = None,
-              filters: Optional[Sequence[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortsResult:
     """
-    Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+    Fabric V4 API compatible data resource that allow user to fetch port by name
 
     Additional documentation:
     * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -124,25 +110,21 @@ def get_ports(filter: Optional[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDi
     ```
 
 
-    :param Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict'] filter: (Deprecated) Use 'filter' instead.
-    :param Sequence[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']] filters: List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+    :param Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict'] filter: name
     """
     __args__ = dict()
     __args__['filter'] = filter
-    __args__['filters'] = filters
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getPorts:getPorts', __args__, opts=opts, typ=GetPortsResult).value
 
     return AwaitableGetPortsResult(
         data=pulumi.get(__ret__, 'data'),
         filter=pulumi.get(__ret__, 'filter'),
-        filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'))
-def get_ports_output(filter: Optional[pulumi.Input[Optional[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']]]] = None,
-                     filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']]]]] = None,
+def get_ports_output(filter: Optional[pulumi.Input[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPortsResult]:
     """
-    Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+    Fabric V4 API compatible data resource that allow user to fetch port by name
 
     Additional documentation:
     * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -174,16 +156,13 @@ def get_ports_output(filter: Optional[pulumi.Input[Optional[Union['GetPortsFilte
     ```
 
 
-    :param Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict'] filter: (Deprecated) Use 'filter' instead.
-    :param Sequence[Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict']] filters: List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
+    :param Union['GetPortsFilterArgs', 'GetPortsFilterArgsDict'] filter: name
     """
     __args__ = dict()
     __args__['filter'] = filter
-    __args__['filters'] = filters
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getPorts:getPorts', __args__, opts=opts, typ=GetPortsResult)
     return __ret__.apply(lambda __response__: GetPortsResult(
         data=pulumi.get(__response__, 'data'),
         filter=pulumi.get(__response__, 'filter'),
-        filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id')))

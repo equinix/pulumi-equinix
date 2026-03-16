@@ -1021,164 +1021,6 @@ export namespace fabric {
         uuid?: string;
     }
 
-    export interface GetAdvertisedRoutesData {
-        /**
-         * List of supported AS Paths for the Advertised Routes.
-         */
-        asPaths: string[];
-        /**
-         * Change Log of the route table entry
-         */
-        changeLog: outputs.fabric.GetAdvertisedRoutesDataChangeLog;
-        /**
-         * connection of the route table entry
-         */
-        connection: outputs.fabric.GetAdvertisedRoutesDataConnection;
-        /**
-         * This field holds local preference of the advertised route.
-         */
-        localPreference: number;
-        /**
-         * Multi-Exit Discriminator for the Advertised Route
-         */
-        med: number;
-        /**
-         * Next Hop of the Advertised Route
-         */
-        nextHop: string;
-        /**
-         * Prefix of the Advertised Route
-         */
-        prefix: string;
-        /**
-         * Advertised Route protocol type
-         */
-        protocolType: string;
-        /**
-         * State of the advertised Route
-         */
-        state: string;
-        /**
-         * Indicator of a advertised route
-         */
-        type: string;
-    }
-
-    export interface GetAdvertisedRoutesDataChangeLog {
-        /**
-         * Created by User Key
-         */
-        createdBy: string;
-        /**
-         * Created by User Email Address
-         */
-        createdByEmail: string;
-        /**
-         * Created by User Full Name
-         */
-        createdByFullName: string;
-        /**
-         * Created by User Date and Time
-         */
-        createdDateTime: string;
-        /**
-         * Deleted by User Key
-         */
-        deletedBy: string;
-        /**
-         * Deleted by User Email Address
-         */
-        deletedByEmail: string;
-        /**
-         * Deleted by User Full Name
-         */
-        deletedByFullName: string;
-        /**
-         * Deleted by User Date and Time
-         */
-        deletedDateTime: string;
-        /**
-         * Updated by User Key
-         */
-        updatedBy: string;
-        /**
-         * Updated by User Email Address
-         */
-        updatedByEmail: string;
-        /**
-         * Updated by User Full Name
-         */
-        updatedByFullName: string;
-        /**
-         * Updated by User Date and Time
-         */
-        updatedDateTime: string;
-    }
-
-    export interface GetAdvertisedRoutesDataConnection {
-        /**
-         * HREF of the Connection
-         */
-        href: string;
-        /**
-         * Name of the Connection
-         */
-        name: string;
-        /**
-         * UUID of the Connection
-         */
-        uuid: string;
-    }
-
-    export interface GetAdvertisedRoutesFilter {
-        /**
-         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-         */
-        operator: string;
-        /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
-         */
-        property: string;
-        /**
-         * The values that you want to apply the property+operator combination to in order to filter your data search
-         */
-        values: string[];
-    }
-
-    export interface GetAdvertisedRoutesPagination {
-        /**
-         * Maximum number of search results returned per page.
-         */
-        limit?: number;
-        /**
-         * URL relative to the next item in the response.
-         */
-        next: string;
-        /**
-         * Index of the first item returned in the response.
-         */
-        offset?: number;
-        /**
-         * URL relative to the previous item in the response.
-         */
-        previous: string;
-        /**
-         * The total number of elements returned
-         */
-        total: number;
-    }
-
-    export interface GetAdvertisedRoutesSort {
-        /**
-         * Sort direction, one of [ASC, DESC]
-         */
-        direction?: string;
-        /**
-         * Property name to sort by
-         */
-        property?: string;
-    }
-
     export interface GetCloudRouterAccount {
         /**
          * Account Number
@@ -1344,6 +1186,10 @@ export namespace fabric {
          * Equinix ASN
          */
         equinixAsn: number;
+        /**
+         * Number of gateway attachments associated with this Access point
+         */
+        gatewayAttachmentsCount: number;
         /**
          * Fabric Cloud Router URI information
          */
@@ -3462,7 +3308,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
          */
         property: string;
         /**
@@ -3568,10 +3414,6 @@ export namespace fabric {
          * Arrays of objects containing latency data for the specified metro
          */
         connectedMetros: outputs.fabric.GetMetrosDataConnectedMetro[];
-        /**
-         * Country in which the data center is located
-         */
-        country: string;
         /**
          * Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
          */
@@ -5009,164 +4851,6 @@ export namespace fabric {
         property?: string;
     }
 
-    export interface GetReceivedRoutesData {
-        /**
-         * List of supported AS Paths for the Received Routes.
-         */
-        asPaths: string[];
-        /**
-         * Change Log of the route table entry
-         */
-        changeLog: outputs.fabric.GetReceivedRoutesDataChangeLog;
-        /**
-         * connection of the route table entry
-         */
-        connection: outputs.fabric.GetReceivedRoutesDataConnection;
-        /**
-         * This field holds local preference of the received route.
-         */
-        localPreference: number;
-        /**
-         * Multi-Exit Discriminator for the Received Route
-         */
-        med: number;
-        /**
-         * Next Hop of the Received Route
-         */
-        nextHop: string;
-        /**
-         * Prefix of the Received Route
-         */
-        prefix: string;
-        /**
-         * Received Route protocol type
-         */
-        protocolType: string;
-        /**
-         * State of the received Route
-         */
-        state: string;
-        /**
-         * Indicator of a received route
-         */
-        type: string;
-    }
-
-    export interface GetReceivedRoutesDataChangeLog {
-        /**
-         * Created by User Key
-         */
-        createdBy: string;
-        /**
-         * Created by User Email Address
-         */
-        createdByEmail: string;
-        /**
-         * Created by User Full Name
-         */
-        createdByFullName: string;
-        /**
-         * Created by User Date and Time
-         */
-        createdDateTime: string;
-        /**
-         * Deleted by User Key
-         */
-        deletedBy: string;
-        /**
-         * Deleted by User Email Address
-         */
-        deletedByEmail: string;
-        /**
-         * Deleted by User Full Name
-         */
-        deletedByFullName: string;
-        /**
-         * Deleted by User Date and Time
-         */
-        deletedDateTime: string;
-        /**
-         * Updated by User Key
-         */
-        updatedBy: string;
-        /**
-         * Updated by User Email Address
-         */
-        updatedByEmail: string;
-        /**
-         * Updated by User Full Name
-         */
-        updatedByFullName: string;
-        /**
-         * Updated by User Date and Time
-         */
-        updatedDateTime: string;
-    }
-
-    export interface GetReceivedRoutesDataConnection {
-        /**
-         * HREF of the Connection
-         */
-        href: string;
-        /**
-         * Name of the Connection
-         */
-        name: string;
-        /**
-         * UUID of the Connection
-         */
-        uuid: string;
-    }
-
-    export interface GetReceivedRoutesFilter {
-        /**
-         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-         */
-        operator: string;
-        /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
-         */
-        property: string;
-        /**
-         * The values that you want to apply the property+operator combination to in order to filter your data search
-         */
-        values: string[];
-    }
-
-    export interface GetReceivedRoutesPagination {
-        /**
-         * Maximum number of search results returned per page.
-         */
-        limit?: number;
-        /**
-         * URL relative to the next item in the response.
-         */
-        next: string;
-        /**
-         * Index of the first item returned in the response.
-         */
-        offset?: number;
-        /**
-         * URL relative to the previous item in the response.
-         */
-        previous: string;
-        /**
-         * The total number of elements returned
-         */
-        total: number;
-    }
-
-    export interface GetReceivedRoutesSort {
-        /**
-         * Sort direction, one of [ASC, DESC]
-         */
-        direction?: string;
-        /**
-         * Property name to sort by
-         */
-        property?: string;
-    }
-
     export interface GetRouteAggregationChange {
         /**
          * Equinix auto generated URI to the route aggregation change
@@ -6293,10 +5977,6 @@ export namespace fabric {
          */
         linkProtocolConfig?: outputs.fabric.GetServiceProfileAccessPointTypeConfigLinkProtocolConfig;
         /**
-         * Optional redundant connections
-         */
-        selectiveRedundancy?: boolean;
-        /**
          * Supported bandwidths
          */
         supportedBandwidths?: number[];
@@ -6717,7 +6397,7 @@ export namespace fabric {
          */
         tags: string[];
         /**
-         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE, IX_PROFILE
+         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
          */
         type: string;
         /**
@@ -6783,10 +6463,6 @@ export namespace fabric {
          * Link protocol configuration details
          */
         linkProtocolConfig?: outputs.fabric.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig;
-        /**
-         * Optional redundant connections
-         */
-        selectiveRedundancy?: boolean;
         /**
          * Supported bandwidths
          */
@@ -10467,10 +10143,6 @@ export namespace fabric {
          */
         linkProtocolConfig?: outputs.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfig;
         /**
-         * Optional redundant connections
-         */
-        selectiveRedundancy?: boolean;
-        /**
          * Supported bandwidths
          */
         supportedBandwidths?: number[];
@@ -12517,10 +12189,6 @@ export namespace networkedge {
          */
         ipAddress?: string;
         /**
-         * Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        ipAddressType?: string;
-        /**
          * License id. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseId?: string;
@@ -12528,10 +12196,6 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: string;
-        /**
-         * Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        managementInterfaceId?: string;
         /**
          * Management Type. This field is relevant only for Cisco FTD Firewall devices
          */
@@ -12619,10 +12283,6 @@ export namespace networkedge {
          */
         ipAddress?: string;
         /**
-         * Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        ipAddressType?: string;
-        /**
          * License id. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseId?: string;
@@ -12630,10 +12290,6 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: string;
-        /**
-         * Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        managementInterfaceId?: string;
         /**
          * Management Type. This field is relevant only for Cisco FTD Firewall devices
          */
@@ -12853,7 +12509,7 @@ export namespace networkedge {
         /**
          * Purchase order number associated with a device order.
          */
-        purchaseOrderNumber: string;
+        purchaseOrderNumber?: string;
         /**
          * Device redundancy type applicable for HA devices, either primary or secondary.
          */
@@ -13311,7 +12967,7 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, managementInterfaceId, ipAddressType)
+         * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
          */
         vendorConfiguration: {[key: string]: string};
         /**

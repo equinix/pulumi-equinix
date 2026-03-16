@@ -4,8 +4,6 @@
 package com.equinix.pulumi.fabric;
 
 import com.equinix.pulumi.Utilities;
-import com.equinix.pulumi.fabric.inputs.GetAdvertisedRoutesArgs;
-import com.equinix.pulumi.fabric.inputs.GetAdvertisedRoutesPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRouterArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRouterPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRoutersArgs;
@@ -40,8 +38,6 @@ import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServiceArgs;
 import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServicePlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServicesArgs;
 import com.equinix.pulumi.fabric.inputs.GetPrecisionTimeServicesPlainArgs;
-import com.equinix.pulumi.fabric.inputs.GetReceivedRoutesArgs;
-import com.equinix.pulumi.fabric.inputs.GetReceivedRoutesPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetRouteAggregationArgs;
 import com.equinix.pulumi.fabric.inputs.GetRouteAggregationPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRuleArgs;
@@ -84,7 +80,6 @@ import com.equinix.pulumi.fabric.inputs.GetStreamSubscriptionsArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamSubscriptionsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamsArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamsPlainArgs;
-import com.equinix.pulumi.fabric.outputs.GetAdvertisedRoutesResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
@@ -102,7 +97,6 @@ import com.equinix.pulumi.fabric.outputs.GetPortResult;
 import com.equinix.pulumi.fabric.outputs.GetPortsResult;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServiceResult;
 import com.equinix.pulumi.fabric.outputs.GetPrecisionTimeServicesResult;
-import com.equinix.pulumi.fabric.outputs.GetReceivedRoutesResult;
 import com.equinix.pulumi.fabric.outputs.GetRouteAggregationResult;
 import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRuleResult;
 import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRulesResult;
@@ -132,21 +126,6 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class FabricFunctions {
-    public static Output<GetAdvertisedRoutesResult> getAdvertisedRoutes(GetAdvertisedRoutesArgs args) {
-        return getAdvertisedRoutes(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetAdvertisedRoutesResult> getAdvertisedRoutesPlain(GetAdvertisedRoutesPlainArgs args) {
-        return getAdvertisedRoutesPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetAdvertisedRoutesResult> getAdvertisedRoutes(GetAdvertisedRoutesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("equinix:fabric/getAdvertisedRoutes:getAdvertisedRoutes", TypeShape.of(GetAdvertisedRoutesResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetAdvertisedRoutesResult> getAdvertisedRoutes(GetAdvertisedRoutesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("equinix:fabric/getAdvertisedRoutes:getAdvertisedRoutes", TypeShape.of(GetAdvertisedRoutesResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetAdvertisedRoutesResult> getAdvertisedRoutesPlain(GetAdvertisedRoutesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("equinix:fabric/getAdvertisedRoutes:getAdvertisedRoutes", TypeShape.of(GetAdvertisedRoutesResult.class), args, Utilities.withVersion(options));
-    }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
@@ -2748,133 +2727,7 @@ public final class FabricFunctions {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
-     * 
-     * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var portsDataName = FabricFunctions.getPorts(GetPortsArgs.builder()
-     *             .filter(GetPortsFilterArgs.builder()
-     *                 .name("<name_of_port||port_prefix>")
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export("id", data.equinix_fabric_port().ports_data_name().data()[0].id());
-     *         ctx.export("name", data.equinix_fabric_port().ports_data_name().data()[0].name());
-     *         ctx.export("state", data.equinix_fabric_port().ports_data_name().data()[0].state());
-     *         ctx.export("accountName", data.equinix_fabric_port().ports_data_name().data()[0].account()[0].account_name());
-     *         ctx.export("type", data.equinix_fabric_port().ports_data_name().data()[0].type());
-     *         ctx.export("bandwidth", data.equinix_fabric_port().ports_data_name().data()[0].bandwidth());
-     *         ctx.export("usedBandwidth", data.equinix_fabric_port().ports_data_name().data()[0].used_bandwidth());
-     *         ctx.export("encapsulationType", data.equinix_fabric_port().ports_data_name().data()[0].encapsulation()[0].type());
-     *         ctx.export("ibx", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].ibx());
-     *         ctx.export("metroCode", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_code());
-     *         ctx.export("metroName", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_name());
-     *         ctx.export("region", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].region());
-     *         ctx.export("deviceRedundancyEnabled", data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].enabled());
-     *         ctx.export("deviceRedundancyPriority", data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].priority());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetPortsResult> getPorts() {
-        return getPorts(GetPortsArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
-     * 
-     * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.fabric.FabricFunctions;
-     * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
-     * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var portsDataName = FabricFunctions.getPorts(GetPortsArgs.builder()
-     *             .filter(GetPortsFilterArgs.builder()
-     *                 .name("<name_of_port||port_prefix>")
-     *                 .build())
-     *             .build());
-     * 
-     *         ctx.export("id", data.equinix_fabric_port().ports_data_name().data()[0].id());
-     *         ctx.export("name", data.equinix_fabric_port().ports_data_name().data()[0].name());
-     *         ctx.export("state", data.equinix_fabric_port().ports_data_name().data()[0].state());
-     *         ctx.export("accountName", data.equinix_fabric_port().ports_data_name().data()[0].account()[0].account_name());
-     *         ctx.export("type", data.equinix_fabric_port().ports_data_name().data()[0].type());
-     *         ctx.export("bandwidth", data.equinix_fabric_port().ports_data_name().data()[0].bandwidth());
-     *         ctx.export("usedBandwidth", data.equinix_fabric_port().ports_data_name().data()[0].used_bandwidth());
-     *         ctx.export("encapsulationType", data.equinix_fabric_port().ports_data_name().data()[0].encapsulation()[0].type());
-     *         ctx.export("ibx", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].ibx());
-     *         ctx.export("metroCode", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_code());
-     *         ctx.export("metroName", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_name());
-     *         ctx.export("region", data.equinix_fabric_port().ports_data_name().data()[0].location()[0].region());
-     *         ctx.export("deviceRedundancyEnabled", data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].enabled());
-     *         ctx.export("deviceRedundancyPriority", data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].priority());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static CompletableFuture<GetPortsResult> getPortsPlain() {
-        return getPortsPlain(GetPortsPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -2937,7 +2790,7 @@ public final class FabricFunctions {
         return getPorts(args, InvokeOptions.Empty);
     }
     /**
-     * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -3000,7 +2853,7 @@ public final class FabricFunctions {
         return getPortsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -3063,7 +2916,7 @@ public final class FabricFunctions {
         return Deployment.getInstance().invoke("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -3126,7 +2979,7 @@ public final class FabricFunctions {
         return Deployment.getInstance().invoke("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * Additional documentation:
      * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -3500,21 +3353,6 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetPrecisionTimeServicesResult> getPrecisionTimeServicesPlain(GetPrecisionTimeServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices", TypeShape.of(GetPrecisionTimeServicesResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetReceivedRoutesResult> getReceivedRoutes(GetReceivedRoutesArgs args) {
-        return getReceivedRoutes(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetReceivedRoutesResult> getReceivedRoutesPlain(GetReceivedRoutesPlainArgs args) {
-        return getReceivedRoutesPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetReceivedRoutesResult> getReceivedRoutes(GetReceivedRoutesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("equinix:fabric/getReceivedRoutes:getReceivedRoutes", TypeShape.of(GetReceivedRoutesResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetReceivedRoutesResult> getReceivedRoutes(GetReceivedRoutesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("equinix:fabric/getReceivedRoutes:getReceivedRoutes", TypeShape.of(GetReceivedRoutesResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetReceivedRoutesResult> getReceivedRoutesPlain(GetReceivedRoutesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("equinix:fabric/getReceivedRoutes:getReceivedRoutes", TypeShape.of(GetReceivedRoutesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID

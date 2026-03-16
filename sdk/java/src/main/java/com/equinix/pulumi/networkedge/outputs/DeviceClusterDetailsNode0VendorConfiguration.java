@@ -47,11 +47,6 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
      */
     private @Nullable String ipAddress;
     /**
-     * @return Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-     * 
-     */
-    private @Nullable String ipAddressType;
-    /**
      * @return License id. This field is relevant only for the BlueCat DNS and DHCP Server
      * 
      */
@@ -61,11 +56,6 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
      * 
      */
     private @Nullable String licenseKey;
-    /**
-     * @return Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-     * 
-     */
-    private @Nullable String managementInterfaceId;
     /**
      * @return Management Type. This field is relevant only for Cisco FTD Firewall devices
      * 
@@ -158,13 +148,6 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
-     * @return Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-     * 
-     */
-    public Optional<String> ipAddressType() {
-        return Optional.ofNullable(this.ipAddressType);
-    }
-    /**
      * @return License id. This field is relevant only for the BlueCat DNS and DHCP Server
      * 
      */
@@ -177,13 +160,6 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
      */
     public Optional<String> licenseKey() {
         return Optional.ofNullable(this.licenseKey);
-    }
-    /**
-     * @return Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-     * 
-     */
-    public Optional<String> managementInterfaceId() {
-        return Optional.ofNullable(this.managementInterfaceId);
     }
     /**
      * @return Management Type. This field is relevant only for Cisco FTD Firewall devices
@@ -258,10 +234,8 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
         private @Nullable String gatewayIp;
         private @Nullable String hostname;
         private @Nullable String ipAddress;
-        private @Nullable String ipAddressType;
         private @Nullable String licenseId;
         private @Nullable String licenseKey;
-        private @Nullable String managementInterfaceId;
         private @Nullable String managementType;
         private @Nullable String panoramaAuthKey;
         private @Nullable String panoramaIpAddress;
@@ -280,10 +254,8 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
     	      this.gatewayIp = defaults.gatewayIp;
     	      this.hostname = defaults.hostname;
     	      this.ipAddress = defaults.ipAddress;
-    	      this.ipAddressType = defaults.ipAddressType;
     	      this.licenseId = defaults.licenseId;
     	      this.licenseKey = defaults.licenseKey;
-    	      this.managementInterfaceId = defaults.managementInterfaceId;
     	      this.managementType = defaults.managementType;
     	      this.panoramaAuthKey = defaults.panoramaAuthKey;
     	      this.panoramaIpAddress = defaults.panoramaIpAddress;
@@ -337,12 +309,6 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder ipAddressType(@Nullable String ipAddressType) {
-
-            this.ipAddressType = ipAddressType;
-            return this;
-        }
-        @CustomType.Setter
         public Builder licenseId(@Nullable String licenseId) {
 
             this.licenseId = licenseId;
@@ -352,12 +318,6 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
         public Builder licenseKey(@Nullable String licenseKey) {
 
             this.licenseKey = licenseKey;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder managementInterfaceId(@Nullable String managementInterfaceId) {
-
-            this.managementInterfaceId = managementInterfaceId;
             return this;
         }
         @CustomType.Setter
@@ -417,10 +377,8 @@ public final class DeviceClusterDetailsNode0VendorConfiguration {
             _resultValue.gatewayIp = gatewayIp;
             _resultValue.hostname = hostname;
             _resultValue.ipAddress = ipAddress;
-            _resultValue.ipAddressType = ipAddressType;
             _resultValue.licenseId = licenseId;
             _resultValue.licenseKey = licenseKey;
-            _resultValue.managementInterfaceId = managementInterfaceId;
             _resultValue.managementType = managementType;
             _resultValue.panoramaAuthKey = panoramaAuthKey;
             _resultValue.panoramaIpAddress = panoramaIpAddress;

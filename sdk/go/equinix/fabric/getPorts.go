@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+// Fabric V4 API compatible data resource that allow user to fetch port by name
 //
 // Additional documentation:
 // * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -70,24 +70,16 @@ func GetPorts(ctx *pulumi.Context, args *GetPortsArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getPorts.
 type GetPortsArgs struct {
-	// (Deprecated) Use 'filter' instead.
-	//
-	// Deprecated: Use 'filter' instead.
-	Filter *GetPortsFilter `pulumi:"filter"`
-	// List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-	Filters []GetPortsFilter `pulumi:"filters"`
+	// name
+	Filter GetPortsFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getPorts.
 type GetPortsResult struct {
 	// List of Ports
 	Data []GetPortsDatum `pulumi:"data"`
-	// (Deprecated) Use 'filter' instead.
-	//
-	// Deprecated: Use 'filter' instead.
-	Filter *GetPortsFilter `pulumi:"filter"`
-	// List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-	Filters []GetPortsFilter `pulumi:"filters"`
+	// name
+	Filter GetPortsFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -103,12 +95,8 @@ func GetPortsOutput(ctx *pulumi.Context, args GetPortsOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getPorts.
 type GetPortsOutputArgs struct {
-	// (Deprecated) Use 'filter' instead.
-	//
-	// Deprecated: Use 'filter' instead.
-	Filter GetPortsFilterPtrInput `pulumi:"filter"`
-	// List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-	Filters GetPortsFilterArrayInput `pulumi:"filters"`
+	// name
+	Filter GetPortsFilterInput `pulumi:"filter"`
 }
 
 func (GetPortsOutputArgs) ElementType() reflect.Type {
@@ -135,16 +123,9 @@ func (o GetPortsResultOutput) Data() GetPortsDatumArrayOutput {
 	return o.ApplyT(func(v GetPortsResult) []GetPortsDatum { return v.Data }).(GetPortsDatumArrayOutput)
 }
 
-// (Deprecated) Use 'filter' instead.
-//
-// Deprecated: Use 'filter' instead.
-func (o GetPortsResultOutput) Filter() GetPortsFilterPtrOutput {
-	return o.ApplyT(func(v GetPortsResult) *GetPortsFilter { return v.Filter }).(GetPortsFilterPtrOutput)
-}
-
-// List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-func (o GetPortsResultOutput) Filters() GetPortsFilterArrayOutput {
-	return o.ApplyT(func(v GetPortsResult) []GetPortsFilter { return v.Filters }).(GetPortsFilterArrayOutput)
+// name
+func (o GetPortsResultOutput) Filter() GetPortsFilterOutput {
+	return o.ApplyT(func(v GetPortsResult) GetPortsFilter { return v.Filter }).(GetPortsFilterOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -226,14 +226,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     public Output<Either<String,ProfileType>> type() {
@@ -689,7 +689,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -710,7 +710,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
          * 
          * @return builder
          * 

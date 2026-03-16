@@ -1190,12 +1190,6 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Equinix Fabric v4
-			"equinix_fabric_received_routes": {
-				Tok: makeEquinixDataSource(fabricMod, "ReceivedRoutes"),
-			},
-			"equinix_fabric_advertised_routes": {
-				Tok: makeEquinixDataSource(fabricMod, "AdvertisedRoutes"),
-			},
 			"equinix_fabric_service_token": {
 				Tok: makeEquinixDataSource(fabricMod, "ServiceToken"),
 			},

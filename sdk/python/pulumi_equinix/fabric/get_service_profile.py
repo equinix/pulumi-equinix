@@ -235,7 +235,7 @@ class GetServiceProfileResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 

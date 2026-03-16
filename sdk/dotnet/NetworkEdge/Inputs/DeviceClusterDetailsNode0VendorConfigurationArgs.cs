@@ -74,12 +74,6 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
-        /// <summary>
-        /// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-        /// </summary>
-        [Input("ipAddressType")]
-        public Input<string>? IpAddressType { get; set; }
-
         [Input("licenseId")]
         private Input<string>? _licenseId;
 
@@ -111,12 +105,6 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
                 _licenseKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        /// <summary>
-        /// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-        /// </summary>
-        [Input("managementInterfaceId")]
-        public Input<string>? ManagementInterfaceId { get; set; }
 
         /// <summary>
         /// Management Type. This field is relevant only for Cisco FTD Firewall devices

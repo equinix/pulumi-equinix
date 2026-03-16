@@ -42,10 +42,6 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-        /// </summary>
-        public readonly string? IpAddressType;
-        /// <summary>
         /// License id. This field is relevant only for the BlueCat DNS and DHCP Server
         /// </summary>
         public readonly string? LicenseId;
@@ -53,10 +49,6 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// License key. This field is relevant only for the BlueCat DNS and DHCP Server
         /// </summary>
         public readonly string? LicenseKey;
-        /// <summary>
-        /// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-        /// </summary>
-        public readonly string? ManagementInterfaceId;
         /// <summary>
         /// Management Type. This field is relevant only for Cisco FTD Firewall devices
         /// </summary>
@@ -106,13 +98,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             string? ipAddress,
 
-            string? ipAddressType,
-
             string? licenseId,
 
             string? licenseKey,
-
-            string? managementInterfaceId,
 
             string? managementType,
 
@@ -137,10 +125,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             GatewayIp = gatewayIp;
             Hostname = hostname;
             IpAddress = ipAddress;
-            IpAddressType = ipAddressType;
             LicenseId = licenseId;
             LicenseKey = licenseKey;
-            ManagementInterfaceId = managementInterfaceId;
             ManagementType = managementType;
             PanoramaAuthKey = panoramaAuthKey;
             PanoramaIpAddress = panoramaIpAddress;

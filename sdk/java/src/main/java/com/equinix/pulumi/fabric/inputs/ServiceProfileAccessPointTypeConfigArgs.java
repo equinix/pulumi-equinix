@@ -191,21 +191,6 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Optional redundant connections
-     * 
-     */
-    @Import(name="selectiveRedundancy")
-    private @Nullable Output<Boolean> selectiveRedundancy;
-
-    /**
-     * @return Optional redundant connections
-     * 
-     */
-    public Optional<Output<Boolean>> selectiveRedundancy() {
-        return Optional.ofNullable(this.selectiveRedundancy);
-    }
-
-    /**
      * Supported bandwidths
      * 
      */
@@ -264,7 +249,6 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
         this.connectionRedundancyRequired = $.connectionRedundancyRequired;
         this.enableAutoGenerateServiceKey = $.enableAutoGenerateServiceKey;
         this.linkProtocolConfig = $.linkProtocolConfig;
-        this.selectiveRedundancy = $.selectiveRedundancy;
         this.supportedBandwidths = $.supportedBandwidths;
         this.type = $.type;
         this.uuid = $.uuid;
@@ -517,27 +501,6 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
          */
         public Builder linkProtocolConfig(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs linkProtocolConfig) {
             return linkProtocolConfig(Output.of(linkProtocolConfig));
-        }
-
-        /**
-         * @param selectiveRedundancy Optional redundant connections
-         * 
-         * @return builder
-         * 
-         */
-        public Builder selectiveRedundancy(@Nullable Output<Boolean> selectiveRedundancy) {
-            $.selectiveRedundancy = selectiveRedundancy;
-            return this;
-        }
-
-        /**
-         * @param selectiveRedundancy Optional redundant connections
-         * 
-         * @return builder
-         * 
-         */
-        public Builder selectiveRedundancy(Boolean selectiveRedundancy) {
-            return selectiveRedundancy(Output.of(selectiveRedundancy));
         }
 
         /**

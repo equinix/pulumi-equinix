@@ -1021,104 +1021,6 @@ export namespace fabric {
         uuid?: pulumi.Input<string>;
     }
 
-    export interface GetAdvertisedRoutesFilter {
-        /**
-         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-         */
-        operator: string;
-        /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
-         */
-        property: string;
-        /**
-         * The values that you want to apply the property+operator combination to in order to filter your data search
-         */
-        values: string[];
-    }
-
-    export interface GetAdvertisedRoutesFilterArgs {
-        /**
-         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-         */
-        operator: pulumi.Input<string>;
-        /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
-         */
-        property: pulumi.Input<string>;
-        /**
-         * The values that you want to apply the property+operator combination to in order to filter your data search
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetAdvertisedRoutesPagination {
-        /**
-         * Maximum number of search results returned per page.
-         */
-        limit?: number;
-        /**
-         * URL relative to the next item in the response.
-         */
-        next?: string;
-        /**
-         * Index of the first item returned in the response.
-         */
-        offset?: number;
-        /**
-         * URL relative to the previous item in the response.
-         */
-        previous?: string;
-        /**
-         * The total number of elements returned
-         */
-        total?: number;
-    }
-
-    export interface GetAdvertisedRoutesPaginationArgs {
-        /**
-         * Maximum number of search results returned per page.
-         */
-        limit?: pulumi.Input<number>;
-        /**
-         * URL relative to the next item in the response.
-         */
-        next?: pulumi.Input<string>;
-        /**
-         * Index of the first item returned in the response.
-         */
-        offset?: pulumi.Input<number>;
-        /**
-         * URL relative to the previous item in the response.
-         */
-        previous?: pulumi.Input<string>;
-        /**
-         * The total number of elements returned
-         */
-        total?: pulumi.Input<number>;
-    }
-
-    export interface GetAdvertisedRoutesSort {
-        /**
-         * Sort direction, one of [ASC, DESC]
-         */
-        direction?: string;
-        /**
-         * Property name to sort by
-         */
-        property?: string;
-    }
-
-    export interface GetAdvertisedRoutesSortArgs {
-        /**
-         * Sort direction, one of [ASC, DESC]
-         */
-        direction?: pulumi.Input<string>;
-        /**
-         * Property name to sort by
-         */
-        property?: pulumi.Input<string>;
-    }
-
     export interface GetCloudRoutersFilter {
         /**
          * Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
@@ -1257,7 +1159,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
          */
         property: string;
         /**
@@ -1276,7 +1178,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
          */
         property: pulumi.Input<string>;
         /**
@@ -1675,104 +1577,6 @@ export namespace fabric {
         direction?: pulumi.Input<string>;
         /**
          * The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
-         */
-        property?: pulumi.Input<string>;
-    }
-
-    export interface GetReceivedRoutesFilter {
-        /**
-         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-         */
-        operator: string;
-        /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
-         */
-        property: string;
-        /**
-         * The values that you want to apply the property+operator combination to in order to filter your data search
-         */
-        values: string[];
-    }
-
-    export interface GetReceivedRoutesFilterArgs {
-        /**
-         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-         */
-        operator: pulumi.Input<string>;
-        /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
-         */
-        property: pulumi.Input<string>;
-        /**
-         * The values that you want to apply the property+operator combination to in order to filter your data search
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetReceivedRoutesPagination {
-        /**
-         * Maximum number of search results returned per page.
-         */
-        limit?: number;
-        /**
-         * URL relative to the next item in the response.
-         */
-        next?: string;
-        /**
-         * Index of the first item returned in the response.
-         */
-        offset?: number;
-        /**
-         * URL relative to the previous item in the response.
-         */
-        previous?: string;
-        /**
-         * The total number of elements returned
-         */
-        total?: number;
-    }
-
-    export interface GetReceivedRoutesPaginationArgs {
-        /**
-         * Maximum number of search results returned per page.
-         */
-        limit?: pulumi.Input<number>;
-        /**
-         * URL relative to the next item in the response.
-         */
-        next?: pulumi.Input<string>;
-        /**
-         * Index of the first item returned in the response.
-         */
-        offset?: pulumi.Input<number>;
-        /**
-         * URL relative to the previous item in the response.
-         */
-        previous?: pulumi.Input<string>;
-        /**
-         * The total number of elements returned
-         */
-        total?: pulumi.Input<number>;
-    }
-
-    export interface GetReceivedRoutesSort {
-        /**
-         * Sort direction, one of [ASC, DESC]
-         */
-        direction?: string;
-        /**
-         * Property name to sort by
-         */
-        property?: string;
-    }
-
-    export interface GetReceivedRoutesSortArgs {
-        /**
-         * Sort direction, one of [ASC, DESC]
-         */
-        direction?: pulumi.Input<string>;
-        /**
-         * Property name to sort by
          */
         property?: pulumi.Input<string>;
     }
@@ -3714,10 +3518,6 @@ export namespace fabric {
          */
         linkProtocolConfig?: pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfig>;
         /**
-         * Optional redundant connections
-         */
-        selectiveRedundancy?: pulumi.Input<boolean>;
-        /**
          * Supported bandwidths
          */
         supportedBandwidths?: pulumi.Input<pulumi.Input<number>[]>;
@@ -5445,10 +5245,6 @@ export namespace networkedge {
          */
         ipAddress?: pulumi.Input<string>;
         /**
-         * Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        ipAddressType?: pulumi.Input<string>;
-        /**
          * License id. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseId?: pulumi.Input<string>;
@@ -5456,10 +5252,6 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: pulumi.Input<string>;
-        /**
-         * Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        managementInterfaceId?: pulumi.Input<string>;
         /**
          * Management Type. This field is relevant only for Cisco FTD Firewall devices
          */
@@ -5547,10 +5339,6 @@ export namespace networkedge {
          */
         ipAddress?: pulumi.Input<string>;
         /**
-         * Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        ipAddressType?: pulumi.Input<string>;
-        /**
          * License id. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseId?: pulumi.Input<string>;
@@ -5558,10 +5346,6 @@ export namespace networkedge {
          * License key. This field is relevant only for the BlueCat DNS and DHCP Server
          */
         licenseKey?: pulumi.Input<string>;
-        /**
-         * Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
-         */
-        managementInterfaceId?: pulumi.Input<string>;
         /**
          * Management Type. This field is relevant only for Cisco FTD Firewall devices
          */

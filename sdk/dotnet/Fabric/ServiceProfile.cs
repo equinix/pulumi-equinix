@@ -178,7 +178,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -375,7 +375,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
@@ -551,7 +551,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType>? Type { get; set; }

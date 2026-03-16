@@ -108,7 +108,7 @@ public final class GetServiceProfileResult {
      */
     private List<String> tags;
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     private String type;
@@ -254,7 +254,7 @@ public final class GetServiceProfileResult {
         return this.tags;
     }
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
      * 
      */
     public String type() {

@@ -8,7 +8,7 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+ * Fabric V4 API compatible data resource that allow user to fetch port by name
  *
  * Additional documentation:
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -41,12 +41,10 @@ import * as utilities from "../utilities";
  * export const deviceRedundancyPriority = data.equinix_fabric_port.ports_data_name.data[0].device[0].redundancy[0].priority;
  * ```
  */
-export function getPorts(args?: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
-    args = args || {};
+export function getPorts(args: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getPorts:getPorts", {
         "filter": args.filter,
-        "filters": args.filters,
     }, opts);
 }
 
@@ -55,15 +53,9 @@ export function getPorts(args?: GetPortsArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetPortsArgs {
     /**
-     * (Deprecated) Use 'filter' instead.
-     *
-     * @deprecated Use 'filter' instead.
+     * name
      */
-    filter?: inputs.fabric.GetPortsFilter;
-    /**
-     * List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-     */
-    filters?: inputs.fabric.GetPortsFilter[];
+    filter: inputs.fabric.GetPortsFilter;
 }
 
 /**
@@ -75,22 +67,16 @@ export interface GetPortsResult {
      */
     readonly data: outputs.fabric.GetPortsDatum[];
     /**
-     * (Deprecated) Use 'filter' instead.
-     *
-     * @deprecated Use 'filter' instead.
+     * name
      */
-    readonly filter?: outputs.fabric.GetPortsFilter;
-    /**
-     * List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-     */
-    readonly filters?: outputs.fabric.GetPortsFilter[];
+    readonly filter: outputs.fabric.GetPortsFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
 /**
- * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
+ * Fabric V4 API compatible data resource that allow user to fetch port by name
  *
  * Additional documentation:
  * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
@@ -123,12 +109,10 @@ export interface GetPortsResult {
  * export const deviceRedundancyPriority = data.equinix_fabric_port.ports_data_name.data[0].device[0].redundancy[0].priority;
  * ```
  */
-export function getPortsOutput(args?: GetPortsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortsResult> {
-    args = args || {};
+export function getPortsOutput(args: GetPortsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getPorts:getPorts", {
         "filter": args.filter,
-        "filters": args.filters,
     }, opts);
 }
 
@@ -137,13 +121,7 @@ export function getPortsOutput(args?: GetPortsOutputArgs, opts?: pulumi.InvokeOu
  */
 export interface GetPortsOutputArgs {
     /**
-     * (Deprecated) Use 'filter' instead.
-     *
-     * @deprecated Use 'filter' instead.
+     * name
      */
-    filter?: pulumi.Input<inputs.fabric.GetPortsFilterArgs>;
-    /**
-     * List of filter objects for SearchPorts API. Each filter must have property, operator, and value.
-     */
-    filters?: pulumi.Input<pulumi.Input<inputs.fabric.GetPortsFilterArgs>[]>;
+    filter: pulumi.Input<inputs.fabric.GetPortsFilterArgs>;
 }
