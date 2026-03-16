@@ -1148,6 +1148,247 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### example c8000v znpd ha dhcp
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .name("account-name")
+ *             .build());
+ * 
+ *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
+ *             .name("tf-c8000v-byol")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("C8000V")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("network-essentials")
+ *             .connectivity("PRIVATE")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("17.11.01a")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .tier(1)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("restApiSupportRequirement", "true"),
+ *                 Map.entry("ipAddressType", "DHCP"),
+ *                 Map.entry("managementInterfaceId", "6")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("tf-c8000v-byol-secondary")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .hostname("c8000v-s")
+ *                 .notifications(                
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("restApiSupportRequirement", "true"),
+ *                     Map.entry("ipAddressType", "DHCP"),
+ *                     Map.entry("managementInterfaceId", "6")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example c8000v znpd ha no ip address
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .name("account-name")
+ *             .build());
+ * 
+ *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
+ *             .name("tf-c8000v-byol")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("C8000V")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("network-essentials")
+ *             .connectivity("PRIVATE")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("17.11.01a")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .tier(1)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("restApiSupportRequirement", "true"),
+ *                 Map.entry("ipAddressType", "NO_IP_ADDRESS")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("tf-c8000v-byol-secondary")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .hostname("csr8000v-s")
+ *                 .notifications(                
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("restApiSupportRequirement", "true"),
+ *                     Map.entry("ipAddressType", "NO_IP_ADDRESS")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example c8000v znpd ha static
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .name("account-name")
+ *             .build());
+ * 
+ *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
+ *             .name("tf-c8000v-byol")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("C8000V")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .packageCode("network-essentials")
+ *             .connectivity("PRIVATE")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("17.11.01a")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .tier(1)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("test")
+ *                 .keyName("test-key")
+ *                 .build())
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("restApiSupportRequirement", "true"),
+ *                 Map.entry("ipAddressType", "STATIC"),
+ *                 Map.entry("ipAddress", "x.x.x.x"),
+ *                 Map.entry("gatewayIp", "x.x.x.x"),
+ *                 Map.entry("subnetMaskIp", "x.x.x.x"),
+ *                 Map.entry("managementInterfaceId", "6")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("tf-c8000v-byol-secondary")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .hostname("csr8000v-s")
+ *                 .notifications(                
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("restApiSupportRequirement", "true"),
+ *                     Map.entry("ipAddressType", "STATIC"),
+ *                     Map.entry("ipAddress", "x.x.x.x"),
+ *                     Map.entry("gatewayIp", "x.x.x.x"),
+ *                     Map.entry("subnetMaskIp", "x.x.x.x"),
+ *                     Map.entry("managementInterfaceId", "6")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ### example checkpoint single device
  * <pre>
  * {@code
@@ -1329,6 +1570,303 @@ import javax.annotation.Nullable;
  *                 Map.entry("token", "XXXXXXXXXX"),
  *                 Map.entry("hostname", "XXXX")
  *             ))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example fortigate firewall cluster device znpd static ip
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .name("account-name")
+ *             .build());
+ * 
+ *         var fGVMSV = new Device("fGVMSV", DeviceArgs.builder()
+ *             .name("tf-fgvm-cluster-static-znpd")
+ *             .metroCode("DC")
+ *             .typeCode("FG-VM")
+ *             .projectId("xxxxxxx")
+ *             .selfManaged(true)
+ *             .connectivity("PRIVATE")
+ *             .byol(true)
+ *             .packageCode("VM02")
+ *             .notifications(            
+ *                 "john}{@literal @}{@code equinix.com",
+ *                 "marry}{@literal @}{@code equinix.com",
+ *                 "fred}{@literal @}{@code equinix.com")
+ *             .termLength(12)
+ *             .accountNumber(xxxxxx)
+ *             .version("7.6.2")
+ *             .interfaceCount(10)
+ *             .coreCount(2)
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("sanity1")
+ *                 .keyName("")
+ *                 .build())
+ *             .clusterDetails(DeviceClusterDetailsArgs.builder()
+ *                 .clusterName("tf-fgvm--cluster")
+ *                 .node0(DeviceClusterDetailsNode0Args.builder()
+ *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
+ *                         .ipAddress("x.x.x.x")
+ *                         .subnetMaskIp("x.x.x.x")
+ *                         .gatewayIp("x.x.x.x")
+ *                         .managementInterfaceId("5")
+ *                         .hostname("test")
+ *                         .ipAddressType("STATIC")
+ *                         .build())
+ *                     .build())
+ *                 .node1(DeviceClusterDetailsNode1Args.builder()
+ *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
+ *                         .ipAddress("x.x.x.x")
+ *                         .subnetMaskIp("x.x.x.x")
+ *                         .gatewayIp("x.x.x.x")
+ *                         .managementInterfaceId("5")
+ *                         .hostname("test")
+ *                         .ipAddressType("STATIC")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example fortigate firewall ha device znpd dhcp
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .name("account-name")
+ *             .build());
+ * 
+ *         var fTNTFIREWALLSV = new Device("fTNTFIREWALLSV", DeviceArgs.builder()
+ *             .name("TF_FTNT-FIREWALL")
+ *             .projectId("XXXXXXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("FG-VM")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .interfaceCount(10)
+ *             .connectivity("PRIVATE")
+ *             .packageCode("VM02")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("7.6.3")
+ *             .hostname("test")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("ipAddressType", "DHCP"),
+ *                 Map.entry("managementInterfaceId", "6")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("TF_FTNT-FIREWALL-secondary")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .hostname("fg-vm-znpd")
+ *                 .notifications(                
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("ipAddressType", "DHCP"),
+ *                     Map.entry("managementInterfaceId", "6")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example fortigate firewall ha device znpd no ip
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .name("account-name")
+ *             .build());
+ * 
+ *         var fTNTFIREWALLSV = new Device("fTNTFIREWALLSV", DeviceArgs.builder()
+ *             .name("TF_FTNT-FIREWALL")
+ *             .projectId("XXXXXXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("FG-VM")
+ *             .interfaceCount(10)
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .connectivity("PRIVATE")
+ *             .packageCode("VM02")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("7.6.3")
+ *             .hostname("test")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .vendorConfiguration(Map.of("ipAddressType", "NO_IP_ADDRESS"))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("TF_FTNT-FIREWALL-secondary")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .hostname("fg-vm-znpd")
+ *                 .notifications(                
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .vendorConfiguration(Map.of("ipAddressType", "NO_IP_ADDRESS"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example fortigate firewall ha device znpd static
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .name("account-name")
+ *             .build());
+ * 
+ *         var fTNTFIREWALLSV = new Device("fTNTFIREWALLSV", DeviceArgs.builder()
+ *             .name("TF_FTNT-FIREWALL")
+ *             .projectId("XXXXXXXXXX")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .interfaceCount(10)
+ *             .typeCode("FG-VM")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .connectivity("PRIVATE")
+ *             .packageCode("VM02")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("7.6.3")
+ *             .hostname("test")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("gatewayIp", "X.X.X.X"),
+ *                 Map.entry("ipAddress", "X.X.X.X"),
+ *                 Map.entry("ipAddressType", "STATIC"),
+ *                 Map.entry("subnetMaskIp", "x.x.x.x"),
+ *                 Map.entry("managementInterfaceId", "6")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("TF_FTNT-FIREWALL-secondary")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .hostname("fg-vm-znpd")
+ *                 .notifications(                
+ *                     "john}{@literal @}{@code equinix.com",
+ *                     "marry}{@literal @}{@code equinix.com")
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("gatewayIp", "X.X.X.X"),
+ *                     Map.entry("ipAddress", "X.X.X.X"),
+ *                     Map.entry("ipAddressType", "STATIC"),
+ *                     Map.entry("subnetMaskIp", "X.X.X.X"),
+ *                     Map.entry("managementInterfaceId", "6")
+ *                 ))
+ *                 .build())
  *             .build());
  * 
  *     }}{@code

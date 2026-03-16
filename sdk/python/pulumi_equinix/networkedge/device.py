@@ -2003,6 +2003,163 @@ class Device(pulumi.CustomResource):
                 "acl_template_id": "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
             })
         ```
+        ### example c8000v znpd ha dhcp
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="network-essentials",
+            connectivity="PRIVATE",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+                "ipAddressType": "DHCP",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "c8000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                    "ipAddressType": "DHCP",
+                    "managementInterfaceId": "6",
+                },
+            })
+        ```
+        ### example c8000v znpd ha no ip address
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="network-essentials",
+            connectivity="PRIVATE",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+                "ipAddressType": "NO_IP_ADDRESS",
+            },
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "csr8000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                    "ipAddressType": "NO_IP_ADDRESS",
+                },
+            })
+        ```
+        ### example c8000v znpd ha static
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="network-essentials",
+            connectivity="PRIVATE",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+                "ipAddressType": "STATIC",
+                "ipAddress": "x.x.x.x",
+                "gatewayIp": "x.x.x.x",
+                "subnetMaskIp": "x.x.x.x",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "csr8000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                    "ipAddressType": "STATIC",
+                    "ipAddress": "x.x.x.x",
+                    "gatewayIp": "x.x.x.x",
+                    "subnetMaskIp": "x.x.x.x",
+                    "managementInterfaceId": "6",
+                },
+            })
+        ```
         ### example checkpoint single device
         ```python
         import pulumi
@@ -2099,6 +2256,190 @@ class Device(pulumi.CustomResource):
             vendor_configuration={
                 "token": "XXXXXXXXXX",
                 "hostname": "XXXX",
+            })
+        ```
+        ### example fortigate firewall cluster device znpd static ip
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_gvmsv = equinix.networkedge.Device("FGVM-SV",
+            name="tf-fgvm-cluster-static-znpd",
+            metro_code="DC",
+            type_code="FG-VM",
+            project_id="xxxxxxx",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="VM02",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=xxxxxx,
+            version="7.6.2",
+            interface_count=10,
+            core_count=2,
+            ssh_key={
+                "username": "sanity1",
+                "key_name": "",
+            },
+            cluster_details={
+                "cluster_name": "tf-fgvm--cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "ip_address": "x.x.x.x",
+                        "subnet_mask_ip": "x.x.x.x",
+                        "gateway_ip": "x.x.x.x",
+                        "management_interface_id": "5",
+                        "hostname": "test",
+                        "ip_address_type": "STATIC",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "ip_address": "x.x.x.x",
+                        "subnet_mask_ip": "x.x.x.x",
+                        "gateway_ip": "x.x.x.x",
+                        "management_interface_id": "5",
+                        "hostname": "test",
+                        "ip_address_type": "STATIC",
+                    },
+                },
+            })
+        ```
+        ### example fortigate firewall ha device znpd dhcp
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+            name="TF_FTNT-FIREWALL",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-VM",
+            self_managed=True,
+            byol=True,
+            interface_count=10,
+            connectivity="PRIVATE",
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.6.3",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "ipAddressType": "DHCP",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "TF_FTNT-FIREWALL-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "fg-vm-znpd",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "ipAddressType": "DHCP",
+                    "managementInterfaceId": "6",
+                },
+            })
+        ```
+        ### example fortigate firewall ha device znpd no ip
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+            name="TF_FTNT-FIREWALL",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-VM",
+            interface_count=10,
+            self_managed=True,
+            byol=True,
+            connectivity="PRIVATE",
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.6.3",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "ipAddressType": "NO_IP_ADDRESS",
+            },
+            secondary_device={
+                "name": "TF_FTNT-FIREWALL-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "fg-vm-znpd",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "ipAddressType": "NO_IP_ADDRESS",
+                },
+            })
+        ```
+        ### example fortigate firewall ha device znpd static
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+            name="TF_FTNT-FIREWALL",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            interface_count=10,
+            type_code="FG-VM",
+            self_managed=True,
+            byol=True,
+            connectivity="PRIVATE",
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.6.3",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "gatewayIp": "X.X.X.X",
+                "ipAddress": "X.X.X.X",
+                "ipAddressType": "STATIC",
+                "subnetMaskIp": "x.x.x.x",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "TF_FTNT-FIREWALL-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "fg-vm-znpd",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "gatewayIp": "X.X.X.X",
+                    "ipAddress": "X.X.X.X",
+                    "ipAddressType": "STATIC",
+                    "subnetMaskIp": "X.X.X.X",
+                    "managementInterfaceId": "6",
+                },
             })
         ```
         ### example fortigate sdwan single device
@@ -3068,6 +3409,163 @@ class Device(pulumi.CustomResource):
                 "acl_template_id": "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
             })
         ```
+        ### example c8000v znpd ha dhcp
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="network-essentials",
+            connectivity="PRIVATE",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+                "ipAddressType": "DHCP",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "c8000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                    "ipAddressType": "DHCP",
+                    "managementInterfaceId": "6",
+                },
+            })
+        ```
+        ### example c8000v znpd ha no ip address
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="network-essentials",
+            connectivity="PRIVATE",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+                "ipAddressType": "NO_IP_ADDRESS",
+            },
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "csr8000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                    "ipAddressType": "NO_IP_ADDRESS",
+                },
+            })
+        ```
+        ### example c8000v znpd ha static
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
+            name="tf-c8000v-byol",
+            metro_code=sv.metro_code,
+            type_code="C8000V",
+            self_managed=True,
+            byol=True,
+            package_code="network-essentials",
+            connectivity="PRIVATE",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=sv.number,
+            version="17.11.01a",
+            interface_count=10,
+            core_count=2,
+            tier=1,
+            ssh_key={
+                "username": "test",
+                "key_name": "test-key",
+            },
+            vendor_configuration={
+                "restApiSupportRequirement": "true",
+                "ipAddressType": "STATIC",
+                "ipAddress": "x.x.x.x",
+                "gatewayIp": "x.x.x.x",
+                "subnetMaskIp": "x.x.x.x",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "tf-c8000v-byol-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "csr8000v-s",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "restApiSupportRequirement": "true",
+                    "ipAddressType": "STATIC",
+                    "ipAddress": "x.x.x.x",
+                    "gatewayIp": "x.x.x.x",
+                    "subnetMaskIp": "x.x.x.x",
+                    "managementInterfaceId": "6",
+                },
+            })
+        ```
         ### example checkpoint single device
         ```python
         import pulumi
@@ -3164,6 +3662,190 @@ class Device(pulumi.CustomResource):
             vendor_configuration={
                 "token": "XXXXXXXXXX",
                 "hostname": "XXXX",
+            })
+        ```
+        ### example fortigate firewall cluster device znpd static ip
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_gvmsv = equinix.networkedge.Device("FGVM-SV",
+            name="tf-fgvm-cluster-static-znpd",
+            metro_code="DC",
+            type_code="FG-VM",
+            project_id="xxxxxxx",
+            self_managed=True,
+            connectivity="PRIVATE",
+            byol=True,
+            package_code="VM02",
+            notifications=[
+                "john@equinix.com",
+                "marry@equinix.com",
+                "fred@equinix.com",
+            ],
+            term_length=12,
+            account_number=xxxxxx,
+            version="7.6.2",
+            interface_count=10,
+            core_count=2,
+            ssh_key={
+                "username": "sanity1",
+                "key_name": "",
+            },
+            cluster_details={
+                "cluster_name": "tf-fgvm--cluster",
+                "node0": {
+                    "vendor_configuration": {
+                        "ip_address": "x.x.x.x",
+                        "subnet_mask_ip": "x.x.x.x",
+                        "gateway_ip": "x.x.x.x",
+                        "management_interface_id": "5",
+                        "hostname": "test",
+                        "ip_address_type": "STATIC",
+                    },
+                },
+                "node1": {
+                    "vendor_configuration": {
+                        "ip_address": "x.x.x.x",
+                        "subnet_mask_ip": "x.x.x.x",
+                        "gateway_ip": "x.x.x.x",
+                        "management_interface_id": "5",
+                        "hostname": "test",
+                        "ip_address_type": "STATIC",
+                    },
+                },
+            })
+        ```
+        ### example fortigate firewall ha device znpd dhcp
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+            name="TF_FTNT-FIREWALL",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-VM",
+            self_managed=True,
+            byol=True,
+            interface_count=10,
+            connectivity="PRIVATE",
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.6.3",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "ipAddressType": "DHCP",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "TF_FTNT-FIREWALL-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "fg-vm-znpd",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "ipAddressType": "DHCP",
+                    "managementInterfaceId": "6",
+                },
+            })
+        ```
+        ### example fortigate firewall ha device znpd no ip
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+            name="TF_FTNT-FIREWALL",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            type_code="FG-VM",
+            interface_count=10,
+            self_managed=True,
+            byol=True,
+            connectivity="PRIVATE",
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.6.3",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "ipAddressType": "NO_IP_ADDRESS",
+            },
+            secondary_device={
+                "name": "TF_FTNT-FIREWALL-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "fg-vm-znpd",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "ipAddressType": "NO_IP_ADDRESS",
+                },
+            })
+        ```
+        ### example fortigate firewall ha device znpd static
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV",
+            name="account-name")
+        f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+            name="TF_FTNT-FIREWALL",
+            project_id="XXXXXXXXXX",
+            metro_code=sv.metro_code,
+            interface_count=10,
+            type_code="FG-VM",
+            self_managed=True,
+            byol=True,
+            connectivity="PRIVATE",
+            package_code="VM02",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="7.6.3",
+            hostname="test",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "gatewayIp": "X.X.X.X",
+                "ipAddress": "X.X.X.X",
+                "ipAddressType": "STATIC",
+                "subnetMaskIp": "x.x.x.x",
+                "managementInterfaceId": "6",
+            },
+            secondary_device={
+                "name": "TF_FTNT-FIREWALL-secondary",
+                "metro_code": sv.metro_code,
+                "hostname": "fg-vm-znpd",
+                "notifications": [
+                    "john@equinix.com",
+                    "marry@equinix.com",
+                ],
+                "account_number": sv.number,
+                "vendor_configuration": {
+                    "gatewayIp": "X.X.X.X",
+                    "ipAddress": "X.X.X.X",
+                    "ipAddressType": "STATIC",
+                    "subnetMaskIp": "X.X.X.X",
+                    "managementInterfaceId": "6",
+                },
             })
         ```
         ### example fortigate sdwan single device

@@ -699,6 +699,172 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### example c8000v znpd ha dhcp
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ *     name: "account-name",
+ * });
+ * const c8000VByol = new equinix.networkedge.Device("c8000v-byol", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "network-essentials",
+ *     connectivity: "PRIVATE",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     tier: 1,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     vendorConfiguration: {
+ *         restApiSupportRequirement: "true",
+ *         ipAddressType: "DHCP",
+ *         managementInterfaceId: "6",
+ *     },
+ *     secondaryDevice: {
+ *         name: "tf-c8000v-byol-secondary",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "c8000v-s",
+ *         notifications: [
+ *             "john@equinix.com",
+ *             "marry@equinix.com",
+ *         ],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         vendorConfiguration: {
+ *             restApiSupportRequirement: "true",
+ *             ipAddressType: "DHCP",
+ *             managementInterfaceId: "6",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example c8000v znpd ha no ip address
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ *     name: "account-name",
+ * });
+ * const c8000VByol = new equinix.networkedge.Device("c8000v-byol", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "network-essentials",
+ *     connectivity: "PRIVATE",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     tier: 1,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     vendorConfiguration: {
+ *         restApiSupportRequirement: "true",
+ *         ipAddressType: "NO_IP_ADDRESS",
+ *     },
+ *     secondaryDevice: {
+ *         name: "tf-c8000v-byol-secondary",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "csr8000v-s",
+ *         notifications: [
+ *             "john@equinix.com",
+ *             "marry@equinix.com",
+ *         ],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         vendorConfiguration: {
+ *             restApiSupportRequirement: "true",
+ *             ipAddressType: "NO_IP_ADDRESS",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example c8000v znpd ha static
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ *     name: "account-name",
+ * });
+ * const c8000VByol = new equinix.networkedge.Device("c8000v-byol", {
+ *     name: "tf-c8000v-byol",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: "network-essentials",
+ *     connectivity: "PRIVATE",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "17.11.01a",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     tier: 1,
+ *     sshKey: {
+ *         username: "test",
+ *         keyName: "test-key",
+ *     },
+ *     vendorConfiguration: {
+ *         restApiSupportRequirement: "true",
+ *         ipAddressType: "STATIC",
+ *         ipAddress: "x.x.x.x",
+ *         gatewayIp: "x.x.x.x",
+ *         subnetMaskIp: "x.x.x.x",
+ *         managementInterfaceId: "6",
+ *     },
+ *     secondaryDevice: {
+ *         name: "tf-c8000v-byol-secondary",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "csr8000v-s",
+ *         notifications: [
+ *             "john@equinix.com",
+ *             "marry@equinix.com",
+ *         ],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         vendorConfiguration: {
+ *             restApiSupportRequirement: "true",
+ *             ipAddressType: "STATIC",
+ *             ipAddress: "x.x.x.x",
+ *             gatewayIp: "x.x.x.x",
+ *             subnetMaskIp: "x.x.x.x",
+ *             managementInterfaceId: "6",
+ *         },
+ *     },
+ * });
+ * ```
  * ### example checkpoint single device
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -803,6 +969,202 @@ import * as utilities from "../utilities";
  *     vendorConfiguration: {
  *         token: "XXXXXXXXXX",
  *         hostname: "XXXX",
+ *     },
+ * });
+ * ```
+ * ### example fortigate firewall cluster device znpd static ip
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ *     name: "account-name",
+ * });
+ * const fGVMSV = new equinix.networkedge.Device("FGVM-SV", {
+ *     name: "tf-fgvm-cluster-static-znpd",
+ *     metroCode: "DC",
+ *     typeCode: "FG-VM",
+ *     projectId: "xxxxxxx",
+ *     selfManaged: true,
+ *     connectivity: "PRIVATE",
+ *     byol: true,
+ *     packageCode: "VM02",
+ *     notifications: [
+ *         "john@equinix.com",
+ *         "marry@equinix.com",
+ *         "fred@equinix.com",
+ *     ],
+ *     termLength: 12,
+ *     accountNumber: xxxxxx,
+ *     version: "7.6.2",
+ *     interfaceCount: 10,
+ *     coreCount: 2,
+ *     sshKey: {
+ *         username: "sanity1",
+ *         keyName: "",
+ *     },
+ *     clusterDetails: {
+ *         clusterName: "tf-fgvm--cluster",
+ *         node0: {
+ *             vendorConfiguration: {
+ *                 ipAddress: "x.x.x.x",
+ *                 subnetMaskIp: "x.x.x.x",
+ *                 gatewayIp: "x.x.x.x",
+ *                 managementInterfaceId: "5",
+ *                 hostname: "test",
+ *                 ipAddressType: "STATIC",
+ *             },
+ *         },
+ *         node1: {
+ *             vendorConfiguration: {
+ *                 ipAddress: "x.x.x.x",
+ *                 subnetMaskIp: "x.x.x.x",
+ *                 gatewayIp: "x.x.x.x",
+ *                 managementInterfaceId: "5",
+ *                 hostname: "test",
+ *                 ipAddressType: "STATIC",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example fortigate firewall ha device znpd dhcp
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ *     name: "account-name",
+ * });
+ * const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
+ *     name: "TF_FTNT-FIREWALL",
+ *     projectId: "XXXXXXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "FG-VM",
+ *     selfManaged: true,
+ *     byol: true,
+ *     interfaceCount: 10,
+ *     connectivity: "PRIVATE",
+ *     packageCode: "VM02",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "7.6.3",
+ *     hostname: "test",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     vendorConfiguration: {
+ *         ipAddressType: "DHCP",
+ *         managementInterfaceId: "6",
+ *     },
+ *     secondaryDevice: {
+ *         name: "TF_FTNT-FIREWALL-secondary",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "fg-vm-znpd",
+ *         notifications: [
+ *             "john@equinix.com",
+ *             "marry@equinix.com",
+ *         ],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         vendorConfiguration: {
+ *             ipAddressType: "DHCP",
+ *             managementInterfaceId: "6",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example fortigate firewall ha device znpd no ip
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ *     name: "account-name",
+ * });
+ * const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
+ *     name: "TF_FTNT-FIREWALL",
+ *     projectId: "XXXXXXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "FG-VM",
+ *     interfaceCount: 10,
+ *     selfManaged: true,
+ *     byol: true,
+ *     connectivity: "PRIVATE",
+ *     packageCode: "VM02",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "7.6.3",
+ *     hostname: "test",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     vendorConfiguration: {
+ *         ipAddressType: "NO_IP_ADDRESS",
+ *     },
+ *     secondaryDevice: {
+ *         name: "TF_FTNT-FIREWALL-secondary",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "fg-vm-znpd",
+ *         notifications: [
+ *             "john@equinix.com",
+ *             "marry@equinix.com",
+ *         ],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         vendorConfiguration: {
+ *             ipAddressType: "NO_IP_ADDRESS",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### example fortigate firewall ha device znpd static
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ *     name: "account-name",
+ * });
+ * const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
+ *     name: "TF_FTNT-FIREWALL",
+ *     projectId: "XXXXXXXXXX",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     interfaceCount: 10,
+ *     typeCode: "FG-VM",
+ *     selfManaged: true,
+ *     byol: true,
+ *     connectivity: "PRIVATE",
+ *     packageCode: "VM02",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "7.6.3",
+ *     hostname: "test",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     vendorConfiguration: {
+ *         gatewayIp: "X.X.X.X",
+ *         ipAddress: "X.X.X.X",
+ *         ipAddressType: "STATIC",
+ *         subnetMaskIp: "x.x.x.x",
+ *         managementInterfaceId: "6",
+ *     },
+ *     secondaryDevice: {
+ *         name: "TF_FTNT-FIREWALL-secondary",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         hostname: "fg-vm-znpd",
+ *         notifications: [
+ *             "john@equinix.com",
+ *             "marry@equinix.com",
+ *         ],
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         vendorConfiguration: {
+ *             gatewayIp: "X.X.X.X",
+ *             ipAddress: "X.X.X.X",
+ *             ipAddressType: "STATIC",
+ *             subnetMaskIp: "X.X.X.X",
+ *             managementInterfaceId: "6",
+ *         },
  *     },
  * });
  * ```
