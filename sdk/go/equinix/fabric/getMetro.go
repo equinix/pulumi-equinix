@@ -67,6 +67,8 @@ type GetMetroResult struct {
 	Code string `pulumi:"code"`
 	// Arrays of objects containing latency data for the specified metro
 	ConnectedMetros []GetMetroConnectedMetro `pulumi:"connectedMetros"`
+	// Country in which the data center is located
+	Country string `pulumi:"country"`
 	// Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
 	EquinixAsn int `pulumi:"equinixAsn"`
 	// Geographic location data of Fabric Metro
@@ -131,6 +133,11 @@ func (o GetMetroResultOutput) Code() pulumi.StringOutput {
 // Arrays of objects containing latency data for the specified metro
 func (o GetMetroResultOutput) ConnectedMetros() GetMetroConnectedMetroArrayOutput {
 	return o.ApplyT(func(v GetMetroResult) []GetMetroConnectedMetro { return v.ConnectedMetros }).(GetMetroConnectedMetroArrayOutput)
+}
+
+// Country in which the data center is located
+func (o GetMetroResultOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetroResult) string { return v.Country }).(pulumi.StringOutput)
 }
 
 // Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.

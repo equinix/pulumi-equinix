@@ -743,10 +743,14 @@ type DeviceClusterDetailsNode0VendorConfiguration struct {
 	Hostname *string `pulumi:"hostname"`
 	// IP Address. This field is relevant only for the Infoblox devices.
 	IpAddress *string `pulumi:"ipAddress"`
+	// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	IpAddressType *string `pulumi:"ipAddressType"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	ManagementInterfaceId *string `pulumi:"managementInterfaceId"`
 	// Management Type. This field is relevant only for Cisco FTD Firewall devices
 	ManagementType *string `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -791,10 +795,14 @@ type DeviceClusterDetailsNode0VendorConfigurationArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// IP Address. This field is relevant only for the Infoblox devices.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	IpAddressType pulumi.StringPtrInput `pulumi:"ipAddressType"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	ManagementInterfaceId pulumi.StringPtrInput `pulumi:"managementInterfaceId"`
 	// Management Type. This field is relevant only for Cisco FTD Firewall devices
 	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -925,6 +933,11 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) IpAddress() pulumi.S
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
 // License id. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.LicenseId }).(pulumi.StringPtrOutput)
@@ -933,6 +946,11 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseId() pulumi.S
 // License key. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode0VendorConfigurationOutput) LicenseKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
+}
+
+// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) ManagementInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode0VendorConfiguration) *string { return v.ManagementInterfaceId }).(pulumi.StringPtrOutput)
 }
 
 // Management Type. This field is relevant only for Cisco FTD Firewall devices
@@ -1069,6 +1087,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) IpAddress() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressType
+	}).(pulumi.StringPtrOutput)
+}
+
 // License id. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) LicenseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
@@ -1086,6 +1114,16 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ManagementInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode0VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementInterfaceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1399,10 +1437,14 @@ type DeviceClusterDetailsNode1VendorConfiguration struct {
 	Hostname *string `pulumi:"hostname"`
 	// IP Address. This field is relevant only for the Infoblox devices.
 	IpAddress *string `pulumi:"ipAddress"`
+	// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	IpAddressType *string `pulumi:"ipAddressType"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId *string `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey *string `pulumi:"licenseKey"`
+	// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	ManagementInterfaceId *string `pulumi:"managementInterfaceId"`
 	// Management Type. This field is relevant only for Cisco FTD Firewall devices
 	ManagementType *string `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1447,10 +1489,14 @@ type DeviceClusterDetailsNode1VendorConfigurationArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// IP Address. This field is relevant only for the Infoblox devices.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	IpAddressType pulumi.StringPtrInput `pulumi:"ipAddressType"`
 	// License id. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseId pulumi.StringPtrInput `pulumi:"licenseId"`
 	// License key. This field is relevant only for the BlueCat DNS and DHCP Server
 	LicenseKey pulumi.StringPtrInput `pulumi:"licenseKey"`
+	// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+	ManagementInterfaceId pulumi.StringPtrInput `pulumi:"managementInterfaceId"`
 	// Management Type. This field is relevant only for Cisco FTD Firewall devices
 	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
 	// Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1581,6 +1627,11 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) IpAddress() pulumi.S
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.IpAddressType }).(pulumi.StringPtrOutput)
+}
+
 // License id. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.LicenseId }).(pulumi.StringPtrOutput)
@@ -1589,6 +1640,11 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseId() pulumi.S
 // License key. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode1VendorConfigurationOutput) LicenseKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.LicenseKey }).(pulumi.StringPtrOutput)
+}
+
+// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) ManagementInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceClusterDetailsNode1VendorConfiguration) *string { return v.ManagementInterfaceId }).(pulumi.StringPtrOutput)
 }
 
 // Management Type. This field is relevant only for Cisco FTD Firewall devices
@@ -1725,6 +1781,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) IpAddress() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) IpAddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressType
+	}).(pulumi.StringPtrOutput)
+}
+
 // License id. This field is relevant only for the BlueCat DNS and DHCP Server
 func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) LicenseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
@@ -1742,6 +1808,16 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) LicenseKey() pulu
 			return nil
 		}
 		return v.LicenseKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ManagementInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceClusterDetailsNode1VendorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementInterfaceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4636,7 +4712,7 @@ type GetDeviceSecondaryDevice struct {
 	Status string `pulumi:"status"`
 	// UUID of an existing Equinix Network Edge device
 	Uuid string `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, managementInterfaceId, ipAddressType)
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId string `pulumi:"wanInterfaceId"`
@@ -4732,7 +4808,7 @@ type GetDeviceSecondaryDeviceArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// UUID of an existing Equinix Network Edge device
 	Uuid pulumi.StringInput `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, managementInterfaceId, ipAddressType)
 	VendorConfiguration pulumi.StringMapInput `pulumi:"vendorConfiguration"`
 	// device interface id picked for WAN
 	WanInterfaceId pulumi.StringInput `pulumi:"wanInterfaceId"`
@@ -4942,7 +5018,7 @@ func (o GetDeviceSecondaryDeviceOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDevice) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, managementInterfaceId, ipAddressType)
 func (o GetDeviceSecondaryDeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDevice) map[string]string { return v.VendorConfiguration }).(pulumi.StringMapOutput)
 }

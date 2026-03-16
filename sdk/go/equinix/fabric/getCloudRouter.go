@@ -80,8 +80,6 @@ type LookupCloudRouterResult struct {
 	Description string `pulumi:"description"`
 	// Equinix ASN
 	EquinixAsn int `pulumi:"equinixAsn"`
-	// Number of gateway attachments associated with this Access point
-	GatewayAttachmentsCount int `pulumi:"gatewayAttachmentsCount"`
 	// Fabric Cloud Router URI information
 	Href string `pulumi:"href"`
 	// The provider-assigned unique ID for this managed resource.
@@ -165,11 +163,6 @@ func (o LookupCloudRouterResultOutput) Description() pulumi.StringOutput {
 // Equinix ASN
 func (o LookupCloudRouterResultOutput) EquinixAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.EquinixAsn }).(pulumi.IntOutput)
-}
-
-// Number of gateway attachments associated with this Access point
-func (o LookupCloudRouterResultOutput) GatewayAttachmentsCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.GatewayAttachmentsCount }).(pulumi.IntOutput)
 }
 
 // Fabric Cloud Router URI information

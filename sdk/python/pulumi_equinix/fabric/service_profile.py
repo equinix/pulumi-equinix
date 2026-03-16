@@ -42,7 +42,7 @@ class ServiceProfileArgs:
         """
         The set of arguments for constructing a ServiceProfile resource.
         :param pulumi.Input[str] description: User-provided service description
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]] custom_fields: Custom Fields
@@ -108,7 +108,7 @@ class ServiceProfileArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Union[str, 'ProfileType']]:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -339,7 +339,7 @@ class _ServiceProfileState:
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
         :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
         :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
@@ -584,7 +584,7 @@ class _ServiceProfileState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[Union[str, 'ProfileType']]]:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -723,7 +723,7 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
         :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileVirtualDeviceArgs', 'ServiceProfileVirtualDeviceArgsDict']]]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
@@ -898,7 +898,7 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
         :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
         :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileVirtualDeviceArgs', 'ServiceProfileVirtualDeviceArgsDict']]]] virtual_devices: Virtual Devices
@@ -1063,7 +1063,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
         """
         return pulumi.get(self, "type")
 

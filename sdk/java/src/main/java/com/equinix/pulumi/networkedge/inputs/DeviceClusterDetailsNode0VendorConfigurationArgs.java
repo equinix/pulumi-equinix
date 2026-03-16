@@ -121,6 +121,21 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
     }
 
     /**
+     * Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+     * 
+     */
+    @Import(name="ipAddressType")
+    private @Nullable Output<String> ipAddressType;
+
+    /**
+     * @return Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+     * 
+     */
+    public Optional<Output<String>> ipAddressType() {
+        return Optional.ofNullable(this.ipAddressType);
+    }
+
+    /**
      * License id. This field is relevant only for the BlueCat DNS and DHCP Server
      * 
      */
@@ -148,6 +163,21 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
      */
     public Optional<Output<String>> licenseKey() {
         return Optional.ofNullable(this.licenseKey);
+    }
+
+    /**
+     * Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+     * 
+     */
+    @Import(name="managementInterfaceId")
+    private @Nullable Output<String> managementInterfaceId;
+
+    /**
+     * @return Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+     * 
+     */
+    public Optional<Output<String>> managementInterfaceId() {
+        return Optional.ofNullable(this.managementInterfaceId);
     }
 
     /**
@@ -280,8 +310,10 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         this.gatewayIp = $.gatewayIp;
         this.hostname = $.hostname;
         this.ipAddress = $.ipAddress;
+        this.ipAddressType = $.ipAddressType;
         this.licenseId = $.licenseId;
         this.licenseKey = $.licenseKey;
+        this.managementInterfaceId = $.managementInterfaceId;
         this.managementType = $.managementType;
         this.panoramaAuthKey = $.panoramaAuthKey;
         this.panoramaIpAddress = $.panoramaIpAddress;
@@ -458,6 +490,27 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         }
 
         /**
+         * @param ipAddressType Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddressType(@Nullable Output<String> ipAddressType) {
+            $.ipAddressType = ipAddressType;
+            return this;
+        }
+
+        /**
+         * @param ipAddressType Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddressType(String ipAddressType) {
+            return ipAddressType(Output.of(ipAddressType));
+        }
+
+        /**
          * @param licenseId License id. This field is relevant only for the BlueCat DNS and DHCP Server
          * 
          * @return builder
@@ -497,6 +550,27 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
          */
         public Builder licenseKey(String licenseKey) {
             return licenseKey(Output.of(licenseKey));
+        }
+
+        /**
+         * @param managementInterfaceId Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementInterfaceId(@Nullable Output<String> managementInterfaceId) {
+            $.managementInterfaceId = managementInterfaceId;
+            return this;
+        }
+
+        /**
+         * @param managementInterfaceId Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementInterfaceId(String managementInterfaceId) {
+            return managementInterfaceId(Output.of(managementInterfaceId));
         }
 
         /**
