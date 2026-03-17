@@ -73,6 +73,15 @@ public final class Config {
         return Codegen.integerProp("responseMaxPageSize").config(config).get();
     }
 /**
+ * The STS API base URL to point to the desired environment. This argument can also be specified with the
+ * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+ * an alpha feature and not available for all users.
+ * 
+ */
+    public Optional<String> stsEndpoint() {
+        return Codegen.stringProp("stsEndpoint").config(config).get();
+    }
+/**
  * API tokens are generated from API Consumer clients using the [OAuth2
  * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
  * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
@@ -80,5 +89,34 @@ public final class Config {
  */
     public Optional<String> token() {
         return Codegen.stringProp("token").config(config).get();
+    }
+/**
+ * The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
+ * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+ * token exchange is an alpha feature and not available for all users.
+ * 
+ */
+    public Optional<String> tokenExchangeScope() {
+        return Codegen.stringProp("tokenExchangeScope").config(config).get();
+    }
+/**
+ * The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+ * by Equinix STS. If not set, the provider will use the environment variable specified in
+ * `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+ * users.
+ * 
+ */
+    public Optional<String> tokenExchangeSubjectToken() {
+        return Codegen.stringProp("tokenExchangeSubjectToken").config(config).get();
+    }
+/**
+ * The name of the environment variable containing the subject token for token exchange. This argument can also be
+ * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+ * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+ * users.
+ * 
+ */
+    public Optional<String> tokenExchangeSubjectTokenEnvVar() {
+        return Codegen.stringProp("tokenExchangeSubjectTokenEnvVar").config(config).get();
     }
 }

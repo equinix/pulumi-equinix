@@ -105,7 +105,7 @@ type LookupServiceProfileResult struct {
 	State string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
@@ -238,7 +238,7 @@ func (o LookupServiceProfileResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
 func (o LookupServiceProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

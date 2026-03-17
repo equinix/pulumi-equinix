@@ -85,6 +85,24 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.endpoint);
     }
     /**
+     * The STS API base URL to point to the desired environment. This argument can also be specified with the
+     * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+     * an alpha feature and not available for all users.
+     * 
+     */
+    @Export(name="stsEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> stsEndpoint;
+
+    /**
+     * @return The STS API base URL to point to the desired environment. This argument can also be specified with the
+     * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+     * an alpha feature and not available for all users.
+     * 
+     */
+    public Output<Optional<String>> stsEndpoint() {
+        return Codegen.optional(this.stsEndpoint);
+    }
+    /**
      * API tokens are generated from API Consumer clients using the [OAuth2
      * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
      * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
@@ -101,6 +119,64 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<Optional<String>> token() {
         return Codegen.optional(this.token);
+    }
+    /**
+     * The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
+     * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+     * token exchange is an alpha feature and not available for all users.
+     * 
+     */
+    @Export(name="tokenExchangeScope", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tokenExchangeScope;
+
+    /**
+     * @return The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
+     * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+     * token exchange is an alpha feature and not available for all users.
+     * 
+     */
+    public Output<Optional<String>> tokenExchangeScope() {
+        return Codegen.optional(this.tokenExchangeScope);
+    }
+    /**
+     * The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+     * by Equinix STS. If not set, the provider will use the environment variable specified in
+     * `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    @Export(name="tokenExchangeSubjectToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tokenExchangeSubjectToken;
+
+    /**
+     * @return The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+     * by Equinix STS. If not set, the provider will use the environment variable specified in
+     * `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    public Output<Optional<String>> tokenExchangeSubjectToken() {
+        return Codegen.optional(this.tokenExchangeSubjectToken);
+    }
+    /**
+     * The name of the environment variable containing the subject token for token exchange. This argument can also be
+     * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+     * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    @Export(name="tokenExchangeSubjectTokenEnvVar", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tokenExchangeSubjectTokenEnvVar;
+
+    /**
+     * @return The name of the environment variable containing the subject token for token exchange. This argument can also be
+     * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+     * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    public Output<Optional<String>> tokenExchangeSubjectTokenEnvVar() {
+        return Codegen.optional(this.tokenExchangeSubjectTokenEnvVar);
     }
 
     /**

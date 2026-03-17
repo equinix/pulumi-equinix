@@ -1232,6 +1232,12 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_connection_route_filters": {
 				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilters"),
 			},
+			"equinix_fabric_received_routes": {
+				Tok: makeEquinixDataSource(fabricMod, "ReceivedRoutes"),
+			},
+			"equinix_fabric_advertised_routes": {
+				Tok: makeEquinixDataSource(fabricMod, "AdvertisedRoutes"),
+			},
 			"equinix_fabric_route_filter": {
 				Tok: makeEquinixDataSource(fabricMod, "RouteFilter"),
 			},

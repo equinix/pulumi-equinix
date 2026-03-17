@@ -147,6 +147,25 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The STS API base URL to point to the desired environment. This argument can also be specified with the
+     * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+     * an alpha feature and not available for all users.
+     * 
+     */
+    @Import(name="stsEndpoint")
+    private @Nullable Output<String> stsEndpoint;
+
+    /**
+     * @return The STS API base URL to point to the desired environment. This argument can also be specified with the
+     * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+     * an alpha feature and not available for all users.
+     * 
+     */
+    public Optional<Output<String>> stsEndpoint() {
+        return Optional.ofNullable(this.stsEndpoint);
+    }
+
+    /**
      * API tokens are generated from API Consumer clients using the [OAuth2
      * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
      * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
@@ -165,6 +184,67 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.token);
     }
 
+    /**
+     * The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
+     * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+     * token exchange is an alpha feature and not available for all users.
+     * 
+     */
+    @Import(name="tokenExchangeScope")
+    private @Nullable Output<String> tokenExchangeScope;
+
+    /**
+     * @return The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
+     * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+     * token exchange is an alpha feature and not available for all users.
+     * 
+     */
+    public Optional<Output<String>> tokenExchangeScope() {
+        return Optional.ofNullable(this.tokenExchangeScope);
+    }
+
+    /**
+     * The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+     * by Equinix STS. If not set, the provider will use the environment variable specified in
+     * `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    @Import(name="tokenExchangeSubjectToken")
+    private @Nullable Output<String> tokenExchangeSubjectToken;
+
+    /**
+     * @return The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+     * by Equinix STS. If not set, the provider will use the environment variable specified in
+     * `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    public Optional<Output<String>> tokenExchangeSubjectToken() {
+        return Optional.ofNullable(this.tokenExchangeSubjectToken);
+    }
+
+    /**
+     * The name of the environment variable containing the subject token for token exchange. This argument can also be
+     * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+     * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    @Import(name="tokenExchangeSubjectTokenEnvVar")
+    private @Nullable Output<String> tokenExchangeSubjectTokenEnvVar;
+
+    /**
+     * @return The name of the environment variable containing the subject token for token exchange. This argument can also be
+     * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+     * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+     * users.
+     * 
+     */
+    public Optional<Output<String>> tokenExchangeSubjectTokenEnvVar() {
+        return Optional.ofNullable(this.tokenExchangeSubjectTokenEnvVar);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
@@ -176,7 +256,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.maxRetryWaitSeconds = $.maxRetryWaitSeconds;
         this.requestTimeout = $.requestTimeout;
         this.responseMaxPageSize = $.responseMaxPageSize;
+        this.stsEndpoint = $.stsEndpoint;
         this.token = $.token;
+        this.tokenExchangeScope = $.tokenExchangeScope;
+        this.tokenExchangeSubjectToken = $.tokenExchangeSubjectToken;
+        this.tokenExchangeSubjectTokenEnvVar = $.tokenExchangeSubjectTokenEnvVar;
     }
 
     public static Builder builder() {
@@ -376,6 +460,31 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param stsEndpoint The STS API base URL to point to the desired environment. This argument can also be specified with the
+         * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+         * an alpha feature and not available for all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stsEndpoint(@Nullable Output<String> stsEndpoint) {
+            $.stsEndpoint = stsEndpoint;
+            return this;
+        }
+
+        /**
+         * @param stsEndpoint The STS API base URL to point to the desired environment. This argument can also be specified with the
+         * `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
+         * an alpha feature and not available for all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stsEndpoint(String stsEndpoint) {
+            return stsEndpoint(Output.of(stsEndpoint));
+        }
+
+        /**
          * @param token API tokens are generated from API Consumer clients using the [OAuth2
          * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
          * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
@@ -398,6 +507,85 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder token(String token) {
             return token(Output.of(token));
+        }
+
+        /**
+         * @param tokenExchangeScope The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
+         * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+         * token exchange is an alpha feature and not available for all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchangeScope(@Nullable Output<String> tokenExchangeScope) {
+            $.tokenExchangeScope = tokenExchangeScope;
+            return this;
+        }
+
+        /**
+         * @param tokenExchangeScope The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:&lt;org_id&gt;`.
+         * This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
+         * token exchange is an alpha feature and not available for all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchangeScope(String tokenExchangeScope) {
+            return tokenExchangeScope(Output.of(tokenExchangeScope));
+        }
+
+        /**
+         * @param tokenExchangeSubjectToken The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+         * by Equinix STS. If not set, the provider will use the environment variable specified in
+         * `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchangeSubjectToken(@Nullable Output<String> tokenExchangeSubjectToken) {
+            $.tokenExchangeSubjectToken = tokenExchangeSubjectToken;
+            return this;
+        }
+
+        /**
+         * @param tokenExchangeSubjectToken The subject token to use for token exchange authentication. Must be an OIDC ID token issued by an OIDC provider trusted
+         * by Equinix STS. If not set, the provider will use the environment variable specified in
+         * `token_exchange_subject_token_env_var`. Please note that token exchange is an alpha feature and not available for all
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchangeSubjectToken(String tokenExchangeSubjectToken) {
+            return tokenExchangeSubjectToken(Output.of(tokenExchangeSubjectToken));
+        }
+
+        /**
+         * @param tokenExchangeSubjectTokenEnvVar The name of the environment variable containing the subject token for token exchange. This argument can also be
+         * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+         * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchangeSubjectTokenEnvVar(@Nullable Output<String> tokenExchangeSubjectTokenEnvVar) {
+            $.tokenExchangeSubjectTokenEnvVar = tokenExchangeSubjectTokenEnvVar;
+            return this;
+        }
+
+        /**
+         * @param tokenExchangeSubjectTokenEnvVar The name of the environment variable containing the subject token for token exchange. This argument can also be
+         * specified with the `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN_ENV_VAR` shell environment variable. (Defaults to
+         * `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
+         * users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchangeSubjectTokenEnvVar(String tokenExchangeSubjectTokenEnvVar) {
+            return tokenExchangeSubjectTokenEnvVar(Output.of(tokenExchangeSubjectTokenEnvVar));
         }
 
         public ProviderArgs build() {

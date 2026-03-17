@@ -3,22 +3,22 @@ name: equinix-fabric-service_token-example_aside_colo_service_token
 runtime: yaml
 resources:
   test:
-    type: equinix:fabricServiceToken
+    type: equinix:fabric:ServiceToken
     properties:
       type: VC_TOKEN
       description: Aside COLO Service Token
       expirationDateTime: 2025-01-18T06:43:49.981Z
-      serviceTokenConnection:
+      serviceTokenConnections:
         - type: EVPL_VC
           bandwidthLimit: 1000
-          aSide:
+          aSides:
             - accessPointSelectors:
                 - type: COLO
                   port:
-                    - uuid: <port_uuid>
+                    uuid: <port_uuid>
                   linkProtocol:
-                    - type: DOT1Q
-                      vlanTag: '2987'
+                    type: DOT1Q
+                    vlanTag: '2987'
       notifications:
         - type: ALL
           emails:

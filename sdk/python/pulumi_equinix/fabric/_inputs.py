@@ -347,6 +347,12 @@ __all__ = [
     'StreamSubscriptionTimeoutsArgsDict',
     'StreamTimeoutsArgs',
     'StreamTimeoutsArgsDict',
+    'GetAdvertisedRoutesFilterArgs',
+    'GetAdvertisedRoutesFilterArgsDict',
+    'GetAdvertisedRoutesPaginationArgs',
+    'GetAdvertisedRoutesPaginationArgsDict',
+    'GetAdvertisedRoutesSortArgs',
+    'GetAdvertisedRoutesSortArgsDict',
     'GetCloudRoutersFilterArgs',
     'GetCloudRoutersFilterArgsDict',
     'GetCloudRoutersPaginationArgs',
@@ -383,6 +389,12 @@ __all__ = [
     'GetPrecisionTimeServicesPaginationArgsDict',
     'GetPrecisionTimeServicesSortArgs',
     'GetPrecisionTimeServicesSortArgsDict',
+    'GetReceivedRoutesFilterArgs',
+    'GetReceivedRoutesFilterArgsDict',
+    'GetReceivedRoutesPaginationArgs',
+    'GetReceivedRoutesPaginationArgsDict',
+    'GetReceivedRoutesSortArgs',
+    'GetReceivedRoutesSortArgsDict',
     'GetRouteAggregationRulesPaginationArgs',
     'GetRouteAggregationRulesPaginationArgsDict',
     'GetRouteAggregationsFilterArgs',
@@ -11117,6 +11129,10 @@ if not MYPY:
         """
         Link protocol configuration details
         """
+        selective_redundancy: NotRequired[pulumi.Input[bool]]
+        """
+        Optional redundant connections
+        """
         supported_bandwidths: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
         Supported bandwidths
@@ -11143,6 +11159,7 @@ class ServiceProfileAccessPointTypeConfigArgs:
                  connection_redundancy_required: Optional[pulumi.Input[bool]] = None,
                  enable_auto_generate_service_key: Optional[pulumi.Input[bool]] = None,
                  link_protocol_config: Optional[pulumi.Input['ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs']] = None,
+                 selective_redundancy: Optional[pulumi.Input[bool]] = None,
                  supported_bandwidths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
@@ -11158,6 +11175,7 @@ class ServiceProfileAccessPointTypeConfigArgs:
         :param pulumi.Input[bool] connection_redundancy_required: Mandate redundant connections
         :param pulumi.Input[bool] enable_auto_generate_service_key: Enable auto generate service key
         :param pulumi.Input['ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs'] link_protocol_config: Link protocol configuration details
+        :param pulumi.Input[bool] selective_redundancy: Optional redundant connections
         :param pulumi.Input[Sequence[pulumi.Input[int]]] supported_bandwidths: Supported bandwidths
         :param pulumi.Input[str] uuid: Colo/Port Uuid
         """
@@ -11184,6 +11202,8 @@ class ServiceProfileAccessPointTypeConfigArgs:
             pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
         if link_protocol_config is not None:
             pulumi.set(__self__, "link_protocol_config", link_protocol_config)
+        if selective_redundancy is not None:
+            pulumi.set(__self__, "selective_redundancy", selective_redundancy)
         if supported_bandwidths is not None:
             pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
         if uuid is not None:
@@ -11332,6 +11352,18 @@ class ServiceProfileAccessPointTypeConfigArgs:
     @link_protocol_config.setter
     def link_protocol_config(self, value: Optional[pulumi.Input['ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs']]):
         pulumi.set(self, "link_protocol_config", value)
+
+    @property
+    @pulumi.getter(name="selectiveRedundancy")
+    def selective_redundancy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional redundant connections
+        """
+        return pulumi.get(self, "selective_redundancy")
+
+    @selective_redundancy.setter
+    def selective_redundancy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "selective_redundancy", value)
 
     @property
     @pulumi.getter(name="supportedBandwidths")
@@ -17487,6 +17519,236 @@ class StreamTimeoutsArgs:
 
 
 if not MYPY:
+    class GetAdvertisedRoutesFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        property: str
+        """
+        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetAdvertisedRoutesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAdvertisedRoutesFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        :param str property: possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetAdvertisedRoutesPaginationArgsDict(TypedDict):
+        next: str
+        """
+        URL relative to the next item in the response.
+        """
+        previous: str
+        """
+        URL relative to the previous item in the response.
+        """
+        total: int
+        """
+        The total number of elements returned
+        """
+        limit: NotRequired[int]
+        """
+        Maximum number of search results returned per page.
+        """
+        offset: NotRequired[int]
+        """
+        Index of the first item returned in the response.
+        """
+elif False:
+    GetAdvertisedRoutesPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAdvertisedRoutesPaginationArgs:
+    def __init__(__self__, *,
+                 next: str,
+                 previous: str,
+                 total: int,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
+        """
+        :param str next: URL relative to the next item in the response.
+        :param str previous: URL relative to the previous item in the response.
+        :param int total: The total number of elements returned
+        :param int limit: Maximum number of search results returned per page.
+        :param int offset: Index of the first item returned in the response.
+        """
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        URL relative to the next item in the response.
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        URL relative to the previous item in the response.
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of elements returned
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Maximum number of search results returned per page.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[int]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        """
+        Index of the first item returned in the response.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[int]):
+        pulumi.set(self, "offset", value)
+
+
+if not MYPY:
+    class GetAdvertisedRoutesSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        Sort direction, one of [ASC, DESC]
+        """
+        property: NotRequired[str]
+        """
+        Property name to sort by
+        """
+elif False:
+    GetAdvertisedRoutesSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAdvertisedRoutesSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: Sort direction, one of [ASC, DESC]
+        :param str property: Property name to sort by
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        Sort direction, one of [ASC, DESC]
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        Property name to sort by
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
     class GetCloudRoutersFilterArgsDict(TypedDict):
         operator: str
         """
@@ -17794,7 +18056,7 @@ if not MYPY:
         """
         property: str
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
         """
         values: Sequence[str]
         """
@@ -17816,7 +18078,7 @@ class GetConnectionsFilterArgs:
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -17866,7 +18128,7 @@ class GetConnectionsFilterArgs:
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid *]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
         """
         return pulumi.get(self, "property")
 
@@ -18796,6 +19058,236 @@ class GetPrecisionTimeServicesSortArgs:
     def property(self) -> Optional[str]:
         """
         The property name to use in sorting. One of [/name /uuid /state /type /package/code /changeLog/createdDateTime /changeLog/updatedDateTime] Defaults to /name
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetReceivedRoutesFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        property: str
+        """
+        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetReceivedRoutesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetReceivedRoutesFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        :param str property: possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetReceivedRoutesPaginationArgsDict(TypedDict):
+        next: str
+        """
+        URL relative to the next item in the response.
+        """
+        previous: str
+        """
+        URL relative to the previous item in the response.
+        """
+        total: int
+        """
+        The total number of elements returned
+        """
+        limit: NotRequired[int]
+        """
+        Maximum number of search results returned per page.
+        """
+        offset: NotRequired[int]
+        """
+        Index of the first item returned in the response.
+        """
+elif False:
+    GetReceivedRoutesPaginationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetReceivedRoutesPaginationArgs:
+    def __init__(__self__, *,
+                 next: str,
+                 previous: str,
+                 total: int,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
+        """
+        :param str next: URL relative to the next item in the response.
+        :param str previous: URL relative to the previous item in the response.
+        :param int total: The total number of elements returned
+        :param int limit: Maximum number of search results returned per page.
+        :param int offset: Index of the first item returned in the response.
+        """
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def next(self) -> str:
+        """
+        URL relative to the next item in the response.
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: str):
+        pulumi.set(self, "next", value)
+
+    @property
+    @pulumi.getter
+    def previous(self) -> str:
+        """
+        URL relative to the previous item in the response.
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: str):
+        pulumi.set(self, "previous", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> int:
+        """
+        The total number of elements returned
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: int):
+        pulumi.set(self, "total", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Maximum number of search results returned per page.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[int]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        """
+        Index of the first item returned in the response.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[int]):
+        pulumi.set(self, "offset", value)
+
+
+if not MYPY:
+    class GetReceivedRoutesSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        Sort direction, one of [ASC, DESC]
+        """
+        property: NotRequired[str]
+        """
+        Property name to sort by
+        """
+elif False:
+    GetReceivedRoutesSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetReceivedRoutesSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: Sort direction, one of [ASC, DESC]
+        :param str property: Property name to sort by
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        Sort direction, one of [ASC, DESC]
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        Property name to sort by
         """
         return pulumi.get(self, "property")
 

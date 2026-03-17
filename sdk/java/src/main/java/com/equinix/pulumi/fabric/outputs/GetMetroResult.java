@@ -25,6 +25,11 @@ public final class GetMetroResult {
      */
     private List<GetMetroConnectedMetro> connectedMetros;
     /**
+     * @return Country in which the data center is located
+     * 
+     */
+    private String country;
+    /**
      * @return Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
      * 
      */
@@ -89,6 +94,13 @@ public final class GetMetroResult {
      */
     public List<GetMetroConnectedMetro> connectedMetros() {
         return this.connectedMetros;
+    }
+    /**
+     * @return Country in which the data center is located
+     * 
+     */
+    public String country() {
+        return this.country;
     }
     /**
      * @return Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
@@ -172,6 +184,7 @@ public final class GetMetroResult {
     public static final class Builder {
         private String code;
         private List<GetMetroConnectedMetro> connectedMetros;
+        private String country;
         private Integer equinixAsn;
         private GetMetroGeoCoordinates geoCoordinates;
         private List<String> geoScopes;
@@ -187,6 +200,7 @@ public final class GetMetroResult {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
     	      this.connectedMetros = defaults.connectedMetros;
+    	      this.country = defaults.country;
     	      this.equinixAsn = defaults.equinixAsn;
     	      this.geoCoordinates = defaults.geoCoordinates;
     	      this.geoScopes = defaults.geoScopes;
@@ -217,6 +231,14 @@ public final class GetMetroResult {
         }
         public Builder connectedMetros(GetMetroConnectedMetro... connectedMetros) {
             return connectedMetros(List.of(connectedMetros));
+        }
+        @CustomType.Setter
+        public Builder country(String country) {
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetMetroResult", "country");
+            }
+            this.country = country;
+            return this;
         }
         @CustomType.Setter
         public Builder equinixAsn(Integer equinixAsn) {
@@ -305,6 +327,7 @@ public final class GetMetroResult {
             final var _resultValue = new GetMetroResult();
             _resultValue.code = code;
             _resultValue.connectedMetros = connectedMetros;
+            _resultValue.country = country;
             _resultValue.equinixAsn = equinixAsn;
             _resultValue.geoCoordinates = geoCoordinates;
             _resultValue.geoScopes = geoScopes;

@@ -27,13 +27,16 @@ class GetMetroResult:
     """
     A collection of values returned by getMetro.
     """
-    def __init__(__self__, code=None, connected_metros=None, equinix_asn=None, geo_coordinates=None, geo_scopes=None, href=None, id=None, local_vc_bandwidth_max=None, metro_code=None, name=None, region=None, type=None):
+    def __init__(__self__, code=None, connected_metros=None, country=None, equinix_asn=None, geo_coordinates=None, geo_scopes=None, href=None, id=None, local_vc_bandwidth_max=None, metro_code=None, name=None, region=None, type=None):
         if code and not isinstance(code, str):
             raise TypeError("Expected argument 'code' to be a str")
         pulumi.set(__self__, "code", code)
         if connected_metros and not isinstance(connected_metros, list):
             raise TypeError("Expected argument 'connected_metros' to be a list")
         pulumi.set(__self__, "connected_metros", connected_metros)
+        if country and not isinstance(country, str):
+            raise TypeError("Expected argument 'country' to be a str")
+        pulumi.set(__self__, "country", country)
         if equinix_asn and not isinstance(equinix_asn, int):
             raise TypeError("Expected argument 'equinix_asn' to be a int")
         pulumi.set(__self__, "equinix_asn", equinix_asn)
@@ -80,6 +83,14 @@ class GetMetroResult:
         Arrays of objects containing latency data for the specified metro
         """
         return pulumi.get(self, "connected_metros")
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        """
+        Country in which the data center is located
+        """
+        return pulumi.get(self, "country")
 
     @property
     @pulumi.getter(name="equinixAsn")
@@ -170,6 +181,7 @@ class AwaitableGetMetroResult(GetMetroResult):
         return GetMetroResult(
             code=self.code,
             connected_metros=self.connected_metros,
+            country=self.country,
             equinix_asn=self.equinix_asn,
             geo_coordinates=self.geo_coordinates,
             geo_scopes=self.geo_scopes,
@@ -214,6 +226,7 @@ def get_metro(metro_code: Optional[str] = None,
     return AwaitableGetMetroResult(
         code=pulumi.get(__ret__, 'code'),
         connected_metros=pulumi.get(__ret__, 'connected_metros'),
+        country=pulumi.get(__ret__, 'country'),
         equinix_asn=pulumi.get(__ret__, 'equinix_asn'),
         geo_coordinates=pulumi.get(__ret__, 'geo_coordinates'),
         geo_scopes=pulumi.get(__ret__, 'geo_scopes'),
@@ -255,6 +268,7 @@ def get_metro_output(metro_code: Optional[pulumi.Input[str]] = None,
     return __ret__.apply(lambda __response__: GetMetroResult(
         code=pulumi.get(__response__, 'code'),
         connected_metros=pulumi.get(__response__, 'connected_metros'),
+        country=pulumi.get(__response__, 'country'),
         equinix_asn=pulumi.get(__response__, 'equinix_asn'),
         geo_coordinates=pulumi.get(__response__, 'geo_coordinates'),
         geo_scopes=pulumi.get(__response__, 'geo_scopes'),

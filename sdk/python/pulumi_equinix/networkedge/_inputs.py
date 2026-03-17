@@ -550,6 +550,10 @@ if not MYPY:
         """
         IP Address. This field is relevant only for the Infoblox devices.
         """
+        ip_address_type: NotRequired[pulumi.Input[str]]
+        """
+        Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+        """
         license_id: NotRequired[pulumi.Input[str]]
         """
         License id. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -557,6 +561,10 @@ if not MYPY:
         license_key: NotRequired[pulumi.Input[str]]
         """
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        management_interface_id: NotRequired[pulumi.Input[str]]
+        """
+        Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
         """
         management_type: NotRequired[pulumi.Input[str]]
         """
@@ -603,8 +611,10 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
                  gateway_ip: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_address_type: Optional[pulumi.Input[str]] = None,
                  license_id: Optional[pulumi.Input[str]] = None,
                  license_key: Optional[pulumi.Input[str]] = None,
+                 management_interface_id: Optional[pulumi.Input[str]] = None,
                  management_type: Optional[pulumi.Input[str]] = None,
                  panorama_auth_key: Optional[pulumi.Input[str]] = None,
                  panorama_ip_address: Optional[pulumi.Input[str]] = None,
@@ -621,8 +631,10 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
         :param pulumi.Input[str] gateway_ip: Gateway IP. This field is relevant only for the Infoblox devices.
         :param pulumi.Input[str] hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         :param pulumi.Input[str] ip_address: IP Address. This field is relevant only for the Infoblox devices.
+        :param pulumi.Input[str] ip_address_type: Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
         :param pulumi.Input[str] license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param pulumi.Input[str] license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param pulumi.Input[str] management_interface_id: Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
         :param pulumi.Input[str] management_type: Management Type. This field is relevant only for Cisco FTD Firewall devices
         :param pulumi.Input[str] panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param pulumi.Input[str] panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -646,10 +658,14 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
             pulumi.set(__self__, "hostname", hostname)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_address_type is not None:
+            pulumi.set(__self__, "ip_address_type", ip_address_type)
         if license_id is not None:
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if management_interface_id is not None:
+            pulumi.set(__self__, "management_interface_id", management_interface_id)
         if management_type is not None:
             pulumi.set(__self__, "management_type", management_type)
         if panorama_auth_key is not None:
@@ -752,6 +768,18 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
         pulumi.set(self, "ip_address", value)
 
     @property
+    @pulumi.getter(name="ipAddressType")
+    def ip_address_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+        """
+        return pulumi.get(self, "ip_address_type")
+
+    @ip_address_type.setter
+    def ip_address_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address_type", value)
+
+    @property
     @pulumi.getter(name="licenseId")
     def license_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -774,6 +802,18 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
     @license_key.setter
     def license_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "license_key", value)
+
+    @property
+    @pulumi.getter(name="managementInterfaceId")
+    def management_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+        """
+        return pulumi.get(self, "management_interface_id")
+
+    @management_interface_id.setter
+    def management_interface_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "management_interface_id", value)
 
     @property
     @pulumi.getter(name="managementType")
@@ -1014,6 +1054,10 @@ if not MYPY:
         """
         IP Address. This field is relevant only for the Infoblox devices.
         """
+        ip_address_type: NotRequired[pulumi.Input[str]]
+        """
+        Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+        """
         license_id: NotRequired[pulumi.Input[str]]
         """
         License id. This field is relevant only for the BlueCat DNS and DHCP Server
@@ -1021,6 +1065,10 @@ if not MYPY:
         license_key: NotRequired[pulumi.Input[str]]
         """
         License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        management_interface_id: NotRequired[pulumi.Input[str]]
+        """
+        Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
         """
         management_type: NotRequired[pulumi.Input[str]]
         """
@@ -1067,8 +1115,10 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
                  gateway_ip: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_address_type: Optional[pulumi.Input[str]] = None,
                  license_id: Optional[pulumi.Input[str]] = None,
                  license_key: Optional[pulumi.Input[str]] = None,
+                 management_interface_id: Optional[pulumi.Input[str]] = None,
                  management_type: Optional[pulumi.Input[str]] = None,
                  panorama_auth_key: Optional[pulumi.Input[str]] = None,
                  panorama_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1085,8 +1135,10 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
         :param pulumi.Input[str] gateway_ip: Gateway IP. This field is relevant only for the Infoblox devices.
         :param pulumi.Input[str] hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         :param pulumi.Input[str] ip_address: IP Address. This field is relevant only for the Infoblox devices.
+        :param pulumi.Input[str] ip_address_type: Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
         :param pulumi.Input[str] license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
         :param pulumi.Input[str] license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param pulumi.Input[str] management_interface_id: Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
         :param pulumi.Input[str] management_type: Management Type. This field is relevant only for Cisco FTD Firewall devices
         :param pulumi.Input[str] panorama_auth_key: Panorama Server Auth Key. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
         :param pulumi.Input[str] panorama_ip_address: Panorama Server IP Address. This field is relevant only for the PA-VM firewall devices to have integration with Panorama Server.
@@ -1110,10 +1162,14 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
             pulumi.set(__self__, "hostname", hostname)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_address_type is not None:
+            pulumi.set(__self__, "ip_address_type", ip_address_type)
         if license_id is not None:
             pulumi.set(__self__, "license_id", license_id)
         if license_key is not None:
             pulumi.set(__self__, "license_key", license_key)
+        if management_interface_id is not None:
+            pulumi.set(__self__, "management_interface_id", management_interface_id)
         if management_type is not None:
             pulumi.set(__self__, "management_type", management_type)
         if panorama_auth_key is not None:
@@ -1216,6 +1272,18 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
         pulumi.set(self, "ip_address", value)
 
     @property
+    @pulumi.getter(name="ipAddressType")
+    def ip_address_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ip Address Type. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+        """
+        return pulumi.get(self, "ip_address_type")
+
+    @ip_address_type.setter
+    def ip_address_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address_type", value)
+
+    @property
     @pulumi.getter(name="licenseId")
     def license_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1238,6 +1306,18 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
     @license_key.setter
     def license_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "license_key", value)
+
+    @property
+    @pulumi.getter(name="managementInterfaceId")
+    def management_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Management Interface ID. This field is relevant only for FG VM Firewall clusters with connectivity PRIVATE option
+        """
+        return pulumi.get(self, "management_interface_id")
+
+    @management_interface_id.setter
+    def management_interface_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "management_interface_id", value)
 
     @property
     @pulumi.getter(name="managementType")

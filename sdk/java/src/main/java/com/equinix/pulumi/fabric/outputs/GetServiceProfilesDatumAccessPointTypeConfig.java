@@ -75,6 +75,11 @@ public final class GetServiceProfilesDatumAccessPointTypeConfig {
      */
     private @Nullable GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig;
     /**
+     * @return Optional redundant connections
+     * 
+     */
+    private @Nullable Boolean selectiveRedundancy;
+    /**
      * @return Supported bandwidths
      * 
      */
@@ -169,6 +174,13 @@ public final class GetServiceProfilesDatumAccessPointTypeConfig {
         return Optional.ofNullable(this.linkProtocolConfig);
     }
     /**
+     * @return Optional redundant connections
+     * 
+     */
+    public Optional<Boolean> selectiveRedundancy() {
+        return Optional.ofNullable(this.selectiveRedundancy);
+    }
+    /**
      * @return Supported bandwidths
      * 
      */
@@ -210,6 +222,7 @@ public final class GetServiceProfilesDatumAccessPointTypeConfig {
         private @Nullable Boolean connectionRedundancyRequired;
         private @Nullable Boolean enableAutoGenerateServiceKey;
         private @Nullable GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig;
+        private @Nullable Boolean selectiveRedundancy;
         private @Nullable List<Integer> supportedBandwidths;
         private String type;
         private String uuid;
@@ -227,6 +240,7 @@ public final class GetServiceProfilesDatumAccessPointTypeConfig {
     	      this.connectionRedundancyRequired = defaults.connectionRedundancyRequired;
     	      this.enableAutoGenerateServiceKey = defaults.enableAutoGenerateServiceKey;
     	      this.linkProtocolConfig = defaults.linkProtocolConfig;
+    	      this.selectiveRedundancy = defaults.selectiveRedundancy;
     	      this.supportedBandwidths = defaults.supportedBandwidths;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
@@ -299,6 +313,12 @@ public final class GetServiceProfilesDatumAccessPointTypeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder selectiveRedundancy(@Nullable Boolean selectiveRedundancy) {
+
+            this.selectiveRedundancy = selectiveRedundancy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder supportedBandwidths(@Nullable List<Integer> supportedBandwidths) {
 
             this.supportedBandwidths = supportedBandwidths;
@@ -336,6 +356,7 @@ public final class GetServiceProfilesDatumAccessPointTypeConfig {
             _resultValue.connectionRedundancyRequired = connectionRedundancyRequired;
             _resultValue.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
             _resultValue.linkProtocolConfig = linkProtocolConfig;
+            _resultValue.selectiveRedundancy = selectiveRedundancy;
             _resultValue.supportedBandwidths = supportedBandwidths;
             _resultValue.type = type;
             _resultValue.uuid = uuid;

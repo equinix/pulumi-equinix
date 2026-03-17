@@ -949,6 +949,217 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// });
     /// ```
+    /// ### example c8000v znpd ha dhcp
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///         Name = "account-name",
+    ///     });
+    /// 
+    ///     var c8000VByol = new Equinix.NetworkEdge.Device("c8000v-byol", new()
+    ///     {
+    ///         Name = "tf-c8000v-byol",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "C8000V",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "network-essentials",
+    ///         Connectivity = "PRIVATE",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///             "marry@equinix.com",
+    ///             "fred@equinix.com",
+    ///         },
+    ///         TermLength = 12,
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "17.11.01a",
+    ///         InterfaceCount = 10,
+    ///         CoreCount = 2,
+    ///         Tier = 1,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test",
+    ///             KeyName = "test-key",
+    ///         },
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "restApiSupportRequirement", "true" },
+    ///             { "ipAddressType", "DHCP" },
+    ///             { "managementInterfaceId", "6" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "tf-c8000v-byol-secondary",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "c8000v-s",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "restApiSupportRequirement", "true" },
+    ///                 { "ipAddressType", "DHCP" },
+    ///                 { "managementInterfaceId", "6" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example c8000v znpd ha no ip address
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///         Name = "account-name",
+    ///     });
+    /// 
+    ///     var c8000VByol = new Equinix.NetworkEdge.Device("c8000v-byol", new()
+    ///     {
+    ///         Name = "tf-c8000v-byol",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "C8000V",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "network-essentials",
+    ///         Connectivity = "PRIVATE",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///             "marry@equinix.com",
+    ///             "fred@equinix.com",
+    ///         },
+    ///         TermLength = 12,
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "17.11.01a",
+    ///         InterfaceCount = 10,
+    ///         CoreCount = 2,
+    ///         Tier = 1,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test",
+    ///             KeyName = "test-key",
+    ///         },
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "restApiSupportRequirement", "true" },
+    ///             { "ipAddressType", "NO_IP_ADDRESS" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "tf-c8000v-byol-secondary",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "csr8000v-s",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "restApiSupportRequirement", "true" },
+    ///                 { "ipAddressType", "NO_IP_ADDRESS" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example c8000v znpd ha static
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///         Name = "account-name",
+    ///     });
+    /// 
+    ///     var c8000VByol = new Equinix.NetworkEdge.Device("c8000v-byol", new()
+    ///     {
+    ///         Name = "tf-c8000v-byol",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "C8000V",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = "network-essentials",
+    ///         Connectivity = "PRIVATE",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///             "marry@equinix.com",
+    ///             "fred@equinix.com",
+    ///         },
+    ///         TermLength = 12,
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "17.11.01a",
+    ///         InterfaceCount = 10,
+    ///         CoreCount = 2,
+    ///         Tier = 1,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "test",
+    ///             KeyName = "test-key",
+    ///         },
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "restApiSupportRequirement", "true" },
+    ///             { "ipAddressType", "STATIC" },
+    ///             { "ipAddress", "x.x.x.x" },
+    ///             { "gatewayIp", "x.x.x.x" },
+    ///             { "subnetMaskIp", "x.x.x.x" },
+    ///             { "managementInterfaceId", "6" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "tf-c8000v-byol-secondary",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "csr8000v-s",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "restApiSupportRequirement", "true" },
+    ///                 { "ipAddressType", "STATIC" },
+    ///                 { "ipAddress", "x.x.x.x" },
+    ///                 { "gatewayIp", "x.x.x.x" },
+    ///                 { "subnetMaskIp", "x.x.x.x" },
+    ///                 { "managementInterfaceId", "6" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example checkpoint single device
     /// ```csharp
     /// using System.Collections.Generic;
@@ -1092,6 +1303,265 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         {
     ///             { "token", "XXXXXXXXXX" },
     ///             { "hostname", "XXXX" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example fortigate firewall cluster device znpd static ip
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///         Name = "account-name",
+    ///     });
+    /// 
+    ///     var fGVMSV = new Equinix.NetworkEdge.Device("FGVM-SV", new()
+    ///     {
+    ///         Name = "tf-fgvm-cluster-static-znpd",
+    ///         MetroCode = "DC",
+    ///         TypeCode = "FG-VM",
+    ///         ProjectId = "xxxxxxx",
+    ///         SelfManaged = true,
+    ///         Connectivity = "PRIVATE",
+    ///         Byol = true,
+    ///         PackageCode = "VM02",
+    ///         Notifications = new[]
+    ///         {
+    ///             "john@equinix.com",
+    ///             "marry@equinix.com",
+    ///             "fred@equinix.com",
+    ///         },
+    ///         TermLength = 12,
+    ///         AccountNumber = xxxxxx,
+    ///         Version = "7.6.2",
+    ///         InterfaceCount = 10,
+    ///         CoreCount = 2,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "sanity1",
+    ///             KeyName = "",
+    ///         },
+    ///         ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
+    ///         {
+    ///             ClusterName = "tf-fgvm--cluster",
+    ///             Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
+    ///                 {
+    ///                     IpAddress = "x.x.x.x",
+    ///                     SubnetMaskIp = "x.x.x.x",
+    ///                     GatewayIp = "x.x.x.x",
+    ///                     ManagementInterfaceId = "5",
+    ///                     Hostname = "test",
+    ///                     IpAddressType = "STATIC",
+    ///                 },
+    ///             },
+    ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
+    ///             {
+    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
+    ///                 {
+    ///                     IpAddress = "x.x.x.x",
+    ///                     SubnetMaskIp = "x.x.x.x",
+    ///                     GatewayIp = "x.x.x.x",
+    ///                     ManagementInterfaceId = "5",
+    ///                     Hostname = "test",
+    ///                     IpAddressType = "STATIC",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example fortigate firewall ha device znpd dhcp
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///         Name = "account-name",
+    ///     });
+    /// 
+    ///     var fTNTFIREWALLSV = new Equinix.NetworkEdge.Device("FTNT-FIREWALL-SV", new()
+    ///     {
+    ///         Name = "TF_FTNT-FIREWALL",
+    ///         ProjectId = "XXXXXXXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "FG-VM",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         InterfaceCount = 10,
+    ///         Connectivity = "PRIVATE",
+    ///         PackageCode = "VM02",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "7.6.3",
+    ///         Hostname = "test",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "ipAddressType", "DHCP" },
+    ///             { "managementInterfaceId", "6" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "TF_FTNT-FIREWALL-secondary",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "fg-vm-znpd",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "ipAddressType", "DHCP" },
+    ///                 { "managementInterfaceId", "6" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example fortigate firewall ha device znpd no ip
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///         Name = "account-name",
+    ///     });
+    /// 
+    ///     var fTNTFIREWALLSV = new Equinix.NetworkEdge.Device("FTNT-FIREWALL-SV", new()
+    ///     {
+    ///         Name = "TF_FTNT-FIREWALL",
+    ///         ProjectId = "XXXXXXXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "FG-VM",
+    ///         InterfaceCount = 10,
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         Connectivity = "PRIVATE",
+    ///         PackageCode = "VM02",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "7.6.3",
+    ///         Hostname = "test",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "ipAddressType", "NO_IP_ADDRESS" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "TF_FTNT-FIREWALL-secondary",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "fg-vm-znpd",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "ipAddressType", "NO_IP_ADDRESS" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### example fortigate firewall ha device znpd static
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///         Name = "account-name",
+    ///     });
+    /// 
+    ///     var fTNTFIREWALLSV = new Equinix.NetworkEdge.Device("FTNT-FIREWALL-SV", new()
+    ///     {
+    ///         Name = "TF_FTNT-FIREWALL",
+    ///         ProjectId = "XXXXXXXXXX",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         InterfaceCount = 10,
+    ///         TypeCode = "FG-VM",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         Connectivity = "PRIVATE",
+    ///         PackageCode = "VM02",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "7.6.3",
+    ///         Hostname = "test",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "gatewayIp", "X.X.X.X" },
+    ///             { "ipAddress", "X.X.X.X" },
+    ///             { "ipAddressType", "STATIC" },
+    ///             { "subnetMaskIp", "x.x.x.x" },
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "TF_FTNT-FIREWALL-secondary",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             Hostname = "fg-vm-znpd",
+    ///             Notifications = new[]
+    ///             {
+    ///                 "john@equinix.com",
+    ///                 "marry@equinix.com",
+    ///             },
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "ipAddressType", "STATIC" },
+    ///                 { "ipAddress", "x.x.x.x" },
+    ///                 { "gatewayIp", "x.x.x.x" },
+    ///                 { "subnetMaskIp", "x.x.x.x" },
+    ///                 { "managementInterfaceId", "6" },
+    ///             },
     ///         },
     ///     });
     /// 

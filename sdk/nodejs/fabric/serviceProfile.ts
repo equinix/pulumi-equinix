@@ -145,7 +145,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -303,7 +303,7 @@ export interface ServiceProfileState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
      */
     type?: pulumi.Input<string | enums.fabric.ProfileType>;
     /**
@@ -381,7 +381,7 @@ export interface ServiceProfileArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA_PROFILE
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
      */
     type: pulumi.Input<string | enums.fabric.ProfileType>;
     /**

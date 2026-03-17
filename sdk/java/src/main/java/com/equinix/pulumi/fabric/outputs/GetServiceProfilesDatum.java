@@ -103,7 +103,7 @@ public final class GetServiceProfilesDatum {
      */
     private List<String> tags;
     /**
-     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE, IX_PROFILE
      * 
      */
     private String type;
@@ -242,7 +242,7 @@ public final class GetServiceProfilesDatum {
         return this.tags;
     }
     /**
-     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE, IX_PROFILE
      * 
      */
     public String type() {

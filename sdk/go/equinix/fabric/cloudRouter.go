@@ -132,8 +132,6 @@ type CloudRouter struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Equinix ASN
 	EquinixAsn pulumi.IntOutput `pulumi:"equinixAsn"`
-	// Number of gateway attachments associated with this Access point
-	GatewayAttachmentsCount pulumi.IntOutput `pulumi:"gatewayAttachmentsCount"`
 	// Fabric Cloud Router URI information
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Fabric Cloud Router location
@@ -213,8 +211,6 @@ type cloudRouterState struct {
 	Description *string `pulumi:"description"`
 	// Equinix ASN
 	EquinixAsn *int `pulumi:"equinixAsn"`
-	// Number of gateway attachments associated with this Access point
-	GatewayAttachmentsCount *int `pulumi:"gatewayAttachmentsCount"`
 	// Fabric Cloud Router URI information
 	Href *string `pulumi:"href"`
 	// Fabric Cloud Router location
@@ -250,8 +246,6 @@ type CloudRouterState struct {
 	Description pulumi.StringPtrInput
 	// Equinix ASN
 	EquinixAsn pulumi.IntPtrInput
-	// Number of gateway attachments associated with this Access point
-	GatewayAttachmentsCount pulumi.IntPtrInput
 	// Fabric Cloud Router URI information
 	Href pulumi.StringPtrInput
 	// Fabric Cloud Router location
@@ -445,11 +439,6 @@ func (o CloudRouterOutput) Description() pulumi.StringPtrOutput {
 // Equinix ASN
 func (o CloudRouterOutput) EquinixAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudRouter) pulumi.IntOutput { return v.EquinixAsn }).(pulumi.IntOutput)
-}
-
-// Number of gateway attachments associated with this Access point
-func (o CloudRouterOutput) GatewayAttachmentsCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *CloudRouter) pulumi.IntOutput { return v.GatewayAttachmentsCount }).(pulumi.IntOutput)
 }
 
 // Fabric Cloud Router URI information

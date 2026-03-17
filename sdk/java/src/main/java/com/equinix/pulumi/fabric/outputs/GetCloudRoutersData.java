@@ -46,11 +46,6 @@ public final class GetCloudRoutersData {
      */
     private Integer equinixAsn;
     /**
-     * @return Number of gateway attachments associated with this Access point
-     * 
-     */
-    private Integer gatewayAttachmentsCount;
-    /**
      * @return Fabric Cloud Router URI information
      * 
      */
@@ -141,13 +136,6 @@ public final class GetCloudRoutersData {
      */
     public Integer equinixAsn() {
         return this.equinixAsn;
-    }
-    /**
-     * @return Number of gateway attachments associated with this Access point
-     * 
-     */
-    public Integer gatewayAttachmentsCount() {
-        return this.gatewayAttachmentsCount;
     }
     /**
      * @return Fabric Cloud Router URI information
@@ -241,7 +229,6 @@ public final class GetCloudRoutersData {
         private Integer connectionsCount;
         private String description;
         private Integer equinixAsn;
-        private Integer gatewayAttachmentsCount;
         private String href;
         private List<GetCloudRoutersDataLocation> locations;
         private List<GetCloudRoutersDataMarketplaceSubscription> marketplaceSubscriptions;
@@ -261,7 +248,6 @@ public final class GetCloudRoutersData {
     	      this.connectionsCount = defaults.connectionsCount;
     	      this.description = defaults.description;
     	      this.equinixAsn = defaults.equinixAsn;
-    	      this.gatewayAttachmentsCount = defaults.gatewayAttachmentsCount;
     	      this.href = defaults.href;
     	      this.locations = defaults.locations;
     	      this.marketplaceSubscriptions = defaults.marketplaceSubscriptions;
@@ -319,14 +305,6 @@ public final class GetCloudRoutersData {
               throw new MissingRequiredPropertyException("GetCloudRoutersData", "equinixAsn");
             }
             this.equinixAsn = equinixAsn;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder gatewayAttachmentsCount(Integer gatewayAttachmentsCount) {
-            if (gatewayAttachmentsCount == null) {
-              throw new MissingRequiredPropertyException("GetCloudRoutersData", "gatewayAttachmentsCount");
-            }
-            this.gatewayAttachmentsCount = gatewayAttachmentsCount;
             return this;
         }
         @CustomType.Setter
@@ -442,7 +420,6 @@ public final class GetCloudRoutersData {
             _resultValue.connectionsCount = connectionsCount;
             _resultValue.description = description;
             _resultValue.equinixAsn = equinixAsn;
-            _resultValue.gatewayAttachmentsCount = gatewayAttachmentsCount;
             _resultValue.href = href;
             _resultValue.locations = locations;
             _resultValue.marketplaceSubscriptions = marketplaceSubscriptions;
