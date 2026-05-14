@@ -348,6 +348,67 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// });
     /// ```
+    /// ### example 6wind vsr ha device
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var sixWindVsr = new Equinix.NetworkEdge.Device("six-wind-vsr", new()
+    ///     {
+    ///         Name = "6WIND-VSR",
+    ///         ProjectId = "xxxxxxx",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "6WIND-VSR",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         InterfaceCount = 10,
+    ///         PackageCode = "STD",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "3.10.8",
+    ///         CoreCount = 2,
+    ///         TermLength = 1,
+    ///         VendorConfiguration = 
+    ///         {
+    ///             { "hostname", "test" },
+    ///             { "token", "xxxx" },
+    ///         },
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = "xxxx",
+    ///             KeyName = "xxxxx",
+    ///         },
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "6WIND-VSR-Sec",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             Notifications = new[]
+    ///             {
+    ///                 "test@eq.com",
+    ///             },
+    ///             VendorConfiguration = 
+    ///             {
+    ///                 { "hostname", "test" },
+    ///                 { "token", "xxxx" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### example 7
     /// ```csharp
     /// using System.Collections.Generic;
@@ -1542,6 +1603,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             { "ipAddress", "X.X.X.X" },
     ///             { "ipAddressType", "STATIC" },
     ///             { "subnetMaskIp", "x.x.x.x" },
+    ///             { "managementInterfaceId", "6" },
     ///         },
     ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
     ///         {
@@ -1556,10 +1618,10 @@ namespace Pulumi.Equinix.NetworkEdge
     ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
     ///             VendorConfiguration = 
     ///             {
+    ///                 { "gatewayIp", "X.X.X.X" },
+    ///                 { "ipAddress", "X.X.X.X" },
     ///                 { "ipAddressType", "STATIC" },
-    ///                 { "ipAddress", "x.x.x.x" },
-    ///                 { "gatewayIp", "x.x.x.x" },
-    ///                 { "subnetMaskIp", "x.x.x.x" },
+    ///                 { "subnetMaskIp", "X.X.X.X" },
     ///                 { "managementInterfaceId", "6" },
     ///             },
     ///         },
@@ -2168,7 +2230,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Purchase order number associated with a device order.
+        /// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         /// </summary>
         [Output("purchaseOrderNumber")]
         public Output<string?> PurchaseOrderNumber { get; private set; } = null!;
@@ -2475,7 +2537,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Purchase order number associated with a device order.
+        /// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         /// </summary>
         [Input("purchaseOrderNumber")]
         public Input<string>? PurchaseOrderNumber { get; set; }
@@ -2737,7 +2799,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Purchase order number associated with a device order.
+        /// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         /// </summary>
         [Input("purchaseOrderNumber")]
         public Input<string>? PurchaseOrderNumber { get; set; }

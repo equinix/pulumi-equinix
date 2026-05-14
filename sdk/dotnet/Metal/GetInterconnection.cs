@@ -12,7 +12,10 @@ namespace Pulumi.Equinix.Metal
     public static class GetInterconnection
     {
         /// <summary>
-        /// Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
+        /// Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
         /// 
         /// &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
         /// 
@@ -38,7 +41,10 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectionResult>("equinix:metal/getInterconnection:getInterconnection", args ?? new GetInterconnectionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
+        /// Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
         /// 
         /// &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
         /// 
@@ -64,7 +70,10 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectionResult>("equinix:metal/getInterconnection:getInterconnection", args ?? new GetInterconnectionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
+        /// Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
         /// 
         /// &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
         /// 
@@ -124,7 +133,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetInterconnectionResult
     {
         /// <summary>
-        /// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+        /// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com).
         /// </summary>
         public readonly string AuthorizationCode;
         public readonly string ConnectionId;
@@ -193,7 +202,7 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+        /// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         /// </summary>
         public readonly string Token;
         /// <summary>

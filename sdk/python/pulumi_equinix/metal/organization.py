@@ -279,6 +279,8 @@ class Organization(pulumi.CustomResource):
                  website: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
         Provides a resource to manage organization resource in Equinix Metal.
 
         ## Example Usage
@@ -315,6 +317,8 @@ class Organization(pulumi.CustomResource):
                  args: Optional[OrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
         Provides a resource to manage organization resource in Equinix Metal.
 
         ## Example Usage

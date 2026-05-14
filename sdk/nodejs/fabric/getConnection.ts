@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
  *
  * Additional documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
- * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+ * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
  */
 export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -120,8 +120,8 @@ export interface GetConnectionResult {
  * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
  *
  * Additional documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
- * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+ * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
  */
 export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

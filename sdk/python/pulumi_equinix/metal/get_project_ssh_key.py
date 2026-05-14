@@ -147,6 +147,8 @@ def get_project_ssh_key(id: Optional[str] = None,
                         search: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectSshKeyResult:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     Use this datasource to retrieve attributes of a Project SSH Key API resource.
 
     ## Example Usage
@@ -188,6 +190,8 @@ def get_project_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                search: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectSshKeyResult]:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     Use this datasource to retrieve attributes of a Project SSH Key API resource.
 
     ## Example Usage

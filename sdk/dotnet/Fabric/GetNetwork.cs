@@ -15,8 +15,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
         /// 
         /// Additional documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+        /// * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
         /// 
         /// ## Example Usage
         /// 
@@ -54,8 +54,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
         /// 
         /// Additional documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+        /// * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
         /// 
         /// ## Example Usage
         /// 
@@ -93,8 +93,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
         /// 
         /// Additional documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+        /// * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
         /// 
         /// ## Example Usage
         /// 

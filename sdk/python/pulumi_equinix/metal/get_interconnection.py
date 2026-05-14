@@ -99,7 +99,7 @@ class GetInterconnectionResult:
     @pulumi.getter(name="authorizationCode")
     def authorization_code(self) -> str:
         """
-        Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+        Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com).
         """
         return pulumi.get(self, "authorization_code")
 
@@ -242,7 +242,7 @@ class GetInterconnectionResult:
     @_utilities.deprecated("""If your organization already has connection service tokens enabled, use `service_tokens` instead""")
     def token(self) -> str:
         """
-        (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
+        (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         """
         return pulumi.get(self, "token")
 
@@ -301,7 +301,9 @@ class AwaitableGetInterconnectionResult(GetInterconnectionResult):
 def get_interconnection(connection_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInterconnectionResult:
     """
-    Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
+    Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
 
     > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
 
@@ -348,7 +350,9 @@ def get_interconnection(connection_id: Optional[str] = None,
 def get_interconnection_output(connection_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterconnectionResult]:
     """
-    Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
+    Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
 
     > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
 

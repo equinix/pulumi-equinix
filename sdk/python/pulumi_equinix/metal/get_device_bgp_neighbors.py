@@ -74,6 +74,8 @@ class AwaitableGetDeviceBgpNeighborsResult(GetDeviceBgpNeighborsResult):
 def get_device_bgp_neighbors(device_id: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeviceBgpNeighborsResult:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
 
     To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
@@ -105,6 +107,8 @@ def get_device_bgp_neighbors(device_id: Optional[str] = None,
 def get_device_bgp_neighbors_output(device_id: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceBgpNeighborsResult]:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
 
     To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.

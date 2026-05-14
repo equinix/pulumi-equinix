@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+//
 // Use this datasource to retrieve attributes of the Project API resource.
 //
 // ## Example Usage
@@ -61,7 +63,7 @@ type LookupProjectArgs struct {
 type LookupProjectResult struct {
 	// Whether Backend Transfer is enabled for this project.
 	BackendTransfer bool `pulumi:"backendTransfer"`
-	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 	BgpConfig GetProjectBgpConfig `pulumi:"bgpConfig"`
 	// The timestamp for when the project was created.
 	Created string `pulumi:"created"`
@@ -119,7 +121,7 @@ func (o LookupProjectResultOutput) BackendTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.BackendTransfer }).(pulumi.BoolOutput)
 }
 
-// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 func (o LookupProjectResultOutput) BgpConfig() GetProjectBgpConfigOutput {
 	return o.ApplyT(func(v LookupProjectResult) GetProjectBgpConfig { return v.BgpConfig }).(GetProjectBgpConfigOutput)
 }

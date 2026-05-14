@@ -139,6 +139,8 @@ class UserApiKey(pulumi.CustomResource):
                  read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
         Use this resource to create Metal User API Key resources in Equinix Metal. Each API key contains a token which can be used for authentication in Equinix Metal HTTP API (in HTTP request header `X-Auth-Token`).
 
         Read-only keys only allow to list and view existing resources, read-write keys can also be used to create resources.
@@ -166,6 +168,8 @@ class UserApiKey(pulumi.CustomResource):
                  args: UserApiKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
         Use this resource to create Metal User API Key resources in Equinix Metal. Each API key contains a token which can be used for authentication in Equinix Metal HTTP API (in HTTP request header `X-Auth-Token`).
 
         Read-only keys only allow to list and view existing resources, read-write keys can also be used to create resources.

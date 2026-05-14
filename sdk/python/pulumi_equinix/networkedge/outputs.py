@@ -1562,7 +1562,7 @@ class DeviceSecondaryDevice(dict):
         :param str mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on a secondary device.
                * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
         :param str project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
-        :param str purchase_order_number: Purchase order number associated with a device order.
+        :param str purchase_order_number: Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         :param str redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param str redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param str region: Device location region.
@@ -1771,7 +1771,7 @@ class DeviceSecondaryDevice(dict):
     @pulumi.getter(name="purchaseOrderNumber")
     def purchase_order_number(self) -> Optional[str]:
         """
-        Purchase order number associated with a device order.
+        Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         """
         return pulumi.get(self, "purchase_order_number")
 

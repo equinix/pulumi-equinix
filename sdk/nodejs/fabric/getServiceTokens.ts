@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
  *
  * Additional documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
- * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+ * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+ * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
  */
 export function getServiceTokens(args: GetServiceTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceTokensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -61,8 +61,8 @@ export interface GetServiceTokensResult {
  * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
  *
  * Additional documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
- * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+ * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+ * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
  */
 export function getServiceTokensOutput(args: GetServiceTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceTokensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

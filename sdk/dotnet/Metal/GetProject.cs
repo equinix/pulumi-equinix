@@ -12,6 +12,9 @@ namespace Pulumi.Equinix.Metal
     public static class GetProject
     {
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this datasource to retrieve attributes of the Project API resource.
         /// 
         /// ## Example Usage
@@ -40,6 +43,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("equinix:metal/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this datasource to retrieve attributes of the Project API resource.
         /// 
         /// ## Example Usage
@@ -68,6 +74,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("equinix:metal/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this datasource to retrieve attributes of the Project API resource.
         /// 
         /// ## Example Usage
@@ -146,7 +155,7 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly bool BackendTransfer;
         /// <summary>
-        /// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+        /// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
         /// </summary>
         public readonly Outputs.GetProjectBgpConfigResult BgpConfig;
         /// <summary>

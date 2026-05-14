@@ -27,6 +27,7 @@ const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
         ipAddress: "X.X.X.X",
         ipAddressType: "STATIC",
         subnetMaskIp: "x.x.x.x",
+        managementInterfaceId: "6",
     },
     secondaryDevice: {
         name: "TF_FTNT-FIREWALL-secondary",
@@ -38,10 +39,10 @@ const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
         ],
         accountNumber: sv.apply(sv => sv.number),
         vendorConfiguration: {
+            gatewayIp: "X.X.X.X",
+            ipAddress: "X.X.X.X",
             ipAddressType: "STATIC",
-            ipAddress: "x.x.x.x",
-            gatewayIp: "x.x.x.x",
-            subnetMaskIp: "x.x.x.x",
+            subnetMaskIp: "X.X.X.X",
             managementInterfaceId: "6",
         },
     },

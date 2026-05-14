@@ -46,7 +46,8 @@ public class App {
                 Map.entry("gatewayIp", "X.X.X.X"),
                 Map.entry("ipAddress", "X.X.X.X"),
                 Map.entry("ipAddressType", "STATIC"),
-                Map.entry("subnetMaskIp", "x.x.x.x")
+                Map.entry("subnetMaskIp", "x.x.x.x"),
+                Map.entry("managementInterfaceId", "6")
             ))
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("TF_FTNT-FIREWALL-secondary")
@@ -57,10 +58,10 @@ public class App {
                     "marry@equinix.com")
                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
                 .vendorConfiguration(Map.ofEntries(
+                    Map.entry("gatewayIp", "X.X.X.X"),
+                    Map.entry("ipAddress", "X.X.X.X"),
                     Map.entry("ipAddressType", "STATIC"),
-                    Map.entry("ipAddress", "x.x.x.x"),
-                    Map.entry("gatewayIp", "x.x.x.x"),
-                    Map.entry("subnetMaskIp", "x.x.x.x"),
+                    Map.entry("subnetMaskIp", "X.X.X.X"),
                     Map.entry("managementInterfaceId", "6")
                 ))
                 .build())

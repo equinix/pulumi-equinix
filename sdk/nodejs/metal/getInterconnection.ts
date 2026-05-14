@@ -8,7 +8,9 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
+ * Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
  *
  * > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
  *
@@ -45,7 +47,7 @@ export interface GetInterconnectionArgs {
  */
 export interface GetInterconnectionResult {
     /**
-     * Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+     * Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com).
      */
     readonly authorizationCode: string;
     readonly connectionId: string;
@@ -116,7 +118,7 @@ export interface GetInterconnectionResult {
      */
     readonly tags: string[];
     /**
-     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+     * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix.fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
      *
      * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */
@@ -132,7 +134,9 @@ export interface GetInterconnectionResult {
     readonly vrfs: string[];
 }
 /**
- * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
+ * Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
  *
  * > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
  *

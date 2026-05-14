@@ -12,7 +12,10 @@ namespace Pulumi.Equinix.Metal
     public static class GetHardwareReservation
     {
         /// <summary>
-        /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
+        /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
         /// 
         /// You can look up hardware reservation by its ID or by ID of device which occupies it.
         /// 
@@ -43,7 +46,10 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
+        /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
         /// 
         /// You can look up hardware reservation by its ID or by ID of device which occupies it.
         /// 
@@ -74,7 +80,10 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
+        /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
         /// 
         /// You can look up hardware reservation by its ID or by ID of device which occupies it.
         /// 

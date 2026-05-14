@@ -16,7 +16,7 @@ public final class GetVlanPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetVlanPlainArgs Empty = new GetVlanPlainArgs();
 
     /**
-     * Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     * Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -27,7 +27,7 @@ public final class GetVlanPlainArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable String facility;
 
     /**
-     * @return Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     * @return Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -131,7 +131,7 @@ public final class GetVlanPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param facility Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+         * @param facility Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
          * 
          * @return builder
          * 

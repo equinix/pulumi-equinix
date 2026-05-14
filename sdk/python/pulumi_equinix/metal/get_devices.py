@@ -115,6 +115,8 @@ def get_devices(filters: Optional[Sequence[Union['GetDevicesFilterArgs', 'GetDev
                 sorts: Optional[Sequence[Union['GetDevicesSortArgs', 'GetDevicesSortArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDevicesResult:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     The datasource can be used to find a list of devices which meet filter criteria.
 
     If you need to fetch a single device by ID or by project ID and hostname, use the metal.Device datasource.
@@ -155,7 +157,7 @@ def get_devices(filters: Optional[Sequence[Union['GetDevicesFilterArgs', 'GetDev
     The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
 
 
-    :param Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
+    :param Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `metal.Device` datasource.
     :param str organization_id: ID of organization containing the devices.
     :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
     :param str search: Search string to filter devices by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.
@@ -184,6 +186,8 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDevicesSortArgs', 'GetDevicesSortArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDevicesResult]:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     The datasource can be used to find a list of devices which meet filter criteria.
 
     If you need to fetch a single device by ID or by project ID and hostname, use the metal.Device datasource.
@@ -224,7 +228,7 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
 
 
-    :param Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
+    :param Sequence[Union['GetDevicesFilterArgs', 'GetDevicesFilterArgsDict']] filters: One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `metal.Device` datasource.
     :param str organization_id: ID of organization containing the devices.
     :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
     :param str search: Search string to filter devices by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.

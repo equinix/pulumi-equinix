@@ -19,6 +19,8 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	// The Equinix Metal API auth key for API operations
+	//
+	// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
 	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
 	// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
 	// `EQUINIX_API_CLIENTID` shell environment variable.
@@ -34,8 +36,8 @@ type Provider struct {
 	// an alpha feature and not available for all users.
 	StsEndpoint pulumi.StringPtrOutput `pulumi:"stsEndpoint"`
 	// API tokens are generated from API Consumer clients using the [OAuth2
-	// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-	// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+	// API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+	// `EQUINIX_API_TOKEN` shell environment variable.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
 	// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
@@ -70,6 +72,8 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	// The Equinix Metal API auth key for API operations
+	//
+	// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
 	AuthToken *string `pulumi:"authToken"`
 	// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
 	// `EQUINIX_API_CLIENTID` shell environment variable.
@@ -95,8 +99,8 @@ type providerArgs struct {
 	// an alpha feature and not available for all users.
 	StsEndpoint *string `pulumi:"stsEndpoint"`
 	// API tokens are generated from API Consumer clients using the [OAuth2
-	// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-	// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+	// API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+	// `EQUINIX_API_TOKEN` shell environment variable.
 	Token *string `pulumi:"token"`
 	// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
 	// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
@@ -116,6 +120,8 @@ type providerArgs struct {
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// The Equinix Metal API auth key for API operations
+	//
+	// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
 	AuthToken pulumi.StringPtrInput
 	// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
 	// `EQUINIX_API_CLIENTID` shell environment variable.
@@ -141,8 +147,8 @@ type ProviderArgs struct {
 	// an alpha feature and not available for all users.
 	StsEndpoint pulumi.StringPtrInput
 	// API tokens are generated from API Consumer clients using the [OAuth2
-	// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-	// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+	// API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+	// `EQUINIX_API_TOKEN` shell environment variable.
 	Token pulumi.StringPtrInput
 	// The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
 	// This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
@@ -197,6 +203,8 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 }
 
 // The Equinix Metal API auth key for API operations
+//
+// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
 func (o ProviderOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
@@ -227,8 +235,8 @@ func (o ProviderOutput) StsEndpoint() pulumi.StringPtrOutput {
 }
 
 // API tokens are generated from API Consumer clients using the [OAuth2
-// API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-// This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+// API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+// `EQUINIX_API_TOKEN` shell environment variable.
 func (o ProviderOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }

@@ -107,8 +107,8 @@ def get_stream_attachments(filters: Optional[Sequence[Union['GetStreamAttachment
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
 
     Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+    * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
 
     ## Example Usage
 
@@ -157,8 +157,8 @@ def get_stream_attachments_output(filters: Optional[pulumi.Input[Optional[Sequen
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
 
     Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+    * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
 
     ## Example Usage
 

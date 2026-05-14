@@ -37,6 +37,7 @@ return await Deployment.RunAsync(() =>
             { "ipAddress", "X.X.X.X" },
             { "ipAddressType", "STATIC" },
             { "subnetMaskIp", "x.x.x.x" },
+            { "managementInterfaceId", "6" },
         },
         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
         {
@@ -51,10 +52,10 @@ return await Deployment.RunAsync(() =>
             AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
             VendorConfiguration = 
             {
+                { "gatewayIp", "X.X.X.X" },
+                { "ipAddress", "X.X.X.X" },
                 { "ipAddressType", "STATIC" },
-                { "ipAddress", "x.x.x.x" },
-                { "gatewayIp", "x.x.x.x" },
-                { "subnetMaskIp", "x.x.x.x" },
+                { "subnetMaskIp", "X.X.X.X" },
                 { "managementInterfaceId", "6" },
             },
         },

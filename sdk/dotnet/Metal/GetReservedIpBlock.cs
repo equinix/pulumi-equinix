@@ -12,6 +12,9 @@ namespace Pulumi.Equinix.Metal
     public static class GetReservedIpBlock
     {
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
         /// 
         /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -22,6 +25,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
         /// 
         /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -32,6 +38,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
         /// 
         /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.

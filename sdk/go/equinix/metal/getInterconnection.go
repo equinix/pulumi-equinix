@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+// > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+//
+// Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
 //
 // > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
 //
@@ -58,7 +60,7 @@ type LookupInterconnectionArgs struct {
 
 // A collection of values returned by getInterconnection.
 type LookupInterconnectionResult struct {
-	// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+	// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com).
 	AuthorizationCode string `pulumi:"authorizationCode"`
 	ConnectionId      string `pulumi:"connectionId"`
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection.
@@ -95,7 +97,7 @@ type LookupInterconnectionResult struct {
 	Status string `pulumi:"status"`
 	// String list of tags.
 	Tags []string `pulumi:"tags"`
-	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token string `pulumi:"token"`
@@ -140,7 +142,7 @@ func (o LookupInterconnectionResultOutput) ToLookupInterconnectionResultOutputWi
 	return o
 }
 
-// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard).
+// Fabric Authorization Code to configure the Metal-Fabric Integration connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com).
 func (o LookupInterconnectionResultOutput) AuthorizationCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.AuthorizationCode }).(pulumi.StringOutput)
 }
@@ -231,7 +233,7 @@ func (o LookupInterconnectionResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
+// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the fabric.Connection resource or from the [Equinix Fabric Portal](https://fabric.equinix.com). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 //
 // Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 func (o LookupInterconnectionResultOutput) Token() pulumi.StringOutput {

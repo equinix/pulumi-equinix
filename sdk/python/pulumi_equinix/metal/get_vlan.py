@@ -123,6 +123,8 @@ def get_vlan(facility: Optional[str] = None,
              vxlan: Optional[int] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVlanResult:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
 
     ## Example Usage
@@ -152,7 +154,7 @@ def get_vlan(facility: Optional[str] = None,
     ```
 
 
-    :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+    :param str facility: Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
     :param str metro: Metro where the VLAN is deployed.
            
            > **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
@@ -185,6 +187,8 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
                     vxlan: Optional[pulumi.Input[Optional[int]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVlanResult]:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
 
     ## Example Usage
@@ -214,7 +218,7 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+    :param str facility: Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
     :param str metro: Metro where the VLAN is deployed.
            
            > **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.

@@ -13,7 +13,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+// > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+//
+// Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/).
 //
 // ## Example Usage
 // ### example fabric billed metal from fabric port
@@ -374,7 +376,7 @@ type Interconnection struct {
 	Redundancy pulumi.StringOutput `pulumi:"redundancy"`
 	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType pulumi.StringPtrOutput `pulumi:"serviceTokenType"`
-	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 	ServiceTokens InterconnectionServiceTokenArrayOutput `pulumi:"serviceTokens"`
 	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringOutput `pulumi:"speed"`
@@ -382,7 +384,7 @@ type Interconnection struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Tags attached to the connection
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -456,7 +458,7 @@ type interconnectionState struct {
 	Redundancy *string `pulumi:"redundancy"`
 	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
-	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 	ServiceTokens []InterconnectionServiceToken `pulumi:"serviceTokens"`
 	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed *string `pulumi:"speed"`
@@ -464,7 +466,7 @@ type interconnectionState struct {
 	Status *string `pulumi:"status"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token *string `pulumi:"token"`
@@ -503,7 +505,7 @@ type InterconnectionState struct {
 	Redundancy pulumi.StringPtrInput
 	// Only used with shared connection. Type of service token to use for the connection, a*side or z*side
 	ServiceTokenType pulumi.StringPtrInput
-	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+	// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 	ServiceTokens InterconnectionServiceTokenArrayInput
 	// Connection speed -  Values must be in the format '\n\nMbps' or '\n\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringPtrInput
@@ -511,7 +513,7 @@ type InterconnectionState struct {
 	Status pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+	// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 	//
 	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token pulumi.StringPtrInput
@@ -747,7 +749,7 @@ func (o InterconnectionOutput) ServiceTokenType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.ServiceTokenType }).(pulumi.StringPtrOutput)
 }
 
-// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+// Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 func (o InterconnectionOutput) ServiceTokens() InterconnectionServiceTokenArrayOutput {
 	return o.ApplyT(func(v *Interconnection) InterconnectionServiceTokenArrayOutput { return v.ServiceTokens }).(InterconnectionServiceTokenArrayOutput)
 }
@@ -767,7 +769,7 @@ func (o InterconnectionOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+// Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
 //
 // Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 func (o InterconnectionOutput) Token() pulumi.StringOutput {

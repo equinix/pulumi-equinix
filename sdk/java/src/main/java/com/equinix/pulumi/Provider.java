@@ -25,7 +25,11 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * The Equinix Metal API auth key for API operations
      * 
+     * @deprecated
+     * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      */
+    @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
     @Export(name="authToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authToken;
 
@@ -104,8 +108,8 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     }
     /**
      * API tokens are generated from API Consumer clients using the [OAuth2
-     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+     * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+     * `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
@@ -113,8 +117,8 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     /**
      * @return API tokens are generated from API Consumer clients using the [OAuth2
-     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+     * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+     * `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     public Output<Optional<String>> token() {

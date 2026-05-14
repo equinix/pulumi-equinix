@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+//
 // Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
 //
 // ## Example Usage
@@ -85,7 +87,7 @@ func LookupVlan(ctx *pulumi.Context, args *LookupVlanArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getVlan.
 type LookupVlanArgs struct {
-	// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+	// Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
@@ -127,7 +129,7 @@ func LookupVlanOutput(ctx *pulumi.Context, args LookupVlanOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getVlan.
 type LookupVlanOutputArgs struct {
-	// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+	// Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput `pulumi:"facility"`

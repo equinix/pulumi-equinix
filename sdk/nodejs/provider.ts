@@ -27,6 +27,8 @@ export class Provider extends pulumi.ProviderResource {
 
     /**
      * The Equinix Metal API auth key for API operations
+     *
+     * @deprecated Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
      */
     public readonly authToken!: pulumi.Output<string | undefined>;
     /**
@@ -52,8 +54,8 @@ export class Provider extends pulumi.ProviderResource {
     public readonly stsEndpoint!: pulumi.Output<string | undefined>;
     /**
      * API tokens are generated from API Consumer clients using the [OAuth2
-     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+     * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+     * `EQUINIX_API_TOKEN` shell environment variable.
      */
     public readonly token!: pulumi.Output<string | undefined>;
     /**
@@ -112,6 +114,8 @@ export class Provider extends pulumi.ProviderResource {
 export interface ProviderArgs {
     /**
      * The Equinix Metal API auth key for API operations
+     *
+     * @deprecated Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
      */
     authToken?: pulumi.Input<string>;
     /**
@@ -155,8 +159,8 @@ export interface ProviderArgs {
     stsEndpoint?: pulumi.Input<string>;
     /**
      * API tokens are generated from API Consumer clients using the [OAuth2
-     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+     * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+     * `EQUINIX_API_TOKEN` shell environment variable.
      */
     token?: pulumi.Input<string>;
     /**

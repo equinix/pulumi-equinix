@@ -51,8 +51,8 @@ class ProviderArgs:
                `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
                an alpha feature and not available for all users.
         :param pulumi.Input[str] token: API tokens are generated from API Consumer clients using the [OAuth2
-               API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-               This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+               API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+               `EQUINIX_API_TOKEN` shell environment variable.
         :param pulumi.Input[str] token_exchange_scope: The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
                This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
                token exchange is an alpha feature and not available for all users.
@@ -65,6 +65,9 @@ class ProviderArgs:
                `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
                users.
         """
+        if auth_token is not None:
+            warnings.warn("""Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""", DeprecationWarning)
+            pulumi.log.warn("""auth_token is deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""")
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
         if client_id is not None:
@@ -94,6 +97,7 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="authToken")
+    @_utilities.deprecated("""Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""")
     def auth_token(self) -> Optional[pulumi.Input[str]]:
         """
         The Equinix Metal API auth key for API operations
@@ -212,8 +216,8 @@ class ProviderArgs:
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         API tokens are generated from API Consumer clients using the [OAuth2
-        API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-        This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+        API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+        `EQUINIX_API_TOKEN` shell environment variable.
         """
         return pulumi.get(self, "token")
 
@@ -310,8 +314,8 @@ class Provider(pulumi.ProviderResource):
                `EQUINIX_STS_ENDPOINT` shell environment variable. (Defaults to `https://sts.eqix.equinix.com`). Please note that STS is
                an alpha feature and not available for all users.
         :param pulumi.Input[str] token: API tokens are generated from API Consumer clients using the [OAuth2
-               API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-               This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+               API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+               `EQUINIX_API_TOKEN` shell environment variable.
         :param pulumi.Input[str] token_exchange_scope: The scope of the authentication token. Must be an access policy ERN or a string of the form `roleassignments:<org_id>`.
                This argument can also be specified with the `EQUINIX_TOKEN_EXCHANGE_SCOPE` shell environment variable. Please note that
                token exchange is an alpha feature and not available for all users.
@@ -394,6 +398,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="authToken")
+    @_utilities.deprecated("""Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""")
     def auth_token(self) -> pulumi.Output[Optional[str]]:
         """
         The Equinix Metal API auth key for API operations
@@ -442,8 +447,8 @@ class Provider(pulumi.ProviderResource):
     def token(self) -> pulumi.Output[Optional[str]]:
         """
         API tokens are generated from API Consumer clients using the [OAuth2
-        API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-        This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+        API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+        `EQUINIX_API_TOKEN` shell environment variable.
         """
         return pulumi.get(self, "token")
 

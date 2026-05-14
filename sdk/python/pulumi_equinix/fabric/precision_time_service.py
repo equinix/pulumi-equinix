@@ -440,7 +440,7 @@ class PrecisionTimeService(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Precision Time Service
 
         Additional Documentation:
-        * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -462,7 +462,7 @@ class PrecisionTimeService(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Precision Time Service
 
         Additional Documentation:
-        * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
 
         :param str resource_name: The name of the resource.
         :param PrecisionTimeServiceArgs args: The arguments to use to populate this resource's properties.

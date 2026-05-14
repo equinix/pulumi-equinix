@@ -294,8 +294,8 @@ class Stream(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream
 
         Additional Documentation:
-        * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-        * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+        * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -314,8 +314,8 @@ class Stream(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Stream
 
         Additional Documentation:
-        * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-        * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+        * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
 
         :param str resource_name: The name of the resource.
         :param StreamArgs args: The arguments to use to populate this resource's properties.

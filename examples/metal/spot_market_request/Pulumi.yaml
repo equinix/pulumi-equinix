@@ -4,7 +4,7 @@ runtime: yaml
 resources:
   # Create a spot market request
   req:
-    type: equinix:metalSpotMarketRequest
+    type: equinix:MetalSpotMarketRequest
     properties:
       projectId: ${projectId}
       maxBidPrice: 0.03

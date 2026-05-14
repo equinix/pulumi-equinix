@@ -10,11 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
+    /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+    /// 
     /// Provides a resource to attach elastic IP subnets to devices.
     /// 
     /// To attach an IP subnet from a reserved block to a provisioned device, you must derive a subnet CIDR belonging to one of your reserved blocks in the same project and metro as the target device.
     /// 
-    /// For example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign either the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and `147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets is [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).
+    /// For example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign either the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and `147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets is [here](https://docs.equinix.com/metal/networking/elastic-ips/).
     /// 
     /// Device and reserved block must be in the same metro.
     /// 

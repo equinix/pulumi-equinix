@@ -12,6 +12,9 @@ namespace Pulumi.Equinix.Metal
     public static class GetVlan
     {
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
         /// 
         /// ## Example Usage
@@ -65,6 +68,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
         /// 
         /// ## Example Usage
@@ -118,6 +124,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
         /// 
         /// ## Example Usage
@@ -175,7 +184,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetVlanArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+        /// Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
         /// </summary>
         [Input("facility")]
         public string? Facility { get; set; }
@@ -215,7 +224,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetVlanInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+        /// Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }

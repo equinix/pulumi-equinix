@@ -93,7 +93,7 @@ def get_connection_route_aggregations(connection_id: Optional[str] = None,
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
     Additional Documentation:
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
 
     ## Example Usage
 
@@ -128,7 +128,7 @@ def get_connection_route_aggregations_output(connection_id: Optional[pulumi.Inpu
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
     Additional Documentation:
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
 
     ## Example Usage
 

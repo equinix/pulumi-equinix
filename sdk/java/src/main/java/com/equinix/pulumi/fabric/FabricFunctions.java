@@ -151,8 +151,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      * ## Example Usage
      * 
@@ -207,8 +207,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      * ## Example Usage
      * 
@@ -263,8 +263,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      * ## Example Usage
      * 
@@ -319,8 +319,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      * ## Example Usage
      * 
@@ -375,8 +375,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      * ## Example Usage
      * 
@@ -431,8 +431,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      */
     public static Output<GetCloudRoutersResult> getCloudRouters(GetCloudRoutersArgs args) {
@@ -442,8 +442,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      */
     public static CompletableFuture<GetCloudRoutersResult> getCloudRoutersPlain(GetCloudRoutersPlainArgs args) {
@@ -453,8 +453,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      */
     public static Output<GetCloudRoutersResult> getCloudRouters(GetCloudRoutersArgs args, InvokeOptions options) {
@@ -464,8 +464,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      */
     public static Output<GetCloudRoutersResult> getCloudRouters(GetCloudRoutersArgs args, InvokeOutputOptions options) {
@@ -475,8 +475,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Routers matching custom search criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Cloud-Routers
      * 
      */
     public static CompletableFuture<GetCloudRoutersResult> getCloudRoutersPlain(GetCloudRoutersPlainArgs args, InvokeOptions options) {
@@ -486,8 +486,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args) {
@@ -497,8 +497,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args) {
@@ -508,8 +508,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
@@ -519,8 +519,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOutputOptions options) {
@@ -530,8 +530,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
@@ -540,7 +540,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -589,7 +589,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -638,7 +638,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -687,7 +687,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -736,7 +736,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -785,7 +785,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -832,7 +832,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -879,7 +879,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -926,7 +926,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -973,7 +973,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregations with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -1021,8 +1021,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -1073,8 +1073,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -1125,8 +1125,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -1177,8 +1177,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -1229,8 +1229,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter policy attachment to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -1281,8 +1281,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      */
     public static Output<GetConnectionRouteFiltersResult> getConnectionRouteFilters(GetConnectionRouteFiltersArgs args) {
@@ -1292,8 +1292,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      */
     public static CompletableFuture<GetConnectionRouteFiltersResult> getConnectionRouteFiltersPlain(GetConnectionRouteFiltersPlainArgs args) {
@@ -1303,8 +1303,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      */
     public static Output<GetConnectionRouteFiltersResult> getConnectionRouteFilters(GetConnectionRouteFiltersArgs args, InvokeOptions options) {
@@ -1314,8 +1314,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      */
     public static Output<GetConnectionRouteFiltersResult> getConnectionRouteFilters(GetConnectionRouteFiltersArgs args, InvokeOutputOptions options) {
@@ -1325,8 +1325,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      */
     public static CompletableFuture<GetConnectionRouteFiltersResult> getConnectionRouteFiltersPlain(GetConnectionRouteFiltersPlainArgs args, InvokeOptions options) {
@@ -1336,8 +1336,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args) {
@@ -1347,8 +1347,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args) {
@@ -1358,8 +1358,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOptions options) {
@@ -1369,8 +1369,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOutputOptions options) {
@@ -1380,8 +1380,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+     * * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args, InvokeOptions options) {
@@ -2141,8 +2141,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      * ## Example Usage
      * 
@@ -2192,8 +2192,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      * ## Example Usage
      * 
@@ -2243,8 +2243,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      * ## Example Usage
      * 
@@ -2294,8 +2294,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      * ## Example Usage
      * 
@@ -2345,8 +2345,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      * ## Example Usage
      * 
@@ -2396,8 +2396,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args) {
@@ -2407,8 +2407,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args) {
@@ -2418,8 +2418,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
@@ -2429,8 +2429,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOutputOptions options) {
@@ -2440,8 +2440,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-networks-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-networks
+     * * Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {
@@ -2451,8 +2451,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2511,8 +2511,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2571,8 +2571,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2631,8 +2631,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2691,8 +2691,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2751,8 +2751,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2814,8 +2814,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2877,8 +2877,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -2940,8 +2940,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -3003,8 +3003,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -3066,8 +3066,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -3129,8 +3129,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
      * 
      * ## Example Usage
      * 
@@ -3191,7 +3191,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      * ## Example Usage
      * 
@@ -3241,7 +3241,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      * ## Example Usage
      * 
@@ -3291,7 +3291,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      * ## Example Usage
      * 
@@ -3341,7 +3341,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      * ## Example Usage
      * 
@@ -3391,7 +3391,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      * ## Example Usage
      * 
@@ -3441,7 +3441,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      */
     public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices() {
@@ -3450,7 +3450,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      */
     public static CompletableFuture<GetPrecisionTimeServicesResult> getPrecisionTimeServicesPlain() {
@@ -3459,7 +3459,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      */
     public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices(GetPrecisionTimeServicesArgs args) {
@@ -3468,7 +3468,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      */
     public static CompletableFuture<GetPrecisionTimeServicesResult> getPrecisionTimeServicesPlain(GetPrecisionTimeServicesPlainArgs args) {
@@ -3477,7 +3477,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      */
     public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices(GetPrecisionTimeServicesArgs args, InvokeOptions options) {
@@ -3486,7 +3486,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      */
     public static Output<GetPrecisionTimeServicesResult> getPrecisionTimeServices(GetPrecisionTimeServicesArgs args, InvokeOutputOptions options) {
@@ -3495,7 +3495,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
      * 
      */
     public static CompletableFuture<GetPrecisionTimeServicesResult> getPrecisionTimeServicesPlain(GetPrecisionTimeServicesPlainArgs args, InvokeOptions options) {
@@ -3519,7 +3519,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3568,7 +3568,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3617,7 +3617,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3666,7 +3666,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3715,7 +3715,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3764,7 +3764,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3814,7 +3814,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3864,7 +3864,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3914,7 +3914,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -3964,7 +3964,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4014,7 +4014,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4067,7 +4067,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4120,7 +4120,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4173,7 +4173,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4226,7 +4226,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4279,8 +4279,8 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports#add-ports-to-an-existing-link-aggregation-group-lag
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4338,8 +4338,8 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports#add-ports-to-an-existing-link-aggregation-group-lag
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4397,8 +4397,8 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports#add-ports-to-an-existing-link-aggregation-group-lag
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4456,8 +4456,8 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports#add-ports-to-an-existing-link-aggregation-group-lag
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4515,8 +4515,8 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregations with pagination details
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports#add-ports-to-an-existing-link-aggregation-group-lag
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
      * 
      * ## Example Usage
      * 
@@ -4575,8 +4575,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -4627,8 +4627,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -4679,8 +4679,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -4731,8 +4731,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -4783,8 +4783,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -4835,8 +4835,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -4886,8 +4886,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -4937,8 +4937,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -4988,8 +4988,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -5039,8 +5039,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -5090,8 +5090,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -5142,8 +5142,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -5194,8 +5194,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -5246,8 +5246,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -5298,8 +5298,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
      * 
      * ## Example Usage
      * 
@@ -5350,8 +5350,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -5427,8 +5427,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -5504,8 +5504,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -5581,8 +5581,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -5658,8 +5658,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
      * 
      * ## Example Usage
      * 
@@ -5734,11 +5734,11 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
      * 
-     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * ## Example Usage
      * 
@@ -5795,11 +5795,11 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
      * 
-     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * ## Example Usage
      * 
@@ -5856,11 +5856,11 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
      * 
-     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * ## Example Usage
      * 
@@ -5917,11 +5917,11 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
      * 
-     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * ## Example Usage
      * 
@@ -5978,11 +5978,11 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
      * 
-     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
      * 
      * ## Example Usage
      * 
@@ -6040,8 +6040,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      * ## Example Usage
      * 
@@ -6097,8 +6097,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      * ## Example Usage
      * 
@@ -6154,8 +6154,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      * ## Example Usage
      * 
@@ -6211,8 +6211,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      * ## Example Usage
      * 
@@ -6268,8 +6268,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      * ## Example Usage
      * 
@@ -6325,8 +6325,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args) {
@@ -6336,8 +6336,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args) {
@@ -6347,8 +6347,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args, InvokeOptions options) {
@@ -6358,8 +6358,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args, InvokeOutputOptions options) {
@@ -6369,8 +6369,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-     * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+     * * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
      * 
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args, InvokeOptions options) {
@@ -6380,8 +6380,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      * ## Example Usage
      * 
@@ -6434,8 +6434,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      * ## Example Usage
      * 
@@ -6488,8 +6488,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      * ## Example Usage
      * 
@@ -6542,8 +6542,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      * ## Example Usage
      * 
@@ -6596,8 +6596,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given UUID
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      * ## Example Usage
      * 
@@ -6650,8 +6650,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      */
     public static Output<GetServiceTokensResult> getServiceTokens(GetServiceTokensArgs args) {
@@ -6661,8 +6661,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      */
     public static CompletableFuture<GetServiceTokensResult> getServiceTokensPlain(GetServiceTokensPlainArgs args) {
@@ -6672,8 +6672,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      */
     public static Output<GetServiceTokensResult> getServiceTokens(GetServiceTokensArgs args, InvokeOptions options) {
@@ -6683,8 +6683,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      */
     public static Output<GetServiceTokensResult> getServiceTokens(GetServiceTokensArgs args, InvokeOutputOptions options) {
@@ -6694,8 +6694,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch service token for a given search data set
      * 
      * Additional documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/service%20tokens/Fabric-Service-Tokens.htm
-     * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/ConnectUsingServiceToken.htm
+     * * Getting Started: https://docs.equinix.com/fabric/service-tokens/create-z-side-token
+     * * API: https://docs.equinix.com/fabric/fabric-api/connect-using-service-token
      * 
      */
     public static CompletableFuture<GetServiceTokensResult> getServiceTokensPlain(GetServiceTokensPlainArgs args, InvokeOptions options) {
@@ -6705,8 +6705,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -6752,8 +6752,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -6799,8 +6799,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -6846,8 +6846,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -6893,8 +6893,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream by UUID
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7410,8 +7410,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7458,8 +7458,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7506,8 +7506,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7554,8 +7554,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7602,8 +7602,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7650,8 +7650,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7709,8 +7709,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7768,8 +7768,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7827,8 +7827,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7886,8 +7886,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Attached Assets with filters and pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -7945,8 +7945,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -7992,8 +7992,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8039,8 +8039,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8086,8 +8086,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8133,8 +8133,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscription by Stream Id and Subscription Id
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8180,8 +8180,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8231,8 +8231,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8282,8 +8282,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8333,8 +8333,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8384,8 +8384,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data source that allows user to fetch Equinix Fabric Stream Subscriptions with pagination
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Stream-Subscriptions
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Stream-Subscriptions
      * 
      * ## Example Usage
      * 
@@ -8435,8 +8435,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -8486,8 +8486,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -8537,8 +8537,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -8588,8 +8588,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 
@@ -8639,8 +8639,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Streams with pagination details
      * 
      * Additional Documentation:
-     * * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-     * * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+     * * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
      * 
      * ## Example Usage
      * 

@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
         /// Additional Documentation:
-        /// * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
         /// </summary>
         public static Task<GetPrecisionTimeServicesResult> InvokeAsync(GetPrecisionTimeServicesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrecisionTimeServicesResult>("equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices", args ?? new GetPrecisionTimeServicesArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
         /// Additional Documentation:
-        /// * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
         /// </summary>
         public static Output<GetPrecisionTimeServicesResult> Invoke(GetPrecisionTimeServicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrecisionTimeServicesResult>("equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices", args ?? new GetPrecisionTimeServicesInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
         /// Additional Documentation:
-        /// * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
         /// </summary>
         public static Output<GetPrecisionTimeServicesResult> Invoke(GetPrecisionTimeServicesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrecisionTimeServicesResult>("equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices", args ?? new GetPrecisionTimeServicesInvokeArgs(), options.WithDefaults());

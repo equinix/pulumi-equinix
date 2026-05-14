@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
         /// Additional Documentation:
-        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
         /// Additional Documentation:
-        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
         /// Additional Documentation:
-        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
         /// 
         /// ## Example Usage
         /// 

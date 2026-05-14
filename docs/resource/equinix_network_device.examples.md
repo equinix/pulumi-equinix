@@ -1782,6 +1782,323 @@ variables:
 {{% /example %}}
 
 {{% example %}}
+### example 6wind vsr ha device
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
+
+const sv = equinix.networkedge.getAccountOutput({
+    metroCode: "SV",
+});
+const sixWindVsr = new equinix.networkedge.Device("six-wind-vsr", {
+    name: "6WIND-VSR",
+    projectId: "xxxxxxx",
+    metroCode: sv.apply(sv => sv.metroCode),
+    typeCode: "6WIND-VSR",
+    selfManaged: true,
+    byol: true,
+    interfaceCount: 10,
+    packageCode: "STD",
+    notifications: ["test@eq.com"],
+    accountNumber: sv.apply(sv => sv.number),
+    version: "3.10.8",
+    coreCount: 2,
+    termLength: 1,
+    vendorConfiguration: {
+        hostname: "test",
+        token: "xxxx",
+    },
+    sshKey: {
+        username: "xxxx",
+        keyName: "xxxxx",
+    },
+    secondaryDevice: {
+        name: "6WIND-VSR-Sec",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            hostname: "test",
+            token: "xxxx",
+        },
+    },
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+six_wind_vsr = equinix.networkedge.Device("six-wind-vsr",
+    name="6WIND-VSR",
+    project_id="xxxxxxx",
+    metro_code=sv.metro_code,
+    type_code="6WIND-VSR",
+    self_managed=True,
+    byol=True,
+    interface_count=10,
+    package_code="STD",
+    notifications=["test@eq.com"],
+    account_number=sv.number,
+    version="3.10.8",
+    core_count=2,
+    term_length=1,
+    vendor_configuration={
+        "hostname": "test",
+        "token": "xxxx",
+    },
+    ssh_key={
+        "username": "xxxx",
+        "key_name": "xxxxx",
+    },
+    secondary_device={
+        "name": "6WIND-VSR-Sec",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "hostname": "test",
+            "token": "xxxx",
+        },
+    })
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+			MetroCode: pulumi.String("SV"),
+		}, nil)
+		_, err := networkedge.NewDevice(ctx, "six-wind-vsr", &networkedge.DeviceArgs{
+			Name:      pulumi.String("6WIND-VSR"),
+			ProjectId: pulumi.String("xxxxxxx"),
+			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.MetroCode, nil
+			}).(pulumi.StringPtrOutput)),
+			TypeCode:       pulumi.String("6WIND-VSR"),
+			SelfManaged:    pulumi.Bool(true),
+			Byol:           pulumi.Bool(true),
+			InterfaceCount: pulumi.Int(10),
+			PackageCode:    pulumi.String("STD"),
+			Notifications: pulumi.StringArray{
+				pulumi.String("test@eq.com"),
+			},
+			AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+				return &sv.Number, nil
+			}).(pulumi.StringPtrOutput)),
+			Version:    pulumi.String("3.10.8"),
+			CoreCount:  pulumi.Int(2),
+			TermLength: pulumi.Int(1),
+			VendorConfiguration: pulumi.StringMap{
+				"hostname": pulumi.String("test"),
+				"token":    pulumi.String("xxxx"),
+			},
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("xxxx"),
+				KeyName:  pulumi.String("xxxxx"),
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("6WIND-VSR-Sec"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				VendorConfiguration: pulumi.StringMap{
+					"hostname": pulumi.String("test"),
+					"token":    pulumi.String("xxxx"),
+				},
+			},
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    {
+        MetroCode = "SV",
+    });
+
+    var sixWindVsr = new Equinix.NetworkEdge.Device("six-wind-vsr", new()
+    {
+        Name = "6WIND-VSR",
+        ProjectId = "xxxxxxx",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "6WIND-VSR",
+        SelfManaged = true,
+        Byol = true,
+        InterfaceCount = 10,
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "test@eq.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "3.10.8",
+        CoreCount = 2,
+        TermLength = 1,
+        VendorConfiguration = 
+        {
+            { "hostname", "test" },
+            { "token", "xxxx" },
+        },
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "xxxx",
+            KeyName = "xxxxx",
+        },
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "6WIND-VSR-Sec",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "hostname", "test" },
+                { "token", "xxxx" },
+            },
+        },
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+            .metroCode("SV")
+            .build());
+
+        var sixWindVsr = new Device("sixWindVsr", DeviceArgs.builder()
+            .name("6WIND-VSR")
+            .projectId("xxxxxxx")
+            .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+            .typeCode("6WIND-VSR")
+            .selfManaged(true)
+            .byol(true)
+            .interfaceCount(10)
+            .packageCode("STD")
+            .notifications("test@eq.com")
+            .accountNumber(sv.applyValue(_sv -> _sv.number()))
+            .version("3.10.8")
+            .coreCount(2)
+            .termLength(1)
+            .vendorConfiguration(Map.ofEntries(
+                Map.entry("hostname", "test"),
+                Map.entry("token", "xxxx")
+            ))
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("xxxx")
+                .keyName("xxxxx")
+                .build())
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("6WIND-VSR-Sec")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("hostname", "test"),
+                    Map.entry("token", "xxxx")
+                ))
+                .build())
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  six-wind-vsr:
+    type: equinix:networkedge:Device
+    properties:
+      name: 6WIND-VSR
+      projectId: xxxxxxx
+      metroCode: ${sv.metroCode}
+      typeCode: 6WIND-VSR
+      selfManaged: true
+      byol: true
+      interfaceCount: 10
+      packageCode: STD
+      notifications:
+        - test@eq.com
+      accountNumber: ${sv.number}
+      version: 3.10.8
+      coreCount: 2
+      termLength: 1
+      vendorConfiguration:
+        hostname: test
+        token: xxxx
+      sshKey:
+        username: xxxx
+        keyName: xxxxx
+      secondaryDevice:
+        name: 6WIND-VSR-Sec
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          hostname: test
+          token: xxxx
+variables:
+  # Create 6WIND VSR HA device
+  sv:
+    fn::invoke:
+      function: equinix:networkedge:getAccount
+      arguments:
+        metroCode: SV
+```
+{{% /example %}}
+
+{{% example %}}
 ### example 7
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -8065,6 +8382,7 @@ const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
         ipAddress: "X.X.X.X",
         ipAddressType: "STATIC",
         subnetMaskIp: "x.x.x.x",
+        managementInterfaceId: "6",
     },
     secondaryDevice: {
         name: "TF_FTNT-FIREWALL-secondary",
@@ -8076,10 +8394,10 @@ const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
         ],
         accountNumber: sv.apply(sv => sv.number),
         vendorConfiguration: {
+            gatewayIp: "X.X.X.X",
+            ipAddress: "X.X.X.X",
             ipAddressType: "STATIC",
-            ipAddress: "x.x.x.x",
-            gatewayIp: "x.x.x.x",
-            subnetMaskIp: "x.x.x.x",
+            subnetMaskIp: "X.X.X.X",
             managementInterfaceId: "6",
         },
     },
@@ -8112,6 +8430,7 @@ f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
         "ipAddress": "X.X.X.X",
         "ipAddressType": "STATIC",
         "subnetMaskIp": "x.x.x.x",
+        "managementInterfaceId": "6",
     },
     secondary_device={
         "name": "TF_FTNT-FIREWALL-secondary",
@@ -8123,10 +8442,10 @@ f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
         ],
         "account_number": sv.number,
         "vendor_configuration": {
+            "gatewayIp": "X.X.X.X",
+            "ipAddress": "X.X.X.X",
             "ipAddressType": "STATIC",
-            "ipAddress": "x.x.x.x",
-            "gatewayIp": "x.x.x.x",
-            "subnetMaskIp": "x.x.x.x",
+            "subnetMaskIp": "X.X.X.X",
             "managementInterfaceId": "6",
         },
     })
@@ -8168,10 +8487,11 @@ func main() {
 			CoreCount:  pulumi.Int(2),
 			TermLength: pulumi.Int(1),
 			VendorConfiguration: pulumi.StringMap{
-				"gatewayIp":     pulumi.String("X.X.X.X"),
-				"ipAddress":     pulumi.String("X.X.X.X"),
-				"ipAddressType": pulumi.String("STATIC"),
-				"subnetMaskIp":  pulumi.String("x.x.x.x"),
+				"gatewayIp":             pulumi.String("X.X.X.X"),
+				"ipAddress":             pulumi.String("X.X.X.X"),
+				"ipAddressType":         pulumi.String("STATIC"),
+				"subnetMaskIp":          pulumi.String("x.x.x.x"),
+				"managementInterfaceId": pulumi.String("6"),
 			},
 			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
 				Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
@@ -8187,10 +8507,10 @@ func main() {
 					return &sv.Number, nil
 				}).(pulumi.StringPtrOutput),
 				VendorConfiguration: pulumi.StringMap{
+					"gatewayIp":             pulumi.String("X.X.X.X"),
+					"ipAddress":             pulumi.String("X.X.X.X"),
 					"ipAddressType":         pulumi.String("STATIC"),
-					"ipAddress":             pulumi.String("x.x.x.x"),
-					"gatewayIp":             pulumi.String("x.x.x.x"),
-					"subnetMaskIp":          pulumi.String("x.x.x.x"),
+					"subnetMaskIp":          pulumi.String("X.X.X.X"),
 					"managementInterfaceId": pulumi.String("6"),
 				},
 			},
@@ -8242,6 +8562,7 @@ return await Deployment.RunAsync(() =>
             { "ipAddress", "X.X.X.X" },
             { "ipAddressType", "STATIC" },
             { "subnetMaskIp", "x.x.x.x" },
+            { "managementInterfaceId", "6" },
         },
         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
         {
@@ -8256,10 +8577,10 @@ return await Deployment.RunAsync(() =>
             AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
             VendorConfiguration = 
             {
+                { "gatewayIp", "X.X.X.X" },
+                { "ipAddress", "X.X.X.X" },
                 { "ipAddressType", "STATIC" },
-                { "ipAddress", "x.x.x.x" },
-                { "gatewayIp", "x.x.x.x" },
-                { "subnetMaskIp", "x.x.x.x" },
+                { "subnetMaskIp", "X.X.X.X" },
                 { "managementInterfaceId", "6" },
             },
         },
@@ -8316,7 +8637,8 @@ public class App {
                 Map.entry("gatewayIp", "X.X.X.X"),
                 Map.entry("ipAddress", "X.X.X.X"),
                 Map.entry("ipAddressType", "STATIC"),
-                Map.entry("subnetMaskIp", "x.x.x.x")
+                Map.entry("subnetMaskIp", "x.x.x.x"),
+                Map.entry("managementInterfaceId", "6")
             ))
             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
                 .name("TF_FTNT-FIREWALL-secondary")
@@ -8327,10 +8649,10 @@ public class App {
                     "marry@equinix.com")
                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
                 .vendorConfiguration(Map.ofEntries(
+                    Map.entry("gatewayIp", "X.X.X.X"),
+                    Map.entry("ipAddress", "X.X.X.X"),
                     Map.entry("ipAddressType", "STATIC"),
-                    Map.entry("ipAddress", "x.x.x.x"),
-                    Map.entry("gatewayIp", "x.x.x.x"),
-                    Map.entry("subnetMaskIp", "x.x.x.x"),
+                    Map.entry("subnetMaskIp", "X.X.X.X"),
                     Map.entry("managementInterfaceId", "6")
                 ))
                 .build())
@@ -8365,6 +8687,7 @@ resources:
         ipAddress: X.X.X.X
         ipAddressType: STATIC
         subnetMaskIp: x.x.x.x
+        managementInterfaceId: '6'
       secondaryDevice:
         name: TF_FTNT-FIREWALL-secondary
         metroCode: ${sv.metroCode}
@@ -8374,10 +8697,10 @@ resources:
           - marry@equinix.com
         accountNumber: ${sv.number}
         vendorConfiguration:
+          gatewayIp: X.X.X.X
+          ipAddress: X.X.X.X
           ipAddressType: STATIC
-          ipAddress: x.x.x.x
-          gatewayIp: x.x.x.x
-          subnetMaskIp: x.x.x.x
+          subnetMaskIp: X.X.X.X
           managementInterfaceId: '6'
 variables:
   # Create FG VM ha device with connectivity PRIVATE and IP Address Type as STATIC

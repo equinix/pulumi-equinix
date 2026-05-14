@@ -208,14 +208,14 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      * 
      */
     @Import(name="serviceTokens")
     private @Nullable Output<List<InterconnectionServiceTokenArgs>> serviceTokens;
 
     /**
-     * @return Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * @return Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      * 
      */
     public Optional<Output<List<InterconnectionServiceTokenArgs>>> serviceTokens() {
@@ -268,7 +268,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      * 
      * @deprecated
      * If your organization already has connection service tokens enabled, use `service_tokens` instead
@@ -279,7 +279,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> token;
 
     /**
-     * @return Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * @return Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      * 
      * @deprecated
      * If your organization already has connection service tokens enabled, use `service_tokens` instead
@@ -649,7 +649,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceTokens Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+         * @param serviceTokens Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceTokens Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+         * @param serviceTokens Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
          * 
          * @return builder
          * 
@@ -670,7 +670,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceTokens Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+         * @param serviceTokens Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param token Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+         * @param token Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
          * 
          * @return builder
          * 
@@ -768,7 +768,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param token Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+         * @param token Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
          * 
          * @return builder
          * 

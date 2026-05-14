@@ -298,8 +298,8 @@ class RouteFilter(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Filter Policy
 
         Additional Documentation:
-        * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-        * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+        * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,8 +318,8 @@ class RouteFilter(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Filter Policy
 
         Additional Documentation:
-        * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-        * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filters
+        * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filters
 
         :param str resource_name: The name of the resource.
         :param RouteFilterArgs args: The arguments to use to populate this resource's properties.

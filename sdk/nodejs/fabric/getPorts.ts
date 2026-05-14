@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
  *
  * Additional documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
- * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+ * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
  *
  * ## Example Usage
  *
@@ -93,8 +93,8 @@ export interface GetPortsResult {
  * Fabric V4 API compatible data resource that allow user to fetch ports by name or uuid
  *
  * Additional documentation:
- * * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-ports-implement.htm
- * * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#ports
+ * * Getting Started: https://docs.equinix.com/fabric/ports/managing-fabric-ports/
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Ports
  *
  * ## Example Usage
  *

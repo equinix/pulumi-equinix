@@ -8,6 +8,8 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Provides an Equinix Metal project resource to allow you manage devices in your projects.
  *
  * > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
@@ -86,11 +88,11 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+     * Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
      */
     public readonly backendTransfer!: pulumi.Output<boolean>;
     /**
-     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      *
      * > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
      */
@@ -156,11 +158,11 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+     * Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
      */
     backendTransfer?: pulumi.Input<boolean>;
     /**
-     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      *
      * > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
      */
@@ -192,11 +194,11 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+     * Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
      */
     backendTransfer?: pulumi.Input<boolean>;
     /**
-     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      *
      * > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
      */

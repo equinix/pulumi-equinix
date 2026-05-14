@@ -94,8 +94,8 @@ class _ExportableConfig(types.ModuleType):
     def token(self) -> Optional[str]:
         """
         API tokens are generated from API Consumer clients using the [OAuth2
-        API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-        This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+        API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+        `EQUINIX_API_TOKEN` shell environment variable.
         """
         return __config__.get('token')
 

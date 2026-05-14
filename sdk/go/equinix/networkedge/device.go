@@ -408,6 +408,75 @@ import (
 //	}
 //
 // ```
+// ### example 6wind vsr ha device
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "six-wind-vsr", &networkedge.DeviceArgs{
+//				Name:      pulumi.String("6WIND-VSR"),
+//				ProjectId: pulumi.String("xxxxxxx"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:       pulumi.String("6WIND-VSR"),
+//				SelfManaged:    pulumi.Bool(true),
+//				Byol:           pulumi.Bool(true),
+//				InterfaceCount: pulumi.Int(10),
+//				PackageCode:    pulumi.String("STD"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@eq.com"),
+//				},
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:    pulumi.String("3.10.8"),
+//				CoreCount:  pulumi.Int(2),
+//				TermLength: pulumi.Int(1),
+//				VendorConfiguration: pulumi.StringMap{
+//					"hostname": pulumi.String("test"),
+//					"token":    pulumi.String("xxxx"),
+//				},
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("xxxx"),
+//					KeyName:  pulumi.String("xxxxx"),
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("6WIND-VSR-Sec"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					VendorConfiguration: pulumi.StringMap{
+//						"hostname": pulumi.String("test"),
+//						"token":    pulumi.String("xxxx"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### example 7
 // ```go
 // package main
@@ -1762,10 +1831,11 @@ import (
 //				CoreCount:  pulumi.Int(2),
 //				TermLength: pulumi.Int(1),
 //				VendorConfiguration: pulumi.StringMap{
-//					"gatewayIp":     pulumi.String("X.X.X.X"),
-//					"ipAddress":     pulumi.String("X.X.X.X"),
-//					"ipAddressType": pulumi.String("STATIC"),
-//					"subnetMaskIp":  pulumi.String("x.x.x.x"),
+//					"gatewayIp":             pulumi.String("X.X.X.X"),
+//					"ipAddress":             pulumi.String("X.X.X.X"),
+//					"ipAddressType":         pulumi.String("STATIC"),
+//					"subnetMaskIp":          pulumi.String("x.x.x.x"),
+//					"managementInterfaceId": pulumi.String("6"),
 //				},
 //				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
 //					Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
@@ -1781,10 +1851,10 @@ import (
 //						return &sv.Number, nil
 //					}).(pulumi.StringPtrOutput),
 //					VendorConfiguration: pulumi.StringMap{
+//						"gatewayIp":             pulumi.String("X.X.X.X"),
+//						"ipAddress":             pulumi.String("X.X.X.X"),
 //						"ipAddressType":         pulumi.String("STATIC"),
-//						"ipAddress":             pulumi.String("x.x.x.x"),
-//						"gatewayIp":             pulumi.String("x.x.x.x"),
-//						"subnetMaskIp":          pulumi.String("x.x.x.x"),
+//						"subnetMaskIp":          pulumi.String("X.X.X.X"),
 //						"managementInterfaceId": pulumi.String("6"),
 //					},
 //				},
@@ -2350,7 +2420,7 @@ type Device struct {
 	PackageCode pulumi.StringOutput `pulumi:"packageCode"`
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Purchase order number associated with a device order.
+	// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 	PurchaseOrderNumber pulumi.StringPtrOutput `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType pulumi.StringOutput `pulumi:"redundancyType"`
@@ -2502,7 +2572,7 @@ type deviceState struct {
 	PackageCode *string `pulumi:"packageCode"`
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
-	// Purchase order number associated with a device order.
+	// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType *string `pulumi:"redundancyType"`
@@ -2601,7 +2671,7 @@ type DeviceState struct {
 	PackageCode pulumi.StringPtrInput
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
-	// Purchase order number associated with a device order.
+	// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 	PurchaseOrderNumber pulumi.StringPtrInput
 	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType pulumi.StringPtrInput
@@ -2694,7 +2764,7 @@ type deviceArgs struct {
 	PackageCode string `pulumi:"packageCode"`
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
-	// Purchase order number associated with a device order.
+	// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
 	// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 	SecondaryDevice *DeviceSecondaryDevice `pulumi:"secondaryDevice"`
@@ -2768,7 +2838,7 @@ type DeviceArgs struct {
 	PackageCode pulumi.StringInput
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
-	// Purchase order number associated with a device order.
+	// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 	PurchaseOrderNumber pulumi.StringPtrInput
 	// Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
 	SecondaryDevice DeviceSecondaryDevicePtrInput
@@ -3018,7 +3088,7 @@ func (o DeviceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Purchase order number associated with a device order.
+// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 func (o DeviceOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.PurchaseOrderNumber }).(pulumi.StringPtrOutput)
 }

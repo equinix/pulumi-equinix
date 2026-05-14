@@ -2517,7 +2517,7 @@ type DeviceSecondaryDevice struct {
 	Notifications []string `pulumi:"notifications"`
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
-	// Purchase order number associated with a device order.
+	// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType *string `pulumi:"redundancyType"`
@@ -2590,7 +2590,7 @@ type DeviceSecondaryDeviceArgs struct {
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
 	// Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Purchase order number associated with a device order.
+	// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 	PurchaseOrderNumber pulumi.StringPtrInput `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either primary or secondary.
 	RedundancyType pulumi.StringPtrInput `pulumi:"redundancyType"`
@@ -2779,7 +2779,7 @@ func (o DeviceSecondaryDeviceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Purchase order number associated with a device order.
+// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 func (o DeviceSecondaryDeviceOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.PurchaseOrderNumber }).(pulumi.StringPtrOutput)
 }
@@ -3034,7 +3034,7 @@ func (o DeviceSecondaryDevicePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Purchase order number associated with a device order.
+// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
 func (o DeviceSecondaryDevicePtrOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {

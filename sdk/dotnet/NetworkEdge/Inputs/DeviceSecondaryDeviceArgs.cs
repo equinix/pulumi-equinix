@@ -128,7 +128,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Purchase order number associated with a device order.
+        /// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         /// </summary>
         [Input("purchaseOrderNumber")]
         public Input<string>? PurchaseOrderNumber { get; set; }

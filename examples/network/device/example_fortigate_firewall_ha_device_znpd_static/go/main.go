@@ -34,10 +34,11 @@ func main() {
 			CoreCount:  pulumi.Int(2),
 			TermLength: pulumi.Int(1),
 			VendorConfiguration: pulumi.StringMap{
-				"gatewayIp":     pulumi.String("X.X.X.X"),
-				"ipAddress":     pulumi.String("X.X.X.X"),
-				"ipAddressType": pulumi.String("STATIC"),
-				"subnetMaskIp":  pulumi.String("x.x.x.x"),
+				"gatewayIp":             pulumi.String("X.X.X.X"),
+				"ipAddress":             pulumi.String("X.X.X.X"),
+				"ipAddressType":         pulumi.String("STATIC"),
+				"subnetMaskIp":          pulumi.String("x.x.x.x"),
+				"managementInterfaceId": pulumi.String("6"),
 			},
 			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
 				Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
@@ -53,10 +54,10 @@ func main() {
 					return &sv.Number, nil
 				}).(pulumi.StringPtrOutput),
 				VendorConfiguration: pulumi.StringMap{
+					"gatewayIp":             pulumi.String("X.X.X.X"),
+					"ipAddress":             pulumi.String("X.X.X.X"),
 					"ipAddressType":         pulumi.String("STATIC"),
-					"ipAddress":             pulumi.String("x.x.x.x"),
-					"gatewayIp":             pulumi.String("x.x.x.x"),
-					"subnetMaskIp":          pulumi.String("x.x.x.x"),
+					"subnetMaskIp":          pulumi.String("X.X.X.X"),
 					"managementInterfaceId": pulumi.String("6"),
 				},
 			},

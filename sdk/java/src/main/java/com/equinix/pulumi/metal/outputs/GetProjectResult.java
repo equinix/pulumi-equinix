@@ -19,7 +19,7 @@ public final class GetProjectResult {
      */
     private Boolean backendTransfer;
     /**
-     * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      * 
      */
     private GetProjectBgpConfig bgpConfig;
@@ -61,7 +61,7 @@ public final class GetProjectResult {
         return this.backendTransfer;
     }
     /**
-     * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      * 
      */
     public GetProjectBgpConfig bgpConfig() {

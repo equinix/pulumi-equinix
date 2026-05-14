@@ -76,6 +76,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class MetalFunctions {
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to fetch a single device.
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
@@ -158,6 +160,8 @@ public final class MetalFunctions {
         return getDevice(GetDeviceArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to fetch a single device.
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
@@ -240,6 +244,8 @@ public final class MetalFunctions {
         return getDevicePlain(GetDevicePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to fetch a single device.
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
@@ -322,6 +328,8 @@ public final class MetalFunctions {
         return getDevice(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to fetch a single device.
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
@@ -404,6 +412,8 @@ public final class MetalFunctions {
         return getDevicePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to fetch a single device.
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
@@ -486,6 +496,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to fetch a single device.
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
@@ -568,6 +580,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to fetch a single device.
      * 
      * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
@@ -650,6 +664,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
      * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
@@ -697,6 +713,8 @@ public final class MetalFunctions {
         return getDeviceBgpNeighbors(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
      * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
@@ -744,6 +762,8 @@ public final class MetalFunctions {
         return getDeviceBgpNeighborsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
      * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
@@ -791,6 +811,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", TypeShape.of(GetDeviceBgpNeighborsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
      * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
@@ -838,6 +860,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", TypeShape.of(GetDeviceBgpNeighborsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
      * 
      * To have any BGP neighbors listed, the device must be in BGP-enabled project and have a BGP session assigned.
@@ -885,6 +909,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", TypeShape.of(GetDeviceBgpNeighborsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to find a list of devices which meet filter criteria.
      * 
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -979,6 +1005,8 @@ public final class MetalFunctions {
         return getDevices(GetDevicesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to find a list of devices which meet filter criteria.
      * 
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -1073,6 +1101,8 @@ public final class MetalFunctions {
         return getDevicesPlain(GetDevicesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to find a list of devices which meet filter criteria.
      * 
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -1167,6 +1197,8 @@ public final class MetalFunctions {
         return getDevices(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to find a list of devices which meet filter criteria.
      * 
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -1261,6 +1293,8 @@ public final class MetalFunctions {
         return getDevicesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to find a list of devices which meet filter criteria.
      * 
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -1355,6 +1389,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to find a list of devices which meet filter criteria.
      * 
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -1449,6 +1485,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * The datasource can be used to find a list of devices which meet filter criteria.
      * 
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -1543,6 +1581,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
@@ -1588,6 +1628,8 @@ public final class MetalFunctions {
         return getFacility(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
@@ -1633,6 +1675,8 @@ public final class MetalFunctions {
         return getFacilityPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
@@ -1678,6 +1722,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
@@ -1723,6 +1769,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
@@ -1768,6 +1816,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -1821,6 +1871,8 @@ public final class MetalFunctions {
         return getGateway(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -1874,6 +1926,8 @@ public final class MetalFunctions {
         return getGatewayPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -1927,6 +1981,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getGateway:getGateway", TypeShape.of(GetGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -1980,6 +2036,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getGateway:getGateway", TypeShape.of(GetGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -2033,7 +2091,9 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getGateway:getGateway", TypeShape.of(GetGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
      * 
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
@@ -2081,7 +2141,9 @@ public final class MetalFunctions {
         return getHardwareReservation(GetHardwareReservationArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
      * 
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
@@ -2129,7 +2191,9 @@ public final class MetalFunctions {
         return getHardwareReservationPlain(GetHardwareReservationPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
      * 
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
@@ -2177,7 +2241,9 @@ public final class MetalFunctions {
         return getHardwareReservation(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
      * 
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
@@ -2225,7 +2291,9 @@ public final class MetalFunctions {
         return getHardwareReservationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
      * 
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
@@ -2273,7 +2341,9 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getHardwareReservation:getHardwareReservation", TypeShape.of(GetHardwareReservationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
      * 
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
@@ -2321,7 +2391,9 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getHardwareReservation:getHardwareReservation", TypeShape.of(GetHardwareReservationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://docs.equinix.com/metal/deploy/reserved/).
      * 
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
@@ -2369,7 +2441,9 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getHardwareReservation:getHardwareReservation", TypeShape.of(GetHardwareReservationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
@@ -2413,7 +2487,9 @@ public final class MetalFunctions {
         return getInterconnection(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
@@ -2457,7 +2533,9 @@ public final class MetalFunctions {
         return getInterconnectionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
@@ -2501,7 +2579,9 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getInterconnection:getInterconnection", TypeShape.of(GetInterconnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
@@ -2545,7 +2625,9 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getInterconnection:getInterconnection", TypeShape.of(GetInterconnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
+     * Use this data source to retrieve a [connection resource](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
@@ -2589,6 +2671,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getInterconnection:getInterconnection", TypeShape.of(GetInterconnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
      * 
      * There are four types of IP blocks in Equinix: equinix_metal_global IPv4, public IPv4, private IPv4 and IPv6. Both global and public IPv4 are routable from the Internet. Public IPv4 blocks are allocated in a facility or metro, and addresses from it can only be assigned to devices in that location. Addresses from Global IPv4 block can be assigned to a device in any metro.
@@ -2638,6 +2722,8 @@ public final class MetalFunctions {
         return getIpBlockRanges(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
      * 
      * There are four types of IP blocks in Equinix: equinix_metal_global IPv4, public IPv4, private IPv4 and IPv6. Both global and public IPv4 are routable from the Internet. Public IPv4 blocks are allocated in a facility or metro, and addresses from it can only be assigned to devices in that location. Addresses from Global IPv4 block can be assigned to a device in any metro.
@@ -2687,6 +2773,8 @@ public final class MetalFunctions {
         return getIpBlockRangesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
      * 
      * There are four types of IP blocks in Equinix: equinix_metal_global IPv4, public IPv4, private IPv4 and IPv6. Both global and public IPv4 are routable from the Internet. Public IPv4 blocks are allocated in a facility or metro, and addresses from it can only be assigned to devices in that location. Addresses from Global IPv4 block can be assigned to a device in any metro.
@@ -2736,6 +2824,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getIpBlockRanges:getIpBlockRanges", TypeShape.of(GetIpBlockRangesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
      * 
      * There are four types of IP blocks in Equinix: equinix_metal_global IPv4, public IPv4, private IPv4 and IPv6. Both global and public IPv4 are routable from the Internet. Public IPv4 blocks are allocated in a facility or metro, and addresses from it can only be assigned to devices in that location. Addresses from Global IPv4 block can be assigned to a device in any metro.
@@ -2785,6 +2875,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getIpBlockRanges:getIpBlockRanges", TypeShape.of(GetIpBlockRangesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
      * 
      * There are four types of IP blocks in Equinix: equinix_metal_global IPv4, public IPv4, private IPv4 and IPv6. Both global and public IPv4 are routable from the Internet. Public IPv4 blocks are allocated in a facility or metro, and addresses from it can only be assigned to devices in that location. Addresses from Global IPv4 block can be assigned to a device in any metro.
@@ -2834,6 +2926,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getIpBlockRanges:getIpBlockRanges", TypeShape.of(GetIpBlockRangesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal metro datasource.
      * 
      * ## Example Usage
@@ -2877,6 +2971,8 @@ public final class MetalFunctions {
         return getMetro(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal metro datasource.
      * 
      * ## Example Usage
@@ -2920,6 +3016,8 @@ public final class MetalFunctions {
         return getMetroPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal metro datasource.
      * 
      * ## Example Usage
@@ -2963,6 +3061,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal metro datasource.
      * 
      * ## Example Usage
@@ -3006,6 +3106,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal metro datasource.
      * 
      * ## Example Usage
@@ -3049,6 +3151,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
@@ -3104,6 +3208,8 @@ public final class MetalFunctions {
         return getOperatingSystem(GetOperatingSystemArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
@@ -3159,6 +3265,8 @@ public final class MetalFunctions {
         return getOperatingSystemPlain(GetOperatingSystemPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
@@ -3214,6 +3322,8 @@ public final class MetalFunctions {
         return getOperatingSystem(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
@@ -3269,6 +3379,8 @@ public final class MetalFunctions {
         return getOperatingSystemPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
@@ -3324,6 +3436,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getOperatingSystem:getOperatingSystem", TypeShape.of(GetOperatingSystemResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
@@ -3379,6 +3493,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getOperatingSystem:getOperatingSystem", TypeShape.of(GetOperatingSystemResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
@@ -3434,6 +3550,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getOperatingSystem:getOperatingSystem", TypeShape.of(GetOperatingSystemResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
@@ -3477,6 +3595,8 @@ public final class MetalFunctions {
         return getOrganization(GetOrganizationArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
@@ -3520,6 +3640,8 @@ public final class MetalFunctions {
         return getOrganizationPlain(GetOrganizationPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
@@ -3563,6 +3685,8 @@ public final class MetalFunctions {
         return getOrganization(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
@@ -3606,6 +3730,8 @@ public final class MetalFunctions {
         return getOrganizationPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
@@ -3649,6 +3775,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
@@ -3692,6 +3820,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
@@ -3756,6 +3886,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getPlans:getPlans", TypeShape.of(GetPlansResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
@@ -3814,6 +3946,8 @@ public final class MetalFunctions {
         return getPort(GetPortArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
@@ -3872,6 +4006,8 @@ public final class MetalFunctions {
         return getPortPlain(GetPortPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
@@ -3930,6 +4066,8 @@ public final class MetalFunctions {
         return getPort(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
@@ -3988,6 +4126,8 @@ public final class MetalFunctions {
         return getPortPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
@@ -4046,6 +4186,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
@@ -4104,6 +4246,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
      * 
      * ## Example Usage
@@ -4162,6 +4306,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
@@ -4175,6 +4321,8 @@ public final class MetalFunctions {
         return getPrecreatedIpBlock(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
@@ -4188,6 +4336,8 @@ public final class MetalFunctions {
         return getPrecreatedIpBlockPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
@@ -4201,6 +4351,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", TypeShape.of(GetPrecreatedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
@@ -4214,6 +4366,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", TypeShape.of(GetPrecreatedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal. You can then use the cidrsubnet TF builtin function to derive subnets.
      * 
      * &gt; For backward compatibility, this data source will also return reserved (elastic) IP blocks.
@@ -4227,6 +4381,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", TypeShape.of(GetPrecreatedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
@@ -4270,6 +4426,8 @@ public final class MetalFunctions {
         return getProject(GetProjectArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
@@ -4313,6 +4471,8 @@ public final class MetalFunctions {
         return getProjectPlain(GetProjectPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
@@ -4356,6 +4516,8 @@ public final class MetalFunctions {
         return getProject(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
@@ -4399,6 +4561,8 @@ public final class MetalFunctions {
         return getProjectPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
@@ -4442,6 +4606,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
@@ -4485,6 +4651,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
@@ -4528,6 +4696,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
@@ -4571,6 +4741,8 @@ public final class MetalFunctions {
         return getProjectSshKey(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
@@ -4614,6 +4786,8 @@ public final class MetalFunctions {
         return getProjectSshKeyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
@@ -4657,6 +4831,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getProjectSshKey:getProjectSshKey", TypeShape.of(GetProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
@@ -4700,6 +4876,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getProjectSshKey:getProjectSshKey", TypeShape.of(GetProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
@@ -4743,6 +4921,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getProjectSshKey:getProjectSshKey", TypeShape.of(GetProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -4754,6 +4934,8 @@ public final class MetalFunctions {
         return getReservedIpBlock(GetReservedIpBlockArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -4765,6 +4947,8 @@ public final class MetalFunctions {
         return getReservedIpBlockPlain(GetReservedIpBlockPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -4776,6 +4960,8 @@ public final class MetalFunctions {
         return getReservedIpBlock(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -4787,6 +4973,8 @@ public final class MetalFunctions {
         return getReservedIpBlockPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -4798,6 +4986,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getReservedIpBlock:getReservedIpBlock", TypeShape.of(GetReservedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -4809,6 +4999,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getReservedIpBlock:getReservedIpBlock", TypeShape.of(GetReservedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block ID for lookup.
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
@@ -4820,6 +5012,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getReservedIpBlock:getReservedIpBlock", TypeShape.of(GetReservedIpBlockResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Spot Market Price for a plan.
      * 
      * ## Example Usage
@@ -4865,6 +5059,8 @@ public final class MetalFunctions {
         return getSpotMarketPrice(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Spot Market Price for a plan.
      * 
      * ## Example Usage
@@ -4910,6 +5106,8 @@ public final class MetalFunctions {
         return getSpotMarketPricePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Spot Market Price for a plan.
      * 
      * ## Example Usage
@@ -4955,6 +5153,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", TypeShape.of(GetSpotMarketPriceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Spot Market Price for a plan.
      * 
      * ## Example Usage
@@ -5000,6 +5200,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", TypeShape.of(GetSpotMarketPriceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to get Equinix Metal Spot Market Price for a plan.
      * 
      * ## Example Usage
@@ -5045,6 +5247,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", TypeShape.of(GetSpotMarketPriceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5054,6 +5258,8 @@ public final class MetalFunctions {
         return getVirtualCircuit(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5063,6 +5269,8 @@ public final class MetalFunctions {
         return getVirtualCircuitPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5072,6 +5280,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5081,6 +5291,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a virtual circuit resource from [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/)
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5090,6 +5302,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
@@ -5179,6 +5393,8 @@ public final class MetalFunctions {
         return getVlan(GetVlanArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
@@ -5268,6 +5484,8 @@ public final class MetalFunctions {
         return getVlanPlain(GetVlanPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
@@ -5357,6 +5575,8 @@ public final class MetalFunctions {
         return getVlan(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
@@ -5446,6 +5666,8 @@ public final class MetalFunctions {
         return getVlanPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
@@ -5535,6 +5757,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
@@ -5624,6 +5848,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
      * 
      * ## Example Usage
@@ -5713,6 +5939,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invokeAsync("equinix:metal/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a VRF resource.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5757,6 +5985,8 @@ public final class MetalFunctions {
         return getVrf(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a VRF resource.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5801,6 +6031,8 @@ public final class MetalFunctions {
         return getVrfPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a VRF resource.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5845,6 +6077,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVrf:getVrf", TypeShape.of(GetVrfResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a VRF resource.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.
@@ -5889,6 +6123,8 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getVrf:getVrf", TypeShape.of(GetVrfResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      * Use this data source to retrieve a VRF resource.
      * 
      * See the [Virtual Routing and Forwarding documentation](https://docs.equinix.com/metal/networking/vrf/) for product details and API reference material.

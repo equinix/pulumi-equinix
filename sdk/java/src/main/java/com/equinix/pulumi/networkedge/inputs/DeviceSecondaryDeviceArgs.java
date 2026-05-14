@@ -279,14 +279,14 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Purchase order number associated with a device order.
+     * Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      * 
      */
     @Import(name="purchaseOrderNumber")
     private @Nullable Output<String> purchaseOrderNumber;
 
     /**
-     * @return Purchase order number associated with a device order.
+     * @return Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      * 
      */
     public Optional<Output<String>> purchaseOrderNumber() {
@@ -890,7 +890,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param purchaseOrderNumber Purchase order number associated with a device order.
+         * @param purchaseOrderNumber Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
          * 
          * @return builder
          * 
@@ -901,7 +901,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param purchaseOrderNumber Purchase order number associated with a device order.
+         * @param purchaseOrderNumber Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
          * 
          * @return builder
          * 

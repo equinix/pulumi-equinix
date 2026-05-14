@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
  * Additional Documentation:
- * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
  */
 export function getPrecisionTimeServices(args?: GetPrecisionTimeServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrecisionTimeServicesResult> {
     args = args || {};
@@ -68,7 +68,7 @@ export interface GetPrecisionTimeServicesResult {
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
  * Additional Documentation:
- * * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
  */
 export function getPrecisionTimeServicesOutput(args?: GetPrecisionTimeServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrecisionTimeServicesResult> {
     args = args || {};

@@ -13,7 +13,7 @@ import (
 
 // Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
 // Additional Documentation:
-// * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
 func GetPrecisionTimeServices(ctx *pulumi.Context, args *GetPrecisionTimeServicesArgs, opts ...pulumi.InvokeOption) (*GetPrecisionTimeServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrecisionTimeServicesResult
