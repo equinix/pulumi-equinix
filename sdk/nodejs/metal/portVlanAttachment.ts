@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Provides a resource to attach device ports to VLANs.
  *
  * Device and VLAN must be in the same metro.
@@ -13,8 +15,7 @@ import * as utilities from "../utilities";
  *
  * To learn more about Layer 2 networking in Equinix Metal, refer to
  *
- * * https://metal.equinix.com/developers/docs/networking/layer2/
- * * https://metal.equinix.com/developers/docs/networking/layer2-configs/
+ * * https://docs.equinix.com/metal/layer2-networking/overview/
  *
  * ## Attribute Referece
  *

@@ -256,6 +256,48 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### example 6wind vsr ha device
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.networkedge.getAccountOutput({
+ *     metroCode: "SV",
+ * });
+ * const sixWindVsr = new equinix.networkedge.Device("six-wind-vsr", {
+ *     name: "6WIND-VSR",
+ *     projectId: "xxxxxxx",
+ *     metroCode: sv.apply(sv => sv.metroCode),
+ *     typeCode: "6WIND-VSR",
+ *     selfManaged: true,
+ *     byol: true,
+ *     interfaceCount: 10,
+ *     packageCode: "STD",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.apply(sv => sv.number),
+ *     version: "3.10.8",
+ *     coreCount: 2,
+ *     termLength: 1,
+ *     vendorConfiguration: {
+ *         hostname: "test",
+ *         token: "xxxx",
+ *     },
+ *     sshKey: {
+ *         username: "xxxx",
+ *         keyName: "xxxxx",
+ *     },
+ *     secondaryDevice: {
+ *         name: "6WIND-VSR-Sec",
+ *         metroCode: sv.apply(sv => sv.metroCode),
+ *         accountNumber: sv.apply(sv => sv.number),
+ *         notifications: ["test@eq.com"],
+ *         vendorConfiguration: {
+ *             hostname: "test",
+ *             token: "xxxx",
+ *         },
+ *     },
+ * });
+ * ```
  * ### example 7
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -1147,6 +1189,7 @@ import * as utilities from "../utilities";
  *         ipAddress: "X.X.X.X",
  *         ipAddressType: "STATIC",
  *         subnetMaskIp: "x.x.x.x",
+ *         managementInterfaceId: "6",
  *     },
  *     secondaryDevice: {
  *         name: "TF_FTNT-FIREWALL-secondary",
@@ -1158,10 +1201,10 @@ import * as utilities from "../utilities";
  *         ],
  *         accountNumber: sv.apply(sv => sv.number),
  *         vendorConfiguration: {
+ *             gatewayIp: "X.X.X.X",
+ *             ipAddress: "X.X.X.X",
  *             ipAddressType: "STATIC",
- *             ipAddress: "x.x.x.x",
- *             gatewayIp: "x.x.x.x",
- *             subnetMaskIp: "x.x.x.x",
+ *             subnetMaskIp: "X.X.X.X",
  *             managementInterfaceId: "6",
  *         },
  *     },
@@ -1619,7 +1662,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Purchase order number associated with a device order.
+     * Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      */
     public readonly purchaseOrderNumber!: pulumi.Output<string | undefined>;
     /**
@@ -1953,7 +1996,7 @@ export interface DeviceState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Purchase order number associated with a device order.
+     * Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      */
     purchaseOrderNumber?: pulumi.Input<string>;
     /**
@@ -2129,7 +2172,7 @@ export interface DeviceArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Purchase order number associated with a device order.
+     * Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      */
     purchaseOrderNumber?: pulumi.Input<string>;
     /**

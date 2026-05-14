@@ -161,7 +161,7 @@ def get_device_software(device_type: Optional[str] = None,
                         version_regex: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeviceSoftwareResult:
     """
-    Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+    Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
 
     ## Example Usage
 
@@ -210,7 +210,7 @@ def get_device_software_output(device_type: Optional[pulumi.Input[str]] = None,
                                version_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceSoftwareResult]:
     """
-    Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+    Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
 
     ## Example Usage
 

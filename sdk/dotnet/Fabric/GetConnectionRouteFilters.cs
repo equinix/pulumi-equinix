@@ -15,8 +15,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
         /// 
         /// Additional Documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+        /// * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
         /// </summary>
         public static Task<GetConnectionRouteFiltersResult> InvokeAsync(GetConnectionRouteFiltersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionRouteFiltersResult>("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", args ?? new GetConnectionRouteFiltersArgs(), options.WithDefaults());
@@ -25,8 +25,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
         /// 
         /// Additional Documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+        /// * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
         /// </summary>
         public static Output<GetConnectionRouteFiltersResult> Invoke(GetConnectionRouteFiltersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionRouteFiltersResult>("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", args ?? new GetConnectionRouteFiltersInvokeArgs(), options.WithDefaults());
@@ -35,8 +35,8 @@ namespace Pulumi.Equinix.Fabric
         /// Fabric V4 API compatible data resource that allow user to fetch all route filter policies attached to a fabric connection
         /// 
         /// Additional Documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-route-filters.htm
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#route-filter-rules
+        /// * Getting Started: https://docs.equinix.com/fabric-cloud-router/bgp/fcr-route-filters/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Filter-Rules
         /// </summary>
         public static Output<GetConnectionRouteFiltersResult> Invoke(GetConnectionRouteFiltersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionRouteFiltersResult>("equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters", args ?? new GetConnectionRouteFiltersInvokeArgs(), options.WithDefaults());

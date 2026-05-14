@@ -84,7 +84,7 @@ class DeviceArgs:
         :param pulumi.Input[str] name: Device name.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
-        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
+        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input['DeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
@@ -461,7 +461,7 @@ class DeviceArgs:
     @pulumi.getter(name="purchaseOrderNumber")
     def purchase_order_number(self) -> Optional[pulumi.Input[str]]:
         """
-        Purchase order number associated with a device order.
+        Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         """
         return pulumi.get(self, "purchase_order_number")
 
@@ -647,7 +647,7 @@ class _DeviceState:
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
-        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
+        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
@@ -1093,7 +1093,7 @@ class _DeviceState:
     @pulumi.getter(name="purchaseOrderNumber")
     def purchase_order_number(self) -> Optional[pulumi.Input[str]]:
         """
-        Purchase order number associated with a device order.
+        Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         """
         return pulumi.get(self, "purchase_order_number")
 
@@ -1598,6 +1598,45 @@ class Device(pulumi.CustomResource):
                 "acl_template_id": "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
             })
         ```
+        ### example 6wind vsr ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        six_wind_vsr = equinix.networkedge.Device("six-wind-vsr",
+            name="6WIND-VSR",
+            project_id="xxxxxxx",
+            metro_code=sv.metro_code,
+            type_code="6WIND-VSR",
+            self_managed=True,
+            byol=True,
+            interface_count=10,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="3.10.8",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "hostname": "test",
+                "token": "xxxx",
+            },
+            ssh_key={
+                "username": "xxxx",
+                "key_name": "xxxxx",
+            },
+            secondary_device={
+                "name": "6WIND-VSR-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "hostname": "test",
+                    "token": "xxxx",
+                },
+            })
+        ```
         ### example 7
         ```python
         import pulumi
@@ -2422,6 +2461,7 @@ class Device(pulumi.CustomResource):
                 "ipAddress": "X.X.X.X",
                 "ipAddressType": "STATIC",
                 "subnetMaskIp": "x.x.x.x",
+                "managementInterfaceId": "6",
             },
             secondary_device={
                 "name": "TF_FTNT-FIREWALL-secondary",
@@ -2433,10 +2473,10 @@ class Device(pulumi.CustomResource):
                 ],
                 "account_number": sv.number,
                 "vendor_configuration": {
+                    "gatewayIp": "X.X.X.X",
+                    "ipAddress": "X.X.X.X",
                     "ipAddressType": "STATIC",
-                    "ipAddress": "x.x.x.x",
-                    "gatewayIp": "x.x.x.x",
-                    "subnetMaskIp": "x.x.x.x",
+                    "subnetMaskIp": "X.X.X.X",
                     "managementInterfaceId": "6",
                 },
             })
@@ -2756,7 +2796,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
-        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
+        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         :param pulumi.Input[Union['DeviceSecondaryDeviceArgs', 'DeviceSecondaryDeviceArgsDict']] secondary_device: Definition of secondary device for redundant device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e., `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[Union['DeviceSshKeyArgs', 'DeviceSshKeyArgsDict']] ssh_key: Definition of SSH key that will be provisioned on a device
@@ -3001,6 +3041,45 @@ class Device(pulumi.CustomResource):
                 "notifications": ["test@eq.com"],
                 "account_number": sv.number,
                 "acl_template_id": "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+            })
+        ```
+        ### example 6wind vsr ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        six_wind_vsr = equinix.networkedge.Device("six-wind-vsr",
+            name="6WIND-VSR",
+            project_id="xxxxxxx",
+            metro_code=sv.metro_code,
+            type_code="6WIND-VSR",
+            self_managed=True,
+            byol=True,
+            interface_count=10,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="3.10.8",
+            core_count=2,
+            term_length=1,
+            vendor_configuration={
+                "hostname": "test",
+                "token": "xxxx",
+            },
+            ssh_key={
+                "username": "xxxx",
+                "key_name": "xxxxx",
+            },
+            secondary_device={
+                "name": "6WIND-VSR-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "hostname": "test",
+                    "token": "xxxx",
+                },
             })
         ```
         ### example 7
@@ -3827,6 +3906,7 @@ class Device(pulumi.CustomResource):
                 "ipAddress": "X.X.X.X",
                 "ipAddressType": "STATIC",
                 "subnetMaskIp": "x.x.x.x",
+                "managementInterfaceId": "6",
             },
             secondary_device={
                 "name": "TF_FTNT-FIREWALL-secondary",
@@ -3838,10 +3918,10 @@ class Device(pulumi.CustomResource):
                 ],
                 "account_number": sv.number,
                 "vendor_configuration": {
+                    "gatewayIp": "X.X.X.X",
+                    "ipAddress": "X.X.X.X",
                     "ipAddressType": "STATIC",
-                    "ipAddress": "x.x.x.x",
-                    "gatewayIp": "x.x.x.x",
-                    "subnetMaskIp": "x.x.x.x",
+                    "subnetMaskIp": "X.X.X.X",
                     "managementInterfaceId": "6",
                 },
             })
@@ -4349,7 +4429,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
-        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
+        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
@@ -4645,7 +4725,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="purchaseOrderNumber")
     def purchase_order_number(self) -> pulumi.Output[Optional[str]]:
         """
-        Purchase order number associated with a device order.
+        Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         """
         return pulumi.get(self, "purchase_order_number")
 

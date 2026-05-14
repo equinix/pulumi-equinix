@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+// Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
 //
 // ## Example Usage
 //

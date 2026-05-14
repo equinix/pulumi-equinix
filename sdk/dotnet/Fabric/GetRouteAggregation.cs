@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
         /// Additional Documentation:
-        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
         /// </summary>
         public static Task<GetRouteAggregationResult> InvokeAsync(GetRouteAggregationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteAggregationResult>("equinix:fabric/getRouteAggregation:getRouteAggregation", args ?? new GetRouteAggregationArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
         /// Additional Documentation:
-        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
         /// </summary>
         public static Output<GetRouteAggregationResult> Invoke(GetRouteAggregationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteAggregationResult>("equinix:fabric/getRouteAggregation:getRouteAggregation", args ?? new GetRouteAggregationInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
         /// Additional Documentation:
-        /// * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
         /// </summary>
         public static Output<GetRouteAggregationResult> Invoke(GetRouteAggregationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteAggregationResult>("equinix:fabric/getRouteAggregation:getRouteAggregation", args ?? new GetRouteAggregationInvokeArgs(), options.WithDefaults());

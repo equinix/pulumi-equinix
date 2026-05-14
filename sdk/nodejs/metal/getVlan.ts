@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
  *
  * ## Example Usage
@@ -55,7 +57,7 @@ export function getVlan(args?: GetVlanArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetVlanArgs {
     /**
-     * Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     * Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
@@ -103,6 +105,8 @@ export interface GetVlanResult {
     readonly vxlan: number;
 }
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be searched by VLAN UUID, or project UUID and vxlan number.
  *
  * ## Example Usage
@@ -153,7 +157,7 @@ export function getVlanOutput(args?: GetVlanOutputArgs, opts?: pulumi.InvokeOutp
  */
 export interface GetVlanOutputArgs {
     /**
-     * Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     * Facility where the VLAN is deployed. Deprecated, see https://docs.equinix.com/metal/locations/facilities/
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */

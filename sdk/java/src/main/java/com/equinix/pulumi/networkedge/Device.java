@@ -437,6 +437,75 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### example 6wind vsr ha device
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var sixWindVsr = new Device("sixWindVsr", DeviceArgs.builder()
+ *             .name("6WIND-VSR")
+ *             .projectId("xxxxxxx")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("6WIND-VSR")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .interfaceCount(10)
+ *             .packageCode("STD")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("3.10.8")
+ *             .coreCount(2)
+ *             .termLength(1)
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("hostname", "test"),
+ *                 Map.entry("token", "xxxx")
+ *             ))
+ *             .sshKey(DeviceSshKeyArgs.builder()
+ *                 .username("xxxx")
+ *                 .keyName("xxxxx")
+ *                 .build())
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("6WIND-VSR-Sec")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .notifications("test}{@literal @}{@code eq.com")
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("hostname", "test"),
+ *                     Map.entry("token", "xxxx")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ### example 7
  * <pre>
  * {@code
@@ -1848,7 +1917,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("gatewayIp", "X.X.X.X"),
  *                 Map.entry("ipAddress", "X.X.X.X"),
  *                 Map.entry("ipAddressType", "STATIC"),
- *                 Map.entry("subnetMaskIp", "x.x.x.x")
+ *                 Map.entry("subnetMaskIp", "x.x.x.x"),
+ *                 Map.entry("managementInterfaceId", "6")
  *             ))
  *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
  *                 .name("TF_FTNT-FIREWALL-secondary")
@@ -1859,10 +1929,10 @@ import javax.annotation.Nullable;
  *                     "marry}{@literal @}{@code equinix.com")
  *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
  *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("gatewayIp", "X.X.X.X"),
+ *                     Map.entry("ipAddress", "X.X.X.X"),
  *                     Map.entry("ipAddressType", "STATIC"),
- *                     Map.entry("ipAddress", "x.x.x.x"),
- *                     Map.entry("gatewayIp", "x.x.x.x"),
- *                     Map.entry("subnetMaskIp", "x.x.x.x"),
+ *                     Map.entry("subnetMaskIp", "X.X.X.X"),
  *                     Map.entry("managementInterfaceId", "6")
  *                 ))
  *                 .build())
@@ -2779,14 +2849,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Purchase order number associated with a device order.
+     * Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      * 
      */
     @Export(name="purchaseOrderNumber", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> purchaseOrderNumber;
 
     /**
-     * @return Purchase order number associated with a device order.
+     * @return Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      * 
      */
     public Output<Optional<String>> purchaseOrderNumber() {

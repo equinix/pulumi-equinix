@@ -22,6 +22,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ * 
  * Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.
  * 
  * &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
@@ -175,7 +177,59 @@ import javax.annotation.Nullable;
  *             .projectId(projectId)
  *             .hardwareReservationId("next-available")
  *             .storage("""
- * {  \"disks\": [    {      \"device\": \"/dev/sda\",      \"wipeTable\": true,      \"partitions\": [        {          \"label\": \"BIOS\",          \"number\": 1,          \"size\": \"4096\"        },        {          \"label\": \"SWAP\",          \"number\": 2,          \"size\": \"3993600\"        },        {          \"label\": \"ROOT\",          \"number\": 3,          \"size\": \"0\"        }      ]    }  ],  \"filesystems\": [    {      \"mount\": {        \"device\": \"/dev/sda3\",        \"format\": \"ext4\",        \"point\": \"/\",        \"create\": {          \"options\": [            \"-L\",            \"ROOT\"          ]        }      }    },    {      \"mount\": {        \"device\": \"/dev/sda2\",        \"format\": \"swap\",        \"point\": \"none\",        \"create\": {          \"options\": [            \"-L\",            \"SWAP\"          ]        }      }    }  ]}
+ * {
+ *   \"disks\": [
+ *     {
+ *       \"device\": \"/dev/sda\",
+ *       \"wipeTable\": true,
+ *       \"partitions\": [
+ *         {
+ *           \"label\": \"BIOS\",
+ *           \"number\": 1,
+ *           \"size\": \"4096\"
+ *         },
+ *         {
+ *           \"label\": \"SWAP\",
+ *           \"number\": 2,
+ *           \"size\": \"3993600\"
+ *         },
+ *         {
+ *           \"label\": \"ROOT\",
+ *           \"number\": 3,
+ *           \"size\": \"0\"
+ *         }
+ *       ]
+ *     }
+ *   ],
+ *   \"filesystems\": [
+ *     {
+ *       \"mount\": {
+ *         \"device\": \"/dev/sda3\",
+ *         \"format\": \"ext4\",
+ *         \"point\": \"/\",
+ *         \"create\": {
+ *           \"options\": [
+ *             \"-L\",
+ *             \"ROOT\"
+ *           ]
+ *         }
+ *       }
+ *     },
+ *     {
+ *       \"mount\": {
+ *         \"device\": \"/dev/sda2\",
+ *         \"format\": \"swap\",
+ *         \"point\": \"none\",
+ *         \"create\": {
+ *           \"options\": [
+ *             \"-L\",
+ *             \"SWAP\"
+ *           ]
+ *         }
+ *       }
+ *     }
+ *   ]
+ * }
  *             """)
  *             .build());
  * 
@@ -384,7 +438,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+     * List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
      * 
      * @deprecated
      * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -395,7 +449,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> facilities;
 
     /**
-     * @return List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+     * @return List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
      * 
      */
     public Output<Optional<List<String>>> facilities() {
@@ -514,7 +568,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
-     * Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+     * Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
      * 
      * @deprecated
      * You should handle Network Type with one of &#39;equinix_metal_port&#39; or &#39;equinix_metal_device_network_type&#39; resources. See section &#39;Guides&#39; for more info
@@ -525,21 +579,21 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output<String> networkType;
 
     /**
-     * @return Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+     * @return Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
      * 
      */
     public Output<String> networkType() {
         return this.networkType;
     }
     /**
-     * The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+     * The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
      * 
      */
     @Export(name="operatingSystem", refs={String.class}, tree="[0]")
     private Output<String> operatingSystem;
 
     /**
-     * @return The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+     * @return The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
      * 
      */
     public Output<String> operatingSystem() {
@@ -664,14 +718,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+     * JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
      * 
      */
     @Export(name="storage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storage;
 
     /**
-     * @return JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+     * @return JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
      * 
      */
     public Output<Optional<String>> storage() {

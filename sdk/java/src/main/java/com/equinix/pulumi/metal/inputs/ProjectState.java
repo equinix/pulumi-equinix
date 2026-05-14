@@ -18,14 +18,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
-     * Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+     * Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
      * 
      */
     @Import(name="backendTransfer")
     private @Nullable Output<Boolean> backendTransfer;
 
     /**
-     * @return Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+     * @return Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
      * 
      */
     public Optional<Output<Boolean>> backendTransfer() {
@@ -33,7 +33,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      * 
      * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
      * 
@@ -42,7 +42,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ProjectBgpConfigArgs> bgpConfig;
 
     /**
-     * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      * 
      * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
      * 
@@ -157,7 +157,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendTransfer Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+         * @param backendTransfer Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendTransfer Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+         * @param backendTransfer Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+         * @param bgpConfig Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
          * 
          * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
          * 
@@ -191,7 +191,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+         * @param bgpConfig Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
          * 
          * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in the Equinix Metal API). It can be updated.
          * 

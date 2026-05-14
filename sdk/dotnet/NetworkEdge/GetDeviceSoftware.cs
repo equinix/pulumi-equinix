@@ -12,7 +12,7 @@ namespace Pulumi.Equinix.NetworkEdge
     public static class GetDeviceSoftware
     {
         /// <summary>
-        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Equinix.NetworkEdge
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Equinix.NetworkEdge
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+        /// Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
         /// 
         /// ## Example Usage
         /// 

@@ -8,6 +8,8 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * The datasource can be used to find a list of devices which meet filter criteria.
  *
  * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -68,7 +70,7 @@ export function getDevices(args?: GetDevicesArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetDevicesArgs {
     /**
-     * One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+     * One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
      */
     filters?: inputs.metal.GetDevicesFilter[];
     /**
@@ -105,6 +107,8 @@ export interface GetDevicesResult {
     readonly sorts?: outputs.metal.GetDevicesSort[];
 }
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * The datasource can be used to find a list of devices which meet filter criteria.
  *
  * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -165,7 +169,7 @@ export function getDevicesOutput(args?: GetDevicesOutputArgs, opts?: pulumi.Invo
  */
 export interface GetDevicesOutputArgs {
     /**
-     * One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+     * One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
      */
     filters?: pulumi.Input<pulumi.Input<inputs.metal.GetDevicesFilterArgs>[]>;
     /**

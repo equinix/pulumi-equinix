@@ -106,7 +106,7 @@ def get_precision_time_services(filters: Optional[Sequence[Union['GetPrecisionTi
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
     Additional Documentation:
-    * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
 
 
     :param Sequence[Union['GetPrecisionTimeServicesFilterArgs', 'GetPrecisionTimeServicesFilterArgsDict']] filters: List of filters to apply to the stream attachment get request. Maximum of 8. All will be AND'd together with 1 of the 8 being a possible OR group of 3
@@ -133,7 +133,7 @@ def get_precision_time_services_output(filters: Optional[pulumi.Input[Optional[S
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Precision Time Services with pagination details
     Additional Documentation:
-    * API: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/API-Reference/API-Precision-Time.htm
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
 
 
     :param Sequence[Union['GetPrecisionTimeServicesFilterArgs', 'GetPrecisionTimeServicesFilterArgsDict']] filters: List of filters to apply to the stream attachment get request. Maximum of 8. All will be AND'd together with 1 of the 8 being a possible OR group of 3

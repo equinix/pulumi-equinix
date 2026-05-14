@@ -110,7 +110,8 @@ build_go:: upstream
 
 build_java: bin/pulumi-java-gen patch_java_schema upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
-	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
+# 	bash ./scripts/postgen_fix_java_settings.sh && \ # Add this if your local build fails for gradle.
+ 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 	echo "patch_java: find and replace invocations of pulumi:fabric/metal/networkedge" && \
 		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java" -print -exec sed -i.bak 's/pulumi:fabric/equinix:fabric/g; s/pulumi:metal/equinix:metal/g; s/pulumi:networkedge/equinix:networkedge/g' {} \;
 	echo "patch_java: remove backup files" && \

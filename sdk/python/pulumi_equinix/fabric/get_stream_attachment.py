@@ -153,8 +153,8 @@ def get_stream_attachment(asset: Optional[str] = None,
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
 
     Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+    * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
 
     ## Example Usage
 
@@ -197,8 +197,8 @@ def get_stream_attachment_output(asset: Optional[pulumi.Input[str]] = None,
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Stream Asset Attachment by IDs
 
     Additional Documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/KnowledgeCenter/Fabric/GettingStarted/Integrating-with-Fabric-V4-APIs/IntegrateWithSink.htm
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Streams
+    * Getting Started: https://docs.equinix.com/observability/streaming-data/integratewithsink/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Streams
 
     ## Example Usage
 

@@ -14,11 +14,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
         /// 
-        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
         /// 
         /// Additional documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
         /// 
         /// ## Example Usage
         /// 
@@ -60,11 +60,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
         /// 
-        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
         /// 
         /// Additional documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
         /// 
         /// ## Example Usage
         /// 
@@ -106,11 +106,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
         /// 
-        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// API documentation can be found here - https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
         /// 
         /// Additional documentation:
-        /// * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal
-        /// * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// * Getting Started: https://docs.equinix.com/fabric-cloud-router/connections/fcr-connect-azureqc/
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Routing-Protocols
         /// 
         /// ## Example Usage
         /// 

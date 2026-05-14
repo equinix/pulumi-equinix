@@ -8,7 +8,9 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
+ * Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/).
  *
  * ## Example Usage
  * ### example fabric billed metal from fabric port
@@ -301,7 +303,7 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly serviceTokenType!: pulumi.Output<string | undefined>;
     /**
-     * Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      */
     public /*out*/ readonly serviceTokens!: pulumi.Output<outputs.metal.InterconnectionServiceToken[]>;
     /**
@@ -317,7 +319,7 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      *
      * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */
@@ -457,7 +459,7 @@ export interface InterconnectionState {
      */
     serviceTokenType?: pulumi.Input<string>;
     /**
-     * Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      */
     serviceTokens?: pulumi.Input<pulumi.Input<inputs.metal.InterconnectionServiceToken>[]>;
     /**
@@ -473,7 +475,7 @@ export interface InterconnectionState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+     * Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
      *
      * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */

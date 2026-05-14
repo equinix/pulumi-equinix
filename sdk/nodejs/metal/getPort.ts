@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
  *
  * ## Example Usage
@@ -112,6 +114,8 @@ export interface GetPortResult {
     readonly vxlanIds: number[];
 }
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Use this data source to read ports of existing devices. You can read port by either its UUID, or by a device UUID and port name.
  *
  * ## Example Usage

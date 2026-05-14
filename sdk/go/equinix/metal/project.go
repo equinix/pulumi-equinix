@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+//
 // Provides an Equinix Metal project resource to allow you manage devices in your projects.
 //
 // > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many `metal.Project` resources will affect the rendered invoice. If you want to keep your Equinix Metal bill simple and easy to review, please re-use your existing projects.
@@ -109,9 +111,9 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
-	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+	// Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
 	BackendTransfer pulumi.BoolOutput `pulumi:"backendTransfer"`
-	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 	//
 	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrOutput `pulumi:"bgpConfig"`
@@ -157,9 +159,9 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+	// Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
 	BackendTransfer *bool `pulumi:"backendTransfer"`
-	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 	//
 	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig *ProjectBgpConfig `pulumi:"bgpConfig"`
@@ -176,9 +178,9 @@ type projectState struct {
 }
 
 type ProjectState struct {
-	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+	// Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
 	BackendTransfer pulumi.BoolPtrInput
-	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 	//
 	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrInput
@@ -199,9 +201,9 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+	// Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
 	BackendTransfer *bool `pulumi:"backendTransfer"`
-	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 	//
 	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig *ProjectBgpConfig `pulumi:"bgpConfig"`
@@ -215,9 +217,9 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+	// Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
 	BackendTransfer pulumi.BoolPtrInput
-	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 	//
 	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrInput
@@ -316,12 +318,12 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
+// Enable or disable [Backend Transfer](https://docs.equinix.com/metal/networking/backend-transfer/), default is `false`.
 func (o ProjectOutput) BackendTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.BackendTransfer }).(pulumi.BoolOutput)
 }
 
-// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
 //
 // > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in the Equinix Metal API). It can be updated.
 func (o ProjectOutput) BgpConfig() ProjectBgpConfigPtrOutput {

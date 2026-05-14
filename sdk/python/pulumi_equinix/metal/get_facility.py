@@ -119,6 +119,8 @@ def get_facility(capacities: Optional[Sequence[Union['GetFacilityCapacityArgs', 
                  features_requireds: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFacilityResult:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     > **Deprecated** Use `metal_get_metro` instead. For more information, refer to the facility to metro migration guide.
 
     Provides an Equinix Metal facility datasource.
@@ -158,6 +160,8 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[Unio
                         features_requireds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFacilityResult]:
     """
+    > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
     > **Deprecated** Use `metal_get_metro` instead. For more information, refer to the facility to metro migration guide.
 
     Provides an Equinix Metal facility datasource.

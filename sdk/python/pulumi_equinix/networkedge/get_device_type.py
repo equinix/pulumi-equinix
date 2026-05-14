@@ -115,7 +115,7 @@ def get_device_type(category: Optional[str] = None,
                     vendor: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeviceTypeResult:
     """
-    Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+    Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
 
     ## Example Usage
 
@@ -159,7 +159,7 @@ def get_device_type_output(category: Optional[pulumi.Input[Optional[str]]] = Non
                            vendor: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceTypeResult]:
     """
-    Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+    Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
 
     ## Example Usage
 

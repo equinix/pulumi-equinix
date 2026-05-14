@@ -104,7 +104,7 @@ public final class DeviceSecondaryDevice {
      */
     private @Nullable String projectId;
     /**
-     * @return Purchase order number associated with a device order.
+     * @return Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      * 
      */
     private @Nullable String purchaseOrderNumber;
@@ -286,7 +286,7 @@ public final class DeviceSecondaryDevice {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Purchase order number associated with a device order.
+     * @return Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
      * 
      */
     public Optional<String> purchaseOrderNumber() {

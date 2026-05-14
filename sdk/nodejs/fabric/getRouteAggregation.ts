@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
  * Additional Documentation:
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
  */
 export function getRouteAggregation(args: GetRouteAggregationArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteAggregationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -89,7 +89,7 @@ export interface GetRouteAggregationResult {
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
  * Additional Documentation:
- * * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
  */
 export function getRouteAggregationOutput(args: GetRouteAggregationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteAggregationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

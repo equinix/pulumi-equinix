@@ -263,7 +263,7 @@ def get_precision_time_service(ept_service_id: Optional[str] = None,
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
     Additional Documentation:
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
 
     ## Example Usage
 
@@ -321,7 +321,7 @@ def get_precision_time_service_output(ept_service_id: Optional[pulumi.Input[str]
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Precision Time Service by UUID
     Additional Documentation:
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Precision-Time
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Precision-Time
 
     ## Example Usage
 

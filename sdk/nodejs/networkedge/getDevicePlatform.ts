@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
  *
  * ## Example Usage
  *
@@ -86,7 +86,7 @@ export interface GetDevicePlatformResult {
     readonly packages: string[];
 }
 /**
- * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
  *
  * ## Example Usage
  *

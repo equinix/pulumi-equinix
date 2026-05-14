@@ -305,11 +305,11 @@ class _InterconnectionState:
         :param pulumi.Input[str] project_id: ID of the project where the connection is scoped to. Required with type "shared"
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a*side or z*side
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectionServiceTokenArgs']]] service_tokens: Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectionServiceTokenArgs']]] service_tokens: Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         :param pulumi.Input[str] speed: Connection speed -  Values must be in the format '\\n\\nMbps' or '\\n\\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[str] status: Status of the connection resource
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[str] token: Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        :param pulumi.Input[str] token: Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         :param pulumi.Input[str] type: Connection type - dedicated, shared or shared*port*vlan
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vrfs: Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
@@ -510,7 +510,7 @@ class _InterconnectionState:
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectionServiceTokenArgs']]]]:
         """
-        Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         """
         return pulumi.get(self, "service_tokens")
 
@@ -559,7 +559,7 @@ class _InterconnectionState:
     @_utilities.deprecated("""If your organization already has connection service tokens enabled, use `service_tokens` instead""")
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         """
         return pulumi.get(self, "token")
 
@@ -626,7 +626,9 @@ class Interconnection(pulumi.CustomResource):
                  vrfs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
+        Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/).
 
         ## Example Usage
         ### example fabric billed metal from fabric port
@@ -850,7 +852,9 @@ class Interconnection(pulumi.CustomResource):
                  args: InterconnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
+        Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://docs.equinix.com/metal/interconnections/introduction/).
 
         ## Example Usage
         ### example fabric billed metal from fabric port
@@ -1161,11 +1165,11 @@ class Interconnection(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: ID of the project where the connection is scoped to. Required with type "shared"
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a*side or z*side
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectionServiceTokenArgs', 'InterconnectionServiceTokenArgsDict']]]] service_tokens: Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectionServiceTokenArgs', 'InterconnectionServiceTokenArgsDict']]]] service_tokens: Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         :param pulumi.Input[str] speed: Connection speed -  Values must be in the format '\\n\\nMbps' or '\\n\\nGpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[str] status: Status of the connection resource
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[str] token: Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        :param pulumi.Input[str] token: Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         :param pulumi.Input[str] type: Connection type - dedicated, shared or shared*port*vlan
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. VLANs to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vrfs: Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant connection
@@ -1297,7 +1301,7 @@ class Interconnection(pulumi.CustomResource):
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> pulumi.Output[Sequence['outputs.InterconnectionServiceToken']]:
         """
-        Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        Only used with shared connection. List of service tokens required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         """
         return pulumi.get(self, "service_tokens")
 
@@ -1330,7 +1334,7 @@ class Interconnection(pulumi.CustomResource):
     @_utilities.deprecated("""If your organization already has connection service tokens enabled, use `service_tokens` instead""")
     def token(self) -> pulumi.Output[str]:
         """
-        Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com/dashboard)
+        Only used with shared connection. Fabric Token required to continue the setup process with equinix*fabric*connection or from the [Equinix Fabric Portal](https://fabric.equinix.com)
         """
         return pulumi.get(self, "token")
 

@@ -13,7 +13,7 @@ import (
 
 // Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Connection Route Aggregation by UUID
 // Additional Documentation:
-// * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
 //
 // ## Example Usage
 //

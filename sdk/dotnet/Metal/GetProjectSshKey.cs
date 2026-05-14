@@ -12,6 +12,9 @@ namespace Pulumi.Equinix.Metal
     public static class GetProjectSshKey
     {
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this datasource to retrieve attributes of a Project SSH Key API resource.
         /// 
         /// ## Example Usage
@@ -37,6 +40,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this datasource to retrieve attributes of a Project SSH Key API resource.
         /// 
         /// ## Example Usage
@@ -62,6 +68,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// Use this datasource to retrieve attributes of a Project SSH Key API resource.
         /// 
         /// ## Example Usage

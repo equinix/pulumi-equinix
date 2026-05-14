@@ -12,6 +12,9 @@ namespace Pulumi.Equinix.Metal
     public static class GetFacility
     {
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
         /// 
         /// Provides an Equinix Metal facility datasource.
@@ -42,6 +45,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFacilityResult>("equinix:metal/getFacility:getFacility", args ?? new GetFacilityArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
         /// 
         /// Provides an Equinix Metal facility datasource.
@@ -72,6 +78,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetFacilityResult>("equinix:metal/getFacility:getFacility", args ?? new GetFacilityInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead. For more information, refer to the facility to metro migration guide.
         /// 
         /// Provides an Equinix Metal facility datasource.

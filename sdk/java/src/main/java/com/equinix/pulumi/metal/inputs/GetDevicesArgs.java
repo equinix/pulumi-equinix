@@ -19,14 +19,14 @@ public final class GetDevicesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDevicesArgs Empty = new GetDevicesArgs();
 
     /**
-     * One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+     * One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<GetDevicesFilterArgs>> filters;
 
     /**
-     * @return One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+     * @return One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
      * 
      */
     public Optional<Output<List<GetDevicesFilterArgs>>> filters() {
@@ -114,7 +114,7 @@ public final class GetDevicesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filters One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+         * @param filters One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GetDevicesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filters One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+         * @param filters One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class GetDevicesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filters One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+         * @param filters One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
          * 
          * @return builder
          * 

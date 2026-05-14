@@ -48,14 +48,14 @@ class DeviceArgs:
                  wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Device resource.
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[bool] always_pxe: If true, a device with OS custom_ipxe will
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: Description string for the device
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
@@ -64,7 +64,7 @@ class DeviceArgs:
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
@@ -124,7 +124,7 @@ class DeviceArgs:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> pulumi.Input[Union[str, 'OperatingSystem']]:
         """
-        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "operating_system")
 
@@ -218,7 +218,7 @@ class DeviceArgs:
     @_utilities.deprecated("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         """
         return pulumi.get(self, "facilities")
 
@@ -335,7 +335,7 @@ class DeviceArgs:
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[str]]:
         """
-        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         """
         return pulumi.get(self, "storage")
 
@@ -457,7 +457,7 @@ class _DeviceState:
         :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
         :param pulumi.Input[str] description: Description string for the device
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
@@ -466,8 +466,8 @@ class _DeviceState:
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
         :param pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
-        :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]] ports: Ports assigned to the device
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
@@ -476,7 +476,7 @@ class _DeviceState:
         :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
         :param pulumi.Input[str] state: The status of the device
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] updated: The timestamp for the last time the device was updated
@@ -705,7 +705,7 @@ class _DeviceState:
     @_utilities.deprecated("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         """
         return pulumi.get(self, "facilities")
 
@@ -814,7 +814,7 @@ class _DeviceState:
     @_utilities.deprecated("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
     def network_type(self) -> Optional[pulumi.Input[Union[str, 'NetworkType']]]:
         """
-        Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         """
         return pulumi.get(self, "network_type")
 
@@ -826,7 +826,7 @@ class _DeviceState:
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> Optional[pulumi.Input[Union[str, 'OperatingSystem']]]:
         """
-        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "operating_system")
 
@@ -943,7 +943,7 @@ class _DeviceState:
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[str]]:
         """
-        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         """
         return pulumi.get(self, "storage")
 
@@ -1055,6 +1055,8 @@ class Device(pulumi.CustomResource):
                  wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
         Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.
 
         > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
@@ -1119,8 +1121,60 @@ class Device(pulumi.CustomResource):
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
             hardware_reservation_id="next-available",
-            storage="{  \\\\"disks\\\\": [    {      \\\\"device\\\\": \\\\"/dev/sda\\\\",      \\\\"wipeTable\\\\": true,      \\\\"partitions\\\\": [        {          \\\\"label\\\\": \\\\"BIOS\\\\",          \\\\"number\\\\": 1,          \\\\"size\\\\": \\\\"4096\\\\"        },        {          \\\\"label\\\\": \\\\"SWAP\\\\",          \\\\"number\\\\": 2,          \\\\"size\\\\": \\\\"3993600\\\\"        },        {          \\\\"label\\\\": \\\\"ROOT\\\\",          \\\\"number\\\\": 3,          \\\\"size\\\\": \\\\"0\\\\"        }      ]    }  ],  \\\\"filesystems\\\\": [    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda3\\\\",        \\\\"format\\\\": \\\\"ext4\\\\",        \\\\"point\\\\": \\\\"/\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"ROOT\\\\"          ]        }      }    },    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda2\\\\",        \\\\"format\\\\": \\\\"swap\\\\",        \\\\"point\\\\": \\\\"none\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"SWAP\\\\"          ]        }      }    }  ]}
-        ")
+            storage=\"\"\"{
+          \\"disks\\": [
+            {
+              \\"device\\": \\"/dev/sda\\",
+              \\"wipeTable\\": true,
+              \\"partitions\\": [
+                {
+                  \\"label\\": \\"BIOS\\",
+                  \\"number\\": 1,
+                  \\"size\\": \\"4096\\"
+                },
+                {
+                  \\"label\\": \\"SWAP\\",
+                  \\"number\\": 2,
+                  \\"size\\": \\"3993600\\"
+                },
+                {
+                  \\"label\\": \\"ROOT\\",
+                  \\"number\\": 3,
+                  \\"size\\": \\"0\\"
+                }
+              ]
+            }
+          ],
+          \\"filesystems\\": [
+            {
+              \\"mount\\": {
+                \\"device\\": \\"/dev/sda3\\",
+                \\"format\\": \\"ext4\\",
+                \\"point\\": \\"/\\",
+                \\"create\\": {
+                  \\"options\\": [
+                    \\"-L\\",
+                    \\"ROOT\\"
+                  ]
+                }
+              }
+            },
+            {
+              \\"mount\\": {
+                \\"device\\": \\"/dev/sda2\\",
+                \\"format\\": \\"swap\\",
+                \\"point\\": \\"none\\",
+                \\"create\\": {
+                  \\"options\\": [
+                    \\"-L\\",
+                    \\"SWAP\\"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+        \"\"\")
         ```
         ### example 5
         ```python
@@ -1152,7 +1206,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: Description string for the device
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
@@ -1160,11 +1214,11 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user*ssh*key*ids) will be added. If no SSH keys are specified (both user*ssh*keys*ids and project*ssh*key*ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix*metal*project*ssh*key resource
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
@@ -1178,6 +1232,8 @@ class Device(pulumi.CustomResource):
                  args: DeviceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+
         Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.
 
         > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
@@ -1242,8 +1298,60 @@ class Device(pulumi.CustomResource):
             billing_cycle=equinix.metal.BillingCycle.HOURLY,
             project_id=project_id,
             hardware_reservation_id="next-available",
-            storage="{  \\\\"disks\\\\": [    {      \\\\"device\\\\": \\\\"/dev/sda\\\\",      \\\\"wipeTable\\\\": true,      \\\\"partitions\\\\": [        {          \\\\"label\\\\": \\\\"BIOS\\\\",          \\\\"number\\\\": 1,          \\\\"size\\\\": \\\\"4096\\\\"        },        {          \\\\"label\\\\": \\\\"SWAP\\\\",          \\\\"number\\\\": 2,          \\\\"size\\\\": \\\\"3993600\\\\"        },        {          \\\\"label\\\\": \\\\"ROOT\\\\",          \\\\"number\\\\": 3,          \\\\"size\\\\": \\\\"0\\\\"        }      ]    }  ],  \\\\"filesystems\\\\": [    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda3\\\\",        \\\\"format\\\\": \\\\"ext4\\\\",        \\\\"point\\\\": \\\\"/\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"ROOT\\\\"          ]        }      }    },    {      \\\\"mount\\\\": {        \\\\"device\\\\": \\\\"/dev/sda2\\\\",        \\\\"format\\\\": \\\\"swap\\\\",        \\\\"point\\\\": \\\\"none\\\\",        \\\\"create\\\\": {          \\\\"options\\\\": [            \\\\"-L\\\\",            \\\\"SWAP\\\\"          ]        }      }    }  ]}
-        ")
+            storage=\"\"\"{
+          \\"disks\\": [
+            {
+              \\"device\\": \\"/dev/sda\\",
+              \\"wipeTable\\": true,
+              \\"partitions\\": [
+                {
+                  \\"label\\": \\"BIOS\\",
+                  \\"number\\": 1,
+                  \\"size\\": \\"4096\\"
+                },
+                {
+                  \\"label\\": \\"SWAP\\",
+                  \\"number\\": 2,
+                  \\"size\\": \\"3993600\\"
+                },
+                {
+                  \\"label\\": \\"ROOT\\",
+                  \\"number\\": 3,
+                  \\"size\\": \\"0\\"
+                }
+              ]
+            }
+          ],
+          \\"filesystems\\": [
+            {
+              \\"mount\\": {
+                \\"device\\": \\"/dev/sda3\\",
+                \\"format\\": \\"ext4\\",
+                \\"point\\": \\"/\\",
+                \\"create\\": {
+                  \\"options\\": [
+                    \\"-L\\",
+                    \\"ROOT\\"
+                  ]
+                }
+              }
+            },
+            {
+              \\"mount\\": {
+                \\"device\\": \\"/dev/sda2\\",
+                \\"format\\": \\"swap\\",
+                \\"point\\": \\"none\\",
+                \\"create\\": {
+                  \\"options\\": [
+                    \\"-L\\",
+                    \\"SWAP\\"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+        \"\"\")
         ```
         ### example 5
         ```python
@@ -1428,7 +1536,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed. It is useful when using the next-available hardware reservation
         :param pulumi.Input[str] description: Description string for the device
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies for destroy action
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your next available reservation automatically
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP or metadata service configuration.
@@ -1437,8 +1545,8 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with facilities
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceNetworkArgs', 'DeviceNetworkArgsDict']]]] network: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 addresses: public ipv4, private ipv4 and ipv6
-        :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
-        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        :param pulumi.Input[Union[str, 'NetworkType']] network_type: Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the [plan documentation](https://docs.equinix.com/metal/hardware/standard-servers/)
         :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePortArgs', 'DevicePortArgsDict']]]] ports: Ports assigned to the device
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
@@ -1447,7 +1555,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] sos_hostname: The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user and project SSH keys
         :param pulumi.Input[str] state: The status of the device
-        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        :param pulumi.Input[str] storage: JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example "2021-09-03T16:32:00+03:00". If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] updated: The timestamp for the last time the device was updated
@@ -1590,7 +1698,7 @@ class Device(pulumi.CustomResource):
     @_utilities.deprecated("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
     def facilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         """
         return pulumi.get(self, "facilities")
 
@@ -1663,7 +1771,7 @@ class Device(pulumi.CustomResource):
     @_utilities.deprecated("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
     def network_type(self) -> pulumi.Output[str]:
         """
-        Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         """
         return pulumi.get(self, "network_type")
 
@@ -1671,7 +1779,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> pulumi.Output[str]:
         """
-        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "operating_system")
 
@@ -1748,7 +1856,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def storage(self) -> pulumi.Output[Optional[str]]:
         """
-        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         """
         return pulumi.get(self, "storage")
 

@@ -295,7 +295,7 @@ class RouteAggregationRule(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation
 
         Additional Documentation:
-        * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
 
         ## Example Usage
 
@@ -331,7 +331,7 @@ class RouteAggregationRule(pulumi.CustomResource):
         Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation
 
         Additional Documentation:
-        * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
 
         ## Example Usage
 

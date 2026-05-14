@@ -26,6 +26,7 @@ resources:
         ipAddress: X.X.X.X
         ipAddressType: STATIC
         subnetMaskIp: x.x.x.x
+        managementInterfaceId: '6'
       secondaryDevice:
         name: TF_FTNT-FIREWALL-secondary
         metroCode: ${sv.metroCode}
@@ -35,10 +36,10 @@ resources:
           - marry@equinix.com
         accountNumber: ${sv.number}
         vendorConfiguration:
+          gatewayIp: X.X.X.X
+          ipAddress: X.X.X.X
           ipAddressType: STATIC
-          ipAddress: x.x.x.x
-          gatewayIp: x.x.x.x
-          subnetMaskIp: x.x.x.x
+          subnetMaskIp: X.X.X.X
           managementInterfaceId: '6'
 variables:
   # Create FG VM ha device with connectivity PRIVATE and IP Address Type as STATIC

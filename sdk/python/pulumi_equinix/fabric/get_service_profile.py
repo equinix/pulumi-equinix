@@ -308,8 +308,8 @@ def get_service_profile(uuid: Optional[str] = None,
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 
     Additional documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+    * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
 
     ## Example Usage
 
@@ -368,8 +368,8 @@ def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 
     Additional documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm
-    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles
+    * Getting Started: https://docs.equinix.com/fabric/service-providers/fabric-spo-intro/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Service-Profiles
 
     ## Example Usage
 

@@ -199,7 +199,7 @@ def get_route_aggregation(route_aggregation_id: Optional[str] = None,
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
     Additional Documentation:
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
 
 
     :param str route_aggregation_id: The uuid of the route aggregation this data source should retrieve
@@ -228,7 +228,7 @@ def get_route_aggregation_output(route_aggregation_id: Optional[pulumi.Input[str
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation by UUID
     Additional Documentation:
-    * API: https://developer.equinix.com/catalog/fabricv4#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
 
 
     :param str route_aggregation_id: The uuid of the route aggregation this data source should retrieve

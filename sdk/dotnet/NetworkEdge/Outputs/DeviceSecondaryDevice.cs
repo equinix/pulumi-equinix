@@ -83,7 +83,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Purchase order number associated with a device order.
+        /// Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         /// </summary>
         public readonly string? PurchaseOrderNumber;
         /// <summary>

@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
-    /// Provides a resource to manage BGP sessions in Equinix Metal Host. Refer to [Equinix Metal BGP documentation](https://metal.equinix.com/developers/docs/networking/local-global-bgp/) for more details.
+    /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+    /// 
+    /// Provides a resource to manage BGP sessions in Equinix Metal Host. Refer to [Equinix Metal BGP documentation](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/) for more details.
     /// 
     /// You need to have BGP config enabled in your project.
     /// 

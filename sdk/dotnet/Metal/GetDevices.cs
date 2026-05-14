@@ -12,6 +12,9 @@ namespace Pulumi.Equinix.Metal
     public static class GetDevices
     {
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// The datasource can be used to find a list of devices which meet filter criteria.
         /// 
         /// If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -86,6 +89,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicesResult>("equinix:metal/getDevices:getDevices", args ?? new GetDevicesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// The datasource can be used to find a list of devices which meet filter criteria.
         /// 
         /// If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -160,6 +166,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("equinix:metal/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+        /// 
+        /// 
         /// The datasource can be used to find a list of devices which meet filter criteria.
         /// 
         /// If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
@@ -241,7 +250,7 @@ namespace Pulumi.Equinix.Metal
         private List<Inputs.GetDevicesFilterArgs>? _filters;
 
         /// <summary>
-        /// One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+        /// One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
         /// </summary>
         public List<Inputs.GetDevicesFilterArgs> Filters
         {
@@ -287,7 +296,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Inputs.GetDevicesFilterInputArgs>? _filters;
 
         /// <summary>
-        /// One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `equinix.metal.Device` datasource.
+        /// One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `equinix.metal.Device` datasource.
         /// </summary>
         public InputList<Inputs.GetDevicesFilterInputArgs> Filters
         {

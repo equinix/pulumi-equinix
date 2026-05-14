@@ -284,8 +284,8 @@ def get_connection(uuid: Optional[str] = None,
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
     Additional documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+    * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
 
 
     :param str uuid: Equinix-assigned connection identifier
@@ -322,8 +322,8 @@ def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
     Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
     Additional documentation:
-    * Getting Started: https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-connections-implement.htm
-    * API: https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#connections
+    * Getting Started: https://docs.equinix.com/api-catalog/fabricv4/
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Connections
 
 
     :param str uuid: Equinix-assigned connection identifier

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
+    /// &gt; **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+    /// 
     /// Provides an Equinix Metal device resource. This can be used to create, modify, and delete devices.
     /// 
     /// &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in the raw state as plain-text. Read more about sensitive data in state.
@@ -107,7 +109,59 @@ namespace Pulumi.Equinix.Metal
     ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
     ///         ProjectId = projectId,
     ///         HardwareReservationId = "next-available",
-    ///         Storage = @"{  \""disks\"": [    {      \""device\"": \""/dev/sda\"",      \""wipeTable\"": true,      \""partitions\"": [        {          \""label\"": \""BIOS\"",          \""number\"": 1,          \""size\"": \""4096\""        },        {          \""label\"": \""SWAP\"",          \""number\"": 2,          \""size\"": \""3993600\""        },        {          \""label\"": \""ROOT\"",          \""number\"": 3,          \""size\"": \""0\""        }      ]    }  ],  \""filesystems\"": [    {      \""mount\"": {        \""device\"": \""/dev/sda3\"",        \""format\"": \""ext4\"",        \""point\"": \""/\"",        \""create\"": {          \""options\"": [            \""-L\"",            \""ROOT\""          ]        }      }    },    {      \""mount\"": {        \""device\"": \""/dev/sda2\"",        \""format\"": \""swap\"",        \""point\"": \""none\"",        \""create\"": {          \""options\"": [            \""-L\"",            \""SWAP\""          ]        }      }    }  ]}
+    ///         Storage = @"{
+    ///   \""disks\"": [
+    ///     {
+    ///       \""device\"": \""/dev/sda\"",
+    ///       \""wipeTable\"": true,
+    ///       \""partitions\"": [
+    ///         {
+    ///           \""label\"": \""BIOS\"",
+    ///           \""number\"": 1,
+    ///           \""size\"": \""4096\""
+    ///         },
+    ///         {
+    ///           \""label\"": \""SWAP\"",
+    ///           \""number\"": 2,
+    ///           \""size\"": \""3993600\""
+    ///         },
+    ///         {
+    ///           \""label\"": \""ROOT\"",
+    ///           \""number\"": 3,
+    ///           \""size\"": \""0\""
+    ///         }
+    ///       ]
+    ///     }
+    ///   ],
+    ///   \""filesystems\"": [
+    ///     {
+    ///       \""mount\"": {
+    ///         \""device\"": \""/dev/sda3\"",
+    ///         \""format\"": \""ext4\"",
+    ///         \""point\"": \""/\"",
+    ///         \""create\"": {
+    ///           \""options\"": [
+    ///             \""-L\"",
+    ///             \""ROOT\""
+    ///           ]
+    ///         }
+    ///       }
+    ///     },
+    ///     {
+    ///       \""mount\"": {
+    ///         \""device\"": \""/dev/sda2\"",
+    ///         \""format\"": \""swap\"",
+    ///         \""point\"": \""none\"",
+    ///         \""create\"": {
+    ///           \""options\"": [
+    ///             \""-L\"",
+    ///             \""SWAP\""
+    ///           ]
+    ///         }
+    ///       }
+    ///     }
+    ///   ]
+    /// }
     /// ",
     ///     });
     /// 
@@ -214,7 +268,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         /// </summary>
         [Output("facilities")]
         public Output<ImmutableArray<string>> Facilities { get; private set; } = null!;
@@ -268,13 +322,13 @@ namespace Pulumi.Equinix.Metal
         public Output<ImmutableArray<Outputs.DeviceNetwork>> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        /// Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        /// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         /// </summary>
         [Output("operatingSystem")]
         public Output<string> OperatingSystem { get; private set; } = null!;
@@ -331,7 +385,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        /// JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         /// </summary>
         [Output("storage")]
         public Output<string?> Storage { get; private set; } = null!;
@@ -466,7 +520,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Union<string, Pulumi.Equinix.Metal.Facility>>? _facilities;
 
         /// <summary>
-        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         /// </summary>
         [Obsolete(@"Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<Union<string, Pulumi.Equinix.Metal.Facility>> Facilities
@@ -524,7 +578,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Metro { get; set; }
 
         /// <summary>
-        /// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        /// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         /// </summary>
         [Input("operatingSystem", required: true)]
         public InputUnion<string, Pulumi.Equinix.Metal.OperatingSystem> OperatingSystem { get; set; } = null!;
@@ -557,7 +611,7 @@ namespace Pulumi.Equinix.Metal
         public Input<Inputs.DeviceReinstallArgs>? Reinstall { get; set; }
 
         /// <summary>
-        /// JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        /// JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }
@@ -699,7 +753,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Union<string, Pulumi.Equinix.Metal.Facility>>? _facilities;
 
         /// <summary>
-        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the top of the page and see JSON from the API response. Conflicts with metro
+        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your device to first facility with free capacity. List items must be facility codes or any (a wildcard). Conflicts with metro
         /// </summary>
         [Obsolete(@"Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<Union<string, Pulumi.Equinix.Metal.Facility>> Facilities
@@ -769,13 +823,13 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// Network type of a device, used in [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
+        /// Network type of a device, used in [Layer 2 networking](https://docs.equinix.com/metal/layer2-networking/overview/). Will be one of layer3, hybrid, hybrid-bonded, layer2-individual, layer2-bonded
         /// </summary>
         [Input("networkType")]
         public InputUnion<string, Pulumi.Equinix.Metal.NetworkType>? NetworkType { get; set; }
 
         /// <summary>
-        /// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
+        /// The operating system slug. To find the slug, or visit [Operating Systems API docs](https://docs.equinix.com/api-catalog/metalv1/#tag/Operating-Systems), set your API auth token in the top of the page and see JSON from the API response.  By default, changing this attribute will cause your device to be deleted and recreated.  If `reinstall` is enabled, the device will be updated in-place instead of recreated.
         /// </summary>
         [Input("operatingSystem")]
         public InputUnion<string, Pulumi.Equinix.Metal.OperatingSystem>? OperatingSystem { get; set; }
@@ -860,7 +914,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://metal.equinix.com/developers/docs/servers/custom-partitioning-raid/) doc
+        /// JSON for custom partitioning. Only usable on reserved hardware. More information in in the [Custom Partitioning and RAID](https://docs.equinix.com/metal/storage/custom-partitioning-raid/) doc
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }

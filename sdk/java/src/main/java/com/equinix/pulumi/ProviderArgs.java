@@ -19,14 +19,22 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Equinix Metal API auth key for API operations
      * 
+     * @deprecated
+     * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      */
+    @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
     @Import(name="authToken")
     private @Nullable Output<String> authToken;
 
     /**
      * @return The Equinix Metal API auth key for API operations
      * 
+     * @deprecated
+     * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+     * 
      */
+    @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
     public Optional<Output<String>> authToken() {
         return Optional.ofNullable(this.authToken);
     }
@@ -167,8 +175,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * API tokens are generated from API Consumer clients using the [OAuth2
-     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+     * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+     * `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     @Import(name="token")
@@ -176,8 +184,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return API tokens are generated from API Consumer clients using the [OAuth2
-     * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-     * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+     * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+     * `EQUINIX_API_TOKEN` shell environment variable.
      * 
      */
     public Optional<Output<String>> token() {
@@ -286,7 +294,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+         * 
          */
+        @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
         public Builder authToken(@Nullable Output<String> authToken) {
             $.authToken = authToken;
             return this;
@@ -297,7 +309,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+         * 
          */
+        @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
         public Builder authToken(String authToken) {
             return authToken(Output.of(authToken));
         }
@@ -486,8 +502,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param token API tokens are generated from API Consumer clients using the [OAuth2
-         * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-         * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+         * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+         * `EQUINIX_API_TOKEN` shell environment variable.
          * 
          * @return builder
          * 
@@ -499,8 +515,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param token API tokens are generated from API Consumer clients using the [OAuth2
-         * API](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#request-access-and-refresh-tokens).
-         * This argument can also be specified with the `EQUINIX_API_TOKEN` shell environment variable.
+         * API](https://docs.equinix.com/equinix-api/api-authentication/). This argument can also be specified with the
+         * `EQUINIX_API_TOKEN` shell environment variable.
          * 
          * @return builder
          * 

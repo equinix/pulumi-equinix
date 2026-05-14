@@ -2015,7 +2015,7 @@ if not MYPY:
         """
         purchase_order_number: NotRequired[pulumi.Input[str]]
         """
-        Purchase order number associated with a device order.
+        Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         """
         redundancy_type: NotRequired[pulumi.Input[str]]
         """
@@ -2115,7 +2115,7 @@ class DeviceSecondaryDeviceArgs:
         :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be applied on a secondary device.
                * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary device.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you leave it out, the device will be created under the default project id of your organization.
-        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
+        :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
@@ -2392,7 +2392,7 @@ class DeviceSecondaryDeviceArgs:
     @pulumi.getter(name="purchaseOrderNumber")
     def purchase_order_number(self) -> Optional[pulumi.Input[str]]:
         """
-        Purchase order number associated with a device order.
+        Purchase order number associated with a device order. For billing accounts that require a purchase order, this field is required.
         """
         return pulumi.get(self, "purchase_order_number")
 

@@ -585,7 +585,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invokeAsync("equinix:networkedge/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -629,7 +629,7 @@ public final class NetworkedgeFunctions {
         return getDevicePlatform(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -673,7 +673,7 @@ public final class NetworkedgeFunctions {
         return getDevicePlatformPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -717,7 +717,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invoke("equinix:networkedge/getDevicePlatform:getDevicePlatform", TypeShape.of(GetDevicePlatformResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -761,7 +761,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invoke("equinix:networkedge/getDevicePlatform:getDevicePlatform", TypeShape.of(GetDevicePlatformResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device platform configuration details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -805,7 +805,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invokeAsync("equinix:networkedge/getDevicePlatform:getDevicePlatform", TypeShape.of(GetDevicePlatformResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -850,7 +850,7 @@ public final class NetworkedgeFunctions {
         return getDeviceSoftware(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -895,7 +895,7 @@ public final class NetworkedgeFunctions {
         return getDeviceSoftwarePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -940,7 +940,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invoke("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", TypeShape.of(GetDeviceSoftwareResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -985,7 +985,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invoke("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", TypeShape.of(GetDeviceSoftwareResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device software details for a given device type. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -1030,7 +1030,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invokeAsync("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", TypeShape.of(GetDeviceSoftwareResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -1076,7 +1076,7 @@ public final class NetworkedgeFunctions {
         return getDeviceType(GetDeviceTypeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -1122,7 +1122,7 @@ public final class NetworkedgeFunctions {
         return getDeviceTypePlain(GetDeviceTypePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -1168,7 +1168,7 @@ public final class NetworkedgeFunctions {
         return getDeviceType(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -1214,7 +1214,7 @@ public final class NetworkedgeFunctions {
         return getDeviceTypePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -1260,7 +1260,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invoke("equinix:networkedge/getDeviceType:getDeviceType", TypeShape.of(GetDeviceTypeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 
@@ -1306,7 +1306,7 @@ public final class NetworkedgeFunctions {
         return Deployment.getInstance().invoke("equinix:networkedge/getDeviceType:getDeviceType", TypeShape.of(GetDeviceTypeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+     * Use this data source to get Equinix Network Edge device type details. For further details, check supported [Network Edge Vendors and Devices](https://docs.equinix.com/network-edge/create-devices/ne-vendor-device-index/).
      * 
      * ## Example Usage
      * 

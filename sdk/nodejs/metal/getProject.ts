@@ -8,6 +8,8 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Use this datasource to retrieve attributes of the Project API resource.
  *
  * ## Example Usage
@@ -54,7 +56,7 @@ export interface GetProjectResult {
      */
     readonly backendTransfer: boolean;
     /**
-     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://docs.equinix.com/metal/bgp/bgp-on-equinix-metal/).
      */
     readonly bgpConfig: outputs.metal.GetProjectBgpConfig;
     /**
@@ -82,6 +84,8 @@ export interface GetProjectResult {
     readonly userIds: string[];
 }
 /**
+ * > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+ *
  * Use this datasource to retrieve attributes of the Project API resource.
  *
  * ## Example Usage

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Deprecation Notice** Equinix Metal will reach end of life on June 30, 2026. All Metal data sources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
+//
 // The datasource can be used to find a list of devices which meet filter criteria.
 //
 // If you need to fetch a single device by ID or by project ID and hostname, use the metal.Device datasource.
@@ -97,7 +99,7 @@ func GetDevices(ctx *pulumi.Context, args *GetDevicesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesArgs struct {
-	// One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
+	// One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `metal.Device` datasource.
 	Filters []GetDevicesFilter `pulumi:"filters"`
 	// ID of organization containing the devices.
 	OrganizationId *string `pulumi:"organizationId"`
@@ -132,7 +134,7 @@ func GetDevicesOutput(ctx *pulumi.Context, args GetDevicesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesOutputArgs struct {
-	// One or more attribute/values pairs to filter. List of atributes to filter can be found in the attribute reference of the `metal.Device` datasource.
+	// One or more attribute/values pairs to filter. List of atributes to filter can be found in the schema of the `metal.Device` datasource.
 	Filters GetDevicesFilterArrayInput `pulumi:"filters"`
 	// ID of organization containing the devices.
 	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
