@@ -31,14 +31,14 @@ public final class GetRouteAggregationsSortArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+     * The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
      * 
      */
     @Import(name="property")
     private @Nullable Output<String> property;
 
     /**
-     * @return The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+     * @return The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
      * 
      */
     public Optional<Output<String>> property() {
@@ -92,7 +92,7 @@ public final class GetRouteAggregationsSortArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param property The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         * @param property The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetRouteAggregationsSortArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param property The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         * @param property The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
          * 
          * @return builder
          * 

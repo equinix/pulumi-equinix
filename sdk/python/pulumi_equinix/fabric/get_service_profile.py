@@ -211,7 +211,7 @@ class GetServiceProfileResult:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> bool:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 

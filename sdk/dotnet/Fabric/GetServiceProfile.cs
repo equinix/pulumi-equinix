@@ -228,7 +228,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly Outputs.GetServiceProfileProjectResult Project;
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's  self use
+        /// Self Profile indicating if the profile is created for customer's self use
         /// </summary>
         public readonly bool SelfProfile;
         /// <summary>

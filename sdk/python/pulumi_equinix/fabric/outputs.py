@@ -91,7 +91,6 @@ __all__ = [
     'PortPhysicalPortInterface',
     'PortProject',
     'PortRedundancy',
-    'PortSettings',
     'PortTimeouts',
     'PrecisionTimeServiceAccount',
     'PrecisionTimeServiceChangeLog',
@@ -4538,18 +4537,20 @@ class PortAccount(dict):
 @pulumi.output_type
 class PortAdditionalInfo(dict):
     def __init__(__self__, *,
-                 key: str,
-                 value: str):
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param str key: The key name of the key/value pair
         :param str value: The value of the key/value pair
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> Optional[str]:
         """
         The key name of the key/value pair
         """
@@ -4557,7 +4558,7 @@ class PortAdditionalInfo(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         The value of the key/value pair
         """
@@ -4950,10 +4951,6 @@ class PortOrder(dict):
         suggest = None
         if key == "customerReferenceId":
             suggest = "customer_reference_id"
-        elif key == "orderId":
-            suggest = "order_id"
-        elif key == "orderNumber":
-            suggest = "order_number"
         elif key == "purchaseOrder":
             suggest = "purchase_order"
 
@@ -4970,31 +4967,19 @@ class PortOrder(dict):
 
     def __init__(__self__, *,
                  customer_reference_id: Optional[str] = None,
-                 order_id: Optional[str] = None,
-                 order_number: Optional[str] = None,
                  purchase_order: Optional['outputs.PortOrderPurchaseOrder'] = None,
-                 signature: Optional['outputs.PortOrderSignature'] = None,
-                 uuid: Optional[str] = None):
+                 signature: Optional['outputs.PortOrderSignature'] = None):
         """
         :param str customer_reference_id: Customer order reference Id
-        :param str order_id: Order Identification
-        :param str order_number: Order Reference Number
         :param 'PortOrderPurchaseOrderArgs' purchase_order: Purchase order details
         :param 'PortOrderSignatureArgs' signature: Port order confirmation signature details
-        :param str uuid: Equinix-assigned order identifier, this is a derived response attribute
         """
         if customer_reference_id is not None:
             pulumi.set(__self__, "customer_reference_id", customer_reference_id)
-        if order_id is not None:
-            pulumi.set(__self__, "order_id", order_id)
-        if order_number is not None:
-            pulumi.set(__self__, "order_number", order_number)
         if purchase_order is not None:
             pulumi.set(__self__, "purchase_order", purchase_order)
         if signature is not None:
             pulumi.set(__self__, "signature", signature)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter(name="customerReferenceId")
@@ -5003,22 +4988,6 @@ class PortOrder(dict):
         Customer order reference Id
         """
         return pulumi.get(self, "customer_reference_id")
-
-    @property
-    @pulumi.getter(name="orderId")
-    def order_id(self) -> Optional[str]:
-        """
-        Order Identification
-        """
-        return pulumi.get(self, "order_id")
-
-    @property
-    @pulumi.getter(name="orderNumber")
-    def order_number(self) -> Optional[str]:
-        """
-        Order Reference Number
-        """
-        return pulumi.get(self, "order_number")
 
     @property
     @pulumi.getter(name="purchaseOrder")
@@ -5035,14 +5004,6 @@ class PortOrder(dict):
         Port order confirmation signature details
         """
         return pulumi.get(self, "signature")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned order identifier, this is a derived response attribute
-        """
-        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -5448,54 +5409,6 @@ class PortRedundancy(dict):
         Port redundancy priority value
         """
         return pulumi.get(self, "priority")
-
-
-@pulumi.output_type
-class PortSettings(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "packageType":
-            suggest = "package_type"
-        elif key == "sharedPortType":
-            suggest = "shared_port_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PortSettings. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PortSettings.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PortSettings.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 package_type: str,
-                 shared_port_type: bool):
-        """
-        :param str package_type: Billing package for the port being ordered
-        :param bool shared_port_type: Indicates whether this is a dedicated customer cage or a shared neutral cage
-        """
-        pulumi.set(__self__, "package_type", package_type)
-        pulumi.set(__self__, "shared_port_type", shared_port_type)
-
-    @property
-    @pulumi.getter(name="packageType")
-    def package_type(self) -> str:
-        """
-        Billing package for the port being ordered
-        """
-        return pulumi.get(self, "package_type")
-
-    @property
-    @pulumi.getter(name="sharedPortType")
-    def shared_port_type(self) -> bool:
-        """
-        Indicates whether this is a dedicated customer cage or a shared neutral cage
-        """
-        return pulumi.get(self, "shared_port_type")
 
 
 @pulumi.output_type
@@ -13422,7 +13335,7 @@ class GetAdvertisedRoutesFilterResult(dict):
                  values: Sequence[str]):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        :param str property: possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         """
         pulumi.set(__self__, "operator", operator)
@@ -13449,7 +13362,7 @@ class GetAdvertisedRoutesFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
         """
         return pulumi.get(self, "property")
 
@@ -17227,6 +17140,7 @@ class GetConnectionsDataResult(dict):
                  change_logs: Sequence['outputs.GetConnectionsDataChangeLogResult'],
                  description: str,
                  direction: str,
+                 geo_scope: str,
                  href: str,
                  is_remote: bool,
                  name: str,
@@ -17247,6 +17161,7 @@ class GetConnectionsDataResult(dict):
         :param Sequence['GetConnectionsDataChangeLogArgs'] change_logs: Captures connection lifecycle change information
         :param str description: Customer-provided connection description
         :param str direction: Connection directionality from the requester point of view
+        :param str geo_scope: Geographic boundary types
         :param str href: Connection URI information
         :param bool is_remote: Connection property derived from access point locations
         :param str name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -17267,6 +17182,7 @@ class GetConnectionsDataResult(dict):
         pulumi.set(__self__, "change_logs", change_logs)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "geo_scope", geo_scope)
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "is_remote", is_remote)
         pulumi.set(__self__, "name", name)
@@ -17335,6 +17251,14 @@ class GetConnectionsDataResult(dict):
         Connection directionality from the requester point of view
         """
         return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter(name="geoScope")
+    def geo_scope(self) -> str:
+        """
+        Geographic boundary types
+        """
+        return pulumi.get(self, "geo_scope")
 
     @property
     @pulumi.getter
@@ -19778,7 +19702,7 @@ class GetConnectionsFilterResult(dict):
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -19816,7 +19740,7 @@ class GetConnectionsFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         """
         return pulumi.get(self, "property")
 
@@ -21103,7 +21027,7 @@ class GetNetworksFilterResult(dict):
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
-        :param str property: Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+        :param str property: Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -21141,7 +21065,7 @@ class GetNetworksFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+        Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
         """
         return pulumi.get(self, "property")
 
@@ -24335,7 +24259,7 @@ class GetReceivedRoutesFilterResult(dict):
                  values: Sequence[str]):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        :param str property: possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         """
         pulumi.set(__self__, "operator", operator)
@@ -24362,7 +24286,7 @@ class GetReceivedRoutesFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
         """
         return pulumi.get(self, "property")
 
@@ -25530,7 +25454,7 @@ class GetRouteAggregationsFilterResult(dict):
                  values: Sequence[str]):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        :param str property: Field name to use on filters
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         """
         pulumi.set(__self__, "operator", operator)
@@ -25557,7 +25481,7 @@ class GetRouteAggregationsFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        Field name to use on filters
         """
         return pulumi.get(self, "property")
 
@@ -25631,7 +25555,7 @@ class GetRouteAggregationsSortResult(dict):
                  property: Optional[str] = None):
         """
         :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
-        :param str property: The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        :param str property: The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
@@ -25650,7 +25574,7 @@ class GetRouteAggregationsSortResult(dict):
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
         """
         return pulumi.get(self, "property")
 
@@ -28574,7 +28498,7 @@ class GetServiceProfilesDatumResult(dict):
         :param Sequence['GetServiceProfilesDatumNotificationArgs'] notifications: Preferences for notifications on connection configuration or status changes
         :param Sequence['GetServiceProfilesDatumPortArgs'] ports: Ports
         :param Sequence['GetServiceProfilesDatumProjectArgs'] projects: Project information
-        :param bool self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param bool self_profile: Self Profile indicating if the profile is created for customer's self use
         :param str state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param Sequence[str] tags: Tags attached to the connection
         :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE, IX_PROFILE
@@ -28713,7 +28637,7 @@ class GetServiceProfilesDatumResult(dict):
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> bool:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 

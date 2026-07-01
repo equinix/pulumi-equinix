@@ -3,7 +3,7 @@ name: equinix-fabric-stream
 runtime: yaml
 resources:
   newStream:
-    type: equinix:fabric:Stream
+    type: equinix:fabricStream
     name: new_stream
     properties:
       type: TELEMETRY_STREAM

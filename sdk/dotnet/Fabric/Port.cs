@@ -49,7 +49,7 @@ namespace Pulumi.Equinix.Fabric
         /// Port device configuration
         /// </summary>
         [Output("device")]
-        public Output<Outputs.PortDevice?> Device { get; private set; } = null!;
+        public Output<Outputs.PortDevice> Device { get; private set; } = null!;
 
         /// <summary>
         /// Port encapsulation settings
@@ -130,12 +130,6 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.PortRedundancy> Redundancy { get; private set; } = null!;
 
         /// <summary>
-        /// Port order configuration settings
-        /// </summary>
-        [Output("settings")]
-        public Output<Outputs.PortSettings> Settings { get; private set; } = null!;
-
-        /// <summary>
         /// Value representing provisioning status for the port resource
         /// </summary>
         [Output("state")]
@@ -209,18 +203,6 @@ namespace Pulumi.Equinix.Fabric
         [Input("account", required: true)]
         public Input<Inputs.PortAccountArgs> Account { get; set; } = null!;
 
-        [Input("additionalInfos")]
-        private InputList<Inputs.PortAdditionalInfoArgs>? _additionalInfos;
-
-        /// <summary>
-        /// List of key/value objects to provide additional context to the Port order
-        /// </summary>
-        public InputList<Inputs.PortAdditionalInfoArgs> AdditionalInfos
-        {
-            get => _additionalInfos ?? (_additionalInfos = new InputList<Inputs.PortAdditionalInfoArgs>());
-            set => _additionalInfos = value;
-        }
-
         /// <summary>
         /// Connection type that is used from the port after creation
         /// </summary>
@@ -232,12 +214,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("demarcationPointIbx", required: true)]
         public Input<string> DemarcationPointIbx { get; set; } = null!;
-
-        /// <summary>
-        /// Port device configuration
-        /// </summary>
-        [Input("device")]
-        public Input<Inputs.PortDeviceArgs>? Device { get; set; }
 
         /// <summary>
         /// Port encapsulation settings
@@ -256,12 +232,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("location", required: true)]
         public Input<Inputs.PortLocationArgs> Location { get; set; } = null!;
-
-        /// <summary>
-        /// Designated name of the port
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("notifications", required: true)]
         private InputList<Inputs.PortNotificationArgs>? _notifications;
@@ -322,12 +292,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("redundancy", required: true)]
         public Input<Inputs.PortRedundancyArgs> Redundancy { get; set; } = null!;
-
-        /// <summary>
-        /// Port order configuration settings
-        /// </summary>
-        [Input("settings", required: true)]
-        public Input<Inputs.PortSettingsArgs> Settings { get; set; } = null!;
 
         [Input("timeouts")]
         public Input<Inputs.PortTimeoutsArgs>? Timeouts { get; set; }
@@ -477,12 +441,6 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("redundancy")]
         public Input<Inputs.PortRedundancyGetArgs>? Redundancy { get; set; }
-
-        /// <summary>
-        /// Port order configuration settings
-        /// </summary>
-        [Input("settings")]
-        public Input<Inputs.PortSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
         /// Value representing provisioning status for the port resource

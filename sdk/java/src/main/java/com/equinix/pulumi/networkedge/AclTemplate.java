@@ -125,24 +125,6 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
         return this.deviceDetails;
     }
     /**
-     * (Deprecated) Identifier of a network device where template was applied.
-     * 
-     * @deprecated
-     * Refer to device details get device information
-     * 
-     */
-    @Deprecated /* Refer to device details get device information */
-    @Export(name="deviceId", refs={String.class}, tree="[0]")
-    private Output<String> deviceId;
-
-    /**
-     * @return (Deprecated) Identifier of a network device where template was applied.
-     * 
-     */
-    public Output<String> deviceId() {
-        return this.deviceId;
-    }
-    /**
      * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
      * The `inbound_rule` block has below fields:
@@ -159,24 +141,6 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<List<AclTemplateInboundRule>> inboundRules() {
         return this.inboundRules;
-    }
-    /**
-     * ACL template location metro code.
-     * 
-     * @deprecated
-     * Metro Code is no longer required
-     * 
-     */
-    @Deprecated /* Metro Code is no longer required */
-    @Export(name="metroCode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> metroCode;
-
-    /**
-     * @return ACL template location metro code.
-     * 
-     */
-    public Output<Optional<String>> metroCode() {
-        return Codegen.optional(this.metroCode);
     }
     /**
      * ACL template name.

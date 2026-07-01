@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *                 .include("equinix.fabric.connection.bandwidth_tx.usage")
  *                 .build())
  *             .detectionMethod(StreamAlertRuleDetectionMethodArgs.builder()
+ *                 .type("THRESHOLD")
  *                 .operand("ABOVE")
  *                 .window_size("<window_size>")
  *                 .warning_threshold("<warning_threshold>")

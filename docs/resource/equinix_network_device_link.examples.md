@@ -5,28 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
 const test = new equinix.networkedge.DeviceLink("test", {
-    name: "test-link",
-    subnet: "192.168.40.64/27",
-    projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
+    name: "test-DLG",
+    projectId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     devices: [
         {
             id: testEquinixNetworkDevice.uuid,
-            asn: 22111,
             interfaceId: 6,
         },
         {
             id: testEquinixNetworkDevice.secondaryDevice[0].uuid,
-            asn: 22333,
             interfaceId: 7,
         },
     ],
-    links: [{
-        accountNumber: testEquinixNetworkDevice.accountNumber,
-        srcMetroCode: testEquinixNetworkDevice.metroCode,
-        dstMetroCode: testEquinixNetworkDevice.secondaryDevice[0].metroCode,
-        throughput: "50",
-        throughputUnit: "Mbps",
-    }],
+    metroLinks: [
+        {
+            accountNumber: testEquinixNetworkDevice.accountNumber,
+            metroCode: testEquinixNetworkDevice.metroCode,
+            throughput: "50",
+            throughputUnit: "Mbps",
+        },
+        {
+            accountNumber: testEquinixNetworkDevice.secondaryDevice[0].accountNumber,
+            metroCode: testEquinixNetworkDevice.secondaryDevice[0].metroCode,
+            throughput: "50",
+            throughputUnit: "Mbps",
+        },
+    ],
 });
 ```
 ```python
@@ -34,28 +38,32 @@ import pulumi
 import pulumi_equinix as equinix
 
 test = equinix.networkedge.DeviceLink("test",
-    name="test-link",
-    subnet="192.168.40.64/27",
-    project_id="a86d7112-d740-4758-9c9c-31e66373746b",
+    name="test-DLG",
+    project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     devices=[
         {
             "id": test_equinix_network_device["uuid"],
-            "asn": 22111,
             "interface_id": 6,
         },
         {
             "id": test_equinix_network_device["secondaryDevice"][0]["uuid"],
-            "asn": 22333,
             "interface_id": 7,
         },
     ],
-    links=[{
-        "account_number": test_equinix_network_device["accountNumber"],
-        "src_metro_code": test_equinix_network_device["metroCode"],
-        "dst_metro_code": test_equinix_network_device["secondaryDevice"][0]["metroCode"],
-        "throughput": "50",
-        "throughput_unit": "Mbps",
-    }])
+    metro_links=[
+        {
+            "account_number": test_equinix_network_device["accountNumber"],
+            "metro_code": test_equinix_network_device["metroCode"],
+            "throughput": "50",
+            "throughput_unit": "Mbps",
+        },
+        {
+            "account_number": test_equinix_network_device["secondaryDevice"][0]["accountNumber"],
+            "metro_code": test_equinix_network_device["secondaryDevice"][0]["metroCode"],
+            "throughput": "50",
+            "throughput_unit": "Mbps",
+        },
+    ])
 ```
 ```go
 package main
@@ -68,26 +76,28 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := networkedge.NewDeviceLink(ctx, "test", &networkedge.DeviceLinkArgs{
-			Name:      pulumi.String("test-link"),
-			Subnet:    pulumi.String("192.168.40.64/27"),
-			ProjectId: pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
+			Name:      pulumi.String("test-DLG"),
+			ProjectId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 			Devices: networkedge.DeviceLinkDeviceArray{
 				&networkedge.DeviceLinkDeviceArgs{
 					Id:          pulumi.Any(testEquinixNetworkDevice.Uuid),
-					Asn:         pulumi.Int(22111),
 					InterfaceId: pulumi.Int(6),
 				},
 				&networkedge.DeviceLinkDeviceArgs{
 					Id:          pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].Uuid),
-					Asn:         pulumi.Int(22333),
 					InterfaceId: pulumi.Int(7),
 				},
 			},
-			Links: networkedge.DeviceLinkLinkArray{
-				&networkedge.DeviceLinkLinkArgs{
+			MetroLinks: networkedge.DeviceLinkMetroLinkArray{
+				&networkedge.DeviceLinkMetroLinkArgs{
 					AccountNumber:  pulumi.Any(testEquinixNetworkDevice.AccountNumber),
-					SrcMetroCode:   pulumi.Any(testEquinixNetworkDevice.MetroCode),
-					DstMetroCode:   pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].MetroCode),
+					MetroCode:      pulumi.Any(testEquinixNetworkDevice.MetroCode),
+					Throughput:     pulumi.String("50"),
+					ThroughputUnit: pulumi.String("Mbps"),
+				},
+				&networkedge.DeviceLinkMetroLinkArgs{
+					AccountNumber:  pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].AccountNumber),
+					MetroCode:      pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].MetroCode),
 					Throughput:     pulumi.String("50"),
 					ThroughputUnit: pulumi.String("Mbps"),
 				},
@@ -110,31 +120,34 @@ return await Deployment.RunAsync(() =>
 {
     var test = new Equinix.NetworkEdge.DeviceLink("test", new()
     {
-        Name = "test-link",
-        Subnet = "192.168.40.64/27",
-        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
+        Name = "test-DLG",
+        ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         Devices = new[]
         {
             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
             {
                 Id = testEquinixNetworkDevice.Uuid,
-                Asn = 22111,
                 InterfaceId = 6,
             },
             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
             {
                 Id = testEquinixNetworkDevice.SecondaryDevice[0].Uuid,
-                Asn = 22333,
                 InterfaceId = 7,
             },
         },
-        Links = new[]
+        MetroLinks = new[]
         {
-            new Equinix.NetworkEdge.Inputs.DeviceLinkLinkArgs
+            new Equinix.NetworkEdge.Inputs.DeviceLinkMetroLinkArgs
             {
                 AccountNumber = testEquinixNetworkDevice.AccountNumber,
-                SrcMetroCode = testEquinixNetworkDevice.MetroCode,
-                DstMetroCode = testEquinixNetworkDevice.SecondaryDevice[0].MetroCode,
+                MetroCode = testEquinixNetworkDevice.MetroCode,
+                Throughput = "50",
+                ThroughputUnit = "Mbps",
+            },
+            new Equinix.NetworkEdge.Inputs.DeviceLinkMetroLinkArgs
+            {
+                AccountNumber = testEquinixNetworkDevice.SecondaryDevice[0].AccountNumber,
+                MetroCode = testEquinixNetworkDevice.SecondaryDevice[0].MetroCode,
                 Throughput = "50",
                 ThroughputUnit = "Mbps",
             },
@@ -152,7 +165,7 @@ import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.DeviceLink;
 import com.pulumi.equinix.networkedge.DeviceLinkArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceLinkDeviceArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceLinkLinkArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceLinkMetroLinkArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -167,27 +180,30 @@ public class App {
 
     public static void stack(Context ctx) {
         var test = new DeviceLink("test", DeviceLinkArgs.builder()
-            .name("test-link")
-            .subnet("192.168.40.64/27")
-            .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
+            .name("test-DLG")
+            .projectId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
             .devices(            
                 DeviceLinkDeviceArgs.builder()
                     .id(testEquinixNetworkDevice.uuid())
-                    .asn(22111)
                     .interfaceId(6)
                     .build(),
                 DeviceLinkDeviceArgs.builder()
                     .id(testEquinixNetworkDevice.secondaryDevice()[0].uuid())
-                    .asn(22333)
                     .interfaceId(7)
                     .build())
-            .links(DeviceLinkLinkArgs.builder()
-                .accountNumber(testEquinixNetworkDevice.accountNumber())
-                .srcMetroCode(testEquinixNetworkDevice.metroCode())
-                .dstMetroCode(testEquinixNetworkDevice.secondaryDevice()[0].metroCode())
-                .throughput("50")
-                .throughputUnit("Mbps")
-                .build())
+            .metroLinks(            
+                DeviceLinkMetroLinkArgs.builder()
+                    .accountNumber(testEquinixNetworkDevice.accountNumber())
+                    .metroCode(testEquinixNetworkDevice.metroCode())
+                    .throughput("50")
+                    .throughputUnit("Mbps")
+                    .build(),
+                DeviceLinkMetroLinkArgs.builder()
+                    .accountNumber(testEquinixNetworkDevice.secondaryDevice()[0].accountNumber())
+                    .metroCode(testEquinixNetworkDevice.secondaryDevice()[0].metroCode())
+                    .throughput("50")
+                    .throughputUnit("Mbps")
+                    .build())
             .build());
 
     }
@@ -196,24 +212,24 @@ public class App {
 ```yaml
 resources:
   # Example of device link with HA device pair
-  # where each device is in different metro
+  # where each device is in a different metro
   test:
     type: equinix:networkedge:DeviceLink
     properties:
-      name: test-link
-      subnet: 192.168.40.64/27
-      projectId: a86d7112-d740-4758-9c9c-31e66373746b
+      name: test-DLG
+      projectId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       devices:
         - id: ${testEquinixNetworkDevice.uuid}
-          asn: 22111
           interfaceId: 6
         - id: ${testEquinixNetworkDevice.secondaryDevice[0].uuid}
-          asn: 22333
           interfaceId: 7
-      links:
+      metroLinks:
         - accountNumber: ${testEquinixNetworkDevice.accountNumber}
-          srcMetroCode: ${testEquinixNetworkDevice.metroCode}
-          dstMetroCode: ${testEquinixNetworkDevice.secondaryDevice[0].metroCode}
+          metroCode: ${testEquinixNetworkDevice.metroCode}
+          throughput: '50'
+          throughputUnit: Mbps
+        - accountNumber: ${testEquinixNetworkDevice.secondaryDevice[0].accountNumber}
+          metroCode: ${testEquinixNetworkDevice.secondaryDevice[0].metroCode}
           throughput: '50'
           throughputUnit: Mbps
 ```

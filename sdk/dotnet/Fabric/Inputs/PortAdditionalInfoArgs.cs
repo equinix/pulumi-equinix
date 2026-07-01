@@ -15,14 +15,14 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// <summary>
         /// The key name of the key/value pair
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        [Input("key")]
+        public Input<string>? Key { get; set; }
 
         /// <summary>
         /// The value of the key/value pair
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public PortAdditionalInfoArgs()
         {

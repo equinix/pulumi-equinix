@@ -30,14 +30,14 @@ public final class GetRouteAggregationsSort extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+     * The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
      * 
      */
     @Import(name="property")
     private @Nullable String property;
 
     /**
-     * @return The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+     * @return The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
      * 
      */
     public Optional<String> property() {
@@ -81,7 +81,7 @@ public final class GetRouteAggregationsSort extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param property The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         * @param property The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
          * 
          * @return builder
          * 

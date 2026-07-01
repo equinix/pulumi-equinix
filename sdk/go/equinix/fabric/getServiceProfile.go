@@ -99,7 +99,7 @@ type LookupServiceProfileResult struct {
 	Ports []GetServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project GetServiceProfileProject `pulumi:"project"`
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State string `pulumi:"state"`
@@ -223,7 +223,7 @@ func (o LookupServiceProfileResultOutput) Project() GetServiceProfileProjectOutp
 	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileProject { return v.Project }).(GetServiceProfileProjectOutput)
 }
 
-// Self Profile indicating if the profile is created for customer's  self use
+// Self Profile indicating if the profile is created for customer's self use
 func (o LookupServiceProfileResultOutput) SelfProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) bool { return v.SelfProfile }).(pulumi.BoolOutput)
 }

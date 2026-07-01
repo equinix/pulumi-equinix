@@ -30,14 +30,14 @@ public final class GetReceivedRoutesFilter extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
      * 
      */
     @Import(name="property", required=true)
     private String property;
 
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
      * 
      */
     public String property() {
@@ -97,7 +97,7 @@ public final class GetReceivedRoutesFilter extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param property possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * @param property possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          * 
          * @return builder
          * 

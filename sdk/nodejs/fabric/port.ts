@@ -45,7 +45,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * List of key/value objects to provide additional context to the Port order
      */
-    public readonly additionalInfos!: pulumi.Output<outputs.fabric.PortAdditionalInfo[] | undefined>;
+    public /*out*/ readonly additionalInfos!: pulumi.Output<outputs.fabric.PortAdditionalInfo[]>;
     /**
      * Details of the last change on the port resource
      */
@@ -61,7 +61,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * Port device configuration
      */
-    public readonly device!: pulumi.Output<outputs.fabric.PortDevice | undefined>;
+    public /*out*/ readonly device!: pulumi.Output<outputs.fabric.PortDevice>;
     /**
      * Port encapsulation settings
      */
@@ -81,7 +81,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * Designated name of the port
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * List of notification types and the registered users to receive those notification types
      */
@@ -114,10 +114,6 @@ export class Port extends pulumi.CustomResource {
      * Port redundancy settings
      */
     public readonly redundancy!: pulumi.Output<outputs.fabric.PortRedundancy>;
-    /**
-     * Port order configuration settings
-     */
-    public readonly settings!: pulumi.Output<outputs.fabric.PortSettings>;
     /**
      * Value representing provisioning status for the port resource
      */
@@ -164,7 +160,6 @@ export class Port extends pulumi.CustomResource {
             resourceInputs["physicalPortsType"] = state ? state.physicalPortsType : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["redundancy"] = state ? state.redundancy : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -210,21 +205,15 @@ export class Port extends pulumi.CustomResource {
             if ((!args || args.redundancy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'redundancy'");
             }
-            if ((!args || args.settings === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'settings'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["account"] = args ? args.account : undefined;
-            resourceInputs["additionalInfos"] = args ? args.additionalInfos : undefined;
             resourceInputs["connectivitySourceType"] = args ? args.connectivitySourceType : undefined;
             resourceInputs["demarcationPointIbx"] = args ? args.demarcationPointIbx : undefined;
-            resourceInputs["device"] = args ? args.device : undefined;
             resourceInputs["encapsulation"] = args ? args.encapsulation : undefined;
             resourceInputs["lagEnabled"] = args ? args.lagEnabled : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["order"] = args ? args.order : undefined;
             resourceInputs["physicalPorts"] = args ? args.physicalPorts : undefined;
@@ -233,11 +222,13 @@ export class Port extends pulumi.CustomResource {
             resourceInputs["physicalPortsType"] = args ? args.physicalPortsType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redundancy"] = args ? args.redundancy : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["additionalInfos"] = undefined /*out*/;
             resourceInputs["changeLog"] = undefined /*out*/;
+            resourceInputs["device"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
@@ -327,10 +318,6 @@ export interface PortState {
      */
     redundancy?: pulumi.Input<inputs.fabric.PortRedundancy>;
     /**
-     * Port order configuration settings
-     */
-    settings?: pulumi.Input<inputs.fabric.PortSettings>;
-    /**
      * Value representing provisioning status for the port resource
      */
     state?: pulumi.Input<string>;
@@ -354,10 +341,6 @@ export interface PortArgs {
      */
     account: pulumi.Input<inputs.fabric.PortAccount>;
     /**
-     * List of key/value objects to provide additional context to the Port order
-     */
-    additionalInfos?: pulumi.Input<pulumi.Input<inputs.fabric.PortAdditionalInfo>[]>;
-    /**
      * Connection type that is used from the port after creation
      */
     connectivitySourceType: pulumi.Input<string>;
@@ -365,10 +348,6 @@ export interface PortArgs {
      * IBX code where the port will be located
      */
     demarcationPointIbx: pulumi.Input<string>;
-    /**
-     * Port device configuration
-     */
-    device?: pulumi.Input<inputs.fabric.PortDevice>;
     /**
      * Port encapsulation settings
      */
@@ -381,10 +360,6 @@ export interface PortArgs {
      * Location details for the port order
      */
     location: pulumi.Input<inputs.fabric.PortLocation>;
-    /**
-     * Designated name of the port
-     */
-    name?: pulumi.Input<string>;
     /**
      * List of notification types and the registered users to receive those notification types
      */
@@ -417,10 +392,6 @@ export interface PortArgs {
      * Port redundancy settings
      */
     redundancy: pulumi.Input<inputs.fabric.PortRedundancy>;
-    /**
-     * Port order configuration settings
-     */
-    settings: pulumi.Input<inputs.fabric.PortSettings>;
     timeouts?: pulumi.Input<inputs.fabric.PortTimeouts>;
     /**
      * Type of the port order request

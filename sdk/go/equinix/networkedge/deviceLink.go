@@ -29,26 +29,28 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkedge.NewDeviceLink(ctx, "test", &networkedge.DeviceLinkArgs{
-//				Name:      pulumi.String("test-link"),
-//				Subnet:    pulumi.String("192.168.40.64/27"),
-//				ProjectId: pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
+//				Name:      pulumi.String("test-DLG"),
+//				ProjectId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Devices: networkedge.DeviceLinkDeviceArray{
 //					&networkedge.DeviceLinkDeviceArgs{
 //						Id:          pulumi.Any(testEquinixNetworkDevice.Uuid),
-//						Asn:         pulumi.Int(22111),
 //						InterfaceId: pulumi.Int(6),
 //					},
 //					&networkedge.DeviceLinkDeviceArgs{
 //						Id:          pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].Uuid),
-//						Asn:         pulumi.Int(22333),
 //						InterfaceId: pulumi.Int(7),
 //					},
 //				},
-//				Links: networkedge.DeviceLinkLinkArray{
-//					&networkedge.DeviceLinkLinkArgs{
+//				MetroLinks: networkedge.DeviceLinkMetroLinkArray{
+//					&networkedge.DeviceLinkMetroLinkArgs{
 //						AccountNumber:  pulumi.Any(testEquinixNetworkDevice.AccountNumber),
-//						SrcMetroCode:   pulumi.Any(testEquinixNetworkDevice.MetroCode),
-//						DstMetroCode:   pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].MetroCode),
+//						MetroCode:      pulumi.Any(testEquinixNetworkDevice.MetroCode),
+//						Throughput:     pulumi.String("50"),
+//						ThroughputUnit: pulumi.String("Mbps"),
+//					},
+//					&networkedge.DeviceLinkMetroLinkArgs{
+//						AccountNumber:  pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].AccountNumber),
+//						MetroCode:      pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].MetroCode),
 //						Throughput:     pulumi.String("50"),
 //						ThroughputUnit: pulumi.String("Mbps"),
 //					},
@@ -75,10 +77,6 @@ type DeviceLink struct {
 
 	// definition of one or more devices belonging to the device link. See Device section below for more details.
 	Devices DeviceLinkDeviceArrayOutput `pulumi:"devices"`
-	// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-	//
-	// Deprecated: Links is deprecated. Please use metro links instead.
-	Links DeviceLinkLinkArrayOutput `pulumi:"links"`
 	// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
 	MetroLinks DeviceLinkMetroLinkArrayOutput `pulumi:"metroLinks"`
 	// device link name.
@@ -130,10 +128,6 @@ func GetDeviceLink(ctx *pulumi.Context,
 type deviceLinkState struct {
 	// definition of one or more devices belonging to the device link. See Device section below for more details.
 	Devices []DeviceLinkDevice `pulumi:"devices"`
-	// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-	//
-	// Deprecated: Links is deprecated. Please use metro links instead.
-	Links []DeviceLinkLink `pulumi:"links"`
 	// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
 	MetroLinks []DeviceLinkMetroLink `pulumi:"metroLinks"`
 	// device link name.
@@ -153,10 +147,6 @@ type deviceLinkState struct {
 type DeviceLinkState struct {
 	// definition of one or more devices belonging to the device link. See Device section below for more details.
 	Devices DeviceLinkDeviceArrayInput
-	// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-	//
-	// Deprecated: Links is deprecated. Please use metro links instead.
-	Links DeviceLinkLinkArrayInput
 	// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
 	MetroLinks DeviceLinkMetroLinkArrayInput
 	// device link name.
@@ -180,10 +170,6 @@ func (DeviceLinkState) ElementType() reflect.Type {
 type deviceLinkArgs struct {
 	// definition of one or more devices belonging to the device link. See Device section below for more details.
 	Devices []DeviceLinkDevice `pulumi:"devices"`
-	// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-	//
-	// Deprecated: Links is deprecated. Please use metro links instead.
-	Links []DeviceLinkLink `pulumi:"links"`
 	// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
 	MetroLinks []DeviceLinkMetroLink `pulumi:"metroLinks"`
 	// device link name.
@@ -200,10 +186,6 @@ type deviceLinkArgs struct {
 type DeviceLinkArgs struct {
 	// definition of one or more devices belonging to the device link. See Device section below for more details.
 	Devices DeviceLinkDeviceArrayInput
-	// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-	//
-	// Deprecated: Links is deprecated. Please use metro links instead.
-	Links DeviceLinkLinkArrayInput
 	// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
 	MetroLinks DeviceLinkMetroLinkArrayInput
 	// device link name.
@@ -306,13 +288,6 @@ func (o DeviceLinkOutput) ToDeviceLinkOutputWithContext(ctx context.Context) Dev
 // definition of one or more devices belonging to the device link. See Device section below for more details.
 func (o DeviceLinkOutput) Devices() DeviceLinkDeviceArrayOutput {
 	return o.ApplyT(func(v *DeviceLink) DeviceLinkDeviceArrayOutput { return v.Devices }).(DeviceLinkDeviceArrayOutput)
-}
-
-// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-//
-// Deprecated: Links is deprecated. Please use metro links instead.
-func (o DeviceLinkOutput) Links() DeviceLinkLinkArrayOutput {
-	return o.ApplyT(func(v *DeviceLink) DeviceLinkLinkArrayOutput { return v.Links }).(DeviceLinkLinkArrayOutput)
 }
 
 // definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.

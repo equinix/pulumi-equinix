@@ -33,7 +33,6 @@ class ServiceProfileArgs:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]]] = None,
                  project: Optional[pulumi.Input['ServiceProfileProjectArgs']] = None,
-                 self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  view_point: Optional[pulumi.Input[str]] = None,
@@ -52,7 +51,6 @@ class ServiceProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
@@ -79,8 +77,6 @@ class ServiceProfileArgs:
             pulumi.set(__self__, "ports", ports)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if self_profile is not None:
-            pulumi.set(__self__, "self_profile", self_profile)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if tags is not None:
@@ -225,18 +221,6 @@ class ServiceProfileArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="selfProfile")
-    def self_profile(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Self Profile indicating if the profile is created for customer's  self use
-        """
-        return pulumi.get(self, "self_profile")
-
-    @self_profile.setter
-    def self_profile(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "self_profile", value)
-
-    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[Union[str, 'ProfileState']]]:
         """
@@ -336,7 +320,7 @@ class _ServiceProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
@@ -548,7 +532,7 @@ class _ServiceProfileState:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> Optional[pulumi.Input[bool]]:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 
@@ -656,7 +640,6 @@ class ServiceProfile(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']]] = None,
-                 self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
@@ -720,7 +703,6 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]] ports: Ports
         :param pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
@@ -803,7 +785,6 @@ class ServiceProfile(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']]] = None,
-                 self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
@@ -831,7 +812,6 @@ class ServiceProfile(pulumi.CustomResource):
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["ports"] = ports
             __props__.__dict__["project"] = project
-            __props__.__dict__["self_profile"] = self_profile
             __props__.__dict__["state"] = state
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
@@ -843,6 +823,7 @@ class ServiceProfile(pulumi.CustomResource):
             __props__.__dict__["account"] = None
             __props__.__dict__["change_log"] = None
             __props__.__dict__["href"] = None
+            __props__.__dict__["self_profile"] = None
             __props__.__dict__["uuid"] = None
         super(ServiceProfile, __self__).__init__(
             'equinix:fabric/serviceProfile:ServiceProfile',
@@ -895,7 +876,7 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfileNotificationArgs', 'ServiceProfileNotificationArgsDict']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceProfilePortArgs', 'ServiceProfilePortArgsDict']]]] ports: Ports
         :param pulumi.Input[Union['ServiceProfileProjectArgs', 'ServiceProfileProjectArgsDict']] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE, IA*PROFILE, IX*PROFILE
@@ -1037,9 +1018,9 @@ class ServiceProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfProfile")
-    def self_profile(self) -> pulumi.Output[Optional[bool]]:
+    def self_profile(self) -> pulumi.Output[bool]:
         """
-        Self Profile indicating if the profile is created for customer's  self use
+        Self Profile indicating if the profile is created for customer's self use
         """
         return pulumi.get(self, "self_profile")
 

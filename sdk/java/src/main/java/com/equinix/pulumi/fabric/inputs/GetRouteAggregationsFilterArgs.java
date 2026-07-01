@@ -31,14 +31,14 @@ public final class GetRouteAggregationsFilterArgs extends com.pulumi.resources.R
     }
 
     /**
-     * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * Field name to use on filters
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return Field name to use on filters
      * 
      */
     public Output<String> property() {
@@ -108,7 +108,7 @@ public final class GetRouteAggregationsFilterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param property possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * @param property Field name to use on filters
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetRouteAggregationsFilterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param property possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * @param property Field name to use on filters
          * 
          * @return builder
          * 

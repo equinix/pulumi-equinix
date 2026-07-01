@@ -17,14 +17,12 @@ export * from "./types/enums";
 // Export sub-modules:
 import * as config from "./config";
 import * as fabric from "./fabric";
-import * as metal from "./metal";
 import * as networkedge from "./networkedge";
 import * as types from "./types";
 
 export {
     config,
     fabric,
-    metal,
     networkedge,
     types,
 };

@@ -3,7 +3,7 @@ name: equinix-fabric-port
 runtime: yaml
 resources:
   order:
-    type: equinix:fabric:Port
+    type: equinix:fabricPort
     properties:
       type: XF_PORT
       connectivitySourceType: COLO
@@ -41,6 +41,6 @@ resources:
         - type: NOTIFICATION
           registeredUsers:
             - <username>
-      additionalInfos:
+      additionalInfo:
         - key: lagType
           value: New

@@ -34,11 +34,7 @@ class PortArgs:
                  physical_ports_type: pulumi.Input[str],
                  project: pulumi.Input['PortProjectArgs'],
                  redundancy: pulumi.Input['PortRedundancyArgs'],
-                 settings: pulumi.Input['PortSettingsArgs'],
                  type: pulumi.Input[str],
-                 additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input['PortAdditionalInfoArgs']]]] = None,
-                 device: Optional[pulumi.Input['PortDeviceArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input['PortOrderArgs']] = None,
                  timeouts: Optional[pulumi.Input['PortTimeoutsArgs']] = None):
         """
@@ -56,11 +52,7 @@ class PortArgs:
         :param pulumi.Input[str] physical_ports_type: Physical Ports Type
         :param pulumi.Input['PortProjectArgs'] project: Port order project details
         :param pulumi.Input['PortRedundancyArgs'] redundancy: Port redundancy settings
-        :param pulumi.Input['PortSettingsArgs'] settings: Port order configuration settings
         :param pulumi.Input[str] type: Type of the port order request
-        :param pulumi.Input[Sequence[pulumi.Input['PortAdditionalInfoArgs']]] additional_infos: List of key/value objects to provide additional context to the Port order
-        :param pulumi.Input['PortDeviceArgs'] device: Port device configuration
-        :param pulumi.Input[str] name: Designated name of the port
         :param pulumi.Input['PortOrderArgs'] order: Details of the Port Order such as purchaseOrder details and signature
         """
         pulumi.set(__self__, "account", account)
@@ -76,14 +68,7 @@ class PortArgs:
         pulumi.set(__self__, "physical_ports_type", physical_ports_type)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "redundancy", redundancy)
-        pulumi.set(__self__, "settings", settings)
         pulumi.set(__self__, "type", type)
-        if additional_infos is not None:
-            pulumi.set(__self__, "additional_infos", additional_infos)
-        if device is not None:
-            pulumi.set(__self__, "device", device)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if order is not None:
             pulumi.set(__self__, "order", order)
         if timeouts is not None:
@@ -247,18 +232,6 @@ class PortArgs:
 
     @property
     @pulumi.getter
-    def settings(self) -> pulumi.Input['PortSettingsArgs']:
-        """
-        Port order configuration settings
-        """
-        return pulumi.get(self, "settings")
-
-    @settings.setter
-    def settings(self, value: pulumi.Input['PortSettingsArgs']):
-        pulumi.set(self, "settings", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
         Type of the port order request
@@ -268,42 +241,6 @@ class PortArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortAdditionalInfoArgs']]]]:
-        """
-        List of key/value objects to provide additional context to the Port order
-        """
-        return pulumi.get(self, "additional_infos")
-
-    @additional_infos.setter
-    def additional_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortAdditionalInfoArgs']]]]):
-        pulumi.set(self, "additional_infos", value)
-
-    @property
-    @pulumi.getter
-    def device(self) -> Optional[pulumi.Input['PortDeviceArgs']]:
-        """
-        Port device configuration
-        """
-        return pulumi.get(self, "device")
-
-    @device.setter
-    def device(self, value: Optional[pulumi.Input['PortDeviceArgs']]):
-        pulumi.set(self, "device", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Designated name of the port
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -349,7 +286,6 @@ class _PortState:
                  physical_ports_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input['PortProjectArgs']] = None,
                  redundancy: Optional[pulumi.Input['PortRedundancyArgs']] = None,
-                 settings: Optional[pulumi.Input['PortSettingsArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input['PortTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -375,7 +311,6 @@ class _PortState:
         :param pulumi.Input[str] physical_ports_type: Physical Ports Type
         :param pulumi.Input['PortProjectArgs'] project: Port order project details
         :param pulumi.Input['PortRedundancyArgs'] redundancy: Port redundancy settings
-        :param pulumi.Input['PortSettingsArgs'] settings: Port order configuration settings
         :param pulumi.Input[str] state: Value representing provisioning status for the port resource
         :param pulumi.Input[str] type: Type of the port order request
         :param pulumi.Input[str] uuid: Equinix assigned unique identifier of the port resource
@@ -418,8 +353,6 @@ class _PortState:
             pulumi.set(__self__, "project", project)
         if redundancy is not None:
             pulumi.set(__self__, "redundancy", redundancy)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if timeouts is not None:
@@ -659,18 +592,6 @@ class _PortState:
 
     @property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['PortSettingsArgs']]:
-        """
-        Port order configuration settings
-        """
-        return pulumi.get(self, "settings")
-
-    @settings.setter
-    def settings(self, value: Optional[pulumi.Input['PortSettingsArgs']]):
-        pulumi.set(self, "settings", value)
-
-    @property
-    @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         Value representing provisioning status for the port resource
@@ -721,14 +642,11 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[Union['PortAccountArgs', 'PortAccountArgsDict']]] = None,
-                 additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAdditionalInfoArgs', 'PortAdditionalInfoArgsDict']]]]] = None,
                  connectivity_source_type: Optional[pulumi.Input[str]] = None,
                  demarcation_point_ibx: Optional[pulumi.Input[str]] = None,
-                 device: Optional[pulumi.Input[Union['PortDeviceArgs', 'PortDeviceArgsDict']]] = None,
                  encapsulation: Optional[pulumi.Input[Union['PortEncapsulationArgs', 'PortEncapsulationArgsDict']]] = None,
                  lag_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[Union['PortLocationArgs', 'PortLocationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortNotificationArgs', 'PortNotificationArgsDict']]]]] = None,
                  order: Optional[pulumi.Input[Union['PortOrderArgs', 'PortOrderArgsDict']]] = None,
                  physical_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortPhysicalPortArgs', 'PortPhysicalPortArgsDict']]]]] = None,
@@ -737,7 +655,6 @@ class Port(pulumi.CustomResource):
                  physical_ports_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[Union['PortProjectArgs', 'PortProjectArgsDict']]] = None,
                  redundancy: Optional[pulumi.Input[Union['PortRedundancyArgs', 'PortRedundancyArgsDict']]] = None,
-                 settings: Optional[pulumi.Input[Union['PortSettingsArgs', 'PortSettingsArgsDict']]] = None,
                  timeouts: Optional[pulumi.Input[Union['PortTimeoutsArgs', 'PortTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -747,14 +664,11 @@ class Port(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PortAccountArgs', 'PortAccountArgsDict']] account: Port order account details
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PortAdditionalInfoArgs', 'PortAdditionalInfoArgsDict']]]] additional_infos: List of key/value objects to provide additional context to the Port order
         :param pulumi.Input[str] connectivity_source_type: Connection type that is used from the port after creation
         :param pulumi.Input[str] demarcation_point_ibx: IBX code where the port will be located
-        :param pulumi.Input[Union['PortDeviceArgs', 'PortDeviceArgsDict']] device: Port device configuration
         :param pulumi.Input[Union['PortEncapsulationArgs', 'PortEncapsulationArgsDict']] encapsulation: Port encapsulation settings
         :param pulumi.Input[bool] lag_enabled: Boolean value to enable the created port with Link Aggregation Groups
         :param pulumi.Input[Union['PortLocationArgs', 'PortLocationArgsDict']] location: Location details for the port order
-        :param pulumi.Input[str] name: Designated name of the port
         :param pulumi.Input[Sequence[pulumi.Input[Union['PortNotificationArgs', 'PortNotificationArgsDict']]]] notifications: List of notification types and the registered users to receive those notification types
         :param pulumi.Input[Union['PortOrderArgs', 'PortOrderArgsDict']] order: Details of the Port Order such as purchaseOrder details and signature
         :param pulumi.Input[Sequence[pulumi.Input[Union['PortPhysicalPortArgs', 'PortPhysicalPortArgsDict']]]] physical_ports: Physical ports that will implement this port order
@@ -763,7 +677,6 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[str] physical_ports_type: Physical Ports Type
         :param pulumi.Input[Union['PortProjectArgs', 'PortProjectArgsDict']] project: Port order project details
         :param pulumi.Input[Union['PortRedundancyArgs', 'PortRedundancyArgsDict']] redundancy: Port redundancy settings
-        :param pulumi.Input[Union['PortSettingsArgs', 'PortSettingsArgsDict']] settings: Port order configuration settings
         :param pulumi.Input[str] type: Type of the port order request
         """
         ...
@@ -791,14 +704,11 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[Union['PortAccountArgs', 'PortAccountArgsDict']]] = None,
-                 additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAdditionalInfoArgs', 'PortAdditionalInfoArgsDict']]]]] = None,
                  connectivity_source_type: Optional[pulumi.Input[str]] = None,
                  demarcation_point_ibx: Optional[pulumi.Input[str]] = None,
-                 device: Optional[pulumi.Input[Union['PortDeviceArgs', 'PortDeviceArgsDict']]] = None,
                  encapsulation: Optional[pulumi.Input[Union['PortEncapsulationArgs', 'PortEncapsulationArgsDict']]] = None,
                  lag_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[Union['PortLocationArgs', 'PortLocationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortNotificationArgs', 'PortNotificationArgsDict']]]]] = None,
                  order: Optional[pulumi.Input[Union['PortOrderArgs', 'PortOrderArgsDict']]] = None,
                  physical_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortPhysicalPortArgs', 'PortPhysicalPortArgsDict']]]]] = None,
@@ -807,7 +717,6 @@ class Port(pulumi.CustomResource):
                  physical_ports_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[Union['PortProjectArgs', 'PortProjectArgsDict']]] = None,
                  redundancy: Optional[pulumi.Input[Union['PortRedundancyArgs', 'PortRedundancyArgsDict']]] = None,
-                 settings: Optional[pulumi.Input[Union['PortSettingsArgs', 'PortSettingsArgsDict']]] = None,
                  timeouts: Optional[pulumi.Input[Union['PortTimeoutsArgs', 'PortTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -822,14 +731,12 @@ class Port(pulumi.CustomResource):
             if account is None and not opts.urn:
                 raise TypeError("Missing required property 'account'")
             __props__.__dict__["account"] = account
-            __props__.__dict__["additional_infos"] = additional_infos
             if connectivity_source_type is None and not opts.urn:
                 raise TypeError("Missing required property 'connectivity_source_type'")
             __props__.__dict__["connectivity_source_type"] = connectivity_source_type
             if demarcation_point_ibx is None and not opts.urn:
                 raise TypeError("Missing required property 'demarcation_point_ibx'")
             __props__.__dict__["demarcation_point_ibx"] = demarcation_point_ibx
-            __props__.__dict__["device"] = device
             if encapsulation is None and not opts.urn:
                 raise TypeError("Missing required property 'encapsulation'")
             __props__.__dict__["encapsulation"] = encapsulation
@@ -839,7 +746,6 @@ class Port(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            __props__.__dict__["name"] = name
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
@@ -862,15 +768,15 @@ class Port(pulumi.CustomResource):
             if redundancy is None and not opts.urn:
                 raise TypeError("Missing required property 'redundancy'")
             __props__.__dict__["redundancy"] = redundancy
-            if settings is None and not opts.urn:
-                raise TypeError("Missing required property 'settings'")
-            __props__.__dict__["settings"] = settings
             __props__.__dict__["timeouts"] = timeouts
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["additional_infos"] = None
             __props__.__dict__["change_log"] = None
+            __props__.__dict__["device"] = None
             __props__.__dict__["href"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uuid"] = None
         super(Port, __self__).__init__(
@@ -902,7 +808,6 @@ class Port(pulumi.CustomResource):
             physical_ports_type: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[Union['PortProjectArgs', 'PortProjectArgsDict']]] = None,
             redundancy: Optional[pulumi.Input[Union['PortRedundancyArgs', 'PortRedundancyArgsDict']]] = None,
-            settings: Optional[pulumi.Input[Union['PortSettingsArgs', 'PortSettingsArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             timeouts: Optional[pulumi.Input[Union['PortTimeoutsArgs', 'PortTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -933,7 +838,6 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[str] physical_ports_type: Physical Ports Type
         :param pulumi.Input[Union['PortProjectArgs', 'PortProjectArgsDict']] project: Port order project details
         :param pulumi.Input[Union['PortRedundancyArgs', 'PortRedundancyArgsDict']] redundancy: Port redundancy settings
-        :param pulumi.Input[Union['PortSettingsArgs', 'PortSettingsArgsDict']] settings: Port order configuration settings
         :param pulumi.Input[str] state: Value representing provisioning status for the port resource
         :param pulumi.Input[str] type: Type of the port order request
         :param pulumi.Input[str] uuid: Equinix assigned unique identifier of the port resource
@@ -961,7 +865,6 @@ class Port(pulumi.CustomResource):
         __props__.__dict__["physical_ports_type"] = physical_ports_type
         __props__.__dict__["project"] = project
         __props__.__dict__["redundancy"] = redundancy
-        __props__.__dict__["settings"] = settings
         __props__.__dict__["state"] = state
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
@@ -978,7 +881,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> pulumi.Output[Optional[Sequence['outputs.PortAdditionalInfo']]]:
+    def additional_infos(self) -> pulumi.Output[Sequence['outputs.PortAdditionalInfo']]:
         """
         List of key/value objects to provide additional context to the Port order
         """
@@ -1010,7 +913,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def device(self) -> pulumi.Output[Optional['outputs.PortDevice']]:
+    def device(self) -> pulumi.Output['outputs.PortDevice']:
         """
         Port device configuration
         """
@@ -1119,14 +1022,6 @@ class Port(pulumi.CustomResource):
         Port redundancy settings
         """
         return pulumi.get(self, "redundancy")
-
-    @property
-    @pulumi.getter
-    def settings(self) -> pulumi.Output['outputs.PortSettings']:
-        """
-        Port order configuration settings
-        """
-        return pulumi.get(self, "settings")
 
     @property
     @pulumi.getter

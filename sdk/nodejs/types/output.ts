@@ -1136,7 +1136,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          */
         property: string;
         /**
@@ -2552,6 +2552,10 @@ export namespace fabric {
          */
         direction: string;
         /**
+         * Geographic boundary types
+         */
+        geoScope: string;
+        /**
          * Connection URI information
          */
         href: string;
@@ -3462,7 +3466,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: string;
         /**
@@ -3942,7 +3946,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+         * Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
          */
         property: string;
         /**
@@ -5124,7 +5128,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          */
         property: string;
         /**
@@ -5564,7 +5568,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * Field name to use on filters
          */
         property: string;
         /**
@@ -5602,7 +5606,7 @@ export namespace fabric {
          */
         direction?: string;
         /**
-         * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         * The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
          */
         property?: string;
     }
@@ -6705,7 +6709,7 @@ export namespace fabric {
          */
         projects: outputs.fabric.GetServiceProfilesDatumProject[];
         /**
-         * Self Profile indicating if the profile is created for customer's  self use
+         * Self Profile indicating if the profile is created for customer's self use
          */
         selfProfile: boolean;
         /**
@@ -9422,11 +9426,11 @@ export namespace fabric {
         /**
          * Device name for the port
          */
-        name?: string;
+        name: string;
         /**
          * Device redundancy configuration
          */
-        redundancy?: outputs.fabric.PortDeviceRedundancy;
+        redundancy: outputs.fabric.PortDeviceRedundancy;
     }
 
     export interface PortDeviceRedundancy {
@@ -9475,14 +9479,6 @@ export namespace fabric {
          */
         customerReferenceId?: string;
         /**
-         * Order Identification
-         */
-        orderId: string;
-        /**
-         * Order Reference Number
-         */
-        orderNumber: string;
-        /**
          * Purchase order details
          */
         purchaseOrder?: outputs.fabric.PortOrderPurchaseOrder;
@@ -9490,10 +9486,6 @@ export namespace fabric {
          * Port order confirmation signature details
          */
         signature?: outputs.fabric.PortOrderSignature;
-        /**
-         * Equinix-assigned order identifier, this is a derived response attribute
-         */
-        uuid: string;
     }
 
     export interface PortOrderPurchaseOrder {
@@ -9606,17 +9598,6 @@ export namespace fabric {
          * Port redundancy priority value
          */
         priority: string;
-    }
-
-    export interface PortSettings {
-        /**
-         * Billing package for the port being ordered
-         */
-        packageType: string;
-        /**
-         * Indicates whether this is a dedicated customer cage or a shared neutral cage
-         */
-        sharedPortType: boolean;
     }
 
     export interface PortTimeouts {
@@ -11739,653 +11720,6 @@ export namespace fabric {
 
 }
 
-export namespace metal {
-    export interface DeviceBehavior {
-        /**
-         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
-         */
-        allowChanges?: string[];
-    }
-
-    export interface DeviceIpAddress {
-        /**
-         * CIDR suffix for IP block assigned to this device
-         */
-        cidr?: number;
-        /**
-         * IDs of reservations to pick the blocks from
-         */
-        reservationIds?: string[];
-        /**
-         * one of public*ipv4,private*ipv4,public_ipv6
-         */
-        type: string;
-    }
-
-    export interface DeviceNetwork {
-        /**
-         * IPv4 or IPv6 address string
-         */
-        address: string;
-        /**
-         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses
-         */
-        cidr: number;
-        /**
-         * IP version - "4" or "6"
-         */
-        family: number;
-        /**
-         * Address of router
-         */
-        gateway: string;
-        /**
-         * Whether the address is routable from the Internet
-         */
-        public: boolean;
-    }
-
-    export interface DevicePort {
-        /**
-         * Whether this port is part of a bond in bonded network setup
-         */
-        bonded: boolean;
-        /**
-         * The ID of the device
-         */
-        id: string;
-        /**
-         * MAC address assigned to the port
-         */
-        mac: string;
-        /**
-         * Name of the port (e.g. eth0, or bond0)
-         */
-        name: string;
-        /**
-         * One of [private_ipv4, public_ipv4, publicIpv6]
-         */
-        type: string;
-    }
-
-    export interface DeviceReinstall {
-        /**
-         * Whether the OS disk should be filled with `00h` bytes before reinstall
-         */
-        deprovisionFast?: boolean;
-        /**
-         * Whether the device should be reinstalled instead of destroyed
-         */
-        enabled?: boolean;
-        /**
-         * Whether the non-OS disks should be kept or wiped during reinstall
-         */
-        preserveData?: boolean;
-    }
-
-    export interface GatewayTimeouts {
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-         */
-        delete?: string;
-    }
-
-    export interface GetDeviceBgpNeighborsBgpNeighbor {
-        /**
-         * IP address version, 4 or 6.
-         */
-        addressFamily: number;
-        /**
-         * Local autonomous system number.
-         */
-        customerAs: number;
-        /**
-         * Local used peer IP address.
-         */
-        customerIp: string;
-        /**
-         * Whether BGP session is password enabled.
-         */
-        md5Enabled: boolean;
-        /**
-         * BGP session password in plaintext (not a checksum).
-         */
-        md5Password: string;
-        /**
-         * Whether the neighbor is in EBGP multihop session.
-         */
-        multihop: boolean;
-        /**
-         * Peer AS number (different than customerAs for EBGP).
-         */
-        peerAs: number;
-        /**
-         * Array of IP addresses of this neighbor's peers.
-         */
-        peerIps?: string[];
-        /**
-         * Array of incoming routes.
-         */
-        routesIns: outputs.metal.GetDeviceBgpNeighborsBgpNeighborRoutesIn[];
-        /**
-         * Array of outgoing routes in the same format.
-         */
-        routesOuts: outputs.metal.GetDeviceBgpNeighborsBgpNeighborRoutesOut[];
-    }
-
-    export interface GetDeviceBgpNeighborsBgpNeighborRoutesIn {
-        /**
-         * (bool) Whether the route is exact.
-         */
-        exact: boolean;
-        /**
-         * CIDR expression of route (IP/mask).
-         */
-        route: string;
-    }
-
-    export interface GetDeviceBgpNeighborsBgpNeighborRoutesOut {
-        /**
-         * (bool) Whether the route is exact.
-         */
-        exact: boolean;
-        /**
-         * CIDR expression of route (IP/mask).
-         */
-        route: string;
-    }
-
-    export interface GetDeviceNetwork {
-        /**
-         * IPv4 or IPv6 address string
-         */
-        address: string;
-        /**
-         * Bit length of the network mask of the address
-         */
-        cidr: number;
-        /**
-         * IP version - "4" or "6"
-         */
-        family: number;
-        /**
-         * Address of router
-         */
-        gateway: string;
-        /**
-         * Whether the address is routable from the Internet
-         */
-        public: boolean;
-    }
-
-    export interface GetDevicePort {
-        /**
-         * Whether this port is part of a bond in bonded network setup
-         */
-        bonded: boolean;
-        /**
-         * The ID of the device
-         */
-        id: string;
-        /**
-         * MAC address assigned to the port
-         */
-        mac: string;
-        /**
-         * Name of the port (e.g. eth0, or bond0)
-         */
-        name: string;
-        /**
-         * Type of the port (e.g. NetworkPort or NetworkBondPort)
-         */
-        type: string;
-    }
-
-    export interface GetDevicesDevice {
-        /**
-         * The ipv4 private IP assigned to the device
-         */
-        accessPrivateIpv4: string;
-        /**
-         * The ipv4 management IP assigned to the device
-         */
-        accessPublicIpv4: string;
-        /**
-         * The ipv6 management IP assigned to the device
-         */
-        accessPublicIpv6: string;
-        alwaysPxe: boolean;
-        /**
-         * The billing cycle of the device (monthly or hourly)
-         */
-        billingCycle: string;
-        /**
-         * Description string for the device
-         */
-        description: string;
-        /**
-         * Device ID
-         */
-        deviceId: string;
-        /**
-         * The facility where the device is deployed
-         *
-         * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
-         */
-        facility: string;
-        /**
-         * The id of hardware reservation which this device occupies
-         */
-        hardwareReservationId: string;
-        /**
-         * The device name
-         */
-        hostname: string;
-        ipxeScriptUrl: string;
-        /**
-         * The metro where the device is deployed
-         */
-        metro: string;
-        /**
-         * L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
-         */
-        networkType: string;
-        /**
-         * The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix_metal_device.name.network.0, IPv6 at equinix_metal_device.name.network.1 and private IPv4 at equinix_metal_device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
-         */
-        networks: outputs.metal.GetDevicesDeviceNetwork[];
-        /**
-         * The operating system running on the device
-         */
-        operatingSystem: string;
-        /**
-         * The hardware config of the device
-         */
-        plan: string;
-        /**
-         * Ports assigned to the device
-         */
-        ports: outputs.metal.GetDevicesDevicePort[];
-        /**
-         * ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
-         */
-        projectId: string;
-        /**
-         * Root password to the server (if still available)
-         */
-        rootPassword: string;
-        /**
-         * The hostname to use for [Serial over SSH](https://docs.equinix.com/metal/resilience-recovery/serial-over-ssh/) access to the device
-         */
-        sosHostname: string;
-        /**
-         * List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
-         */
-        sshKeyIds: string[];
-        /**
-         * The state of the device
-         */
-        state: string;
-        storage: string;
-        /**
-         * Tags attached to the device
-         */
-        tags: string[];
-    }
-
-    export interface GetDevicesDeviceNetwork {
-        /**
-         * IPv4 or IPv6 address string
-         */
-        address: string;
-        /**
-         * Bit length of the network mask of the address
-         */
-        cidr: number;
-        /**
-         * IP version - "4" or "6"
-         */
-        family: number;
-        /**
-         * Address of router
-         */
-        gateway: string;
-        /**
-         * Whether the address is routable from the Internet
-         */
-        public: boolean;
-    }
-
-    export interface GetDevicesDevicePort {
-        /**
-         * Whether this port is part of a bond in bonded network setup
-         */
-        bonded: boolean;
-        /**
-         * The ID of the device
-         */
-        id: string;
-        /**
-         * MAC address assigned to the port
-         */
-        mac: string;
-        /**
-         * Name of the port (e.g. eth0, or bond0)
-         */
-        name: string;
-        /**
-         * Type of the port (e.g. NetworkPort or NetworkBondPort)
-         */
-        type: string;
-    }
-
-    export interface GetDevicesFilter {
-        /**
-         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
-         *
-         * All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
-         */
-        all?: boolean;
-        /**
-         * The attribute used to filter. Filter attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
-         */
-        matchBy?: string;
-        /**
-         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
-         */
-        values: string[];
-    }
-
-    export interface GetDevicesSort {
-        /**
-         * The attribute used to sort the results. Sort attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
-         */
-        direction?: string;
-    }
-
-    export interface GetFacilityCapacity {
-        /**
-         * Device plan that must be available in selected location.
-         */
-        plan: string;
-        /**
-         * Minimun number of devices that must be available in selected location. Default is `1`.
-         */
-        quantity?: number;
-    }
-
-    export interface GetInterconnectionPort {
-        /**
-         * Port UUID.
-         */
-        id: string;
-        /**
-         * Port link status.
-         */
-        linkStatus: string;
-        /**
-         * Port name.
-         */
-        name: string;
-        /**
-         * Port role - primary or secondary.
-         */
-        role: string;
-        /**
-         * Port speed in bits per second.
-         */
-        speed: number;
-        /**
-         * Port status.
-         */
-        status: string;
-        /**
-         * List of IDs of virtual cicruits attached to this port.
-         */
-        virtualCircuitIds: string[];
-    }
-
-    export interface GetInterconnectionServiceToken {
-        /**
-         * Expiration date of the service token.
-         */
-        expiresAt: string;
-        /**
-         * Port UUID.
-         */
-        id: string;
-        /**
-         * Maximum allowed speed for the service token, string like in the `speed` attribute.
-         */
-        maxAllowedSpeed: string;
-        /**
-         * Port role - primary or secondary.
-         */
-        role: string;
-        state: string;
-        /**
-         * Token type, `aSide` or `zSide`.
-         */
-        type: string;
-    }
-
-    export interface GetMetroCapacity {
-        /**
-         * Device plan that must be available in selected location.
-         */
-        plan: string;
-        /**
-         * Minimum number of devices that must be available in selected location. Default is `1`.
-         */
-        quantity?: number;
-    }
-
-    export interface GetOrganizationAddress {
-        /**
-         * Postal address.
-         */
-        address: string;
-        /**
-         * City name.
-         */
-        city: string;
-        /**
-         * Two letter country code (ISO 3166-1 alpha-2), e.g. US.
-         */
-        country: string;
-        /**
-         * State name.
-         */
-        state: string;
-        /**
-         * Zip Code.
-         */
-        zipCode: string;
-    }
-
-    export interface GetPlansFilter {
-        /**
-         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
-         *
-         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
-         */
-        all?: boolean;
-        /**
-         * The attribute used to filter. Filter attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
-         */
-        matchBy?: string;
-        /**
-         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
-         */
-        values: string[];
-    }
-
-    export interface GetPlansPlan {
-        /**
-         * list of metros where the plan is available
-         */
-        availableInMetros: string[];
-        /**
-         * (**Deprecated**) list of facilities where the plan is available
-         *
-         * @deprecated Use availableInMetros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
-         */
-        availableIns: string[];
-        /**
-         * plan class
-         */
-        class: string;
-        /**
-         * list of deployment types, e.g. on_demand, spot_market
-         */
-        deploymentTypes: string[];
-        /**
-         * description of the plan
-         */
-        description: string;
-        /**
-         * id of the plan
-         */
-        id: string;
-        /**
-         * flag showing if it's a legacy plan
-         */
-        legacy: boolean;
-        /**
-         * plan line, e.g. baremetal
-         */
-        line: string;
-        /**
-         * name of the plan
-         */
-        name: string;
-        /**
-         * plan hourly price
-         */
-        pricingHour: number;
-        /**
-         * plan monthly price
-         */
-        pricingMonth: number;
-        /**
-         * plan slug
-         */
-        slug: string;
-    }
-
-    export interface GetPlansSort {
-        /**
-         * The attribute used to sort the results. Sort attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
-         */
-        direction?: string;
-    }
-
-    export interface GetProjectBgpConfig {
-        /**
-         * Autonomous System Number for local BGP deployment.
-         */
-        asn: number;
-        /**
-         * One of `private`, `public`.
-         */
-        deploymentType: string;
-        /**
-         * The maximum number of route filters allowed per server.
-         */
-        maxPrefix: number;
-        /**
-         * Password for BGP session in plaintext (not a checksum).
-         */
-        md5: string;
-        /**
-         * Status of BGP configuration in the project.
-         */
-        status: string;
-    }
-
-    export interface InterconnectionPort {
-        id: string;
-        linkStatus: string;
-        name: string;
-        role: string;
-        speed: number;
-        status: string;
-        virtualCircuitIds: string[];
-    }
-
-    export interface InterconnectionServiceToken {
-        expiresAt: string;
-        id: string;
-        maxAllowedSpeed: string;
-        role: string;
-        state: string;
-        type: string;
-    }
-
-    export interface OrganizationAddress {
-        /**
-         * Postal address.
-         */
-        address: string;
-        /**
-         * City name.
-         */
-        city: string;
-        /**
-         * Two letter country code (ISO 3166-1 alpha-2), e.g. US.
-         */
-        country: string;
-        /**
-         * State name.
-         */
-        state: string;
-        /**
-         * Zip Code.
-         */
-        zipCode: string;
-    }
-
-    export interface ProjectBgpConfig {
-        /**
-         * Autonomous System Number for local BGP deployment.
-         */
-        asn: number;
-        /**
-         * `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
-         */
-        deploymentType: string;
-        /**
-         * The maximum number of route filters allowed per server.
-         */
-        maxPrefix: number;
-        /**
-         * Password for BGP session in plaintext (not a checksum).
-         */
-        md5?: string;
-        /**
-         * status of BGP configuration in the project.
-         */
-        status: string;
-    }
-
-}
-
 export namespace networkedge {
     export interface AclTemplateDeviceDetail {
         /**
@@ -12420,12 +11754,6 @@ export namespace networkedge {
          */
         sequenceNumber: number;
         /**
-         * Type of traffic source used in a given inbound rule
-         *
-         * @deprecated Source Type will not be returned
-         */
-        sourceType: string;
-        /**
          * Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          */
         srcPort: string;
@@ -12433,12 +11761,6 @@ export namespace networkedge {
          * Inbound traffic source IP subnet in CIDR format.
          */
         subnet?: string;
-        /**
-         * Inbound traffic source IP subnets in CIDR format.
-         *
-         * @deprecated Use Subnet instead
-         */
-        subnets?: string[];
     }
 
     export interface DeviceClusterDetails {
@@ -12724,41 +12046,6 @@ export namespace networkedge {
          * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          */
         status: string;
-    }
-
-    export interface DeviceLinkLink {
-        /**
-         * billing account number to be used for connection charges
-         */
-        accountNumber: string;
-        /**
-         * connection destination metro code.
-         */
-        dstMetroCode: string;
-        /**
-         * connection destination zone code is not required.
-         *
-         * @deprecated DestinationZoneCode is not required
-         */
-        dstZoneCode?: string;
-        /**
-         * connection source metro code.
-         */
-        srcMetroCode: string;
-        /**
-         * connection source zone code is not required.
-         *
-         * @deprecated SourceZoneCode is not required
-         */
-        srcZoneCode?: string;
-        /**
-         * connection throughput.
-         */
-        throughput: string;
-        /**
-         * connection throughput unit (Mbps or Gbps).
-         */
-        throughputUnit: string;
     }
 
     export interface DeviceLinkMetroLink {

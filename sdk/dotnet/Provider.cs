@@ -19,12 +19,6 @@ namespace Pulumi.Equinix
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The Equinix Metal API auth key for API operations
-        /// </summary>
-        [Output("authToken")]
-        public Output<string?> AuthToken { get; private set; } = null!;
-
-        /// <summary>
         /// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
         /// `EQUINIX_API_CLIENTID` shell environment variable.
         /// </summary>
@@ -116,12 +110,6 @@ namespace Pulumi.Equinix
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Equinix Metal API auth key for API operations
-        /// </summary>
-        [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
-
         /// <summary>
         /// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
         /// `EQUINIX_API_CLIENTID` shell environment variable.

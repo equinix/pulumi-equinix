@@ -19,7 +19,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+        /// The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
         /// </summary>
         [Input("property")]
         public Input<string>? Property { get; set; }

@@ -16,28 +16,32 @@ import * as utilities from "../utilities";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const test = new equinix.networkedge.DeviceLink("test", {
- *     name: "test-link",
- *     subnet: "192.168.40.64/27",
- *     projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
+ *     name: "test-DLG",
+ *     projectId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     devices: [
  *         {
  *             id: testEquinixNetworkDevice.uuid,
- *             asn: 22111,
  *             interfaceId: 6,
  *         },
  *         {
  *             id: testEquinixNetworkDevice.secondaryDevice[0].uuid,
- *             asn: 22333,
  *             interfaceId: 7,
  *         },
  *     ],
- *     links: [{
- *         accountNumber: testEquinixNetworkDevice.accountNumber,
- *         srcMetroCode: testEquinixNetworkDevice.metroCode,
- *         dstMetroCode: testEquinixNetworkDevice.secondaryDevice[0].metroCode,
- *         throughput: "50",
- *         throughputUnit: "Mbps",
- *     }],
+ *     metroLinks: [
+ *         {
+ *             accountNumber: testEquinixNetworkDevice.accountNumber,
+ *             metroCode: testEquinixNetworkDevice.metroCode,
+ *             throughput: "50",
+ *             throughputUnit: "Mbps",
+ *         },
+ *         {
+ *             accountNumber: testEquinixNetworkDevice.secondaryDevice[0].accountNumber,
+ *             metroCode: testEquinixNetworkDevice.secondaryDevice[0].metroCode,
+ *             throughput: "50",
+ *             throughputUnit: "Mbps",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -82,12 +86,6 @@ export class DeviceLink extends pulumi.CustomResource {
      */
     public readonly devices!: pulumi.Output<outputs.networkedge.DeviceLinkDevice[]>;
     /**
-     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-     *
-     * @deprecated Links is deprecated. Please use metro links instead.
-     */
-    public readonly links!: pulumi.Output<outputs.networkedge.DeviceLinkLink[] | undefined>;
-    /**
      * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      */
     public readonly metroLinks!: pulumi.Output<outputs.networkedge.DeviceLinkMetroLink[] | undefined>;
@@ -130,7 +128,6 @@ export class DeviceLink extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DeviceLinkState | undefined;
             resourceInputs["devices"] = state ? state.devices : undefined;
-            resourceInputs["links"] = state ? state.links : undefined;
             resourceInputs["metroLinks"] = state ? state.metroLinks : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -144,7 +141,6 @@ export class DeviceLink extends pulumi.CustomResource {
                 throw new Error("Missing required property 'devices'");
             }
             resourceInputs["devices"] = args ? args.devices : undefined;
-            resourceInputs["links"] = args ? args.links : undefined;
             resourceInputs["metroLinks"] = args ? args.metroLinks : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -166,12 +162,6 @@ export interface DeviceLinkState {
      * definition of one or more devices belonging to the device link. See Device section below for more details.
      */
     devices?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkDevice>[]>;
-    /**
-     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-     *
-     * @deprecated Links is deprecated. Please use metro links instead.
-     */
-    links?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkLink>[]>;
     /**
      * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      */
@@ -210,12 +200,6 @@ export interface DeviceLinkArgs {
      * definition of one or more devices belonging to the device link. See Device section below for more details.
      */
     devices: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkDevice>[]>;
-    /**
-     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-     *
-     * @deprecated Links is deprecated. Please use metro links instead.
-     */
-    links?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceLinkLink>[]>;
     /**
      * definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
      */

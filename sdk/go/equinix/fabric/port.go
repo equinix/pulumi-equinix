@@ -28,7 +28,7 @@ type Port struct {
 	// IBX code where the port will be located
 	DemarcationPointIbx pulumi.StringOutput `pulumi:"demarcationPointIbx"`
 	// Port device configuration
-	Device PortDevicePtrOutput `pulumi:"device"`
+	Device PortDeviceOutput `pulumi:"device"`
 	// Port encapsulation settings
 	Encapsulation PortEncapsulationOutput `pulumi:"encapsulation"`
 	// Equinix assigned URI of the port resource
@@ -55,8 +55,6 @@ type Port struct {
 	Project PortProjectOutput `pulumi:"project"`
 	// Port redundancy settings
 	Redundancy PortRedundancyOutput `pulumi:"redundancy"`
-	// Port order configuration settings
-	Settings PortSettingsOutput `pulumi:"settings"`
 	// Value representing provisioning status for the port resource
 	State    pulumi.StringOutput   `pulumi:"state"`
 	Timeouts PortTimeoutsPtrOutput `pulumi:"timeouts"`
@@ -111,9 +109,6 @@ func NewPort(ctx *pulumi.Context,
 	}
 	if args.Redundancy == nil {
 		return nil, errors.New("invalid value for required argument 'Redundancy'")
-	}
-	if args.Settings == nil {
-		return nil, errors.New("invalid value for required argument 'Settings'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -179,8 +174,6 @@ type portState struct {
 	Project *PortProject `pulumi:"project"`
 	// Port redundancy settings
 	Redundancy *PortRedundancy `pulumi:"redundancy"`
-	// Port order configuration settings
-	Settings *PortSettings `pulumi:"settings"`
 	// Value representing provisioning status for the port resource
 	State    *string       `pulumi:"state"`
 	Timeouts *PortTimeouts `pulumi:"timeouts"`
@@ -229,8 +222,6 @@ type PortState struct {
 	Project PortProjectPtrInput
 	// Port redundancy settings
 	Redundancy PortRedundancyPtrInput
-	// Port order configuration settings
-	Settings PortSettingsPtrInput
 	// Value representing provisioning status for the port resource
 	State    pulumi.StringPtrInput
 	Timeouts PortTimeoutsPtrInput
@@ -247,22 +238,16 @@ func (PortState) ElementType() reflect.Type {
 type portArgs struct {
 	// Port order account details
 	Account PortAccount `pulumi:"account"`
-	// List of key/value objects to provide additional context to the Port order
-	AdditionalInfos []PortAdditionalInfo `pulumi:"additionalInfos"`
 	// Connection type that is used from the port after creation
 	ConnectivitySourceType string `pulumi:"connectivitySourceType"`
 	// IBX code where the port will be located
 	DemarcationPointIbx string `pulumi:"demarcationPointIbx"`
-	// Port device configuration
-	Device *PortDevice `pulumi:"device"`
 	// Port encapsulation settings
 	Encapsulation PortEncapsulation `pulumi:"encapsulation"`
 	// Boolean value to enable the created port with Link Aggregation Groups
 	LagEnabled bool `pulumi:"lagEnabled"`
 	// Location details for the port order
 	Location PortLocation `pulumi:"location"`
-	// Designated name of the port
-	Name *string `pulumi:"name"`
 	// List of notification types and the registered users to receive those notification types
 	Notifications []PortNotification `pulumi:"notifications"`
 	// Details of the Port Order such as purchaseOrder details and signature
@@ -279,9 +264,7 @@ type portArgs struct {
 	Project PortProject `pulumi:"project"`
 	// Port redundancy settings
 	Redundancy PortRedundancy `pulumi:"redundancy"`
-	// Port order configuration settings
-	Settings PortSettings  `pulumi:"settings"`
-	Timeouts *PortTimeouts `pulumi:"timeouts"`
+	Timeouts   *PortTimeouts  `pulumi:"timeouts"`
 	// Type of the port order request
 	Type string `pulumi:"type"`
 }
@@ -290,22 +273,16 @@ type portArgs struct {
 type PortArgs struct {
 	// Port order account details
 	Account PortAccountInput
-	// List of key/value objects to provide additional context to the Port order
-	AdditionalInfos PortAdditionalInfoArrayInput
 	// Connection type that is used from the port after creation
 	ConnectivitySourceType pulumi.StringInput
 	// IBX code where the port will be located
 	DemarcationPointIbx pulumi.StringInput
-	// Port device configuration
-	Device PortDevicePtrInput
 	// Port encapsulation settings
 	Encapsulation PortEncapsulationInput
 	// Boolean value to enable the created port with Link Aggregation Groups
 	LagEnabled pulumi.BoolInput
 	// Location details for the port order
 	Location PortLocationInput
-	// Designated name of the port
-	Name pulumi.StringPtrInput
 	// List of notification types and the registered users to receive those notification types
 	Notifications PortNotificationArrayInput
 	// Details of the Port Order such as purchaseOrder details and signature
@@ -322,9 +299,7 @@ type PortArgs struct {
 	Project PortProjectInput
 	// Port redundancy settings
 	Redundancy PortRedundancyInput
-	// Port order configuration settings
-	Settings PortSettingsInput
-	Timeouts PortTimeoutsPtrInput
+	Timeouts   PortTimeoutsPtrInput
 	// Type of the port order request
 	Type pulumi.StringInput
 }
@@ -442,8 +417,8 @@ func (o PortOutput) DemarcationPointIbx() pulumi.StringOutput {
 }
 
 // Port device configuration
-func (o PortOutput) Device() PortDevicePtrOutput {
-	return o.ApplyT(func(v *Port) PortDevicePtrOutput { return v.Device }).(PortDevicePtrOutput)
+func (o PortOutput) Device() PortDeviceOutput {
+	return o.ApplyT(func(v *Port) PortDeviceOutput { return v.Device }).(PortDeviceOutput)
 }
 
 // Port encapsulation settings
@@ -509,11 +484,6 @@ func (o PortOutput) Project() PortProjectOutput {
 // Port redundancy settings
 func (o PortOutput) Redundancy() PortRedundancyOutput {
 	return o.ApplyT(func(v *Port) PortRedundancyOutput { return v.Redundancy }).(PortRedundancyOutput)
-}
-
-// Port order configuration settings
-func (o PortOutput) Settings() PortSettingsOutput {
-	return o.ApplyT(func(v *Port) PortSettingsOutput { return v.Settings }).(PortSettingsOutput)
 }
 
 // Value representing provisioning status for the port resource

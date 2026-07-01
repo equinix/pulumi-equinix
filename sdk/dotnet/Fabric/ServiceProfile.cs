@@ -160,10 +160,10 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ServiceProfileProject?> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's  self use
+        /// Self Profile indicating if the profile is created for customer's self use
         /// </summary>
         [Output("selfProfile")]
-        public Output<bool?> SelfProfile { get; private set; } = null!;
+        public Output<bool> SelfProfile { get; private set; } = null!;
 
         /// <summary>
         /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
@@ -351,12 +351,6 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's  self use
-        /// </summary>
-        [Input("selfProfile")]
-        public Input<bool>? SelfProfile { get; set; }
-
-        /// <summary>
         /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         /// </summary>
         [Input("state")]
@@ -527,7 +521,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectGetArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile indicating if the profile is created for customer's  self use
+        /// Self Profile indicating if the profile is created for customer's self use
         /// </summary>
         [Input("selfProfile")]
         public Input<bool>? SelfProfile { get; set; }

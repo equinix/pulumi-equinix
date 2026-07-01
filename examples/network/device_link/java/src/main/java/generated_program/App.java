@@ -6,7 +6,7 @@ import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.DeviceLink;
 import com.pulumi.equinix.networkedge.DeviceLinkArgs;
 import com.pulumi.equinix.networkedge.inputs.DeviceLinkDeviceArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceLinkLinkArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceLinkMetroLinkArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -21,27 +21,30 @@ public class App {
 
     public static void stack(Context ctx) {
         var test = new DeviceLink("test", DeviceLinkArgs.builder()
-            .name("test-link")
-            .subnet("192.168.40.64/27")
-            .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
+            .name("test-DLG")
+            .projectId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
             .devices(            
                 DeviceLinkDeviceArgs.builder()
                     .id(testEquinixNetworkDevice.uuid())
-                    .asn(22111)
                     .interfaceId(6)
                     .build(),
                 DeviceLinkDeviceArgs.builder()
                     .id(testEquinixNetworkDevice.secondaryDevice()[0].uuid())
-                    .asn(22333)
                     .interfaceId(7)
                     .build())
-            .links(DeviceLinkLinkArgs.builder()
-                .accountNumber(testEquinixNetworkDevice.accountNumber())
-                .srcMetroCode(testEquinixNetworkDevice.metroCode())
-                .dstMetroCode(testEquinixNetworkDevice.secondaryDevice()[0].metroCode())
-                .throughput("50")
-                .throughputUnit("Mbps")
-                .build())
+            .metroLinks(            
+                DeviceLinkMetroLinkArgs.builder()
+                    .accountNumber(testEquinixNetworkDevice.accountNumber())
+                    .metroCode(testEquinixNetworkDevice.metroCode())
+                    .throughput("50")
+                    .throughputUnit("Mbps")
+                    .build(),
+                DeviceLinkMetroLinkArgs.builder()
+                    .accountNumber(testEquinixNetworkDevice.secondaryDevice()[0].accountNumber())
+                    .metroCode(testEquinixNetworkDevice.secondaryDevice()[0].metroCode())
+                    .throughput("50")
+                    .throughputUnit("Mbps")
+                    .build())
             .build());
 
     }

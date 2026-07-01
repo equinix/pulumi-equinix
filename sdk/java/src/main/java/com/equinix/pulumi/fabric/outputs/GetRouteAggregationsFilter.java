@@ -17,7 +17,7 @@ public final class GetRouteAggregationsFilter {
      */
     private String operator;
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return Field name to use on filters
      * 
      */
     private String property;
@@ -36,7 +36,7 @@ public final class GetRouteAggregationsFilter {
         return this.operator;
     }
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return Field name to use on filters
      * 
      */
     public String property() {

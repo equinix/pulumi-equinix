@@ -75,58 +75,6 @@ import (
 //	}
 //
 // ```
-// ### example fcr to metal
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.NewConnection(ctx, "fcr2metal", &fabric.ConnectionArgs{
-//				Name: pulumi.String("ConnectionName"),
-//				Type: pulumi.String("IP_VC"),
-//				Notifications: fabric.ConnectionNotificationArray{
-//					&fabric.ConnectionNotificationArgs{
-//						Type: pulumi.String(fabric.NotificationsTypeAll),
-//						Emails: pulumi.StringArray{
-//							pulumi.String("example@equinix.com"),
-//							pulumi.String("test1@equinix.com"),
-//						},
-//					},
-//				},
-//				Bandwidth: pulumi.Int(50),
-//				Order: &fabric.ConnectionOrderArgs{
-//					PurchaseOrderNumber: pulumi.String("1-323292"),
-//				},
-//				ASide: &fabric.ConnectionASideArgs{
-//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-//						Type: pulumi.String("CLOUD_ROUTER"),
-//						Router: &fabric.ConnectionASideAccessPointRouterArgs{
-//							Uuid: pulumi.String("<cloud_router_uuid>"),
-//						},
-//					},
-//				},
-//				ZSide: &fabric.ConnectionZSideArgs{
-//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-//						Type:              pulumi.String("METAL_NETWORK"),
-//						AuthenticationKey: pulumi.String("<metal_authorization_code>"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### example fcr to network
 // ```go
 // package main
@@ -228,65 +176,6 @@ import (
 //						LinkProtocol: &fabric.ConnectionZSideAccessPointLinkProtocolArgs{
 //							Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
 //							VlanTag: pulumi.Int(2711),
-//						},
-//						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
-//							MetroCode: pulumi.String(equinix.MetroSiliconValley),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### example metal to aws
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.NewConnection(ctx, "metal2aws", &fabric.ConnectionArgs{
-//				Name: pulumi.String("ConnectionName"),
-//				Type: pulumi.String("EVPLAN_VC"),
-//				Notifications: fabric.ConnectionNotificationArray{
-//					&fabric.ConnectionNotificationArgs{
-//						Type: pulumi.String(fabric.NotificationsTypeAll),
-//						Emails: pulumi.StringArray{
-//							pulumi.String("example@equinix.com"),
-//							pulumi.String("test1@equinix.com"),
-//						},
-//					},
-//				},
-//				Bandwidth: pulumi.Int(50),
-//				Order: &fabric.ConnectionOrderArgs{
-//					PurchaseOrderNumber: pulumi.String("1-323292"),
-//				},
-//				ASide: &fabric.ConnectionASideArgs{
-//					AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-//						Type:              pulumi.String("METAL_NETWORK"),
-//						AuthenticationKey: pulumi.String("<metal_authorization_code>"),
-//					},
-//				},
-//				ZSide: &fabric.ConnectionZSideArgs{
-//					AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-//						Type:              pulumi.String(fabric.AccessPointTypeSP),
-//						AuthenticationKey: pulumi.String("<aws_account_id>"),
-//						SellerRegion:      pulumi.String("us-west-1"),
-//						Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
-//							Type: pulumi.String(fabric.ProfileTypeL2Profile),
-//							Uuid: pulumi.String("<service_profile_uuid>"),
 //						},
 //						Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 //							MetroCode: pulumi.String(equinix.MetroSiliconValley),
@@ -430,14 +319,14 @@ import (
 //						},
 //					},
 //				},
-//				AdditionalInfo: pulumi.StringMapArray{
-//					pulumi.StringMap{
-//						"key":   pulumi.String("accessKey"),
-//						"value": pulumi.String("<aws_access_key>"),
+//				AdditionalInfo: pulumi.MapArray{
+//					pulumi.Map{
+//						"key":   pulumi.Any("accessKey"),
+//						"value": pulumi.Any("<aws_access_key>"),
 //					},
-//					pulumi.StringMap{
-//						"key":   pulumi.String("secretKey"),
-//						"value": pulumi.String("<aws_secret_key>"),
+//					pulumi.Map{
+//						"key":   pulumi.Any("secretKey"),
+//						"value": pulumi.Any("<aws_secret_key>"),
 //					},
 //				},
 //			})
@@ -1192,6 +1081,8 @@ type Connection struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringOutput `pulumi:"direction"`
+	// Geographic boundary types
+	GeoScope pulumi.StringPtrOutput `pulumi:"geoScope"`
 	// Connection URI information
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Connection property derived from access point locations
@@ -1277,6 +1168,8 @@ type connectionState struct {
 	Description *string `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction *string `pulumi:"direction"`
+	// Geographic boundary types
+	GeoScope *string `pulumi:"geoScope"`
 	// Connection URI information
 	Href *string `pulumi:"href"`
 	// Connection property derived from access point locations
@@ -1318,6 +1211,8 @@ type ConnectionState struct {
 	Description pulumi.StringPtrInput
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringPtrInput
+	// Geographic boundary types
+	GeoScope pulumi.StringPtrInput
 	// Connection URI information
 	Href pulumi.StringPtrInput
 	// Connection property derived from access point locations
@@ -1357,6 +1252,8 @@ type connectionArgs struct {
 	Bandwidth int `pulumi:"bandwidth"`
 	// Customer-provided connection description
 	Description *string `pulumi:"description"`
+	// Geographic boundary types
+	GeoScope *string `pulumi:"geoScope"`
 	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
@@ -1383,6 +1280,8 @@ type ConnectionArgs struct {
 	Bandwidth pulumi.IntInput
 	// Customer-provided connection description
 	Description pulumi.StringPtrInput
+	// Geographic boundary types
+	GeoScope pulumi.StringPtrInput
 	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
@@ -1519,6 +1418,11 @@ func (o ConnectionOutput) Description() pulumi.StringPtrOutput {
 // Connection directionality from the requester point of view
 func (o ConnectionOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Geographic boundary types
+func (o ConnectionOutput) GeoScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.GeoScope }).(pulumi.StringPtrOutput)
 }
 
 // Connection URI information

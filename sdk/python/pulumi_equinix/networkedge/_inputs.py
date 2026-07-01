@@ -34,8 +34,6 @@ __all__ = [
     'DeviceInterfaceArgsDict',
     'DeviceLinkDeviceArgs',
     'DeviceLinkDeviceArgsDict',
-    'DeviceLinkLinkArgs',
-    'DeviceLinkLinkArgsDict',
     'DeviceLinkMetroLinkArgs',
     'DeviceLinkMetroLinkArgsDict',
     'DeviceSecondaryDeviceArgs',
@@ -144,17 +142,9 @@ if not MYPY:
         """
         Inbound rule sequence number
         """
-        source_type: NotRequired[pulumi.Input[str]]
-        """
-        Type of traffic source used in a given inbound rule
-        """
         subnet: NotRequired[pulumi.Input[str]]
         """
         Inbound traffic source IP subnet in CIDR format.
-        """
-        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        Inbound traffic source IP subnets in CIDR format.
         """
 elif False:
     AclTemplateInboundRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -167,18 +157,14 @@ class AclTemplateInboundRuleArgs:
                  src_port: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  sequence_number: Optional[pulumi.Input[int]] = None,
-                 source_type: Optional[pulumi.Input[str]] = None,
-                 subnet: Optional[pulumi.Input[str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 subnet: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dst_port: Inbound traffic destination ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param pulumi.Input[Union[str, 'AclRuleProtocolType']] protocol: Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
         :param pulumi.Input[str] src_port: Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
         :param pulumi.Input[int] sequence_number: Inbound rule sequence number
-        :param pulumi.Input[str] source_type: Type of traffic source used in a given inbound rule
         :param pulumi.Input[str] subnet: Inbound traffic source IP subnet in CIDR format.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: Inbound traffic source IP subnets in CIDR format.
         """
         pulumi.set(__self__, "dst_port", dst_port)
         pulumi.set(__self__, "protocol", protocol)
@@ -187,18 +173,8 @@ class AclTemplateInboundRuleArgs:
             pulumi.set(__self__, "description", description)
         if sequence_number is not None:
             pulumi.set(__self__, "sequence_number", sequence_number)
-        if source_type is not None:
-            warnings.warn("""Source Type will not be returned""", DeprecationWarning)
-            pulumi.log.warn("""source_type is deprecated: Source Type will not be returned""")
-        if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
-        if subnets is not None:
-            warnings.warn("""Use Subnet instead""", DeprecationWarning)
-            pulumi.log.warn("""subnets is deprecated: Use Subnet instead""")
-        if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
 
     @property
     @pulumi.getter(name="dstPort")
@@ -261,19 +237,6 @@ class AclTemplateInboundRuleArgs:
         pulumi.set(self, "sequence_number", value)
 
     @property
-    @pulumi.getter(name="sourceType")
-    @_utilities.deprecated("""Source Type will not be returned""")
-    def source_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of traffic source used in a given inbound rule
-        """
-        return pulumi.get(self, "source_type")
-
-    @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_type", value)
-
-    @property
     @pulumi.getter
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
@@ -284,19 +247,6 @@ class AclTemplateInboundRuleArgs:
     @subnet.setter
     def subnet(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnet", value)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""Use Subnet instead""")
-    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Inbound traffic source IP subnets in CIDR format.
-        """
-        return pulumi.get(self, "subnets")
-
-    @subnets.setter
-    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "subnets", value)
 
 
 if not MYPY:
@@ -1697,161 +1647,6 @@ class DeviceLinkDeviceArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class DeviceLinkLinkArgsDict(TypedDict):
-        account_number: pulumi.Input[str]
-        """
-        billing account number to be used for connection charges
-        """
-        dst_metro_code: pulumi.Input[str]
-        """
-        connection destination metro code.
-        """
-        src_metro_code: pulumi.Input[str]
-        """
-        connection source metro code.
-        """
-        throughput: pulumi.Input[str]
-        """
-        connection throughput.
-        """
-        throughput_unit: pulumi.Input[str]
-        """
-        connection throughput unit (Mbps or Gbps).
-        """
-        dst_zone_code: NotRequired[pulumi.Input[str]]
-        """
-        connection destination zone code is not required.
-        """
-        src_zone_code: NotRequired[pulumi.Input[str]]
-        """
-        connection source zone code is not required.
-        """
-elif False:
-    DeviceLinkLinkArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class DeviceLinkLinkArgs:
-    def __init__(__self__, *,
-                 account_number: pulumi.Input[str],
-                 dst_metro_code: pulumi.Input[str],
-                 src_metro_code: pulumi.Input[str],
-                 throughput: pulumi.Input[str],
-                 throughput_unit: pulumi.Input[str],
-                 dst_zone_code: Optional[pulumi.Input[str]] = None,
-                 src_zone_code: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] account_number: billing account number to be used for connection charges
-        :param pulumi.Input[str] dst_metro_code: connection destination metro code.
-        :param pulumi.Input[str] src_metro_code: connection source metro code.
-        :param pulumi.Input[str] throughput: connection throughput.
-        :param pulumi.Input[str] throughput_unit: connection throughput unit (Mbps or Gbps).
-        :param pulumi.Input[str] dst_zone_code: connection destination zone code is not required.
-        :param pulumi.Input[str] src_zone_code: connection source zone code is not required.
-        """
-        pulumi.set(__self__, "account_number", account_number)
-        pulumi.set(__self__, "dst_metro_code", dst_metro_code)
-        pulumi.set(__self__, "src_metro_code", src_metro_code)
-        pulumi.set(__self__, "throughput", throughput)
-        pulumi.set(__self__, "throughput_unit", throughput_unit)
-        if dst_zone_code is not None:
-            warnings.warn("""DestinationZoneCode is not required""", DeprecationWarning)
-            pulumi.log.warn("""dst_zone_code is deprecated: DestinationZoneCode is not required""")
-        if dst_zone_code is not None:
-            pulumi.set(__self__, "dst_zone_code", dst_zone_code)
-        if src_zone_code is not None:
-            warnings.warn("""SourceZoneCode is not required""", DeprecationWarning)
-            pulumi.log.warn("""src_zone_code is deprecated: SourceZoneCode is not required""")
-        if src_zone_code is not None:
-            pulumi.set(__self__, "src_zone_code", src_zone_code)
-
-    @property
-    @pulumi.getter(name="accountNumber")
-    def account_number(self) -> pulumi.Input[str]:
-        """
-        billing account number to be used for connection charges
-        """
-        return pulumi.get(self, "account_number")
-
-    @account_number.setter
-    def account_number(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_number", value)
-
-    @property
-    @pulumi.getter(name="dstMetroCode")
-    def dst_metro_code(self) -> pulumi.Input[str]:
-        """
-        connection destination metro code.
-        """
-        return pulumi.get(self, "dst_metro_code")
-
-    @dst_metro_code.setter
-    def dst_metro_code(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dst_metro_code", value)
-
-    @property
-    @pulumi.getter(name="srcMetroCode")
-    def src_metro_code(self) -> pulumi.Input[str]:
-        """
-        connection source metro code.
-        """
-        return pulumi.get(self, "src_metro_code")
-
-    @src_metro_code.setter
-    def src_metro_code(self, value: pulumi.Input[str]):
-        pulumi.set(self, "src_metro_code", value)
-
-    @property
-    @pulumi.getter
-    def throughput(self) -> pulumi.Input[str]:
-        """
-        connection throughput.
-        """
-        return pulumi.get(self, "throughput")
-
-    @throughput.setter
-    def throughput(self, value: pulumi.Input[str]):
-        pulumi.set(self, "throughput", value)
-
-    @property
-    @pulumi.getter(name="throughputUnit")
-    def throughput_unit(self) -> pulumi.Input[str]:
-        """
-        connection throughput unit (Mbps or Gbps).
-        """
-        return pulumi.get(self, "throughput_unit")
-
-    @throughput_unit.setter
-    def throughput_unit(self, value: pulumi.Input[str]):
-        pulumi.set(self, "throughput_unit", value)
-
-    @property
-    @pulumi.getter(name="dstZoneCode")
-    @_utilities.deprecated("""DestinationZoneCode is not required""")
-    def dst_zone_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        connection destination zone code is not required.
-        """
-        return pulumi.get(self, "dst_zone_code")
-
-    @dst_zone_code.setter
-    def dst_zone_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dst_zone_code", value)
-
-    @property
-    @pulumi.getter(name="srcZoneCode")
-    @_utilities.deprecated("""SourceZoneCode is not required""")
-    def src_zone_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        connection source zone code is not required.
-        """
-        return pulumi.get(self, "src_zone_code")
-
-    @src_zone_code.setter
-    def src_zone_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "src_zone_code", value)
 
 
 if not MYPY:

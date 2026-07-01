@@ -102,69 +102,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * ### example fcr to metal
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRouterArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var fcr2Metal = new Connection("fcr2Metal", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("IP_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("CLOUD_ROUTER")
- *                     .router(ConnectionASideAccessPointRouterArgs.builder()
- *                         .uuid("<cloud_router_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("METAL_NETWORK")
- *                     .authenticationKey("<metal_authorization_code>")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * ### example fcr to network
  * <pre>
  * {@code
@@ -294,76 +231,6 @@ import javax.annotation.Nullable;
  *                     .linkProtocol(ConnectionZSideAccessPointLinkProtocolArgs.builder()
  *                         .type("DOT1Q")
  *                         .vlanTag(2711)
- *                         .build())
- *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
- *                         .metroCode("SV")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example metal to aws
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Connection;
- * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var metal2Aws = new Connection("metal2Aws", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPLAN_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("METAL_NETWORK")
- *                     .authenticationKey("<metal_authorization_code>")
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<aws_account_id>")
- *                     .sellerRegion("us-west-1")
- *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
- *                         .type("L2_PROFILE")
- *                         .uuid("<service_profile_uuid>")
  *                         .build())
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
@@ -1511,6 +1378,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> direction() {
         return this.direction;
+    }
+    /**
+     * Geographic boundary types
+     * 
+     */
+    @Export(name="geoScope", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> geoScope;
+
+    /**
+     * @return Geographic boundary types
+     * 
+     */
+    public Output<Optional<String>> geoScope() {
+        return Codegen.optional(this.geoScope);
     }
     /**
      * Connection URI information

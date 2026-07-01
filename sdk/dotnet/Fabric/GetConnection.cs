@@ -104,6 +104,10 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly string Direction;
         /// <summary>
+        /// Geographic boundary types
+        /// </summary>
+        public readonly string GeoScope;
+        /// <summary>
         /// Connection URI information
         /// </summary>
         public readonly string Href;
@@ -172,6 +176,8 @@ namespace Pulumi.Equinix.Fabric
 
             string direction,
 
+            string geoScope,
+
             string href,
 
             string id,
@@ -205,6 +211,7 @@ namespace Pulumi.Equinix.Fabric
             ChangeLog = changeLog;
             Description = description;
             Direction = direction;
+            GeoScope = geoScope;
             Href = href;
             Id = id;
             IsRemote = isRemote;

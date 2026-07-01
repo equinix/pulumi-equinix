@@ -137,18 +137,10 @@ type AclTemplateInboundRule struct {
 	Protocol string `pulumi:"protocol"`
 	// Inbound rule sequence number
 	SequenceNumber *int `pulumi:"sequenceNumber"`
-	// Type of traffic source used in a given inbound rule
-	//
-	// Deprecated: Source Type will not be returned
-	SourceType *string `pulumi:"sourceType"`
 	// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 	SrcPort string `pulumi:"srcPort"`
 	// Inbound traffic source IP subnet in CIDR format.
 	Subnet *string `pulumi:"subnet"`
-	// Inbound traffic source IP subnets in CIDR format.
-	//
-	// Deprecated: Use Subnet instead
-	Subnets []string `pulumi:"subnets"`
 }
 
 // AclTemplateInboundRuleInput is an input type that accepts AclTemplateInboundRuleArgs and AclTemplateInboundRuleOutput values.
@@ -171,18 +163,10 @@ type AclTemplateInboundRuleArgs struct {
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// Inbound rule sequence number
 	SequenceNumber pulumi.IntPtrInput `pulumi:"sequenceNumber"`
-	// Type of traffic source used in a given inbound rule
-	//
-	// Deprecated: Source Type will not be returned
-	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
 	// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 	SrcPort pulumi.StringInput `pulumi:"srcPort"`
 	// Inbound traffic source IP subnet in CIDR format.
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
-	// Inbound traffic source IP subnets in CIDR format.
-	//
-	// Deprecated: Use Subnet instead
-	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
 }
 
 func (AclTemplateInboundRuleArgs) ElementType() reflect.Type {
@@ -256,13 +240,6 @@ func (o AclTemplateInboundRuleOutput) SequenceNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AclTemplateInboundRule) *int { return v.SequenceNumber }).(pulumi.IntPtrOutput)
 }
 
-// Type of traffic source used in a given inbound rule
-//
-// Deprecated: Source Type will not be returned
-func (o AclTemplateInboundRuleOutput) SourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AclTemplateInboundRule) *string { return v.SourceType }).(pulumi.StringPtrOutput)
-}
-
 // Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
 func (o AclTemplateInboundRuleOutput) SrcPort() pulumi.StringOutput {
 	return o.ApplyT(func(v AclTemplateInboundRule) string { return v.SrcPort }).(pulumi.StringOutput)
@@ -271,13 +248,6 @@ func (o AclTemplateInboundRuleOutput) SrcPort() pulumi.StringOutput {
 // Inbound traffic source IP subnet in CIDR format.
 func (o AclTemplateInboundRuleOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclTemplateInboundRule) *string { return v.Subnet }).(pulumi.StringPtrOutput)
-}
-
-// Inbound traffic source IP subnets in CIDR format.
-//
-// Deprecated: Use Subnet instead
-func (o AclTemplateInboundRuleOutput) Subnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AclTemplateInboundRule) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
 type AclTemplateInboundRuleArrayOutput struct{ *pulumi.OutputState }
@@ -2192,169 +2162,6 @@ func (o DeviceLinkDeviceArrayOutput) Index(i pulumi.IntInput) DeviceLinkDeviceOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceLinkDevice {
 		return vs[0].([]DeviceLinkDevice)[vs[1].(int)]
 	}).(DeviceLinkDeviceOutput)
-}
-
-type DeviceLinkLink struct {
-	// billing account number to be used for connection charges
-	AccountNumber string `pulumi:"accountNumber"`
-	// connection destination metro code.
-	DstMetroCode string `pulumi:"dstMetroCode"`
-	// connection destination zone code is not required.
-	//
-	// Deprecated: DestinationZoneCode is not required
-	DstZoneCode *string `pulumi:"dstZoneCode"`
-	// connection source metro code.
-	SrcMetroCode string `pulumi:"srcMetroCode"`
-	// connection source zone code is not required.
-	//
-	// Deprecated: SourceZoneCode is not required
-	SrcZoneCode *string `pulumi:"srcZoneCode"`
-	// connection throughput.
-	Throughput string `pulumi:"throughput"`
-	// connection throughput unit (Mbps or Gbps).
-	ThroughputUnit string `pulumi:"throughputUnit"`
-}
-
-// DeviceLinkLinkInput is an input type that accepts DeviceLinkLinkArgs and DeviceLinkLinkOutput values.
-// You can construct a concrete instance of `DeviceLinkLinkInput` via:
-//
-//	DeviceLinkLinkArgs{...}
-type DeviceLinkLinkInput interface {
-	pulumi.Input
-
-	ToDeviceLinkLinkOutput() DeviceLinkLinkOutput
-	ToDeviceLinkLinkOutputWithContext(context.Context) DeviceLinkLinkOutput
-}
-
-type DeviceLinkLinkArgs struct {
-	// billing account number to be used for connection charges
-	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
-	// connection destination metro code.
-	DstMetroCode pulumi.StringInput `pulumi:"dstMetroCode"`
-	// connection destination zone code is not required.
-	//
-	// Deprecated: DestinationZoneCode is not required
-	DstZoneCode pulumi.StringPtrInput `pulumi:"dstZoneCode"`
-	// connection source metro code.
-	SrcMetroCode pulumi.StringInput `pulumi:"srcMetroCode"`
-	// connection source zone code is not required.
-	//
-	// Deprecated: SourceZoneCode is not required
-	SrcZoneCode pulumi.StringPtrInput `pulumi:"srcZoneCode"`
-	// connection throughput.
-	Throughput pulumi.StringInput `pulumi:"throughput"`
-	// connection throughput unit (Mbps or Gbps).
-	ThroughputUnit pulumi.StringInput `pulumi:"throughputUnit"`
-}
-
-func (DeviceLinkLinkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceLinkLink)(nil)).Elem()
-}
-
-func (i DeviceLinkLinkArgs) ToDeviceLinkLinkOutput() DeviceLinkLinkOutput {
-	return i.ToDeviceLinkLinkOutputWithContext(context.Background())
-}
-
-func (i DeviceLinkLinkArgs) ToDeviceLinkLinkOutputWithContext(ctx context.Context) DeviceLinkLinkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkLinkOutput)
-}
-
-// DeviceLinkLinkArrayInput is an input type that accepts DeviceLinkLinkArray and DeviceLinkLinkArrayOutput values.
-// You can construct a concrete instance of `DeviceLinkLinkArrayInput` via:
-//
-//	DeviceLinkLinkArray{ DeviceLinkLinkArgs{...} }
-type DeviceLinkLinkArrayInput interface {
-	pulumi.Input
-
-	ToDeviceLinkLinkArrayOutput() DeviceLinkLinkArrayOutput
-	ToDeviceLinkLinkArrayOutputWithContext(context.Context) DeviceLinkLinkArrayOutput
-}
-
-type DeviceLinkLinkArray []DeviceLinkLinkInput
-
-func (DeviceLinkLinkArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeviceLinkLink)(nil)).Elem()
-}
-
-func (i DeviceLinkLinkArray) ToDeviceLinkLinkArrayOutput() DeviceLinkLinkArrayOutput {
-	return i.ToDeviceLinkLinkArrayOutputWithContext(context.Background())
-}
-
-func (i DeviceLinkLinkArray) ToDeviceLinkLinkArrayOutputWithContext(ctx context.Context) DeviceLinkLinkArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkLinkArrayOutput)
-}
-
-type DeviceLinkLinkOutput struct{ *pulumi.OutputState }
-
-func (DeviceLinkLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceLinkLink)(nil)).Elem()
-}
-
-func (o DeviceLinkLinkOutput) ToDeviceLinkLinkOutput() DeviceLinkLinkOutput {
-	return o
-}
-
-func (o DeviceLinkLinkOutput) ToDeviceLinkLinkOutputWithContext(ctx context.Context) DeviceLinkLinkOutput {
-	return o
-}
-
-// billing account number to be used for connection charges
-func (o DeviceLinkLinkOutput) AccountNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v DeviceLinkLink) string { return v.AccountNumber }).(pulumi.StringOutput)
-}
-
-// connection destination metro code.
-func (o DeviceLinkLinkOutput) DstMetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v DeviceLinkLink) string { return v.DstMetroCode }).(pulumi.StringOutput)
-}
-
-// connection destination zone code is not required.
-//
-// Deprecated: DestinationZoneCode is not required
-func (o DeviceLinkLinkOutput) DstZoneCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceLinkLink) *string { return v.DstZoneCode }).(pulumi.StringPtrOutput)
-}
-
-// connection source metro code.
-func (o DeviceLinkLinkOutput) SrcMetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v DeviceLinkLink) string { return v.SrcMetroCode }).(pulumi.StringOutput)
-}
-
-// connection source zone code is not required.
-//
-// Deprecated: SourceZoneCode is not required
-func (o DeviceLinkLinkOutput) SrcZoneCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceLinkLink) *string { return v.SrcZoneCode }).(pulumi.StringPtrOutput)
-}
-
-// connection throughput.
-func (o DeviceLinkLinkOutput) Throughput() pulumi.StringOutput {
-	return o.ApplyT(func(v DeviceLinkLink) string { return v.Throughput }).(pulumi.StringOutput)
-}
-
-// connection throughput unit (Mbps or Gbps).
-func (o DeviceLinkLinkOutput) ThroughputUnit() pulumi.StringOutput {
-	return o.ApplyT(func(v DeviceLinkLink) string { return v.ThroughputUnit }).(pulumi.StringOutput)
-}
-
-type DeviceLinkLinkArrayOutput struct{ *pulumi.OutputState }
-
-func (DeviceLinkLinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeviceLinkLink)(nil)).Elem()
-}
-
-func (o DeviceLinkLinkArrayOutput) ToDeviceLinkLinkArrayOutput() DeviceLinkLinkArrayOutput {
-	return o
-}
-
-func (o DeviceLinkLinkArrayOutput) ToDeviceLinkLinkArrayOutputWithContext(ctx context.Context) DeviceLinkLinkArrayOutput {
-	return o
-}
-
-func (o DeviceLinkLinkArrayOutput) Index(i pulumi.IntInput) DeviceLinkLinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceLinkLink {
-		return vs[0].([]DeviceLinkLink)[vs[1].(int)]
-	}).(DeviceLinkLinkOutput)
 }
 
 type DeviceLinkMetroLink struct {
@@ -5480,8 +5287,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceInterfaceArrayInput)(nil)).Elem(), DeviceInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkDeviceInput)(nil)).Elem(), DeviceLinkDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkDeviceArrayInput)(nil)).Elem(), DeviceLinkDeviceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkLinkInput)(nil)).Elem(), DeviceLinkLinkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkLinkArrayInput)(nil)).Elem(), DeviceLinkLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkMetroLinkInput)(nil)).Elem(), DeviceLinkMetroLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkMetroLinkArrayInput)(nil)).Elem(), DeviceLinkMetroLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceSecondaryDeviceInput)(nil)).Elem(), DeviceSecondaryDeviceArgs{})
@@ -5530,8 +5335,6 @@ func init() {
 	pulumi.RegisterOutputType(DeviceInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(DeviceLinkDeviceOutput{})
 	pulumi.RegisterOutputType(DeviceLinkDeviceArrayOutput{})
-	pulumi.RegisterOutputType(DeviceLinkLinkOutput{})
-	pulumi.RegisterOutputType(DeviceLinkLinkArrayOutput{})
 	pulumi.RegisterOutputType(DeviceLinkMetroLinkOutput{})
 	pulumi.RegisterOutputType(DeviceLinkMetroLinkArrayOutput{})
 	pulumi.RegisterOutputType(DeviceSecondaryDeviceOutput{})

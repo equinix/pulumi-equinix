@@ -14,11 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
-authToken: Optional[str]
-"""
-The Equinix Metal API auth key for API operations
-"""
-
 clientId: Optional[str]
 """
 API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the

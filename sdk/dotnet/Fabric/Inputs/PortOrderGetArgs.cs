@@ -19,18 +19,6 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? CustomerReferenceId { get; set; }
 
         /// <summary>
-        /// Order Identification
-        /// </summary>
-        [Input("orderId")]
-        public Input<string>? OrderId { get; set; }
-
-        /// <summary>
-        /// Order Reference Number
-        /// </summary>
-        [Input("orderNumber")]
-        public Input<string>? OrderNumber { get; set; }
-
-        /// <summary>
         /// Purchase order details
         /// </summary>
         [Input("purchaseOrder")]
@@ -41,12 +29,6 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// </summary>
         [Input("signature")]
         public Input<Inputs.PortOrderSignatureGetArgs>? Signature { get; set; }
-
-        /// <summary>
-        /// Equinix-assigned order identifier, this is a derived response attribute
-        /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
 
         public PortOrderGetArgs()
         {

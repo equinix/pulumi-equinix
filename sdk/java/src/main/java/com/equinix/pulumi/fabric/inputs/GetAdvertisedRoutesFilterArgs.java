@@ -31,14 +31,14 @@ public final class GetAdvertisedRoutesFilterArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
      * 
      */
     public Output<String> property() {
@@ -108,7 +108,7 @@ public final class GetAdvertisedRoutesFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param property possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * @param property possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetAdvertisedRoutesFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param property possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * @param property possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          * 
          * @return builder
          * 

@@ -21,13 +21,6 @@ __config__ = pulumi.Config('equinix')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def auth_token(self) -> Optional[str]:
-        """
-        The Equinix Metal API auth key for API operations
-        """
-        return __config__.get('authToken')
-
-    @property
     def client_id(self) -> Optional[str]:
         """
         API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the

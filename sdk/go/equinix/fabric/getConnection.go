@@ -48,6 +48,8 @@ type LookupConnectionResult struct {
 	Description string `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction string `pulumi:"direction"`
+	// Geographic boundary types
+	GeoScope string `pulumi:"geoScope"`
 	// Connection URI information
 	Href string `pulumi:"href"`
 	// The provider-assigned unique ID for this managed resource.
@@ -143,6 +145,11 @@ func (o LookupConnectionResultOutput) Description() pulumi.StringOutput {
 // Connection directionality from the requester point of view
 func (o LookupConnectionResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Geographic boundary types
+func (o LookupConnectionResultOutput) GeoScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.GeoScope }).(pulumi.StringOutput)
 }
 
 // Connection URI information

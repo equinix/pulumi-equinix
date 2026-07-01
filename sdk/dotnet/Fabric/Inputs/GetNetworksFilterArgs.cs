@@ -25,7 +25,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string> Operator { get; set; } = null!;
 
         /// <summary>
-        /// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+        /// Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;

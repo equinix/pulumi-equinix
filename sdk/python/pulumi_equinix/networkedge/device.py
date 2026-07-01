@@ -91,7 +91,7 @@ class DeviceArgs:
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         """
@@ -545,7 +545,7 @@ class DeviceArgs:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
@@ -663,7 +663,7 @@ class _DeviceState:
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -1285,7 +1285,7 @@ class _DeviceState:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
@@ -1383,6 +1383,19 @@ class Device(pulumi.CustomResource):
 
         * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
         * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
+
+        ## Example: Add a Secondary Device to a Primary Network Device
+
+        Use the `secondary_device` block inside `networkedge.Device` to define the secondary node for a redundant pair.
+        The primary device is configured with top-level arguments, and the secondary device is configured inside `secondary_device {}`.
+
+        ### How it works
+
+        1. Reference the target Network account with `networkedge_get_account`.
+        2. Define the primary device in `resource "networkedge.Device"` and create a single device
+        3. Add a `secondary_device` block with the secondary-specific fields.
+
+        ### Example
 
         ## Example Usage
         ### example 1
@@ -1734,54 +1747,6 @@ class Device(pulumi.CustomResource):
                 "cloud_init_file_id": bluecat_edge_service_point_cloudinit_secondary_file.uuid,
             })
         ```
-        ### example 9
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        panw_cluster = equinix.networkedge.Device("panwCluster",
-            name="tf-panw",
-            metro_code=sv.metro_code,
-            type_code="PA-VM",
-            self_managed=True,
-            byol=True,
-            package_code="VM100",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="11.1.3",
-            interface_count=10,
-            core_count=2,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details={
-                "cluster_name": "tf-panw-cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "hostname": "panw-node0",
-                        "panorama_ip_address": "x.x.x.x",
-                        "panorama_auth_key": "xxxxxxxxxxx",
-                    },
-                    "license_token": "licenseToken",
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "hostname": "panw-node1",
-                        "panorama_ip_address": "x.x.x.x",
-                        "panorama_auth_key": "xxxxxxxxxxx",
-                    },
-                    "license_token": "licenseToken",
-                },
-            })
-        ```
         ### example Aviatrix Transit Edge
         ```python
         import pulumi
@@ -1858,81 +1823,6 @@ class Device(pulumi.CustomResource):
                 },
             })
         ```
-        ### example aruba edgeconnect ha device wth purchase order
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
-            name="TF_Aruba_Edge_Connect",
-            project_id="XXXXX",
-            metro_code=sv.metro_code,
-            type_code="EDGECONNECT-SDWAN",
-            self_managed=True,
-            byol=True,
-            package_code="EC-V",
-            notifications=["test@eq.com"],
-            account_number=sv.number,
-            version="9.4.2.3",
-            core_count=2,
-            term_length=1,
-            additional_bandwidth=50,
-            interface_count=32,
-            acl_template_id="XXXXXXX",
-            purchase_order_number="PO-Primary-Account-123",
-            vendor_configuration={
-                "accountKey": "xxxxx",
-                "accountName": "xxxx",
-                "applianceTag": "tests",
-                "hostname": "test",
-            },
-            secondary_device={
-                "name": "TF_CHECKPOINT",
-                "metro_code": sv.metro_code,
-                "account_number": sv.number,
-                "purchase_order_number": "PO-Secondary-Account-123",
-                "acl_template_id": "XXXXXXX",
-                "notifications": ["test@eq.com"],
-                "vendor_configuration": {
-                    "accountKey": "xxxxx",
-                    "accountName": "xxxx",
-                    "applianceTag": "test",
-                    "hostname": "test",
-                },
-            })
-        ```
-        ### example c8000v byol without default password
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        c8000_v_byol_withtout_default_password = equinix.networkedge.Device("c8000v-byol-withtout-default-password",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            generate_default_password=False,
-            package_code="network-essentials",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
-        ```
         ### example c8000v byol with bandwidth throughput
         ```python
         import pulumi
@@ -1964,241 +1854,6 @@ class Device(pulumi.CustomResource):
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
         ```
-        ### example c8000v byol with bandwidth tier
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        c8000_v_byol_tier = equinix.networkedge.Device("c8000v-byol-tier",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
-        ```
-        ### example c8000v ha with cloud init rest api support
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            generate_default_password=True,
-            package_code="network-essentials",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "csr1000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                },
-                "acl_template_id": "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            })
-        ```
-        ### example c8000v znpd ha dhcp
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            connectivity="PRIVATE",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-                "ipAddressType": "DHCP",
-                "managementInterfaceId": "6",
-            },
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "c8000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                    "ipAddressType": "DHCP",
-                    "managementInterfaceId": "6",
-                },
-            })
-        ```
-        ### example c8000v znpd ha no ip address
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            connectivity="PRIVATE",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-                "ipAddressType": "NO_IP_ADDRESS",
-            },
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "csr8000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                    "ipAddressType": "NO_IP_ADDRESS",
-                },
-            })
-        ```
-        ### example c8000v znpd ha static
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            connectivity="PRIVATE",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-                "ipAddressType": "STATIC",
-                "ipAddress": "x.x.x.x",
-                "gatewayIp": "x.x.x.x",
-                "subnetMaskIp": "x.x.x.x",
-                "managementInterfaceId": "6",
-            },
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "csr8000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                    "ipAddressType": "STATIC",
-                    "ipAddress": "x.x.x.x",
-                    "gatewayIp": "x.x.x.x",
-                    "subnetMaskIp": "x.x.x.x",
-                    "managementInterfaceId": "6",
-                },
-            })
-        ```
         ### example checkpoint single device
         ```python
         import pulumi
@@ -2224,46 +1879,6 @@ class Device(pulumi.CustomResource):
             ssh_key={
                 "username": "XXXXX",
                 "key_name": "XXXXXX",
-            })
-        ```
-        ### example cisco ftd cluster znpd
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        cisco_ftdsv = equinix.networkedge.Device("cisco-FTD-SV",
-            name="TF_Cisco_NGFW_CLUSTER_ZNPD",
-            project_id="XXXXXXX",
-            metro_code=sv.metro_code,
-            type_code="Cisco_NGFW",
-            self_managed=True,
-            connectivity="PRIVATE",
-            byol=True,
-            package_code="FTDv10",
-            notifications=["test@eq.com"],
-            account_number=sv.number,
-            version="7.0.4-55",
-            hostname="test",
-            core_count=4,
-            term_length=1,
-            interface_count=10,
-            cluster_details={
-                "cluster_name": "tf-ftd-cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "hostname": "test",
-                        "activation_key": "XXXXX",
-                        "controller1": "X.X.X.X",
-                        "management_type": "FMC",
-                    },
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "hostname": "test",
-                        "management_type": "FMC",
-                    },
-                },
             })
         ```
         ### example f5xc single
@@ -2295,60 +1910,6 @@ class Device(pulumi.CustomResource):
             vendor_configuration={
                 "token": "XXXXXXXXXX",
                 "hostname": "XXXX",
-            })
-        ```
-        ### example fortigate firewall cluster device znpd static ip
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        f_gvmsv = equinix.networkedge.Device("FGVM-SV",
-            name="tf-fgvm-cluster-static-znpd",
-            metro_code="DC",
-            type_code="FG-VM",
-            project_id="xxxxxxx",
-            self_managed=True,
-            connectivity="PRIVATE",
-            byol=True,
-            package_code="VM02",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=xxxxxx,
-            version="7.6.2",
-            interface_count=10,
-            core_count=2,
-            ssh_key={
-                "username": "sanity1",
-                "key_name": "",
-            },
-            cluster_details={
-                "cluster_name": "tf-fgvm--cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "ip_address": "x.x.x.x",
-                        "subnet_mask_ip": "x.x.x.x",
-                        "gateway_ip": "x.x.x.x",
-                        "management_interface_id": "5",
-                        "hostname": "test",
-                        "ip_address_type": "STATIC",
-                    },
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "ip_address": "x.x.x.x",
-                        "subnet_mask_ip": "x.x.x.x",
-                        "gateway_ip": "x.x.x.x",
-                        "management_interface_id": "5",
-                        "hostname": "test",
-                        "ip_address_type": "STATIC",
-                    },
-                },
             })
         ```
         ### example fortigate firewall ha device znpd dhcp
@@ -2508,46 +2069,6 @@ class Device(pulumi.CustomResource):
                 "controller1": "X.X.X.X",
             })
         ```
-        ### example infoblox cluster device
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
-            name="TF_INFOBLOX",
-            project_id="XXXXXXXXXX",
-            metro_code=sv.metro_code,
-            type_code="INFOBLOX-GRID-MEMBER",
-            self_managed=True,
-            byol=True,
-            package_code="STD",
-            notifications=["test@eq.com"],
-            account_number=sv.number,
-            version="9.0.5",
-            connectivity="PRIVATE",
-            core_count=8,
-            term_length=1,
-            cluster_details={
-                "cluster_name": "tf-infoblox-cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "admin_password": "xxxxxxx",
-                        "ip_address": "X.X.X.X",
-                        "subnet_mask_ip": "X.X.X.X",
-                        "gateway_ip": "X.X.X.X",
-                    },
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "admin_password": "xxxxxxx",
-                        "ip_address": "X.X.X.X",
-                        "subnet_mask_ip": "X.X.X.X",
-                        "gateway_ip": "X.X.X.X",
-                    },
-                },
-            })
-        ```
         ### example infoblox ha device
         ```python
         import pulumi
@@ -2584,6 +2105,42 @@ class Device(pulumi.CustomResource):
                     "ipAddress": "X.X.X.X",
                     "subnetMaskIp": "X.X.X.X",
                     "gatewayIp": "X.X.X.X",
+                },
+            })
+        ```
+        ### example infoblox niosx ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        nios_x_ha = equinix.networkedge.Device("nios-x-ha",
+            name="TF_INFOBLOX-NIOS-X",
+            project_id="xxxxxxx",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-NIOSX",
+            self_managed=True,
+            connectivity="INTERNET-ACCESS",
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="4.0",
+            core_count=3,
+            interface_count=5,
+            term_length=1,
+            vendor_configuration={
+                "hostname": "test",
+                "token": "xxxxx",
+            },
+            secondary_device={
+                "name": "TF_INFOBLOX-NIOS-X-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "hostname": "test",
+                    "token": "xxxxx",
                 },
             })
         ```
@@ -2805,7 +2362,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -2828,6 +2385,19 @@ class Device(pulumi.CustomResource):
 
         * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
         * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
+
+        ## Example: Add a Secondary Device to a Primary Network Device
+
+        Use the `secondary_device` block inside `networkedge.Device` to define the secondary node for a redundant pair.
+        The primary device is configured with top-level arguments, and the secondary device is configured inside `secondary_device {}`.
+
+        ### How it works
+
+        1. Reference the target Network account with `networkedge_get_account`.
+        2. Define the primary device in `resource "networkedge.Device"` and create a single device
+        3. Add a `secondary_device` block with the secondary-specific fields.
+
+        ### Example
 
         ## Example Usage
         ### example 1
@@ -3179,54 +2749,6 @@ class Device(pulumi.CustomResource):
                 "cloud_init_file_id": bluecat_edge_service_point_cloudinit_secondary_file.uuid,
             })
         ```
-        ### example 9
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        panw_cluster = equinix.networkedge.Device("panwCluster",
-            name="tf-panw",
-            metro_code=sv.metro_code,
-            type_code="PA-VM",
-            self_managed=True,
-            byol=True,
-            package_code="VM100",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="11.1.3",
-            interface_count=10,
-            core_count=2,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details={
-                "cluster_name": "tf-panw-cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "hostname": "panw-node0",
-                        "panorama_ip_address": "x.x.x.x",
-                        "panorama_auth_key": "xxxxxxxxxxx",
-                    },
-                    "license_token": "licenseToken",
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "hostname": "panw-node1",
-                        "panorama_ip_address": "x.x.x.x",
-                        "panorama_auth_key": "xxxxxxxxxxx",
-                    },
-                    "license_token": "licenseToken",
-                },
-            })
-        ```
         ### example Aviatrix Transit Edge
         ```python
         import pulumi
@@ -3303,81 +2825,6 @@ class Device(pulumi.CustomResource):
                 },
             })
         ```
-        ### example aruba edgeconnect ha device wth purchase order
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
-            name="TF_Aruba_Edge_Connect",
-            project_id="XXXXX",
-            metro_code=sv.metro_code,
-            type_code="EDGECONNECT-SDWAN",
-            self_managed=True,
-            byol=True,
-            package_code="EC-V",
-            notifications=["test@eq.com"],
-            account_number=sv.number,
-            version="9.4.2.3",
-            core_count=2,
-            term_length=1,
-            additional_bandwidth=50,
-            interface_count=32,
-            acl_template_id="XXXXXXX",
-            purchase_order_number="PO-Primary-Account-123",
-            vendor_configuration={
-                "accountKey": "xxxxx",
-                "accountName": "xxxx",
-                "applianceTag": "tests",
-                "hostname": "test",
-            },
-            secondary_device={
-                "name": "TF_CHECKPOINT",
-                "metro_code": sv.metro_code,
-                "account_number": sv.number,
-                "purchase_order_number": "PO-Secondary-Account-123",
-                "acl_template_id": "XXXXXXX",
-                "notifications": ["test@eq.com"],
-                "vendor_configuration": {
-                    "accountKey": "xxxxx",
-                    "accountName": "xxxx",
-                    "applianceTag": "test",
-                    "hostname": "test",
-                },
-            })
-        ```
-        ### example c8000v byol without default password
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        c8000_v_byol_withtout_default_password = equinix.networkedge.Device("c8000v-byol-withtout-default-password",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            generate_default_password=False,
-            package_code="network-essentials",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
-        ```
         ### example c8000v byol with bandwidth throughput
         ```python
         import pulumi
@@ -3409,241 +2856,6 @@ class Device(pulumi.CustomResource):
             },
             acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
         ```
-        ### example c8000v byol with bandwidth tier
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        c8000_v_byol_tier = equinix.networkedge.Device("c8000v-byol-tier",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b")
-        ```
-        ### example c8000v ha with cloud init rest api support
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            generate_default_password=True,
-            package_code="network-essentials",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-            },
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "csr1000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                },
-                "acl_template_id": "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            })
-        ```
-        ### example c8000v znpd ha dhcp
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            connectivity="PRIVATE",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-                "ipAddressType": "DHCP",
-                "managementInterfaceId": "6",
-            },
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "c8000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                    "ipAddressType": "DHCP",
-                    "managementInterfaceId": "6",
-                },
-            })
-        ```
-        ### example c8000v znpd ha no ip address
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            connectivity="PRIVATE",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-                "ipAddressType": "NO_IP_ADDRESS",
-            },
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "csr8000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                    "ipAddressType": "NO_IP_ADDRESS",
-                },
-            })
-        ```
-        ### example c8000v znpd ha static
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        c8000_v_byol = equinix.networkedge.Device("c8000v-byol",
-            name="tf-c8000v-byol",
-            metro_code=sv.metro_code,
-            type_code="C8000V",
-            self_managed=True,
-            byol=True,
-            package_code="network-essentials",
-            connectivity="PRIVATE",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=sv.number,
-            version="17.11.01a",
-            interface_count=10,
-            core_count=2,
-            tier=1,
-            ssh_key={
-                "username": "test",
-                "key_name": "test-key",
-            },
-            vendor_configuration={
-                "restApiSupportRequirement": "true",
-                "ipAddressType": "STATIC",
-                "ipAddress": "x.x.x.x",
-                "gatewayIp": "x.x.x.x",
-                "subnetMaskIp": "x.x.x.x",
-                "managementInterfaceId": "6",
-            },
-            secondary_device={
-                "name": "tf-c8000v-byol-secondary",
-                "metro_code": sv.metro_code,
-                "hostname": "csr8000v-s",
-                "notifications": [
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                "account_number": sv.number,
-                "vendor_configuration": {
-                    "restApiSupportRequirement": "true",
-                    "ipAddressType": "STATIC",
-                    "ipAddress": "x.x.x.x",
-                    "gatewayIp": "x.x.x.x",
-                    "subnetMaskIp": "x.x.x.x",
-                    "managementInterfaceId": "6",
-                },
-            })
-        ```
         ### example checkpoint single device
         ```python
         import pulumi
@@ -3669,46 +2881,6 @@ class Device(pulumi.CustomResource):
             ssh_key={
                 "username": "XXXXX",
                 "key_name": "XXXXXX",
-            })
-        ```
-        ### example cisco ftd cluster znpd
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        cisco_ftdsv = equinix.networkedge.Device("cisco-FTD-SV",
-            name="TF_Cisco_NGFW_CLUSTER_ZNPD",
-            project_id="XXXXXXX",
-            metro_code=sv.metro_code,
-            type_code="Cisco_NGFW",
-            self_managed=True,
-            connectivity="PRIVATE",
-            byol=True,
-            package_code="FTDv10",
-            notifications=["test@eq.com"],
-            account_number=sv.number,
-            version="7.0.4-55",
-            hostname="test",
-            core_count=4,
-            term_length=1,
-            interface_count=10,
-            cluster_details={
-                "cluster_name": "tf-ftd-cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "hostname": "test",
-                        "activation_key": "XXXXX",
-                        "controller1": "X.X.X.X",
-                        "management_type": "FMC",
-                    },
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "hostname": "test",
-                        "management_type": "FMC",
-                    },
-                },
             })
         ```
         ### example f5xc single
@@ -3740,60 +2912,6 @@ class Device(pulumi.CustomResource):
             vendor_configuration={
                 "token": "XXXXXXXXXX",
                 "hostname": "XXXX",
-            })
-        ```
-        ### example fortigate firewall cluster device znpd static ip
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV",
-            name="account-name")
-        f_gvmsv = equinix.networkedge.Device("FGVM-SV",
-            name="tf-fgvm-cluster-static-znpd",
-            metro_code="DC",
-            type_code="FG-VM",
-            project_id="xxxxxxx",
-            self_managed=True,
-            connectivity="PRIVATE",
-            byol=True,
-            package_code="VM02",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=12,
-            account_number=xxxxxx,
-            version="7.6.2",
-            interface_count=10,
-            core_count=2,
-            ssh_key={
-                "username": "sanity1",
-                "key_name": "",
-            },
-            cluster_details={
-                "cluster_name": "tf-fgvm--cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "ip_address": "x.x.x.x",
-                        "subnet_mask_ip": "x.x.x.x",
-                        "gateway_ip": "x.x.x.x",
-                        "management_interface_id": "5",
-                        "hostname": "test",
-                        "ip_address_type": "STATIC",
-                    },
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "ip_address": "x.x.x.x",
-                        "subnet_mask_ip": "x.x.x.x",
-                        "gateway_ip": "x.x.x.x",
-                        "management_interface_id": "5",
-                        "hostname": "test",
-                        "ip_address_type": "STATIC",
-                    },
-                },
             })
         ```
         ### example fortigate firewall ha device znpd dhcp
@@ -3953,46 +3071,6 @@ class Device(pulumi.CustomResource):
                 "controller1": "X.X.X.X",
             })
         ```
-        ### example infoblox cluster device
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account_output(metro_code="SV")
-        i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
-            name="TF_INFOBLOX",
-            project_id="XXXXXXXXXX",
-            metro_code=sv.metro_code,
-            type_code="INFOBLOX-GRID-MEMBER",
-            self_managed=True,
-            byol=True,
-            package_code="STD",
-            notifications=["test@eq.com"],
-            account_number=sv.number,
-            version="9.0.5",
-            connectivity="PRIVATE",
-            core_count=8,
-            term_length=1,
-            cluster_details={
-                "cluster_name": "tf-infoblox-cluster",
-                "node0": {
-                    "vendor_configuration": {
-                        "admin_password": "xxxxxxx",
-                        "ip_address": "X.X.X.X",
-                        "subnet_mask_ip": "X.X.X.X",
-                        "gateway_ip": "X.X.X.X",
-                    },
-                },
-                "node1": {
-                    "vendor_configuration": {
-                        "admin_password": "xxxxxxx",
-                        "ip_address": "X.X.X.X",
-                        "subnet_mask_ip": "X.X.X.X",
-                        "gateway_ip": "X.X.X.X",
-                    },
-                },
-            })
-        ```
         ### example infoblox ha device
         ```python
         import pulumi
@@ -4029,6 +3107,42 @@ class Device(pulumi.CustomResource):
                     "ipAddress": "X.X.X.X",
                     "subnetMaskIp": "X.X.X.X",
                     "gatewayIp": "X.X.X.X",
+                },
+            })
+        ```
+        ### example infoblox niosx ha device
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        sv = equinix.networkedge.get_account_output(metro_code="SV")
+        nios_x_ha = equinix.networkedge.Device("nios-x-ha",
+            name="TF_INFOBLOX-NIOS-X",
+            project_id="xxxxxxx",
+            metro_code=sv.metro_code,
+            type_code="INFOBLOX-NIOSX",
+            self_managed=True,
+            connectivity="INTERNET-ACCESS",
+            byol=True,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="4.0",
+            core_count=3,
+            interface_count=5,
+            term_length=1,
+            vendor_configuration={
+                "hostname": "test",
+                "token": "xxxxx",
+            },
+            secondary_device={
+                "name": "TF_INFOBLOX-NIOS-X-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
+                "vendor_configuration": {
+                    "hostname": "test",
+                    "token": "xxxxx",
                 },
             })
         ```
@@ -4445,7 +3559,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[int] tier: Select bandwidth tier for your own license, i.e., `0` or `1` or `2` or `3`. Tiers applicable only for C8000V Autonomous or C8000V SDWAN (controller) device types. If not provided, tier is defaulted to '2'.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -4853,7 +3967,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")

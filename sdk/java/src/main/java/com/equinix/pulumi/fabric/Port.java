@@ -17,7 +17,6 @@ import com.equinix.pulumi.fabric.outputs.PortOrder;
 import com.equinix.pulumi.fabric.outputs.PortPhysicalPort;
 import com.equinix.pulumi.fabric.outputs.PortProject;
 import com.equinix.pulumi.fabric.outputs.PortRedundancy;
-import com.equinix.pulumi.fabric.outputs.PortSettings;
 import com.equinix.pulumi.fabric.outputs.PortTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -34,88 +33,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.fabric.Port;
- * import com.pulumi.equinix.fabric.PortArgs;
- * import com.pulumi.equinix.fabric.inputs.PortAccountArgs;
- * import com.pulumi.equinix.fabric.inputs.PortAdditionalInfoArgs;
- * import com.pulumi.equinix.fabric.inputs.PortEncapsulationArgs;
- * import com.pulumi.equinix.fabric.inputs.PortLocationArgs;
- * import com.pulumi.equinix.fabric.inputs.PortNotificationArgs;
- * import com.pulumi.equinix.fabric.inputs.PortPhysicalPortArgs;
- * import com.pulumi.equinix.fabric.inputs.PortProjectArgs;
- * import com.pulumi.equinix.fabric.inputs.PortRedundancyArgs;
- * import com.pulumi.equinix.fabric.inputs.PortSettingsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var order = new Port("order", PortArgs.builder()
- *             .account(PortAccountArgs.builder()
- *                 .account_number("<account_number>")
- *                 .build())
- *             .additionalInfos(PortAdditionalInfoArgs.builder()
- *                 .key("lagType")
- *                 .value("New")
- *                 .build())
- *             .connectivitySourceType("COLO")
- *             .demarcationPointIbx("TR2")
- *             .encapsulation(PortEncapsulationArgs.builder()
- *                 .tag_protocol_id("0x8100")
- *                 .type("DOT1Q")
- *                 .build())
- *             .lagEnabled(true)
- *             .location(PortLocationArgs.builder()
- *                 .metro_code("TR")
- *                 .build())
- *             .notifications(            
- *                 PortNotificationArgs.builder()
- *                     .registered_users("<username>")
- *                     .type("TECHNICAL")
- *                     .build(),
- *                 PortNotificationArgs.builder()
- *                     .registered_users("<username>")
- *                     .type("NOTIFICATION")
- *                     .build())
- *             .physicalPorts(PortPhysicalPortArgs.builder()
- *                 .demarcation_point(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .type("XF_PHYSICAL_PORT")
- *                 .build())
- *             .physicalPortsCount(1)
- *             .physicalPortsSpeed(1000)
- *             .physicalPortsType("1000BASE_LX")
- *             .project(PortProjectArgs.builder()
- *                 .project_id("<project_id>")
- *                 .build())
- *             .redundancy(PortRedundancyArgs.builder()
- *                 .priority("PRIMARY")
- *                 .build())
- *             .settings(PortSettingsArgs.builder()
- *                 .package_type("STANDARD")
- *                 .shared_port_type(false)
- *                 .build())
- *             .type("XF_PORT")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
@@ -140,14 +57,14 @@ public class Port extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="additionalInfos", refs={List.class,PortAdditionalInfo.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<PortAdditionalInfo>> additionalInfos;
+    private Output<List<PortAdditionalInfo>> additionalInfos;
 
     /**
      * @return List of key/value objects to provide additional context to the Port order
      * 
      */
-    public Output<Optional<List<PortAdditionalInfo>>> additionalInfos() {
-        return Codegen.optional(this.additionalInfos);
+    public Output<List<PortAdditionalInfo>> additionalInfos() {
+        return this.additionalInfos;
     }
     /**
      * Details of the last change on the port resource
@@ -196,14 +113,14 @@ public class Port extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="device", refs={PortDevice.class}, tree="[0]")
-    private Output</* @Nullable */ PortDevice> device;
+    private Output<PortDevice> device;
 
     /**
      * @return Port device configuration
      * 
      */
-    public Output<Optional<PortDevice>> device() {
-        return Codegen.optional(this.device);
+    public Output<PortDevice> device() {
+        return this.device;
     }
     /**
      * Port encapsulation settings
@@ -386,20 +303,6 @@ public class Port extends com.pulumi.resources.CustomResource {
      */
     public Output<PortRedundancy> redundancy() {
         return this.redundancy;
-    }
-    /**
-     * Port order configuration settings
-     * 
-     */
-    @Export(name="settings", refs={PortSettings.class}, tree="[0]")
-    private Output<PortSettings> settings;
-
-    /**
-     * @return Port order configuration settings
-     * 
-     */
-    public Output<PortSettings> settings() {
-        return this.settings;
     }
     /**
      * Value representing provisioning status for the port resource
