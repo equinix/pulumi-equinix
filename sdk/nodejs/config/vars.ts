@@ -8,17 +8,6 @@ declare var exports: any;
 const __config = new pulumi.Config("equinix");
 
 /**
- * The Equinix Metal API auth key for API operations
- */
-export declare const authToken: string | undefined;
-Object.defineProperty(exports, "authToken", {
-    get() {
-        return __config.get("authToken");
-    },
-    enumerable: true,
-});
-
-/**
  * API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
  * `EQUINIX_API_CLIENTID` shell environment variable.
  */

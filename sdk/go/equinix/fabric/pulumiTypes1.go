@@ -13,157 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type GetStreamChangeLog struct {
-	// User name of creator of the stream resource
-	CreatedBy string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime string `pulumi:"updatedDateTime"`
-}
-
-// GetStreamChangeLogInput is an input type that accepts GetStreamChangeLogArgs and GetStreamChangeLogOutput values.
-// You can construct a concrete instance of `GetStreamChangeLogInput` via:
-//
-//	GetStreamChangeLogArgs{...}
-type GetStreamChangeLogInput interface {
-	pulumi.Input
-
-	ToGetStreamChangeLogOutput() GetStreamChangeLogOutput
-	ToGetStreamChangeLogOutputWithContext(context.Context) GetStreamChangeLogOutput
-}
-
-type GetStreamChangeLogArgs struct {
-	// User name of creator of the stream resource
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
-}
-
-func (GetStreamChangeLogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
-}
-
-func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
-	return i.ToGetStreamChangeLogOutputWithContext(context.Background())
-}
-
-func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamChangeLogOutput)
-}
-
-type GetStreamChangeLogOutput struct{ *pulumi.OutputState }
-
-func (GetStreamChangeLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
-}
-
-func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
-	return o
-}
-
-func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
-	return o
-}
-
-// User name of creator of the stream resource
-func (o GetStreamChangeLogOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// Email of creator of the stream resource
-func (o GetStreamChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of creator of the stream resource
-func (o GetStreamChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
-}
-
-// Creation time of the stream resource
-func (o GetStreamChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of deleter of the stream resource
-func (o GetStreamChangeLogOutput) DeletedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
-}
-
-// Email of deleter of the stream resource
-func (o GetStreamChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of deleter of the stream resource
-func (o GetStreamChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
-}
-
-// Deletion time of the stream resource
-func (o GetStreamChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of last updater of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// Email of last updater of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of last updater of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
-}
-
-// Last update time of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
-}
-
 type GetStreamProject struct {
 	// Equinix Subscriber-assigned project ID
 	ProjectId string `pulumi:"projectId"`
@@ -2101,7 +1950,6 @@ func (o GetStreamsPaginationOutput) Total() pulumi.IntOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamChangeLogInput)(nil)).Elem(), GetStreamChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamProjectInput)(nil)).Elem(), GetStreamProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionChangeLogInput)(nil)).Elem(), GetStreamSubscriptionChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionEventSelectorInput)(nil)).Elem(), GetStreamSubscriptionEventSelectorArgs{})
@@ -2123,7 +1971,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataChangeLogInput)(nil)).Elem(), GetStreamsDataChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataProjectInput)(nil)).Elem(), GetStreamsDataProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsPaginationInput)(nil)).Elem(), GetStreamsPaginationArgs{})
-	pulumi.RegisterOutputType(GetStreamChangeLogOutput{})
 	pulumi.RegisterOutputType(GetStreamProjectOutput{})
 	pulumi.RegisterOutputType(GetStreamSubscriptionChangeLogOutput{})
 	pulumi.RegisterOutputType(GetStreamSubscriptionEventSelectorOutput{})

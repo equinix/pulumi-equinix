@@ -14,7 +14,6 @@ import com.equinix.pulumi.fabric.inputs.PortOrderArgs;
 import com.equinix.pulumi.fabric.inputs.PortPhysicalPortArgs;
 import com.equinix.pulumi.fabric.inputs.PortProjectArgs;
 import com.equinix.pulumi.fabric.inputs.PortRedundancyArgs;
-import com.equinix.pulumi.fabric.inputs.PortSettingsArgs;
 import com.equinix.pulumi.fabric.inputs.PortTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -317,21 +316,6 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port order configuration settings
-     * 
-     */
-    @Import(name="settings")
-    private @Nullable Output<PortSettingsArgs> settings;
-
-    /**
-     * @return Port order configuration settings
-     * 
-     */
-    public Optional<Output<PortSettingsArgs>> settings() {
-        return Optional.ofNullable(this.settings);
-    }
-
-    /**
      * Value representing provisioning status for the port resource
      * 
      */
@@ -405,7 +389,6 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
         this.physicalPortsType = $.physicalPortsType;
         this.project = $.project;
         this.redundancy = $.redundancy;
-        this.settings = $.settings;
         this.state = $.state;
         this.timeouts = $.timeouts;
         this.type = $.type;
@@ -857,27 +840,6 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder redundancy(PortRedundancyArgs redundancy) {
             return redundancy(Output.of(redundancy));
-        }
-
-        /**
-         * @param settings Port order configuration settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(@Nullable Output<PortSettingsArgs> settings) {
-            $.settings = settings;
-            return this;
-        }
-
-        /**
-         * @param settings Port order configuration settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(PortSettingsArgs settings) {
-            return settings(Output.of(settings));
         }
 
         /**

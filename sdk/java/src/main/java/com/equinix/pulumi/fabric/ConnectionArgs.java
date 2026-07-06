@@ -88,6 +88,21 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Geographic boundary types
+     * 
+     */
+    @Import(name="geoScope")
+    private @Nullable Output<String> geoScope;
+
+    /**
+     * @return Geographic boundary types
+     * 
+     */
+    public Optional<Output<String>> geoScope() {
+        return Optional.ofNullable(this.geoScope);
+    }
+
+    /**
      * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
@@ -199,6 +214,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.additionalInfo = $.additionalInfo;
         this.bandwidth = $.bandwidth;
         this.description = $.description;
+        this.geoScope = $.geoScope;
         this.name = $.name;
         this.notifications = $.notifications;
         this.order = $.order;
@@ -318,6 +334,27 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param geoScope Geographic boundary types
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoScope(@Nullable Output<String> geoScope) {
+            $.geoScope = geoScope;
+            return this;
+        }
+
+        /**
+         * @param geoScope Geographic boundary types
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoScope(String geoScope) {
+            return geoScope(Output.of(geoScope));
         }
 
         /**

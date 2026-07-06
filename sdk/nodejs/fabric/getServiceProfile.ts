@@ -114,7 +114,7 @@ export interface GetServiceProfileResult {
      */
     readonly project: outputs.fabric.GetServiceProfileProject;
     /**
-     * Self Profile indicating if the profile is created for customer's  self use
+     * Self Profile indicating if the profile is created for customer's self use
      */
     readonly selfProfile: boolean;
     /**

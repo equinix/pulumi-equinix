@@ -75,18 +75,10 @@ type AclTemplate struct {
 	DeviceAclStatus pulumi.StringOutput `pulumi:"deviceAclStatus"`
 	// List of the devices where the ACL template is applied.
 	DeviceDetails AclTemplateDeviceDetailArrayOutput `pulumi:"deviceDetails"`
-	// (Deprecated) Identifier of a network device where template was applied.
-	//
-	// Deprecated: Refer to device details get device information
-	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules AclTemplateInboundRuleArrayOutput `pulumi:"inboundRules"`
-	// ACL template location metro code.
-	//
-	// Deprecated: Metro Code is no longer required
-	MetroCode pulumi.StringPtrOutput `pulumi:"metroCode"`
 	// ACL template name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
@@ -134,18 +126,10 @@ type aclTemplateState struct {
 	DeviceAclStatus *string `pulumi:"deviceAclStatus"`
 	// List of the devices where the ACL template is applied.
 	DeviceDetails []AclTemplateDeviceDetail `pulumi:"deviceDetails"`
-	// (Deprecated) Identifier of a network device where template was applied.
-	//
-	// Deprecated: Refer to device details get device information
-	DeviceId *string `pulumi:"deviceId"`
 	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules []AclTemplateInboundRule `pulumi:"inboundRules"`
-	// ACL template location metro code.
-	//
-	// Deprecated: Metro Code is no longer required
-	MetroCode *string `pulumi:"metroCode"`
 	// ACL template name.
 	Name *string `pulumi:"name"`
 	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
@@ -161,18 +145,10 @@ type AclTemplateState struct {
 	DeviceAclStatus pulumi.StringPtrInput
 	// List of the devices where the ACL template is applied.
 	DeviceDetails AclTemplateDeviceDetailArrayInput
-	// (Deprecated) Identifier of a network device where template was applied.
-	//
-	// Deprecated: Refer to device details get device information
-	DeviceId pulumi.StringPtrInput
 	// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules AclTemplateInboundRuleArrayInput
-	// ACL template location metro code.
-	//
-	// Deprecated: Metro Code is no longer required
-	MetroCode pulumi.StringPtrInput
 	// ACL template name.
 	Name pulumi.StringPtrInput
 	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
@@ -192,10 +168,6 @@ type aclTemplateArgs struct {
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules []AclTemplateInboundRule `pulumi:"inboundRules"`
-	// ACL template location metro code.
-	//
-	// Deprecated: Metro Code is no longer required
-	MetroCode *string `pulumi:"metroCode"`
 	// ACL template name.
 	Name *string `pulumi:"name"`
 	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
@@ -210,10 +182,6 @@ type AclTemplateArgs struct {
 	//
 	// The `inboundRule` block has below fields:
 	InboundRules AclTemplateInboundRuleArrayInput
-	// ACL template location metro code.
-	//
-	// Deprecated: Metro Code is no longer required
-	MetroCode pulumi.StringPtrInput
 	// ACL template name.
 	Name pulumi.StringPtrInput
 	// Unique Identifier for the project resource where the acl template is scoped to.If you leave it out, the ACL template will be created under the default project id of your organization.
@@ -322,25 +290,11 @@ func (o AclTemplateOutput) DeviceDetails() AclTemplateDeviceDetailArrayOutput {
 	return o.ApplyT(func(v *AclTemplate) AclTemplateDeviceDetailArrayOutput { return v.DeviceDetails }).(AclTemplateDeviceDetailArrayOutput)
 }
 
-// (Deprecated) Identifier of a network device where template was applied.
-//
-// Deprecated: Refer to device details get device information
-func (o AclTemplateOutput) DeviceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AclTemplate) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
-}
-
 // One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
 //
 // The `inboundRule` block has below fields:
 func (o AclTemplateOutput) InboundRules() AclTemplateInboundRuleArrayOutput {
 	return o.ApplyT(func(v *AclTemplate) AclTemplateInboundRuleArrayOutput { return v.InboundRules }).(AclTemplateInboundRuleArrayOutput)
-}
-
-// ACL template location metro code.
-//
-// Deprecated: Metro Code is no longer required
-func (o AclTemplateOutput) MetroCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AclTemplate) pulumi.StringPtrOutput { return v.MetroCode }).(pulumi.StringPtrOutput)
 }
 
 // ACL template name.

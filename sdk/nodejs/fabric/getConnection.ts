@@ -64,6 +64,10 @@ export interface GetConnectionResult {
      */
     readonly direction: string;
     /**
+     * Geographic boundary types
+     */
+    readonly geoScope: string;
+    /**
      * Connection URI information
      */
     readonly href: string;

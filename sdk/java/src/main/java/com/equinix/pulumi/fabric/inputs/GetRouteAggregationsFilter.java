@@ -30,14 +30,14 @@ public final class GetRouteAggregationsFilter extends com.pulumi.resources.Invok
     }
 
     /**
-     * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * Field name to use on filters
      * 
      */
     @Import(name="property", required=true)
     private String property;
 
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return Field name to use on filters
      * 
      */
     public String property() {
@@ -97,7 +97,7 @@ public final class GetRouteAggregationsFilter extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param property possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * @param property Field name to use on filters
          * 
          * @return builder
          * 

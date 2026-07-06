@@ -11,13 +11,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The Equinix Metal API auth key for API operations
-//
-// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-func GetAuthToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "equinix:authToken")
-}
-
 // API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
 // `EQUINIX_API_CLIENTID` shell environment variable.
 func GetClientId(ctx *pulumi.Context) string {

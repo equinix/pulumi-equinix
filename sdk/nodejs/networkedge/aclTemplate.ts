@@ -88,23 +88,11 @@ export class AclTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly deviceDetails!: pulumi.Output<outputs.networkedge.AclTemplateDeviceDetail[]>;
     /**
-     * (Deprecated) Identifier of a network device where template was applied.
-     *
-     * @deprecated Refer to device details get device information
-     */
-    public /*out*/ readonly deviceId!: pulumi.Output<string>;
-    /**
      * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      *
      * The `inboundRule` block has below fields:
      */
     public readonly inboundRules!: pulumi.Output<outputs.networkedge.AclTemplateInboundRule[]>;
-    /**
-     * ACL template location metro code.
-     *
-     * @deprecated Metro Code is no longer required
-     */
-    public readonly metroCode!: pulumi.Output<string | undefined>;
     /**
      * ACL template name.
      */
@@ -134,9 +122,7 @@ export class AclTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["deviceAclStatus"] = state ? state.deviceAclStatus : undefined;
             resourceInputs["deviceDetails"] = state ? state.deviceDetails : undefined;
-            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
             resourceInputs["inboundRules"] = state ? state.inboundRules : undefined;
-            resourceInputs["metroCode"] = state ? state.metroCode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
@@ -147,12 +133,10 @@ export class AclTemplate extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["inboundRules"] = args ? args.inboundRules : undefined;
-            resourceInputs["metroCode"] = args ? args.metroCode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["deviceAclStatus"] = undefined /*out*/;
             resourceInputs["deviceDetails"] = undefined /*out*/;
-            resourceInputs["deviceId"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -177,23 +161,11 @@ export interface AclTemplateState {
      */
     deviceDetails?: pulumi.Input<pulumi.Input<inputs.networkedge.AclTemplateDeviceDetail>[]>;
     /**
-     * (Deprecated) Identifier of a network device where template was applied.
-     *
-     * @deprecated Refer to device details get device information
-     */
-    deviceId?: pulumi.Input<string>;
-    /**
      * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      *
      * The `inboundRule` block has below fields:
      */
     inboundRules?: pulumi.Input<pulumi.Input<inputs.networkedge.AclTemplateInboundRule>[]>;
-    /**
-     * ACL template location metro code.
-     *
-     * @deprecated Metro Code is no longer required
-     */
-    metroCode?: pulumi.Input<string>;
     /**
      * ACL template name.
      */
@@ -222,12 +194,6 @@ export interface AclTemplateArgs {
      * The `inboundRule` block has below fields:
      */
     inboundRules: pulumi.Input<pulumi.Input<inputs.networkedge.AclTemplateInboundRule>[]>;
-    /**
-     * ACL template location metro code.
-     *
-     * @deprecated Metro Code is no longer required
-     */
-    metroCode?: pulumi.Input<string>;
     /**
      * ACL template name.
      */

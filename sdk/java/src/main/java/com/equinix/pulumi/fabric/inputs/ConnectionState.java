@@ -136,6 +136,21 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Geographic boundary types
+     * 
+     */
+    @Import(name="geoScope")
+    private @Nullable Output<String> geoScope;
+
+    /**
+     * @return Geographic boundary types
+     * 
+     */
+    public Optional<Output<String>> geoScope() {
+        return Optional.ofNullable(this.geoScope);
+    }
+
+    /**
      * Connection URI information
      * 
      */
@@ -325,6 +340,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.changeLog = $.changeLog;
         this.description = $.description;
         this.direction = $.direction;
+        this.geoScope = $.geoScope;
         this.href = $.href;
         this.isRemote = $.isRemote;
         this.name = $.name;
@@ -512,6 +528,27 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder direction(String direction) {
             return direction(Output.of(direction));
+        }
+
+        /**
+         * @param geoScope Geographic boundary types
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoScope(@Nullable Output<String> geoScope) {
+            $.geoScope = geoScope;
+            return this;
+        }
+
+        /**
+         * @param geoScope Geographic boundary types
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoScope(String geoScope) {
+            return geoScope(Output.of(geoScope));
         }
 
         /**

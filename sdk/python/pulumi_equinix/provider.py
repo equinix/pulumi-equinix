@@ -19,7 +19,6 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 auth_token: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
@@ -34,7 +33,6 @@ class ProviderArgs:
                  token_exchange_subject_token_env_var: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] auth_token: The Equinix Metal API auth key for API operations
         :param pulumi.Input[str] client_id: API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
                `EQUINIX_API_CLIENTID` shell environment variable.
         :param pulumi.Input[str] client_secret: API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
@@ -65,11 +63,6 @@ class ProviderArgs:
                `EQUINIX_TOKEN_EXCHANGE_SUBJECT_TOKEN`). Please note that token exchange is an alpha feature and not available for all
                users.
         """
-        if auth_token is not None:
-            warnings.warn("""Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""", DeprecationWarning)
-            pulumi.log.warn("""auth_token is deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""")
-        if auth_token is not None:
-            pulumi.set(__self__, "auth_token", auth_token)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -94,19 +87,6 @@ class ProviderArgs:
             pulumi.set(__self__, "token_exchange_subject_token", token_exchange_subject_token)
         if token_exchange_subject_token_env_var is not None:
             pulumi.set(__self__, "token_exchange_subject_token_env_var", token_exchange_subject_token_env_var)
-
-    @property
-    @pulumi.getter(name="authToken")
-    @_utilities.deprecated("""Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""")
-    def auth_token(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Equinix Metal API auth key for API operations
-        """
-        return pulumi.get(self, "auth_token")
-
-    @auth_token.setter
-    def auth_token(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "auth_token", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -275,7 +255,6 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_token: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
@@ -297,7 +276,6 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auth_token: The Equinix Metal API auth key for API operations
         :param pulumi.Input[str] client_id: API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
                `EQUINIX_API_CLIENTID` shell environment variable.
         :param pulumi.Input[str] client_secret: API Consumer secret available under "My Apps" in developer portal. This argument can also be specified with the
@@ -355,7 +333,6 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_token: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
@@ -377,7 +354,6 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__.__dict__["auth_token"] = auth_token
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = client_secret
             __props__.__dict__["endpoint"] = endpoint
@@ -395,15 +371,6 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
-
-    @property
-    @pulumi.getter(name="authToken")
-    @_utilities.deprecated("""Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.""")
-    def auth_token(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Equinix Metal API auth key for API operations
-        """
-        return pulumi.get(self, "auth_token")
 
     @property
     @pulumi.getter(name="clientId")

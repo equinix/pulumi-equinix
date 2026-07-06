@@ -3,12 +3,10 @@
 
 // Export sub-modules:
 import * as fabric from "./fabric";
-import * as metal from "./metal";
 import * as networkedge from "./networkedge";
 
 export {
     fabric,
-    metal,
     networkedge,
 };
 

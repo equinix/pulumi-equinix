@@ -30,6 +30,7 @@ class ConnectionArgs:
                  z_side: pulumi.Input['ConnectionZSideArgs'],
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 geo_scope: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
                  project: Optional[pulumi.Input['ConnectionProjectArgs']] = None,
@@ -43,6 +44,7 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] additional_info: Connection additional information
         :param pulumi.Input[str] description: Customer-provided connection description
+        :param pulumi.Input[str] geo_scope: Geographic boundary types
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input['ConnectionOrderArgs'] order: Order details
         :param pulumi.Input['ConnectionProjectArgs'] project: Project information
@@ -57,6 +59,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "additional_info", additional_info)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if geo_scope is not None:
+            pulumi.set(__self__, "geo_scope", geo_scope)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if order is not None:
@@ -151,6 +155,18 @@ class ConnectionArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="geoScope")
+    def geo_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Geographic boundary types
+        """
+        return pulumi.get(self, "geo_scope")
+
+    @geo_scope.setter
+    def geo_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "geo_scope", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -209,6 +225,7 @@ class _ConnectionState:
                  change_log: Optional[pulumi.Input['ConnectionChangeLogArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
+                 geo_scope: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  is_remote: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -230,6 +247,7 @@ class _ConnectionState:
         :param pulumi.Input['ConnectionChangeLogArgs'] change_log: Captures connection lifecycle change information
         :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
+        :param pulumi.Input[str] geo_scope: Geographic boundary types
         :param pulumi.Input[str] href: Connection URI information
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -257,6 +275,8 @@ class _ConnectionState:
             pulumi.set(__self__, "description", description)
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
+        if geo_scope is not None:
+            pulumi.set(__self__, "geo_scope", geo_scope)
         if href is not None:
             pulumi.set(__self__, "href", href)
         if is_remote is not None:
@@ -365,6 +385,18 @@ class _ConnectionState:
     @direction.setter
     def direction(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter(name="geoScope")
+    def geo_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Geographic boundary types
+        """
+        return pulumi.get(self, "geo_scope")
+
+    @geo_scope.setter
+    def geo_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "geo_scope", value)
 
     @property
     @pulumi.getter
@@ -520,6 +552,7 @@ class Connection(pulumi.CustomResource):
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 geo_scope: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]]] = None,
                  order: Optional[pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']]] = None,
@@ -569,40 +602,6 @@ class Connection(pulumi.CustomResource):
                     "location": {
                         "metro_code": equinix.Metro.SILICON_VALLEY,
                     },
-                },
-            })
-        ```
-        ### example fcr to metal
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        fcr2_metal = equinix.fabric.Connection("fcr2metal",
-            name="ConnectionName",
-            type="IP_VC",
-            notifications=[{
-                "type": equinix.fabric.NotificationsType.ALL,
-                "emails": [
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            }],
-            bandwidth=50,
-            order={
-                "purchase_order_number": "1-323292",
-            },
-            a_side={
-                "access_point": {
-                    "type": "CLOUD_ROUTER",
-                    "router": {
-                        "uuid": "<cloud_router_uuid>",
-                    },
-                },
-            },
-            z_side={
-                "access_point": {
-                    "type": "METAL_NETWORK",
-                    "authentication_key": "<metal_authorization_code>",
                 },
             })
         ```
@@ -678,46 +677,6 @@ class Connection(pulumi.CustomResource):
                     "link_protocol": {
                         "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
                         "vlan_tag": 2711,
-                    },
-                    "location": {
-                        "metro_code": equinix.Metro.SILICON_VALLEY,
-                    },
-                },
-            })
-        ```
-        ### example metal to aws
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        metal2_aws = equinix.fabric.Connection("metal2aws",
-            name="ConnectionName",
-            type="EVPLAN_VC",
-            notifications=[{
-                "type": equinix.fabric.NotificationsType.ALL,
-                "emails": [
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            }],
-            bandwidth=50,
-            order={
-                "purchase_order_number": "1-323292",
-            },
-            a_side={
-                "access_point": {
-                    "type": "METAL_NETWORK",
-                    "authentication_key": "<metal_authorization_code>",
-                },
-            },
-            z_side={
-                "access_point": {
-                    "type": equinix.fabric.AccessPointType.SP,
-                    "authentication_key": "<aws_account_id>",
-                    "seller_region": "us-west-1",
-                    "profile": {
-                        "type": equinix.fabric.ProfileType.L2_PROFILE,
-                        "uuid": "<service_profile_uuid>",
                     },
                     "location": {
                         "metro_code": equinix.Metro.SILICON_VALLEY,
@@ -1354,6 +1313,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[str] description: Customer-provided connection description
+        :param pulumi.Input[str] geo_scope: Geographic boundary types
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']] order: Order details
@@ -1409,40 +1369,6 @@ class Connection(pulumi.CustomResource):
                     "location": {
                         "metro_code": equinix.Metro.SILICON_VALLEY,
                     },
-                },
-            })
-        ```
-        ### example fcr to metal
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        fcr2_metal = equinix.fabric.Connection("fcr2metal",
-            name="ConnectionName",
-            type="IP_VC",
-            notifications=[{
-                "type": equinix.fabric.NotificationsType.ALL,
-                "emails": [
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            }],
-            bandwidth=50,
-            order={
-                "purchase_order_number": "1-323292",
-            },
-            a_side={
-                "access_point": {
-                    "type": "CLOUD_ROUTER",
-                    "router": {
-                        "uuid": "<cloud_router_uuid>",
-                    },
-                },
-            },
-            z_side={
-                "access_point": {
-                    "type": "METAL_NETWORK",
-                    "authentication_key": "<metal_authorization_code>",
                 },
             })
         ```
@@ -1518,46 +1444,6 @@ class Connection(pulumi.CustomResource):
                     "link_protocol": {
                         "type": equinix.fabric.AccessPointLinkProtocolType.DOT1Q,
                         "vlan_tag": 2711,
-                    },
-                    "location": {
-                        "metro_code": equinix.Metro.SILICON_VALLEY,
-                    },
-                },
-            })
-        ```
-        ### example metal to aws
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        metal2_aws = equinix.fabric.Connection("metal2aws",
-            name="ConnectionName",
-            type="EVPLAN_VC",
-            notifications=[{
-                "type": equinix.fabric.NotificationsType.ALL,
-                "emails": [
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                ],
-            }],
-            bandwidth=50,
-            order={
-                "purchase_order_number": "1-323292",
-            },
-            a_side={
-                "access_point": {
-                    "type": "METAL_NETWORK",
-                    "authentication_key": "<metal_authorization_code>",
-                },
-            },
-            z_side={
-                "access_point": {
-                    "type": equinix.fabric.AccessPointType.SP,
-                    "authentication_key": "<aws_account_id>",
-                    "seller_region": "us-west-1",
-                    "profile": {
-                        "type": equinix.fabric.ProfileType.L2_PROFILE,
-                        "uuid": "<service_profile_uuid>",
                     },
                     "location": {
                         "metro_code": equinix.Metro.SILICON_VALLEY,
@@ -2207,6 +2093,7 @@ class Connection(pulumi.CustomResource):
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 geo_scope: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionNotificationArgs', 'ConnectionNotificationArgsDict']]]]] = None,
                  order: Optional[pulumi.Input[Union['ConnectionOrderArgs', 'ConnectionOrderArgsDict']]] = None,
@@ -2231,6 +2118,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["description"] = description
+            __props__.__dict__["geo_scope"] = geo_scope
             __props__.__dict__["name"] = name
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
@@ -2269,6 +2157,7 @@ class Connection(pulumi.CustomResource):
             change_log: Optional[pulumi.Input[Union['ConnectionChangeLogArgs', 'ConnectionChangeLogArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             direction: Optional[pulumi.Input[str]] = None,
+            geo_scope: Optional[pulumi.Input[str]] = None,
             href: Optional[pulumi.Input[str]] = None,
             is_remote: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -2295,6 +2184,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionChangeLogArgs', 'ConnectionChangeLogArgsDict']] change_log: Captures connection lifecycle change information
         :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
+        :param pulumi.Input[str] geo_scope: Geographic boundary types
         :param pulumi.Input[str] href: Connection URI information
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -2319,6 +2209,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["change_log"] = change_log
         __props__.__dict__["description"] = description
         __props__.__dict__["direction"] = direction
+        __props__.__dict__["geo_scope"] = geo_scope
         __props__.__dict__["href"] = href
         __props__.__dict__["is_remote"] = is_remote
         __props__.__dict__["name"] = name
@@ -2388,6 +2279,14 @@ class Connection(pulumi.CustomResource):
         Connection directionality from the requester point of view
         """
         return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter(name="geoScope")
+    def geo_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        Geographic boundary types
+        """
+        return pulumi.get(self, "geo_scope")
 
     @property
     @pulumi.getter

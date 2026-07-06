@@ -18,7 +18,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string Operator;
         /// <summary>
-        /// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+        /// possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
         /// </summary>
         public readonly string Property;
         /// <summary>

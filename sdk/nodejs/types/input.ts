@@ -1027,7 +1027,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          */
         property: string;
         /**
@@ -1042,7 +1042,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          */
         property: pulumi.Input<string>;
         /**
@@ -1257,7 +1257,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: string;
         /**
@@ -1276,7 +1276,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: pulumi.Input<string>;
         /**
@@ -1385,7 +1385,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+         * Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
          */
         property: string;
         /**
@@ -1404,7 +1404,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+         * Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
          */
         property: pulumi.Input<string>;
         /**
@@ -1685,7 +1685,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          */
         property: string;
         /**
@@ -1700,7 +1700,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
          */
         property: pulumi.Input<string>;
         /**
@@ -1829,7 +1829,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * Field name to use on filters
          */
         property: string;
         /**
@@ -1844,7 +1844,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+         * Field name to use on filters
          */
         property: pulumi.Input<string>;
         /**
@@ -1905,7 +1905,7 @@ export namespace fabric {
          */
         direction?: string;
         /**
-         * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         * The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
          */
         property?: string;
     }
@@ -1916,7 +1916,7 @@ export namespace fabric {
          */
         direction?: pulumi.Input<string>;
         /**
-         * The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+         * The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
          */
         property?: pulumi.Input<string>;
     }
@@ -2607,11 +2607,11 @@ export namespace fabric {
         /**
          * The key name of the key/value pair
          */
-        key: pulumi.Input<string>;
+        key?: pulumi.Input<string>;
         /**
          * The value of the key/value pair
          */
-        value: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 
     export interface PortChangeLog {
@@ -2722,14 +2722,6 @@ export namespace fabric {
          */
         customerReferenceId?: pulumi.Input<string>;
         /**
-         * Order Identification
-         */
-        orderId?: pulumi.Input<string>;
-        /**
-         * Order Reference Number
-         */
-        orderNumber?: pulumi.Input<string>;
-        /**
          * Purchase order details
          */
         purchaseOrder?: pulumi.Input<inputs.fabric.PortOrderPurchaseOrder>;
@@ -2737,10 +2729,6 @@ export namespace fabric {
          * Port order confirmation signature details
          */
         signature?: pulumi.Input<inputs.fabric.PortOrderSignature>;
-        /**
-         * Equinix-assigned order identifier, this is a derived response attribute
-         */
-        uuid?: pulumi.Input<string>;
     }
 
     export interface PortOrderPurchaseOrder {
@@ -2853,17 +2841,6 @@ export namespace fabric {
          * Port redundancy priority value
          */
         priority: pulumi.Input<string>;
-    }
-
-    export interface PortSettings {
-        /**
-         * Billing package for the port being ordered
-         */
-        packageType: pulumi.Input<string>;
-        /**
-         * Indicates whether this is a dedicated customer cage or a shared neutral cage
-         */
-        sharedPortType: pulumi.Input<boolean>;
     }
 
     export interface PortTimeouts {
@@ -4985,335 +4962,6 @@ export namespace fabric {
     }
 }
 
-export namespace metal {
-    export interface DeviceBehavior {
-        /**
-         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`
-         */
-        allowChanges?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface DeviceIpAddress {
-        /**
-         * CIDR suffix for IP block assigned to this device
-         */
-        cidr?: pulumi.Input<number>;
-        /**
-         * IDs of reservations to pick the blocks from
-         */
-        reservationIds?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * one of public*ipv4,private*ipv4,public_ipv6
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface DeviceNetwork {
-        /**
-         * IPv4 or IPv6 address string
-         */
-        address?: pulumi.Input<string>;
-        /**
-         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses
-         */
-        cidr?: pulumi.Input<number>;
-        /**
-         * IP version - "4" or "6"
-         */
-        family?: pulumi.Input<number>;
-        /**
-         * Address of router
-         */
-        gateway?: pulumi.Input<string>;
-        /**
-         * Whether the address is routable from the Internet
-         */
-        public?: pulumi.Input<boolean>;
-    }
-
-    export interface DevicePort {
-        /**
-         * Whether this port is part of a bond in bonded network setup
-         */
-        bonded?: pulumi.Input<boolean>;
-        /**
-         * The ID of the device
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * MAC address assigned to the port
-         */
-        mac?: pulumi.Input<string>;
-        /**
-         * Name of the port (e.g. eth0, or bond0)
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * One of [private_ipv4, public_ipv4, publicIpv6]
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface DeviceReinstall {
-        /**
-         * Whether the OS disk should be filled with `00h` bytes before reinstall
-         */
-        deprovisionFast?: pulumi.Input<boolean>;
-        /**
-         * Whether the device should be reinstalled instead of destroyed
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Whether the non-OS disks should be kept or wiped during reinstall
-         */
-        preserveData?: pulumi.Input<boolean>;
-    }
-
-    export interface GatewayTimeouts {
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-         */
-        delete?: pulumi.Input<string>;
-    }
-
-    export interface GetDevicesFilter {
-        /**
-         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
-         *
-         * All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
-         */
-        all?: boolean;
-        /**
-         * The attribute used to filter. Filter attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
-         */
-        matchBy?: string;
-        /**
-         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
-         */
-        values: string[];
-    }
-
-    export interface GetDevicesFilterArgs {
-        /**
-         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
-         *
-         * All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
-         */
-        all?: pulumi.Input<boolean>;
-        /**
-         * The attribute used to filter. Filter attributes are case-sensitive
-         */
-        attribute: pulumi.Input<string>;
-        /**
-         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
-         */
-        matchBy?: pulumi.Input<string>;
-        /**
-         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetDevicesSort {
-        /**
-         * The attribute used to sort the results. Sort attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
-         */
-        direction?: string;
-    }
-
-    export interface GetDevicesSortArgs {
-        /**
-         * The attribute used to sort the results. Sort attributes are case-sensitive
-         */
-        attribute: pulumi.Input<string>;
-        /**
-         * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
-         */
-        direction?: pulumi.Input<string>;
-    }
-
-    export interface GetFacilityCapacity {
-        /**
-         * Device plan that must be available in selected location.
-         */
-        plan: string;
-        /**
-         * Minimun number of devices that must be available in selected location. Default is `1`.
-         */
-        quantity?: number;
-    }
-
-    export interface GetFacilityCapacityArgs {
-        /**
-         * Device plan that must be available in selected location.
-         */
-        plan: pulumi.Input<string>;
-        /**
-         * Minimun number of devices that must be available in selected location. Default is `1`.
-         */
-        quantity?: pulumi.Input<number>;
-    }
-
-    export interface GetMetroCapacity {
-        /**
-         * Device plan that must be available in selected location.
-         */
-        plan: string;
-        /**
-         * Minimum number of devices that must be available in selected location. Default is `1`.
-         */
-        quantity?: number;
-    }
-
-    export interface GetMetroCapacityArgs {
-        /**
-         * Device plan that must be available in selected location.
-         */
-        plan: pulumi.Input<string>;
-        /**
-         * Minimum number of devices that must be available in selected location. Default is `1`.
-         */
-        quantity?: pulumi.Input<number>;
-    }
-
-    export interface GetPlansFilter {
-        /**
-         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
-         *
-         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
-         */
-        all?: boolean;
-        /**
-         * The attribute used to filter. Filter attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
-         */
-        matchBy?: string;
-        /**
-         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
-         */
-        values: string[];
-    }
-
-    export interface GetPlansFilterArgs {
-        /**
-         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
-         *
-         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
-         */
-        all?: pulumi.Input<boolean>;
-        /**
-         * The attribute used to filter. Filter attributes are case-sensitive
-         */
-        attribute: pulumi.Input<string>;
-        /**
-         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
-         */
-        matchBy?: pulumi.Input<string>;
-        /**
-         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetPlansSort {
-        /**
-         * The attribute used to sort the results. Sort attributes are case-sensitive
-         */
-        attribute: string;
-        /**
-         * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
-         */
-        direction?: string;
-    }
-
-    export interface GetPlansSortArgs {
-        /**
-         * The attribute used to sort the results. Sort attributes are case-sensitive
-         */
-        attribute: pulumi.Input<string>;
-        /**
-         * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
-         */
-        direction?: pulumi.Input<string>;
-    }
-
-    export interface InterconnectionPort {
-        id: pulumi.Input<string>;
-        linkStatus: pulumi.Input<string>;
-        name: pulumi.Input<string>;
-        role: pulumi.Input<string>;
-        speed: pulumi.Input<number>;
-        status: pulumi.Input<string>;
-        virtualCircuitIds: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface InterconnectionServiceToken {
-        expiresAt: pulumi.Input<string>;
-        id: pulumi.Input<string>;
-        maxAllowedSpeed: pulumi.Input<string>;
-        role: pulumi.Input<string>;
-        state: pulumi.Input<string>;
-        type: pulumi.Input<string>;
-    }
-
-    export interface OrganizationAddress {
-        /**
-         * Postal address.
-         */
-        address: pulumi.Input<string>;
-        /**
-         * City name.
-         */
-        city: pulumi.Input<string>;
-        /**
-         * Two letter country code (ISO 3166-1 alpha-2), e.g. US.
-         */
-        country: pulumi.Input<string>;
-        /**
-         * State name.
-         */
-        state?: pulumi.Input<string>;
-        /**
-         * Zip Code.
-         */
-        zipCode: pulumi.Input<string>;
-    }
-
-    export interface ProjectBgpConfig {
-        /**
-         * Autonomous System Number for local BGP deployment.
-         */
-        asn: pulumi.Input<number>;
-        /**
-         * `local` or `global`, the `local` is likely to be usable immediately, the `global` will need to be reviewed by Equinix Metal engineers.
-         */
-        deploymentType: pulumi.Input<string>;
-        /**
-         * The maximum number of route filters allowed per server.
-         */
-        maxPrefix?: pulumi.Input<number>;
-        /**
-         * Password for BGP session in plaintext (not a checksum).
-         */
-        md5?: pulumi.Input<string>;
-        /**
-         * status of BGP configuration in the project.
-         */
-        status?: pulumi.Input<string>;
-    }
-}
-
 export namespace networkedge {
     export interface AclTemplateDeviceDetail {
         /**
@@ -5348,12 +4996,6 @@ export namespace networkedge {
          */
         sequenceNumber?: pulumi.Input<number>;
         /**
-         * Type of traffic source used in a given inbound rule
-         *
-         * @deprecated Source Type will not be returned
-         */
-        sourceType?: pulumi.Input<string>;
-        /**
          * Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          */
         srcPort: pulumi.Input<string>;
@@ -5361,12 +5003,6 @@ export namespace networkedge {
          * Inbound traffic source IP subnet in CIDR format.
          */
         subnet?: pulumi.Input<string>;
-        /**
-         * Inbound traffic source IP subnets in CIDR format.
-         *
-         * @deprecated Use Subnet instead
-         */
-        subnets?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DeviceClusterDetails {
@@ -5652,41 +5288,6 @@ export namespace networkedge {
          * device link provisioning status on a given device. One of `PROVISIONING`, `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
          */
         status?: pulumi.Input<string>;
-    }
-
-    export interface DeviceLinkLink {
-        /**
-         * billing account number to be used for connection charges
-         */
-        accountNumber: pulumi.Input<string>;
-        /**
-         * connection destination metro code.
-         */
-        dstMetroCode: pulumi.Input<string>;
-        /**
-         * connection destination zone code is not required.
-         *
-         * @deprecated DestinationZoneCode is not required
-         */
-        dstZoneCode?: pulumi.Input<string>;
-        /**
-         * connection source metro code.
-         */
-        srcMetroCode: pulumi.Input<string>;
-        /**
-         * connection source zone code is not required.
-         *
-         * @deprecated SourceZoneCode is not required
-         */
-        srcZoneCode?: pulumi.Input<string>;
-        /**
-         * connection throughput.
-         */
-        throughput: pulumi.Input<string>;
-        /**
-         * connection throughput unit (Mbps or Gbps).
-         */
-        throughputUnit: pulumi.Input<string>;
     }
 
     export interface DeviceLinkMetroLink {

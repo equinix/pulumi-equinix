@@ -19,16 +19,6 @@ public final class PortOrder {
      */
     private @Nullable String customerReferenceId;
     /**
-     * @return Order Identification
-     * 
-     */
-    private @Nullable String orderId;
-    /**
-     * @return Order Reference Number
-     * 
-     */
-    private @Nullable String orderNumber;
-    /**
      * @return Purchase order details
      * 
      */
@@ -38,11 +28,6 @@ public final class PortOrder {
      * 
      */
     private @Nullable PortOrderSignature signature;
-    /**
-     * @return Equinix-assigned order identifier, this is a derived response attribute
-     * 
-     */
-    private @Nullable String uuid;
 
     private PortOrder() {}
     /**
@@ -51,20 +36,6 @@ public final class PortOrder {
      */
     public Optional<String> customerReferenceId() {
         return Optional.ofNullable(this.customerReferenceId);
-    }
-    /**
-     * @return Order Identification
-     * 
-     */
-    public Optional<String> orderId() {
-        return Optional.ofNullable(this.orderId);
-    }
-    /**
-     * @return Order Reference Number
-     * 
-     */
-    public Optional<String> orderNumber() {
-        return Optional.ofNullable(this.orderNumber);
     }
     /**
      * @return Purchase order details
@@ -80,13 +51,6 @@ public final class PortOrder {
     public Optional<PortOrderSignature> signature() {
         return Optional.ofNullable(this.signature);
     }
-    /**
-     * @return Equinix-assigned order identifier, this is a derived response attribute
-     * 
-     */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -98,38 +62,20 @@ public final class PortOrder {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String customerReferenceId;
-        private @Nullable String orderId;
-        private @Nullable String orderNumber;
         private @Nullable PortOrderPurchaseOrder purchaseOrder;
         private @Nullable PortOrderSignature signature;
-        private @Nullable String uuid;
         public Builder() {}
         public Builder(PortOrder defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customerReferenceId = defaults.customerReferenceId;
-    	      this.orderId = defaults.orderId;
-    	      this.orderNumber = defaults.orderNumber;
     	      this.purchaseOrder = defaults.purchaseOrder;
     	      this.signature = defaults.signature;
-    	      this.uuid = defaults.uuid;
         }
 
         @CustomType.Setter
         public Builder customerReferenceId(@Nullable String customerReferenceId) {
 
             this.customerReferenceId = customerReferenceId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder orderId(@Nullable String orderId) {
-
-            this.orderId = orderId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder orderNumber(@Nullable String orderNumber) {
-
-            this.orderNumber = orderNumber;
             return this;
         }
         @CustomType.Setter
@@ -144,20 +90,11 @@ public final class PortOrder {
             this.signature = signature;
             return this;
         }
-        @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
-            this.uuid = uuid;
-            return this;
-        }
         public PortOrder build() {
             final var _resultValue = new PortOrder();
             _resultValue.customerReferenceId = customerReferenceId;
-            _resultValue.orderId = orderId;
-            _resultValue.orderNumber = orderNumber;
             _resultValue.purchaseOrder = purchaseOrder;
             _resultValue.signature = signature;
-            _resultValue.uuid = uuid;
             return _resultValue;
         }
     }

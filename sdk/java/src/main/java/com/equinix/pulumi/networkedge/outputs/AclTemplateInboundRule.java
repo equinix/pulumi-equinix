@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -35,15 +34,6 @@ public final class AclTemplateInboundRule {
      */
     private @Nullable Integer sequenceNumber;
     /**
-     * @return Type of traffic source used in a given inbound rule
-     * 
-     * @deprecated
-     * Source Type will not be returned
-     * 
-     */
-    @Deprecated /* Source Type will not be returned */
-    private @Nullable String sourceType;
-    /**
      * @return Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
@@ -53,15 +43,6 @@ public final class AclTemplateInboundRule {
      * 
      */
     private @Nullable String subnet;
-    /**
-     * @return Inbound traffic source IP subnets in CIDR format.
-     * 
-     * @deprecated
-     * Use Subnet instead
-     * 
-     */
-    @Deprecated /* Use Subnet instead */
-    private @Nullable List<String> subnets;
 
     private AclTemplateInboundRule() {}
     /**
@@ -93,17 +74,6 @@ public final class AclTemplateInboundRule {
         return Optional.ofNullable(this.sequenceNumber);
     }
     /**
-     * @return Type of traffic source used in a given inbound rule
-     * 
-     * @deprecated
-     * Source Type will not be returned
-     * 
-     */
-    @Deprecated /* Source Type will not be returned */
-    public Optional<String> sourceType() {
-        return Optional.ofNullable(this.sourceType);
-    }
-    /**
      * @return Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
@@ -116,17 +86,6 @@ public final class AclTemplateInboundRule {
      */
     public Optional<String> subnet() {
         return Optional.ofNullable(this.subnet);
-    }
-    /**
-     * @return Inbound traffic source IP subnets in CIDR format.
-     * 
-     * @deprecated
-     * Use Subnet instead
-     * 
-     */
-    @Deprecated /* Use Subnet instead */
-    public List<String> subnets() {
-        return this.subnets == null ? List.of() : this.subnets;
     }
 
     public static Builder builder() {
@@ -142,10 +101,8 @@ public final class AclTemplateInboundRule {
         private String dstPort;
         private String protocol;
         private @Nullable Integer sequenceNumber;
-        private @Nullable String sourceType;
         private String srcPort;
         private @Nullable String subnet;
-        private @Nullable List<String> subnets;
         public Builder() {}
         public Builder(AclTemplateInboundRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -153,10 +110,8 @@ public final class AclTemplateInboundRule {
     	      this.dstPort = defaults.dstPort;
     	      this.protocol = defaults.protocol;
     	      this.sequenceNumber = defaults.sequenceNumber;
-    	      this.sourceType = defaults.sourceType;
     	      this.srcPort = defaults.srcPort;
     	      this.subnet = defaults.subnet;
-    	      this.subnets = defaults.subnets;
         }
 
         @CustomType.Setter
@@ -188,12 +143,6 @@ public final class AclTemplateInboundRule {
             return this;
         }
         @CustomType.Setter
-        public Builder sourceType(@Nullable String sourceType) {
-
-            this.sourceType = sourceType;
-            return this;
-        }
-        @CustomType.Setter
         public Builder srcPort(String srcPort) {
             if (srcPort == null) {
               throw new MissingRequiredPropertyException("AclTemplateInboundRule", "srcPort");
@@ -207,25 +156,14 @@ public final class AclTemplateInboundRule {
             this.subnet = subnet;
             return this;
         }
-        @CustomType.Setter
-        public Builder subnets(@Nullable List<String> subnets) {
-
-            this.subnets = subnets;
-            return this;
-        }
-        public Builder subnets(String... subnets) {
-            return subnets(List.of(subnets));
-        }
         public AclTemplateInboundRule build() {
             final var _resultValue = new AclTemplateInboundRule();
             _resultValue.description = description;
             _resultValue.dstPort = dstPort;
             _resultValue.protocol = protocol;
             _resultValue.sequenceNumber = sequenceNumber;
-            _resultValue.sourceType = sourceType;
             _resultValue.srcPort = srcPort;
             _resultValue.subnet = subnet;
-            _resultValue.subnets = subnets;
             return _resultValue;
         }
     }

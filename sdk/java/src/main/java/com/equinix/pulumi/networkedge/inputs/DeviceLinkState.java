@@ -4,7 +4,6 @@
 package com.equinix.pulumi.networkedge.inputs;
 
 import com.equinix.pulumi.networkedge.inputs.DeviceLinkDeviceArgs;
-import com.equinix.pulumi.networkedge.inputs.DeviceLinkLinkArgs;
 import com.equinix.pulumi.networkedge.inputs.DeviceLinkMetroLinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -32,29 +31,6 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<DeviceLinkDeviceArgs>>> devices() {
         return Optional.ofNullable(this.devices);
-    }
-
-    /**
-     * definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-     * 
-     * @deprecated
-     * Links is deprecated. Please use metro links instead.
-     * 
-     */
-    @Deprecated /* Links is deprecated. Please use metro links instead. */
-    @Import(name="links")
-    private @Nullable Output<List<DeviceLinkLinkArgs>> links;
-
-    /**
-     * @return definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-     * 
-     * @deprecated
-     * Links is deprecated. Please use metro links instead.
-     * 
-     */
-    @Deprecated /* Links is deprecated. Please use metro links instead. */
-    public Optional<Output<List<DeviceLinkLinkArgs>>> links() {
-        return Optional.ofNullable(this.links);
     }
 
     /**
@@ -166,7 +142,6 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
 
     private DeviceLinkState(DeviceLinkState $) {
         this.devices = $.devices;
-        this.links = $.links;
         this.metroLinks = $.metroLinks;
         this.name = $.name;
         this.projectId = $.projectId;
@@ -223,49 +198,6 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder devices(DeviceLinkDeviceArgs... devices) {
             return devices(List.of(devices));
-        }
-
-        /**
-         * @param links definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Links is deprecated. Please use metro links instead.
-         * 
-         */
-        @Deprecated /* Links is deprecated. Please use metro links instead. */
-        public Builder links(@Nullable Output<List<DeviceLinkLinkArgs>> links) {
-            $.links = links;
-            return this;
-        }
-
-        /**
-         * @param links definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Links is deprecated. Please use metro links instead.
-         * 
-         */
-        @Deprecated /* Links is deprecated. Please use metro links instead. */
-        public Builder links(List<DeviceLinkLinkArgs> links) {
-            return links(Output.of(links));
-        }
-
-        /**
-         * @param links definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Links is deprecated. Please use metro links instead.
-         * 
-         */
-        @Deprecated /* Links is deprecated. Please use metro links instead. */
-        public Builder links(DeviceLinkLinkArgs... links) {
-            return links(List.of(links));
         }
 
         /**

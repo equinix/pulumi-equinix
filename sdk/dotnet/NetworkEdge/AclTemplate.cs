@@ -81,24 +81,12 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<ImmutableArray<Outputs.AclTemplateDeviceDetail>> DeviceDetails { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) Identifier of a network device where template was applied.
-        /// </summary>
-        [Output("deviceId")]
-        public Output<string> DeviceId { get; private set; } = null!;
-
-        /// <summary>
         /// One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
         /// 
         /// The `inbound_rule` block has below fields:
         /// </summary>
         [Output("inboundRules")]
         public Output<ImmutableArray<Outputs.AclTemplateInboundRule>> InboundRules { get; private set; } = null!;
-
-        /// <summary>
-        /// ACL template location metro code.
-        /// </summary>
-        [Output("metroCode")]
-        public Output<string?> MetroCode { get; private set; } = null!;
 
         /// <summary>
         /// ACL template name.
@@ -186,12 +174,6 @@ namespace Pulumi.Equinix.NetworkEdge
         }
 
         /// <summary>
-        /// ACL template location metro code.
-        /// </summary>
-        [Input("metroCode")]
-        public Input<string>? MetroCode { get; set; }
-
-        /// <summary>
         /// ACL template name.
         /// </summary>
         [Input("name")]
@@ -235,12 +217,6 @@ namespace Pulumi.Equinix.NetworkEdge
             set => _deviceDetails = value;
         }
 
-        /// <summary>
-        /// (Deprecated) Identifier of a network device where template was applied.
-        /// </summary>
-        [Input("deviceId")]
-        public Input<string>? DeviceId { get; set; }
-
         [Input("inboundRules")]
         private InputList<Inputs.AclTemplateInboundRuleGetArgs>? _inboundRules;
 
@@ -254,12 +230,6 @@ namespace Pulumi.Equinix.NetworkEdge
             get => _inboundRules ?? (_inboundRules = new InputList<Inputs.AclTemplateInboundRuleGetArgs>());
             set => _inboundRules = value;
         }
-
-        /// <summary>
-        /// ACL template location metro code.
-        /// </summary>
-        [Input("metroCode")]
-        public Input<string>? MetroCode { get; set; }
 
         /// <summary>
         /// ACL template name.

@@ -74,59 +74,6 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// });
     /// ```
-    /// ### example fcr to metal
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var fcr2Metal = new Equinix.Fabric.Connection("fcr2metal", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = "IP_VC",
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = "CLOUD_ROUTER",
-    ///                 Router = new Equinix.Fabric.Inputs.ConnectionASideAccessPointRouterArgs
-    ///                 {
-    ///                     Uuid = "&lt;cloud_router_uuid&gt;",
-    ///                 },
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = "METAL_NETWORK",
-    ///                 AuthenticationKey = "&lt;metal_authorization_code&gt;",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### example fcr to network
     /// ```csharp
     /// using System.Collections.Generic;
@@ -237,66 +184,6 @@ namespace Pulumi.Equinix.Fabric
     ///                 {
     ///                     Type = Equinix.Fabric.AccessPointLinkProtocolType.Dot1q,
     ///                     VlanTag = 2711,
-    ///                 },
-    ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
-    ///                 {
-    ///                     MetroCode = Equinix.Metro.SiliconValley,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### example metal to aws
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var metal2Aws = new Equinix.Fabric.Connection("metal2aws", new()
-    ///     {
-    ///         Name = "ConnectionName",
-    ///         Type = "EVPLAN_VC",
-    ///         Notifications = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.NotificationsType.All,
-    ///                 Emails = new[]
-    ///                 {
-    ///                     "example@equinix.com",
-    ///                     "test1@equinix.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Bandwidth = 50,
-    ///         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-    ///         {
-    ///             PurchaseOrderNumber = "1-323292",
-    ///         },
-    ///         ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-    ///             {
-    ///                 Type = "METAL_NETWORK",
-    ///                 AuthenticationKey = "&lt;metal_authorization_code&gt;",
-    ///             },
-    ///         },
-    ///         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-    ///         {
-    ///             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.AccessPointType.SP,
-    ///                 AuthenticationKey = "&lt;aws_account_id&gt;",
-    ///                 SellerRegion = "us-west-1",
-    ///                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
-    ///                 {
-    ///                     Type = Equinix.Fabric.ProfileType.L2Profile,
-    ///                     Uuid = "&lt;service_profile_uuid&gt;",
     ///                 },
     ///                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
     ///                 {
@@ -1280,6 +1167,12 @@ namespace Pulumi.Equinix.Fabric
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
+        /// Geographic boundary types
+        /// </summary>
+        [Output("geoScope")]
+        public Output<string?> GeoScope { get; private set; } = null!;
+
+        /// <summary>
         /// Connection URI information
         /// </summary>
         [Output("href")]
@@ -1429,6 +1322,12 @@ namespace Pulumi.Equinix.Fabric
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Geographic boundary types
+        /// </summary>
+        [Input("geoScope")]
+        public Input<string>? GeoScope { get; set; }
+
+        /// <summary>
         /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         /// </summary>
         [Input("name")]
@@ -1531,6 +1430,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
+
+        /// <summary>
+        /// Geographic boundary types
+        /// </summary>
+        [Input("geoScope")]
+        public Input<string>? GeoScope { get; set; }
 
         /// <summary>
         /// Connection URI information

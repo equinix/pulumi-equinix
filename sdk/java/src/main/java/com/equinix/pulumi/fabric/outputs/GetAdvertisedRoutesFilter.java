@@ -17,7 +17,7 @@ public final class GetAdvertisedRoutesFilter {
      */
     private String operator;
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
      * 
      */
     private String property;
@@ -36,7 +36,7 @@ public final class GetAdvertisedRoutesFilter {
         return this.operator;
     }
     /**
-     * @return possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+     * @return possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
      * 
      */
     public String property() {

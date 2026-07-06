@@ -33,36 +33,6 @@ public final class PortOrderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Order Identification
-     * 
-     */
-    @Import(name="orderId")
-    private @Nullable Output<String> orderId;
-
-    /**
-     * @return Order Identification
-     * 
-     */
-    public Optional<Output<String>> orderId() {
-        return Optional.ofNullable(this.orderId);
-    }
-
-    /**
-     * Order Reference Number
-     * 
-     */
-    @Import(name="orderNumber")
-    private @Nullable Output<String> orderNumber;
-
-    /**
-     * @return Order Reference Number
-     * 
-     */
-    public Optional<Output<String>> orderNumber() {
-        return Optional.ofNullable(this.orderNumber);
-    }
-
-    /**
      * Purchase order details
      * 
      */
@@ -92,30 +62,12 @@ public final class PortOrderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.signature);
     }
 
-    /**
-     * Equinix-assigned order identifier, this is a derived response attribute
-     * 
-     */
-    @Import(name="uuid")
-    private @Nullable Output<String> uuid;
-
-    /**
-     * @return Equinix-assigned order identifier, this is a derived response attribute
-     * 
-     */
-    public Optional<Output<String>> uuid() {
-        return Optional.ofNullable(this.uuid);
-    }
-
     private PortOrderArgs() {}
 
     private PortOrderArgs(PortOrderArgs $) {
         this.customerReferenceId = $.customerReferenceId;
-        this.orderId = $.orderId;
-        this.orderNumber = $.orderNumber;
         this.purchaseOrder = $.purchaseOrder;
         this.signature = $.signature;
-        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -158,48 +110,6 @@ public final class PortOrderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orderId Order Identification
-         * 
-         * @return builder
-         * 
-         */
-        public Builder orderId(@Nullable Output<String> orderId) {
-            $.orderId = orderId;
-            return this;
-        }
-
-        /**
-         * @param orderId Order Identification
-         * 
-         * @return builder
-         * 
-         */
-        public Builder orderId(String orderId) {
-            return orderId(Output.of(orderId));
-        }
-
-        /**
-         * @param orderNumber Order Reference Number
-         * 
-         * @return builder
-         * 
-         */
-        public Builder orderNumber(@Nullable Output<String> orderNumber) {
-            $.orderNumber = orderNumber;
-            return this;
-        }
-
-        /**
-         * @param orderNumber Order Reference Number
-         * 
-         * @return builder
-         * 
-         */
-        public Builder orderNumber(String orderNumber) {
-            return orderNumber(Output.of(orderNumber));
-        }
-
-        /**
          * @param purchaseOrder Purchase order details
          * 
          * @return builder
@@ -239,27 +149,6 @@ public final class PortOrderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder signature(PortOrderSignatureArgs signature) {
             return signature(Output.of(signature));
-        }
-
-        /**
-         * @param uuid Equinix-assigned order identifier, this is a derived response attribute
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uuid(@Nullable Output<String> uuid) {
-            $.uuid = uuid;
-            return this;
-        }
-
-        /**
-         * @param uuid Equinix-assigned order identifier, this is a derived response attribute
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uuid(String uuid) {
-            return uuid(Output.of(uuid));
         }
 
         public PortOrderArgs build() {

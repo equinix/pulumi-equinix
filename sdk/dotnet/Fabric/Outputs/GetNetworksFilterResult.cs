@@ -22,7 +22,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string Operator;
         /// <summary>
-        /// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+        /// Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
         /// </summary>
         public readonly string Property;
         /// <summary>

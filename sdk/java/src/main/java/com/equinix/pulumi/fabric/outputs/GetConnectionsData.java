@@ -59,6 +59,11 @@ public final class GetConnectionsData {
      */
     private String direction;
     /**
+     * @return Geographic boundary types
+     * 
+     */
+    private String geoScope;
+    /**
      * @return Connection URI information
      * 
      */
@@ -170,6 +175,13 @@ public final class GetConnectionsData {
         return this.direction;
     }
     /**
+     * @return Geographic boundary types
+     * 
+     */
+    public String geoScope() {
+        return this.geoScope;
+    }
+    /**
      * @return Connection URI information
      * 
      */
@@ -270,6 +282,7 @@ public final class GetConnectionsData {
         private List<GetConnectionsDataChangeLog> changeLogs;
         private String description;
         private String direction;
+        private String geoScope;
         private String href;
         private Boolean isRemote;
         private String name;
@@ -292,6 +305,7 @@ public final class GetConnectionsData {
     	      this.changeLogs = defaults.changeLogs;
     	      this.description = defaults.description;
     	      this.direction = defaults.direction;
+    	      this.geoScope = defaults.geoScope;
     	      this.href = defaults.href;
     	      this.isRemote = defaults.isRemote;
     	      this.name = defaults.name;
@@ -369,6 +383,14 @@ public final class GetConnectionsData {
               throw new MissingRequiredPropertyException("GetConnectionsData", "direction");
             }
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder geoScope(String geoScope) {
+            if (geoScope == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsData", "geoScope");
+            }
+            this.geoScope = geoScope;
             return this;
         }
         @CustomType.Setter
@@ -494,6 +516,7 @@ public final class GetConnectionsData {
             _resultValue.changeLogs = changeLogs;
             _resultValue.description = description;
             _resultValue.direction = direction;
+            _resultValue.geoScope = geoScope;
             _resultValue.href = href;
             _resultValue.isRemote = isRemote;
             _resultValue.name = name;

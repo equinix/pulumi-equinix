@@ -30,10 +30,6 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly int? SequenceNumber;
         /// <summary>
-        /// Type of traffic source used in a given inbound rule
-        /// </summary>
-        public readonly string? SourceType;
-        /// <summary>
         /// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         /// </summary>
         public readonly string SrcPort;
@@ -41,10 +37,6 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// Inbound traffic source IP subnet in CIDR format.
         /// </summary>
         public readonly string? Subnet;
-        /// <summary>
-        /// Inbound traffic source IP subnets in CIDR format.
-        /// </summary>
-        public readonly ImmutableArray<string> Subnets;
 
         [OutputConstructor]
         private AclTemplateInboundRule(
@@ -56,22 +48,16 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             int? sequenceNumber,
 
-            string? sourceType,
-
             string srcPort,
 
-            string? subnet,
-
-            ImmutableArray<string> subnets)
+            string? subnet)
         {
             Description = description;
             DstPort = dstPort;
             Protocol = protocol;
             SequenceNumber = sequenceNumber;
-            SourceType = sourceType;
             SrcPort = srcPort;
             Subnet = subnet;
-            Subnets = subnets;
         }
     }
 }

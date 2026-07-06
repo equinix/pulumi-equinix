@@ -4,8 +4,6 @@
 package com.equinix.pulumi.fabric;
 
 import com.equinix.pulumi.fabric.inputs.PortAccountArgs;
-import com.equinix.pulumi.fabric.inputs.PortAdditionalInfoArgs;
-import com.equinix.pulumi.fabric.inputs.PortDeviceArgs;
 import com.equinix.pulumi.fabric.inputs.PortEncapsulationArgs;
 import com.equinix.pulumi.fabric.inputs.PortLocationArgs;
 import com.equinix.pulumi.fabric.inputs.PortNotificationArgs;
@@ -13,7 +11,6 @@ import com.equinix.pulumi.fabric.inputs.PortOrderArgs;
 import com.equinix.pulumi.fabric.inputs.PortPhysicalPortArgs;
 import com.equinix.pulumi.fabric.inputs.PortProjectArgs;
 import com.equinix.pulumi.fabric.inputs.PortRedundancyArgs;
-import com.equinix.pulumi.fabric.inputs.PortSettingsArgs;
 import com.equinix.pulumi.fabric.inputs.PortTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -47,21 +44,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of key/value objects to provide additional context to the Port order
-     * 
-     */
-    @Import(name="additionalInfos")
-    private @Nullable Output<List<PortAdditionalInfoArgs>> additionalInfos;
-
-    /**
-     * @return List of key/value objects to provide additional context to the Port order
-     * 
-     */
-    public Optional<Output<List<PortAdditionalInfoArgs>>> additionalInfos() {
-        return Optional.ofNullable(this.additionalInfos);
-    }
-
-    /**
      * Connection type that is used from the port after creation
      * 
      */
@@ -89,21 +71,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> demarcationPointIbx() {
         return this.demarcationPointIbx;
-    }
-
-    /**
-     * Port device configuration
-     * 
-     */
-    @Import(name="device")
-    private @Nullable Output<PortDeviceArgs> device;
-
-    /**
-     * @return Port device configuration
-     * 
-     */
-    public Optional<Output<PortDeviceArgs>> device() {
-        return Optional.ofNullable(this.device);
     }
 
     /**
@@ -149,21 +116,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<PortLocationArgs> location() {
         return this.location;
-    }
-
-    /**
-     * Designated name of the port
-     * 
-     */
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    /**
-     * @return Designated name of the port
-     * 
-     */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -286,21 +238,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         return this.redundancy;
     }
 
-    /**
-     * Port order configuration settings
-     * 
-     */
-    @Import(name="settings", required=true)
-    private Output<PortSettingsArgs> settings;
-
-    /**
-     * @return Port order configuration settings
-     * 
-     */
-    public Output<PortSettingsArgs> settings() {
-        return this.settings;
-    }
-
     @Import(name="timeouts")
     private @Nullable Output<PortTimeoutsArgs> timeouts;
 
@@ -327,14 +264,11 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
 
     private PortArgs(PortArgs $) {
         this.account = $.account;
-        this.additionalInfos = $.additionalInfos;
         this.connectivitySourceType = $.connectivitySourceType;
         this.demarcationPointIbx = $.demarcationPointIbx;
-        this.device = $.device;
         this.encapsulation = $.encapsulation;
         this.lagEnabled = $.lagEnabled;
         this.location = $.location;
-        this.name = $.name;
         this.notifications = $.notifications;
         this.order = $.order;
         this.physicalPorts = $.physicalPorts;
@@ -343,7 +277,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         this.physicalPortsType = $.physicalPortsType;
         this.project = $.project;
         this.redundancy = $.redundancy;
-        this.settings = $.settings;
         this.timeouts = $.timeouts;
         this.type = $.type;
     }
@@ -388,37 +321,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfos List of key/value objects to provide additional context to the Port order
-         * 
-         * @return builder
-         * 
-         */
-        public Builder additionalInfos(@Nullable Output<List<PortAdditionalInfoArgs>> additionalInfos) {
-            $.additionalInfos = additionalInfos;
-            return this;
-        }
-
-        /**
-         * @param additionalInfos List of key/value objects to provide additional context to the Port order
-         * 
-         * @return builder
-         * 
-         */
-        public Builder additionalInfos(List<PortAdditionalInfoArgs> additionalInfos) {
-            return additionalInfos(Output.of(additionalInfos));
-        }
-
-        /**
-         * @param additionalInfos List of key/value objects to provide additional context to the Port order
-         * 
-         * @return builder
-         * 
-         */
-        public Builder additionalInfos(PortAdditionalInfoArgs... additionalInfos) {
-            return additionalInfos(List.of(additionalInfos));
-        }
-
-        /**
          * @param connectivitySourceType Connection type that is used from the port after creation
          * 
          * @return builder
@@ -458,27 +360,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder demarcationPointIbx(String demarcationPointIbx) {
             return demarcationPointIbx(Output.of(demarcationPointIbx));
-        }
-
-        /**
-         * @param device Port device configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder device(@Nullable Output<PortDeviceArgs> device) {
-            $.device = device;
-            return this;
-        }
-
-        /**
-         * @param device Port device configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder device(PortDeviceArgs device) {
-            return device(Output.of(device));
         }
 
         /**
@@ -542,27 +423,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(PortLocationArgs location) {
             return location(Output.of(location));
-        }
-
-        /**
-         * @param name Designated name of the port
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param name Designated name of the port
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
         }
 
         /**
@@ -753,27 +613,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
             return redundancy(Output.of(redundancy));
         }
 
-        /**
-         * @param settings Port order configuration settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(Output<PortSettingsArgs> settings) {
-            $.settings = settings;
-            return this;
-        }
-
-        /**
-         * @param settings Port order configuration settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(PortSettingsArgs settings) {
-            return settings(Output.of(settings));
-        }
-
         public Builder timeouts(@Nullable Output<PortTimeoutsArgs> timeouts) {
             $.timeouts = timeouts;
             return this;
@@ -843,9 +682,6 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.redundancy == null) {
                 throw new MissingRequiredPropertyException("PortArgs", "redundancy");
-            }
-            if ($.settings == null) {
-                throw new MissingRequiredPropertyException("PortArgs", "settings");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("PortArgs", "type");

@@ -52,41 +52,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### example fcr to metal
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const fcr2Metal = new equinix.fabric.Connection("fcr2metal", {
- *     name: "ConnectionName",
- *     type: "IP_VC",
- *     notifications: [{
- *         type: equinix.fabric.NotificationsType.All,
- *         emails: [
- *             "example@equinix.com",
- *             "test1@equinix.com",
- *         ],
- *     }],
- *     bandwidth: 50,
- *     order: {
- *         purchaseOrderNumber: "1-323292",
- *     },
- *     aSide: {
- *         accessPoint: {
- *             type: "CLOUD_ROUTER",
- *             router: {
- *                 uuid: "<cloud_router_uuid>",
- *             },
- *         },
- *     },
- *     zSide: {
- *         accessPoint: {
- *             type: "METAL_NETWORK",
- *             authenticationKey: "<metal_authorization_code>",
- *         },
- *     },
- * });
- * ```
  * ### example fcr to network
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -160,47 +125,6 @@ import * as utilities from "../utilities";
  *             linkProtocol: {
  *                 type: equinix.fabric.AccessPointLinkProtocolType.Dot1q,
  *                 vlanTag: 2711,
- *             },
- *             location: {
- *                 metroCode: equinix.index.Metro.SiliconValley,
- *             },
- *         },
- *     },
- * });
- * ```
- * ### example metal to aws
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const metal2Aws = new equinix.fabric.Connection("metal2aws", {
- *     name: "ConnectionName",
- *     type: "EVPLAN_VC",
- *     notifications: [{
- *         type: equinix.fabric.NotificationsType.All,
- *         emails: [
- *             "example@equinix.com",
- *             "test1@equinix.com",
- *         ],
- *     }],
- *     bandwidth: 50,
- *     order: {
- *         purchaseOrderNumber: "1-323292",
- *     },
- *     aSide: {
- *         accessPoint: {
- *             type: "METAL_NETWORK",
- *             authenticationKey: "<metal_authorization_code>",
- *         },
- *     },
- *     zSide: {
- *         accessPoint: {
- *             type: equinix.fabric.AccessPointType.SP,
- *             authenticationKey: "<aws_account_id>",
- *             sellerRegion: "us-west-1",
- *             profile: {
- *                 type: equinix.fabric.ProfileType.L2Profile,
- *                 uuid: "<service_profile_uuid>",
  *             },
  *             location: {
  *                 metroCode: equinix.index.Metro.SiliconValley,
@@ -903,6 +827,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly direction!: pulumi.Output<string>;
     /**
+     * Geographic boundary types
+     */
+    public readonly geoScope!: pulumi.Output<string | undefined>;
+    /**
      * Connection URI information
      */
     public /*out*/ readonly href!: pulumi.Output<string>;
@@ -971,6 +899,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["changeLog"] = state ? state.changeLog : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["geoScope"] = state ? state.geoScope : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
             resourceInputs["isRemote"] = state ? state.isRemote : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -1004,6 +933,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["additionalInfo"] = args ? args.additionalInfo : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["geoScope"] = args ? args.geoScope : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["order"] = args ? args.order : undefined;
@@ -1057,6 +987,10 @@ export interface ConnectionState {
      * Connection directionality from the requester point of view
      */
     direction?: pulumi.Input<string>;
+    /**
+     * Geographic boundary types
+     */
+    geoScope?: pulumi.Input<string>;
     /**
      * Connection URI information
      */
@@ -1127,6 +1061,10 @@ export interface ConnectionArgs {
      * Customer-provided connection description
      */
     description?: pulumi.Input<string>;
+    /**
+     * Geographic boundary types
+     */
+    geoScope?: pulumi.Input<string>;
     /**
      * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */

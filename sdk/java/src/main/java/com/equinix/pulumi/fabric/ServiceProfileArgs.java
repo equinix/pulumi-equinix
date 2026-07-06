@@ -18,7 +18,6 @@ import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -181,21 +180,6 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Self Profile indicating if the profile is created for customer&#39;s  self use
-     * 
-     */
-    @Import(name="selfProfile")
-    private @Nullable Output<Boolean> selfProfile;
-
-    /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
-     * 
-     */
-    public Optional<Output<Boolean>> selfProfile() {
-        return Optional.ofNullable(this.selfProfile);
-    }
-
-    /**
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      * 
      */
@@ -298,7 +282,6 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         this.notifications = $.notifications;
         this.ports = $.ports;
         this.project = $.project;
-        this.selfProfile = $.selfProfile;
         this.state = $.state;
         this.tags = $.tags;
         this.type = $.type;
@@ -593,27 +576,6 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder project(ServiceProfileProjectArgs project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
-         * 
-         * @return builder
-         * 
-         */
-        public Builder selfProfile(@Nullable Output<Boolean> selfProfile) {
-            $.selfProfile = selfProfile;
-            return this;
-        }
-
-        /**
-         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
-         * 
-         * @return builder
-         * 
-         */
-        public Builder selfProfile(Boolean selfProfile) {
-            return selfProfile(Output.of(selfProfile));
         }
 
         /**

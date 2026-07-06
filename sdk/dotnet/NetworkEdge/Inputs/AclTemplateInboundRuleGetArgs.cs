@@ -37,12 +37,6 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<int>? SequenceNumber { get; set; }
 
         /// <summary>
-        /// Type of traffic source used in a given inbound rule
-        /// </summary>
-        [Input("sourceType")]
-        public Input<string>? SourceType { get; set; }
-
-        /// <summary>
         /// Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         /// </summary>
         [Input("srcPort", required: true)]
@@ -53,19 +47,6 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
-
-        [Input("subnets")]
-        private InputList<string>? _subnets;
-
-        /// <summary>
-        /// Inbound traffic source IP subnets in CIDR format.
-        /// </summary>
-        [Obsolete(@"Use Subnet instead")]
-        public InputList<string> Subnets
-        {
-            get => _subnets ?? (_subnets = new InputList<string>());
-            set => _subnets = value;
-        }
 
         public AclTemplateInboundRuleGetArgs()
         {

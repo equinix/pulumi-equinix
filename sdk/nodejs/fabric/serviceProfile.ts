@@ -133,9 +133,9 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<outputs.fabric.ServiceProfileProject | undefined>;
     /**
-     * Self Profile indicating if the profile is created for customer's  self use
+     * Self Profile indicating if the profile is created for customer's self use
      */
-    public readonly selfProfile!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly selfProfile!: pulumi.Output<boolean>;
     /**
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      */
@@ -217,7 +217,6 @@ export class ServiceProfile extends pulumi.CustomResource {
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["ports"] = args ? args.ports : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["selfProfile"] = args ? args.selfProfile : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -227,6 +226,7 @@ export class ServiceProfile extends pulumi.CustomResource {
             resourceInputs["account"] = undefined /*out*/;
             resourceInputs["changeLog"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
+            resourceInputs["selfProfile"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -291,7 +291,7 @@ export interface ServiceProfileState {
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
-     * Self Profile indicating if the profile is created for customer's  self use
+     * Self Profile indicating if the profile is created for customer's self use
      */
     selfProfile?: pulumi.Input<boolean>;
     /**
@@ -368,10 +368,6 @@ export interface ServiceProfileArgs {
      * Project information
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
-    /**
-     * Self Profile indicating if the profile is created for customer's  self use
-     */
-    selfProfile?: pulumi.Input<boolean>;
     /**
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      */

@@ -35,6 +35,19 @@ import javax.annotation.Nullable;
  * * **subscription** - Where Equinix provides software license, including end-to-end support, and bills for the service respectively.
  * * **BYOL** - [bring your own license] Where customer brings his own, already procured device software license. There are no charges associated with such license. It is the only licensing mode for `self-configured` devices.
  * 
+ * ## Example: Add a Secondary Device to a Primary Network Device
+ * 
+ * Use the `secondary_device` block inside `equinix.networkedge.Device` to define the secondary node for a redundant pair.
+ * The primary device is configured with top-level arguments, and the secondary device is configured inside `secondary_device {}`.
+ * 
+ * ### How it works
+ * 
+ * 1. Reference the target Network account with `equinix.networkedge.getAccount`.
+ * 2. Define the primary device in `resource &#34;equinix.networkedge.Device&#34;` and create a single device
+ * 3. Add a `secondary_device` block with the secondary-specific fields.
+ * 
+ * ### Example
+ * 
  * ## Example Usage
  * ### example 1
  * <pre>
@@ -677,87 +690,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * ### example 9
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var panwCluster = new Device("panwCluster", DeviceArgs.builder()
- *             .name("tf-panw")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("PA-VM")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("VM100")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("11.1.3")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test")
- *                 .keyName("test-key")
- *                 .build())
- *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
- *             .clusterDetails(DeviceClusterDetailsArgs.builder()
- *                 .clusterName("tf-panw-cluster")
- *                 .node0(DeviceClusterDetailsNode0Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
- *                         .hostname("panw-node0")
- *                         .panoramaIpAddress("x.x.x.x")
- *                         .panoramaAuthKey("xxxxxxxxxxx")
- *                         .build())
- *                     .licenseToken("licenseToken")
- *                     .build())
- *                 .node1(DeviceClusterDetailsNode1Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
- *                         .hostname("panw-node1")
- *                         .panoramaIpAddress("x.x.x.x")
- *                         .panoramaAuthKey("xxxxxxxxxxx")
- *                         .build())
- *                     .licenseToken("licenseToken")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * ### example Aviatrix Transit Edge
  * <pre>
  * {@code
@@ -896,138 +828,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * ### example aruba edgeconnect ha device wth purchase order
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var aRUBAEDGECONNECTAM = new Device("aRUBAEDGECONNECTAM", DeviceArgs.builder()
- *             .name("TF_Aruba_Edge_Connect")
- *             .projectId("XXXXX")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("EDGECONNECT-SDWAN")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("EC-V")
- *             .notifications("test}{@literal @}{@code eq.com")
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("9.4.2.3")
- *             .coreCount(2)
- *             .termLength(1)
- *             .additionalBandwidth(50)
- *             .interfaceCount(32)
- *             .aclTemplateId("XXXXXXX")
- *             .purchaseOrderNumber("PO-Primary-Account-123")
- *             .vendorConfiguration(Map.ofEntries(
- *                 Map.entry("accountKey", "xxxxx"),
- *                 Map.entry("accountName", "xxxx"),
- *                 Map.entry("applianceTag", "tests"),
- *                 Map.entry("hostname", "test")
- *             ))
- *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
- *                 .name("TF_CHECKPOINT")
- *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *                 .purchaseOrderNumber("PO-Secondary-Account-123")
- *                 .aclTemplateId("XXXXXXX")
- *                 .notifications("test}{@literal @}{@code eq.com")
- *                 .vendorConfiguration(Map.ofEntries(
- *                     Map.entry("accountKey", "xxxxx"),
- *                     Map.entry("accountName", "xxxx"),
- *                     Map.entry("applianceTag", "test"),
- *                     Map.entry("hostname", "test")
- *                 ))
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example c8000v byol without default password
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var c8000VByolWithtoutDefaultPassword = new Device("c8000VByolWithtoutDefaultPassword", DeviceArgs.builder()
- *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("C8000V")
- *             .selfManaged(true)
- *             .byol(true)
- *             .generateDefaultPassword(false)
- *             .packageCode("network-essentials")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("17.11.01a")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .tier(1)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test")
- *                 .keyName("test-key")
- *                 .build())
- *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * ### example c8000v byol with bandwidth throughput
  * <pre>
  * {@code
@@ -1081,377 +881,6 @@ import javax.annotation.Nullable;
  *                 .keyName("test-key")
  *                 .build())
  *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example c8000v byol with bandwidth tier
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var c8000VByolTier = new Device("c8000VByolTier", DeviceArgs.builder()
- *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("C8000V")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("network-essentials")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("17.11.01a")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .tier(1)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test")
- *                 .keyName("test-key")
- *                 .build())
- *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example c8000v ha with cloud init rest api support
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
- *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("C8000V")
- *             .selfManaged(true)
- *             .byol(true)
- *             .generateDefaultPassword(true)
- *             .packageCode("network-essentials")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("17.11.01a")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .tier(1)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test")
- *                 .keyName("test-key")
- *                 .build())
- *             .vendorConfiguration(Map.of("restApiSupportRequirement", "true"))
- *             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
- *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
- *                 .name("tf-c8000v-byol-secondary")
- *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *                 .hostname("csr1000v-s")
- *                 .notifications(                
- *                     "john}{@literal @}{@code equinix.com",
- *                     "marry}{@literal @}{@code equinix.com")
- *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *                 .vendorConfiguration(Map.of("restApiSupportRequirement", "true"))
- *                 .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example c8000v znpd ha dhcp
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .name("account-name")
- *             .build());
- * 
- *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
- *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("C8000V")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("network-essentials")
- *             .connectivity("PRIVATE")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("17.11.01a")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .tier(1)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test")
- *                 .keyName("test-key")
- *                 .build())
- *             .vendorConfiguration(Map.ofEntries(
- *                 Map.entry("restApiSupportRequirement", "true"),
- *                 Map.entry("ipAddressType", "DHCP"),
- *                 Map.entry("managementInterfaceId", "6")
- *             ))
- *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
- *                 .name("tf-c8000v-byol-secondary")
- *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *                 .hostname("c8000v-s")
- *                 .notifications(                
- *                     "john}{@literal @}{@code equinix.com",
- *                     "marry}{@literal @}{@code equinix.com")
- *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *                 .vendorConfiguration(Map.ofEntries(
- *                     Map.entry("restApiSupportRequirement", "true"),
- *                     Map.entry("ipAddressType", "DHCP"),
- *                     Map.entry("managementInterfaceId", "6")
- *                 ))
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example c8000v znpd ha no ip address
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .name("account-name")
- *             .build());
- * 
- *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
- *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("C8000V")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("network-essentials")
- *             .connectivity("PRIVATE")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("17.11.01a")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .tier(1)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test")
- *                 .keyName("test-key")
- *                 .build())
- *             .vendorConfiguration(Map.ofEntries(
- *                 Map.entry("restApiSupportRequirement", "true"),
- *                 Map.entry("ipAddressType", "NO_IP_ADDRESS")
- *             ))
- *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
- *                 .name("tf-c8000v-byol-secondary")
- *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *                 .hostname("csr8000v-s")
- *                 .notifications(                
- *                     "john}{@literal @}{@code equinix.com",
- *                     "marry}{@literal @}{@code equinix.com")
- *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *                 .vendorConfiguration(Map.ofEntries(
- *                     Map.entry("restApiSupportRequirement", "true"),
- *                     Map.entry("ipAddressType", "NO_IP_ADDRESS")
- *                 ))
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example c8000v znpd ha static
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .name("account-name")
- *             .build());
- * 
- *         var c8000VByol = new Device("c8000VByol", DeviceArgs.builder()
- *             .name("tf-c8000v-byol")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("C8000V")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("network-essentials")
- *             .connectivity("PRIVATE")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("17.11.01a")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .tier(1)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("test")
- *                 .keyName("test-key")
- *                 .build())
- *             .vendorConfiguration(Map.ofEntries(
- *                 Map.entry("restApiSupportRequirement", "true"),
- *                 Map.entry("ipAddressType", "STATIC"),
- *                 Map.entry("ipAddress", "x.x.x.x"),
- *                 Map.entry("gatewayIp", "x.x.x.x"),
- *                 Map.entry("subnetMaskIp", "x.x.x.x"),
- *                 Map.entry("managementInterfaceId", "6")
- *             ))
- *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
- *                 .name("tf-c8000v-byol-secondary")
- *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *                 .hostname("csr8000v-s")
- *                 .notifications(                
- *                     "john}{@literal @}{@code equinix.com",
- *                     "marry}{@literal @}{@code equinix.com")
- *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *                 .vendorConfiguration(Map.ofEntries(
- *                     Map.entry("restApiSupportRequirement", "true"),
- *                     Map.entry("ipAddressType", "STATIC"),
- *                     Map.entry("ipAddress", "x.x.x.x"),
- *                     Map.entry("gatewayIp", "x.x.x.x"),
- *                     Map.entry("subnetMaskIp", "x.x.x.x"),
- *                     Map.entry("managementInterfaceId", "6")
- *                 ))
- *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -1514,79 +943,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * ### example cisco ftd cluster znpd
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var ciscoFTDSV = new Device("ciscoFTDSV", DeviceArgs.builder()
- *             .name("TF_Cisco_NGFW_CLUSTER_ZNPD")
- *             .projectId("XXXXXXX")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("Cisco_NGFW")
- *             .selfManaged(true)
- *             .connectivity("PRIVATE")
- *             .byol(true)
- *             .packageCode("FTDv10")
- *             .notifications("test}{@literal @}{@code eq.com")
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("7.0.4-55")
- *             .hostname("test")
- *             .coreCount(4)
- *             .termLength(1)
- *             .interfaceCount(10)
- *             .clusterDetails(DeviceClusterDetailsArgs.builder()
- *                 .clusterName("tf-ftd-cluster")
- *                 .node0(DeviceClusterDetailsNode0Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
- *                         .hostname("test")
- *                         .activationKey("XXXXX")
- *                         .controller1("X.X.X.X")
- *                         .managementType("FMC")
- *                         .build())
- *                     .build())
- *                 .node1(DeviceClusterDetailsNode1Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
- *                         .hostname("test")
- *                         .managementType("FMC")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * ### example f5xc single
  * <pre>
  * {@code
@@ -1639,93 +995,6 @@ import javax.annotation.Nullable;
  *                 Map.entry("token", "XXXXXXXXXX"),
  *                 Map.entry("hostname", "XXXX")
  *             ))
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * ### example fortigate firewall cluster device znpd static ip
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .name("account-name")
- *             .build());
- * 
- *         var fGVMSV = new Device("fGVMSV", DeviceArgs.builder()
- *             .name("tf-fgvm-cluster-static-znpd")
- *             .metroCode("DC")
- *             .typeCode("FG-VM")
- *             .projectId("xxxxxxx")
- *             .selfManaged(true)
- *             .connectivity("PRIVATE")
- *             .byol(true)
- *             .packageCode("VM02")
- *             .notifications(            
- *                 "john}{@literal @}{@code equinix.com",
- *                 "marry}{@literal @}{@code equinix.com",
- *                 "fred}{@literal @}{@code equinix.com")
- *             .termLength(12)
- *             .accountNumber(xxxxxx)
- *             .version("7.6.2")
- *             .interfaceCount(10)
- *             .coreCount(2)
- *             .sshKey(DeviceSshKeyArgs.builder()
- *                 .username("sanity1")
- *                 .keyName("")
- *                 .build())
- *             .clusterDetails(DeviceClusterDetailsArgs.builder()
- *                 .clusterName("tf-fgvm--cluster")
- *                 .node0(DeviceClusterDetailsNode0Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
- *                         .ipAddress("x.x.x.x")
- *                         .subnetMaskIp("x.x.x.x")
- *                         .gatewayIp("x.x.x.x")
- *                         .managementInterfaceId("5")
- *                         .hostname("test")
- *                         .ipAddressType("STATIC")
- *                         .build())
- *                     .build())
- *                 .node1(DeviceClusterDetailsNode1Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
- *                         .ipAddress("x.x.x.x")
- *                         .subnetMaskIp("x.x.x.x")
- *                         .gatewayIp("x.x.x.x")
- *                         .managementInterfaceId("5")
- *                         .hostname("test")
- *                         .ipAddressType("STATIC")
- *                         .build())
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -1997,79 +1266,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * ### example infoblox cluster device
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
- * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
- * import com.pulumi.equinix.networkedge.Device;
- * import com.pulumi.equinix.networkedge.DeviceArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode0VendorConfigurationArgs;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1Args;
- * import com.pulumi.equinix.networkedge.inputs.DeviceClusterDetailsNode1VendorConfigurationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
- *             .metroCode("SV")
- *             .build());
- * 
- *         var iNFOBLOXSV = new Device("iNFOBLOXSV", DeviceArgs.builder()
- *             .name("TF_INFOBLOX")
- *             .projectId("XXXXXXXXXX")
- *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
- *             .typeCode("INFOBLOX-GRID-MEMBER")
- *             .selfManaged(true)
- *             .byol(true)
- *             .packageCode("STD")
- *             .notifications("test}{@literal @}{@code eq.com")
- *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
- *             .version("9.0.5")
- *             .connectivity("PRIVATE")
- *             .coreCount(8)
- *             .termLength(1)
- *             .clusterDetails(DeviceClusterDetailsArgs.builder()
- *                 .clusterName("tf-infoblox-cluster")
- *                 .node0(DeviceClusterDetailsNode0Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode0VendorConfigurationArgs.builder()
- *                         .adminPassword("xxxxxxx")
- *                         .ipAddress("X.X.X.X")
- *                         .subnetMaskIp("X.X.X.X")
- *                         .gatewayIp("X.X.X.X")
- *                         .build())
- *                     .build())
- *                 .node1(DeviceClusterDetailsNode1Args.builder()
- *                     .vendorConfiguration(DeviceClusterDetailsNode1VendorConfigurationArgs.builder()
- *                         .adminPassword("xxxxxxx")
- *                         .ipAddress("X.X.X.X")
- *                         .subnetMaskIp("X.X.X.X")
- *                         .gatewayIp("X.X.X.X")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * ### example infoblox ha device
  * <pre>
  * {@code
@@ -2130,6 +1326,71 @@ import javax.annotation.Nullable;
  *                     Map.entry("ipAddress", "X.X.X.X"),
  *                     Map.entry("subnetMaskIp", "X.X.X.X"),
  *                     Map.entry("gatewayIp", "X.X.X.X")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example infoblox niosx ha device
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.pulumi.equinix.networkedge.Device;
+ * import com.pulumi.equinix.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var niosXHa = new Device("niosXHa", DeviceArgs.builder()
+ *             .name("TF_INFOBLOX-NIOS-X")
+ *             .projectId("xxxxxxx")
+ *             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *             .typeCode("INFOBLOX-NIOSX")
+ *             .selfManaged(true)
+ *             .connectivity("INTERNET-ACCESS")
+ *             .byol(true)
+ *             .packageCode("STD")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *             .version("4.0")
+ *             .coreCount(3)
+ *             .interfaceCount(5)
+ *             .termLength(1)
+ *             .vendorConfiguration(Map.ofEntries(
+ *                 Map.entry("hostname", "test"),
+ *                 Map.entry("token", "xxxxx")
+ *             ))
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("TF_INFOBLOX-NIOS-X-Sec")
+ *                 .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+ *                 .accountNumber(sv.applyValue(_sv -> _sv.number()))
+ *                 .notifications("test}{@literal @}{@code eq.com")
+ *                 .vendorConfiguration(Map.ofEntries(
+ *                     Map.entry("hostname", "test"),
+ *                     Map.entry("token", "xxxxx")
  *                 ))
  *                 .build())
  *             .build());
@@ -3073,7 +2334,7 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.uuid;
     }
     /**
-     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+     * Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */
@@ -3081,7 +2342,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     private Output<Map<String,String>> vendorConfiguration;
 
     /**
-     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only))
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress, privateAddress, privateCidrMask, privateGateway, licenseKey, licenseId, panoramaAuthKey, panoramaIpAddress, provisioningKey, ipAddress(applicable for infoblox only), subnetMaskIp(applicable for infoblox only), gatewayIp(applicable for infoblox only), token (join token applicable only to Infoblox NIOS-X devices and required when `type_code` is `INFOBLOX-NIOSX`))
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned on a device (max one key). See SSH Key below for more details.
      * 
      */

@@ -8,26 +8,28 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := networkedge.NewDeviceLink(ctx, "test", &networkedge.DeviceLinkArgs{
-			Name:      pulumi.String("test-link"),
-			Subnet:    pulumi.String("192.168.40.64/27"),
-			ProjectId: pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
+			Name:      pulumi.String("test-DLG"),
+			ProjectId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 			Devices: networkedge.DeviceLinkDeviceArray{
 				&networkedge.DeviceLinkDeviceArgs{
 					Id:          pulumi.Any(testEquinixNetworkDevice.Uuid),
-					Asn:         pulumi.Int(22111),
 					InterfaceId: pulumi.Int(6),
 				},
 				&networkedge.DeviceLinkDeviceArgs{
 					Id:          pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].Uuid),
-					Asn:         pulumi.Int(22333),
 					InterfaceId: pulumi.Int(7),
 				},
 			},
-			Links: networkedge.DeviceLinkLinkArray{
-				&networkedge.DeviceLinkLinkArgs{
+			MetroLinks: networkedge.DeviceLinkMetroLinkArray{
+				&networkedge.DeviceLinkMetroLinkArgs{
 					AccountNumber:  pulumi.Any(testEquinixNetworkDevice.AccountNumber),
-					SrcMetroCode:   pulumi.Any(testEquinixNetworkDevice.MetroCode),
-					DstMetroCode:   pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].MetroCode),
+					MetroCode:      pulumi.Any(testEquinixNetworkDevice.MetroCode),
+					Throughput:     pulumi.String("50"),
+					ThroughputUnit: pulumi.String("Mbps"),
+				},
+				&networkedge.DeviceLinkMetroLinkArgs{
+					AccountNumber:  pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].AccountNumber),
+					MetroCode:      pulumi.Any(testEquinixNetworkDevice.SecondaryDevice[0].MetroCode),
 					Throughput:     pulumi.String("50"),
 					ThroughputUnit: pulumi.String("Mbps"),
 				},

@@ -18,10 +18,6 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The Equinix Metal API auth key for API operations
-	//
-	// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
 	// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
 	// `EQUINIX_API_CLIENTID` shell environment variable.
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
@@ -71,10 +67,6 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The Equinix Metal API auth key for API operations
-	//
-	// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-	AuthToken *string `pulumi:"authToken"`
 	// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
 	// `EQUINIX_API_CLIENTID` shell environment variable.
 	ClientId *string `pulumi:"clientId"`
@@ -119,10 +111,6 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The Equinix Metal API auth key for API operations
-	//
-	// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-	AuthToken pulumi.StringPtrInput
 	// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
 	// `EQUINIX_API_CLIENTID` shell environment variable.
 	ClientId pulumi.StringPtrInput
@@ -200,13 +188,6 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
-}
-
-// The Equinix Metal API auth key for API operations
-//
-// Deprecated: Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-func (o ProviderOutput) AuthToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
 // API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the

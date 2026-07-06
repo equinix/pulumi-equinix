@@ -32,16 +32,6 @@ namespace Pulumi.Equinix
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("equinix");
 
-        private static readonly __Value<string?> _authToken = new __Value<string?>(() => __config.Get("authToken"));
-        /// <summary>
-        /// The Equinix Metal API auth key for API operations
-        /// </summary>
-        public static string? AuthToken
-        {
-            get => _authToken.Get();
-            set => _authToken.Set(value);
-        }
-
         private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
         /// <summary>
         /// API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the

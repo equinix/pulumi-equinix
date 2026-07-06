@@ -23,24 +23,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:equinix")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * The Equinix Metal API auth key for API operations
-     * 
-     * @deprecated
-     * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-     * 
-     */
-    @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
-    @Export(name="authToken", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> authToken;
-
-    /**
-     * @return The Equinix Metal API auth key for API operations
-     * 
-     */
-    public Output<Optional<String>> authToken() {
-        return Codegen.optional(this.authToken);
-    }
-    /**
      * API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
      * `EQUINIX_API_CLIENTID` shell environment variable.
      * 

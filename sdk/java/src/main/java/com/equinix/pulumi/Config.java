@@ -12,13 +12,6 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("equinix");
 /**
- * The Equinix Metal API auth key for API operations
- * 
- */
-    public Optional<String> authToken() {
-        return Codegen.stringProp("authToken").config(config).get();
-    }
-/**
  * API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
  * `EQUINIX_API_CLIENTID` shell environment variable.
  * 

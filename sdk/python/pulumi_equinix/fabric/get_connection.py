@@ -27,7 +27,7 @@ class GetConnectionResult:
     """
     A collection of values returned by getConnection.
     """
-    def __init__(__self__, a_side=None, account=None, additional_info=None, bandwidth=None, change_log=None, description=None, direction=None, href=None, id=None, is_remote=None, name=None, notifications=None, operation=None, order=None, project=None, redundancy=None, state=None, type=None, uuid=None, z_side=None):
+    def __init__(__self__, a_side=None, account=None, additional_info=None, bandwidth=None, change_log=None, description=None, direction=None, geo_scope=None, href=None, id=None, is_remote=None, name=None, notifications=None, operation=None, order=None, project=None, redundancy=None, state=None, type=None, uuid=None, z_side=None):
         if a_side and not isinstance(a_side, dict):
             raise TypeError("Expected argument 'a_side' to be a dict")
         pulumi.set(__self__, "a_side", a_side)
@@ -49,6 +49,9 @@ class GetConnectionResult:
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
+        if geo_scope and not isinstance(geo_scope, str):
+            raise TypeError("Expected argument 'geo_scope' to be a str")
+        pulumi.set(__self__, "geo_scope", geo_scope)
         if href and not isinstance(href, str):
             raise TypeError("Expected argument 'href' to be a str")
         pulumi.set(__self__, "href", href)
@@ -144,6 +147,14 @@ class GetConnectionResult:
         Connection directionality from the requester point of view
         """
         return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter(name="geoScope")
+    def geo_scope(self) -> str:
+        """
+        Geographic boundary types
+        """
+        return pulumi.get(self, "geo_scope")
 
     @property
     @pulumi.getter
@@ -263,6 +274,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             change_log=self.change_log,
             description=self.description,
             direction=self.direction,
+            geo_scope=self.geo_scope,
             href=self.href,
             id=self.id,
             is_remote=self.is_remote,
@@ -303,6 +315,7 @@ def get_connection(uuid: Optional[str] = None,
         change_log=pulumi.get(__ret__, 'change_log'),
         description=pulumi.get(__ret__, 'description'),
         direction=pulumi.get(__ret__, 'direction'),
+        geo_scope=pulumi.get(__ret__, 'geo_scope'),
         href=pulumi.get(__ret__, 'href'),
         id=pulumi.get(__ret__, 'id'),
         is_remote=pulumi.get(__ret__, 'is_remote'),
@@ -340,6 +353,7 @@ def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
         change_log=pulumi.get(__response__, 'change_log'),
         description=pulumi.get(__response__, 'description'),
         direction=pulumi.get(__response__, 'direction'),
+        geo_scope=pulumi.get(__response__, 'geo_scope'),
         href=pulumi.get(__response__, 'href'),
         id=pulumi.get(__response__, 'id'),
         is_remote=pulumi.get(__response__, 'is_remote'),

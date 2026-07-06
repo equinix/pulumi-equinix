@@ -88,7 +88,7 @@ public final class GetServiceProfilesDatum {
      */
     private List<GetServiceProfilesDatumProject> projects;
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     private Boolean selfProfile;
@@ -221,7 +221,7 @@ public final class GetServiceProfilesDatum {
         return this.projects;
     }
     /**
-     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * @return Self Profile indicating if the profile is created for customer&#39;s self use
      * 
      */
     public Boolean selfProfile() {

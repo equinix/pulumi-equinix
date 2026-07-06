@@ -24,7 +24,7 @@ public final class GetNetworksFilter {
      */
     private String operator;
     /**
-     * @return Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+     * @return Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
      * 
      */
     private String property;
@@ -50,7 +50,7 @@ public final class GetNetworksFilter {
         return this.operator;
     }
     /**
-     * @return Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+     * @return Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
      * 
      */
     public String property() {

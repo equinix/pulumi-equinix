@@ -10,7 +10,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -81,29 +80,6 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Type of traffic source used in a given inbound rule
-     * 
-     * @deprecated
-     * Source Type will not be returned
-     * 
-     */
-    @Deprecated /* Source Type will not be returned */
-    @Import(name="sourceType")
-    private @Nullable Output<String> sourceType;
-
-    /**
-     * @return Type of traffic source used in a given inbound rule
-     * 
-     * @deprecated
-     * Source Type will not be returned
-     * 
-     */
-    @Deprecated /* Source Type will not be returned */
-    public Optional<Output<String>> sourceType() {
-        return Optional.ofNullable(this.sourceType);
-    }
-
-    /**
      * Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
      * 
      */
@@ -133,29 +109,6 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.subnet);
     }
 
-    /**
-     * Inbound traffic source IP subnets in CIDR format.
-     * 
-     * @deprecated
-     * Use Subnet instead
-     * 
-     */
-    @Deprecated /* Use Subnet instead */
-    @Import(name="subnets")
-    private @Nullable Output<List<String>> subnets;
-
-    /**
-     * @return Inbound traffic source IP subnets in CIDR format.
-     * 
-     * @deprecated
-     * Use Subnet instead
-     * 
-     */
-    @Deprecated /* Use Subnet instead */
-    public Optional<Output<List<String>>> subnets() {
-        return Optional.ofNullable(this.subnets);
-    }
-
     private AclTemplateInboundRuleArgs() {}
 
     private AclTemplateInboundRuleArgs(AclTemplateInboundRuleArgs $) {
@@ -163,10 +116,8 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         this.dstPort = $.dstPort;
         this.protocol = $.protocol;
         this.sequenceNumber = $.sequenceNumber;
-        this.sourceType = $.sourceType;
         this.srcPort = $.srcPort;
         this.subnet = $.subnet;
-        this.subnets = $.subnets;
     }
 
     public static Builder builder() {
@@ -292,35 +243,6 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param sourceType Type of traffic source used in a given inbound rule
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Source Type will not be returned
-         * 
-         */
-        @Deprecated /* Source Type will not be returned */
-        public Builder sourceType(@Nullable Output<String> sourceType) {
-            $.sourceType = sourceType;
-            return this;
-        }
-
-        /**
-         * @param sourceType Type of traffic source used in a given inbound rule
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Source Type will not be returned
-         * 
-         */
-        @Deprecated /* Source Type will not be returned */
-        public Builder sourceType(String sourceType) {
-            return sourceType(Output.of(sourceType));
-        }
-
-        /**
          * @param srcPort Inbound traffic source ports. Allowed values are a comma separated list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
          * 
          * @return builder
@@ -360,49 +282,6 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
          */
         public Builder subnet(String subnet) {
             return subnet(Output.of(subnet));
-        }
-
-        /**
-         * @param subnets Inbound traffic source IP subnets in CIDR format.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use Subnet instead
-         * 
-         */
-        @Deprecated /* Use Subnet instead */
-        public Builder subnets(@Nullable Output<List<String>> subnets) {
-            $.subnets = subnets;
-            return this;
-        }
-
-        /**
-         * @param subnets Inbound traffic source IP subnets in CIDR format.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use Subnet instead
-         * 
-         */
-        @Deprecated /* Use Subnet instead */
-        public Builder subnets(List<String> subnets) {
-            return subnets(Output.of(subnets));
-        }
-
-        /**
-         * @param subnets Inbound traffic source IP subnets in CIDR format.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use Subnet instead
-         * 
-         */
-        @Deprecated /* Use Subnet instead */
-        public Builder subnets(String... subnets) {
-            return subnets(List.of(subnets));
         }
 
         public AclTemplateInboundRuleArgs build() {

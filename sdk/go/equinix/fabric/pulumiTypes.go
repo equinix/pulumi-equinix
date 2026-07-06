@@ -10693,9 +10693,9 @@ func (o PortAccountPtrOutput) UcmId() pulumi.StringPtrOutput {
 
 type PortAdditionalInfo struct {
 	// The key name of the key/value pair
-	Key string `pulumi:"key"`
+	Key *string `pulumi:"key"`
 	// The value of the key/value pair
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // PortAdditionalInfoInput is an input type that accepts PortAdditionalInfoArgs and PortAdditionalInfoOutput values.
@@ -10711,9 +10711,9 @@ type PortAdditionalInfoInput interface {
 
 type PortAdditionalInfoArgs struct {
 	// The key name of the key/value pair
-	Key pulumi.StringInput `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the key/value pair
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (PortAdditionalInfoArgs) ElementType() reflect.Type {
@@ -10768,13 +10768,13 @@ func (o PortAdditionalInfoOutput) ToPortAdditionalInfoOutputWithContext(ctx cont
 }
 
 // The key name of the key/value pair
-func (o PortAdditionalInfoOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v PortAdditionalInfo) string { return v.Key }).(pulumi.StringOutput)
+func (o PortAdditionalInfoOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortAdditionalInfo) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // The value of the key/value pair
-func (o PortAdditionalInfoOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v PortAdditionalInfo) string { return v.Value }).(pulumi.StringOutput)
+func (o PortAdditionalInfoOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortAdditionalInfo) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type PortAdditionalInfoArrayOutput struct{ *pulumi.OutputState }
@@ -11857,16 +11857,10 @@ func (o PortNotificationArrayOutput) Index(i pulumi.IntInput) PortNotificationOu
 type PortOrder struct {
 	// Customer order reference Id
 	CustomerReferenceId *string `pulumi:"customerReferenceId"`
-	// Order Identification
-	OrderId *string `pulumi:"orderId"`
-	// Order Reference Number
-	OrderNumber *string `pulumi:"orderNumber"`
 	// Purchase order details
 	PurchaseOrder *PortOrderPurchaseOrder `pulumi:"purchaseOrder"`
 	// Port order confirmation signature details
 	Signature *PortOrderSignature `pulumi:"signature"`
-	// Equinix-assigned order identifier, this is a derived response attribute
-	Uuid *string `pulumi:"uuid"`
 }
 
 // PortOrderInput is an input type that accepts PortOrderArgs and PortOrderOutput values.
@@ -11883,16 +11877,10 @@ type PortOrderInput interface {
 type PortOrderArgs struct {
 	// Customer order reference Id
 	CustomerReferenceId pulumi.StringPtrInput `pulumi:"customerReferenceId"`
-	// Order Identification
-	OrderId pulumi.StringPtrInput `pulumi:"orderId"`
-	// Order Reference Number
-	OrderNumber pulumi.StringPtrInput `pulumi:"orderNumber"`
 	// Purchase order details
 	PurchaseOrder PortOrderPurchaseOrderPtrInput `pulumi:"purchaseOrder"`
 	// Port order confirmation signature details
 	Signature PortOrderSignaturePtrInput `pulumi:"signature"`
-	// Equinix-assigned order identifier, this is a derived response attribute
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (PortOrderArgs) ElementType() reflect.Type {
@@ -11977,16 +11965,6 @@ func (o PortOrderOutput) CustomerReferenceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortOrder) *string { return v.CustomerReferenceId }).(pulumi.StringPtrOutput)
 }
 
-// Order Identification
-func (o PortOrderOutput) OrderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortOrder) *string { return v.OrderId }).(pulumi.StringPtrOutput)
-}
-
-// Order Reference Number
-func (o PortOrderOutput) OrderNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortOrder) *string { return v.OrderNumber }).(pulumi.StringPtrOutput)
-}
-
 // Purchase order details
 func (o PortOrderOutput) PurchaseOrder() PortOrderPurchaseOrderPtrOutput {
 	return o.ApplyT(func(v PortOrder) *PortOrderPurchaseOrder { return v.PurchaseOrder }).(PortOrderPurchaseOrderPtrOutput)
@@ -11995,11 +11973,6 @@ func (o PortOrderOutput) PurchaseOrder() PortOrderPurchaseOrderPtrOutput {
 // Port order confirmation signature details
 func (o PortOrderOutput) Signature() PortOrderSignaturePtrOutput {
 	return o.ApplyT(func(v PortOrder) *PortOrderSignature { return v.Signature }).(PortOrderSignaturePtrOutput)
-}
-
-// Equinix-assigned order identifier, this is a derived response attribute
-func (o PortOrderOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PortOrder) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 type PortOrderPtrOutput struct{ *pulumi.OutputState }
@@ -12036,26 +12009,6 @@ func (o PortOrderPtrOutput) CustomerReferenceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Order Identification
-func (o PortOrderPtrOutput) OrderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PortOrder) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrderId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Order Reference Number
-func (o PortOrderPtrOutput) OrderNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PortOrder) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OrderNumber
-	}).(pulumi.StringPtrOutput)
-}
-
 // Purchase order details
 func (o PortOrderPtrOutput) PurchaseOrder() PortOrderPurchaseOrderPtrOutput {
 	return o.ApplyT(func(v *PortOrder) *PortOrderPurchaseOrder {
@@ -12074,16 +12027,6 @@ func (o PortOrderPtrOutput) Signature() PortOrderSignaturePtrOutput {
 		}
 		return v.Signature
 	}).(PortOrderSignaturePtrOutput)
-}
-
-// Equinix-assigned order identifier, this is a derived response attribute
-func (o PortOrderPtrOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PortOrder) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Uuid
-	}).(pulumi.StringPtrOutput)
 }
 
 type PortOrderPurchaseOrder struct {
@@ -13261,162 +13204,6 @@ func (o PortRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
 		}
 		return &v.Priority
 	}).(pulumi.StringPtrOutput)
-}
-
-type PortSettings struct {
-	// Billing package for the port being ordered
-	PackageType string `pulumi:"packageType"`
-	// Indicates whether this is a dedicated customer cage or a shared neutral cage
-	SharedPortType bool `pulumi:"sharedPortType"`
-}
-
-// PortSettingsInput is an input type that accepts PortSettingsArgs and PortSettingsOutput values.
-// You can construct a concrete instance of `PortSettingsInput` via:
-//
-//	PortSettingsArgs{...}
-type PortSettingsInput interface {
-	pulumi.Input
-
-	ToPortSettingsOutput() PortSettingsOutput
-	ToPortSettingsOutputWithContext(context.Context) PortSettingsOutput
-}
-
-type PortSettingsArgs struct {
-	// Billing package for the port being ordered
-	PackageType pulumi.StringInput `pulumi:"packageType"`
-	// Indicates whether this is a dedicated customer cage or a shared neutral cage
-	SharedPortType pulumi.BoolInput `pulumi:"sharedPortType"`
-}
-
-func (PortSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortSettings)(nil)).Elem()
-}
-
-func (i PortSettingsArgs) ToPortSettingsOutput() PortSettingsOutput {
-	return i.ToPortSettingsOutputWithContext(context.Background())
-}
-
-func (i PortSettingsArgs) ToPortSettingsOutputWithContext(ctx context.Context) PortSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PortSettingsOutput)
-}
-
-func (i PortSettingsArgs) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
-	return i.ToPortSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i PortSettingsArgs) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PortSettingsOutput).ToPortSettingsPtrOutputWithContext(ctx)
-}
-
-// PortSettingsPtrInput is an input type that accepts PortSettingsArgs, PortSettingsPtr and PortSettingsPtrOutput values.
-// You can construct a concrete instance of `PortSettingsPtrInput` via:
-//
-//	        PortSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type PortSettingsPtrInput interface {
-	pulumi.Input
-
-	ToPortSettingsPtrOutput() PortSettingsPtrOutput
-	ToPortSettingsPtrOutputWithContext(context.Context) PortSettingsPtrOutput
-}
-
-type portSettingsPtrType PortSettingsArgs
-
-func PortSettingsPtr(v *PortSettingsArgs) PortSettingsPtrInput {
-	return (*portSettingsPtrType)(v)
-}
-
-func (*portSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PortSettings)(nil)).Elem()
-}
-
-func (i *portSettingsPtrType) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
-	return i.ToPortSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *portSettingsPtrType) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PortSettingsPtrOutput)
-}
-
-type PortSettingsOutput struct{ *pulumi.OutputState }
-
-func (PortSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortSettings)(nil)).Elem()
-}
-
-func (o PortSettingsOutput) ToPortSettingsOutput() PortSettingsOutput {
-	return o
-}
-
-func (o PortSettingsOutput) ToPortSettingsOutputWithContext(ctx context.Context) PortSettingsOutput {
-	return o
-}
-
-func (o PortSettingsOutput) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
-	return o.ToPortSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o PortSettingsOutput) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortSettings) *PortSettings {
-		return &v
-	}).(PortSettingsPtrOutput)
-}
-
-// Billing package for the port being ordered
-func (o PortSettingsOutput) PackageType() pulumi.StringOutput {
-	return o.ApplyT(func(v PortSettings) string { return v.PackageType }).(pulumi.StringOutput)
-}
-
-// Indicates whether this is a dedicated customer cage or a shared neutral cage
-func (o PortSettingsOutput) SharedPortType() pulumi.BoolOutput {
-	return o.ApplyT(func(v PortSettings) bool { return v.SharedPortType }).(pulumi.BoolOutput)
-}
-
-type PortSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (PortSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PortSettings)(nil)).Elem()
-}
-
-func (o PortSettingsPtrOutput) ToPortSettingsPtrOutput() PortSettingsPtrOutput {
-	return o
-}
-
-func (o PortSettingsPtrOutput) ToPortSettingsPtrOutputWithContext(ctx context.Context) PortSettingsPtrOutput {
-	return o
-}
-
-func (o PortSettingsPtrOutput) Elem() PortSettingsOutput {
-	return o.ApplyT(func(v *PortSettings) PortSettings {
-		if v != nil {
-			return *v
-		}
-		var ret PortSettings
-		return ret
-	}).(PortSettingsOutput)
-}
-
-// Billing package for the port being ordered
-func (o PortSettingsPtrOutput) PackageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PortSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PackageType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether this is a dedicated customer cage or a shared neutral cage
-func (o PortSettingsPtrOutput) SharedPortType() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PortSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SharedPortType
-	}).(pulumi.BoolPtrOutput)
 }
 
 type PortTimeouts struct {
@@ -30879,7 +30666,7 @@ func (o GetAdvertisedRoutesDataConnectionOutput) Uuid() pulumi.StringOutput {
 type GetAdvertisedRoutesFilter struct {
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator string `pulumi:"operator"`
-	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	// possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -30899,7 +30686,7 @@ type GetAdvertisedRoutesFilterInput interface {
 type GetAdvertisedRoutesFilterArgs struct {
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	// possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -30936,7 +30723,7 @@ func (o GetAdvertisedRoutesFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdvertisedRoutesFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+// possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
 func (o GetAdvertisedRoutesFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdvertisedRoutesFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -41035,6 +40822,8 @@ type GetConnectionsData struct {
 	Description string `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction string `pulumi:"direction"`
+	// Geographic boundary types
+	GeoScope string `pulumi:"geoScope"`
 	// Connection URI information
 	Href string `pulumi:"href"`
 	// Connection property derived from access point locations
@@ -41087,6 +40876,8 @@ type GetConnectionsDataArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringInput `pulumi:"direction"`
+	// Geographic boundary types
+	GeoScope pulumi.StringInput `pulumi:"geoScope"`
 	// Connection URI information
 	Href pulumi.StringInput `pulumi:"href"`
 	// Connection property derived from access point locations
@@ -41197,6 +40988,11 @@ func (o GetConnectionsDataOutput) Description() pulumi.StringOutput {
 // Connection directionality from the requester point of view
 func (o GetConnectionsDataOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsData) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Geographic boundary types
+func (o GetConnectionsDataOutput) GeoScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionsData) string { return v.GeoScope }).(pulumi.StringOutput)
 }
 
 // Connection URI information
@@ -48259,7 +48055,7 @@ type GetConnectionsFilter struct {
 	Group *string `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator string `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -48281,7 +48077,7 @@ type GetConnectionsFilterArgs struct {
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -48348,7 +48144,7 @@ func (o GetConnectionsFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid]
+// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
 func (o GetConnectionsFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -51177,7 +50973,7 @@ type GetNetworksFilter struct {
 	Group *string `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
 	Operator string `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+	// Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -51199,7 +50995,7 @@ type GetNetworksFilterArgs struct {
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+	// Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -51266,7 +51062,7 @@ func (o GetNetworksFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+// Possible field names to use on filters. One of [/name /uuid /scope /type /state /operation/equinixStatus /location/region /location/metroCode /connectionsCount /project/projectId /account/globalCustId /account/orgId /changeLog/createdDateTime /changeLog/updatedDateTime /changeLog/deletedDateTime /_*]
 func (o GetNetworksFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -57559,7 +57355,7 @@ func (o GetReceivedRoutesDataConnectionOutput) Uuid() pulumi.StringOutput {
 type GetReceivedRoutesFilter struct {
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator string `pulumi:"operator"`
-	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	// possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -57579,7 +57375,7 @@ type GetReceivedRoutesFilterInput interface {
 type GetReceivedRoutesFilterArgs struct {
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	// possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -57616,7 +57412,7 @@ func (o GetReceivedRoutesFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReceivedRoutesFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+// possible field names to use on filters. One of /type, /state, /prefix, /nextHop, /*
 func (o GetReceivedRoutesFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReceivedRoutesFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -59439,7 +59235,7 @@ func (o GetRouteAggregationsDataProjectOutput) ProjectId() pulumi.StringOutput {
 type GetRouteAggregationsFilter struct {
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator string `pulumi:"operator"`
-	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	// Field name to use on filters
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -59459,7 +59255,7 @@ type GetRouteAggregationsFilterInput interface {
 type GetRouteAggregationsFilterArgs struct {
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+	// Field name to use on filters
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -59496,7 +59292,7 @@ func (o GetRouteAggregationsFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationsFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// possible field names to use on filters. One of [/type /name /project/projectId /uuid /state]
+// Field name to use on filters
 func (o GetRouteAggregationsFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationsFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -59722,7 +59518,7 @@ func (o GetRouteAggregationsPaginationPtrOutput) Total() pulumi.IntPtrOutput {
 type GetRouteAggregationsSort struct {
 	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
 	Direction *string `pulumi:"direction"`
-	// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+	// The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
 	Property *string `pulumi:"property"`
 }
 
@@ -59740,7 +59536,7 @@ type GetRouteAggregationsSortInput interface {
 type GetRouteAggregationsSortArgs struct {
 	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+	// The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
 	Property pulumi.StringPtrInput `pulumi:"property"`
 }
 
@@ -59826,7 +59622,7 @@ func (o GetRouteAggregationsSortOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteAggregationsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+// The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
 func (o GetRouteAggregationsSortOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteAggregationsSort) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
@@ -59865,7 +59661,7 @@ func (o GetRouteAggregationsSortPtrOutput) Direction() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+// The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
 func (o GetRouteAggregationsSortPtrOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRouteAggregationsSort) *string {
 		if v == nil {
@@ -65718,7 +65514,7 @@ type GetServiceProfilesDatum struct {
 	Ports []GetServiceProfilesDatumPort `pulumi:"ports"`
 	// Project information
 	Projects []GetServiceProfilesDatumProject `pulumi:"projects"`
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State string `pulumi:"state"`
@@ -65774,7 +65570,7 @@ type GetServiceProfilesDatumArgs struct {
 	Ports GetServiceProfilesDatumPortArrayInput `pulumi:"ports"`
 	// Project information
 	Projects GetServiceProfilesDatumProjectArrayInput `pulumi:"projects"`
-	// Self Profile indicating if the profile is created for customer's  self use
+	// Self Profile indicating if the profile is created for customer's self use
 	SelfProfile pulumi.BoolInput `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringInput `pulumi:"state"`
@@ -65910,7 +65706,7 @@ func (o GetServiceProfilesDatumOutput) Projects() GetServiceProfilesDatumProject
 	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumProject { return v.Projects }).(GetServiceProfilesDatumProjectArrayOutput)
 }
 
-// Self Profile indicating if the profile is created for customer's  self use
+// Self Profile indicating if the profile is created for customer's self use
 func (o GetServiceProfilesDatumOutput) SelfProfile() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceProfilesDatum) bool { return v.SelfProfile }).(pulumi.BoolOutput)
 }
@@ -78662,6 +78458,157 @@ func (o GetStreamAttachmentsSortArrayOutput) Index(i pulumi.IntInput) GetStreamA
 	}).(GetStreamAttachmentsSortOutput)
 }
 
+type GetStreamChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamChangeLogInput is an input type that accepts GetStreamChangeLogArgs and GetStreamChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamChangeLogInput` via:
+//
+//	GetStreamChangeLogArgs{...}
+type GetStreamChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamChangeLogOutput() GetStreamChangeLogOutput
+	ToGetStreamChangeLogOutputWithContext(context.Context) GetStreamChangeLogOutput
+}
+
+type GetStreamChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
+	return i.ToGetStreamChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamChangeLogOutput)
+}
+
+type GetStreamChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
+	return o
+}
+
+func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountInput)(nil)).Elem(), CloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountPtrInput)(nil)).Elem(), CloudRouterAccountArgs{})
@@ -78808,8 +78755,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PortProjectPtrInput)(nil)).Elem(), PortProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortRedundancyInput)(nil)).Elem(), PortRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortRedundancyPtrInput)(nil)).Elem(), PortRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PortSettingsInput)(nil)).Elem(), PortSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PortSettingsPtrInput)(nil)).Elem(), PortSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortTimeoutsInput)(nil)).Elem(), PortTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortTimeoutsPtrInput)(nil)).Elem(), PortTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrecisionTimeServiceAccountInput)(nil)).Elem(), PrecisionTimeServiceAccountArgs{})
@@ -79585,6 +79530,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsPaginationInput)(nil)).Elem(), GetStreamAttachmentsPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortInput)(nil)).Elem(), GetStreamAttachmentsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortArrayInput)(nil)).Elem(), GetStreamAttachmentsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamChangeLogInput)(nil)).Elem(), GetStreamChangeLogArgs{})
 	pulumi.RegisterOutputType(CloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(CloudRouterAccountPtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterChangeLogOutput{})
@@ -79730,8 +79676,6 @@ func init() {
 	pulumi.RegisterOutputType(PortProjectPtrOutput{})
 	pulumi.RegisterOutputType(PortRedundancyOutput{})
 	pulumi.RegisterOutputType(PortRedundancyPtrOutput{})
-	pulumi.RegisterOutputType(PortSettingsOutput{})
-	pulumi.RegisterOutputType(PortSettingsPtrOutput{})
 	pulumi.RegisterOutputType(PortTimeoutsOutput{})
 	pulumi.RegisterOutputType(PortTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PrecisionTimeServiceAccountOutput{})
@@ -80507,4 +80451,5 @@ func init() {
 	pulumi.RegisterOutputType(GetStreamAttachmentsPaginationOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsSortOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamChangeLogOutput{})
 }

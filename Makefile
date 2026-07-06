@@ -135,6 +135,10 @@ build_java: bin/pulumi-java-gen patch_java_schema upstream $(PULUMICTL_BIN)
 			-e 's/description = .*/description = "A Pulumi package for creating and managing equinix cloud resources."/g' ./build.gradle && \
 		sed -i.bak -E '/inceptionYear/,/packaging/s/(name = ).*/\1"$(PACK)"/' ./build.gradle && \
 		rm -f build.gradle.bak
+	echo "patch_java: add mavenLocal to settings.gradle for local plugin resolution" && \
+		awk '/repositories \{/ && !x {print; print "    mavenLocal()"; x=1; next}1' \
+			./sdk/java/settings.gradle > ./sdk/java/settings.gradle.tmp && \
+		mv ./sdk/java/settings.gradle.tmp ./sdk/java/settings.gradle
 	cd sdk/java/ && \
 		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		gradle --console=plain build && \

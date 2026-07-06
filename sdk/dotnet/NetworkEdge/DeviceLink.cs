@@ -23,31 +23,34 @@ namespace Pulumi.Equinix.NetworkEdge
     /// {
     ///     var test = new Equinix.NetworkEdge.DeviceLink("test", new()
     ///     {
-    ///         Name = "test-link",
-    ///         Subnet = "192.168.40.64/27",
-    ///         ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
+    ///         Name = "test-DLG",
+    ///         ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         Devices = new[]
     ///         {
     ///             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
     ///             {
     ///                 Id = testEquinixNetworkDevice.Uuid,
-    ///                 Asn = 22111,
     ///                 InterfaceId = 6,
     ///             },
     ///             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
     ///             {
     ///                 Id = testEquinixNetworkDevice.SecondaryDevice[0].Uuid,
-    ///                 Asn = 22333,
     ///                 InterfaceId = 7,
     ///             },
     ///         },
-    ///         Links = new[]
+    ///         MetroLinks = new[]
     ///         {
-    ///             new Equinix.NetworkEdge.Inputs.DeviceLinkLinkArgs
+    ///             new Equinix.NetworkEdge.Inputs.DeviceLinkMetroLinkArgs
     ///             {
     ///                 AccountNumber = testEquinixNetworkDevice.AccountNumber,
-    ///                 SrcMetroCode = testEquinixNetworkDevice.MetroCode,
-    ///                 DstMetroCode = testEquinixNetworkDevice.SecondaryDevice[0].MetroCode,
+    ///                 MetroCode = testEquinixNetworkDevice.MetroCode,
+    ///                 Throughput = "50",
+    ///                 ThroughputUnit = "Mbps",
+    ///             },
+    ///             new Equinix.NetworkEdge.Inputs.DeviceLinkMetroLinkArgs
+    ///             {
+    ///                 AccountNumber = testEquinixNetworkDevice.SecondaryDevice[0].AccountNumber,
+    ///                 MetroCode = testEquinixNetworkDevice.SecondaryDevice[0].MetroCode,
     ///                 Throughput = "50",
     ///                 ThroughputUnit = "Mbps",
     ///             },
@@ -73,12 +76,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("devices")]
         public Output<ImmutableArray<Outputs.DeviceLinkDevice>> Devices { get; private set; } = null!;
-
-        /// <summary>
-        /// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-        /// </summary>
-        [Output("links")]
-        public Output<ImmutableArray<Outputs.DeviceLinkLink>> Links { get; private set; } = null!;
 
         /// <summary>
         /// definition of one or more, inter metro, connections belonging to the device link. See Metro Link section below for more details.
@@ -181,19 +178,6 @@ namespace Pulumi.Equinix.NetworkEdge
             set => _devices = value;
         }
 
-        [Input("links")]
-        private InputList<Inputs.DeviceLinkLinkArgs>? _links;
-
-        /// <summary>
-        /// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-        /// </summary>
-        [Obsolete(@"Links is deprecated. Please use metro links instead.")]
-        public InputList<Inputs.DeviceLinkLinkArgs> Links
-        {
-            get => _links ?? (_links = new InputList<Inputs.DeviceLinkLinkArgs>());
-            set => _links = value;
-        }
-
         [Input("metroLinks")]
         private InputList<Inputs.DeviceLinkMetroLinkArgs>? _metroLinks;
 
@@ -248,19 +232,6 @@ namespace Pulumi.Equinix.NetworkEdge
         {
             get => _devices ?? (_devices = new InputList<Inputs.DeviceLinkDeviceGetArgs>());
             set => _devices = value;
-        }
-
-        [Input("links")]
-        private InputList<Inputs.DeviceLinkLinkGetArgs>? _links;
-
-        /// <summary>
-        /// definition of one or more, inter metro, connections belonging to the device link. See Link section below for more details.
-        /// </summary>
-        [Obsolete(@"Links is deprecated. Please use metro links instead.")]
-        public InputList<Inputs.DeviceLinkLinkGetArgs> Links
-        {
-            get => _links ?? (_links = new InputList<Inputs.DeviceLinkLinkGetArgs>());
-            set => _links = value;
         }
 
         [Input("metroLinks")]

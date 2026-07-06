@@ -26,12 +26,6 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The Equinix Metal API auth key for API operations
-     *
-     * @deprecated Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-     */
-    public readonly authToken!: pulumi.Output<string | undefined>;
-    /**
      * API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
      * `EQUINIX_API_CLIENTID` shell environment variable.
      */
@@ -89,7 +83,6 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["authToken"] = args ? args.authToken : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
@@ -112,12 +105,6 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    /**
-     * The Equinix Metal API auth key for API operations
-     *
-     * @deprecated Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-     */
-    authToken?: pulumi.Input<string>;
     /**
      * API Consumer Key available under "My Apps" in developer portal. This argument can also be specified with the
      * `EQUINIX_API_CLIENTID` shell environment variable.

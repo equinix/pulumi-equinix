@@ -53,29 +53,6 @@ public final class AclTemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ACL template location metro code.
-     * 
-     * @deprecated
-     * Metro Code is no longer required
-     * 
-     */
-    @Deprecated /* Metro Code is no longer required */
-    @Import(name="metroCode")
-    private @Nullable Output<String> metroCode;
-
-    /**
-     * @return ACL template location metro code.
-     * 
-     * @deprecated
-     * Metro Code is no longer required
-     * 
-     */
-    @Deprecated /* Metro Code is no longer required */
-    public Optional<Output<String>> metroCode() {
-        return Optional.ofNullable(this.metroCode);
-    }
-
-    /**
      * ACL template name.
      * 
      */
@@ -110,7 +87,6 @@ public final class AclTemplateArgs extends com.pulumi.resources.ResourceArgs {
     private AclTemplateArgs(AclTemplateArgs $) {
         this.description = $.description;
         this.inboundRules = $.inboundRules;
-        this.metroCode = $.metroCode;
         this.name = $.name;
         this.projectId = $.projectId;
     }
@@ -189,35 +165,6 @@ public final class AclTemplateArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder inboundRules(AclTemplateInboundRuleArgs... inboundRules) {
             return inboundRules(List.of(inboundRules));
-        }
-
-        /**
-         * @param metroCode ACL template location metro code.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Metro Code is no longer required
-         * 
-         */
-        @Deprecated /* Metro Code is no longer required */
-        public Builder metroCode(@Nullable Output<String> metroCode) {
-            $.metroCode = metroCode;
-            return this;
-        }
-
-        /**
-         * @param metroCode ACL template location metro code.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Metro Code is no longer required
-         * 
-         */
-        @Deprecated /* Metro Code is no longer required */
-        public Builder metroCode(String metroCode) {
-            return metroCode(Output.of(metroCode));
         }
 
         /**

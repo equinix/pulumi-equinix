@@ -64,29 +64,6 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Deprecated) Identifier of a network device where template was applied.
-     * 
-     * @deprecated
-     * Refer to device details get device information
-     * 
-     */
-    @Deprecated /* Refer to device details get device information */
-    @Import(name="deviceId")
-    private @Nullable Output<String> deviceId;
-
-    /**
-     * @return (Deprecated) Identifier of a network device where template was applied.
-     * 
-     * @deprecated
-     * Refer to device details get device information
-     * 
-     */
-    @Deprecated /* Refer to device details get device information */
-    public Optional<Output<String>> deviceId() {
-        return Optional.ofNullable(this.deviceId);
-    }
-
-    /**
      * One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
      * The `inbound_rule` block has below fields:
@@ -103,29 +80,6 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<AclTemplateInboundRuleArgs>>> inboundRules() {
         return Optional.ofNullable(this.inboundRules);
-    }
-
-    /**
-     * ACL template location metro code.
-     * 
-     * @deprecated
-     * Metro Code is no longer required
-     * 
-     */
-    @Deprecated /* Metro Code is no longer required */
-    @Import(name="metroCode")
-    private @Nullable Output<String> metroCode;
-
-    /**
-     * @return ACL template location metro code.
-     * 
-     * @deprecated
-     * Metro Code is no longer required
-     * 
-     */
-    @Deprecated /* Metro Code is no longer required */
-    public Optional<Output<String>> metroCode() {
-        return Optional.ofNullable(this.metroCode);
     }
 
     /**
@@ -179,9 +133,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.deviceAclStatus = $.deviceAclStatus;
         this.deviceDetails = $.deviceDetails;
-        this.deviceId = $.deviceId;
         this.inboundRules = $.inboundRules;
-        this.metroCode = $.metroCode;
         this.name = $.name;
         this.projectId = $.projectId;
         this.uuid = $.uuid;
@@ -279,35 +231,6 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceId (Deprecated) Identifier of a network device where template was applied.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Refer to device details get device information
-         * 
-         */
-        @Deprecated /* Refer to device details get device information */
-        public Builder deviceId(@Nullable Output<String> deviceId) {
-            $.deviceId = deviceId;
-            return this;
-        }
-
-        /**
-         * @param deviceId (Deprecated) Identifier of a network device where template was applied.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Refer to device details get device information
-         * 
-         */
-        @Deprecated /* Refer to device details get device information */
-        public Builder deviceId(String deviceId) {
-            return deviceId(Output.of(deviceId));
-        }
-
-        /**
          * @param inboundRules One or more rules to specify allowed inbound traffic. Rules are ordered, matching traffic rule stops processing subsequent ones.
          * 
          * The `inbound_rule` block has below fields:
@@ -342,35 +265,6 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder inboundRules(AclTemplateInboundRuleArgs... inboundRules) {
             return inboundRules(List.of(inboundRules));
-        }
-
-        /**
-         * @param metroCode ACL template location metro code.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Metro Code is no longer required
-         * 
-         */
-        @Deprecated /* Metro Code is no longer required */
-        public Builder metroCode(@Nullable Output<String> metroCode) {
-            $.metroCode = metroCode;
-            return this;
-        }
-
-        /**
-         * @param metroCode ACL template location metro code.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Metro Code is no longer required
-         * 
-         */
-        @Deprecated /* Metro Code is no longer required */
-        public Builder metroCode(String metroCode) {
-            return metroCode(Output.of(metroCode));
         }
 
         /**

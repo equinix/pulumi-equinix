@@ -3,7 +3,7 @@ name: equinix-fabric-stream_subscription
 runtime: yaml
 resources:
   SPLUNK:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -11,10 +11,10 @@ resources:
       streamId: <stream_id>
       enabled: true
       eventSelector:
-        includes:
+        include:
           - equinix.fabric.connection.*
       metricSelector:
-        includes:
+        include:
           - equinix.fabric.connection.*
       sink:
         type: SPLUNK_HEC
@@ -27,7 +27,7 @@ resources:
           type: ACCESS_TOKEN
           accessToken: <splunk_access_token>
   SLACK:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -38,7 +38,7 @@ resources:
         type: SLACK
         uri: <slack_uri>
   PAGER_DUTY:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -55,7 +55,7 @@ resources:
           type: INTEGRATION_KEY
           integrationKey: <pager_duty_integration_key>
   DATADOG:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -74,7 +74,7 @@ resources:
           type: API_KEY
           apiKey: <datadog_api_key>
   MSTEAMS:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -85,7 +85,7 @@ resources:
         type: TEAMS
         uri: <msteams_uri>
   servicenow:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -102,7 +102,7 @@ resources:
           username: <servicenow_username>
           password: <servicenow_password>
   webhook:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>
@@ -116,7 +116,7 @@ resources:
           eventUri: <webhook_event_uri>
           metricUri: <webhook_metric_uri>
   grafana:
-    type: equinix:fabric:StreamSubscription
+    type: equinix:fabricStreamSubscription
     properties:
       type: STREAM_SUBSCRIPTION
       name: <name>

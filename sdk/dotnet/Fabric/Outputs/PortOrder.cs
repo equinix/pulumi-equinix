@@ -18,14 +18,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? CustomerReferenceId;
         /// <summary>
-        /// Order Identification
-        /// </summary>
-        public readonly string? OrderId;
-        /// <summary>
-        /// Order Reference Number
-        /// </summary>
-        public readonly string? OrderNumber;
-        /// <summary>
         /// Purchase order details
         /// </summary>
         public readonly Outputs.PortOrderPurchaseOrder? PurchaseOrder;
@@ -33,31 +25,18 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Port order confirmation signature details
         /// </summary>
         public readonly Outputs.PortOrderSignature? Signature;
-        /// <summary>
-        /// Equinix-assigned order identifier, this is a derived response attribute
-        /// </summary>
-        public readonly string? Uuid;
 
         [OutputConstructor]
         private PortOrder(
             string? customerReferenceId,
 
-            string? orderId,
-
-            string? orderNumber,
-
             Outputs.PortOrderPurchaseOrder? purchaseOrder,
 
-            Outputs.PortOrderSignature? signature,
-
-            string? uuid)
+            Outputs.PortOrderSignature? signature)
         {
             CustomerReferenceId = customerReferenceId;
-            OrderId = orderId;
-            OrderNumber = orderNumber;
             PurchaseOrder = purchaseOrder;
             Signature = signature;
-            Uuid = uuid;
         }
     }
 }

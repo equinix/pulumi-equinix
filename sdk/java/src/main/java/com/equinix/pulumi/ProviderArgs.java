@@ -17,29 +17,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * The Equinix Metal API auth key for API operations
-     * 
-     * @deprecated
-     * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-     * 
-     */
-    @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
-    @Import(name="authToken")
-    private @Nullable Output<String> authToken;
-
-    /**
-     * @return The Equinix Metal API auth key for API operations
-     * 
-     * @deprecated
-     * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-     * 
-     */
-    @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
-    public Optional<Output<String>> authToken() {
-        return Optional.ofNullable(this.authToken);
-    }
-
-    /**
      * API Consumer Key available under &#34;My Apps&#34; in developer portal. This argument can also be specified with the
      * `EQUINIX_API_CLIENTID` shell environment variable.
      * 
@@ -256,7 +233,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
-        this.authToken = $.authToken;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.endpoint = $.endpoint;
@@ -287,35 +263,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param authToken The Equinix Metal API auth key for API operations
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-         * 
-         */
-        @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
-        public Builder authToken(@Nullable Output<String> authToken) {
-            $.authToken = authToken;
-            return this;
-        }
-
-        /**
-         * @param authToken The Equinix Metal API auth key for API operations
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information.
-         * 
-         */
-        @Deprecated /* Equinix Metal will reach end of life on June 30, 2026. All Metal resources will be removed in version 5.0.0 of this provider. Use version 4.x of this provider for continued use through sunset. See https://docs.equinix.com/metal/ for more information. */
-        public Builder authToken(String authToken) {
-            return authToken(Output.of(authToken));
         }
 
         /**

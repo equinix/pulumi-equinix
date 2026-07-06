@@ -17,7 +17,7 @@ public final class GetRouteAggregationsSort {
      */
     private @Nullable String direction;
     /**
-     * @return The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+     * @return The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
      * 
      */
     private @Nullable String property;
@@ -31,7 +31,7 @@ public final class GetRouteAggregationsSort {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return The property name to use in sorting. One of [/type /name /project/projectId /uuid /state] Defaults to /name
+     * @return The property name to use in sorting. One of &#34;/type&#34; &#34;/uuid&#34; &#34;/name&#34; &#34;/project/projectId&#34; &#34;/state&#34; &#34;/changeLog/createdDateTime&#34; &#34;/changeLog/updatedDateTime&#34; &#34;/changeLog/deletedDateTime&#34; Defaults to &#34;/changeLog/updatedDateTime&#34;
      * 
      */
     public Optional<String> property() {
