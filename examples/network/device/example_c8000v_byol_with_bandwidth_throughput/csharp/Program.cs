@@ -12,6 +12,11 @@ return await Deployment.RunAsync(() =>
 
     var c8000VByolThroughput = new Equinix.NetworkEdge.Device("c8000v-byol-throughput", new()
     {
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
         Name = "tf-c8000v-byol",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
         TypeCode = "C8000V",
@@ -31,11 +36,6 @@ return await Deployment.RunAsync(() =>
         CoreCount = 2,
         Throughput = 100,
         ThroughputUnit = Equinix.NetworkEdge.ThroughputUnit.Mbps,
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test",
-            KeyName = "test-key",
-        },
         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
     });
 

@@ -18,14 +18,14 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
     public static final RouteAggregationRuleArgs Empty = new RouteAggregationRuleArgs();
 
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Customer-provided route aggregation rule description
+     * @return Customer-provided Route Aggregation Rule description
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +33,14 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Customer provided name of the route aggregation rule
+     * Customer provided name of the Route Aggregation Rule
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Customer provided name of the route aggregation rule
+     * @return Customer provided name of the Route Aggregation Rule
      * 
      */
     public Optional<Output<String>> name() {
@@ -48,14 +48,14 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Customer-provided route aggregation rule prefix
+     * Customer-provided Route Aggregation Rule prefix
      * 
      */
     @Import(name="prefix", required=true)
     private Output<String> prefix;
 
     /**
-     * @return Customer-provided route aggregation rule prefix
+     * @return Customer-provided Route Aggregation Rule prefix
      * 
      */
     public Output<String> prefix() {
@@ -63,14 +63,14 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * UUID of the Route Aggregation to apply this Rule to
+     * UUID of the Route Aggregation that this rule is applied to
      * 
      */
     @Import(name="routeAggregationId", required=true)
     private Output<String> routeAggregationId;
 
     /**
-     * @return UUID of the Route Aggregation to apply this Rule to
+     * @return UUID of the Route Aggregation that this rule is applied to
      * 
      */
     public Output<String> routeAggregationId() {
@@ -113,7 +113,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Customer-provided route aggregation rule description
+         * @param description Customer-provided Route Aggregation Rule description
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Customer-provided route aggregation rule description
+         * @param description Customer-provided Route Aggregation Rule description
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Customer provided name of the route aggregation rule
+         * @param name Customer provided name of the Route Aggregation Rule
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Customer provided name of the route aggregation rule
+         * @param name Customer provided name of the Route Aggregation Rule
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param prefix Customer-provided route aggregation rule prefix
+         * @param prefix Customer-provided Route Aggregation Rule prefix
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param prefix Customer-provided route aggregation rule prefix
+         * @param prefix Customer-provided Route Aggregation Rule prefix
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeAggregationId UUID of the Route Aggregation to apply this Rule to
+         * @param routeAggregationId UUID of the Route Aggregation that this rule is applied to
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class RouteAggregationRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeAggregationId UUID of the Route Aggregation to apply this Rule to
+         * @param routeAggregationId UUID of the Route Aggregation that this rule is applied to
          * 
          * @return builder
          * 

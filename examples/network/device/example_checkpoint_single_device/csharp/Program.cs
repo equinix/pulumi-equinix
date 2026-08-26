@@ -10,8 +10,13 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var cHECKPOINTSV = new Equinix.NetworkEdge.Device("CHECKPOINT-SV", new()
+    var checkpointSv = new Equinix.NetworkEdge.Device("CHECKPOINT-SV", new()
     {
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "XXXXX",
+            KeyName = "XXXXXX",
+        },
         Name = "TF_CHECKPOINT",
         ProjectId = "XXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -30,11 +35,6 @@ return await Deployment.RunAsync(() =>
         TermLength = 1,
         AdditionalBandwidth = 5,
         AclTemplateId = "XXXXXXX",
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "XXXXX",
-            KeyName = "XXXXXX",
-        },
     });
 
 });

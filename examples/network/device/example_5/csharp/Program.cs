@@ -11,8 +11,13 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var vsrxSingle = new Equinix.NetworkEdge.Device("vsrxSingle", new()
+    var vsrxSingle = new Equinix.NetworkEdge.Device("vsrx_single", new()
     {
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test-username",
+            KeyName = "valid-key-name",
+        },
         Name = "tf-c8kv-sdwan",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
         TypeCode = "VSRX",
@@ -31,11 +36,6 @@ return await Deployment.RunAsync(() =>
         AdditionalBandwidth = 5,
         ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
         DiverseDeviceId = "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test-username",
-            KeyName = "valid-key-name",
-        },
         AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
     });
 

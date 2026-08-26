@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Pulumi;
-using Equinix = Pulumi.Equinix;
 using Null = Pulumi.Null;
 
 return await Deployment.RunAsync(() => 
@@ -10,44 +9,16 @@ return await Deployment.RunAsync(() =>
 
     var projectId = "<UUID_of_your_project>";
 
-    var addr = new Equinix.Metal.ReservedIpBlock("addr", new()
-    {
-        ProjectId = projectId,
-        Metro = "ny",
-        Quantity = 1,
-    });
-
-    var interfaceLo0 = Output.Tuple(addr.Address, addr.Netmask).Apply(values =>
-    {
-        var address = values.Item1;
-        var netmask = values.Item2;
-        return @$"auto lo:0
+    var interfaceLo0 = @$"auto lo:0
 iface lo:0 inet static
-   address {address}
-   netmask {netmask}
+   address {addr.Address}
+   netmask {addr.Netmask}
 ";
-    });
 
-    var test = new Equinix.Metal.Device("test", new()
-    {
-        Hostname = "terraform-test-bgp-sesh",
-        Plan = Equinix.Metal.Plan.C3SmallX86,
-        Metro = "ny",
-        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
-        BillingCycle = Equinix.Metal.BillingCycle.Hourly,
-        ProjectId = projectId,
-    });
-
-    var birdConf = Output.Tuple(addr.Address, addr.Cidr, test.Network, test.Network).Apply(values =>
-    {
-        var address = values.Item1;
-        var cidr = values.Item2;
-        var testNetwork = values.Item3;
-        var testNetwork1 = values.Item4;
-        return @$"filter equinix_metal_bgp {{
-    if net = {address}/{cidr} then accept;
+    var birdConf = @$"filter equinix_metal_bgp {{
+    if net = {addr.Address}/{addr.Cidr} then accept;
 }}
-router id {testNetwork[2].Address};
+router id {test.Network[2].Address};
 protocol direct {{
     interface ""lo"";
 }}
@@ -63,19 +34,12 @@ protocol device {{
 protocol bgp {{
     export filter equinix_metal_bgp;
     local as 65000;
-    neighbor {testNetwork1[2].Gateway} as 65530;
+    neighbor {test.Network[2].Gateway} as 65530;
     password ""{bgpPassword}"";
 }}
 ";
-    });
 
-    var testBgpSession = new Equinix.Metal.BgpSession("testBgpSession", new()
-    {
-        DeviceId = test.Id,
-        AddressFamily = "ipv4",
-    });
-
-    var configureBird = new Null.Resource("configureBird", new()
+    var configureBird = new Null.Resource("configure_bird", new()
     {
         Triggers = 
         {

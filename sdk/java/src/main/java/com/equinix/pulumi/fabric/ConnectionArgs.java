@@ -163,14 +163,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection Redundancy Configuration
+     * Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     @Import(name="redundancy")
     private @Nullable Output<ConnectionRedundancyArgs> redundancy;
 
     /**
-     * @return Connection Redundancy Configuration
+     * @return Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     public Optional<Output<ConnectionRedundancyArgs>> redundancy() {
@@ -452,7 +452,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancy Connection Redundancy Configuration
+         * @param redundancy Connection Redundancy Configuration (applicable only for Azure connections)
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancy Connection Redundancy Configuration
+         * @param redundancy Connection Redundancy Configuration (applicable only for Azure connections)
          * 
          * @return builder
          * 

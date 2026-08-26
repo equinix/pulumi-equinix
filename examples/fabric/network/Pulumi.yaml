@@ -6,13 +6,13 @@ resources:
     type: equinix:fabric:Network
     name: new_network
     properties:
-      name: Network-SV
-      type: EVPLAN
-      scope: GLOBAL
+      project:
+        projectId: '776847000642406'
       notifications:
         - type: ALL
           emails:
             - example@equinix.com
             - test1@equinix.com
-      project:
-        projectId: '776847000642406'
+      name: Network-SV
+      type: EVPLAN
+      scope: GLOBAL

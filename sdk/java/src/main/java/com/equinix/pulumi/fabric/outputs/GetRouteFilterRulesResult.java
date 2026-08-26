@@ -4,7 +4,9 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetRouteFilterRulesData;
+import com.equinix.pulumi.fabric.outputs.GetRouteFilterRulesFilter;
 import com.equinix.pulumi.fabric.outputs.GetRouteFilterRulesPagination;
+import com.equinix.pulumi.fabric.outputs.GetRouteFilterRulesSort;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -22,6 +24,11 @@ public final class GetRouteFilterRulesResult {
      */
     private List<GetRouteFilterRulesData> datas;
     /**
+     * @return Filters for the Data Source Search Request
+     * 
+     */
+    private @Nullable List<GetRouteFilterRulesFilter> filters;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -37,6 +44,11 @@ public final class GetRouteFilterRulesResult {
      */
     private @Nullable Integer offset;
     /**
+     * @return Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    private String outerOperator;
+    /**
      * @return Pagination details for the Data Source Search Request
      * 
      */
@@ -46,6 +58,11 @@ public final class GetRouteFilterRulesResult {
      * 
      */
     private String routeFilterId;
+    /**
+     * @return Sort criteria for the Data Source Search Request
+     * 
+     */
+    private @Nullable List<GetRouteFilterRulesSort> sorts;
 
     private GetRouteFilterRulesResult() {}
     /**
@@ -54,6 +71,13 @@ public final class GetRouteFilterRulesResult {
      */
     public List<GetRouteFilterRulesData> datas() {
         return this.datas;
+    }
+    /**
+     * @return Filters for the Data Source Search Request
+     * 
+     */
+    public List<GetRouteFilterRulesFilter> filters() {
+        return this.filters == null ? List.of() : this.filters;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -77,6 +101,13 @@ public final class GetRouteFilterRulesResult {
         return Optional.ofNullable(this.offset);
     }
     /**
+     * @return Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    public String outerOperator() {
+        return this.outerOperator;
+    }
+    /**
      * @return Pagination details for the Data Source Search Request
      * 
      */
@@ -90,6 +121,13 @@ public final class GetRouteFilterRulesResult {
     public String routeFilterId() {
         return this.routeFilterId;
     }
+    /**
+     * @return Sort criteria for the Data Source Search Request
+     * 
+     */
+    public List<GetRouteFilterRulesSort> sorts() {
+        return this.sorts == null ? List.of() : this.sorts;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -101,20 +139,26 @@ public final class GetRouteFilterRulesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetRouteFilterRulesData> datas;
+        private @Nullable List<GetRouteFilterRulesFilter> filters;
         private String id;
         private @Nullable Integer limit;
         private @Nullable Integer offset;
+        private String outerOperator;
         private List<GetRouteFilterRulesPagination> paginations;
         private String routeFilterId;
+        private @Nullable List<GetRouteFilterRulesSort> sorts;
         public Builder() {}
         public Builder(GetRouteFilterRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datas = defaults.datas;
+    	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.limit = defaults.limit;
     	      this.offset = defaults.offset;
+    	      this.outerOperator = defaults.outerOperator;
     	      this.paginations = defaults.paginations;
     	      this.routeFilterId = defaults.routeFilterId;
+    	      this.sorts = defaults.sorts;
         }
 
         @CustomType.Setter
@@ -127,6 +171,15 @@ public final class GetRouteFilterRulesResult {
         }
         public Builder datas(GetRouteFilterRulesData... datas) {
             return datas(List.of(datas));
+        }
+        @CustomType.Setter
+        public Builder filters(@Nullable List<GetRouteFilterRulesFilter> filters) {
+
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(GetRouteFilterRulesFilter... filters) {
+            return filters(List.of(filters));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -149,6 +202,14 @@ public final class GetRouteFilterRulesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder outerOperator(String outerOperator) {
+            if (outerOperator == null) {
+              throw new MissingRequiredPropertyException("GetRouteFilterRulesResult", "outerOperator");
+            }
+            this.outerOperator = outerOperator;
+            return this;
+        }
+        @CustomType.Setter
         public Builder paginations(List<GetRouteFilterRulesPagination> paginations) {
             if (paginations == null) {
               throw new MissingRequiredPropertyException("GetRouteFilterRulesResult", "paginations");
@@ -167,14 +228,26 @@ public final class GetRouteFilterRulesResult {
             this.routeFilterId = routeFilterId;
             return this;
         }
+        @CustomType.Setter
+        public Builder sorts(@Nullable List<GetRouteFilterRulesSort> sorts) {
+
+            this.sorts = sorts;
+            return this;
+        }
+        public Builder sorts(GetRouteFilterRulesSort... sorts) {
+            return sorts(List.of(sorts));
+        }
         public GetRouteFilterRulesResult build() {
             final var _resultValue = new GetRouteFilterRulesResult();
             _resultValue.datas = datas;
+            _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.limit = limit;
             _resultValue.offset = offset;
+            _resultValue.outerOperator = outerOperator;
             _resultValue.paginations = paginations;
             _resultValue.routeFilterId = routeFilterId;
+            _resultValue.sorts = sorts;
             return _resultValue;
         }
     }

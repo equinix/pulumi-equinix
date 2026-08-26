@@ -58,15 +58,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var direct = new RoutingProtocol("direct", RoutingProtocolArgs.builder()
- *             .connectionUuid("<some_id>")
- *             .type("DIRECT")
- *             .name("direct_rp")
  *             .directIpv4(RoutingProtocolDirectIpv4Args.builder()
  *                 .equinixIfaceIp("190.1.1.1/30")
  *                 .build())
  *             .directIpv6(RoutingProtocolDirectIpv6Args.builder()
  *                 .equinixIfaceIp("190::1:1/126")
  *                 .build())
+ *             .connectionUuid("<some_id>")
+ *             .type("DIRECT")
+ *             .name("direct_rp")
  *             .build());
  * 
  *     }
@@ -99,9 +99,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bgp = new RoutingProtocol("bgp", RoutingProtocolArgs.builder()
- *             .connectionUuid("<same_connection_id_as_first_equinix_fabric_routing_protocol>")
- *             .type("BGP")
- *             .name("bgp_rp")
  *             .bgpIpv4(RoutingProtocolBgpIpv4Args.builder()
  *                 .customerPeerIp("190.1.1.2")
  *                 .enabled(true)
@@ -110,6 +107,9 @@ import javax.annotation.Nullable;
  *                 .customerPeerIp("190::1:2")
  *                 .enabled(true)
  *                 .build())
+ *             .connectionUuid("<same_connection_id_as_first_equinix_fabric_routing_protocol>")
+ *             .type("BGP")
+ *             .name("bgp_rp")
  *             .customerAsn(4532)
  *             .build());
  * 
@@ -146,21 +146,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var direct = new RoutingProtocol("direct", RoutingProtocolArgs.builder()
- *             .connectionUuid("<some_id>")
- *             .type("DIRECT")
- *             .name("direct_rp")
  *             .directIpv4(RoutingProtocolDirectIpv4Args.builder()
  *                 .equinixIfaceIp("190.1.1.1/30")
  *                 .build())
  *             .directIpv6(RoutingProtocolDirectIpv6Args.builder()
  *                 .equinixIfaceIp("190::1:1/126")
  *                 .build())
+ *             .connectionUuid("<some_id>")
+ *             .type("DIRECT")
+ *             .name("direct_rp")
  *             .build());
  * 
  *         var bgp = new RoutingProtocol("bgp", RoutingProtocolArgs.builder()
- *             .connectionUuid("<same_connection_id_as_first_equinix_fabric_routing_protocol>")
- *             .type("BGP")
- *             .name("bgp_rp")
  *             .bgpIpv4(RoutingProtocolBgpIpv4Args.builder()
  *                 .customerPeerIp("190.1.1.2")
  *                 .enabled(true)
@@ -169,6 +166,9 @@ import javax.annotation.Nullable;
  *                 .customerPeerIp("190::1:2")
  *                 .enabled(true)
  *                 .build())
+ *             .connectionUuid("<same_connection_id_as_first_equinix_fabric_routing_protocol>")
+ *             .type("BGP")
+ *             .name("bgp_rp")
  *             .customerAsn(4532)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(direct)

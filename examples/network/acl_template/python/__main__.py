@@ -2,9 +2,6 @@ import pulumi
 import pulumi_equinix as equinix
 
 myacl = equinix.networkedge.AclTemplate("myacl",
-    name="test",
-    description="Test ACL template",
-    project_id="a86d7112-d740-4758-9c9c-31e66373746b",
     inbound_rules=[
         {
             "subnet": "1.1.1.1/32",
@@ -19,4 +16,7 @@ myacl = equinix.networkedge.AclTemplate("myacl",
             "src_port": "any",
             "dst_port": "53,1045,2041",
         },
-    ])
+    ],
+    name="test",
+    description="Test ACL template",
+    project_id="a86d7112-d740-4758-9c9c-31e66373746b")

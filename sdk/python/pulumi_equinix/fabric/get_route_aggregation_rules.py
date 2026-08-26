@@ -12,7 +12,7 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from .. import _utilities
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -28,27 +28,44 @@ class GetRouteAggregationRulesResult:
     """
     A collection of values returned by getRouteAggregationRules.
     """
-    def __init__(__self__, datas=None, id=None, pagination=None, route_aggregation_id=None):
+    def __init__(__self__, datas=None, filters=None, id=None, outer_operator=None, pagination=None, route_aggregation_id=None, sorts=None):
         if datas and not isinstance(datas, list):
             raise TypeError("Expected argument 'datas' to be a list")
         pulumi.set(__self__, "datas", datas)
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if outer_operator and not isinstance(outer_operator, str):
+            raise TypeError("Expected argument 'outer_operator' to be a str")
+        pulumi.set(__self__, "outer_operator", outer_operator)
         if pagination and not isinstance(pagination, dict):
             raise TypeError("Expected argument 'pagination' to be a dict")
         pulumi.set(__self__, "pagination", pagination)
         if route_aggregation_id and not isinstance(route_aggregation_id, str):
             raise TypeError("Expected argument 'route_aggregation_id' to be a str")
         pulumi.set(__self__, "route_aggregation_id", route_aggregation_id)
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        pulumi.set(__self__, "sorts", sorts)
 
     @property
     @pulumi.getter
     def datas(self) -> Sequence['outputs.GetRouteAggregationRulesDataResult']:
         """
-        Returned list of route aggregation rule objects
+        Returned list of Route Aggregation Rule objects
         """
         return pulumi.get(self, "datas")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.GetRouteAggregationRulesFilterResult']]:
+        """
+        Filters for the Data Source Search Request
+        """
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
@@ -59,10 +76,18 @@ class GetRouteAggregationRulesResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="outerOperator")
+    def outer_operator(self) -> str:
+        """
+        Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        """
+        return pulumi.get(self, "outer_operator")
+
+    @property
     @pulumi.getter
     def pagination(self) -> Optional['outputs.GetRouteAggregationRulesPaginationResult']:
         """
-        Pagination details for the returned route aggregation rules list
+        Pagination details for the returned Route Aggregation Rules list
         """
         return pulumi.get(self, "pagination")
 
@@ -70,9 +95,17 @@ class GetRouteAggregationRulesResult:
     @pulumi.getter(name="routeAggregationId")
     def route_aggregation_id(self) -> str:
         """
-        The uuid of the route aggregation rule this data source should retrieve
+        The UUID of the Route Aggregation from which this data source retrieves its rules.
         """
         return pulumi.get(self, "route_aggregation_id")
+
+    @property
+    @pulumi.getter
+    def sorts(self) -> Optional[Sequence['outputs.GetRouteAggregationRulesSortResult']]:
+        """
+        Sort criteria for the Data Source Search Request
+        """
+        return pulumi.get(self, "sorts")
 
 
 class AwaitableGetRouteAggregationRulesResult(GetRouteAggregationRulesResult):
@@ -82,18 +115,24 @@ class AwaitableGetRouteAggregationRulesResult(GetRouteAggregationRulesResult):
             yield self
         return GetRouteAggregationRulesResult(
             datas=self.datas,
+            filters=self.filters,
             id=self.id,
+            outer_operator=self.outer_operator,
             pagination=self.pagination,
-            route_aggregation_id=self.route_aggregation_id)
+            route_aggregation_id=self.route_aggregation_id,
+            sorts=self.sorts)
 
 
-def get_route_aggregation_rules(pagination: Optional[Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict']] = None,
+def get_route_aggregation_rules(filters: Optional[Sequence[Union['GetRouteAggregationRulesFilterArgs', 'GetRouteAggregationRulesFilterArgsDict']]] = None,
+                                outer_operator: Optional[str] = None,
+                                pagination: Optional[Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict']] = None,
                                 route_aggregation_id: Optional[str] = None,
+                                sorts: Optional[Sequence[Union['GetRouteAggregationRulesSortArgs', 'GetRouteAggregationRulesSortArgsDict']]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteAggregationRulesResult:
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
     Additional Documentation:
-    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
 
     ## Example Usage
 
@@ -113,27 +152,39 @@ def get_route_aggregation_rules(pagination: Optional[Union['GetRouteAggregationR
     ```
 
 
-    :param Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict'] pagination: Pagination details for the returned route aggregation rules list
-    :param str route_aggregation_id: The uuid of the route aggregation rule this data source should retrieve
+    :param Sequence[Union['GetRouteAggregationRulesFilterArgs', 'GetRouteAggregationRulesFilterArgsDict']] filters: Filters for the Data Source Search Request
+    :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+    :param Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict'] pagination: Pagination details for the returned Route Aggregation Rules list
+    :param str route_aggregation_id: The UUID of the Route Aggregation from which this data source retrieves its rules.
+    :param Sequence[Union['GetRouteAggregationRulesSortArgs', 'GetRouteAggregationRulesSortArgsDict']] sorts: Sort criteria for the Data Source Search Request
     """
     __args__ = dict()
+    __args__['filters'] = filters
+    __args__['outerOperator'] = outer_operator
     __args__['pagination'] = pagination
     __args__['routeAggregationId'] = route_aggregation_id
+    __args__['sorts'] = sorts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getRouteAggregationRules:getRouteAggregationRules', __args__, opts=opts, typ=GetRouteAggregationRulesResult).value
 
     return AwaitableGetRouteAggregationRulesResult(
         datas=pulumi.get(__ret__, 'datas'),
+        filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
+        outer_operator=pulumi.get(__ret__, 'outer_operator'),
         pagination=pulumi.get(__ret__, 'pagination'),
-        route_aggregation_id=pulumi.get(__ret__, 'route_aggregation_id'))
-def get_route_aggregation_rules_output(pagination: Optional[pulumi.Input[Optional[Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict']]]] = None,
+        route_aggregation_id=pulumi.get(__ret__, 'route_aggregation_id'),
+        sorts=pulumi.get(__ret__, 'sorts'))
+def get_route_aggregation_rules_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRouteAggregationRulesFilterArgs', 'GetRouteAggregationRulesFilterArgsDict']]]]] = None,
+                                       outer_operator: Optional[pulumi.Input[str]] = None,
+                                       pagination: Optional[pulumi.Input[Optional[Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict']]]] = None,
                                        route_aggregation_id: Optional[pulumi.Input[str]] = None,
+                                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRouteAggregationRulesSortArgs', 'GetRouteAggregationRulesSortArgsDict']]]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteAggregationRulesResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
     Additional Documentation:
-    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
 
     ## Example Usage
 
@@ -153,16 +204,25 @@ def get_route_aggregation_rules_output(pagination: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict'] pagination: Pagination details for the returned route aggregation rules list
-    :param str route_aggregation_id: The uuid of the route aggregation rule this data source should retrieve
+    :param Sequence[Union['GetRouteAggregationRulesFilterArgs', 'GetRouteAggregationRulesFilterArgsDict']] filters: Filters for the Data Source Search Request
+    :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+    :param Union['GetRouteAggregationRulesPaginationArgs', 'GetRouteAggregationRulesPaginationArgsDict'] pagination: Pagination details for the returned Route Aggregation Rules list
+    :param str route_aggregation_id: The UUID of the Route Aggregation from which this data source retrieves its rules.
+    :param Sequence[Union['GetRouteAggregationRulesSortArgs', 'GetRouteAggregationRulesSortArgsDict']] sorts: Sort criteria for the Data Source Search Request
     """
     __args__ = dict()
+    __args__['filters'] = filters
+    __args__['outerOperator'] = outer_operator
     __args__['pagination'] = pagination
     __args__['routeAggregationId'] = route_aggregation_id
+    __args__['sorts'] = sorts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteAggregationRules:getRouteAggregationRules', __args__, opts=opts, typ=GetRouteAggregationRulesResult)
     return __ret__.apply(lambda __response__: GetRouteAggregationRulesResult(
         datas=pulumi.get(__response__, 'datas'),
+        filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id'),
+        outer_operator=pulumi.get(__response__, 'outer_operator'),
         pagination=pulumi.get(__response__, 'pagination'),
-        route_aggregation_id=pulumi.get(__response__, 'route_aggregation_id')))
+        route_aggregation_id=pulumi.get(__response__, 'route_aggregation_id'),
+        sorts=pulumi.get(__response__, 'sorts')))

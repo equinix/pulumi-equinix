@@ -34,7 +34,7 @@ type GetConnectionsArgs struct {
 	OuterOperator string `pulumi:"outerOperator"`
 	// Pagination details for the Data Source Search Request
 	Pagination *GetConnectionsPagination `pulumi:"pagination"`
-	// Filters for the Data Source Search Request
+	// Sort criteria for the Data Source Search Request
 	Sorts []GetConnectionsSort `pulumi:"sorts"`
 }
 
@@ -50,7 +50,7 @@ type GetConnectionsResult struct {
 	OuterOperator string `pulumi:"outerOperator"`
 	// Pagination details for the Data Source Search Request
 	Pagination *GetConnectionsPagination `pulumi:"pagination"`
-	// Filters for the Data Source Search Request
+	// Sort criteria for the Data Source Search Request
 	Sorts []GetConnectionsSort `pulumi:"sorts"`
 }
 
@@ -71,7 +71,7 @@ type GetConnectionsOutputArgs struct {
 	OuterOperator pulumi.StringInput `pulumi:"outerOperator"`
 	// Pagination details for the Data Source Search Request
 	Pagination GetConnectionsPaginationPtrInput `pulumi:"pagination"`
-	// Filters for the Data Source Search Request
+	// Sort criteria for the Data Source Search Request
 	Sorts GetConnectionsSortArrayInput `pulumi:"sorts"`
 }
 
@@ -119,7 +119,7 @@ func (o GetConnectionsResultOutput) Pagination() GetConnectionsPaginationPtrOutp
 	return o.ApplyT(func(v GetConnectionsResult) *GetConnectionsPagination { return v.Pagination }).(GetConnectionsPaginationPtrOutput)
 }
 
-// Filters for the Data Source Search Request
+// Sort criteria for the Data Source Search Request
 func (o GetConnectionsResultOutput) Sorts() GetConnectionsSortArrayOutput {
 	return o.ApplyT(func(v GetConnectionsResult) []GetConnectionsSort { return v.Sorts }).(GetConnectionsSortArrayOutput)
 }

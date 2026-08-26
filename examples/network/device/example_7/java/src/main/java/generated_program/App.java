@@ -36,6 +36,24 @@ public class App {
             .build());
 
         var bluecatBddsHa = new Device("bluecatBddsHa", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test-username")
+                .keyName(testPublicKey.name())
+                .build())
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("tf-bluecat-bdds-s")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .notifications("test@eq.com")
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("hostname", "test"),
+                    Map.entry("privateAddress", "x.x.x.x"),
+                    Map.entry("privateCidrMask", "24"),
+                    Map.entry("privateGateway", "x.x.x.x"),
+                    Map.entry("licenseKey", "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
+                    Map.entry("licenseId", "xxxxxxxxxxxxxxx")
+                ))
+                .build())
             .name("tf-bluecat-bdds-p")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("BLUECAT")
@@ -56,24 +74,6 @@ public class App {
                 Map.entry("licenseKey", "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
                 Map.entry("licenseId", "xxxxxxxxxxxxxxx")
             ))
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test-username")
-                .keyName(testPublicKey.name())
-                .build())
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("tf-bluecat-bdds-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .vendorConfiguration(Map.ofEntries(
-                    Map.entry("hostname", "test"),
-                    Map.entry("privateAddress", "x.x.x.x"),
-                    Map.entry("privateCidrMask", "24"),
-                    Map.entry("privateGateway", "x.x.x.x"),
-                    Map.entry("licenseKey", "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
-                    Map.entry("licenseId", "xxxxxxxxxxxxxxx")
-                ))
-                .build())
             .build());
 
     }

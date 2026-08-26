@@ -2,8 +2,28 @@ import pulumi
 import pulumi_equinix as equinix
 
 epl = equinix.fabric.Connection("epl",
-    name="ConnectionName",
-    type=equinix.fabric.ConnectionType.EPL,
+    order={
+        "purchase_order_number": "1-323292",
+    },
+    a_side={
+        "access_point": {
+            "port": {
+                "uuid": "<aside_port_uuid>",
+            },
+            "type": equinix.fabric.AccessPointType.COLO,
+        },
+    },
+    z_side={
+        "access_point": {
+            "port": {
+                "uuid": "<zside_port_uuid>",
+            },
+            "location": {
+                "metro_code": equinix.Metro.SILICON_VALLEY,
+            },
+            "type": equinix.fabric.AccessPointType.COLO,
+        },
+    },
     notifications=[{
         "type": equinix.fabric.NotificationsType.ALL,
         "emails": [
@@ -11,26 +31,6 @@ epl = equinix.fabric.Connection("epl",
             "test1@equinix.com",
         ],
     }],
-    bandwidth=50,
-    order={
-        "purchase_order_number": "1-323292",
-    },
-    a_side={
-        "access_point": {
-            "type": equinix.fabric.AccessPointType.COLO,
-            "port": {
-                "uuid": "<aside_port_uuid>",
-            },
-        },
-    },
-    z_side={
-        "access_point": {
-            "type": equinix.fabric.AccessPointType.COLO,
-            "port": {
-                "uuid": "<zside_port_uuid>",
-            },
-            "location": {
-                "metro_code": equinix.Metro.SILICON_VALLEY,
-            },
-        },
-    })
+    name="ConnectionName",
+    type=equinix.fabric.ConnectionType.EPL,
+    bandwidth=50)

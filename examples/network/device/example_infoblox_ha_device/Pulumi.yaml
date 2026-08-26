@@ -5,6 +5,17 @@ resources:
   INFOBLOX-SV:
     type: equinix:networkedge:Device
     properties:
+      secondaryDevice:
+        name: TF_INFOBLOX-Sec
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          adminPassword: X.X.X.X
+          ipAddress: X.X.X.X
+          subnetMaskIp: X.X.X.X
+          gatewayIp: X.X.X.X
       name: TF_INFOBLOX
       projectId: XXXXXXXXXX
       metroCode: ${sv.metroCode}
@@ -24,17 +35,6 @@ resources:
         ipAddress: X.X.X.X
         subnetMaskIp: X.X.X.X
         gatewayIp: X.X.X.X
-      secondaryDevice:
-        name: TF_INFOBLOX-Sec
-        metroCode: ${sv.metroCode}
-        accountNumber: ${sv.number}
-        notifications:
-          - test@eq.com
-        vendorConfiguration:
-          adminPassword: X.X.X.X
-          ipAddress: X.X.X.X
-          subnetMaskIp: X.X.X.X
-          gatewayIp: X.X.X.X
 variables:
   # Create Infoblox Grid Member HA device
   sv:

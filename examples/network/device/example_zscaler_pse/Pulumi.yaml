@@ -5,6 +5,9 @@ resources:
   zscaler-pse-single:
     type: equinix:networkedge:Device
     properties:
+      sshKey:
+        username: test
+        keyName: test-key
       name: tf-zscaler-pse
       projectId: XXXXXX
       metroCode: ${sv.metroCode}
@@ -25,9 +28,6 @@ resources:
       vendorConfiguration:
         provisioningKey: XXXXXXXXXX
         hostname: XXXX
-      sshKey:
-        username: test
-        keyName: test-key
 variables:
   # Create ZSCALER APPC device
   sv:

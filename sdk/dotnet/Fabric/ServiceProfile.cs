@@ -25,8 +25,26 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var newServiceProfile = new Equinix.Fabric.ServiceProfile("newServiceProfile", new()
+    ///     var newServiceProfile = new Equinix.Fabric.ServiceProfile("new_service_profile", new()
     ///     {
+    ///         AccessPointTypeConfigs = new[]
+    ///         {
+    ///             new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigArgs
+    ///             {
+    ///                 Type = Equinix.Fabric.ProfileAccessPointType.Colo,
+    ///                 AllowRemoteConnections = true,
+    ///                 AllowCustomBandwidth = true,
+    ///                 AllowBandwidthAutoApproval = false,
+    ///                 ConnectionRedundancyRequired = false,
+    ///                 ConnectionLabel = "Service Profile Tag1",
+    ///                 BandwidthAlertThreshold = 10,
+    ///                 SupportedBandwidths = new[]
+    ///                 {
+    ///                     100,
+    ///                     500,
+    ///                 },
+    ///             },
+    ///         },
     ///         Description = "Service Profile for Receiving Connections",
     ///         Name = "Name Of Business + Use Case Tag",
     ///         Type = Equinix.Fabric.ProfileType.L2Profile,
@@ -53,24 +71,6 @@ namespace Pulumi.Equinix.Fabric
     ///             {
     ///                 Uuid = "c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee",
     ///                 Type = "XF_PORT",
-    ///             },
-    ///         },
-    ///         AccessPointTypeConfigs = new[]
-    ///         {
-    ///             new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigArgs
-    ///             {
-    ///                 Type = Equinix.Fabric.ProfileAccessPointType.Colo,
-    ///                 AllowRemoteConnections = true,
-    ///                 AllowCustomBandwidth = true,
-    ///                 AllowBandwidthAutoApproval = false,
-    ///                 ConnectionRedundancyRequired = false,
-    ///                 ConnectionLabel = "Service Profile Tag1",
-    ///                 BandwidthAlertThreshold = 10,
-    ///                 SupportedBandwidths = new[]
-    ///                 {
-    ///                     100,
-    ///                     500,
-    ///                 },
     ///             },
     ///         },
     ///     });

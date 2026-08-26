@@ -5,23 +5,23 @@ resources:
   eplan:
     type: equinix:fabric:Connection
     properties:
-      name: ConnectionName
-      type: EPLAN_VC
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          port:
+            uuid: <aside_port_uuid>
+          type: COLO
+      zSide:
+        accessPoint:
+          network:
+            uuid: <network_uuid>
+          type: NETWORK
       notifications:
         - type: ALL
           emails:
             - example@equinix.com
             - test1@equinix.com
+      name: ConnectionName
+      type: EPLAN_VC
       bandwidth: 50
-      order:
-        purchaseOrderNumber: 1-323292
-      aSide:
-        accessPoint:
-          type: COLO
-          port:
-            uuid: <aside_port_uuid>
-      zSide:
-        accessPoint:
-          type: NETWORK
-          network:
-            uuid: <network_uuid>

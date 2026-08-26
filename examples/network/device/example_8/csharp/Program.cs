@@ -12,7 +12,7 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var bluecatEdgeServicePointCloudinitPrimaryFile = new Equinix.NetworkEdge.NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile", new()
+    var bluecatEdgeServicePointCloudinitPrimaryFile = new Equinix.NetworkEdge.NetworkFile("bluecat_edge_service_point_cloudinit_primary_file", new()
     {
         FileName = "TF-BLUECAT-ESP-cloud-init-file.txt",
         Content = Std.File.Invoke(new()
@@ -26,7 +26,7 @@ return await Deployment.RunAsync(() =>
         Byol = true,
     });
 
-    var bluecatEdgeServicePointCloudinitSecondaryFile = new Equinix.NetworkEdge.NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile", new()
+    var bluecatEdgeServicePointCloudinitSecondaryFile = new Equinix.NetworkEdge.NetworkFile("bluecat_edge_service_point_cloudinit_secondary_file", new()
     {
         FileName = "TF-BLUECAT-ESP-cloud-init-file.txt",
         Content = Std.File.Invoke(new()
@@ -40,8 +40,19 @@ return await Deployment.RunAsync(() =>
         Byol = true,
     });
 
-    var bluecatEdgeServicePointHa = new Equinix.NetworkEdge.Device("bluecatEdgeServicePointHa", new()
+    var bluecatEdgeServicePointHa = new Equinix.NetworkEdge.Device("bluecat_edge_service_point_ha", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "tf-bluecat-edge-service-point-s",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            CloudInitFileId = bluecatEdgeServicePointCloudinitSecondaryFile.Uuid,
+        },
         Name = "tf-bluecat-edge-service-point-p",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
         TypeCode = "BLUECAT-EDGE-SERVICE-POINT",
@@ -58,17 +69,6 @@ return await Deployment.RunAsync(() =>
         Version = "4.6.3",
         CoreCount = 4,
         TermLength = 12,
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "tf-bluecat-edge-service-point-s",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            Notifications = new[]
-            {
-                "test@eq.com",
-            },
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            CloudInitFileId = bluecatEdgeServicePointCloudinitSecondaryFile.Uuid,
-        },
     });
 
 });

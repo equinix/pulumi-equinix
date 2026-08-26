@@ -25,12 +25,8 @@
 				</dependency>
 				<dependency>
 					<groupId>com.pulumi</groupId>
-					<artifactId>equinix</artifactId>
-					<version>(,1.0)</version>
-				</dependency><dependency>
-					<groupId>com.pulumi</groupId>
 					<artifactId>null</artifactId>
-					<version>0.0.10</version>
+					<version>0.2.2</version>
 				</dependency>
 			</dependencies>
 

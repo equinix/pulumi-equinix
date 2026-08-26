@@ -26,6 +26,16 @@ public class App {
             .build());
 
         var niosXHa = new Device("niosXHa", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_INFOBLOX-NIOS-X-Sec")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("hostname", "test"),
+                    Map.entry("token", "xxxxx")
+                ))
+                .build())
             .name("TF_INFOBLOX-NIOS-X")
             .projectId("xxxxxxx")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -44,16 +54,6 @@ public class App {
                 Map.entry("hostname", "test"),
                 Map.entry("token", "xxxxx")
             ))
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("TF_INFOBLOX-NIOS-X-Sec")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .notifications("test@eq.com")
-                .vendorConfiguration(Map.ofEntries(
-                    Map.entry("hostname", "test"),
-                    Map.entry("token", "xxxxx")
-                ))
-                .build())
             .build());
 
     }

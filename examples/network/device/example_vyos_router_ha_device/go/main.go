@@ -11,6 +11,24 @@ func main() {
 			MetroCode: pulumi.String("SV"),
 		}, nil)
 		_, err := networkedge.NewDevice(ctx, "VYOS-AM", &networkedge.DeviceArgs{
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("xxxxxxxx"),
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("TF_CHECKPOINT"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				Hostname:      pulumi.String("test"),
+				AclTemplateId: pulumi.String("XXXXXXXXXXX"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+			},
 			Name:      pulumi.String("TF_VYOS"),
 			ProjectId: pulumi.String("XXXXXXX"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -32,24 +50,6 @@ func main() {
 			TermLength:          pulumi.Int(1),
 			AdditionalBandwidth: pulumi.Int(50),
 			AclTemplateId:       pulumi.String("XXXXXXXX"),
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test"),
-				KeyName:  pulumi.String("xxxxxxxx"),
-			},
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name: pulumi.String("TF_CHECKPOINT"),
-				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.MetroCode, nil
-				}).(pulumi.StringPtrOutput),
-				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.Number, nil
-				}).(pulumi.StringPtrOutput),
-				Hostname:      pulumi.String("test"),
-				AclTemplateId: pulumi.String("XXXXXXXXXXX"),
-				Notifications: pulumi.StringArray{
-					pulumi.String("test@eq.com"),
-				},
-			},
 		})
 		if err != nil {
 			return err

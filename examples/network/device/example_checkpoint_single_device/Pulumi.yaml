@@ -5,6 +5,9 @@ resources:
   CHECKPOINT-SV:
     type: equinix:networkedge:Device
     properties:
+      sshKey:
+        username: XXXXX
+        keyName: XXXXXX
       name: TF_CHECKPOINT
       projectId: XXXX
       metroCode: ${sv.metroCode}
@@ -21,9 +24,6 @@ resources:
       termLength: 1
       additionalBandwidth: 5
       aclTemplateId: XXXXXXX
-      sshKey:
-        username: XXXXX
-        keyName: XXXXXX
 variables:
   # Create Checkpoint single device
   sv:

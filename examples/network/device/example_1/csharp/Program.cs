@@ -15,8 +15,20 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var csr1000VHa = new Equinix.NetworkEdge.Device("csr1000vHa", new()
+    var csr1000VHa = new Equinix.NetworkEdge.Device("csr1000v_ha", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "tf-csr1000v-s",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            Hostname = "csr1000v-s",
+            Notifications = new[]
+            {
+                "john@equinix.com",
+                "marry@equinix.com",
+            },
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        },
         Name = "tf-csr1000v-p",
         Throughput = 500,
         ThroughputUnit = Equinix.NetworkEdge.ThroughputUnit.Mbps,
@@ -37,18 +49,6 @@ return await Deployment.RunAsync(() =>
         AccountNumber = dc.Apply(getAccountResult => getAccountResult.Number),
         Version = "16.09.05",
         CoreCount = 2,
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "tf-csr1000v-s",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            Hostname = "csr1000v-s",
-            Notifications = new[]
-            {
-                "john@equinix.com",
-                "marry@equinix.com",
-            },
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        },
     });
 
 });

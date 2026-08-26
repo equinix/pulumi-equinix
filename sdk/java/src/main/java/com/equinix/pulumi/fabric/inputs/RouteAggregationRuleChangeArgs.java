@@ -17,14 +17,14 @@ public final class RouteAggregationRuleChangeArgs extends com.pulumi.resources.R
     public static final RouteAggregationRuleChangeArgs Empty = new RouteAggregationRuleChangeArgs();
 
     /**
-     * Equinix auto generated URI to the route aggregation change
+     * Equinix auto generated URI to the Route Aggregation Rule change
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Equinix auto generated URI to the route aggregation change
+     * @return Equinix auto generated URI to the Route Aggregation Rule change
      * 
      */
     public Optional<Output<String>> href() {
@@ -88,7 +88,7 @@ public final class RouteAggregationRuleChangeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param href Equinix auto generated URI to the route aggregation change
+         * @param href Equinix auto generated URI to the Route Aggregation Rule change
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class RouteAggregationRuleChangeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param href Equinix auto generated URI to the route aggregation change
+         * @param href Equinix auto generated URI to the Route Aggregation Rule change
          * 
          * @return builder
          * 

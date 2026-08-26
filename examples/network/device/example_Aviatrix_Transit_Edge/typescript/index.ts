@@ -8,7 +8,7 @@ const filepath = config.get("filepath") || "cloudInitFileFolder/TF-AVX-cloud-ini
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrixCloudinitFile", {
+const aviatrixCloudinitFile = new equinix.networkedge.NetworkFile("aviatrix_cloudinit_file", {
     fileName: "TF-AVX-cloud-init-file.txt",
     content: std.fileOutput({
         input: filepath,

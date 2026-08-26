@@ -27,6 +27,10 @@ public class App {
             .build());
 
         var vsrxSingle = new Device("vsrxSingle", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test-username")
+                .keyName("valid-key-name")
+                .build())
             .name("tf-c8kv-sdwan")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("VSRX")
@@ -42,10 +46,6 @@ public class App {
             .additionalBandwidth(5)
             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
             .diverseDeviceId("ed7891bd-15b4-4f72-ac56-d96cfdacddcc")
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test-username")
-                .keyName("valid-key-name")
-                .build())
             .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
             .build());
 

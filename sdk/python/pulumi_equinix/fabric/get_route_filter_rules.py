@@ -12,8 +12,9 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from .. import _utilities
+from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetRouteFilterRulesResult',
@@ -27,10 +28,13 @@ class GetRouteFilterRulesResult:
     """
     A collection of values returned by getRouteFilterRules.
     """
-    def __init__(__self__, datas=None, id=None, limit=None, offset=None, paginations=None, route_filter_id=None):
+    def __init__(__self__, datas=None, filters=None, id=None, limit=None, offset=None, outer_operator=None, paginations=None, route_filter_id=None, sorts=None):
         if datas and not isinstance(datas, list):
             raise TypeError("Expected argument 'datas' to be a list")
         pulumi.set(__self__, "datas", datas)
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,12 +44,18 @@ class GetRouteFilterRulesResult:
         if offset and not isinstance(offset, int):
             raise TypeError("Expected argument 'offset' to be a int")
         pulumi.set(__self__, "offset", offset)
+        if outer_operator and not isinstance(outer_operator, str):
+            raise TypeError("Expected argument 'outer_operator' to be a str")
+        pulumi.set(__self__, "outer_operator", outer_operator)
         if paginations and not isinstance(paginations, list):
             raise TypeError("Expected argument 'paginations' to be a list")
         pulumi.set(__self__, "paginations", paginations)
         if route_filter_id and not isinstance(route_filter_id, str):
             raise TypeError("Expected argument 'route_filter_id' to be a str")
         pulumi.set(__self__, "route_filter_id", route_filter_id)
+        if sorts and not isinstance(sorts, list):
+            raise TypeError("Expected argument 'sorts' to be a list")
+        pulumi.set(__self__, "sorts", sorts)
 
     @property
     @pulumi.getter
@@ -54,6 +64,14 @@ class GetRouteFilterRulesResult:
         The list of Rules attached to the given Route Filter Policy UUID
         """
         return pulumi.get(self, "datas")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.GetRouteFilterRulesFilterResult']]:
+        """
+        Filters for the Data Source Search Request
+        """
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
@@ -80,6 +98,14 @@ class GetRouteFilterRulesResult:
         return pulumi.get(self, "offset")
 
     @property
+    @pulumi.getter(name="outerOperator")
+    def outer_operator(self) -> str:
+        """
+        Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        """
+        return pulumi.get(self, "outer_operator")
+
+    @property
     @pulumi.getter
     def paginations(self) -> Sequence['outputs.GetRouteFilterRulesPaginationResult']:
         """
@@ -95,6 +121,14 @@ class GetRouteFilterRulesResult:
         """
         return pulumi.get(self, "route_filter_id")
 
+    @property
+    @pulumi.getter
+    def sorts(self) -> Optional[Sequence['outputs.GetRouteFilterRulesSortResult']]:
+        """
+        Sort criteria for the Data Source Search Request
+        """
+        return pulumi.get(self, "sorts")
+
 
 class AwaitableGetRouteFilterRulesResult(GetRouteFilterRulesResult):
     # pylint: disable=using-constant-test
@@ -103,16 +137,22 @@ class AwaitableGetRouteFilterRulesResult(GetRouteFilterRulesResult):
             yield self
         return GetRouteFilterRulesResult(
             datas=self.datas,
+            filters=self.filters,
             id=self.id,
             limit=self.limit,
             offset=self.offset,
+            outer_operator=self.outer_operator,
             paginations=self.paginations,
-            route_filter_id=self.route_filter_id)
+            route_filter_id=self.route_filter_id,
+            sorts=self.sorts)
 
 
-def get_route_filter_rules(limit: Optional[int] = None,
+def get_route_filter_rules(filters: Optional[Sequence[Union['GetRouteFilterRulesFilterArgs', 'GetRouteFilterRulesFilterArgsDict']]] = None,
+                           limit: Optional[int] = None,
                            offset: Optional[int] = None,
+                           outer_operator: Optional[str] = None,
                            route_filter_id: Optional[str] = None,
+                           sorts: Optional[Sequence[Union['GetRouteFilterRulesSortArgs', 'GetRouteFilterRulesSortArgsDict']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteFilterRulesResult:
     """
     Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
@@ -137,27 +177,39 @@ def get_route_filter_rules(limit: Optional[int] = None,
     ```
 
 
+    :param Sequence[Union['GetRouteFilterRulesFilterArgs', 'GetRouteFilterRulesFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
     :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+    :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
     :param str route_filter_id: UUID of the Route Filter Policy the rule is attached to
+    :param Sequence[Union['GetRouteFilterRulesSortArgs', 'GetRouteFilterRulesSortArgsDict']] sorts: Sort criteria for the Data Source Search Request
     """
     __args__ = dict()
+    __args__['filters'] = filters
     __args__['limit'] = limit
     __args__['offset'] = offset
+    __args__['outerOperator'] = outer_operator
     __args__['routeFilterId'] = route_filter_id
+    __args__['sorts'] = sorts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getRouteFilterRules:getRouteFilterRules', __args__, opts=opts, typ=GetRouteFilterRulesResult).value
 
     return AwaitableGetRouteFilterRulesResult(
         datas=pulumi.get(__ret__, 'datas'),
+        filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         limit=pulumi.get(__ret__, 'limit'),
         offset=pulumi.get(__ret__, 'offset'),
+        outer_operator=pulumi.get(__ret__, 'outer_operator'),
         paginations=pulumi.get(__ret__, 'paginations'),
-        route_filter_id=pulumi.get(__ret__, 'route_filter_id'))
-def get_route_filter_rules_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
+        route_filter_id=pulumi.get(__ret__, 'route_filter_id'),
+        sorts=pulumi.get(__ret__, 'sorts'))
+def get_route_filter_rules_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRouteFilterRulesFilterArgs', 'GetRouteFilterRulesFilterArgsDict']]]]] = None,
+                                  limit: Optional[pulumi.Input[Optional[int]]] = None,
                                   offset: Optional[pulumi.Input[Optional[int]]] = None,
+                                  outer_operator: Optional[pulumi.Input[str]] = None,
                                   route_filter_id: Optional[pulumi.Input[str]] = None,
+                                  sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRouteFilterRulesSortArgs', 'GetRouteFilterRulesSortArgsDict']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteFilterRulesResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
@@ -182,20 +234,29 @@ def get_route_filter_rules_output(limit: Optional[pulumi.Input[Optional[int]]] =
     ```
 
 
+    :param Sequence[Union['GetRouteFilterRulesFilterArgs', 'GetRouteFilterRulesFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
     :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+    :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
     :param str route_filter_id: UUID of the Route Filter Policy the rule is attached to
+    :param Sequence[Union['GetRouteFilterRulesSortArgs', 'GetRouteFilterRulesSortArgsDict']] sorts: Sort criteria for the Data Source Search Request
     """
     __args__ = dict()
+    __args__['filters'] = filters
     __args__['limit'] = limit
     __args__['offset'] = offset
+    __args__['outerOperator'] = outer_operator
     __args__['routeFilterId'] = route_filter_id
+    __args__['sorts'] = sorts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('equinix:fabric/getRouteFilterRules:getRouteFilterRules', __args__, opts=opts, typ=GetRouteFilterRulesResult)
     return __ret__.apply(lambda __response__: GetRouteFilterRulesResult(
         datas=pulumi.get(__response__, 'datas'),
+        filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id'),
         limit=pulumi.get(__response__, 'limit'),
         offset=pulumi.get(__response__, 'offset'),
+        outer_operator=pulumi.get(__response__, 'outer_operator'),
         paginations=pulumi.get(__response__, 'paginations'),
-        route_filter_id=pulumi.get(__response__, 'route_filter_id')))
+        route_filter_id=pulumi.get(__response__, 'route_filter_id'),
+        sorts=pulumi.get(__response__, 'sorts')))

@@ -6,12 +6,30 @@ const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
     metroCode: "SV",
 });
-const testPublicKey = new equinix.networkedge.SshKey("testPublicKey", {
+const testPublicKey = new equinix.networkedge.SshKey("test_public_key", {
     name: "key-name",
     publicKey: "ssh-dss key-value",
     type: "DSA",
 });
-const bluecatBddsHa = new equinix.networkedge.Device("bluecatBddsHa", {
+const bluecatBddsHa = new equinix.networkedge.Device("bluecat_bdds_ha", {
+    sshKey: {
+        username: "test-username",
+        keyName: testPublicKey.name,
+    },
+    secondaryDevice: {
+        name: "tf-bluecat-bdds-s",
+        metroCode: sv.apply(sv => sv.metroCode),
+        notifications: ["test@eq.com"],
+        accountNumber: sv.apply(sv => sv.number),
+        vendorConfiguration: {
+            hostname: "test",
+            privateAddress: "x.x.x.x",
+            privateCidrMask: "24",
+            privateGateway: "x.x.x.x",
+            licenseKey: "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+            licenseId: "xxxxxxxxxxxxxxx",
+        },
+    },
     name: "tf-bluecat-bdds-p",
     metroCode: sv.apply(sv => sv.metroCode),
     typeCode: "BLUECAT",
@@ -31,23 +49,5 @@ const bluecatBddsHa = new equinix.networkedge.Device("bluecatBddsHa", {
         privateGateway: "x.x.x.x",
         licenseKey: "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
         licenseId: "xxxxxxxxxxxxxxx",
-    },
-    sshKey: {
-        username: "test-username",
-        keyName: testPublicKey.name,
-    },
-    secondaryDevice: {
-        name: "tf-bluecat-bdds-s",
-        metroCode: sv.apply(sv => sv.metroCode),
-        notifications: ["test@eq.com"],
-        accountNumber: sv.apply(sv => sv.number),
-        vendorConfiguration: {
-            hostname: "test",
-            privateAddress: "x.x.x.x",
-            privateCidrMask: "24",
-            privateGateway: "x.x.x.x",
-            licenseKey: "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-            licenseId: "xxxxxxxxxxxxxxx",
-        },
     },
 });

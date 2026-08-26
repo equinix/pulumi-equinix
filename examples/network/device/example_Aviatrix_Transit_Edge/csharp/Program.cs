@@ -13,7 +13,7 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var aviatrixCloudinitFile = new Equinix.NetworkEdge.NetworkFile("aviatrixCloudinitFile", new()
+    var aviatrixCloudinitFile = new Equinix.NetworkEdge.NetworkFile("aviatrix_cloudinit_file", new()
     {
         FileName = "TF-AVX-cloud-init-file.txt",
         Content = Std.File.Invoke(new()

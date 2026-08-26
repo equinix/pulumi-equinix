@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetRouteAggregationRuleChangeResult
     {
         /// <summary>
-        /// Equinix auto generated URI to the route aggregation change
+        /// Equinix auto generated URI to the Route Aggregation Rule change
         /// </summary>
         public readonly string Href;
         /// <summary>

@@ -21,9 +21,6 @@ public class App {
 
     public static void stack(Context ctx) {
         var bgp = new RoutingProtocol("bgp", RoutingProtocolArgs.builder()
-            .connectionUuid("<same_connection_id_as_first_equinix_fabric_routing_protocol>")
-            .type("BGP")
-            .name("bgp_rp")
             .bgpIpv4(RoutingProtocolBgpIpv4Args.builder()
                 .customerPeerIp("190.1.1.2")
                 .enabled(true)
@@ -32,6 +29,9 @@ public class App {
                 .customerPeerIp("190::1:2")
                 .enabled(true)
                 .build())
+            .connectionUuid("<same_connection_id_as_first_equinix_fabric_routing_protocol>")
+            .type("BGP")
+            .name("bgp_rp")
             .customerAsn(4532)
             .build());
 

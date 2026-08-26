@@ -13,7 +13,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class RouteAggregationRuleChangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Equinix auto generated URI to the route aggregation change
+        /// Equinix auto generated URI to the Route Aggregation Rule change
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }

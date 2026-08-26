@@ -12,7 +12,7 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from .. import _utilities
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -28,10 +28,10 @@ class RouteAggregationRuleArgs:
                  timeouts: Optional[pulumi.Input['RouteAggregationRuleTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a RouteAggregationRule resource.
-        :param pulumi.Input[str] prefix: Customer-provided route aggregation rule prefix
-        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation to apply this Rule to
-        :param pulumi.Input[str] description: Customer-provided route aggregation rule description
-        :param pulumi.Input[str] name: Customer provided name of the route aggregation rule
+        :param pulumi.Input[str] prefix: Customer-provided Route Aggregation Rule prefix
+        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation that this rule is applied to
+        :param pulumi.Input[str] description: Customer-provided Route Aggregation Rule description
+        :param pulumi.Input[str] name: Customer provided name of the Route Aggregation Rule
         """
         pulumi.set(__self__, "prefix", prefix)
         pulumi.set(__self__, "route_aggregation_id", route_aggregation_id)
@@ -46,7 +46,7 @@ class RouteAggregationRuleArgs:
     @pulumi.getter
     def prefix(self) -> pulumi.Input[str]:
         """
-        Customer-provided route aggregation rule prefix
+        Customer-provided Route Aggregation Rule prefix
         """
         return pulumi.get(self, "prefix")
 
@@ -58,7 +58,7 @@ class RouteAggregationRuleArgs:
     @pulumi.getter(name="routeAggregationId")
     def route_aggregation_id(self) -> pulumi.Input[str]:
         """
-        UUID of the Route Aggregation to apply this Rule to
+        UUID of the Route Aggregation that this rule is applied to
         """
         return pulumi.get(self, "route_aggregation_id")
 
@@ -70,7 +70,7 @@ class RouteAggregationRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Customer-provided route aggregation rule description
+        Customer-provided Route Aggregation Rule description
         """
         return pulumi.get(self, "description")
 
@@ -82,7 +82,7 @@ class RouteAggregationRuleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Customer provided name of the route aggregation rule
+        Customer provided name of the Route Aggregation Rule
         """
         return pulumi.get(self, "name")
 
@@ -116,16 +116,16 @@ class _RouteAggregationRuleState:
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteAggregationRule resources.
-        :param pulumi.Input['RouteAggregationRuleChangeArgs'] change: Current state of latest route aggregation rule change
-        :param pulumi.Input['RouteAggregationRuleChangeLogArgs'] change_log: Details of the last change on the stream resource
-        :param pulumi.Input[str] description: Customer-provided route aggregation rule description
-        :param pulumi.Input[str] href: Equinix auto generated URI to the route aggregation rule resource
-        :param pulumi.Input[str] name: Customer provided name of the route aggregation rule
-        :param pulumi.Input[str] prefix: Customer-provided route aggregation rule prefix
-        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation to apply this Rule to
-        :param pulumi.Input[str] state: Value representing provisioning status for the route aggregation rule resource
+        :param pulumi.Input['RouteAggregationRuleChangeArgs'] change: Current state of latest Route Aggregation Rule change
+        :param pulumi.Input['RouteAggregationRuleChangeLogArgs'] change_log: Details of the last change on the resource
+        :param pulumi.Input[str] description: Customer-provided Route Aggregation Rule description
+        :param pulumi.Input[str] href: Equinix auto generated URI to the Route Aggregation Rule resource
+        :param pulumi.Input[str] name: Customer provided name of the Route Aggregation Rule
+        :param pulumi.Input[str] prefix: Customer-provided Route Aggregation Rule prefix
+        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation that this rule is applied to
+        :param pulumi.Input[str] state: Value representing provisioning status for the Route Aggregation Rule resource
         :param pulumi.Input[str] type: Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
-        :param pulumi.Input[str] uuid: Equinix-assigned unique id for the route aggregation rule resource
+        :param pulumi.Input[str] uuid: Equinix-assigned unique id for the Route Aggregation Rule resource
         """
         if change is not None:
             pulumi.set(__self__, "change", change)
@@ -154,7 +154,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter
     def change(self) -> Optional[pulumi.Input['RouteAggregationRuleChangeArgs']]:
         """
-        Current state of latest route aggregation rule change
+        Current state of latest Route Aggregation Rule change
         """
         return pulumi.get(self, "change")
 
@@ -166,7 +166,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter(name="changeLog")
     def change_log(self) -> Optional[pulumi.Input['RouteAggregationRuleChangeLogArgs']]:
         """
-        Details of the last change on the stream resource
+        Details of the last change on the resource
         """
         return pulumi.get(self, "change_log")
 
@@ -178,7 +178,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Customer-provided route aggregation rule description
+        Customer-provided Route Aggregation Rule description
         """
         return pulumi.get(self, "description")
 
@@ -190,7 +190,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter
     def href(self) -> Optional[pulumi.Input[str]]:
         """
-        Equinix auto generated URI to the route aggregation rule resource
+        Equinix auto generated URI to the Route Aggregation Rule resource
         """
         return pulumi.get(self, "href")
 
@@ -202,7 +202,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Customer provided name of the route aggregation rule
+        Customer provided name of the Route Aggregation Rule
         """
         return pulumi.get(self, "name")
 
@@ -214,7 +214,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Customer-provided route aggregation rule prefix
+        Customer-provided Route Aggregation Rule prefix
         """
         return pulumi.get(self, "prefix")
 
@@ -226,7 +226,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter(name="routeAggregationId")
     def route_aggregation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the Route Aggregation to apply this Rule to
+        UUID of the Route Aggregation that this rule is applied to
         """
         return pulumi.get(self, "route_aggregation_id")
 
@@ -238,7 +238,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Value representing provisioning status for the route aggregation rule resource
+        Value representing provisioning status for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "state")
 
@@ -271,7 +271,7 @@ class _RouteAggregationRuleState:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Equinix-assigned unique id for the route aggregation rule resource
+        Equinix-assigned unique id for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "uuid")
 
@@ -292,10 +292,10 @@ class RouteAggregationRule(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[Union['RouteAggregationRuleTimeoutsArgs', 'RouteAggregationRuleTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation Rule
 
         Additional Documentation:
-        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations-Rules
 
         ## Example Usage
 
@@ -316,10 +316,10 @@ class RouteAggregationRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Customer-provided route aggregation rule description
-        :param pulumi.Input[str] name: Customer provided name of the route aggregation rule
-        :param pulumi.Input[str] prefix: Customer-provided route aggregation rule prefix
-        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation to apply this Rule to
+        :param pulumi.Input[str] description: Customer-provided Route Aggregation Rule description
+        :param pulumi.Input[str] name: Customer provided name of the Route Aggregation Rule
+        :param pulumi.Input[str] prefix: Customer-provided Route Aggregation Rule prefix
+        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation that this rule is applied to
         """
         ...
     @overload
@@ -328,10 +328,10 @@ class RouteAggregationRule(pulumi.CustomResource):
                  args: RouteAggregationRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation Rule
 
         Additional Documentation:
-        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+        * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations-Rules
 
         ## Example Usage
 
@@ -422,16 +422,16 @@ class RouteAggregationRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RouteAggregationRuleChangeArgs', 'RouteAggregationRuleChangeArgsDict']] change: Current state of latest route aggregation rule change
-        :param pulumi.Input[Union['RouteAggregationRuleChangeLogArgs', 'RouteAggregationRuleChangeLogArgsDict']] change_log: Details of the last change on the stream resource
-        :param pulumi.Input[str] description: Customer-provided route aggregation rule description
-        :param pulumi.Input[str] href: Equinix auto generated URI to the route aggregation rule resource
-        :param pulumi.Input[str] name: Customer provided name of the route aggregation rule
-        :param pulumi.Input[str] prefix: Customer-provided route aggregation rule prefix
-        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation to apply this Rule to
-        :param pulumi.Input[str] state: Value representing provisioning status for the route aggregation rule resource
+        :param pulumi.Input[Union['RouteAggregationRuleChangeArgs', 'RouteAggregationRuleChangeArgsDict']] change: Current state of latest Route Aggregation Rule change
+        :param pulumi.Input[Union['RouteAggregationRuleChangeLogArgs', 'RouteAggregationRuleChangeLogArgsDict']] change_log: Details of the last change on the resource
+        :param pulumi.Input[str] description: Customer-provided Route Aggregation Rule description
+        :param pulumi.Input[str] href: Equinix auto generated URI to the Route Aggregation Rule resource
+        :param pulumi.Input[str] name: Customer provided name of the Route Aggregation Rule
+        :param pulumi.Input[str] prefix: Customer-provided Route Aggregation Rule prefix
+        :param pulumi.Input[str] route_aggregation_id: UUID of the Route Aggregation that this rule is applied to
+        :param pulumi.Input[str] state: Value representing provisioning status for the Route Aggregation Rule resource
         :param pulumi.Input[str] type: Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
-        :param pulumi.Input[str] uuid: Equinix-assigned unique id for the route aggregation rule resource
+        :param pulumi.Input[str] uuid: Equinix-assigned unique id for the Route Aggregation Rule resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -454,7 +454,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter
     def change(self) -> pulumi.Output['outputs.RouteAggregationRuleChange']:
         """
-        Current state of latest route aggregation rule change
+        Current state of latest Route Aggregation Rule change
         """
         return pulumi.get(self, "change")
 
@@ -462,7 +462,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter(name="changeLog")
     def change_log(self) -> pulumi.Output['outputs.RouteAggregationRuleChangeLog']:
         """
-        Details of the last change on the stream resource
+        Details of the last change on the resource
         """
         return pulumi.get(self, "change_log")
 
@@ -470,7 +470,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Customer-provided route aggregation rule description
+        Customer-provided Route Aggregation Rule description
         """
         return pulumi.get(self, "description")
 
@@ -478,7 +478,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter
     def href(self) -> pulumi.Output[str]:
         """
-        Equinix auto generated URI to the route aggregation rule resource
+        Equinix auto generated URI to the Route Aggregation Rule resource
         """
         return pulumi.get(self, "href")
 
@@ -486,7 +486,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Customer provided name of the route aggregation rule
+        Customer provided name of the Route Aggregation Rule
         """
         return pulumi.get(self, "name")
 
@@ -494,7 +494,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter
     def prefix(self) -> pulumi.Output[str]:
         """
-        Customer-provided route aggregation rule prefix
+        Customer-provided Route Aggregation Rule prefix
         """
         return pulumi.get(self, "prefix")
 
@@ -502,7 +502,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter(name="routeAggregationId")
     def route_aggregation_id(self) -> pulumi.Output[str]:
         """
-        UUID of the Route Aggregation to apply this Rule to
+        UUID of the Route Aggregation that this rule is applied to
         """
         return pulumi.get(self, "route_aggregation_id")
 
@@ -510,7 +510,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Value representing provisioning status for the route aggregation rule resource
+        Value representing provisioning status for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "state")
 
@@ -531,7 +531,7 @@ class RouteAggregationRule(pulumi.CustomResource):
     @pulumi.getter
     def uuid(self) -> pulumi.Output[str]:
         """
-        Equinix-assigned unique id for the route aggregation rule resource
+        Equinix-assigned unique id for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "uuid")
 

@@ -13,6 +13,475 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetStreamAttachmentsFilter struct {
+	// Operation applied to the values of the filter
+	Operator string `pulumi:"operator"`
+	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+	Or *bool `pulumi:"or"`
+	// Property to apply the filter to
+	Property string `pulumi:"property"`
+	// List of values to apply the operation to for the specified property
+	Values []string `pulumi:"values"`
+}
+
+// GetStreamAttachmentsFilterInput is an input type that accepts GetStreamAttachmentsFilterArgs and GetStreamAttachmentsFilterOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsFilterInput` via:
+//
+//	GetStreamAttachmentsFilterArgs{...}
+type GetStreamAttachmentsFilterInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput
+	ToGetStreamAttachmentsFilterOutputWithContext(context.Context) GetStreamAttachmentsFilterOutput
+}
+
+type GetStreamAttachmentsFilterArgs struct {
+	// Operation applied to the values of the filter
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+	Or pulumi.BoolPtrInput `pulumi:"or"`
+	// Property to apply the filter to
+	Property pulumi.StringInput `pulumi:"property"`
+	// List of values to apply the operation to for the specified property
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetStreamAttachmentsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsFilterArgs) ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput {
+	return i.ToGetStreamAttachmentsFilterOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsFilterArgs) ToGetStreamAttachmentsFilterOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsFilterOutput)
+}
+
+// GetStreamAttachmentsFilterArrayInput is an input type that accepts GetStreamAttachmentsFilterArray and GetStreamAttachmentsFilterArrayOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsFilterArrayInput` via:
+//
+//	GetStreamAttachmentsFilterArray{ GetStreamAttachmentsFilterArgs{...} }
+type GetStreamAttachmentsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput
+	ToGetStreamAttachmentsFilterArrayOutputWithContext(context.Context) GetStreamAttachmentsFilterArrayOutput
+}
+
+type GetStreamAttachmentsFilterArray []GetStreamAttachmentsFilterInput
+
+func (GetStreamAttachmentsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsFilterArray) ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput {
+	return i.ToGetStreamAttachmentsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsFilterArray) ToGetStreamAttachmentsFilterArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsFilterArrayOutput)
+}
+
+type GetStreamAttachmentsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsFilterOutput) ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsFilterOutput) ToGetStreamAttachmentsFilterOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterOutput {
+	return o
+}
+
+// Operation applied to the values of the filter
+func (o GetStreamAttachmentsFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
+func (o GetStreamAttachmentsFilterOutput) Or() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) *bool { return v.Or }).(pulumi.BoolPtrOutput)
+}
+
+// Property to apply the filter to
+func (o GetStreamAttachmentsFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// List of values to apply the operation to for the specified property
+func (o GetStreamAttachmentsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetStreamAttachmentsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsFilter)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsFilterArrayOutput) ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsFilterArrayOutput) ToGetStreamAttachmentsFilterArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsFilterArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsFilter {
+		return vs[0].([]GetStreamAttachmentsFilter)[vs[1].(int)]
+	}).(GetStreamAttachmentsFilterOutput)
+}
+
+type GetStreamAttachmentsPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetStreamAttachmentsPaginationInput is an input type that accepts GetStreamAttachmentsPaginationArgs and GetStreamAttachmentsPaginationOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsPaginationInput` via:
+//
+//	GetStreamAttachmentsPaginationArgs{...}
+type GetStreamAttachmentsPaginationInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput
+	ToGetStreamAttachmentsPaginationOutputWithContext(context.Context) GetStreamAttachmentsPaginationOutput
+}
+
+type GetStreamAttachmentsPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of streams available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetStreamAttachmentsPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsPagination)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsPaginationArgs) ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput {
+	return i.ToGetStreamAttachmentsPaginationOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsPaginationArgs) ToGetStreamAttachmentsPaginationOutputWithContext(ctx context.Context) GetStreamAttachmentsPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsPaginationOutput)
+}
+
+type GetStreamAttachmentsPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsPagination)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsPaginationOutput) ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsPaginationOutput) ToGetStreamAttachmentsPaginationOutputWithContext(ctx context.Context) GetStreamAttachmentsPaginationOutput {
+	return o
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetStreamAttachmentsPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetStreamAttachmentsPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetStreamAttachmentsPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetStreamAttachmentsPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of streams available to the user making the request
+func (o GetStreamAttachmentsPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetStreamAttachmentsSort struct {
+	// The sorting direction of the property chosen. ASC or DESC
+	Direction string `pulumi:"direction"`
+	// The field name the sorting is performed on
+	Property string `pulumi:"property"`
+}
+
+// GetStreamAttachmentsSortInput is an input type that accepts GetStreamAttachmentsSortArgs and GetStreamAttachmentsSortOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsSortInput` via:
+//
+//	GetStreamAttachmentsSortArgs{...}
+type GetStreamAttachmentsSortInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput
+	ToGetStreamAttachmentsSortOutputWithContext(context.Context) GetStreamAttachmentsSortOutput
+}
+
+type GetStreamAttachmentsSortArgs struct {
+	// The sorting direction of the property chosen. ASC or DESC
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// The field name the sorting is performed on
+	Property pulumi.StringInput `pulumi:"property"`
+}
+
+func (GetStreamAttachmentsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsSortArgs) ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput {
+	return i.ToGetStreamAttachmentsSortOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsSortArgs) ToGetStreamAttachmentsSortOutputWithContext(ctx context.Context) GetStreamAttachmentsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsSortOutput)
+}
+
+// GetStreamAttachmentsSortArrayInput is an input type that accepts GetStreamAttachmentsSortArray and GetStreamAttachmentsSortArrayOutput values.
+// You can construct a concrete instance of `GetStreamAttachmentsSortArrayInput` via:
+//
+//	GetStreamAttachmentsSortArray{ GetStreamAttachmentsSortArgs{...} }
+type GetStreamAttachmentsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput
+	ToGetStreamAttachmentsSortArrayOutputWithContext(context.Context) GetStreamAttachmentsSortArrayOutput
+}
+
+type GetStreamAttachmentsSortArray []GetStreamAttachmentsSortInput
+
+func (GetStreamAttachmentsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (i GetStreamAttachmentsSortArray) ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput {
+	return i.ToGetStreamAttachmentsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetStreamAttachmentsSortArray) ToGetStreamAttachmentsSortArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsSortArrayOutput)
+}
+
+type GetStreamAttachmentsSortOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsSortOutput) ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsSortOutput) ToGetStreamAttachmentsSortOutputWithContext(ctx context.Context) GetStreamAttachmentsSortOutput {
+	return o
+}
+
+// The sorting direction of the property chosen. ASC or DESC
+func (o GetStreamAttachmentsSortOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsSort) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// The field name the sorting is performed on
+func (o GetStreamAttachmentsSortOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamAttachmentsSort) string { return v.Property }).(pulumi.StringOutput)
+}
+
+type GetStreamAttachmentsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStreamAttachmentsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStreamAttachmentsSort)(nil)).Elem()
+}
+
+func (o GetStreamAttachmentsSortArrayOutput) ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsSortArrayOutput) ToGetStreamAttachmentsSortArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsSortArrayOutput {
+	return o
+}
+
+func (o GetStreamAttachmentsSortArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsSort {
+		return vs[0].([]GetStreamAttachmentsSort)[vs[1].(int)]
+	}).(GetStreamAttachmentsSortOutput)
+}
+
+type GetStreamChangeLog struct {
+	// User name of creator of the stream resource
+	CreatedBy string `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy string `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail string `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy string `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail string `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetStreamChangeLogInput is an input type that accepts GetStreamChangeLogArgs and GetStreamChangeLogOutput values.
+// You can construct a concrete instance of `GetStreamChangeLogInput` via:
+//
+//	GetStreamChangeLogArgs{...}
+type GetStreamChangeLogInput interface {
+	pulumi.Input
+
+	ToGetStreamChangeLogOutput() GetStreamChangeLogOutput
+	ToGetStreamChangeLogOutputWithContext(context.Context) GetStreamChangeLogOutput
+}
+
+type GetStreamChangeLogArgs struct {
+	// User name of creator of the stream resource
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Email of creator of the stream resource
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Legal name of creator of the stream resource
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	// Creation time of the stream resource
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// User name of deleter of the stream resource
+	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
+	// Email of deleter of the stream resource
+	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
+	// Legal name of deleter of the stream resource
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	// Deletion time of the stream resource
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// User name of last updater of the stream resource
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// Email of last updater of the stream resource
+	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
+	// Legal name of last updater of the stream resource
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	// Last update time of the stream resource
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetStreamChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
+}
+
+func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
+	return i.ToGetStreamChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamChangeLogOutput)
+}
+
+type GetStreamChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetStreamChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
+}
+
+func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
+	return o
+}
+
+func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
+	return o
+}
+
+// User name of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Email of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of creator of the stream resource
+func (o GetStreamChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+// Creation time of the stream resource
+func (o GetStreamChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+// Email of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of deleter of the stream resource
+func (o GetStreamChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+// Deletion time of the stream resource
+func (o GetStreamChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// User name of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// Email of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+// Legal name of last updater of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+// Last update time of the stream resource
+func (o GetStreamChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
 type GetStreamProject struct {
 	// Equinix Subscriber-assigned project ID
 	ProjectId string `pulumi:"projectId"`
@@ -1950,6 +2419,12 @@ func (o GetStreamsPaginationOutput) Total() pulumi.IntOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsFilterInput)(nil)).Elem(), GetStreamAttachmentsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsFilterArrayInput)(nil)).Elem(), GetStreamAttachmentsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsPaginationInput)(nil)).Elem(), GetStreamAttachmentsPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortInput)(nil)).Elem(), GetStreamAttachmentsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortArrayInput)(nil)).Elem(), GetStreamAttachmentsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamChangeLogInput)(nil)).Elem(), GetStreamChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamProjectInput)(nil)).Elem(), GetStreamProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionChangeLogInput)(nil)).Elem(), GetStreamSubscriptionChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamSubscriptionEventSelectorInput)(nil)).Elem(), GetStreamSubscriptionEventSelectorArgs{})
@@ -1971,6 +2446,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataChangeLogInput)(nil)).Elem(), GetStreamsDataChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsDataProjectInput)(nil)).Elem(), GetStreamsDataProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamsPaginationInput)(nil)).Elem(), GetStreamsPaginationArgs{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsFilterOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsPaginationOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsSortOutput{})
+	pulumi.RegisterOutputType(GetStreamAttachmentsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetStreamChangeLogOutput{})
 	pulumi.RegisterOutputType(GetStreamProjectOutput{})
 	pulumi.RegisterOutputType(GetStreamSubscriptionChangeLogOutput{})
 	pulumi.RegisterOutputType(GetStreamSubscriptionEventSelectorOutput{})

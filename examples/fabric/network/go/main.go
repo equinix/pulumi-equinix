@@ -7,10 +7,10 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := fabric.NewNetwork(ctx, "newNetwork", &fabric.NetworkArgs{
-			Name:  pulumi.String("Network-SV"),
-			Type:  pulumi.String("EVPLAN"),
-			Scope: pulumi.String("GLOBAL"),
+		_, err := fabric.NewNetwork(ctx, "new_network", &fabric.NetworkArgs{
+			Project: &fabric.NetworkProjectArgs{
+				ProjectId: pulumi.String("776847000642406"),
+			},
 			Notifications: fabric.NetworkNotificationArray{
 				&fabric.NetworkNotificationArgs{
 					Type: pulumi.String("ALL"),
@@ -20,9 +20,9 @@ func main() {
 					},
 				},
 			},
-			Project: &fabric.NetworkProjectArgs{
-				ProjectId: pulumi.String("776847000642406"),
-			},
+			Name:  pulumi.String("Network-SV"),
+			Type:  pulumi.String("EVPLAN"),
+			Scope: pulumi.String("GLOBAL"),
 		})
 		if err != nil {
 			return err

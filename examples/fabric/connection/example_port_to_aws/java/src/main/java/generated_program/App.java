@@ -5,7 +5,6 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.Connection;
 import com.pulumi.equinix.fabric.ConnectionArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
@@ -16,6 +15,7 @@ import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
 import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -30,15 +30,6 @@ public class App {
 
     public static void stack(Context ctx) {
         var port2Aws = new Connection("port2Aws", ConnectionArgs.builder()
-            .name("ConnectionName")
-            .type("EVPL_VC")
-            .notifications(ConnectionNotificationArgs.builder()
-                .type("ALL")
-                .emails(                
-                    "example@equinix.com",
-                    "test1@equinix.com")
-                .build())
-            .bandwidth(50)
             .redundancy(ConnectionRedundancyArgs.builder()
                 .priority("PRIMARY")
                 .build())
@@ -47,7 +38,6 @@ public class App {
                 .build())
             .aSide(ConnectionASideArgs.builder()
                 .accessPoint(ConnectionASideAccessPointArgs.builder()
-                    .type("COLO")
                     .port(ConnectionASideAccessPointPortArgs.builder()
                         .uuid("<aside_port_uuid>")
                         .build())
@@ -56,13 +46,11 @@ public class App {
                         .vlanSTag(2019)
                         .vlanCTag(2112)
                         .build())
+                    .type("COLO")
                     .build())
                 .build())
             .zSide(ConnectionZSideArgs.builder()
                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
-                    .type("SP")
-                    .authenticationKey("<aws_account_id>")
-                    .sellerRegion("us-west-1")
                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
                         .type("L2_PROFILE")
                         .uuid("<service_profile_uuid>")
@@ -70,8 +58,20 @@ public class App {
                     .location(ConnectionZSideAccessPointLocationArgs.builder()
                         .metroCode("SV")
                         .build())
+                    .type("SP")
+                    .authenticationKey("<aws_account_id>")
+                    .sellerRegion("us-west-1")
                     .build())
                 .build())
+            .notifications(ConnectionNotificationArgs.builder()
+                .type("ALL")
+                .emails(                
+                    "example@equinix.com",
+                    "test1@equinix.com")
+                .build())
+            .name("ConnectionName")
+            .type("EVPL_VC")
+            .bandwidth(50)
             .additionalInfo(            
                 Map.ofEntries(
                     Map.entry("key", "accessKey"),

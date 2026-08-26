@@ -8,7 +8,17 @@ const dc = equinix.networkedge.getAccountOutput({
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const csr1000VHa = new equinix.networkedge.Device("csr1000vHa", {
+const csr1000VHa = new equinix.networkedge.Device("csr1000v_ha", {
+    secondaryDevice: {
+        name: "tf-csr1000v-s",
+        metroCode: sv.apply(sv => sv.metroCode),
+        hostname: "csr1000v-s",
+        notifications: [
+            "john@equinix.com",
+            "marry@equinix.com",
+        ],
+        accountNumber: sv.apply(sv => sv.number),
+    },
     name: "tf-csr1000v-p",
     throughput: 500,
     throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
@@ -28,14 +38,4 @@ const csr1000VHa = new equinix.networkedge.Device("csr1000vHa", {
     accountNumber: dc.apply(dc => dc.number),
     version: "16.09.05",
     coreCount: 2,
-    secondaryDevice: {
-        name: "tf-csr1000v-s",
-        metroCode: sv.apply(sv => sv.metroCode),
-        hostname: "csr1000v-s",
-        notifications: [
-            "john@equinix.com",
-            "marry@equinix.com",
-        ],
-        accountNumber: sv.apply(sv => sv.number),
-    },
 });

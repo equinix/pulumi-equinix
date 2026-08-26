@@ -4,10 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const newNetwork = new equinix.fabric.Network("newNetwork", {
-    name: "Network-SV",
-    type: "EVPLAN",
-    scope: "GLOBAL",
+const newNetwork = new equinix.fabric.Network("new_network", {
+    project: {
+        projectId: "776847000642406",
+    },
     notifications: [{
         type: "ALL",
         emails: [
@@ -15,19 +15,19 @@ const newNetwork = new equinix.fabric.Network("newNetwork", {
             "test1@equinix.com",
         ],
     }],
-    project: {
-        projectId: "776847000642406",
-    },
+    name: "Network-SV",
+    type: "EVPLAN",
+    scope: "GLOBAL",
 });
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-new_network = equinix.fabric.Network("newNetwork",
-    name="Network-SV",
-    type="EVPLAN",
-    scope="GLOBAL",
+new_network = equinix.fabric.Network("new_network",
+    project={
+        "project_id": "776847000642406",
+    },
     notifications=[{
         "type": "ALL",
         "emails": [
@@ -35,9 +35,9 @@ new_network = equinix.fabric.Network("newNetwork",
             "test1@equinix.com",
         ],
     }],
-    project={
-        "project_id": "776847000642406",
-    })
+    name="Network-SV",
+    type="EVPLAN",
+    scope="GLOBAL")
 ```
 ```go
 package main
@@ -49,10 +49,10 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := fabric.NewNetwork(ctx, "newNetwork", &fabric.NetworkArgs{
-			Name:  pulumi.String("Network-SV"),
-			Type:  pulumi.String("EVPLAN"),
-			Scope: pulumi.String("GLOBAL"),
+		_, err := fabric.NewNetwork(ctx, "new_network", &fabric.NetworkArgs{
+			Project: &fabric.NetworkProjectArgs{
+				ProjectId: pulumi.String("776847000642406"),
+			},
 			Notifications: fabric.NetworkNotificationArray{
 				&fabric.NetworkNotificationArgs{
 					Type: pulumi.String("ALL"),
@@ -62,9 +62,9 @@ func main() {
 					},
 				},
 			},
-			Project: &fabric.NetworkProjectArgs{
-				ProjectId: pulumi.String("776847000642406"),
-			},
+			Name:  pulumi.String("Network-SV"),
+			Type:  pulumi.String("EVPLAN"),
+			Scope: pulumi.String("GLOBAL"),
 		})
 		if err != nil {
 			return err
@@ -81,11 +81,12 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var newNetwork = new Equinix.Fabric.Network("newNetwork", new()
+    var newNetwork = new Equinix.Fabric.Network("new_network", new()
     {
-        Name = "Network-SV",
-        Type = "EVPLAN",
-        Scope = "GLOBAL",
+        Project = new Equinix.Fabric.Inputs.NetworkProjectArgs
+        {
+            ProjectId = "776847000642406",
+        },
         Notifications = new[]
         {
             new Equinix.Fabric.Inputs.NetworkNotificationArgs
@@ -98,10 +99,9 @@ return await Deployment.RunAsync(() =>
                 },
             },
         },
-        Project = new Equinix.Fabric.Inputs.NetworkProjectArgs
-        {
-            ProjectId = "776847000642406",
-        },
+        Name = "Network-SV",
+        Type = "EVPLAN",
+        Scope = "GLOBAL",
     });
 
 });
@@ -114,8 +114,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.Network;
 import com.pulumi.equinix.fabric.NetworkArgs;
-import com.pulumi.equinix.fabric.inputs.NetworkNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.NetworkProjectArgs;
+import com.pulumi.equinix.fabric.inputs.NetworkNotificationArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -130,18 +130,18 @@ public class App {
 
     public static void stack(Context ctx) {
         var newNetwork = new Network("newNetwork", NetworkArgs.builder()
-            .name("Network-SV")
-            .type("EVPLAN")
-            .scope("GLOBAL")
+            .project(NetworkProjectArgs.builder()
+                .projectId("776847000642406")
+                .build())
             .notifications(NetworkNotificationArgs.builder()
                 .type("ALL")
                 .emails(                
                     "example@equinix.com",
                     "test1@equinix.com")
                 .build())
-            .project(NetworkProjectArgs.builder()
-                .projectId("776847000642406")
-                .build())
+            .name("Network-SV")
+            .type("EVPLAN")
+            .scope("GLOBAL")
             .build());
 
     }
@@ -153,15 +153,15 @@ resources:
     type: equinix:fabric:Network
     name: new_network
     properties:
-      name: Network-SV
-      type: EVPLAN
-      scope: GLOBAL
+      project:
+        projectId: '776847000642406'
       notifications:
         - type: ALL
           emails:
             - example@equinix.com
             - test1@equinix.com
-      project:
-        projectId: '776847000642406'
+      name: Network-SV
+      type: EVPLAN
+      scope: GLOBAL
 ```
 {{% /example %}}

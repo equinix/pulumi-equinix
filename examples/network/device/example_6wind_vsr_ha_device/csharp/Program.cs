@@ -12,6 +12,26 @@ return await Deployment.RunAsync(() =>
 
     var sixWindVsr = new Equinix.NetworkEdge.Device("six-wind-vsr", new()
     {
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "xxxx",
+            KeyName = "xxxxx",
+        },
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "6WIND-VSR-Sec",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "hostname", "test" },
+                { "token", "xxxx" },
+            },
+        },
         Name = "6WIND-VSR",
         ProjectId = "xxxxxxx",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -32,26 +52,6 @@ return await Deployment.RunAsync(() =>
         {
             { "hostname", "test" },
             { "token", "xxxx" },
-        },
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "xxxx",
-            KeyName = "xxxxx",
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "6WIND-VSR-Sec",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            Notifications = new[]
-            {
-                "test@eq.com",
-            },
-            VendorConfiguration = 
-            {
-                { "hostname", "test" },
-                { "token", "xxxx" },
-            },
         },
     });
 

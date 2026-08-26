@@ -5,7 +5,11 @@ import * as equinix from "@pulumi/equinix";
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const cHECKPOINTSV = new equinix.networkedge.Device("CHECKPOINT-SV", {
+const checkpointSv = new equinix.networkedge.Device("CHECKPOINT-SV", {
+    sshKey: {
+        username: "XXXXX",
+        keyName: "XXXXXX",
+    },
     name: "TF_CHECKPOINT",
     projectId: "XXXX",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -21,8 +25,4 @@ const cHECKPOINTSV = new equinix.networkedge.Device("CHECKPOINT-SV", {
     termLength: 1,
     additionalBandwidth: 5,
     aclTemplateId: "XXXXXXX",
-    sshKey: {
-        username: "XXXXX",
-        keyName: "XXXXXX",
-    },
 });

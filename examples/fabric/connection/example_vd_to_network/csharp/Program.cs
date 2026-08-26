@@ -7,8 +7,38 @@ return await Deployment.RunAsync(() =>
 {
     var vd2Network = new Equinix.Fabric.Connection("vd2network", new()
     {
-        Name = "ConnectionName",
-        Type = "EVPLAN_VC",
+        Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+        {
+            PurchaseOrderNumber = "1-323292",
+        },
+        ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+        {
+            AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+            {
+                VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
+                {
+                    Type = "EDGE",
+                    Uuid = "<device_uuid>",
+                },
+                Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
+                {
+                    Type = "CLOUD",
+                    Id = 7,
+                },
+                Type = Equinix.Fabric.AccessPointType.VD,
+            },
+        },
+        ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+        {
+            AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+            {
+                Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
+                {
+                    Uuid = "<network_uuid>",
+                },
+                Type = Equinix.Fabric.AccessPointType.Network,
+            },
+        },
         Notifications = new[]
         {
             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
@@ -21,39 +51,9 @@ return await Deployment.RunAsync(() =>
                 },
             },
         },
+        Name = "ConnectionName",
+        Type = "EVPLAN_VC",
         Bandwidth = 50,
-        Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-        {
-            PurchaseOrderNumber = "1-323292",
-        },
-        ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-        {
-            AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-            {
-                Type = Equinix.Fabric.AccessPointType.VD,
-                VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
-                {
-                    Type = "EDGE",
-                    Uuid = "<device_uuid>",
-                },
-                Interface = new Equinix.Fabric.Inputs.ConnectionASideAccessPointInterfaceArgs
-                {
-                    Type = "CLOUD",
-                    Id = 7,
-                },
-            },
-        },
-        ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-        {
-            AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-            {
-                Type = Equinix.Fabric.AccessPointType.Network,
-                Network = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointNetworkArgs
-                {
-                    Uuid = "<network_uuid>",
-                },
-            },
-        },
     });
 
 });

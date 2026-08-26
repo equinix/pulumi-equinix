@@ -34,9 +34,12 @@ import * as utilities from "../utilities";
 export function getRouteFilterRules(args: GetRouteFilterRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteFilterRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getRouteFilterRules:getRouteFilterRules", {
+        "filters": args.filters,
         "limit": args.limit,
         "offset": args.offset,
+        "outerOperator": args.outerOperator,
         "routeFilterId": args.routeFilterId,
+        "sorts": args.sorts,
     }, opts);
 }
 
@@ -44,6 +47,10 @@ export function getRouteFilterRules(args: GetRouteFilterRulesArgs, opts?: pulumi
  * A collection of arguments for invoking getRouteFilterRules.
  */
 export interface GetRouteFilterRulesArgs {
+    /**
+     * Filters for the Data Source Search Request
+     */
+    filters?: inputs.fabric.GetRouteFilterRulesFilter[];
     /**
      * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
      */
@@ -53,9 +60,17 @@ export interface GetRouteFilterRulesArgs {
      */
     offset?: number;
     /**
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     */
+    outerOperator: string;
+    /**
      * UUID of the Route Filter Policy the rule is attached to
      */
     routeFilterId: string;
+    /**
+     * Sort criteria for the Data Source Search Request
+     */
+    sorts?: inputs.fabric.GetRouteFilterRulesSort[];
 }
 
 /**
@@ -66,6 +81,10 @@ export interface GetRouteFilterRulesResult {
      * The list of Rules attached to the given Route Filter Policy UUID
      */
     readonly datas: outputs.fabric.GetRouteFilterRulesData[];
+    /**
+     * Filters for the Data Source Search Request
+     */
+    readonly filters?: outputs.fabric.GetRouteFilterRulesFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -79,6 +98,10 @@ export interface GetRouteFilterRulesResult {
      */
     readonly offset?: number;
     /**
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     */
+    readonly outerOperator: string;
+    /**
      * Pagination details for the Data Source Search Request
      */
     readonly paginations: outputs.fabric.GetRouteFilterRulesPagination[];
@@ -86,6 +109,10 @@ export interface GetRouteFilterRulesResult {
      * UUID of the Route Filter Policy the rule is attached to
      */
     readonly routeFilterId: string;
+    /**
+     * Sort criteria for the Data Source Search Request
+     */
+    readonly sorts?: outputs.fabric.GetRouteFilterRulesSort[];
 }
 /**
  * Fabric V4 API compatible data resource that allow user to fetch route filter for a given search data set
@@ -114,9 +141,12 @@ export interface GetRouteFilterRulesResult {
 export function getRouteFilterRulesOutput(args: GetRouteFilterRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteFilterRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getRouteFilterRules:getRouteFilterRules", {
+        "filters": args.filters,
         "limit": args.limit,
         "offset": args.offset,
+        "outerOperator": args.outerOperator,
         "routeFilterId": args.routeFilterId,
+        "sorts": args.sorts,
     }, opts);
 }
 
@@ -124,6 +154,10 @@ export function getRouteFilterRulesOutput(args: GetRouteFilterRulesOutputArgs, o
  * A collection of arguments for invoking getRouteFilterRules.
  */
 export interface GetRouteFilterRulesOutputArgs {
+    /**
+     * Filters for the Data Source Search Request
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.fabric.GetRouteFilterRulesFilterArgs>[]>;
     /**
      * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
      */
@@ -133,7 +167,15 @@ export interface GetRouteFilterRulesOutputArgs {
      */
     offset?: pulumi.Input<number>;
     /**
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     */
+    outerOperator: pulumi.Input<string>;
+    /**
      * UUID of the Route Filter Policy the rule is attached to
      */
     routeFilterId: pulumi.Input<string>;
+    /**
+     * Sort criteria for the Data Source Search Request
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.fabric.GetRouteFilterRulesSortArgs>[]>;
 }
