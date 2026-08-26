@@ -6,6 +6,10 @@ const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
 const c8000VByolThroughput = new equinix.networkedge.Device("c8000v-byol-throughput", {
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
     name: "tf-c8000v-byol",
     metroCode: sv.apply(sv => sv.metroCode),
     typeCode: "C8000V",
@@ -24,9 +28,5 @@ const c8000VByolThroughput = new equinix.networkedge.Device("c8000v-byol-through
     coreCount: 2,
     throughput: 100,
     throughputUnit: equinix.networkedge.ThroughputUnit.Mbps,
-    sshKey: {
-        username: "test",
-        keyName: "test-key",
-    },
     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
 });

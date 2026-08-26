@@ -7,8 +7,36 @@ return await Deployment.RunAsync(() =>
 {
     var epl = new Equinix.Fabric.Connection("epl", new()
     {
-        Name = "ConnectionName",
-        Type = Equinix.Fabric.ConnectionType.EPL,
+        Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
+        {
+            PurchaseOrderNumber = "1-323292",
+        },
+        ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
+        {
+            AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
+            {
+                Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
+                {
+                    Uuid = "<aside_port_uuid>",
+                },
+                Type = Equinix.Fabric.AccessPointType.Colo,
+            },
+        },
+        ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
+        {
+            AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
+            {
+                Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
+                {
+                    Uuid = "<zside_port_uuid>",
+                },
+                Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
+                {
+                    MetroCode = Equinix.Metro.SiliconValley,
+                },
+                Type = Equinix.Fabric.AccessPointType.Colo,
+            },
+        },
         Notifications = new[]
         {
             new Equinix.Fabric.Inputs.ConnectionNotificationArgs
@@ -21,37 +49,9 @@ return await Deployment.RunAsync(() =>
                 },
             },
         },
+        Name = "ConnectionName",
+        Type = Equinix.Fabric.ConnectionType.EPL,
         Bandwidth = 50,
-        Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
-        {
-            PurchaseOrderNumber = "1-323292",
-        },
-        ASide = new Equinix.Fabric.Inputs.ConnectionASideArgs
-        {
-            AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
-            {
-                Type = Equinix.Fabric.AccessPointType.Colo,
-                Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
-                {
-                    Uuid = "<aside_port_uuid>",
-                },
-            },
-        },
-        ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
-        {
-            AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
-            {
-                Type = Equinix.Fabric.AccessPointType.Colo,
-                Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
-                {
-                    Uuid = "<zside_port_uuid>",
-                },
-                Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
-                {
-                    MetroCode = Equinix.Metro.SiliconValley,
-                },
-            },
-        },
     });
 
 });

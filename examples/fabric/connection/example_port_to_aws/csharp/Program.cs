@@ -7,21 +7,6 @@ return await Deployment.RunAsync(() =>
 {
     var port2Aws = new Equinix.Fabric.Connection("port2aws", new()
     {
-        Name = "ConnectionName",
-        Type = Equinix.Fabric.ConnectionType.EVPL,
-        Notifications = new[]
-        {
-            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-            {
-                Type = Equinix.Fabric.NotificationsType.All,
-                Emails = new[]
-                {
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                },
-            },
-        },
-        Bandwidth = 50,
         Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
         {
             Priority = "PRIMARY",
@@ -34,7 +19,6 @@ return await Deployment.RunAsync(() =>
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.Colo,
                 Port = new Equinix.Fabric.Inputs.ConnectionASideAccessPointPortArgs
                 {
                     Uuid = "<aside_port_uuid>",
@@ -45,15 +29,13 @@ return await Deployment.RunAsync(() =>
                     VlanSTag = 2019,
                     VlanCTag = 2112,
                 },
+                Type = Equinix.Fabric.AccessPointType.Colo,
             },
         },
         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.SP,
-                AuthenticationKey = "<aws_account_id>",
-                SellerRegion = "us-west-1",
                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
                 {
                     Type = Equinix.Fabric.ProfileType.L2Profile,
@@ -63,8 +45,26 @@ return await Deployment.RunAsync(() =>
                 {
                     MetroCode = Equinix.Metro.SiliconValley,
                 },
+                Type = Equinix.Fabric.AccessPointType.SP,
+                AuthenticationKey = "<aws_account_id>",
+                SellerRegion = "us-west-1",
             },
         },
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+            {
+                Type = Equinix.Fabric.NotificationsType.All,
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Name = "ConnectionName",
+        Type = Equinix.Fabric.ConnectionType.EVPL,
+        Bandwidth = 50,
         AdditionalInfo = new[]
         {
             

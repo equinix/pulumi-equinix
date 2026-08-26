@@ -10,8 +10,26 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var aRUBAEDGECONNECTAM = new Equinix.NetworkEdge.Device("ARUBA-EDGECONNECT-AM", new()
+    var arubaEdgeconnectAm = new Equinix.NetworkEdge.Device("ARUBA-EDGECONNECT-AM", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_CHECKPOINT",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            AclTemplateId = "XXXXXXX",
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "accountKey", "xxxxx" },
+                { "accountName", "xxxx" },
+                { "applianceTag", "test" },
+                { "hostname", "test" },
+            },
+        },
         Name = "TF_Aruba_Edge_Connect",
         ProjectId = "XXXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -36,24 +54,6 @@ return await Deployment.RunAsync(() =>
             { "accountName", "xxxx" },
             { "applianceTag", "tests" },
             { "hostname", "test" },
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "TF_CHECKPOINT",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            AclTemplateId = "XXXXXXX",
-            Notifications = new[]
-            {
-                "test@eq.com",
-            },
-            VendorConfiguration = 
-            {
-                { "accountKey", "xxxxx" },
-                { "accountName", "xxxx" },
-                { "applianceTag", "test" },
-                { "hostname", "test" },
-            },
         },
     });
 

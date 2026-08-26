@@ -1257,7 +1257,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: string;
         /**
@@ -1276,7 +1276,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: pulumi.Input<string>;
         /**
@@ -1777,6 +1777,36 @@ export namespace fabric {
         property?: pulumi.Input<string>;
     }
 
+    export interface GetRouteAggregationRulesFilter {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetRouteAggregationRulesFilterArgs {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface GetRouteAggregationRulesPagination {
         /**
          * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
@@ -1795,7 +1825,7 @@ export namespace fabric {
          */
         previous?: string;
         /**
-         * The total number of route agrgegation rules available to the user making the request
+         * The total number of Route Aggregation Rules available to the user making the request
          */
         total?: number;
     }
@@ -1818,9 +1848,31 @@ export namespace fabric {
          */
         previous?: pulumi.Input<string>;
         /**
-         * The total number of route agrgegation rules available to the user making the request
+         * The total number of Route Aggregation Rules available to the user making the request
          */
         total?: pulumi.Input<number>;
+    }
+
+    export interface GetRouteAggregationRulesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
+    export interface GetRouteAggregationRulesSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: pulumi.Input<string>;
     }
 
     export interface GetRouteAggregationsFilter {
@@ -1917,6 +1969,58 @@ export namespace fabric {
         direction?: pulumi.Input<string>;
         /**
          * The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
+         */
+        property?: pulumi.Input<string>;
+    }
+
+    export interface GetRouteFilterRulesFilter {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetRouteFilterRulesFilterArgs {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRouteFilterRulesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
+    export interface GetRouteFilterRulesSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
          */
         property?: pulumi.Input<string>;
     }
@@ -3210,7 +3314,7 @@ export namespace fabric {
 
     export interface RouteAggregationRuleChange {
         /**
-         * Equinix auto generated URI to the route aggregation change
+         * Equinix auto generated URI to the Route Aggregation Rule change
          */
         href?: pulumi.Input<string>;
         /**
@@ -3225,51 +3329,51 @@ export namespace fabric {
 
     export interface RouteAggregationRuleChangeLog {
         /**
-         * User name of creator of the stream resource
+         * User name of creator of the resource
          */
         createdBy?: pulumi.Input<string>;
         /**
-         * Email of creator of the stream resource
+         * Email of creator of the resource
          */
         createdByEmail?: pulumi.Input<string>;
         /**
-         * Legal name of creator of the stream resource
+         * Legal name of creator of the resource
          */
         createdByFullName?: pulumi.Input<string>;
         /**
-         * Creation time of the stream resource
+         * Creation time of the resource
          */
         createdDateTime?: pulumi.Input<string>;
         /**
-         * User name of deleter of the stream resource
+         * User name of deleter of the resource
          */
         deletedBy?: pulumi.Input<string>;
         /**
-         * Email of deleter of the stream resource
+         * Email of deleter of the resource
          */
         deletedByEmail?: pulumi.Input<string>;
         /**
-         * Legal name of deleter of the stream resource
+         * Legal name of deleter of the resource
          */
         deletedByFullName?: pulumi.Input<string>;
         /**
-         * Deletion time of the stream resource
+         * Deletion time of the resource
          */
         deletedDateTime?: pulumi.Input<string>;
         /**
-         * User name of last updater of the stream resource
+         * User name of last updater of the resource
          */
         updatedBy?: pulumi.Input<string>;
         /**
-         * Email of last updater of the stream resource
+         * Email of last updater of the resource
          */
         updatedByEmail?: pulumi.Input<string>;
         /**
-         * Legal name of last updater of the stream resource
+         * Legal name of last updater of the resource
          */
         updatedByFullName?: pulumi.Input<string>;
         /**
-         * Last update time of the stream resource
+         * Last update time of the resource
          */
         updatedDateTime?: pulumi.Input<string>;
     }

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -31,9 +30,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkedge.NewAclTemplate(ctx, "myacl", &networkedge.AclTemplateArgs{
-//				Name:        pulumi.String("test"),
-//				Description: pulumi.String("Test ACL template"),
-//				ProjectId:   pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
 //				InboundRules: networkedge.AclTemplateInboundRuleArray{
 //					&networkedge.AclTemplateInboundRuleArgs{
 //						Subnet:      pulumi.String("1.1.1.1/32"),
@@ -49,6 +45,9 @@ import (
 //						DstPort:  pulumi.String("53,1045,2041"),
 //					},
 //				},
+//				Name:        pulumi.String("test"),
+//				Description: pulumi.String("Test ACL template"),
+//				ProjectId:   pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
 //			})
 //			if err != nil {
 //				return err

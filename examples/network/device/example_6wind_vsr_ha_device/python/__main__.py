@@ -3,6 +3,20 @@ import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
 six_wind_vsr = equinix.networkedge.Device("six-wind-vsr",
+    ssh_key={
+        "username": "xxxx",
+        "key_name": "xxxxx",
+    },
+    secondary_device={
+        "name": "6WIND-VSR-Sec",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "hostname": "test",
+            "token": "xxxx",
+        },
+    },
     name="6WIND-VSR",
     project_id="xxxxxxx",
     metro_code=sv.metro_code,
@@ -19,18 +33,4 @@ six_wind_vsr = equinix.networkedge.Device("six-wind-vsr",
     vendor_configuration={
         "hostname": "test",
         "token": "xxxx",
-    },
-    ssh_key={
-        "username": "xxxx",
-        "key_name": "xxxxx",
-    },
-    secondary_device={
-        "name": "6WIND-VSR-Sec",
-        "metro_code": sv.metro_code,
-        "account_number": sv.number,
-        "notifications": ["test@eq.com"],
-        "vendor_configuration": {
-            "hostname": "test",
-            "token": "xxxx",
-        },
     })

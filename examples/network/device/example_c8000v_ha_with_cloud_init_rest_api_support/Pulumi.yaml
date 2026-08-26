@@ -5,6 +5,20 @@ resources:
   c8000v-byol:
     type: equinix:networkedge:Device
     properties:
+      sshKey:
+        username: test
+        keyName: test-key
+      secondaryDevice:
+        name: tf-c8000v-byol-secondary
+        metroCode: ${sv.metroCode}
+        hostname: csr1000v-s
+        notifications:
+          - john@equinix.com
+          - marry@equinix.com
+        accountNumber: ${sv.number}
+        vendorConfiguration:
+          restApiSupportRequirement: 'true'
+        aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
       name: tf-c8000v-byol
       metroCode: ${sv.metroCode}
       typeCode: C8000V
@@ -22,23 +36,9 @@ resources:
       interfaceCount: 10
       coreCount: 2
       tier: 1
-      sshKey:
-        username: test
-        keyName: test-key
       vendorConfiguration:
         restApiSupportRequirement: 'true'
       aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
-      secondaryDevice:
-        name: tf-c8000v-byol-secondary
-        metroCode: ${sv.metroCode}
-        hostname: csr1000v-s
-        notifications:
-          - john@equinix.com
-          - marry@equinix.com
-        accountNumber: ${sv.number}
-        vendorConfiguration:
-          restApiSupportRequirement: 'true'
-        aclTemplateId: 0bff6e05-f0e7-44cd-804a-25b92b835f8b
 variables:
   # Create C8000V HA - BYOL device with cloud init rest api support
   sv:

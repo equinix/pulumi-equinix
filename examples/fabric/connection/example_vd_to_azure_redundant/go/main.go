@@ -8,28 +8,15 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		vd2AzurePrimary, err := fabric.NewConnection(ctx, "vd2azurePrimary", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String(fabric.ConnectionTypeEVPL),
+		vd2AzurePrimary, err := fabric.NewConnection(ctx, "vd2azure_primary", &fabric.ConnectionArgs{
 			Redundancy: &fabric.ConnectionRedundancyArgs{
 				Priority: pulumi.String("PRIMARY"),
 			},
-			Notifications: fabric.ConnectionNotificationArray{
-				&fabric.ConnectionNotificationArgs{
-					Type: pulumi.String(fabric.NotificationsTypeAll),
-					Emails: pulumi.StringArray{
-						pulumi.String("example@equinix.com"),
-						pulumi.String("test1@equinix.com"),
-					},
-				},
-			},
-			Bandwidth: pulumi.Int(50),
 			Order: &fabric.ConnectionOrderArgs{
 				PurchaseOrderNumber: pulumi.String("1-323292"),
 			},
 			ASide: &fabric.ConnectionASideArgs{
 				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeVD),
 					VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
 						Type: pulumi.String("EDGE"),
 						Uuid: pulumi.String("<device_uuid>"),
@@ -38,13 +25,11 @@ func main() {
 						Type: pulumi.String("CLOUD"),
 						Id:   pulumi.Int(7),
 					},
+					Type: pulumi.String(fabric.AccessPointTypeVD),
 				},
 			},
 			ZSide: &fabric.ConnectionZSideArgs{
 				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type:              pulumi.String(fabric.AccessPointTypeSP),
-					AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
-					PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
 					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
 						Type: pulumi.String(fabric.ProfileTypeL2Profile),
 						Uuid: pulumi.String("<Azure_Service_Profile_UUID>"),
@@ -52,20 +37,10 @@ func main() {
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 						MetroCode: pulumi.String(equinix.MetroSiliconValley),
 					},
+					Type:              pulumi.String(fabric.AccessPointTypeSP),
+					AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
+					PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
 				},
-			},
-		})
-		if err != nil {
-			return err
-		}
-		_, err = fabric.NewConnection(ctx, "vd2azureSecondary", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String(fabric.ConnectionTypeEVPL),
-			Redundancy: &fabric.ConnectionRedundancyArgs{
-				Priority: pulumi.String("SECONDARY"),
-				Group: vd2AzurePrimary.Redundancy.ApplyT(func(redundancy fabric.ConnectionRedundancy) (*string, error) {
-					return &redundancy.Group, nil
-				}).(pulumi.StringPtrOutput),
 			},
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
@@ -76,13 +51,25 @@ func main() {
 					},
 				},
 			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String(fabric.ConnectionTypeEVPL),
 			Bandwidth: pulumi.Int(50),
+		})
+		if err != nil {
+			return err
+		}
+		_, err = fabric.NewConnection(ctx, "vd2azure_secondary", &fabric.ConnectionArgs{
+			Redundancy: &fabric.ConnectionRedundancyArgs{
+				Priority: pulumi.String("SECONDARY"),
+				Group: vd2AzurePrimary.Redundancy.ApplyT(func(redundancy fabric.ConnectionRedundancy) (*string, error) {
+					return &redundancy.Group, nil
+				}).(pulumi.StringPtrOutput),
+			},
 			Order: &fabric.ConnectionOrderArgs{
 				PurchaseOrderNumber: pulumi.String("1-323292"),
 			},
 			ASide: &fabric.ConnectionASideArgs{
 				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeVD),
 					VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
 						Type: pulumi.String("EDGE"),
 						Uuid: pulumi.String("<device_uuid>"),
@@ -91,13 +78,11 @@ func main() {
 						Type: pulumi.String("CLOUD"),
 						Id:   pulumi.Int(5),
 					},
+					Type: pulumi.String(fabric.AccessPointTypeVD),
 				},
 			},
 			ZSide: &fabric.ConnectionZSideArgs{
 				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type:              pulumi.String(fabric.AccessPointTypeSP),
-					AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
-					PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
 					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
 						Type: pulumi.String(fabric.ProfileTypeL2Profile),
 						Uuid: pulumi.String("<Azure_Service_Profile_UUID>"),
@@ -105,8 +90,23 @@ func main() {
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 						MetroCode: pulumi.String(equinix.MetroSiliconValley),
 					},
+					Type:              pulumi.String(fabric.AccessPointTypeSP),
+					AuthenticationKey: pulumi.String("<Azure_ExpressRouter_Auth_Key>"),
+					PeeringType:       pulumi.String(fabric.AccessPointPeeringTypePrivate),
 				},
 			},
+			Notifications: fabric.ConnectionNotificationArray{
+				&fabric.ConnectionNotificationArgs{
+					Type: pulumi.String(fabric.NotificationsTypeAll),
+					Emails: pulumi.StringArray{
+						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
+					},
+				},
+			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String(fabric.ConnectionTypeEVPL),
+			Bandwidth: pulumi.Int(50),
 		})
 		if err != nil {
 			return err

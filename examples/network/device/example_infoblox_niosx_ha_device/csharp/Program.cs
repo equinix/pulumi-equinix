@@ -12,6 +12,21 @@ return await Deployment.RunAsync(() =>
 
     var niosXHa = new Equinix.NetworkEdge.Device("nios-x-ha", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_INFOBLOX-NIOS-X-Sec",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "hostname", "test" },
+                { "token", "xxxxx" },
+            },
+        },
         Name = "TF_INFOBLOX-NIOS-X",
         ProjectId = "xxxxxxx",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -33,21 +48,6 @@ return await Deployment.RunAsync(() =>
         {
             { "hostname", "test" },
             { "token", "xxxxx" },
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "TF_INFOBLOX-NIOS-X-Sec",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            Notifications = new[]
-            {
-                "test@eq.com",
-            },
-            VendorConfiguration = 
-            {
-                { "hostname", "test" },
-                { "token", "xxxxx" },
-            },
         },
     });
 

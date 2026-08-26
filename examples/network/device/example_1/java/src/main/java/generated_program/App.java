@@ -30,6 +30,15 @@ public class App {
             .build());
 
         var csr1000VHa = new Device("csr1000VHa", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("tf-csr1000v-s")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .hostname("csr1000v-s")
+                .notifications(                
+                    "john@equinix.com",
+                    "marry@equinix.com")
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .build())
             .name("tf-csr1000v-p")
             .throughput(500)
             .throughputUnit("Mbps")
@@ -48,15 +57,6 @@ public class App {
             .accountNumber(dc.applyValue(_dc -> _dc.number()))
             .version("16.09.05")
             .coreCount(2)
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("tf-csr1000v-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .hostname("csr1000v-s")
-                .notifications(                
-                    "john@equinix.com",
-                    "marry@equinix.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .build())
             .build());
 
     }

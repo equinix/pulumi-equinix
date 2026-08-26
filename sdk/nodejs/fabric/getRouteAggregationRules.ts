@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
  * Additional Documentation:
- * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
  *
  * ## Example Usage
  *
@@ -34,8 +34,11 @@ import * as utilities from "../utilities";
 export function getRouteAggregationRules(args: GetRouteAggregationRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteAggregationRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getRouteAggregationRules:getRouteAggregationRules", {
+        "filters": args.filters,
+        "outerOperator": args.outerOperator,
         "pagination": args.pagination,
         "routeAggregationId": args.routeAggregationId,
+        "sorts": args.sorts,
     }, opts);
 }
 
@@ -44,13 +47,25 @@ export function getRouteAggregationRules(args: GetRouteAggregationRulesArgs, opt
  */
 export interface GetRouteAggregationRulesArgs {
     /**
-     * Pagination details for the returned route aggregation rules list
+     * Filters for the Data Source Search Request
+     */
+    filters?: inputs.fabric.GetRouteAggregationRulesFilter[];
+    /**
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     */
+    outerOperator: string;
+    /**
+     * Pagination details for the returned Route Aggregation Rules list
      */
     pagination?: inputs.fabric.GetRouteAggregationRulesPagination;
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation from which this data source retrieves its rules.
      */
     routeAggregationId: string;
+    /**
+     * Sort criteria for the Data Source Search Request
+     */
+    sorts?: inputs.fabric.GetRouteAggregationRulesSort[];
 }
 
 /**
@@ -58,26 +73,38 @@ export interface GetRouteAggregationRulesArgs {
  */
 export interface GetRouteAggregationRulesResult {
     /**
-     * Returned list of route aggregation rule objects
+     * Returned list of Route Aggregation Rule objects
      */
     readonly datas: outputs.fabric.GetRouteAggregationRulesData[];
+    /**
+     * Filters for the Data Source Search Request
+     */
+    readonly filters?: outputs.fabric.GetRouteAggregationRulesFilter[];
     /**
      * The unique identifier of the resource
      */
     readonly id: string;
     /**
-     * Pagination details for the returned route aggregation rules list
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     */
+    readonly outerOperator: string;
+    /**
+     * Pagination details for the returned Route Aggregation Rules list
      */
     readonly pagination?: outputs.fabric.GetRouteAggregationRulesPagination;
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation from which this data source retrieves its rules.
      */
     readonly routeAggregationId: string;
+    /**
+     * Sort criteria for the Data Source Search Request
+     */
+    readonly sorts?: outputs.fabric.GetRouteAggregationRulesSort[];
 }
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
  * Additional Documentation:
- * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
  *
  * ## Example Usage
  *
@@ -101,8 +128,11 @@ export interface GetRouteAggregationRulesResult {
 export function getRouteAggregationRulesOutput(args: GetRouteAggregationRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteAggregationRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("equinix:fabric/getRouteAggregationRules:getRouteAggregationRules", {
+        "filters": args.filters,
+        "outerOperator": args.outerOperator,
         "pagination": args.pagination,
         "routeAggregationId": args.routeAggregationId,
+        "sorts": args.sorts,
     }, opts);
 }
 
@@ -111,11 +141,23 @@ export function getRouteAggregationRulesOutput(args: GetRouteAggregationRulesOut
  */
 export interface GetRouteAggregationRulesOutputArgs {
     /**
-     * Pagination details for the returned route aggregation rules list
+     * Filters for the Data Source Search Request
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.fabric.GetRouteAggregationRulesFilterArgs>[]>;
+    /**
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     */
+    outerOperator: pulumi.Input<string>;
+    /**
+     * Pagination details for the returned Route Aggregation Rules list
      */
     pagination?: pulumi.Input<inputs.fabric.GetRouteAggregationRulesPaginationArgs>;
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation from which this data source retrieves its rules.
      */
     routeAggregationId: pulumi.Input<string>;
+    /**
+     * Sort criteria for the Data Source Search Request
+     */
+    sorts?: pulumi.Input<pulumi.Input<inputs.fabric.GetRouteAggregationRulesSortArgs>[]>;
 }

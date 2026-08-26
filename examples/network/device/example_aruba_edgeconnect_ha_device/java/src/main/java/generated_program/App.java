@@ -25,7 +25,20 @@ public class App {
             .metroCode("SV")
             .build());
 
-        var aRUBAEDGECONNECTAM = new Device("aRUBAEDGECONNECTAM", DeviceArgs.builder()
+        var arubaEdgeconnectAm = new Device("arubaEdgeconnectAm", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_CHECKPOINT")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .aclTemplateId("XXXXXXX")
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("accountKey", "xxxxx"),
+                    Map.entry("accountName", "xxxx"),
+                    Map.entry("applianceTag", "test"),
+                    Map.entry("hostname", "test")
+                ))
+                .build())
             .name("TF_Aruba_Edge_Connect")
             .projectId("XXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -47,19 +60,6 @@ public class App {
                 Map.entry("applianceTag", "tests"),
                 Map.entry("hostname", "test")
             ))
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("TF_CHECKPOINT")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .aclTemplateId("XXXXXXX")
-                .notifications("test@eq.com")
-                .vendorConfiguration(Map.ofEntries(
-                    Map.entry("accountKey", "xxxxx"),
-                    Map.entry("accountName", "xxxx"),
-                    Map.entry("applianceTag", "test"),
-                    Map.entry("hostname", "test")
-                ))
-                .build())
             .build());
 
     }

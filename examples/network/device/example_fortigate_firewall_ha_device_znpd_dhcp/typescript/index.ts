@@ -6,7 +6,21 @@ const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
     name: "account-name",
 });
-const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
+const ftntFirewallSv = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
+    secondaryDevice: {
+        name: "TF_FTNT-FIREWALL-secondary",
+        metroCode: sv.apply(sv => sv.metroCode),
+        hostname: "fg-vm-znpd",
+        notifications: [
+            "john@equinix.com",
+            "marry@equinix.com",
+        ],
+        accountNumber: sv.apply(sv => sv.number),
+        vendorConfiguration: {
+            ipAddressType: "DHCP",
+            managementInterfaceId: "6",
+        },
+    },
     name: "TF_FTNT-FIREWALL",
     projectId: "XXXXXXXXXX",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -25,19 +39,5 @@ const fTNTFIREWALLSV = new equinix.networkedge.Device("FTNT-FIREWALL-SV", {
     vendorConfiguration: {
         ipAddressType: "DHCP",
         managementInterfaceId: "6",
-    },
-    secondaryDevice: {
-        name: "TF_FTNT-FIREWALL-secondary",
-        metroCode: sv.apply(sv => sv.metroCode),
-        hostname: "fg-vm-znpd",
-        notifications: [
-            "john@equinix.com",
-            "marry@equinix.com",
-        ],
-        accountNumber: sv.apply(sv => sv.number),
-        vendorConfiguration: {
-            ipAddressType: "DHCP",
-            managementInterfaceId: "6",
-        },
     },
 });

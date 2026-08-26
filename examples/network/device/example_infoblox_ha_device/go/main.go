@@ -11,6 +11,24 @@ func main() {
 			MetroCode: pulumi.String("SV"),
 		}, nil)
 		_, err := networkedge.NewDevice(ctx, "INFOBLOX-SV", &networkedge.DeviceArgs{
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("TF_INFOBLOX-Sec"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				VendorConfiguration: pulumi.StringMap{
+					"adminPassword": pulumi.String("X.X.X.X"),
+					"ipAddress":     pulumi.String("X.X.X.X"),
+					"subnetMaskIp":  pulumi.String("X.X.X.X"),
+					"gatewayIp":     pulumi.String("X.X.X.X"),
+				},
+			},
 			Name:      pulumi.String("TF_INFOBLOX"),
 			ProjectId: pulumi.String("XXXXXXXXXX"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -35,24 +53,6 @@ func main() {
 				"ipAddress":     pulumi.String("X.X.X.X"),
 				"subnetMaskIp":  pulumi.String("X.X.X.X"),
 				"gatewayIp":     pulumi.String("X.X.X.X"),
-			},
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name: pulumi.String("TF_INFOBLOX-Sec"),
-				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.MetroCode, nil
-				}).(pulumi.StringPtrOutput),
-				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.Number, nil
-				}).(pulumi.StringPtrOutput),
-				Notifications: pulumi.StringArray{
-					pulumi.String("test@eq.com"),
-				},
-				VendorConfiguration: pulumi.StringMap{
-					"adminPassword": pulumi.String("X.X.X.X"),
-					"ipAddress":     pulumi.String("X.X.X.X"),
-					"subnetMaskIp":  pulumi.String("X.X.X.X"),
-					"gatewayIp":     pulumi.String("X.X.X.X"),
-				},
 			},
 		})
 		if err != nil {

@@ -7,18 +7,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := fabric.NewCloudRouter(ctx, "newCloudRouter", &fabric.CloudRouterArgs{
-			Name: pulumi.String("Router-SV"),
-			Type: pulumi.String("XF_ROUTER"),
-			Notifications: fabric.CloudRouterNotificationArray{
-				&fabric.CloudRouterNotificationArgs{
-					Type: pulumi.String("ALL"),
-					Emails: pulumi.StringArray{
-						pulumi.String("example@equinix.com"),
-						pulumi.String("test1@equinix.com"),
-					},
-				},
-			},
+		_, err := fabric.NewCloudRouter(ctx, "new_cloud_router", &fabric.CloudRouterArgs{
 			Order: &fabric.CloudRouterOrderArgs{
 				PurchaseOrderNumber: pulumi.String("1-323292"),
 			},
@@ -34,6 +23,17 @@ func main() {
 			Account: &fabric.CloudRouterAccountArgs{
 				AccountNumber: pulumi.Int(203612),
 			},
+			Notifications: fabric.CloudRouterNotificationArray{
+				&fabric.CloudRouterNotificationArgs{
+					Type: pulumi.String("ALL"),
+					Emails: pulumi.StringArray{
+						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
+					},
+				},
+			},
+			Name: pulumi.String("Router-SV"),
+			Type: pulumi.String("XF_ROUTER"),
 		})
 		if err != nil {
 			return err

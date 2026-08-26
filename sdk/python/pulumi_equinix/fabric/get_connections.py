@@ -12,7 +12,7 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from .. import _utilities
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -92,7 +92,7 @@ class GetConnectionsResult:
     @pulumi.getter
     def sorts(self) -> Optional[Sequence['outputs.GetConnectionsSortResult']]:
         """
-        Filters for the Data Source Search Request
+        Sort criteria for the Data Source Search Request
         """
         return pulumi.get(self, "sorts")
 
@@ -127,7 +127,7 @@ def get_connections(filters: Optional[Sequence[Union['GetConnectionsFilterArgs',
     :param Sequence[Union['GetConnectionsFilterArgs', 'GetConnectionsFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
     :param Union['GetConnectionsPaginationArgs', 'GetConnectionsPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']] sorts: Filters for the Data Source Search Request
+    :param Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']] sorts: Sort criteria for the Data Source Search Request
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -160,7 +160,7 @@ def get_connections_output(filters: Optional[pulumi.Input[Sequence[Union['GetCon
     :param Sequence[Union['GetConnectionsFilterArgs', 'GetConnectionsFilterArgsDict']] filters: Filters for the Data Source Search Request
     :param str outer_operator: Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
     :param Union['GetConnectionsPaginationArgs', 'GetConnectionsPaginationArgsDict'] pagination: Pagination details for the Data Source Search Request
-    :param Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']] sorts: Filters for the Data Source Search Request
+    :param Sequence[Union['GetConnectionsSortArgs', 'GetConnectionsSortArgsDict']] sorts: Sort criteria for the Data Source Search Request
     """
     __args__ = dict()
     __args__['filters'] = filters

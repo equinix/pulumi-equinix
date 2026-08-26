@@ -5,28 +5,19 @@ resources:
   vd2port:
     type: equinix:fabric:Connection
     properties:
-      name: ConnectionName
-      type: EVPL_VC
-      notifications:
-        - type: ALL
-          emails:
-            - example@equinix.com
-            - test1@equinix.com
-      bandwidth: 50
       order:
         purchaseOrderNumber: 1-323292
       aSide:
         accessPoint:
-          type: VD
           virtualDevice:
             type: EDGE
             uuid: <device_uuid>
           interface:
             type: NETWORK
             id: 7
+          type: VD
       zSide:
         accessPoint:
-          type: COLO
           port:
             uuid: <zside_port_uuid>
           linkProtocol:
@@ -34,3 +25,12 @@ resources:
             vlanSTag: '3711'
           location:
             metroCode: SV
+          type: COLO
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      name: ConnectionName
+      type: EVPL_VC
+      bandwidth: 50

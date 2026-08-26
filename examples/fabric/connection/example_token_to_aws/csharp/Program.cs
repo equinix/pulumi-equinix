@@ -7,21 +7,6 @@ return await Deployment.RunAsync(() =>
 {
     var token2Aws = new Equinix.Fabric.Connection("token2aws", new()
     {
-        Name = "ConnectionName",
-        Type = Equinix.Fabric.ConnectionType.EVPL,
-        Notifications = new[]
-        {
-            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-            {
-                Type = Equinix.Fabric.NotificationsType.All,
-                Emails = new[]
-                {
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                },
-            },
-        },
-        Bandwidth = 50,
         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
         {
             PurchaseOrderNumber = "1-323292",
@@ -37,9 +22,6 @@ return await Deployment.RunAsync(() =>
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.SP,
-                AuthenticationKey = "<aws_account_id>",
-                SellerRegion = "us-west-1",
                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
                 {
                     Type = Equinix.Fabric.ProfileType.L2Profile,
@@ -49,8 +31,26 @@ return await Deployment.RunAsync(() =>
                 {
                     MetroCode = Equinix.Metro.SiliconValley,
                 },
+                Type = Equinix.Fabric.AccessPointType.SP,
+                AuthenticationKey = "<aws_account_id>",
+                SellerRegion = "us-west-1",
             },
         },
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+            {
+                Type = Equinix.Fabric.NotificationsType.All,
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Name = "ConnectionName",
+        Type = Equinix.Fabric.ConnectionType.EVPL,
+        Bandwidth = 50,
     });
 
 });

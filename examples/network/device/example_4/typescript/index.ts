@@ -6,7 +6,11 @@ const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
     metroCode: "SV",
 });
-const c8KvSingle = new equinix.networkedge.Device("c8kvSingle", {
+const c8KvSingle = new equinix.networkedge.Device("c8kv_single", {
+    sshKey: {
+        username: "test-username",
+        keyName: "valid-key-name",
+    },
     name: "tf-c8kv",
     metroCode: sv.apply(sv => sv.metroCode),
     typeCode: "C8000V",
@@ -21,9 +25,5 @@ const c8KvSingle = new equinix.networkedge.Device("c8kvSingle", {
     termLength: 12,
     licenseToken: "valid-license-token",
     additionalBandwidth: 5,
-    sshKey: {
-        username: "test-username",
-        keyName: "valid-key-name",
-    },
     aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
 });

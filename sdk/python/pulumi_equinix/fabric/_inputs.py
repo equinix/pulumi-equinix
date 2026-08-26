@@ -12,7 +12,7 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from .. import _utilities
+from . import _utilities
 from .. import _enums as _root_enums
 from ._enums import *
 
@@ -393,14 +393,22 @@ __all__ = [
     'GetReceivedRoutesPaginationArgsDict',
     'GetReceivedRoutesSortArgs',
     'GetReceivedRoutesSortArgsDict',
+    'GetRouteAggregationRulesFilterArgs',
+    'GetRouteAggregationRulesFilterArgsDict',
     'GetRouteAggregationRulesPaginationArgs',
     'GetRouteAggregationRulesPaginationArgsDict',
+    'GetRouteAggregationRulesSortArgs',
+    'GetRouteAggregationRulesSortArgsDict',
     'GetRouteAggregationsFilterArgs',
     'GetRouteAggregationsFilterArgsDict',
     'GetRouteAggregationsPaginationArgs',
     'GetRouteAggregationsPaginationArgsDict',
     'GetRouteAggregationsSortArgs',
     'GetRouteAggregationsSortArgsDict',
+    'GetRouteFilterRulesFilterArgs',
+    'GetRouteFilterRulesFilterArgsDict',
+    'GetRouteFilterRulesSortArgs',
+    'GetRouteFilterRulesSortArgsDict',
     'GetRouteFiltersFilterArgs',
     'GetRouteFiltersFilterArgsDict',
     'GetRouteFiltersPaginationArgs',
@@ -8860,7 +8868,7 @@ if not MYPY:
         """
         href: NotRequired[pulumi.Input[str]]
         """
-        Equinix auto generated URI to the route aggregation change
+        Equinix auto generated URI to the Route Aggregation Rule change
         """
 elif False:
     RouteAggregationRuleChangeArgsDict: TypeAlias = Mapping[str, Any]
@@ -8874,7 +8882,7 @@ class RouteAggregationRuleChangeArgs:
         """
         :param pulumi.Input[str] type: Equinix defined Route Aggregation Change Type
         :param pulumi.Input[str] uuid: Equinix-assigned unique id for a change
-        :param pulumi.Input[str] href: Equinix auto generated URI to the route aggregation change
+        :param pulumi.Input[str] href: Equinix auto generated URI to the Route Aggregation Rule change
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -8909,7 +8917,7 @@ class RouteAggregationRuleChangeArgs:
     @pulumi.getter
     def href(self) -> Optional[pulumi.Input[str]]:
         """
-        Equinix auto generated URI to the route aggregation change
+        Equinix auto generated URI to the Route Aggregation Rule change
         """
         return pulumi.get(self, "href")
 
@@ -8922,51 +8930,51 @@ if not MYPY:
     class RouteAggregationRuleChangeLogArgsDict(TypedDict):
         created_by: NotRequired[pulumi.Input[str]]
         """
-        User name of creator of the stream resource
+        User name of creator of the resource
         """
         created_by_email: NotRequired[pulumi.Input[str]]
         """
-        Email of creator of the stream resource
+        Email of creator of the resource
         """
         created_by_full_name: NotRequired[pulumi.Input[str]]
         """
-        Legal name of creator of the stream resource
+        Legal name of creator of the resource
         """
         created_date_time: NotRequired[pulumi.Input[str]]
         """
-        Creation time of the stream resource
+        Creation time of the resource
         """
         deleted_by: NotRequired[pulumi.Input[str]]
         """
-        User name of deleter of the stream resource
+        User name of deleter of the resource
         """
         deleted_by_email: NotRequired[pulumi.Input[str]]
         """
-        Email of deleter of the stream resource
+        Email of deleter of the resource
         """
         deleted_by_full_name: NotRequired[pulumi.Input[str]]
         """
-        Legal name of deleter of the stream resource
+        Legal name of deleter of the resource
         """
         deleted_date_time: NotRequired[pulumi.Input[str]]
         """
-        Deletion time of the stream resource
+        Deletion time of the resource
         """
         updated_by: NotRequired[pulumi.Input[str]]
         """
-        User name of last updater of the stream resource
+        User name of last updater of the resource
         """
         updated_by_email: NotRequired[pulumi.Input[str]]
         """
-        Email of last updater of the stream resource
+        Email of last updater of the resource
         """
         updated_by_full_name: NotRequired[pulumi.Input[str]]
         """
-        Legal name of last updater of the stream resource
+        Legal name of last updater of the resource
         """
         updated_date_time: NotRequired[pulumi.Input[str]]
         """
-        Last update time of the stream resource
+        Last update time of the resource
         """
 elif False:
     RouteAggregationRuleChangeLogArgsDict: TypeAlias = Mapping[str, Any]
@@ -8987,18 +8995,18 @@ class RouteAggregationRuleChangeLogArgs:
                  updated_by_full_name: Optional[pulumi.Input[str]] = None,
                  updated_date_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] created_by: User name of creator of the stream resource
-        :param pulumi.Input[str] created_by_email: Email of creator of the stream resource
-        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the stream resource
-        :param pulumi.Input[str] created_date_time: Creation time of the stream resource
-        :param pulumi.Input[str] deleted_by: User name of deleter of the stream resource
-        :param pulumi.Input[str] deleted_by_email: Email of deleter of the stream resource
-        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the stream resource
-        :param pulumi.Input[str] deleted_date_time: Deletion time of the stream resource
-        :param pulumi.Input[str] updated_by: User name of last updater of the stream resource
-        :param pulumi.Input[str] updated_by_email: Email of last updater of the stream resource
-        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the stream resource
-        :param pulumi.Input[str] updated_date_time: Last update time of the stream resource
+        :param pulumi.Input[str] created_by: User name of creator of the resource
+        :param pulumi.Input[str] created_by_email: Email of creator of the resource
+        :param pulumi.Input[str] created_by_full_name: Legal name of creator of the resource
+        :param pulumi.Input[str] created_date_time: Creation time of the resource
+        :param pulumi.Input[str] deleted_by: User name of deleter of the resource
+        :param pulumi.Input[str] deleted_by_email: Email of deleter of the resource
+        :param pulumi.Input[str] deleted_by_full_name: Legal name of deleter of the resource
+        :param pulumi.Input[str] deleted_date_time: Deletion time of the resource
+        :param pulumi.Input[str] updated_by: User name of last updater of the resource
+        :param pulumi.Input[str] updated_by_email: Email of last updater of the resource
+        :param pulumi.Input[str] updated_by_full_name: Legal name of last updater of the resource
+        :param pulumi.Input[str] updated_date_time: Last update time of the resource
         """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
@@ -9029,7 +9037,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
         """
-        User name of creator of the stream resource
+        User name of creator of the resource
         """
         return pulumi.get(self, "created_by")
 
@@ -9041,7 +9049,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Email of creator of the stream resource
+        Email of creator of the resource
         """
         return pulumi.get(self, "created_by_email")
 
@@ -9053,7 +9061,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Legal name of creator of the stream resource
+        Legal name of creator of the resource
         """
         return pulumi.get(self, "created_by_full_name")
 
@@ -9065,7 +9073,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation time of the stream resource
+        Creation time of the resource
         """
         return pulumi.get(self, "created_date_time")
 
@@ -9077,7 +9085,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> Optional[pulumi.Input[str]]:
         """
-        User name of deleter of the stream resource
+        User name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by")
 
@@ -9089,7 +9097,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Email of deleter of the stream resource
+        Email of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_email")
 
@@ -9101,7 +9109,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Legal name of deleter of the stream resource
+        Legal name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_full_name")
 
@@ -9113,7 +9121,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Deletion time of the stream resource
+        Deletion time of the resource
         """
         return pulumi.get(self, "deleted_date_time")
 
@@ -9125,7 +9133,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[pulumi.Input[str]]:
         """
-        User name of last updater of the stream resource
+        User name of last updater of the resource
         """
         return pulumi.get(self, "updated_by")
 
@@ -9137,7 +9145,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Email of last updater of the stream resource
+        Email of last updater of the resource
         """
         return pulumi.get(self, "updated_by_email")
 
@@ -9149,7 +9157,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Legal name of last updater of the stream resource
+        Legal name of last updater of the resource
         """
         return pulumi.get(self, "updated_by_full_name")
 
@@ -9161,7 +9169,7 @@ class RouteAggregationRuleChangeLogArgs:
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Last update time of the stream resource
+        Last update time of the resource
         """
         return pulumi.get(self, "updated_date_time")
 
@@ -17946,7 +17954,7 @@ if not MYPY:
         """
         property: str
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         """
         values: Sequence[str]
         """
@@ -17968,7 +17976,7 @@ class GetConnectionsFilterArgs:
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -18018,7 +18026,7 @@ class GetConnectionsFilterArgs:
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         """
         return pulumi.get(self, "property")
 
@@ -19187,6 +19195,75 @@ class GetReceivedRoutesSortArgs:
 
 
 if not MYPY:
+    class GetRouteAggregationRulesFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        """
+        property: str
+        """
+        Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetRouteAggregationRulesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteAggregationRulesFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        :param str property: Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
     class GetRouteAggregationRulesPaginationArgsDict(TypedDict):
         limit: int
         """
@@ -19206,7 +19283,7 @@ if not MYPY:
         """
         total: int
         """
-        The total number of route agrgegation rules available to the user making the request
+        The total number of Route Aggregation Rules available to the user making the request
         """
 elif False:
     GetRouteAggregationRulesPaginationArgsDict: TypeAlias = Mapping[str, Any]
@@ -19224,7 +19301,7 @@ class GetRouteAggregationRulesPaginationArgs:
         :param str next: The URL relative to the next item in the response
         :param int offset: Index of the first item returned in the response. The default is 0
         :param str previous: The URL relative to the previous item in the response
-        :param int total: The total number of route agrgegation rules available to the user making the request
+        :param int total: The total number of Route Aggregation Rules available to the user making the request
         """
         pulumi.set(__self__, "limit", limit)
         pulumi.set(__self__, "next", next)
@@ -19284,13 +19361,65 @@ class GetRouteAggregationRulesPaginationArgs:
     @pulumi.getter
     def total(self) -> int:
         """
-        The total number of route agrgegation rules available to the user making the request
+        The total number of Route Aggregation Rules available to the user making the request
         """
         return pulumi.get(self, "total")
 
     @total.setter
     def total(self, value: int):
         pulumi.set(self, "total", value)
+
+
+if not MYPY:
+    class GetRouteAggregationRulesSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+elif False:
+    GetRouteAggregationRulesSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteAggregationRulesSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
 
 
 if not MYPY:
@@ -19513,6 +19642,127 @@ class GetRouteAggregationsSortArgs:
     def property(self) -> Optional[str]:
         """
         The property name to use in sorting. One of "/type" "/uuid" "/name" "/project/projectId" "/state" "/changeLog/createdDateTime" "/changeLog/updatedDateTime" "/changeLog/deletedDateTime" Defaults to "/changeLog/updatedDateTime"
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetRouteFilterRulesFilterArgsDict(TypedDict):
+        operator: str
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        """
+        property: str
+        """
+        Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        """
+        values: Sequence[str]
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+elif False:
+    GetRouteFilterRulesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteFilterRulesFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        :param str property: Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class GetRouteFilterRulesSortArgsDict(TypedDict):
+        direction: NotRequired[str]
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        property: NotRequired[str]
+        """
+        The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+elif False:
+    GetRouteFilterRulesSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRouteFilterRulesSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
         """
         return pulumi.get(self, "property")
 

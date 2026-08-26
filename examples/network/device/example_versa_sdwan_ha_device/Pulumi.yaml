@@ -5,6 +5,19 @@ resources:
   FTNT-SDWAN-SV:
     type: equinix:networkedge:Device
     properties:
+      secondaryDevice:
+        name: Praveena_TF_VERSA
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        aclTemplateId: XXXXXXXX
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          controller1: X.X.X.X
+          controller2: X.X.X.X
+          localId: test@test.com
+          remoteId: test@test.com
+          serialNumber: '4'
       name: TF_VERSA-SDWAN
       projectId: XXXXXXXXX
       metroCode: ${sv.metroCode}
@@ -26,19 +39,6 @@ resources:
         localId: test@test.com
         remoteId: test@test.com
         serialNumber: '4'
-      secondaryDevice:
-        name: Praveena_TF_VERSA
-        metroCode: ${sv.metroCode}
-        accountNumber: ${sv.number}
-        aclTemplateId: XXXXXXXX
-        notifications:
-          - test@eq.com
-        vendorConfiguration:
-          controller1: X.X.X.X
-          controller2: X.X.X.X
-          localId: test@test.com
-          remoteId: test@test.com
-          serialNumber: '4'
 variables:
   # Create Fortinet SDWAN single device
   sv:

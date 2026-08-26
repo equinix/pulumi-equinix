@@ -5,7 +5,21 @@ import * as equinix from "@pulumi/equinix";
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const fTNTSDWANSV = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
+const ftntSdwanSv = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
+    secondaryDevice: {
+        name: "Praveena_TF_VERSA",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        aclTemplateId: "XXXXXXXX",
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            controller1: "X.X.X.X",
+            controller2: "X.X.X.X",
+            localId: "test@test.com",
+            remoteId: "test@test.com",
+            serialNumber: "4",
+        },
+    },
     name: "TF_VERSA-SDWAN",
     projectId: "XXXXXXXXX",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -26,19 +40,5 @@ const fTNTSDWANSV = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
         localId: "test@test.com",
         remoteId: "test@test.com",
         serialNumber: "4",
-    },
-    secondaryDevice: {
-        name: "Praveena_TF_VERSA",
-        metroCode: sv.apply(sv => sv.metroCode),
-        accountNumber: sv.apply(sv => sv.number),
-        aclTemplateId: "XXXXXXXX",
-        notifications: ["test@eq.com"],
-        vendorConfiguration: {
-            controller1: "X.X.X.X",
-            controller2: "X.X.X.X",
-            localId: "test@test.com",
-            remoteId: "test@test.com",
-            serialNumber: "4",
-        },
     },
 });

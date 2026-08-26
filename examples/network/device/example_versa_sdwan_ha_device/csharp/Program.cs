@@ -10,8 +10,27 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var fTNTSDWANSV = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
+    var ftntSdwanSv = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "Praveena_TF_VERSA",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            AclTemplateId = "XXXXXXXX",
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "controller1", "X.X.X.X" },
+                { "controller2", "X.X.X.X" },
+                { "localId", "test@test.com" },
+                { "remoteId", "test@test.com" },
+                { "serialNumber", "4" },
+            },
+        },
         Name = "TF_VERSA-SDWAN",
         ProjectId = "XXXXXXXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -36,25 +55,6 @@ return await Deployment.RunAsync(() =>
             { "localId", "test@test.com" },
             { "remoteId", "test@test.com" },
             { "serialNumber", "4" },
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "Praveena_TF_VERSA",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            AclTemplateId = "XXXXXXXX",
-            Notifications = new[]
-            {
-                "test@eq.com",
-            },
-            VendorConfiguration = 
-            {
-                { "controller1", "X.X.X.X" },
-                { "controller2", "X.X.X.X" },
-                { "localId", "test@test.com" },
-                { "remoteId", "test@test.com" },
-                { "serialNumber", "4" },
-            },
         },
     });
 

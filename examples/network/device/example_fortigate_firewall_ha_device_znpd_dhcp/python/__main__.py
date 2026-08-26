@@ -3,7 +3,21 @@ import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV",
     name="account-name")
-f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+ftnt_firewall_sv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
+    secondary_device={
+        "name": "TF_FTNT-FIREWALL-secondary",
+        "metro_code": sv.metro_code,
+        "hostname": "fg-vm-znpd",
+        "notifications": [
+            "john@equinix.com",
+            "marry@equinix.com",
+        ],
+        "account_number": sv.number,
+        "vendor_configuration": {
+            "ipAddressType": "DHCP",
+            "managementInterfaceId": "6",
+        },
+    },
     name="TF_FTNT-FIREWALL",
     project_id="XXXXXXXXXX",
     metro_code=sv.metro_code,
@@ -22,18 +36,4 @@ f_tntfirewallsv = equinix.networkedge.Device("FTNT-FIREWALL-SV",
     vendor_configuration={
         "ipAddressType": "DHCP",
         "managementInterfaceId": "6",
-    },
-    secondary_device={
-        "name": "TF_FTNT-FIREWALL-secondary",
-        "metro_code": sv.metro_code,
-        "hostname": "fg-vm-znpd",
-        "notifications": [
-            "john@equinix.com",
-            "marry@equinix.com",
-        ],
-        "account_number": sv.number,
-        "vendor_configuration": {
-            "ipAddressType": "DHCP",
-            "managementInterfaceId": "6",
-        },
     })

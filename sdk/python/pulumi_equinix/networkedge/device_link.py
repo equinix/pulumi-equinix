@@ -12,7 +12,7 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from .. import _utilities
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -278,8 +278,6 @@ class DeviceLink(pulumi.CustomResource):
         import pulumi_equinix as equinix
 
         test = equinix.networkedge.DeviceLink("test",
-            name="test-DLG",
-            project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             devices=[
                 {
                     "id": test_equinix_network_device["uuid"],
@@ -303,7 +301,9 @@ class DeviceLink(pulumi.CustomResource):
                     "throughput": "50",
                     "throughput_unit": "Mbps",
                 },
-            ])
+            ],
+            name="test-DLG",
+            project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
         ```
 
         ## Import
@@ -338,8 +338,6 @@ class DeviceLink(pulumi.CustomResource):
         import pulumi_equinix as equinix
 
         test = equinix.networkedge.DeviceLink("test",
-            name="test-DLG",
-            project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             devices=[
                 {
                     "id": test_equinix_network_device["uuid"],
@@ -363,7 +361,9 @@ class DeviceLink(pulumi.CustomResource):
                     "throughput": "50",
                     "throughput_unit": "Mbps",
                 },
-            ])
+            ],
+            name="test-DLG",
+            project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
         ```
 
         ## Import

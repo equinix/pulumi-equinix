@@ -10,8 +10,25 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var vYOSAM = new Equinix.NetworkEdge.Device("VYOS-AM", new()
+    var vyosAm = new Equinix.NetworkEdge.Device("VYOS-AM", new()
     {
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "xxxxxxxx",
+        },
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_CHECKPOINT",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            Hostname = "test",
+            AclTemplateId = "XXXXXXXXXXX",
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+        },
         Name = "TF_VYOS",
         ProjectId = "XXXXXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -30,23 +47,6 @@ return await Deployment.RunAsync(() =>
         TermLength = 1,
         AdditionalBandwidth = 50,
         AclTemplateId = "XXXXXXXX",
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test",
-            KeyName = "xxxxxxxx",
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "TF_CHECKPOINT",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            Hostname = "test",
-            AclTemplateId = "XXXXXXXXXXX",
-            Notifications = new[]
-            {
-                "test@eq.com",
-            },
-        },
     });
 
 });

@@ -2,7 +2,7 @@ import pulumi
 import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+infoblox_sv = equinix.networkedge.Device("INFOBLOX-SV",
     name="TF_INFOBLOX",
     project_id="XXXXXXXXXX",
     metro_code=sv.metro_code,

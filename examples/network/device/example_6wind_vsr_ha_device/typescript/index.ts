@@ -6,6 +6,20 @@ const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
 const sixWindVsr = new equinix.networkedge.Device("six-wind-vsr", {
+    sshKey: {
+        username: "xxxx",
+        keyName: "xxxxx",
+    },
+    secondaryDevice: {
+        name: "6WIND-VSR-Sec",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            hostname: "test",
+            token: "xxxx",
+        },
+    },
     name: "6WIND-VSR",
     projectId: "xxxxxxx",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -22,19 +36,5 @@ const sixWindVsr = new equinix.networkedge.Device("six-wind-vsr", {
     vendorConfiguration: {
         hostname: "test",
         token: "xxxx",
-    },
-    sshKey: {
-        username: "xxxx",
-        keyName: "xxxxx",
-    },
-    secondaryDevice: {
-        name: "6WIND-VSR-Sec",
-        metroCode: sv.apply(sv => sv.metroCode),
-        accountNumber: sv.apply(sv => sv.number),
-        notifications: ["test@eq.com"],
-        vendorConfiguration: {
-            hostname: "test",
-            token: "xxxx",
-        },
     },
 });

@@ -12,7 +12,7 @@ if sys.version_info >= (3, 11):
     from typing import NotRequired, TypedDict, TypeAlias
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
-from .. import _utilities
+from . import _utilities
 from . import outputs
 from .. import _enums as _root_enums
 from ._enums import *
@@ -384,7 +384,9 @@ __all__ = [
     'GetRouteAggregationRulesDataResult',
     'GetRouteAggregationRulesDataChangeResult',
     'GetRouteAggregationRulesDataChangeLogResult',
+    'GetRouteAggregationRulesFilterResult',
     'GetRouteAggregationRulesPaginationResult',
+    'GetRouteAggregationRulesSortResult',
     'GetRouteAggregationsDataResult',
     'GetRouteAggregationsDataChangeResult',
     'GetRouteAggregationsDataChangeLogResult',
@@ -400,7 +402,9 @@ __all__ = [
     'GetRouteFilterRulesDataResult',
     'GetRouteFilterRulesDataChangeResult',
     'GetRouteFilterRulesDataChangeLogResult',
+    'GetRouteFilterRulesFilterResult',
     'GetRouteFilterRulesPaginationResult',
+    'GetRouteFilterRulesSortResult',
     'GetRouteFiltersDataResult',
     'GetRouteFiltersDataChangeResult',
     'GetRouteFiltersDataChangeLogResult',
@@ -6721,7 +6725,7 @@ class RouteAggregationRuleChange(dict):
         """
         :param str type: Equinix defined Route Aggregation Change Type
         :param str uuid: Equinix-assigned unique id for a change
-        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str href: Equinix auto generated URI to the Route Aggregation Rule change
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -6748,7 +6752,7 @@ class RouteAggregationRuleChange(dict):
     @pulumi.getter
     def href(self) -> Optional[str]:
         """
-        Equinix auto generated URI to the route aggregation change
+        Equinix auto generated URI to the Route Aggregation Rule change
         """
         return pulumi.get(self, "href")
 
@@ -6808,18 +6812,18 @@ class RouteAggregationRuleChangeLog(dict):
                  updated_by_full_name: Optional[str] = None,
                  updated_date_time: Optional[str] = None):
         """
-        :param str created_by: User name of creator of the stream resource
-        :param str created_by_email: Email of creator of the stream resource
-        :param str created_by_full_name: Legal name of creator of the stream resource
-        :param str created_date_time: Creation time of the stream resource
-        :param str deleted_by: User name of deleter of the stream resource
-        :param str deleted_by_email: Email of deleter of the stream resource
-        :param str deleted_by_full_name: Legal name of deleter of the stream resource
-        :param str deleted_date_time: Deletion time of the stream resource
-        :param str updated_by: User name of last updater of the stream resource
-        :param str updated_by_email: Email of last updater of the stream resource
-        :param str updated_by_full_name: Legal name of last updater of the stream resource
-        :param str updated_date_time: Last update time of the stream resource
+        :param str created_by: User name of creator of the resource
+        :param str created_by_email: Email of creator of the resource
+        :param str created_by_full_name: Legal name of creator of the resource
+        :param str created_date_time: Creation time of the resource
+        :param str deleted_by: User name of deleter of the resource
+        :param str deleted_by_email: Email of deleter of the resource
+        :param str deleted_by_full_name: Legal name of deleter of the resource
+        :param str deleted_date_time: Deletion time of the resource
+        :param str updated_by: User name of last updater of the resource
+        :param str updated_by_email: Email of last updater of the resource
+        :param str updated_by_full_name: Legal name of last updater of the resource
+        :param str updated_date_time: Last update time of the resource
         """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
@@ -6850,7 +6854,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
         """
-        User name of creator of the stream resource
+        User name of creator of the resource
         """
         return pulumi.get(self, "created_by")
 
@@ -6858,7 +6862,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> Optional[str]:
         """
-        Email of creator of the stream resource
+        Email of creator of the resource
         """
         return pulumi.get(self, "created_by_email")
 
@@ -6866,7 +6870,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> Optional[str]:
         """
-        Legal name of creator of the stream resource
+        Legal name of creator of the resource
         """
         return pulumi.get(self, "created_by_full_name")
 
@@ -6874,7 +6878,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> Optional[str]:
         """
-        Creation time of the stream resource
+        Creation time of the resource
         """
         return pulumi.get(self, "created_date_time")
 
@@ -6882,7 +6886,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> Optional[str]:
         """
-        User name of deleter of the stream resource
+        User name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by")
 
@@ -6890,7 +6894,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> Optional[str]:
         """
-        Email of deleter of the stream resource
+        Email of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_email")
 
@@ -6898,7 +6902,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> Optional[str]:
         """
-        Legal name of deleter of the stream resource
+        Legal name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_full_name")
 
@@ -6906,7 +6910,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> Optional[str]:
         """
-        Deletion time of the stream resource
+        Deletion time of the resource
         """
         return pulumi.get(self, "deleted_date_time")
 
@@ -6914,7 +6918,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
         """
-        User name of last updater of the stream resource
+        User name of last updater of the resource
         """
         return pulumi.get(self, "updated_by")
 
@@ -6922,7 +6926,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> Optional[str]:
         """
-        Email of last updater of the stream resource
+        Email of last updater of the resource
         """
         return pulumi.get(self, "updated_by_email")
 
@@ -6930,7 +6934,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> Optional[str]:
         """
-        Legal name of last updater of the stream resource
+        Legal name of last updater of the resource
         """
         return pulumi.get(self, "updated_by_full_name")
 
@@ -6938,7 +6942,7 @@ class RouteAggregationRuleChangeLog(dict):
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> Optional[str]:
         """
-        Last update time of the stream resource
+        Last update time of the resource
         """
         return pulumi.get(self, "updated_date_time")
 
@@ -17169,7 +17173,7 @@ class GetConnectionsDataResult(dict):
         :param Sequence['GetConnectionsDataOperationArgs'] operations: Connection type-specific operational data
         :param Sequence['GetConnectionsDataOrderArgs'] orders: Order details
         :param Sequence['GetConnectionsDataProjectArgs'] projects: Project information
-        :param Sequence['GetConnectionsDataRedundancyArgs'] redundancies: Connection Redundancy Configuration
+        :param Sequence['GetConnectionsDataRedundancyArgs'] redundancies: Connection Redundancy Configuration (applicable only for Azure connections)
         :param str state: Connection overall state
         :param str type: Defines the connection type like EVPL_VC, EPL_VC, IPWAN_VC, IP_VC, ACCESS_EPL_VC, EVPLAN_VC, EPLAN_VC, EIA_VC, IA_VC, EC_VC
         :param str uuid: Equinix-assigned connection identifier
@@ -17320,7 +17324,7 @@ class GetConnectionsDataResult(dict):
     @pulumi.getter
     def redundancies(self) -> Sequence['outputs.GetConnectionsDataRedundancyResult']:
         """
-        Connection Redundancy Configuration
+        Connection Redundancy Configuration (applicable only for Azure connections)
         """
         return pulumi.get(self, "redundancies")
 
@@ -19702,7 +19706,7 @@ class GetConnectionsFilterResult(dict):
                  group: Optional[str] = None):
         """
         :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -19740,7 +19744,7 @@ class GetConnectionsFilterResult(dict):
     @pulumi.getter
     def property(self) -> str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         """
         return pulumi.get(self, "property")
 
@@ -24590,7 +24594,7 @@ class GetRouteAggregationRuleChangeResult(dict):
                  type: str,
                  uuid: str):
         """
-        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str href: Equinix auto generated URI to the Route Aggregation Rule change
         :param str type: Equinix defined Route Aggregation Change Type
         :param str uuid: Equinix-assigned unique id for a change
         """
@@ -24602,7 +24606,7 @@ class GetRouteAggregationRuleChangeResult(dict):
     @pulumi.getter
     def href(self) -> str:
         """
-        Equinix auto generated URI to the route aggregation change
+        Equinix auto generated URI to the Route Aggregation Rule change
         """
         return pulumi.get(self, "href")
 
@@ -24639,18 +24643,18 @@ class GetRouteAggregationRuleChangeLogResult(dict):
                  updated_by_full_name: str,
                  updated_date_time: str):
         """
-        :param str created_by: User name of creator of the stream resource
-        :param str created_by_email: Email of creator of the stream resource
-        :param str created_by_full_name: Legal name of creator of the stream resource
-        :param str created_date_time: Creation time of the stream resource
-        :param str deleted_by: User name of deleter of the stream resource
-        :param str deleted_by_email: Email of deleter of the stream resource
-        :param str deleted_by_full_name: Legal name of deleter of the stream resource
-        :param str deleted_date_time: Deletion time of the stream resource
-        :param str updated_by: User name of last updater of the stream resource
-        :param str updated_by_email: Email of last updater of the stream resource
-        :param str updated_by_full_name: Legal name of last updater of the stream resource
-        :param str updated_date_time: Last update time of the stream resource
+        :param str created_by: User name of creator of the resource
+        :param str created_by_email: Email of creator of the resource
+        :param str created_by_full_name: Legal name of creator of the resource
+        :param str created_date_time: Creation time of the resource
+        :param str deleted_by: User name of deleter of the resource
+        :param str deleted_by_email: Email of deleter of the resource
+        :param str deleted_by_full_name: Legal name of deleter of the resource
+        :param str deleted_date_time: Deletion time of the resource
+        :param str updated_by: User name of last updater of the resource
+        :param str updated_by_email: Email of last updater of the resource
+        :param str updated_by_full_name: Legal name of last updater of the resource
+        :param str updated_date_time: Last update time of the resource
         """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
@@ -24669,7 +24673,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
         """
-        User name of creator of the stream resource
+        User name of creator of the resource
         """
         return pulumi.get(self, "created_by")
 
@@ -24677,7 +24681,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
         """
-        Email of creator of the stream resource
+        Email of creator of the resource
         """
         return pulumi.get(self, "created_by_email")
 
@@ -24685,7 +24689,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
         """
-        Legal name of creator of the stream resource
+        Legal name of creator of the resource
         """
         return pulumi.get(self, "created_by_full_name")
 
@@ -24693,7 +24697,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
         """
-        Creation time of the stream resource
+        Creation time of the resource
         """
         return pulumi.get(self, "created_date_time")
 
@@ -24701,7 +24705,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
         """
-        User name of deleter of the stream resource
+        User name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by")
 
@@ -24709,7 +24713,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
         """
-        Email of deleter of the stream resource
+        Email of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_email")
 
@@ -24717,7 +24721,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
         """
-        Legal name of deleter of the stream resource
+        Legal name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_full_name")
 
@@ -24725,7 +24729,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
         """
-        Deletion time of the stream resource
+        Deletion time of the resource
         """
         return pulumi.get(self, "deleted_date_time")
 
@@ -24733,7 +24737,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
         """
-        User name of last updater of the stream resource
+        User name of last updater of the resource
         """
         return pulumi.get(self, "updated_by")
 
@@ -24741,7 +24745,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
         """
-        Email of last updater of the stream resource
+        Email of last updater of the resource
         """
         return pulumi.get(self, "updated_by_email")
 
@@ -24749,7 +24753,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
         """
-        Legal name of last updater of the stream resource
+        Legal name of last updater of the resource
         """
         return pulumi.get(self, "updated_by_full_name")
 
@@ -24757,7 +24761,7 @@ class GetRouteAggregationRuleChangeLogResult(dict):
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
         """
-        Last update time of the stream resource
+        Last update time of the resource
         """
         return pulumi.get(self, "updated_date_time")
 
@@ -24776,16 +24780,16 @@ class GetRouteAggregationRulesDataResult(dict):
                  uuid: str,
                  description: Optional[str] = None):
         """
-        :param 'GetRouteAggregationRulesDataChangeArgs' change: Current state of latest route aggregation rule change
-        :param 'GetRouteAggregationRulesDataChangeLogArgs' change_log: Details of the last change on the stream resource
-        :param str href: Equinix auto generated URI to the route aggregation rule resource
-        :param str name: Customer provided name of the route aggregation rule
-        :param str prefix: Customer-provided route aggregation rule prefix
-        :param str route_aggregation_id: UUID of the Route Aggregation to apply this Rule to
-        :param str state: Value representing provisioning status for the route aggregation rule resource
+        :param 'GetRouteAggregationRulesDataChangeArgs' change: Current state of latest Route Aggregation Rule change
+        :param 'GetRouteAggregationRulesDataChangeLogArgs' change_log: Details of the last change on the resource
+        :param str href: Equinix auto generated URI to the Route Aggregation Rule resource
+        :param str name: Customer provided name of the Route Aggregation Rule
+        :param str prefix: Customer-provided Route Aggregation Rule prefix
+        :param str route_aggregation_id: UUID of the Route Aggregation that the rule is applied to
+        :param str state: Value representing provisioning status for the Route Aggregation Rule resource
         :param str type: Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
-        :param str uuid: Equinix-assigned unique id for the route aggregation rule resource
-        :param str description: Customer-provided route aggregation rule description
+        :param str uuid: Equinix-assigned unique id for the Route Aggregation Rule resource
+        :param str description: Customer-provided Route Aggregation Rule description
         """
         pulumi.set(__self__, "change", change)
         pulumi.set(__self__, "change_log", change_log)
@@ -24803,7 +24807,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter
     def change(self) -> 'outputs.GetRouteAggregationRulesDataChangeResult':
         """
-        Current state of latest route aggregation rule change
+        Current state of latest Route Aggregation Rule change
         """
         return pulumi.get(self, "change")
 
@@ -24811,7 +24815,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter(name="changeLog")
     def change_log(self) -> 'outputs.GetRouteAggregationRulesDataChangeLogResult':
         """
-        Details of the last change on the stream resource
+        Details of the last change on the resource
         """
         return pulumi.get(self, "change_log")
 
@@ -24819,7 +24823,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter
     def href(self) -> str:
         """
-        Equinix auto generated URI to the route aggregation rule resource
+        Equinix auto generated URI to the Route Aggregation Rule resource
         """
         return pulumi.get(self, "href")
 
@@ -24827,7 +24831,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Customer provided name of the route aggregation rule
+        Customer provided name of the Route Aggregation Rule
         """
         return pulumi.get(self, "name")
 
@@ -24835,7 +24839,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter
     def prefix(self) -> str:
         """
-        Customer-provided route aggregation rule prefix
+        Customer-provided Route Aggregation Rule prefix
         """
         return pulumi.get(self, "prefix")
 
@@ -24843,7 +24847,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter(name="routeAggregationId")
     def route_aggregation_id(self) -> str:
         """
-        UUID of the Route Aggregation to apply this Rule to
+        UUID of the Route Aggregation that the rule is applied to
         """
         return pulumi.get(self, "route_aggregation_id")
 
@@ -24851,7 +24855,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter
     def state(self) -> str:
         """
-        Value representing provisioning status for the route aggregation rule resource
+        Value representing provisioning status for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "state")
 
@@ -24867,7 +24871,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned unique id for the route aggregation rule resource
+        Equinix-assigned unique id for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "uuid")
 
@@ -24875,7 +24879,7 @@ class GetRouteAggregationRulesDataResult(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Customer-provided route aggregation rule description
+        Customer-provided Route Aggregation Rule description
         """
         return pulumi.get(self, "description")
 
@@ -24887,7 +24891,7 @@ class GetRouteAggregationRulesDataChangeResult(dict):
                  type: str,
                  uuid: str):
         """
-        :param str href: Equinix auto generated URI to the route aggregation change
+        :param str href: Equinix auto generated URI to the Route Aggregation Rule change
         :param str type: Equinix defined Route Aggregation Change Type
         :param str uuid: Equinix-assigned unique id for a change
         """
@@ -24899,7 +24903,7 @@ class GetRouteAggregationRulesDataChangeResult(dict):
     @pulumi.getter
     def href(self) -> str:
         """
-        Equinix auto generated URI to the route aggregation change
+        Equinix auto generated URI to the Route Aggregation Rule change
         """
         return pulumi.get(self, "href")
 
@@ -24936,18 +24940,18 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
                  updated_by_full_name: str,
                  updated_date_time: str):
         """
-        :param str created_by: User name of creator of the stream resource
-        :param str created_by_email: Email of creator of the stream resource
-        :param str created_by_full_name: Legal name of creator of the stream resource
-        :param str created_date_time: Creation time of the stream resource
-        :param str deleted_by: User name of deleter of the stream resource
-        :param str deleted_by_email: Email of deleter of the stream resource
-        :param str deleted_by_full_name: Legal name of deleter of the stream resource
-        :param str deleted_date_time: Deletion time of the stream resource
-        :param str updated_by: User name of last updater of the stream resource
-        :param str updated_by_email: Email of last updater of the stream resource
-        :param str updated_by_full_name: Legal name of last updater of the stream resource
-        :param str updated_date_time: Last update time of the stream resource
+        :param str created_by: User name of creator of the resource
+        :param str created_by_email: Email of creator of the resource
+        :param str created_by_full_name: Legal name of creator of the resource
+        :param str created_date_time: Creation time of the resource
+        :param str deleted_by: User name of deleter of the resource
+        :param str deleted_by_email: Email of deleter of the resource
+        :param str deleted_by_full_name: Legal name of deleter of the resource
+        :param str deleted_date_time: Deletion time of the resource
+        :param str updated_by: User name of last updater of the resource
+        :param str updated_by_email: Email of last updater of the resource
+        :param str updated_by_full_name: Legal name of last updater of the resource
+        :param str updated_date_time: Last update time of the resource
         """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
@@ -24966,7 +24970,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
         """
-        User name of creator of the stream resource
+        User name of creator of the resource
         """
         return pulumi.get(self, "created_by")
 
@@ -24974,7 +24978,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
         """
-        Email of creator of the stream resource
+        Email of creator of the resource
         """
         return pulumi.get(self, "created_by_email")
 
@@ -24982,7 +24986,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
         """
-        Legal name of creator of the stream resource
+        Legal name of creator of the resource
         """
         return pulumi.get(self, "created_by_full_name")
 
@@ -24990,7 +24994,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
         """
-        Creation time of the stream resource
+        Creation time of the resource
         """
         return pulumi.get(self, "created_date_time")
 
@@ -24998,7 +25002,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
         """
-        User name of deleter of the stream resource
+        User name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by")
 
@@ -25006,7 +25010,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
         """
-        Email of deleter of the stream resource
+        Email of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_email")
 
@@ -25014,7 +25018,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
         """
-        Legal name of deleter of the stream resource
+        Legal name of deleter of the resource
         """
         return pulumi.get(self, "deleted_by_full_name")
 
@@ -25022,7 +25026,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
         """
-        Deletion time of the stream resource
+        Deletion time of the resource
         """
         return pulumi.get(self, "deleted_date_time")
 
@@ -25030,7 +25034,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
         """
-        User name of last updater of the stream resource
+        User name of last updater of the resource
         """
         return pulumi.get(self, "updated_by")
 
@@ -25038,7 +25042,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
         """
-        Email of last updater of the stream resource
+        Email of last updater of the resource
         """
         return pulumi.get(self, "updated_by_email")
 
@@ -25046,7 +25050,7 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
         """
-        Legal name of last updater of the stream resource
+        Legal name of last updater of the resource
         """
         return pulumi.get(self, "updated_by_full_name")
 
@@ -25054,9 +25058,49 @@ class GetRouteAggregationRulesDataChangeLogResult(dict):
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
         """
-        Last update time of the stream resource
+        Last update time of the resource
         """
         return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetRouteAggregationRulesFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        :param str property: Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        """
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type
@@ -25072,7 +25116,7 @@ class GetRouteAggregationRulesPaginationResult(dict):
         :param str next: The URL relative to the next item in the response
         :param int offset: Index of the first item returned in the response. The default is 0
         :param str previous: The URL relative to the previous item in the response
-        :param int total: The total number of route agrgegation rules available to the user making the request
+        :param int total: The total number of Route Aggregation Rules available to the user making the request
         """
         pulumi.set(__self__, "limit", limit)
         pulumi.set(__self__, "next", next)
@@ -25116,9 +25160,40 @@ class GetRouteAggregationRulesPaginationResult(dict):
     @pulumi.getter
     def total(self) -> int:
         """
-        The total number of route agrgegation rules available to the user making the request
+        The total number of Route Aggregation Rules available to the user making the request
         """
         return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetRouteAggregationRulesSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type
@@ -26270,6 +26345,46 @@ class GetRouteFilterRulesDataChangeLogResult(dict):
 
 
 @pulumi.output_type
+class GetRouteFilterRulesFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str]):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        :param str property: Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
 class GetRouteFilterRulesPaginationResult(dict):
     def __init__(__self__, *,
                  limit: int,
@@ -26329,6 +26444,37 @@ class GetRouteFilterRulesPaginationResult(dict):
         Total number of elements returned.
         """
         return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetRouteFilterRulesSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type

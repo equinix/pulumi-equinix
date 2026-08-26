@@ -11,8 +11,28 @@ return await Deployment.RunAsync(() =>
         Name = "account-name",
     });
 
-    var fTNTFIREWALLSV = new Equinix.NetworkEdge.Device("FTNT-FIREWALL-SV", new()
+    var ftntFirewallSv = new Equinix.NetworkEdge.Device("FTNT-FIREWALL-SV", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_FTNT-FIREWALL-secondary",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            Hostname = "fg-vm-znpd",
+            Notifications = new[]
+            {
+                "john@equinix.com",
+                "marry@equinix.com",
+            },
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            VendorConfiguration = 
+            {
+                { "gatewayIp", "X.X.X.X" },
+                { "ipAddress", "X.X.X.X" },
+                { "ipAddressType", "STATIC" },
+                { "subnetMaskIp", "X.X.X.X" },
+                { "managementInterfaceId", "6" },
+            },
+        },
         Name = "TF_FTNT-FIREWALL",
         ProjectId = "XXXXXXXXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -38,26 +58,6 @@ return await Deployment.RunAsync(() =>
             { "ipAddressType", "STATIC" },
             { "subnetMaskIp", "x.x.x.x" },
             { "managementInterfaceId", "6" },
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "TF_FTNT-FIREWALL-secondary",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            Hostname = "fg-vm-znpd",
-            Notifications = new[]
-            {
-                "john@equinix.com",
-                "marry@equinix.com",
-            },
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            VendorConfiguration = 
-            {
-                { "gatewayIp", "X.X.X.X" },
-                { "ipAddress", "X.X.X.X" },
-                { "ipAddressType", "STATIC" },
-                { "subnetMaskIp", "X.X.X.X" },
-                { "managementInterfaceId", "6" },
-            },
         },
     });
 

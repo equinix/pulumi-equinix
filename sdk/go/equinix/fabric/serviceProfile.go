@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.NewServiceProfile(ctx, "newServiceProfile", &fabric.ServiceProfileArgs{
+//			_, err := fabric.NewServiceProfile(ctx, "new_service_profile", &fabric.ServiceProfileArgs{
+//				AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
+//					&fabric.ServiceProfileAccessPointTypeConfigArgs{
+//						Type:                         pulumi.String(fabric.ProfileAccessPointTypeColo),
+//						AllowRemoteConnections:       pulumi.Bool(true),
+//						AllowCustomBandwidth:         pulumi.Bool(true),
+//						AllowBandwidthAutoApproval:   pulumi.Bool(false),
+//						ConnectionRedundancyRequired: pulumi.Bool(false),
+//						ConnectionLabel:              pulumi.String("Service Profile Tag1"),
+//						BandwidthAlertThreshold:      pulumi.Float64(10),
+//						SupportedBandwidths: pulumi.IntArray{
+//							pulumi.Int(100),
+//							pulumi.Int(500),
+//						},
+//					},
+//				},
 //				Description: pulumi.String("Service Profile for Receiving Connections"),
 //				Name:        pulumi.String("Name Of Business + Use Case Tag"),
 //				Type:        pulumi.String(fabric.ProfileTypeL2Profile),
@@ -53,21 +67,6 @@ import (
 //					&fabric.ServiceProfilePortArgs{
 //						Uuid: pulumi.String("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee"),
 //						Type: pulumi.String("XF_PORT"),
-//					},
-//				},
-//				AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
-//					&fabric.ServiceProfileAccessPointTypeConfigArgs{
-//						Type:                         pulumi.String(fabric.ProfileAccessPointTypeColo),
-//						AllowRemoteConnections:       pulumi.Bool(true),
-//						AllowCustomBandwidth:         pulumi.Bool(true),
-//						AllowBandwidthAutoApproval:   pulumi.Bool(false),
-//						ConnectionRedundancyRequired: pulumi.Bool(false),
-//						ConnectionLabel:              pulumi.String("Service Profile Tag1"),
-//						BandwidthAlertThreshold:      pulumi.Float64(10),
-//						SupportedBandwidths: pulumi.IntArray{
-//							pulumi.Int(100),
-//							pulumi.Int(500),
-//						},
 //					},
 //				},
 //			})

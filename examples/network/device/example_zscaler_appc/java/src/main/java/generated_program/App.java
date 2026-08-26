@@ -26,6 +26,10 @@ public class App {
             .build());
 
         var zscalerAppcSingle = new Device("zscalerAppcSingle", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
             .name("tf-zscaler-appc")
             .projectId("XXXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -47,10 +51,6 @@ public class App {
                 Map.entry("provisioningKey", "XXXXXXXXXX"),
                 Map.entry("hostname", "XXXX")
             ))
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test")
-                .keyName("test-key")
-                .build())
             .build());
 
     }
