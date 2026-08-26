@@ -75,6 +75,8 @@ build_nodejs: upstream $(PULUMICTL_BIN)
 		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g' {} \;
 	echo "patch_nodejs: delete duplicate imports in examples" && \
 		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -exec sed -i.bak '/@${ORG}-labs\/${NODE_PACK}/N;/^\(.*\)\n\1$$/!P; D' {} \;
+	echo "patch_nodejs: fix relative imports in subdirectory modules (codegen bug)" && \
+		find ./sdk/nodejs/ -mindepth 2 -maxdepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
 	echo "patch_nodejs: remove backup files" && \
 		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
 	cd sdk/nodejs/ && \
