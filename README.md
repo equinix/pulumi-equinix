@@ -5,7 +5,7 @@
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/equinix/pulumi-equinix/sdk/go)](https://pkg.go.dev/github.com/equinix/pulumi-equinix/sdk/go)
 [![License](https://img.shields.io/github/license/equinix/pulumi-equinix)](https://github.com/equinix/pulumi-equinix/blob/main/LICENSE)
 
-# Equinix Resource Provider
+# Equinix Resource Provider 
 
 **PLEASE NOTE:** *This provider supercedes the [Pulumi Equinix Metal provider](https://www.pulumi.com/registry/packages/equinix-metal/).
 
