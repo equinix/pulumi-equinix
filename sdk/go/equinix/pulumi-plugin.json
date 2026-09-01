@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "equinix",
-  "server": "github://api.github.com/equinix"
-}
