@@ -1,2 +1,0 @@
-pulumi-null==0.2.2
-pulumi>=3.0.0,<4.0.0
