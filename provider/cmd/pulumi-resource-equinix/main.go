@@ -21,7 +21,7 @@ import (
 	_ "embed"
 
 	equinix "github.com/equinix/pulumi-equinix/provider"
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 )
 
 //go:embed schema-embed.json

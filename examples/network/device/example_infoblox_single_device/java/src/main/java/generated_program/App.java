@@ -24,7 +24,7 @@ public class App {
             .metroCode("SV")
             .build());
 
-        var iNFOBLOXSV = new Device("iNFOBLOXSV", DeviceArgs.builder()
+        var infobloxSv = new Device("infobloxSv", DeviceArgs.builder()
             .name("TF_INFOBLOX")
             .projectId("XXXXXXXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))

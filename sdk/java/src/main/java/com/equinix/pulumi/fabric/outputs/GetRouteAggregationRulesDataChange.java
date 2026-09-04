@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRouteAggregationRulesDataChange {
     /**
-     * @return Equinix auto generated URI to the route aggregation change
+     * @return Equinix auto generated URI to the Route Aggregation Rule change
      * 
      */
     private String href;
@@ -28,7 +28,7 @@ public final class GetRouteAggregationRulesDataChange {
 
     private GetRouteAggregationRulesDataChange() {}
     /**
-     * @return Equinix auto generated URI to the route aggregation change
+     * @return Equinix auto generated URI to the Route Aggregation Rule change
      * 
      */
     public String href() {

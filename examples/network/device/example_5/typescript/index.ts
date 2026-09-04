@@ -6,7 +6,11 @@ const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
     metroCode: "SV",
 });
-const vsrxSingle = new equinix.networkedge.Device("vsrxSingle", {
+const vsrxSingle = new equinix.networkedge.Device("vsrx_single", {
+    sshKey: {
+        username: "test-username",
+        keyName: "valid-key-name",
+    },
     name: "tf-c8kv-sdwan",
     metroCode: sv.apply(sv => sv.metroCode),
     typeCode: "VSRX",
@@ -22,9 +26,5 @@ const vsrxSingle = new equinix.networkedge.Device("vsrxSingle", {
     additionalBandwidth: 5,
     projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
     diverseDeviceId: "ed7891bd-15b4-4f72-ac56-d96cfdacddcc",
-    sshKey: {
-        username: "test-username",
-        keyName: "valid-key-name",
-    },
     aclTemplateId: "3e548c02-9164-4197-aa23-05b1f644883c",
 });

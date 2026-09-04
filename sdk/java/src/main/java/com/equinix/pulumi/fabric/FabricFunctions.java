@@ -3764,7 +3764,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
      * 
      * ## Example Usage
      * 
@@ -3814,7 +3814,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
      * 
      * ## Example Usage
      * 
@@ -3864,7 +3864,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
      * 
      * ## Example Usage
      * 
@@ -3914,7 +3914,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
      * 
      * ## Example Usage
      * 
@@ -3964,7 +3964,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
      * 
      * ## Example Usage
      * 
@@ -4014,7 +4014,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
      * 
      * ## Example Usage
      * 
@@ -4067,7 +4067,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
      * 
      * ## Example Usage
      * 
@@ -4120,7 +4120,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
      * 
      * ## Example Usage
      * 
@@ -4173,7 +4173,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
      * 
      * ## Example Usage
      * 
@@ -4226,7 +4226,7 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
      * Additional Documentation:
-     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
      * 
      * ## Example Usage
      * 

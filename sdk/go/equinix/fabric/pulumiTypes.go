@@ -16533,7 +16533,7 @@ func (o RouteAggregationProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
 }
 
 type RouteAggregationRuleChange struct {
-	// Equinix auto generated URI to the route aggregation change
+	// Equinix auto generated URI to the Route Aggregation Rule change
 	Href *string `pulumi:"href"`
 	// Equinix defined Route Aggregation Change Type
 	Type string `pulumi:"type"`
@@ -16553,7 +16553,7 @@ type RouteAggregationRuleChangeInput interface {
 }
 
 type RouteAggregationRuleChangeArgs struct {
-	// Equinix auto generated URI to the route aggregation change
+	// Equinix auto generated URI to the Route Aggregation Rule change
 	Href pulumi.StringPtrInput `pulumi:"href"`
 	// Equinix defined Route Aggregation Change Type
 	Type pulumi.StringInput `pulumi:"type"`
@@ -16638,7 +16638,7 @@ func (o RouteAggregationRuleChangeOutput) ToRouteAggregationRuleChangePtrOutputW
 	}).(RouteAggregationRuleChangePtrOutput)
 }
 
-// Equinix auto generated URI to the route aggregation change
+// Equinix auto generated URI to the Route Aggregation Rule change
 func (o RouteAggregationRuleChangeOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChange) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
@@ -16677,7 +16677,7 @@ func (o RouteAggregationRuleChangePtrOutput) Elem() RouteAggregationRuleChangeOu
 	}).(RouteAggregationRuleChangeOutput)
 }
 
-// Equinix auto generated URI to the route aggregation change
+// Equinix auto generated URI to the Route Aggregation Rule change
 func (o RouteAggregationRuleChangePtrOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChange) *string {
 		if v == nil {
@@ -16708,29 +16708,29 @@ func (o RouteAggregationRuleChangePtrOutput) Uuid() pulumi.StringPtrOutput {
 }
 
 type RouteAggregationRuleChangeLog struct {
-	// User name of creator of the stream resource
+	// User name of creator of the resource
 	CreatedBy *string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
+	// Email of creator of the resource
 	CreatedByEmail *string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
+	// Legal name of creator of the resource
 	CreatedByFullName *string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
+	// Creation time of the resource
 	CreatedDateTime *string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
+	// User name of deleter of the resource
 	DeletedBy *string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
+	// Email of deleter of the resource
 	DeletedByEmail *string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
+	// Legal name of deleter of the resource
 	DeletedByFullName *string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
+	// Deletion time of the resource
 	DeletedDateTime *string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
+	// User name of last updater of the resource
 	UpdatedBy *string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
+	// Email of last updater of the resource
 	UpdatedByEmail *string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
+	// Legal name of last updater of the resource
 	UpdatedByFullName *string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
+	// Last update time of the resource
 	UpdatedDateTime *string `pulumi:"updatedDateTime"`
 }
 
@@ -16746,29 +16746,29 @@ type RouteAggregationRuleChangeLogInput interface {
 }
 
 type RouteAggregationRuleChangeLogArgs struct {
-	// User name of creator of the stream resource
+	// User name of creator of the resource
 	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
+	// Email of creator of the resource
 	CreatedByEmail pulumi.StringPtrInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
+	// Legal name of creator of the resource
 	CreatedByFullName pulumi.StringPtrInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
+	// Creation time of the resource
 	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
+	// User name of deleter of the resource
 	DeletedBy pulumi.StringPtrInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
+	// Email of deleter of the resource
 	DeletedByEmail pulumi.StringPtrInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
+	// Legal name of deleter of the resource
 	DeletedByFullName pulumi.StringPtrInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
+	// Deletion time of the resource
 	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
+	// User name of last updater of the resource
 	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
+	// Email of last updater of the resource
 	UpdatedByEmail pulumi.StringPtrInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
+	// Legal name of last updater of the resource
 	UpdatedByFullName pulumi.StringPtrInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
+	// Last update time of the resource
 	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
 }
 
@@ -16849,62 +16849,62 @@ func (o RouteAggregationRuleChangeLogOutput) ToRouteAggregationRuleChangeLogPtrO
 	}).(RouteAggregationRuleChangeLogPtrOutput)
 }
 
-// User name of creator of the stream resource
+// User name of creator of the resource
 func (o RouteAggregationRuleChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
-// Email of creator of the stream resource
+// Email of creator of the resource
 func (o RouteAggregationRuleChangeLogOutput) CreatedByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedByEmail }).(pulumi.StringPtrOutput)
 }
 
-// Legal name of creator of the stream resource
+// Legal name of creator of the resource
 func (o RouteAggregationRuleChangeLogOutput) CreatedByFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedByFullName }).(pulumi.StringPtrOutput)
 }
 
-// Creation time of the stream resource
+// Creation time of the resource
 func (o RouteAggregationRuleChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
 }
 
-// User name of deleter of the stream resource
+// User name of deleter of the resource
 func (o RouteAggregationRuleChangeLogOutput) DeletedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedBy }).(pulumi.StringPtrOutput)
 }
 
-// Email of deleter of the stream resource
+// Email of deleter of the resource
 func (o RouteAggregationRuleChangeLogOutput) DeletedByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedByEmail }).(pulumi.StringPtrOutput)
 }
 
-// Legal name of deleter of the stream resource
+// Legal name of deleter of the resource
 func (o RouteAggregationRuleChangeLogOutput) DeletedByFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedByFullName }).(pulumi.StringPtrOutput)
 }
 
-// Deletion time of the stream resource
+// Deletion time of the resource
 func (o RouteAggregationRuleChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
 }
 
-// User name of last updater of the stream resource
+// User name of last updater of the resource
 func (o RouteAggregationRuleChangeLogOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
 
-// Email of last updater of the stream resource
+// Email of last updater of the resource
 func (o RouteAggregationRuleChangeLogOutput) UpdatedByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedByEmail }).(pulumi.StringPtrOutput)
 }
 
-// Legal name of last updater of the stream resource
+// Legal name of last updater of the resource
 func (o RouteAggregationRuleChangeLogOutput) UpdatedByFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedByFullName }).(pulumi.StringPtrOutput)
 }
 
-// Last update time of the stream resource
+// Last update time of the resource
 func (o RouteAggregationRuleChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteAggregationRuleChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
 }
@@ -16933,7 +16933,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) Elem() RouteAggregationRuleChang
 	}).(RouteAggregationRuleChangeLogOutput)
 }
 
-// User name of creator of the stream resource
+// User name of creator of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -16943,7 +16943,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Email of creator of the stream resource
+// Email of creator of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -16953,7 +16953,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) CreatedByEmail() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Legal name of creator of the stream resource
+// Legal name of creator of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -16963,7 +16963,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) CreatedByFullName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Creation time of the stream resource
+// Creation time of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -16973,7 +16973,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) CreatedDateTime() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// User name of deleter of the stream resource
+// User name of deleter of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -16983,7 +16983,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Email of deleter of the stream resource
+// Email of deleter of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -16993,7 +16993,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) DeletedByEmail() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Legal name of deleter of the stream resource
+// Legal name of deleter of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -17003,7 +17003,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) DeletedByFullName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deletion time of the stream resource
+// Deletion time of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -17013,7 +17013,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) DeletedDateTime() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// User name of last updater of the stream resource
+// User name of last updater of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -17023,7 +17023,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Email of last updater of the stream resource
+// Email of last updater of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -17033,7 +17033,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Legal name of last updater of the stream resource
+// Legal name of last updater of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -17043,7 +17043,7 @@ func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedByFullName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Last update time of the stream resource
+// Last update time of the resource
 func (o RouteAggregationRuleChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteAggregationRuleChangeLog) *string {
 		if v == nil {
@@ -40838,7 +40838,7 @@ type GetConnectionsData struct {
 	Orders []GetConnectionsDataOrder `pulumi:"orders"`
 	// Project information
 	Projects []GetConnectionsDataProject `pulumi:"projects"`
-	// Connection Redundancy Configuration
+	// Connection Redundancy Configuration (applicable only for Azure connections)
 	Redundancies []GetConnectionsDataRedundancy `pulumi:"redundancies"`
 	// Connection overall state
 	State string `pulumi:"state"`
@@ -40892,7 +40892,7 @@ type GetConnectionsDataArgs struct {
 	Orders GetConnectionsDataOrderArrayInput `pulumi:"orders"`
 	// Project information
 	Projects GetConnectionsDataProjectArrayInput `pulumi:"projects"`
-	// Connection Redundancy Configuration
+	// Connection Redundancy Configuration (applicable only for Azure connections)
 	Redundancies GetConnectionsDataRedundancyArrayInput `pulumi:"redundancies"`
 	// Connection overall state
 	State pulumi.StringInput `pulumi:"state"`
@@ -41030,7 +41030,7 @@ func (o GetConnectionsDataOutput) Projects() GetConnectionsDataProjectArrayOutpu
 	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataProject { return v.Projects }).(GetConnectionsDataProjectArrayOutput)
 }
 
-// Connection Redundancy Configuration
+// Connection Redundancy Configuration (applicable only for Azure connections)
 func (o GetConnectionsDataOutput) Redundancies() GetConnectionsDataRedundancyArrayOutput {
 	return o.ApplyT(func(v GetConnectionsData) []GetConnectionsDataRedundancy { return v.Redundancies }).(GetConnectionsDataRedundancyArrayOutput)
 }
@@ -48055,7 +48055,7 @@ type GetConnectionsFilter struct {
 	Group *string `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator string `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
 	Property string `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values []string `pulumi:"values"`
@@ -48077,7 +48077,7 @@ type GetConnectionsFilterArgs struct {
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+	// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
 	Property pulumi.StringInput `pulumi:"property"`
 	// The values that you want to apply the property+operator combination to in order to filter your data search
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -48144,7 +48144,7 @@ func (o GetConnectionsFilterOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+// Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
 func (o GetConnectionsFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsFilter) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -57940,7 +57940,7 @@ func (o GetRouteAggregationProjectOutput) ProjectId() pulumi.StringOutput {
 }
 
 type GetRouteAggregationRuleChange struct {
-	// Equinix auto generated URI to the route aggregation change
+	// Equinix auto generated URI to the Route Aggregation Rule change
 	Href string `pulumi:"href"`
 	// Equinix defined Route Aggregation Change Type
 	Type string `pulumi:"type"`
@@ -57960,7 +57960,7 @@ type GetRouteAggregationRuleChangeInput interface {
 }
 
 type GetRouteAggregationRuleChangeArgs struct {
-	// Equinix auto generated URI to the route aggregation change
+	// Equinix auto generated URI to the Route Aggregation Rule change
 	Href pulumi.StringInput `pulumi:"href"`
 	// Equinix defined Route Aggregation Change Type
 	Type pulumi.StringInput `pulumi:"type"`
@@ -57994,7 +57994,7 @@ func (o GetRouteAggregationRuleChangeOutput) ToGetRouteAggregationRuleChangeOutp
 	return o
 }
 
-// Equinix auto generated URI to the route aggregation change
+// Equinix auto generated URI to the Route Aggregation Rule change
 func (o GetRouteAggregationRuleChangeOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChange) string { return v.Href }).(pulumi.StringOutput)
 }
@@ -58010,29 +58010,29 @@ func (o GetRouteAggregationRuleChangeOutput) Uuid() pulumi.StringOutput {
 }
 
 type GetRouteAggregationRuleChangeLog struct {
-	// User name of creator of the stream resource
+	// User name of creator of the resource
 	CreatedBy string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
+	// Email of creator of the resource
 	CreatedByEmail string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
+	// Legal name of creator of the resource
 	CreatedByFullName string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
+	// Creation time of the resource
 	CreatedDateTime string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
+	// User name of deleter of the resource
 	DeletedBy string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
+	// Email of deleter of the resource
 	DeletedByEmail string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
+	// Legal name of deleter of the resource
 	DeletedByFullName string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
+	// Deletion time of the resource
 	DeletedDateTime string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
+	// User name of last updater of the resource
 	UpdatedBy string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
+	// Email of last updater of the resource
 	UpdatedByEmail string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
+	// Legal name of last updater of the resource
 	UpdatedByFullName string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
+	// Last update time of the resource
 	UpdatedDateTime string `pulumi:"updatedDateTime"`
 }
 
@@ -58048,29 +58048,29 @@ type GetRouteAggregationRuleChangeLogInput interface {
 }
 
 type GetRouteAggregationRuleChangeLogArgs struct {
-	// User name of creator of the stream resource
+	// User name of creator of the resource
 	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
+	// Email of creator of the resource
 	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
+	// Legal name of creator of the resource
 	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
+	// Creation time of the resource
 	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
+	// User name of deleter of the resource
 	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
+	// Email of deleter of the resource
 	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
+	// Legal name of deleter of the resource
 	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
+	// Deletion time of the resource
 	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
+	// User name of last updater of the resource
 	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
+	// Email of last updater of the resource
 	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
+	// Legal name of last updater of the resource
 	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
+	// Last update time of the resource
 	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
 }
 
@@ -58100,86 +58100,86 @@ func (o GetRouteAggregationRuleChangeLogOutput) ToGetRouteAggregationRuleChangeL
 	return o
 }
 
-// User name of creator of the stream resource
+// User name of creator of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// Email of creator of the stream resource
+// Email of creator of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
 }
 
-// Legal name of creator of the stream resource
+// Legal name of creator of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
 }
 
-// Creation time of the stream resource
+// Creation time of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
-// User name of deleter of the stream resource
+// User name of deleter of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) DeletedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
 }
 
-// Email of deleter of the stream resource
+// Email of deleter of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
 }
 
-// Legal name of deleter of the stream resource
+// Legal name of deleter of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
 }
 
-// Deletion time of the stream resource
+// Deletion time of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
 }
 
-// User name of last updater of the stream resource
+// User name of last updater of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
-// Email of last updater of the stream resource
+// Email of last updater of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
 }
 
-// Legal name of last updater of the stream resource
+// Legal name of last updater of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
 }
 
-// Last update time of the stream resource
+// Last update time of the resource
 func (o GetRouteAggregationRuleChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRuleChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
 }
 
 type GetRouteAggregationRulesData struct {
-	// Current state of latest route aggregation rule change
+	// Current state of latest Route Aggregation Rule change
 	Change GetRouteAggregationRulesDataChange `pulumi:"change"`
-	// Details of the last change on the stream resource
+	// Details of the last change on the resource
 	ChangeLog GetRouteAggregationRulesDataChangeLog `pulumi:"changeLog"`
-	// Customer-provided route aggregation rule description
+	// Customer-provided Route Aggregation Rule description
 	Description *string `pulumi:"description"`
-	// Equinix auto generated URI to the route aggregation rule resource
+	// Equinix auto generated URI to the Route Aggregation Rule resource
 	Href string `pulumi:"href"`
-	// Customer provided name of the route aggregation rule
+	// Customer provided name of the Route Aggregation Rule
 	Name string `pulumi:"name"`
-	// Customer-provided route aggregation rule prefix
+	// Customer-provided Route Aggregation Rule prefix
 	Prefix string `pulumi:"prefix"`
-	// UUID of the Route Aggregation to apply this Rule to
+	// UUID of the Route Aggregation that the rule is applied to
 	RouteAggregationId string `pulumi:"routeAggregationId"`
-	// Value representing provisioning status for the route aggregation rule resource
+	// Value representing provisioning status for the Route Aggregation Rule resource
 	State string `pulumi:"state"`
 	// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
 	Type string `pulumi:"type"`
-	// Equinix-assigned unique id for the route aggregation rule resource
+	// Equinix-assigned unique id for the Route Aggregation Rule resource
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -58195,25 +58195,25 @@ type GetRouteAggregationRulesDataInput interface {
 }
 
 type GetRouteAggregationRulesDataArgs struct {
-	// Current state of latest route aggregation rule change
+	// Current state of latest Route Aggregation Rule change
 	Change GetRouteAggregationRulesDataChangeInput `pulumi:"change"`
-	// Details of the last change on the stream resource
+	// Details of the last change on the resource
 	ChangeLog GetRouteAggregationRulesDataChangeLogInput `pulumi:"changeLog"`
-	// Customer-provided route aggregation rule description
+	// Customer-provided Route Aggregation Rule description
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Equinix auto generated URI to the route aggregation rule resource
+	// Equinix auto generated URI to the Route Aggregation Rule resource
 	Href pulumi.StringInput `pulumi:"href"`
-	// Customer provided name of the route aggregation rule
+	// Customer provided name of the Route Aggregation Rule
 	Name pulumi.StringInput `pulumi:"name"`
-	// Customer-provided route aggregation rule prefix
+	// Customer-provided Route Aggregation Rule prefix
 	Prefix pulumi.StringInput `pulumi:"prefix"`
-	// UUID of the Route Aggregation to apply this Rule to
+	// UUID of the Route Aggregation that the rule is applied to
 	RouteAggregationId pulumi.StringInput `pulumi:"routeAggregationId"`
-	// Value representing provisioning status for the route aggregation rule resource
+	// Value representing provisioning status for the Route Aggregation Rule resource
 	State pulumi.StringInput `pulumi:"state"`
 	// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
 	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned unique id for the route aggregation rule resource
+	// Equinix-assigned unique id for the Route Aggregation Rule resource
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -58268,42 +58268,42 @@ func (o GetRouteAggregationRulesDataOutput) ToGetRouteAggregationRulesDataOutput
 	return o
 }
 
-// Current state of latest route aggregation rule change
+// Current state of latest Route Aggregation Rule change
 func (o GetRouteAggregationRulesDataOutput) Change() GetRouteAggregationRulesDataChangeOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) GetRouteAggregationRulesDataChange { return v.Change }).(GetRouteAggregationRulesDataChangeOutput)
 }
 
-// Details of the last change on the stream resource
+// Details of the last change on the resource
 func (o GetRouteAggregationRulesDataOutput) ChangeLog() GetRouteAggregationRulesDataChangeLogOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) GetRouteAggregationRulesDataChangeLog { return v.ChangeLog }).(GetRouteAggregationRulesDataChangeLogOutput)
 }
 
-// Customer-provided route aggregation rule description
+// Customer-provided Route Aggregation Rule description
 func (o GetRouteAggregationRulesDataOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Equinix auto generated URI to the route aggregation rule resource
+// Equinix auto generated URI to the Route Aggregation Rule resource
 func (o GetRouteAggregationRulesDataOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Href }).(pulumi.StringOutput)
 }
 
-// Customer provided name of the route aggregation rule
+// Customer provided name of the Route Aggregation Rule
 func (o GetRouteAggregationRulesDataOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Customer-provided route aggregation rule prefix
+// Customer-provided Route Aggregation Rule prefix
 func (o GetRouteAggregationRulesDataOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
-// UUID of the Route Aggregation to apply this Rule to
+// UUID of the Route Aggregation that the rule is applied to
 func (o GetRouteAggregationRulesDataOutput) RouteAggregationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.RouteAggregationId }).(pulumi.StringOutput)
 }
 
-// Value representing provisioning status for the route aggregation rule resource
+// Value representing provisioning status for the Route Aggregation Rule resource
 func (o GetRouteAggregationRulesDataOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.State }).(pulumi.StringOutput)
 }
@@ -58313,7 +58313,7 @@ func (o GetRouteAggregationRulesDataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned unique id for the route aggregation rule resource
+// Equinix-assigned unique id for the Route Aggregation Rule resource
 func (o GetRouteAggregationRulesDataOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesData) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -58339,7 +58339,7 @@ func (o GetRouteAggregationRulesDataArrayOutput) Index(i pulumi.IntInput) GetRou
 }
 
 type GetRouteAggregationRulesDataChange struct {
-	// Equinix auto generated URI to the route aggregation change
+	// Equinix auto generated URI to the Route Aggregation Rule change
 	Href string `pulumi:"href"`
 	// Equinix defined Route Aggregation Change Type
 	Type string `pulumi:"type"`
@@ -58359,7 +58359,7 @@ type GetRouteAggregationRulesDataChangeInput interface {
 }
 
 type GetRouteAggregationRulesDataChangeArgs struct {
-	// Equinix auto generated URI to the route aggregation change
+	// Equinix auto generated URI to the Route Aggregation Rule change
 	Href pulumi.StringInput `pulumi:"href"`
 	// Equinix defined Route Aggregation Change Type
 	Type pulumi.StringInput `pulumi:"type"`
@@ -58393,7 +58393,7 @@ func (o GetRouteAggregationRulesDataChangeOutput) ToGetRouteAggregationRulesData
 	return o
 }
 
-// Equinix auto generated URI to the route aggregation change
+// Equinix auto generated URI to the Route Aggregation Rule change
 func (o GetRouteAggregationRulesDataChangeOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChange) string { return v.Href }).(pulumi.StringOutput)
 }
@@ -58409,29 +58409,29 @@ func (o GetRouteAggregationRulesDataChangeOutput) Uuid() pulumi.StringOutput {
 }
 
 type GetRouteAggregationRulesDataChangeLog struct {
-	// User name of creator of the stream resource
+	// User name of creator of the resource
 	CreatedBy string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
+	// Email of creator of the resource
 	CreatedByEmail string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
+	// Legal name of creator of the resource
 	CreatedByFullName string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
+	// Creation time of the resource
 	CreatedDateTime string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
+	// User name of deleter of the resource
 	DeletedBy string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
+	// Email of deleter of the resource
 	DeletedByEmail string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
+	// Legal name of deleter of the resource
 	DeletedByFullName string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
+	// Deletion time of the resource
 	DeletedDateTime string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
+	// User name of last updater of the resource
 	UpdatedBy string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
+	// Email of last updater of the resource
 	UpdatedByEmail string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
+	// Legal name of last updater of the resource
 	UpdatedByFullName string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
+	// Last update time of the resource
 	UpdatedDateTime string `pulumi:"updatedDateTime"`
 }
 
@@ -58447,29 +58447,29 @@ type GetRouteAggregationRulesDataChangeLogInput interface {
 }
 
 type GetRouteAggregationRulesDataChangeLogArgs struct {
-	// User name of creator of the stream resource
+	// User name of creator of the resource
 	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
+	// Email of creator of the resource
 	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
+	// Legal name of creator of the resource
 	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
+	// Creation time of the resource
 	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
+	// User name of deleter of the resource
 	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
+	// Email of deleter of the resource
 	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
+	// Legal name of deleter of the resource
 	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
+	// Deletion time of the resource
 	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
+	// User name of last updater of the resource
 	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
+	// Email of last updater of the resource
 	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
+	// Legal name of last updater of the resource
 	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
+	// Last update time of the resource
 	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
 }
 
@@ -58499,64 +58499,179 @@ func (o GetRouteAggregationRulesDataChangeLogOutput) ToGetRouteAggregationRulesD
 	return o
 }
 
-// User name of creator of the stream resource
+// User name of creator of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// Email of creator of the stream resource
+// Email of creator of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
 }
 
-// Legal name of creator of the stream resource
+// Legal name of creator of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
 }
 
-// Creation time of the stream resource
+// Creation time of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
-// User name of deleter of the stream resource
+// User name of deleter of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
 }
 
-// Email of deleter of the stream resource
+// Email of deleter of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
 }
 
-// Legal name of deleter of the stream resource
+// Legal name of deleter of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
 }
 
-// Deletion time of the stream resource
+// Deletion time of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
 }
 
-// User name of last updater of the stream resource
+// User name of last updater of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
-// Email of last updater of the stream resource
+// Email of last updater of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
 }
 
-// Legal name of last updater of the stream resource
+// Legal name of last updater of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
 }
 
-// Last update time of the stream resource
+// Last update time of the resource
 func (o GetRouteAggregationRulesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetRouteAggregationRulesFilter struct {
+	// Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+	Operator string `pulumi:"operator"`
+	// Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetRouteAggregationRulesFilterInput is an input type that accepts GetRouteAggregationRulesFilterArgs and GetRouteAggregationRulesFilterOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesFilterInput` via:
+//
+//	GetRouteAggregationRulesFilterArgs{...}
+type GetRouteAggregationRulesFilterInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesFilterOutput() GetRouteAggregationRulesFilterOutput
+	ToGetRouteAggregationRulesFilterOutputWithContext(context.Context) GetRouteAggregationRulesFilterOutput
+}
+
+type GetRouteAggregationRulesFilterArgs struct {
+	// Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRouteAggregationRulesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesFilter)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesFilterArgs) ToGetRouteAggregationRulesFilterOutput() GetRouteAggregationRulesFilterOutput {
+	return i.ToGetRouteAggregationRulesFilterOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesFilterArgs) ToGetRouteAggregationRulesFilterOutputWithContext(ctx context.Context) GetRouteAggregationRulesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesFilterOutput)
+}
+
+// GetRouteAggregationRulesFilterArrayInput is an input type that accepts GetRouteAggregationRulesFilterArray and GetRouteAggregationRulesFilterArrayOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesFilterArrayInput` via:
+//
+//	GetRouteAggregationRulesFilterArray{ GetRouteAggregationRulesFilterArgs{...} }
+type GetRouteAggregationRulesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesFilterArrayOutput() GetRouteAggregationRulesFilterArrayOutput
+	ToGetRouteAggregationRulesFilterArrayOutputWithContext(context.Context) GetRouteAggregationRulesFilterArrayOutput
+}
+
+type GetRouteAggregationRulesFilterArray []GetRouteAggregationRulesFilterInput
+
+func (GetRouteAggregationRulesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationRulesFilter)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesFilterArray) ToGetRouteAggregationRulesFilterArrayOutput() GetRouteAggregationRulesFilterArrayOutput {
+	return i.ToGetRouteAggregationRulesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesFilterArray) ToGetRouteAggregationRulesFilterArrayOutputWithContext(ctx context.Context) GetRouteAggregationRulesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesFilterArrayOutput)
+}
+
+type GetRouteAggregationRulesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesFilter)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesFilterOutput) ToGetRouteAggregationRulesFilterOutput() GetRouteAggregationRulesFilterOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesFilterOutput) ToGetRouteAggregationRulesFilterOutputWithContext(ctx context.Context) GetRouteAggregationRulesFilterOutput {
+	return o
+}
+
+// Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+func (o GetRouteAggregationRulesFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+func (o GetRouteAggregationRulesFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetRouteAggregationRulesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRouteAggregationRulesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationRulesFilter)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesFilterArrayOutput) ToGetRouteAggregationRulesFilterArrayOutput() GetRouteAggregationRulesFilterArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesFilterArrayOutput) ToGetRouteAggregationRulesFilterArrayOutputWithContext(ctx context.Context) GetRouteAggregationRulesFilterArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRouteAggregationRulesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteAggregationRulesFilter {
+		return vs[0].([]GetRouteAggregationRulesFilter)[vs[1].(int)]
+	}).(GetRouteAggregationRulesFilterOutput)
 }
 
 type GetRouteAggregationRulesPagination struct {
@@ -58568,7 +58683,7 @@ type GetRouteAggregationRulesPagination struct {
 	Offset int `pulumi:"offset"`
 	// The URL relative to the previous item in the response
 	Previous string `pulumi:"previous"`
-	// The total number of route agrgegation rules available to the user making the request
+	// The total number of Route Aggregation Rules available to the user making the request
 	Total int `pulumi:"total"`
 }
 
@@ -58592,7 +58707,7 @@ type GetRouteAggregationRulesPaginationArgs struct {
 	Offset pulumi.IntInput `pulumi:"offset"`
 	// The URL relative to the previous item in the response
 	Previous pulumi.StringInput `pulumi:"previous"`
-	// The total number of route agrgegation rules available to the user making the request
+	// The total number of Route Aggregation Rules available to the user making the request
 	Total pulumi.IntInput `pulumi:"total"`
 }
 
@@ -58693,7 +58808,7 @@ func (o GetRouteAggregationRulesPaginationOutput) Previous() pulumi.StringOutput
 	return o.ApplyT(func(v GetRouteAggregationRulesPagination) string { return v.Previous }).(pulumi.StringOutput)
 }
 
-// The total number of route agrgegation rules available to the user making the request
+// The total number of Route Aggregation Rules available to the user making the request
 func (o GetRouteAggregationRulesPaginationOutput) Total() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesPagination) int { return v.Total }).(pulumi.IntOutput)
 }
@@ -58762,7 +58877,7 @@ func (o GetRouteAggregationRulesPaginationPtrOutput) Previous() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The total number of route agrgegation rules available to the user making the request
+// The total number of Route Aggregation Rules available to the user making the request
 func (o GetRouteAggregationRulesPaginationPtrOutput) Total() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetRouteAggregationRulesPagination) *int {
 		if v == nil {
@@ -58770,6 +58885,112 @@ func (o GetRouteAggregationRulesPaginationPtrOutput) Total() pulumi.IntPtrOutput
 		}
 		return &v.Total
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetRouteAggregationRulesSort struct {
+	// The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+	Property *string `pulumi:"property"`
+}
+
+// GetRouteAggregationRulesSortInput is an input type that accepts GetRouteAggregationRulesSortArgs and GetRouteAggregationRulesSortOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesSortInput` via:
+//
+//	GetRouteAggregationRulesSortArgs{...}
+type GetRouteAggregationRulesSortInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesSortOutput() GetRouteAggregationRulesSortOutput
+	ToGetRouteAggregationRulesSortOutputWithContext(context.Context) GetRouteAggregationRulesSortOutput
+}
+
+type GetRouteAggregationRulesSortArgs struct {
+	// The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetRouteAggregationRulesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesSort)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesSortArgs) ToGetRouteAggregationRulesSortOutput() GetRouteAggregationRulesSortOutput {
+	return i.ToGetRouteAggregationRulesSortOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesSortArgs) ToGetRouteAggregationRulesSortOutputWithContext(ctx context.Context) GetRouteAggregationRulesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesSortOutput)
+}
+
+// GetRouteAggregationRulesSortArrayInput is an input type that accepts GetRouteAggregationRulesSortArray and GetRouteAggregationRulesSortArrayOutput values.
+// You can construct a concrete instance of `GetRouteAggregationRulesSortArrayInput` via:
+//
+//	GetRouteAggregationRulesSortArray{ GetRouteAggregationRulesSortArgs{...} }
+type GetRouteAggregationRulesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteAggregationRulesSortArrayOutput() GetRouteAggregationRulesSortArrayOutput
+	ToGetRouteAggregationRulesSortArrayOutputWithContext(context.Context) GetRouteAggregationRulesSortArrayOutput
+}
+
+type GetRouteAggregationRulesSortArray []GetRouteAggregationRulesSortInput
+
+func (GetRouteAggregationRulesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationRulesSort)(nil)).Elem()
+}
+
+func (i GetRouteAggregationRulesSortArray) ToGetRouteAggregationRulesSortArrayOutput() GetRouteAggregationRulesSortArrayOutput {
+	return i.ToGetRouteAggregationRulesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteAggregationRulesSortArray) ToGetRouteAggregationRulesSortArrayOutputWithContext(ctx context.Context) GetRouteAggregationRulesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteAggregationRulesSortArrayOutput)
+}
+
+type GetRouteAggregationRulesSortOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteAggregationRulesSort)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesSortOutput) ToGetRouteAggregationRulesSortOutput() GetRouteAggregationRulesSortOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesSortOutput) ToGetRouteAggregationRulesSortOutputWithContext(ctx context.Context) GetRouteAggregationRulesSortOutput {
+	return o
+}
+
+// The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+func (o GetRouteAggregationRulesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+func (o GetRouteAggregationRulesSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetRouteAggregationRulesSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteAggregationRulesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteAggregationRulesSort)(nil)).Elem()
+}
+
+func (o GetRouteAggregationRulesSortArrayOutput) ToGetRouteAggregationRulesSortArrayOutput() GetRouteAggregationRulesSortArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesSortArrayOutput) ToGetRouteAggregationRulesSortArrayOutputWithContext(ctx context.Context) GetRouteAggregationRulesSortArrayOutput {
+	return o
+}
+
+func (o GetRouteAggregationRulesSortArrayOutput) Index(i pulumi.IntInput) GetRouteAggregationRulesSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteAggregationRulesSort {
+		return vs[0].([]GetRouteAggregationRulesSort)[vs[1].(int)]
+	}).(GetRouteAggregationRulesSortOutput)
 }
 
 type GetRouteAggregationsData struct {
@@ -60894,6 +61115,121 @@ func (o GetRouteFilterRulesDataChangeLogArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetRouteFilterRulesDataChangeLogOutput)
 }
 
+type GetRouteFilterRulesFilter struct {
+	// Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+	Operator string `pulumi:"operator"`
+	// Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetRouteFilterRulesFilterInput is an input type that accepts GetRouteFilterRulesFilterArgs and GetRouteFilterRulesFilterOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesFilterInput` via:
+//
+//	GetRouteFilterRulesFilterArgs{...}
+type GetRouteFilterRulesFilterInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesFilterOutput() GetRouteFilterRulesFilterOutput
+	ToGetRouteFilterRulesFilterOutputWithContext(context.Context) GetRouteFilterRulesFilterOutput
+}
+
+type GetRouteFilterRulesFilterArgs struct {
+	// Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRouteFilterRulesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesFilter)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesFilterArgs) ToGetRouteFilterRulesFilterOutput() GetRouteFilterRulesFilterOutput {
+	return i.ToGetRouteFilterRulesFilterOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesFilterArgs) ToGetRouteFilterRulesFilterOutputWithContext(ctx context.Context) GetRouteFilterRulesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesFilterOutput)
+}
+
+// GetRouteFilterRulesFilterArrayInput is an input type that accepts GetRouteFilterRulesFilterArray and GetRouteFilterRulesFilterArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesFilterArrayInput` via:
+//
+//	GetRouteFilterRulesFilterArray{ GetRouteFilterRulesFilterArgs{...} }
+type GetRouteFilterRulesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesFilterArrayOutput() GetRouteFilterRulesFilterArrayOutput
+	ToGetRouteFilterRulesFilterArrayOutputWithContext(context.Context) GetRouteFilterRulesFilterArrayOutput
+}
+
+type GetRouteFilterRulesFilterArray []GetRouteFilterRulesFilterInput
+
+func (GetRouteFilterRulesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesFilter)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesFilterArray) ToGetRouteFilterRulesFilterArrayOutput() GetRouteFilterRulesFilterArrayOutput {
+	return i.ToGetRouteFilterRulesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesFilterArray) ToGetRouteFilterRulesFilterArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesFilterArrayOutput)
+}
+
+type GetRouteFilterRulesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesFilter)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesFilterOutput) ToGetRouteFilterRulesFilterOutput() GetRouteFilterRulesFilterOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesFilterOutput) ToGetRouteFilterRulesFilterOutputWithContext(ctx context.Context) GetRouteFilterRulesFilterOutput {
+	return o
+}
+
+// Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+func (o GetRouteFilterRulesFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+func (o GetRouteFilterRulesFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetRouteFilterRulesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRouteFilterRulesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesFilter)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesFilterArrayOutput) ToGetRouteFilterRulesFilterArrayOutput() GetRouteFilterRulesFilterArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesFilterArrayOutput) ToGetRouteFilterRulesFilterArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesFilterArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesFilterArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRulesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRulesFilter {
+		return vs[0].([]GetRouteFilterRulesFilter)[vs[1].(int)]
+	}).(GetRouteFilterRulesFilterOutput)
+}
+
 type GetRouteFilterRulesPagination struct {
 	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
 	Limit int `pulumi:"limit"`
@@ -61025,6 +61361,112 @@ func (o GetRouteFilterRulesPaginationArrayOutput) Index(i pulumi.IntInput) GetRo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRulesPagination {
 		return vs[0].([]GetRouteFilterRulesPagination)[vs[1].(int)]
 	}).(GetRouteFilterRulesPaginationOutput)
+}
+
+type GetRouteFilterRulesSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+	Property *string `pulumi:"property"`
+}
+
+// GetRouteFilterRulesSortInput is an input type that accepts GetRouteFilterRulesSortArgs and GetRouteFilterRulesSortOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesSortInput` via:
+//
+//	GetRouteFilterRulesSortArgs{...}
+type GetRouteFilterRulesSortInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesSortOutput() GetRouteFilterRulesSortOutput
+	ToGetRouteFilterRulesSortOutputWithContext(context.Context) GetRouteFilterRulesSortOutput
+}
+
+type GetRouteFilterRulesSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetRouteFilterRulesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesSort)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesSortArgs) ToGetRouteFilterRulesSortOutput() GetRouteFilterRulesSortOutput {
+	return i.ToGetRouteFilterRulesSortOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesSortArgs) ToGetRouteFilterRulesSortOutputWithContext(ctx context.Context) GetRouteFilterRulesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesSortOutput)
+}
+
+// GetRouteFilterRulesSortArrayInput is an input type that accepts GetRouteFilterRulesSortArray and GetRouteFilterRulesSortArrayOutput values.
+// You can construct a concrete instance of `GetRouteFilterRulesSortArrayInput` via:
+//
+//	GetRouteFilterRulesSortArray{ GetRouteFilterRulesSortArgs{...} }
+type GetRouteFilterRulesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteFilterRulesSortArrayOutput() GetRouteFilterRulesSortArrayOutput
+	ToGetRouteFilterRulesSortArrayOutputWithContext(context.Context) GetRouteFilterRulesSortArrayOutput
+}
+
+type GetRouteFilterRulesSortArray []GetRouteFilterRulesSortInput
+
+func (GetRouteFilterRulesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesSort)(nil)).Elem()
+}
+
+func (i GetRouteFilterRulesSortArray) ToGetRouteFilterRulesSortArrayOutput() GetRouteFilterRulesSortArrayOutput {
+	return i.ToGetRouteFilterRulesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteFilterRulesSortArray) ToGetRouteFilterRulesSortArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteFilterRulesSortArrayOutput)
+}
+
+type GetRouteFilterRulesSortOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteFilterRulesSort)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesSortOutput) ToGetRouteFilterRulesSortOutput() GetRouteFilterRulesSortOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesSortOutput) ToGetRouteFilterRulesSortOutputWithContext(ctx context.Context) GetRouteFilterRulesSortOutput {
+	return o
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetRouteFilterRulesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+func (o GetRouteFilterRulesSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetRouteFilterRulesSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteFilterRulesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteFilterRulesSort)(nil)).Elem()
+}
+
+func (o GetRouteFilterRulesSortArrayOutput) ToGetRouteFilterRulesSortArrayOutput() GetRouteFilterRulesSortArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesSortArrayOutput) ToGetRouteFilterRulesSortArrayOutputWithContext(ctx context.Context) GetRouteFilterRulesSortArrayOutput {
+	return o
+}
+
+func (o GetRouteFilterRulesSortArrayOutput) Index(i pulumi.IntInput) GetRouteFilterRulesSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteFilterRulesSort {
+		return vs[0].([]GetRouteFilterRulesSort)[vs[1].(int)]
+	}).(GetRouteFilterRulesSortOutput)
 }
 
 type GetRouteFiltersData struct {
@@ -78140,475 +78582,6 @@ func (o GetStreamAttachmentsDataArrayOutput) Index(i pulumi.IntInput) GetStreamA
 	}).(GetStreamAttachmentsDataOutput)
 }
 
-type GetStreamAttachmentsFilter struct {
-	// Operation applied to the values of the filter
-	Operator string `pulumi:"operator"`
-	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
-	Or *bool `pulumi:"or"`
-	// Property to apply the filter to
-	Property string `pulumi:"property"`
-	// List of values to apply the operation to for the specified property
-	Values []string `pulumi:"values"`
-}
-
-// GetStreamAttachmentsFilterInput is an input type that accepts GetStreamAttachmentsFilterArgs and GetStreamAttachmentsFilterOutput values.
-// You can construct a concrete instance of `GetStreamAttachmentsFilterInput` via:
-//
-//	GetStreamAttachmentsFilterArgs{...}
-type GetStreamAttachmentsFilterInput interface {
-	pulumi.Input
-
-	ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput
-	ToGetStreamAttachmentsFilterOutputWithContext(context.Context) GetStreamAttachmentsFilterOutput
-}
-
-type GetStreamAttachmentsFilterArgs struct {
-	// Operation applied to the values of the filter
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
-	Or pulumi.BoolPtrInput `pulumi:"or"`
-	// Property to apply the filter to
-	Property pulumi.StringInput `pulumi:"property"`
-	// List of values to apply the operation to for the specified property
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetStreamAttachmentsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsFilter)(nil)).Elem()
-}
-
-func (i GetStreamAttachmentsFilterArgs) ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput {
-	return i.ToGetStreamAttachmentsFilterOutputWithContext(context.Background())
-}
-
-func (i GetStreamAttachmentsFilterArgs) ToGetStreamAttachmentsFilterOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsFilterOutput)
-}
-
-// GetStreamAttachmentsFilterArrayInput is an input type that accepts GetStreamAttachmentsFilterArray and GetStreamAttachmentsFilterArrayOutput values.
-// You can construct a concrete instance of `GetStreamAttachmentsFilterArrayInput` via:
-//
-//	GetStreamAttachmentsFilterArray{ GetStreamAttachmentsFilterArgs{...} }
-type GetStreamAttachmentsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput
-	ToGetStreamAttachmentsFilterArrayOutputWithContext(context.Context) GetStreamAttachmentsFilterArrayOutput
-}
-
-type GetStreamAttachmentsFilterArray []GetStreamAttachmentsFilterInput
-
-func (GetStreamAttachmentsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAttachmentsFilter)(nil)).Elem()
-}
-
-func (i GetStreamAttachmentsFilterArray) ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput {
-	return i.ToGetStreamAttachmentsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetStreamAttachmentsFilterArray) ToGetStreamAttachmentsFilterArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsFilterArrayOutput)
-}
-
-type GetStreamAttachmentsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAttachmentsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsFilter)(nil)).Elem()
-}
-
-func (o GetStreamAttachmentsFilterOutput) ToGetStreamAttachmentsFilterOutput() GetStreamAttachmentsFilterOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsFilterOutput) ToGetStreamAttachmentsFilterOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterOutput {
-	return o
-}
-
-// Operation applied to the values of the filter
-func (o GetStreamAttachmentsFilterOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsFilter) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// Boolean value to specify if this filter is a part of the OR group. Has a maximum of 3 and only counts for 1 of the 8 possible filters
-func (o GetStreamAttachmentsFilterOutput) Or() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsFilter) *bool { return v.Or }).(pulumi.BoolPtrOutput)
-}
-
-// Property to apply the filter to
-func (o GetStreamAttachmentsFilterOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsFilter) string { return v.Property }).(pulumi.StringOutput)
-}
-
-// List of values to apply the operation to for the specified property
-func (o GetStreamAttachmentsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetStreamAttachmentsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAttachmentsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAttachmentsFilter)(nil)).Elem()
-}
-
-func (o GetStreamAttachmentsFilterArrayOutput) ToGetStreamAttachmentsFilterArrayOutput() GetStreamAttachmentsFilterArrayOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsFilterArrayOutput) ToGetStreamAttachmentsFilterArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsFilterArrayOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsFilterArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsFilter {
-		return vs[0].([]GetStreamAttachmentsFilter)[vs[1].(int)]
-	}).(GetStreamAttachmentsFilterOutput)
-}
-
-type GetStreamAttachmentsPagination struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit int `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next string `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset int `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous string `pulumi:"previous"`
-	// The total number of streams available to the user making the request
-	Total int `pulumi:"total"`
-}
-
-// GetStreamAttachmentsPaginationInput is an input type that accepts GetStreamAttachmentsPaginationArgs and GetStreamAttachmentsPaginationOutput values.
-// You can construct a concrete instance of `GetStreamAttachmentsPaginationInput` via:
-//
-//	GetStreamAttachmentsPaginationArgs{...}
-type GetStreamAttachmentsPaginationInput interface {
-	pulumi.Input
-
-	ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput
-	ToGetStreamAttachmentsPaginationOutputWithContext(context.Context) GetStreamAttachmentsPaginationOutput
-}
-
-type GetStreamAttachmentsPaginationArgs struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit pulumi.IntInput `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next pulumi.StringInput `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset pulumi.IntInput `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous pulumi.StringInput `pulumi:"previous"`
-	// The total number of streams available to the user making the request
-	Total pulumi.IntInput `pulumi:"total"`
-}
-
-func (GetStreamAttachmentsPaginationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsPagination)(nil)).Elem()
-}
-
-func (i GetStreamAttachmentsPaginationArgs) ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput {
-	return i.ToGetStreamAttachmentsPaginationOutputWithContext(context.Background())
-}
-
-func (i GetStreamAttachmentsPaginationArgs) ToGetStreamAttachmentsPaginationOutputWithContext(ctx context.Context) GetStreamAttachmentsPaginationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsPaginationOutput)
-}
-
-type GetStreamAttachmentsPaginationOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAttachmentsPaginationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsPagination)(nil)).Elem()
-}
-
-func (o GetStreamAttachmentsPaginationOutput) ToGetStreamAttachmentsPaginationOutput() GetStreamAttachmentsPaginationOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsPaginationOutput) ToGetStreamAttachmentsPaginationOutputWithContext(ctx context.Context) GetStreamAttachmentsPaginationOutput {
-	return o
-}
-
-// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-func (o GetStreamAttachmentsPaginationOutput) Limit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Limit }).(pulumi.IntOutput)
-}
-
-// The URL relative to the next item in the response
-func (o GetStreamAttachmentsPaginationOutput) Next() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsPagination) string { return v.Next }).(pulumi.StringOutput)
-}
-
-// Index of the first item returned in the response. The default is 0
-func (o GetStreamAttachmentsPaginationOutput) Offset() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Offset }).(pulumi.IntOutput)
-}
-
-// The URL relative to the previous item in the response
-func (o GetStreamAttachmentsPaginationOutput) Previous() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsPagination) string { return v.Previous }).(pulumi.StringOutput)
-}
-
-// The total number of streams available to the user making the request
-func (o GetStreamAttachmentsPaginationOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsPagination) int { return v.Total }).(pulumi.IntOutput)
-}
-
-type GetStreamAttachmentsSort struct {
-	// The sorting direction of the property chosen. ASC or DESC
-	Direction string `pulumi:"direction"`
-	// The field name the sorting is performed on
-	Property string `pulumi:"property"`
-}
-
-// GetStreamAttachmentsSortInput is an input type that accepts GetStreamAttachmentsSortArgs and GetStreamAttachmentsSortOutput values.
-// You can construct a concrete instance of `GetStreamAttachmentsSortInput` via:
-//
-//	GetStreamAttachmentsSortArgs{...}
-type GetStreamAttachmentsSortInput interface {
-	pulumi.Input
-
-	ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput
-	ToGetStreamAttachmentsSortOutputWithContext(context.Context) GetStreamAttachmentsSortOutput
-}
-
-type GetStreamAttachmentsSortArgs struct {
-	// The sorting direction of the property chosen. ASC or DESC
-	Direction pulumi.StringInput `pulumi:"direction"`
-	// The field name the sorting is performed on
-	Property pulumi.StringInput `pulumi:"property"`
-}
-
-func (GetStreamAttachmentsSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsSort)(nil)).Elem()
-}
-
-func (i GetStreamAttachmentsSortArgs) ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput {
-	return i.ToGetStreamAttachmentsSortOutputWithContext(context.Background())
-}
-
-func (i GetStreamAttachmentsSortArgs) ToGetStreamAttachmentsSortOutputWithContext(ctx context.Context) GetStreamAttachmentsSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsSortOutput)
-}
-
-// GetStreamAttachmentsSortArrayInput is an input type that accepts GetStreamAttachmentsSortArray and GetStreamAttachmentsSortArrayOutput values.
-// You can construct a concrete instance of `GetStreamAttachmentsSortArrayInput` via:
-//
-//	GetStreamAttachmentsSortArray{ GetStreamAttachmentsSortArgs{...} }
-type GetStreamAttachmentsSortArrayInput interface {
-	pulumi.Input
-
-	ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput
-	ToGetStreamAttachmentsSortArrayOutputWithContext(context.Context) GetStreamAttachmentsSortArrayOutput
-}
-
-type GetStreamAttachmentsSortArray []GetStreamAttachmentsSortInput
-
-func (GetStreamAttachmentsSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAttachmentsSort)(nil)).Elem()
-}
-
-func (i GetStreamAttachmentsSortArray) ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput {
-	return i.ToGetStreamAttachmentsSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetStreamAttachmentsSortArray) ToGetStreamAttachmentsSortArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsSortArrayOutput)
-}
-
-type GetStreamAttachmentsSortOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAttachmentsSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsSort)(nil)).Elem()
-}
-
-func (o GetStreamAttachmentsSortOutput) ToGetStreamAttachmentsSortOutput() GetStreamAttachmentsSortOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsSortOutput) ToGetStreamAttachmentsSortOutputWithContext(ctx context.Context) GetStreamAttachmentsSortOutput {
-	return o
-}
-
-// The sorting direction of the property chosen. ASC or DESC
-func (o GetStreamAttachmentsSortOutput) Direction() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsSort) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// The field name the sorting is performed on
-func (o GetStreamAttachmentsSortOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsSort) string { return v.Property }).(pulumi.StringOutput)
-}
-
-type GetStreamAttachmentsSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAttachmentsSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAttachmentsSort)(nil)).Elem()
-}
-
-func (o GetStreamAttachmentsSortArrayOutput) ToGetStreamAttachmentsSortArrayOutput() GetStreamAttachmentsSortArrayOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsSortArrayOutput) ToGetStreamAttachmentsSortArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsSortArrayOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsSortArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsSort {
-		return vs[0].([]GetStreamAttachmentsSort)[vs[1].(int)]
-	}).(GetStreamAttachmentsSortOutput)
-}
-
-type GetStreamChangeLog struct {
-	// User name of creator of the stream resource
-	CreatedBy string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime string `pulumi:"updatedDateTime"`
-}
-
-// GetStreamChangeLogInput is an input type that accepts GetStreamChangeLogArgs and GetStreamChangeLogOutput values.
-// You can construct a concrete instance of `GetStreamChangeLogInput` via:
-//
-//	GetStreamChangeLogArgs{...}
-type GetStreamChangeLogInput interface {
-	pulumi.Input
-
-	ToGetStreamChangeLogOutput() GetStreamChangeLogOutput
-	ToGetStreamChangeLogOutputWithContext(context.Context) GetStreamChangeLogOutput
-}
-
-type GetStreamChangeLogArgs struct {
-	// User name of creator of the stream resource
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
-}
-
-func (GetStreamChangeLogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
-}
-
-func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
-	return i.ToGetStreamChangeLogOutputWithContext(context.Background())
-}
-
-func (i GetStreamChangeLogArgs) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamChangeLogOutput)
-}
-
-type GetStreamChangeLogOutput struct{ *pulumi.OutputState }
-
-func (GetStreamChangeLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamChangeLog)(nil)).Elem()
-}
-
-func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutput() GetStreamChangeLogOutput {
-	return o
-}
-
-func (o GetStreamChangeLogOutput) ToGetStreamChangeLogOutputWithContext(ctx context.Context) GetStreamChangeLogOutput {
-	return o
-}
-
-// User name of creator of the stream resource
-func (o GetStreamChangeLogOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// Email of creator of the stream resource
-func (o GetStreamChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of creator of the stream resource
-func (o GetStreamChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
-}
-
-// Creation time of the stream resource
-func (o GetStreamChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of deleter of the stream resource
-func (o GetStreamChangeLogOutput) DeletedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
-}
-
-// Email of deleter of the stream resource
-func (o GetStreamChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of deleter of the stream resource
-func (o GetStreamChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
-}
-
-// Deletion time of the stream resource
-func (o GetStreamChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of last updater of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// Email of last updater of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of last updater of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
-}
-
-// Last update time of the stream resource
-func (o GetStreamChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountInput)(nil)).Elem(), CloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountPtrInput)(nil)).Elem(), CloudRouterAccountArgs{})
@@ -79290,8 +79263,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesDataArrayInput)(nil)).Elem(), GetRouteAggregationRulesDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesDataChangeInput)(nil)).Elem(), GetRouteAggregationRulesDataChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesDataChangeLogInput)(nil)).Elem(), GetRouteAggregationRulesDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesFilterInput)(nil)).Elem(), GetRouteAggregationRulesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesFilterArrayInput)(nil)).Elem(), GetRouteAggregationRulesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesPaginationInput)(nil)).Elem(), GetRouteAggregationRulesPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesPaginationPtrInput)(nil)).Elem(), GetRouteAggregationRulesPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesSortInput)(nil)).Elem(), GetRouteAggregationRulesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationRulesSortArrayInput)(nil)).Elem(), GetRouteAggregationRulesSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataInput)(nil)).Elem(), GetRouteAggregationsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataArrayInput)(nil)).Elem(), GetRouteAggregationsDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteAggregationsDataChangeInput)(nil)).Elem(), GetRouteAggregationsDataChangeArgs{})
@@ -79318,8 +79295,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataChangeArrayInput)(nil)).Elem(), GetRouteFilterRulesDataChangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataChangeLogInput)(nil)).Elem(), GetRouteFilterRulesDataChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesDataChangeLogArrayInput)(nil)).Elem(), GetRouteFilterRulesDataChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesFilterInput)(nil)).Elem(), GetRouteFilterRulesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesFilterArrayInput)(nil)).Elem(), GetRouteFilterRulesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesPaginationInput)(nil)).Elem(), GetRouteFilterRulesPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesPaginationArrayInput)(nil)).Elem(), GetRouteFilterRulesPaginationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesSortInput)(nil)).Elem(), GetRouteFilterRulesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFilterRulesSortArrayInput)(nil)).Elem(), GetRouteFilterRulesSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataInput)(nil)).Elem(), GetRouteFiltersDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataArrayInput)(nil)).Elem(), GetRouteFiltersDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteFiltersDataChangeInput)(nil)).Elem(), GetRouteFiltersDataChangeArgs{})
@@ -79525,12 +79506,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesPaginationInput)(nil)).Elem(), GetStreamAlertRulesPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataInput)(nil)).Elem(), GetStreamAttachmentsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataArrayInput)(nil)).Elem(), GetStreamAttachmentsDataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsFilterInput)(nil)).Elem(), GetStreamAttachmentsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsFilterArrayInput)(nil)).Elem(), GetStreamAttachmentsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsPaginationInput)(nil)).Elem(), GetStreamAttachmentsPaginationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortInput)(nil)).Elem(), GetStreamAttachmentsSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsSortArrayInput)(nil)).Elem(), GetStreamAttachmentsSortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamChangeLogInput)(nil)).Elem(), GetStreamChangeLogArgs{})
 	pulumi.RegisterOutputType(CloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(CloudRouterAccountPtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterChangeLogOutput{})
@@ -80211,8 +80186,12 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteAggregationRulesDataArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteAggregationRulesDataChangeOutput{})
 	pulumi.RegisterOutputType(GetRouteAggregationRulesDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesFilterOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteAggregationRulesPaginationOutput{})
 	pulumi.RegisterOutputType(GetRouteAggregationRulesPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesSortOutput{})
+	pulumi.RegisterOutputType(GetRouteAggregationRulesSortArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteAggregationsDataOutput{})
 	pulumi.RegisterOutputType(GetRouteAggregationsDataArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteAggregationsDataChangeOutput{})
@@ -80239,8 +80218,12 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteFilterRulesDataChangeArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteFilterRulesDataChangeLogOutput{})
 	pulumi.RegisterOutputType(GetRouteFilterRulesDataChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesFilterOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteFilterRulesPaginationOutput{})
 	pulumi.RegisterOutputType(GetRouteFilterRulesPaginationArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesSortOutput{})
+	pulumi.RegisterOutputType(GetRouteFilterRulesSortArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteFiltersDataOutput{})
 	pulumi.RegisterOutputType(GetRouteFiltersDataArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteFiltersDataChangeOutput{})
@@ -80446,10 +80429,4 @@ func init() {
 	pulumi.RegisterOutputType(GetStreamAlertRulesPaginationOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsDataOutput{})
 	pulumi.RegisterOutputType(GetStreamAttachmentsDataArrayOutput{})
-	pulumi.RegisterOutputType(GetStreamAttachmentsFilterOutput{})
-	pulumi.RegisterOutputType(GetStreamAttachmentsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetStreamAttachmentsPaginationOutput{})
-	pulumi.RegisterOutputType(GetStreamAttachmentsSortOutput{})
-	pulumi.RegisterOutputType(GetStreamAttachmentsSortArrayOutput{})
-	pulumi.RegisterOutputType(GetStreamChangeLogOutput{})
 }

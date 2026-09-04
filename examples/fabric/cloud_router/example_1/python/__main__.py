@@ -1,16 +1,7 @@
 import pulumi
 import pulumi_equinix as equinix
 
-new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
-    name="Router-SV",
-    type="XF_ROUTER",
-    notifications=[{
-        "type": "ALL",
-        "emails": [
-            "example@equinix.com",
-            "test1@equinix.com",
-        ],
-    }],
+new_cloud_router = equinix.fabric.CloudRouter("new_cloud_router",
     order={
         "purchase_order_number": "1-323292",
     },
@@ -25,4 +16,13 @@ new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
     },
     account={
         "account_number": 203612,
-    })
+    },
+    notifications=[{
+        "type": "ALL",
+        "emails": [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name="Router-SV",
+    type="XF_ROUTER")

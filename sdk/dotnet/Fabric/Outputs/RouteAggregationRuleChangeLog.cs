@@ -14,51 +14,51 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class RouteAggregationRuleChangeLog
     {
         /// <summary>
-        /// User name of creator of the stream resource
+        /// User name of creator of the resource
         /// </summary>
         public readonly string? CreatedBy;
         /// <summary>
-        /// Email of creator of the stream resource
+        /// Email of creator of the resource
         /// </summary>
         public readonly string? CreatedByEmail;
         /// <summary>
-        /// Legal name of creator of the stream resource
+        /// Legal name of creator of the resource
         /// </summary>
         public readonly string? CreatedByFullName;
         /// <summary>
-        /// Creation time of the stream resource
+        /// Creation time of the resource
         /// </summary>
         public readonly string? CreatedDateTime;
         /// <summary>
-        /// User name of deleter of the stream resource
+        /// User name of deleter of the resource
         /// </summary>
         public readonly string? DeletedBy;
         /// <summary>
-        /// Email of deleter of the stream resource
+        /// Email of deleter of the resource
         /// </summary>
         public readonly string? DeletedByEmail;
         /// <summary>
-        /// Legal name of deleter of the stream resource
+        /// Legal name of deleter of the resource
         /// </summary>
         public readonly string? DeletedByFullName;
         /// <summary>
-        /// Deletion time of the stream resource
+        /// Deletion time of the resource
         /// </summary>
         public readonly string? DeletedDateTime;
         /// <summary>
-        /// User name of last updater of the stream resource
+        /// User name of last updater of the resource
         /// </summary>
         public readonly string? UpdatedBy;
         /// <summary>
-        /// Email of last updater of the stream resource
+        /// Email of last updater of the resource
         /// </summary>
         public readonly string? UpdatedByEmail;
         /// <summary>
-        /// Legal name of last updater of the stream resource
+        /// Legal name of last updater of the resource
         /// </summary>
         public readonly string? UpdatedByFullName;
         /// <summary>
-        /// Last update time of the stream resource
+        /// Last update time of the resource
         /// </summary>
         public readonly string? UpdatedDateTime;
 

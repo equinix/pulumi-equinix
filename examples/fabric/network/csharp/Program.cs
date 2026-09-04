@@ -5,11 +5,12 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var newNetwork = new Equinix.Fabric.Network("newNetwork", new()
+    var newNetwork = new Equinix.Fabric.Network("new_network", new()
     {
-        Name = "Network-SV",
-        Type = "EVPLAN",
-        Scope = "GLOBAL",
+        Project = new Equinix.Fabric.Inputs.NetworkProjectArgs
+        {
+            ProjectId = "776847000642406",
+        },
         Notifications = new[]
         {
             new Equinix.Fabric.Inputs.NetworkNotificationArgs
@@ -22,10 +23,9 @@ return await Deployment.RunAsync(() =>
                 },
             },
         },
-        Project = new Equinix.Fabric.Inputs.NetworkProjectArgs
-        {
-            ProjectId = "776847000642406",
-        },
+        Name = "Network-SV",
+        Type = "EVPLAN",
+        Scope = "GLOBAL",
     });
 
 });

@@ -21,8 +21,6 @@ public class App {
 
     public static void stack(Context ctx) {
         var test = new DeviceLink("test", DeviceLinkArgs.builder()
-            .name("test-DLG")
-            .projectId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
             .devices(            
                 DeviceLinkDeviceArgs.builder()
                     .id(testEquinixNetworkDevice.uuid())
@@ -45,6 +43,8 @@ public class App {
                     .throughput("50")
                     .throughputUnit("Mbps")
                     .build())
+            .name("test-DLG")
+            .projectId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
             .build());
 
     }

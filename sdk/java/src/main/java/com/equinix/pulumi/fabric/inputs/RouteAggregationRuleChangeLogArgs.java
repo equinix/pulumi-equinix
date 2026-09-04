@@ -16,14 +16,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     public static final RouteAggregationRuleChangeLogArgs Empty = new RouteAggregationRuleChangeLogArgs();
 
     /**
-     * User name of creator of the stream resource
+     * User name of creator of the resource
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return User name of creator of the stream resource
+     * @return User name of creator of the resource
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -31,14 +31,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Email of creator of the stream resource
+     * Email of creator of the resource
      * 
      */
     @Import(name="createdByEmail")
     private @Nullable Output<String> createdByEmail;
 
     /**
-     * @return Email of creator of the stream resource
+     * @return Email of creator of the resource
      * 
      */
     public Optional<Output<String>> createdByEmail() {
@@ -46,14 +46,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Legal name of creator of the stream resource
+     * Legal name of creator of the resource
      * 
      */
     @Import(name="createdByFullName")
     private @Nullable Output<String> createdByFullName;
 
     /**
-     * @return Legal name of creator of the stream resource
+     * @return Legal name of creator of the resource
      * 
      */
     public Optional<Output<String>> createdByFullName() {
@@ -61,14 +61,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Creation time of the stream resource
+     * Creation time of the resource
      * 
      */
     @Import(name="createdDateTime")
     private @Nullable Output<String> createdDateTime;
 
     /**
-     * @return Creation time of the stream resource
+     * @return Creation time of the resource
      * 
      */
     public Optional<Output<String>> createdDateTime() {
@@ -76,14 +76,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * User name of deleter of the stream resource
+     * User name of deleter of the resource
      * 
      */
     @Import(name="deletedBy")
     private @Nullable Output<String> deletedBy;
 
     /**
-     * @return User name of deleter of the stream resource
+     * @return User name of deleter of the resource
      * 
      */
     public Optional<Output<String>> deletedBy() {
@@ -91,14 +91,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Email of deleter of the stream resource
+     * Email of deleter of the resource
      * 
      */
     @Import(name="deletedByEmail")
     private @Nullable Output<String> deletedByEmail;
 
     /**
-     * @return Email of deleter of the stream resource
+     * @return Email of deleter of the resource
      * 
      */
     public Optional<Output<String>> deletedByEmail() {
@@ -106,14 +106,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Legal name of deleter of the stream resource
+     * Legal name of deleter of the resource
      * 
      */
     @Import(name="deletedByFullName")
     private @Nullable Output<String> deletedByFullName;
 
     /**
-     * @return Legal name of deleter of the stream resource
+     * @return Legal name of deleter of the resource
      * 
      */
     public Optional<Output<String>> deletedByFullName() {
@@ -121,14 +121,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Deletion time of the stream resource
+     * Deletion time of the resource
      * 
      */
     @Import(name="deletedDateTime")
     private @Nullable Output<String> deletedDateTime;
 
     /**
-     * @return Deletion time of the stream resource
+     * @return Deletion time of the resource
      * 
      */
     public Optional<Output<String>> deletedDateTime() {
@@ -136,14 +136,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * User name of last updater of the stream resource
+     * User name of last updater of the resource
      * 
      */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
     /**
-     * @return User name of last updater of the stream resource
+     * @return User name of last updater of the resource
      * 
      */
     public Optional<Output<String>> updatedBy() {
@@ -151,14 +151,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Email of last updater of the stream resource
+     * Email of last updater of the resource
      * 
      */
     @Import(name="updatedByEmail")
     private @Nullable Output<String> updatedByEmail;
 
     /**
-     * @return Email of last updater of the stream resource
+     * @return Email of last updater of the resource
      * 
      */
     public Optional<Output<String>> updatedByEmail() {
@@ -166,14 +166,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Legal name of last updater of the stream resource
+     * Legal name of last updater of the resource
      * 
      */
     @Import(name="updatedByFullName")
     private @Nullable Output<String> updatedByFullName;
 
     /**
-     * @return Legal name of last updater of the stream resource
+     * @return Legal name of last updater of the resource
      * 
      */
     public Optional<Output<String>> updatedByFullName() {
@@ -181,14 +181,14 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
     }
 
     /**
-     * Last update time of the stream resource
+     * Last update time of the resource
      * 
      */
     @Import(name="updatedDateTime")
     private @Nullable Output<String> updatedDateTime;
 
     /**
-     * @return Last update time of the stream resource
+     * @return Last update time of the resource
      * 
      */
     public Optional<Output<String>> updatedDateTime() {
@@ -231,7 +231,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdBy User name of creator of the stream resource
+         * @param createdBy User name of creator of the resource
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdBy User name of creator of the stream resource
+         * @param createdBy User name of creator of the resource
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdByEmail Email of creator of the stream resource
+         * @param createdByEmail Email of creator of the resource
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdByEmail Email of creator of the stream resource
+         * @param createdByEmail Email of creator of the resource
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdByFullName Legal name of creator of the stream resource
+         * @param createdByFullName Legal name of creator of the resource
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdByFullName Legal name of creator of the stream resource
+         * @param createdByFullName Legal name of creator of the resource
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdDateTime Creation time of the stream resource
+         * @param createdDateTime Creation time of the resource
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdDateTime Creation time of the stream resource
+         * @param createdDateTime Creation time of the resource
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedBy User name of deleter of the stream resource
+         * @param deletedBy User name of deleter of the resource
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedBy User name of deleter of the stream resource
+         * @param deletedBy User name of deleter of the resource
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedByEmail Email of deleter of the stream resource
+         * @param deletedByEmail Email of deleter of the resource
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedByEmail Email of deleter of the stream resource
+         * @param deletedByEmail Email of deleter of the resource
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedByFullName Legal name of deleter of the stream resource
+         * @param deletedByFullName Legal name of deleter of the resource
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedByFullName Legal name of deleter of the stream resource
+         * @param deletedByFullName Legal name of deleter of the resource
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedDateTime Deletion time of the stream resource
+         * @param deletedDateTime Deletion time of the resource
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deletedDateTime Deletion time of the stream resource
+         * @param deletedDateTime Deletion time of the resource
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedBy User name of last updater of the stream resource
+         * @param updatedBy User name of last updater of the resource
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedBy User name of last updater of the stream resource
+         * @param updatedBy User name of last updater of the resource
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedByEmail Email of last updater of the stream resource
+         * @param updatedByEmail Email of last updater of the resource
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedByEmail Email of last updater of the stream resource
+         * @param updatedByEmail Email of last updater of the resource
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedByFullName Legal name of last updater of the stream resource
+         * @param updatedByFullName Legal name of last updater of the resource
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedByFullName Legal name of last updater of the stream resource
+         * @param updatedByFullName Legal name of last updater of the resource
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedDateTime Last update time of the stream resource
+         * @param updatedDateTime Last update time of the resource
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class RouteAggregationRuleChangeLogArgs extends com.pulumi.resource
         }
 
         /**
-         * @param updatedDateTime Last update time of the stream resource
+         * @param updatedDateTime Last update time of the resource
          * 
          * @return builder
          * 

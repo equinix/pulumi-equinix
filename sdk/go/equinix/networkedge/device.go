@@ -58,7 +58,21 @@ import (
 //			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			_, err := networkedge.NewDevice(ctx, "csr1000vHa", &networkedge.DeviceArgs{
+//			_, err := networkedge.NewDevice(ctx, "csr1000v_ha", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-csr1000v-s"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("csr1000v-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//				},
 //				Name:           pulumi.String("tf-csr1000v-p"),
 //				Throughput:     pulumi.Int(500),
 //				ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
@@ -82,20 +96,6 @@ import (
 //				}).(pulumi.StringPtrOutput)),
 //				Version:   pulumi.String("16.09.05"),
 //				CoreCount: pulumi.Int(2),
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("tf-csr1000v-s"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					Hostname: pulumi.String("csr1000v-s"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("john@equinix.com"),
-//						pulumi.String("marry@equinix.com"),
-//					},
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -121,7 +121,26 @@ import (
 //			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			_, err := networkedge.NewDevice(ctx, "panwCluster", &networkedge.DeviceArgs{
+//			_, err := networkedge.NewDevice(ctx, "panw_cluster", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+//							Hostname: pulumi.String("panw-node0"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
+//					},
+//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+//							Hostname: pulumi.String("panw-node1"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
+//					},
+//					ClusterName: pulumi.String("tf-panw-cluster"),
+//				},
 //				Name: pulumi.String("tf-panw"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -142,26 +161,7 @@ import (
 //				Version:        pulumi.String("10.1.3"),
 //				InterfaceCount: pulumi.Int(10),
 //				CoreCount:      pulumi.Int(2),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test"),
-//					KeyName:  pulumi.String("test-key"),
-//				},
-//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
-//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
-//					ClusterName: pulumi.String("tf-panw-cluster"),
-//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-//							Hostname: pulumi.String("panw-node0"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-//							Hostname: pulumi.String("panw-node1"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//				},
+//				AclTemplateId:  pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
 //			})
 //			if err != nil {
 //				return err
@@ -179,7 +179,7 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -195,7 +195,7 @@ import (
 //			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
+//			aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrix_cloudinit_file", &networkedge.NetworkFileArgs{
 //				FileName: pulumi.String("TF-AVX-cloud-init-file.txt"),
 //				Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
 //					Input: pulumi.String(filepath),
@@ -213,7 +213,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkedge.NewDevice(ctx, "aviatrixSingle", &networkedge.DeviceArgs{
+//			_, err = networkedge.NewDevice(ctx, "aviatrix_single", &networkedge.DeviceArgs{
 //				Name: pulumi.String("tf-aviatrix"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -259,7 +259,11 @@ import (
 //				Name:      pulumi.String("account-name"),
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			_, err := networkedge.NewDevice(ctx, "c8kvSingle", &networkedge.DeviceArgs{
+//			_, err := networkedge.NewDevice(ctx, "c8kv_single", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test-username"),
+//					KeyName:  pulumi.String("valid-key-name"),
+//				},
 //				Name: pulumi.String("tf-c8kv"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -280,11 +284,7 @@ import (
 //				TermLength:          pulumi.Int(12),
 //				LicenseToken:        pulumi.String("valid-license-token"),
 //				AdditionalBandwidth: pulumi.Int(5),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test-username"),
-//					KeyName:  pulumi.String("valid-key-name"),
-//				},
-//				AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
+//				AclTemplateId:       pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
 //			})
 //			if err != nil {
 //				return err
@@ -311,7 +311,11 @@ import (
 //				Name:      pulumi.String("account-name"),
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			_, err := networkedge.NewDevice(ctx, "vsrxSingle", &networkedge.DeviceArgs{
+//			_, err := networkedge.NewDevice(ctx, "vsrx_single", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test-username"),
+//					KeyName:  pulumi.String("valid-key-name"),
+//				},
 //				Name: pulumi.String("tf-c8kv-sdwan"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -333,11 +337,7 @@ import (
 //				AdditionalBandwidth: pulumi.Int(5),
 //				ProjectId:           pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
 //				DiverseDeviceId:     pulumi.String("ed7891bd-15b4-4f72-ac56-d96cfdacddcc"),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test-username"),
-//					KeyName:  pulumi.String("valid-key-name"),
-//				},
-//				AclTemplateId: pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
+//				AclTemplateId:       pulumi.String("3e548c02-9164-4197-aa23-05b1f644883c"),
 //			})
 //			if err != nil {
 //				return err
@@ -364,7 +364,7 @@ import (
 //				Name:      pulumi.String("account-name"),
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			testPublicKey, err := networkedge.NewSshKey(ctx, "testPublicKey", &networkedge.SshKeyArgs{
+//			testPublicKey, err := networkedge.NewSshKey(ctx, "test_public_key", &networkedge.SshKeyArgs{
 //				Name:      pulumi.String("key-name"),
 //				PublicKey: pulumi.String("ssh-dss key-value"),
 //				Type:      pulumi.String("DSA"),
@@ -372,7 +372,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkedge.NewDevice(ctx, "aristaHa", &networkedge.DeviceArgs{
+//			_, err = networkedge.NewDevice(ctx, "arista_ha", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test-username"),
+//					KeyName:  testPublicKey.Name,
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-arista-s"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("arista-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					AclTemplateId: pulumi.String("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138"),
+//				},
 //				Name: pulumi.String("tf-arista-p"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -393,25 +411,7 @@ import (
 //				CoreCount:           pulumi.Int(4),
 //				TermLength:          pulumi.Int(12),
 //				AdditionalBandwidth: pulumi.Int(5),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test-username"),
-//					KeyName:  testPublicKey.Name,
-//				},
-//				AclTemplateId: pulumi.String("c637a17b-7a6a-4486-924b-30e6c36904b0"),
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("tf-arista-s"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					Hostname: pulumi.String("arista-s"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					AclTemplateId: pulumi.String("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138"),
-//				},
+//				AclTemplateId:       pulumi.String("c637a17b-7a6a-4486-924b-30e6c36904b0"),
 //			})
 //			if err != nil {
 //				return err
@@ -438,6 +438,26 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "six-wind-vsr", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("xxxx"),
+//					KeyName:  pulumi.String("xxxxx"),
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("6WIND-VSR-Sec"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					VendorConfiguration: pulumi.StringMap{
+//						"hostname": pulumi.String("test"),
+//						"token":    pulumi.String("xxxx"),
+//					},
+//				},
 //				Name:      pulumi.String("6WIND-VSR"),
 //				ProjectId: pulumi.String("xxxxxxx"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -460,26 +480,6 @@ import (
 //				VendorConfiguration: pulumi.StringMap{
 //					"hostname": pulumi.String("test"),
 //					"token":    pulumi.String("xxxx"),
-//				},
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("xxxx"),
-//					KeyName:  pulumi.String("xxxxx"),
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("6WIND-VSR-Sec"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//					VendorConfiguration: pulumi.StringMap{
-//						"hostname": pulumi.String("test"),
-//						"token":    pulumi.String("xxxx"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -507,7 +507,7 @@ import (
 //				Name:      pulumi.String("account-name"),
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			testPublicKey, err := networkedge.NewSshKey(ctx, "testPublicKey", &networkedge.SshKeyArgs{
+//			testPublicKey, err := networkedge.NewSshKey(ctx, "test_public_key", &networkedge.SshKeyArgs{
 //				Name:      pulumi.String("key-name"),
 //				PublicKey: pulumi.String("ssh-dss key-value"),
 //				Type:      pulumi.String("DSA"),
@@ -515,7 +515,31 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkedge.NewDevice(ctx, "bluecatBddsHa", &networkedge.DeviceArgs{
+//			_, err = networkedge.NewDevice(ctx, "bluecat_bdds_ha", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test-username"),
+//					KeyName:  testPublicKey.Name,
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-bluecat-bdds-s"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"hostname":        pulumi.String("test"),
+//						"privateAddress":  pulumi.String("x.x.x.x"),
+//						"privateCidrMask": pulumi.String("24"),
+//						"privateGateway":  pulumi.String("x.x.x.x"),
+//						"licenseKey":      pulumi.String("xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
+//						"licenseId":       pulumi.String("xxxxxxxxxxxxxxx"),
+//					},
+//				},
 //				Name: pulumi.String("tf-bluecat-bdds-p"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -542,30 +566,6 @@ import (
 //					"licenseKey":      pulumi.String("xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
 //					"licenseId":       pulumi.String("xxxxxxxxxxxxxxx"),
 //				},
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test-username"),
-//					KeyName:  testPublicKey.Name,
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("tf-bluecat-bdds-s"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					VendorConfiguration: pulumi.StringMap{
-//						"hostname":        pulumi.String("test"),
-//						"privateAddress":  pulumi.String("x.x.x.x"),
-//						"privateCidrMask": pulumi.String("24"),
-//						"privateGateway":  pulumi.String("x.x.x.x"),
-//						"licenseKey":      pulumi.String("xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
-//						"licenseId":       pulumi.String("xxxxxxxxxxxxxxx"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -583,7 +583,7 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -594,7 +594,7 @@ import (
 //				Name:      pulumi.String("account-name"),
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			bluecatEdgeServicePointCloudinitPrimaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitPrimaryFile", &networkedge.NetworkFileArgs{
+//			bluecatEdgeServicePointCloudinitPrimaryFile, err := networkedge.NewNetworkFile(ctx, "bluecat_edge_service_point_cloudinit_primary_file", &networkedge.NetworkFileArgs{
 //				FileName: pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
 //				Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
 //					Input: pulumi.Any(filepath),
@@ -612,7 +612,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bluecatEdgeServicePointCloudinitSecondaryFile, err := networkedge.NewNetworkFile(ctx, "bluecatEdgeServicePointCloudinitSecondaryFile", &networkedge.NetworkFileArgs{
+//			bluecatEdgeServicePointCloudinitSecondaryFile, err := networkedge.NewNetworkFile(ctx, "bluecat_edge_service_point_cloudinit_secondary_file", &networkedge.NetworkFileArgs{
 //				FileName: pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
 //				Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
 //					Input: pulumi.Any(filepath),
@@ -630,7 +630,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkedge.NewDevice(ctx, "bluecatEdgeServicePointHa", &networkedge.DeviceArgs{
+//			_, err = networkedge.NewDevice(ctx, "bluecat_edge_service_point_ha", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-bluecat-edge-service-point-s"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					CloudInitFileId: bluecatEdgeServicePointCloudinitSecondaryFile.Uuid,
+//				},
 //				Name: pulumi.String("tf-bluecat-edge-service-point-p"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -650,19 +663,76 @@ import (
 //				Version:         pulumi.String("4.6.3"),
 //				CoreCount:       pulumi.Int(4),
 //				TermLength:      pulumi.Int(12),
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("tf-bluecat-edge-service-point-s"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					CloudInitFileId: bluecatEdgeServicePointCloudinitSecondaryFile.Uuid,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example 9
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "panw_cluster", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
 //				},
+//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+//							Hostname:          pulumi.String("panw-node0"),
+//							PanoramaIpAddress: pulumi.String("x.x.x.x"),
+//							PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
+//					},
+//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+//							Hostname:          pulumi.String("panw-node1"),
+//							PanoramaIpAddress: pulumi.String("x.x.x.x"),
+//							PanoramaAuthKey:   pulumi.String("xxxxxxxxxxx"),
+//						},
+//						LicenseToken: pulumi.String("licenseToken"),
+//					},
+//					ClusterName: pulumi.String("tf-panw-cluster"),
+//				},
+//				Name: pulumi.String("tf-panw"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:    pulumi.String("PA-VM"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("VM100"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength: pulumi.Int(12),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("11.1.3"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				AclTemplateId:  pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
 //			})
 //			if err != nil {
 //				return err
@@ -680,7 +750,7 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -696,7 +766,7 @@ import (
 //			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
-//			aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrixCloudinitFile", &networkedge.NetworkFileArgs{
+//			aviatrixCloudinitFile, err := networkedge.NewNetworkFile(ctx, "aviatrix_cloudinit_file", &networkedge.NetworkFileArgs{
 //				FileName: pulumi.String("TF-AVX-cloud-init-file.txt"),
 //				Content: pulumi.String(std.FileOutput(ctx, std.FileOutputArgs{
 //					Input: pulumi.String(filepath),
@@ -760,6 +830,25 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "ARUBA-EDGECONNECT-AM", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("TF_CHECKPOINT"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					AclTemplateId: pulumi.String("XXXXXXX"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					VendorConfiguration: pulumi.StringMap{
+//						"accountKey":   pulumi.String("xxxxx"),
+//						"accountName":  pulumi.String("xxxx"),
+//						"applianceTag": pulumi.String("test"),
+//						"hostname":     pulumi.String("test"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_Aruba_Edge_Connect"),
 //				ProjectId: pulumi.String("XXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -787,6 +876,32 @@ import (
 //					"applianceTag": pulumi.String("tests"),
 //					"hostname":     pulumi.String("test"),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example aruba edgeconnect ha device wth purchase order
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "ARUBA-EDGECONNECT-AM", &networkedge.DeviceArgs{
 //				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
 //					Name: pulumi.String("TF_CHECKPOINT"),
 //					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -795,7 +910,8 @@ import (
 //					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //						return &sv.Number, nil
 //					}).(pulumi.StringPtrOutput),
-//					AclTemplateId: pulumi.String("XXXXXXX"),
+//					PurchaseOrderNumber: pulumi.String("PO-Secondary-Account-123"),
+//					AclTemplateId:       pulumi.String("XXXXXXX"),
 //					Notifications: pulumi.StringArray{
 //						pulumi.String("test@eq.com"),
 //					},
@@ -806,6 +922,87 @@ import (
 //						"hostname":     pulumi.String("test"),
 //					},
 //				},
+//				Name:      pulumi.String("TF_Aruba_Edge_Connect"),
+//				ProjectId: pulumi.String("XXXXX"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:    pulumi.String("EDGECONNECT-SDWAN"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("EC-V"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@eq.com"),
+//				},
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:             pulumi.String("9.4.2.3"),
+//				CoreCount:           pulumi.Int(2),
+//				TermLength:          pulumi.Int(1),
+//				AdditionalBandwidth: pulumi.Int(50),
+//				InterfaceCount:      pulumi.Int(32),
+//				AclTemplateId:       pulumi.String("XXXXXXX"),
+//				PurchaseOrderNumber: pulumi.String("PO-Primary-Account-123"),
+//				VendorConfiguration: pulumi.StringMap{
+//					"accountKey":   pulumi.String("xxxxx"),
+//					"accountName":  pulumi.String("xxxx"),
+//					"applianceTag": pulumi.String("tests"),
+//					"hostname":     pulumi.String("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example c8000v byol without default password
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "c8000v-byol-withtout-default-password", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				Name: pulumi.String("tf-c8000v-byol"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:                pulumi.String("C8000V"),
+//				SelfManaged:             pulumi.Bool(true),
+//				Byol:                    pulumi.Bool(true),
+//				GenerateDefaultPassword: pulumi.Bool(false),
+//				PackageCode:             pulumi.String("network-essentials"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength: pulumi.Int(12),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Tier:           pulumi.Int(1),
+//				AclTemplateId:  pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
 //			})
 //			if err != nil {
 //				return err
@@ -832,6 +1029,10 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "c8000v-byol-throughput", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
 //				Name: pulumi.String("tf-c8000v-byol"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 //					return &sv.MetroCode, nil
@@ -854,11 +1055,368 @@ import (
 //				CoreCount:      pulumi.Int(2),
 //				Throughput:     pulumi.Int(100),
 //				ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
+//				AclTemplateId:  pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example c8000v byol with bandwidth tier
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "c8000v-byol-tier", &networkedge.DeviceArgs{
 //				SshKey: &networkedge.DeviceSshKeyArgs{
 //					Username: pulumi.String("test"),
 //					KeyName:  pulumi.String("test-key"),
 //				},
+//				Name: pulumi.String("tf-c8000v-byol"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:    pulumi.String("C8000V"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("network-essentials"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength: pulumi.Int(12),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Tier:           pulumi.Int(1),
+//				AclTemplateId:  pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example c8000v ha with cloud init rest api support
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "c8000v-byol", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-c8000v-byol-secondary"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("csr1000v-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"restApiSupportRequirement": pulumi.String("true"),
+//					},
+//					AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//				},
+//				Name: pulumi.String("tf-c8000v-byol"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:                pulumi.String("C8000V"),
+//				SelfManaged:             pulumi.Bool(true),
+//				Byol:                    pulumi.Bool(true),
+//				GenerateDefaultPassword: pulumi.Bool(true),
+//				PackageCode:             pulumi.String("network-essentials"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength: pulumi.Int(12),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Tier:           pulumi.Int(1),
+//				VendorConfiguration: pulumi.StringMap{
+//					"restApiSupportRequirement": pulumi.String("true"),
+//				},
 //				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example c8000v znpd ha dhcp
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//				Name:      pulumi.String("account-name"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "c8000v-byol", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-c8000v-byol-secondary"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("c8000v-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"restApiSupportRequirement": pulumi.String("true"),
+//						"ipAddressType":             pulumi.String("DHCP"),
+//						"managementInterfaceId":     pulumi.String("6"),
+//					},
+//				},
+//				Name: pulumi.String("tf-c8000v-byol"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:     pulumi.String("C8000V"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Byol:         pulumi.Bool(true),
+//				PackageCode:  pulumi.String("network-essentials"),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength: pulumi.Int(12),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Tier:           pulumi.Int(1),
+//				VendorConfiguration: pulumi.StringMap{
+//					"restApiSupportRequirement": pulumi.String("true"),
+//					"ipAddressType":             pulumi.String("DHCP"),
+//					"managementInterfaceId":     pulumi.String("6"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example c8000v znpd ha no ip address
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//				Name:      pulumi.String("account-name"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "c8000v-byol", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-c8000v-byol-secondary"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("csr8000v-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"restApiSupportRequirement": pulumi.String("true"),
+//						"ipAddressType":             pulumi.String("NO_IP_ADDRESS"),
+//					},
+//				},
+//				Name: pulumi.String("tf-c8000v-byol"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:     pulumi.String("C8000V"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Byol:         pulumi.Bool(true),
+//				PackageCode:  pulumi.String("network-essentials"),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength: pulumi.Int(12),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Tier:           pulumi.Int(1),
+//				VendorConfiguration: pulumi.StringMap{
+//					"restApiSupportRequirement": pulumi.String("true"),
+//					"ipAddressType":             pulumi.String("NO_IP_ADDRESS"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example c8000v znpd ha static
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//				Name:      pulumi.String("account-name"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "c8000v-byol", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("tf-c8000v-byol-secondary"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("csr8000v-s"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"restApiSupportRequirement": pulumi.String("true"),
+//						"ipAddressType":             pulumi.String("STATIC"),
+//						"ipAddress":                 pulumi.String("x.x.x.x"),
+//						"gatewayIp":                 pulumi.String("x.x.x.x"),
+//						"subnetMaskIp":              pulumi.String("x.x.x.x"),
+//						"managementInterfaceId":     pulumi.String("6"),
+//					},
+//				},
+//				Name: pulumi.String("tf-c8000v-byol"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:     pulumi.String("C8000V"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Byol:         pulumi.Bool(true),
+//				PackageCode:  pulumi.String("network-essentials"),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength: pulumi.Int(12),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("17.11.01a"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//				Tier:           pulumi.Int(1),
+//				VendorConfiguration: pulumi.StringMap{
+//					"restApiSupportRequirement": pulumi.String("true"),
+//					"ipAddressType":             pulumi.String("STATIC"),
+//					"ipAddress":                 pulumi.String("x.x.x.x"),
+//					"gatewayIp":                 pulumi.String("x.x.x.x"),
+//					"subnetMaskIp":              pulumi.String("x.x.x.x"),
+//					"managementInterfaceId":     pulumi.String("6"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -885,6 +1443,10 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "CHECKPOINT-SV", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("XXXXX"),
+//					KeyName:  pulumi.String("XXXXXX"),
+//				},
 //				Name:      pulumi.String("TF_CHECKPOINT"),
 //				ProjectId: pulumi.String("XXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -906,10 +1468,70 @@ import (
 //				TermLength:          pulumi.Int(1),
 //				AdditionalBandwidth: pulumi.Int(5),
 //				AclTemplateId:       pulumi.String("XXXXXXX"),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("XXXXX"),
-//					KeyName:  pulumi.String("XXXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### example cisco ftd cluster znpd
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "Cisco-FTD-SV", &networkedge.DeviceArgs{
+//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+//							Hostname:       pulumi.String("test"),
+//							ActivationKey:  pulumi.String("XXXXX"),
+//							Controller1:    pulumi.String("X.X.X.X"),
+//							ManagementType: pulumi.String("FMC"),
+//						},
+//					},
+//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+//							Hostname:       pulumi.String("test"),
+//							ManagementType: pulumi.String("FMC"),
+//						},
+//					},
+//					ClusterName: pulumi.String("tf-ftd-cluster"),
 //				},
+//				Name:      pulumi.String("TF_Cisco_NGFW_CLUSTER_ZNPD"),
+//				ProjectId: pulumi.String("XXXXXXX"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:     pulumi.String("Cisco_NGFW"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				Byol:         pulumi.Bool(true),
+//				PackageCode:  pulumi.String("FTDv10"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@eq.com"),
+//				},
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:        pulumi.String("7.0.4-55"),
+//				Hostname:       pulumi.String("test"),
+//				CoreCount:      pulumi.Int(4),
+//				TermLength:     pulumi.Int(1),
+//				InterfaceCount: pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err
@@ -972,6 +1594,78 @@ import (
 //	}
 //
 // ```
+// ### example fortigate firewall cluster device znpd static ip
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ = networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//				Name:      pulumi.String("account-name"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "FGVM-SV", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("sanity1"),
+//					KeyName:  pulumi.String(""),
+//				},
+//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+//							IpAddress:             pulumi.String("x.x.x.x"),
+//							SubnetMaskIp:          pulumi.String("x.x.x.x"),
+//							GatewayIp:             pulumi.String("x.x.x.x"),
+//							ManagementInterfaceId: pulumi.String("5"),
+//							Hostname:              pulumi.String("test"),
+//							IpAddressType:         pulumi.String("STATIC"),
+//						},
+//					},
+//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+//							IpAddress:             pulumi.String("x.x.x.x"),
+//							SubnetMaskIp:          pulumi.String("x.x.x.x"),
+//							GatewayIp:             pulumi.String("x.x.x.x"),
+//							ManagementInterfaceId: pulumi.String("5"),
+//							Hostname:              pulumi.String("test"),
+//							IpAddressType:         pulumi.String("STATIC"),
+//						},
+//					},
+//					ClusterName: pulumi.String("tf-fgvm--cluster"),
+//				},
+//				Name:         pulumi.String("tf-fgvm-cluster-static-znpd"),
+//				MetroCode:    pulumi.String("DC"),
+//				TypeCode:     pulumi.String("FG-VM"),
+//				ProjectId:    pulumi.String("xxxxxxx"),
+//				SelfManaged:  pulumi.Bool(true),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				Byol:         pulumi.Bool(true),
+//				PackageCode:  pulumi.String("VM02"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("john@equinix.com"),
+//					pulumi.String("marry@equinix.com"),
+//					pulumi.String("fred@equinix.com"),
+//				},
+//				TermLength:     pulumi.Int(12),
+//				AccountNumber:  pulumi.Any(xxxxxx),
+//				Version:        pulumi.String("7.6.2"),
+//				InterfaceCount: pulumi.Int(10),
+//				CoreCount:      pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### example fortigate firewall ha device znpd dhcp
 // ```go
 // package main
@@ -990,6 +1684,24 @@ import (
 //				Name:      pulumi.String("account-name"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "FTNT-FIREWALL-SV", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("fg-vm-znpd"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"ipAddressType":         pulumi.String("DHCP"),
+//						"managementInterfaceId": pulumi.String("6"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_FTNT-FIREWALL"),
 //				ProjectId: pulumi.String("XXXXXXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1014,24 +1726,6 @@ import (
 //				VendorConfiguration: pulumi.StringMap{
 //					"ipAddressType":         pulumi.String("DHCP"),
 //					"managementInterfaceId": pulumi.String("6"),
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					Hostname: pulumi.String("fg-vm-znpd"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("john@equinix.com"),
-//						pulumi.String("marry@equinix.com"),
-//					},
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					VendorConfiguration: pulumi.StringMap{
-//						"ipAddressType":         pulumi.String("DHCP"),
-//						"managementInterfaceId": pulumi.String("6"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -1060,6 +1754,23 @@ import (
 //				Name:      pulumi.String("account-name"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "FTNT-FIREWALL-SV", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("fg-vm-znpd"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"ipAddressType": pulumi.String("NO_IP_ADDRESS"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_FTNT-FIREWALL"),
 //				ProjectId: pulumi.String("XXXXXXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1083,23 +1794,6 @@ import (
 //				TermLength: pulumi.Int(1),
 //				VendorConfiguration: pulumi.StringMap{
 //					"ipAddressType": pulumi.String("NO_IP_ADDRESS"),
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					Hostname: pulumi.String("fg-vm-znpd"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("john@equinix.com"),
-//						pulumi.String("marry@equinix.com"),
-//					},
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					VendorConfiguration: pulumi.StringMap{
-//						"ipAddressType": pulumi.String("NO_IP_ADDRESS"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -1128,6 +1822,27 @@ import (
 //				Name:      pulumi.String("account-name"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "FTNT-FIREWALL-SV", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname: pulumi.String("fg-vm-znpd"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("john@equinix.com"),
+//						pulumi.String("marry@equinix.com"),
+//					},
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					VendorConfiguration: pulumi.StringMap{
+//						"gatewayIp":             pulumi.String("X.X.X.X"),
+//						"ipAddress":             pulumi.String("X.X.X.X"),
+//						"ipAddressType":         pulumi.String("STATIC"),
+//						"subnetMaskIp":          pulumi.String("X.X.X.X"),
+//						"managementInterfaceId": pulumi.String("6"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_FTNT-FIREWALL"),
 //				ProjectId: pulumi.String("XXXXXXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1155,27 +1870,6 @@ import (
 //					"ipAddressType":         pulumi.String("STATIC"),
 //					"subnetMaskIp":          pulumi.String("x.x.x.x"),
 //					"managementInterfaceId": pulumi.String("6"),
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					Hostname: pulumi.String("fg-vm-znpd"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("john@equinix.com"),
-//						pulumi.String("marry@equinix.com"),
-//					},
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					VendorConfiguration: pulumi.StringMap{
-//						"gatewayIp":             pulumi.String("X.X.X.X"),
-//						"ipAddress":             pulumi.String("X.X.X.X"),
-//						"ipAddressType":         pulumi.String("STATIC"),
-//						"subnetMaskIp":          pulumi.String("X.X.X.X"),
-//						"managementInterfaceId": pulumi.String("6"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -1237,6 +1931,70 @@ import (
 //	}
 //
 // ```
+// ### example infoblox cluster device
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "INFOBLOX-SV", &networkedge.DeviceArgs{
+//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
+//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
+//							AdminPassword: pulumi.String("xxxxxxx"),
+//							IpAddress:     pulumi.String("X.X.X.X"),
+//							SubnetMaskIp:  pulumi.String("X.X.X.X"),
+//							GatewayIp:     pulumi.String("X.X.X.X"),
+//						},
+//					},
+//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
+//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
+//							AdminPassword: pulumi.String("xxxxxxx"),
+//							IpAddress:     pulumi.String("X.X.X.X"),
+//							SubnetMaskIp:  pulumi.String("X.X.X.X"),
+//							GatewayIp:     pulumi.String("X.X.X.X"),
+//						},
+//					},
+//					ClusterName: pulumi.String("tf-infoblox-cluster"),
+//				},
+//				Name:      pulumi.String("TF_INFOBLOX"),
+//				ProjectId: pulumi.String("XXXXXXXXXX"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:    pulumi.String("INFOBLOX-GRID-MEMBER"),
+//				SelfManaged: pulumi.Bool(true),
+//				Byol:        pulumi.Bool(true),
+//				PackageCode: pulumi.String("STD"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@eq.com"),
+//				},
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:      pulumi.String("9.0.5"),
+//				Connectivity: pulumi.String("PRIVATE"),
+//				CoreCount:    pulumi.Int(8),
+//				TermLength:   pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### example infoblox ha device
 // ```go
 // package main
@@ -1254,6 +2012,24 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "INFOBLOX-SV", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("TF_INFOBLOX-Sec"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					VendorConfiguration: pulumi.StringMap{
+//						"adminPassword": pulumi.String("X.X.X.X"),
+//						"ipAddress":     pulumi.String("X.X.X.X"),
+//						"subnetMaskIp":  pulumi.String("X.X.X.X"),
+//						"gatewayIp":     pulumi.String("X.X.X.X"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_INFOBLOX"),
 //				ProjectId: pulumi.String("XXXXXXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1278,24 +2054,6 @@ import (
 //					"ipAddress":     pulumi.String("X.X.X.X"),
 //					"subnetMaskIp":  pulumi.String("X.X.X.X"),
 //					"gatewayIp":     pulumi.String("X.X.X.X"),
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("TF_INFOBLOX-Sec"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//					VendorConfiguration: pulumi.StringMap{
-//						"adminPassword": pulumi.String("X.X.X.X"),
-//						"ipAddress":     pulumi.String("X.X.X.X"),
-//						"subnetMaskIp":  pulumi.String("X.X.X.X"),
-//						"gatewayIp":     pulumi.String("X.X.X.X"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -1323,6 +2081,22 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "nios-x-ha", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("TF_INFOBLOX-NIOS-X-Sec"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					VendorConfiguration: pulumi.StringMap{
+//						"hostname": pulumi.String("test"),
+//						"token":    pulumi.String("xxxxx"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_INFOBLOX-NIOS-X"),
 //				ProjectId: pulumi.String("xxxxxxx"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1346,22 +2120,6 @@ import (
 //				VendorConfiguration: pulumi.StringMap{
 //					"hostname": pulumi.String("test"),
 //					"token":    pulumi.String("xxxxx"),
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("TF_INFOBLOX-NIOS-X-Sec"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//					VendorConfiguration: pulumi.StringMap{
-//						"hostname": pulumi.String("test"),
-//						"token":    pulumi.String("xxxxx"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -1423,6 +2181,84 @@ import (
 //	}
 //
 // ```
+// ### example netskope npa ha device
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv := networkedge.GetAccountOutput(ctx, networkedge.GetAccountOutputArgs{
+//				MetroCode: pulumi.String("SV"),
+//			}, nil)
+//			_, err := networkedge.NewDevice(ctx, "netskope-npa", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("NETSKOPE-NPA-Sec"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					VendorConfiguration: pulumi.StringMap{
+//						"hostname":            pulumi.String("test"),
+//						"privateCidrMask":     pulumi.String("24"),
+//						"ipAddressType":       pulumi.String("STATIC"),
+//						"ipAddress":           pulumi.String("x.x.x.x"),
+//						"gatewayIp":           pulumi.String("x.x.x.x"),
+//						"primaryNameServer":   pulumi.String("x.x.x.x"),
+//						"secondaryNameServer": pulumi.String("x.x.x.x"),
+//						"dnsSearchDomain":     pulumi.String("xxxxx"),
+//					},
+//				},
+//				Name:      pulumi.String("NETSKOPE-NPA"),
+//				ProjectId: pulumi.String("xxxxxxx"),
+//				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.MetroCode, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TypeCode:       pulumi.String("NETSKOPE-NPA"),
+//				SelfManaged:    pulumi.Bool(true),
+//				Byol:           pulumi.Bool(true),
+//				InterfaceCount: pulumi.Int(1),
+//				PackageCode:    pulumi.String("STD"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@eq.com"),
+//				},
+//				Connectivity: pulumi.String("PRIVATE"),
+//				AccountNumber: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//					return &sv.Number, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Version:    pulumi.String("R138"),
+//				CoreCount:  pulumi.Int(2),
+//				TermLength: pulumi.Int(1),
+//				VendorConfiguration: pulumi.StringMap{
+//					"hostname":            pulumi.String("test"),
+//					"privateCidrMask":     pulumi.String("24"),
+//					"ipAddressType":       pulumi.String("STATIC"),
+//					"ipAddress":           pulumi.String("x.x.x.x"),
+//					"gatewayIp":           pulumi.String("x.x.x.x"),
+//					"primaryNameServer":   pulumi.String("x.x.x.x"),
+//					"secondaryNameServer": pulumi.String("x.x.x.x"),
+//					"dnsSearchDomain":     pulumi.String("xxxxx"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### example versa sdwan ha device
 // ```go
 // package main
@@ -1440,6 +2276,26 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "FTNT-SDWAN-SV", &networkedge.DeviceArgs{
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("Praveena_TF_VERSA"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					AclTemplateId: pulumi.String("XXXXXXXX"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//					VendorConfiguration: pulumi.StringMap{
+//						"controller1":  pulumi.String("X.X.X.X"),
+//						"controller2":  pulumi.String("X.X.X.X"),
+//						"localId":      pulumi.String("test@test.com"),
+//						"remoteId":     pulumi.String("test@test.com"),
+//						"serialNumber": pulumi.String("4"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_VERSA-SDWAN"),
 //				ProjectId: pulumi.String("XXXXXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1467,26 +2323,6 @@ import (
 //					"remoteId":     pulumi.String("test@test.com"),
 //					"serialNumber": pulumi.String("4"),
 //				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("Praveena_TF_VERSA"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					AclTemplateId: pulumi.String("XXXXXXXX"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//					VendorConfiguration: pulumi.StringMap{
-//						"controller1":  pulumi.String("X.X.X.X"),
-//						"controller2":  pulumi.String("X.X.X.X"),
-//						"localId":      pulumi.String("test@test.com"),
-//						"remoteId":     pulumi.String("test@test.com"),
-//						"serialNumber": pulumi.String("4"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -1513,6 +2349,24 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "VYOS-AM", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("xxxxxxxx"),
+//				},
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name: pulumi.String("TF_CHECKPOINT"),
+//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.MetroCode, nil
+//					}).(pulumi.StringPtrOutput),
+//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+//						return &sv.Number, nil
+//					}).(pulumi.StringPtrOutput),
+//					Hostname:      pulumi.String("test"),
+//					AclTemplateId: pulumi.String("XXXXXXXXXXX"),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//				},
 //				Name:      pulumi.String("TF_VYOS"),
 //				ProjectId: pulumi.String("XXXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1534,24 +2388,6 @@ import (
 //				TermLength:          pulumi.Int(1),
 //				AdditionalBandwidth: pulumi.Int(50),
 //				AclTemplateId:       pulumi.String("XXXXXXXX"),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test"),
-//					KeyName:  pulumi.String("xxxxxxxx"),
-//				},
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name: pulumi.String("TF_CHECKPOINT"),
-//					MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.MetroCode, nil
-//					}).(pulumi.StringPtrOutput),
-//					AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-//						return &sv.Number, nil
-//					}).(pulumi.StringPtrOutput),
-//					Hostname:      pulumi.String("test"),
-//					AclTemplateId: pulumi.String("XXXXXXXXXXX"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("test@eq.com"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -1578,6 +2414,10 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "zscaler-appc-single", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
 //				Name:      pulumi.String("tf-zscaler-appc"),
 //				ProjectId: pulumi.String("XXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1603,10 +2443,6 @@ import (
 //				VendorConfiguration: pulumi.StringMap{
 //					"provisioningKey": pulumi.String("XXXXXXXXXX"),
 //					"hostname":        pulumi.String("XXXX"),
-//				},
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test"),
-//					KeyName:  pulumi.String("test-key"),
 //				},
 //			})
 //			if err != nil {
@@ -1634,6 +2470,10 @@ import (
 //				MetroCode: pulumi.String("SV"),
 //			}, nil)
 //			_, err := networkedge.NewDevice(ctx, "zscaler-pse-single", &networkedge.DeviceArgs{
+//				SshKey: &networkedge.DeviceSshKeyArgs{
+//					Username: pulumi.String("test"),
+//					KeyName:  pulumi.String("test-key"),
+//				},
 //				Name:      pulumi.String("tf-zscaler-pse"),
 //				ProjectId: pulumi.String("XXXXXX"),
 //				MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -1659,10 +2499,6 @@ import (
 //				VendorConfiguration: pulumi.StringMap{
 //					"provisioningKey": pulumi.String("XXXXXXXXXX"),
 //					"hostname":        pulumi.String("XXXX"),
-//				},
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test"),
-//					KeyName:  pulumi.String("test-key"),
 //				},
 //			})
 //			if err != nil {

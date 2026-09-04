@@ -6,12 +6,24 @@ const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
     metroCode: "SV",
 });
-const testPublicKey = new equinix.networkedge.SshKey("testPublicKey", {
+const testPublicKey = new equinix.networkedge.SshKey("test_public_key", {
     name: "key-name",
     publicKey: "ssh-dss key-value",
     type: "DSA",
 });
-const aristaHa = new equinix.networkedge.Device("aristaHa", {
+const aristaHa = new equinix.networkedge.Device("arista_ha", {
+    sshKey: {
+        username: "test-username",
+        keyName: testPublicKey.name,
+    },
+    secondaryDevice: {
+        name: "tf-arista-s",
+        metroCode: sv.apply(sv => sv.metroCode),
+        hostname: "arista-s",
+        notifications: ["test@eq.com"],
+        accountNumber: sv.apply(sv => sv.number),
+        aclTemplateId: "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
+    },
     name: "tf-arista-p",
     metroCode: sv.apply(sv => sv.metroCode),
     typeCode: "ARISTA-ROUTER",
@@ -26,17 +38,5 @@ const aristaHa = new equinix.networkedge.Device("aristaHa", {
     coreCount: 4,
     termLength: 12,
     additionalBandwidth: 5,
-    sshKey: {
-        username: "test-username",
-        keyName: testPublicKey.name,
-    },
     aclTemplateId: "c637a17b-7a6a-4486-924b-30e6c36904b0",
-    secondaryDevice: {
-        name: "tf-arista-s",
-        metroCode: sv.apply(sv => sv.metroCode),
-        hostname: "arista-s",
-        notifications: ["test@eq.com"],
-        accountNumber: sv.apply(sv => sv.number),
-        aclTemplateId: "fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138",
-    },
 });

@@ -5,7 +5,7 @@ import * as equinix from "@pulumi/equinix";
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const iNFOBLOXSV = new equinix.networkedge.Device("INFOBLOX-SV", {
+const infobloxSv = new equinix.networkedge.Device("INFOBLOX-SV", {
     name: "TF_INFOBLOX",
     projectId: "XXXXXXXXXX",
     metroCode: sv.apply(sv => sv.metroCode),

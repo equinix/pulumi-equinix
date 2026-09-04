@@ -11,8 +11,25 @@ return await Deployment.RunAsync(() =>
         Name = "account-name",
     });
 
-    var fTNTFIREWALLSV = new Equinix.NetworkEdge.Device("FTNT-FIREWALL-SV", new()
+    var ftntFirewallSv = new Equinix.NetworkEdge.Device("FTNT-FIREWALL-SV", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_FTNT-FIREWALL-secondary",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            Hostname = "fg-vm-znpd",
+            Notifications = new[]
+            {
+                "john@equinix.com",
+                "marry@equinix.com",
+            },
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            VendorConfiguration = 
+            {
+                { "ipAddressType", "DHCP" },
+                { "managementInterfaceId", "6" },
+            },
+        },
         Name = "TF_FTNT-FIREWALL",
         ProjectId = "XXXXXXXXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -35,23 +52,6 @@ return await Deployment.RunAsync(() =>
         {
             { "ipAddressType", "DHCP" },
             { "managementInterfaceId", "6" },
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "TF_FTNT-FIREWALL-secondary",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            Hostname = "fg-vm-znpd",
-            Notifications = new[]
-            {
-                "john@equinix.com",
-                "marry@equinix.com",
-            },
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            VendorConfiguration = 
-            {
-                { "ipAddressType", "DHCP" },
-                { "managementInterfaceId", "6" },
-            },
         },
     });
 

@@ -73,7 +73,7 @@ namespace Pulumi.Equinix.Fabric
         private List<Inputs.GetConnectionsSortArgs>? _sorts;
 
         /// <summary>
-        /// Filters for the Data Source Search Request
+        /// Sort criteria for the Data Source Search Request
         /// </summary>
         public List<Inputs.GetConnectionsSortArgs> Sorts
         {
@@ -117,7 +117,7 @@ namespace Pulumi.Equinix.Fabric
         private InputList<Inputs.GetConnectionsSortInputArgs>? _sorts;
 
         /// <summary>
-        /// Filters for the Data Source Search Request
+        /// Sort criteria for the Data Source Search Request
         /// </summary>
         public InputList<Inputs.GetConnectionsSortInputArgs> Sorts
         {
@@ -156,7 +156,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly Outputs.GetConnectionsPaginationResult? Pagination;
         /// <summary>
-        /// Filters for the Data Source Search Request
+        /// Sort criteria for the Data Source Search Request
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsSortResult> Sorts;
 

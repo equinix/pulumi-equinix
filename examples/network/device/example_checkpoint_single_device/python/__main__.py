@@ -2,7 +2,11 @@ import pulumi
 import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-c_heckpointsv = equinix.networkedge.Device("CHECKPOINT-SV",
+checkpoint_sv = equinix.networkedge.Device("CHECKPOINT-SV",
+    ssh_key={
+        "username": "XXXXX",
+        "key_name": "XXXXXX",
+    },
     name="TF_CHECKPOINT",
     project_id="XXXX",
     metro_code=sv.metro_code,
@@ -17,8 +21,4 @@ c_heckpointsv = equinix.networkedge.Device("CHECKPOINT-SV",
     core_count=2,
     term_length=1,
     additional_bandwidth=5,
-    acl_template_id="XXXXXXX",
-    ssh_key={
-        "username": "XXXXX",
-        "key_name": "XXXXXX",
-    })
+    acl_template_id="XXXXXXX")

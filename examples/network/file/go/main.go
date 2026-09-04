@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-	"github.com/pulumi/pulumi-std/sdk/go/std"
+	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )

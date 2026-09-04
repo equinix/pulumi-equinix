@@ -13,7 +13,7 @@ import (
 
 // Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
 // Additional Documentation:
-// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
 //
 // ## Example Usage
 //
@@ -58,39 +58,39 @@ func LookupRouteAggregationRule(ctx *pulumi.Context, args *LookupRouteAggregatio
 
 // A collection of arguments for invoking getRouteAggregationRule.
 type LookupRouteAggregationRuleArgs struct {
-	// Customer-provided route aggregation rule description
+	// Customer-provided Route Aggregation Rule description
 	Description *string `pulumi:"description"`
-	// The uuid of the route aggregation this data source should retrieve
+	// The UUID of the Route Aggregation this data source should retrieve
 	RouteAggregationId string `pulumi:"routeAggregationId"`
-	// The uuid of the route aggregation rule this data source should retrieve
+	// The UUID of the Route Aggregation Rule this data source should retrieve
 	RouteAggregationRuleId string `pulumi:"routeAggregationRuleId"`
 }
 
 // A collection of values returned by getRouteAggregationRule.
 type LookupRouteAggregationRuleResult struct {
-	// Current state of latest route aggregation rule change
+	// Current state of latest Route Aggregation Rule change
 	Change GetRouteAggregationRuleChange `pulumi:"change"`
-	// Details of the last change on the stream resource
+	// Details of the last change on the resource
 	ChangeLog GetRouteAggregationRuleChangeLog `pulumi:"changeLog"`
-	// Customer-provided route aggregation rule description
+	// Customer-provided Route Aggregation Rule description
 	Description *string `pulumi:"description"`
-	// Equinix auto generated URI to the route aggregation rule resource
+	// Equinix auto generated URI to the Route Aggregation Rule resource
 	Href string `pulumi:"href"`
 	// The unique identifier of the resource
 	Id string `pulumi:"id"`
-	// Customer provided name of the route aggregation rule
+	// Customer provided name of the Route Aggregation Rule
 	Name string `pulumi:"name"`
-	// Customer-provided route aggregation rule prefix
+	// Customer-provided Route Aggregation Rule prefix
 	Prefix string `pulumi:"prefix"`
-	// The uuid of the route aggregation this data source should retrieve
+	// The UUID of the Route Aggregation this data source should retrieve
 	RouteAggregationId string `pulumi:"routeAggregationId"`
-	// The uuid of the route aggregation rule this data source should retrieve
+	// The UUID of the Route Aggregation Rule this data source should retrieve
 	RouteAggregationRuleId string `pulumi:"routeAggregationRuleId"`
-	// Value representing provisioning status for the route aggregation rule resource
+	// Value representing provisioning status for the Route Aggregation Rule resource
 	State string `pulumi:"state"`
 	// Equinix defined Route Aggregation Type; BGP*IPv4*PREFIX*AGGREGATION, BGP*IPv6*PREFIX*AGGREGATION
 	Type string `pulumi:"type"`
-	// Equinix-assigned unique id for the route aggregation rule resource
+	// Equinix-assigned unique id for the Route Aggregation Rule resource
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -105,11 +105,11 @@ func LookupRouteAggregationRuleOutput(ctx *pulumi.Context, args LookupRouteAggre
 
 // A collection of arguments for invoking getRouteAggregationRule.
 type LookupRouteAggregationRuleOutputArgs struct {
-	// Customer-provided route aggregation rule description
+	// Customer-provided Route Aggregation Rule description
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The uuid of the route aggregation this data source should retrieve
+	// The UUID of the Route Aggregation this data source should retrieve
 	RouteAggregationId pulumi.StringInput `pulumi:"routeAggregationId"`
-	// The uuid of the route aggregation rule this data source should retrieve
+	// The UUID of the Route Aggregation Rule this data source should retrieve
 	RouteAggregationRuleId pulumi.StringInput `pulumi:"routeAggregationRuleId"`
 }
 
@@ -132,22 +132,22 @@ func (o LookupRouteAggregationRuleResultOutput) ToLookupRouteAggregationRuleResu
 	return o
 }
 
-// Current state of latest route aggregation rule change
+// Current state of latest Route Aggregation Rule change
 func (o LookupRouteAggregationRuleResultOutput) Change() GetRouteAggregationRuleChangeOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) GetRouteAggregationRuleChange { return v.Change }).(GetRouteAggregationRuleChangeOutput)
 }
 
-// Details of the last change on the stream resource
+// Details of the last change on the resource
 func (o LookupRouteAggregationRuleResultOutput) ChangeLog() GetRouteAggregationRuleChangeLogOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) GetRouteAggregationRuleChangeLog { return v.ChangeLog }).(GetRouteAggregationRuleChangeLogOutput)
 }
 
-// Customer-provided route aggregation rule description
+// Customer-provided Route Aggregation Rule description
 func (o LookupRouteAggregationRuleResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Equinix auto generated URI to the route aggregation rule resource
+// Equinix auto generated URI to the Route Aggregation Rule resource
 func (o LookupRouteAggregationRuleResultOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.Href }).(pulumi.StringOutput)
 }
@@ -157,27 +157,27 @@ func (o LookupRouteAggregationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Customer provided name of the route aggregation rule
+// Customer provided name of the Route Aggregation Rule
 func (o LookupRouteAggregationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Customer-provided route aggregation rule prefix
+// Customer-provided Route Aggregation Rule prefix
 func (o LookupRouteAggregationRuleResultOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
-// The uuid of the route aggregation this data source should retrieve
+// The UUID of the Route Aggregation this data source should retrieve
 func (o LookupRouteAggregationRuleResultOutput) RouteAggregationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.RouteAggregationId }).(pulumi.StringOutput)
 }
 
-// The uuid of the route aggregation rule this data source should retrieve
+// The UUID of the Route Aggregation Rule this data source should retrieve
 func (o LookupRouteAggregationRuleResultOutput) RouteAggregationRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.RouteAggregationRuleId }).(pulumi.StringOutput)
 }
 
-// Value representing provisioning status for the route aggregation rule resource
+// Value representing provisioning status for the Route Aggregation Rule resource
 func (o LookupRouteAggregationRuleResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.State }).(pulumi.StringOutput)
 }
@@ -187,7 +187,7 @@ func (o LookupRouteAggregationRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned unique id for the route aggregation rule resource
+// Equinix-assigned unique id for the Route Aggregation Rule resource
 func (o LookupRouteAggregationRuleResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteAggregationRuleResult) string { return v.Uuid }).(pulumi.StringOutput)
 }

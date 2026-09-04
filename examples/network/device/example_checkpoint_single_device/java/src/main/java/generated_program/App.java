@@ -25,7 +25,11 @@ public class App {
             .metroCode("SV")
             .build());
 
-        var cHECKPOINTSV = new Device("cHECKPOINTSV", DeviceArgs.builder()
+        var checkpointSv = new Device("checkpointSv", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("XXXXX")
+                .keyName("XXXXXX")
+                .build())
             .name("TF_CHECKPOINT")
             .projectId("XXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -41,10 +45,6 @@ public class App {
             .termLength(1)
             .additionalBandwidth(5)
             .aclTemplateId("XXXXXXX")
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("XXXXX")
-                .keyName("XXXXXX")
-                .build())
             .build());
 
     }

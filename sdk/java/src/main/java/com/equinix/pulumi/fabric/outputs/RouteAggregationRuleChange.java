@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RouteAggregationRuleChange {
     /**
-     * @return Equinix auto generated URI to the route aggregation change
+     * @return Equinix auto generated URI to the Route Aggregation Rule change
      * 
      */
     private @Nullable String href;
@@ -30,7 +30,7 @@ public final class RouteAggregationRuleChange {
 
     private RouteAggregationRuleChange() {}
     /**
-     * @return Equinix auto generated URI to the route aggregation change
+     * @return Equinix auto generated URI to the Route Aggregation Rule change
      * 
      */
     public Optional<String> href() {

@@ -38,6 +38,13 @@ resources:
     type: equinix:networkedge:Device
     name: bluecat_edge_service_point_ha
     properties:
+      secondaryDevice:
+        name: tf-bluecat-edge-service-point-s
+        metroCode: ${sv.metroCode}
+        notifications:
+          - test@eq.com
+        accountNumber: ${sv.number}
+        cloudInitFileId: ${bluecatEdgeServicePointCloudinitSecondaryFile.uuid}
       name: tf-bluecat-edge-service-point-p
       metroCode: ${sv.metroCode}
       typeCode: BLUECAT-EDGE-SERVICE-POINT
@@ -52,13 +59,6 @@ resources:
       version: 4.6.3
       coreCount: 4
       termLength: 12
-      secondaryDevice:
-        name: tf-bluecat-edge-service-point-s
-        metroCode: ${sv.metroCode}
-        notifications:
-          - test@eq.com
-        accountNumber: ${sv.number}
-        cloudInitFileId: ${bluecatEdgeServicePointCloudinitSecondaryFile.uuid}
 variables:
   # Create self configured redundant BlueCat Edge Service Point
   sv:

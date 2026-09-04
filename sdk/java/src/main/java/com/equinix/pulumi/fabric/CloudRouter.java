@@ -42,12 +42,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.CloudRouter;
  * import com.pulumi.equinix.fabric.CloudRouterArgs;
- * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
  * import com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,14 +62,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
- *             .name("Router-SV")
- *             .type("XF_ROUTER")
- *             .notifications(CloudRouterNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
  *             .order(CloudRouterOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
@@ -85,6 +77,74 @@ import javax.annotation.Nullable;
  *             .account(CloudRouterAccountArgs.builder()
  *                 .accountNumber(203612)
  *                 .build())
+ *             .notifications(CloudRouterNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("Router-SV")
+ *             .type("XF_ROUTER")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### example 2
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.CloudRouter;
+ * import com.pulumi.equinix.fabric.CloudRouterArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterMarketplaceSubscriptionArgs;
+ * import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
+ *             .order(CloudRouterOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .location(CloudRouterLocationArgs.builder()
+ *                 .metroCode("SV")
+ *                 .build())
+ *             .package_(CloudRouterPackageArgs.builder()
+ *                 .code("STANDARD")
+ *                 .build())
+ *             .project(CloudRouterProjectArgs.builder()
+ *                 .projectId("776847000642406")
+ *                 .build())
+ *             .marketplaceSubscription(CloudRouterMarketplaceSubscriptionArgs.builder()
+ *                 .type("AWS_MARKETPLACE_SUBSCRIPTION")
+ *                 .uuid("2823b8ae07-a2a2-45b4-a658-c3542bb24e9")
+ *                 .build())
+ *             .notifications(CloudRouterNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("Router-SV")
+ *             .type("XF_ROUTER")
  *             .build());
  * 
  *     }}{@code

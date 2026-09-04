@@ -5,12 +5,12 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.CloudRouter;
 import com.pulumi.equinix.fabric.CloudRouterArgs;
-import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -25,14 +25,6 @@ public class App {
 
     public static void stack(Context ctx) {
         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
-            .name("Router-SV")
-            .type("XF_ROUTER")
-            .notifications(CloudRouterNotificationArgs.builder()
-                .type("ALL")
-                .emails(                
-                    "example@equinix.com",
-                    "test1@equinix.com")
-                .build())
             .order(CloudRouterOrderArgs.builder()
                 .purchaseOrderNumber("1-323292")
                 .build())
@@ -48,6 +40,14 @@ public class App {
             .account(CloudRouterAccountArgs.builder()
                 .accountNumber(203612)
                 .build())
+            .notifications(CloudRouterNotificationArgs.builder()
+                .type("ALL")
+                .emails(                
+                    "example@equinix.com",
+                    "test1@equinix.com")
+                .build())
+            .name("Router-SV")
+            .type("XF_ROUTER")
             .build());
 
     }

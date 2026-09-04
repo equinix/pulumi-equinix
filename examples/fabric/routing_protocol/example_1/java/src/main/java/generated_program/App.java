@@ -21,15 +21,15 @@ public class App {
 
     public static void stack(Context ctx) {
         var direct = new RoutingProtocol("direct", RoutingProtocolArgs.builder()
-            .connectionUuid("<some_id>")
-            .type("DIRECT")
-            .name("direct_rp")
             .directIpv4(RoutingProtocolDirectIpv4Args.builder()
                 .equinixIfaceIp("190.1.1.1/30")
                 .build())
             .directIpv6(RoutingProtocolDirectIpv6Args.builder()
                 .equinixIfaceIp("190::1:1/126")
                 .build())
+            .connectionUuid("<some_id>")
+            .type("DIRECT")
+            .name("direct_rp")
             .build());
 
     }

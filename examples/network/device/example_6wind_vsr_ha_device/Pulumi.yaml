@@ -5,6 +5,18 @@ resources:
   six-wind-vsr:
     type: equinix:networkedge:Device
     properties:
+      sshKey:
+        username: xxxx
+        keyName: xxxxx
+      secondaryDevice:
+        name: 6WIND-VSR-Sec
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          hostname: test
+          token: xxxx
       name: 6WIND-VSR
       projectId: xxxxxxx
       metroCode: ${sv.metroCode}
@@ -22,18 +34,6 @@ resources:
       vendorConfiguration:
         hostname: test
         token: xxxx
-      sshKey:
-        username: xxxx
-        keyName: xxxxx
-      secondaryDevice:
-        name: 6WIND-VSR-Sec
-        metroCode: ${sv.metroCode}
-        accountNumber: ${sv.number}
-        notifications:
-          - test@eq.com
-        vendorConfiguration:
-          hostname: test
-          token: xxxx
 variables:
   # Create 6WIND VSR HA device
   sv:

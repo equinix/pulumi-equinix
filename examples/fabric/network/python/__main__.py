@@ -1,10 +1,10 @@
 import pulumi
 import pulumi_equinix as equinix
 
-new_network = equinix.fabric.Network("newNetwork",
-    name="Network-SV",
-    type="EVPLAN",
-    scope="GLOBAL",
+new_network = equinix.fabric.Network("new_network",
+    project={
+        "project_id": "776847000642406",
+    },
     notifications=[{
         "type": "ALL",
         "emails": [
@@ -12,6 +12,6 @@ new_network = equinix.fabric.Network("newNetwork",
             "test1@equinix.com",
         ],
     }],
-    project={
-        "project_id": "776847000642406",
-    })
+    name="Network-SV",
+    type="EVPLAN",
+    scope="GLOBAL")

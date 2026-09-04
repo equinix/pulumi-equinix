@@ -5,6 +5,16 @@ resources:
   FTNT-FIREWALL-SV:
     type: equinix:networkedge:Device
     properties:
+      secondaryDevice:
+        name: TF_FTNT-FIREWALL-secondary
+        metroCode: ${sv.metroCode}
+        hostname: fg-vm-znpd
+        notifications:
+          - john@equinix.com
+          - marry@equinix.com
+        accountNumber: ${sv.number}
+        vendorConfiguration:
+          ipAddressType: NO_IP_ADDRESS
       name: TF_FTNT-FIREWALL
       projectId: XXXXXXXXXX
       metroCode: ${sv.metroCode}
@@ -23,16 +33,6 @@ resources:
       termLength: 1
       vendorConfiguration:
         ipAddressType: NO_IP_ADDRESS
-      secondaryDevice:
-        name: TF_FTNT-FIREWALL-secondary
-        metroCode: ${sv.metroCode}
-        hostname: fg-vm-znpd
-        notifications:
-          - john@equinix.com
-          - marry@equinix.com
-        accountNumber: ${sv.number}
-        vendorConfiguration:
-          ipAddressType: NO_IP_ADDRESS
 variables:
   # Create Fortinet firewall ha device with connectivity PRIVATE and IP Address Type as NO IP Address
   sv:

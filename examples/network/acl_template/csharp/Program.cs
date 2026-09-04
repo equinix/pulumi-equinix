@@ -7,9 +7,6 @@ return await Deployment.RunAsync(() =>
 {
     var myacl = new Equinix.NetworkEdge.AclTemplate("myacl", new()
     {
-        Name = "test",
-        Description = "Test ACL template",
-        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
         InboundRules = new[]
         {
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
@@ -28,6 +25,9 @@ return await Deployment.RunAsync(() =>
                 DstPort = "53,1045,2041",
             },
         },
+        Name = "test",
+        Description = "Test ACL template",
+        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
     });
 
 });

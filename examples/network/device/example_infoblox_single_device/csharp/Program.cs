@@ -10,7 +10,7 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var iNFOBLOXSV = new Equinix.NetworkEdge.Device("INFOBLOX-SV", new()
+    var infobloxSv = new Equinix.NetworkEdge.Device("INFOBLOX-SV", new()
     {
         Name = "TF_INFOBLOX",
         ProjectId = "XXXXXXXXXX",

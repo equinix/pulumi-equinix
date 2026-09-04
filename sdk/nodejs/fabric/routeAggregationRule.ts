@@ -8,10 +8,10 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation Rule
  *
  * Additional Documentation:
- * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations-Rules
  *
  * ## Example Usage
  *
@@ -60,35 +60,35 @@ export class RouteAggregationRule extends pulumi.CustomResource {
     }
 
     /**
-     * Current state of latest route aggregation rule change
+     * Current state of latest Route Aggregation Rule change
      */
     public /*out*/ readonly change!: pulumi.Output<outputs.fabric.RouteAggregationRuleChange>;
     /**
-     * Details of the last change on the stream resource
+     * Details of the last change on the resource
      */
     public /*out*/ readonly changeLog!: pulumi.Output<outputs.fabric.RouteAggregationRuleChangeLog>;
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Equinix auto generated URI to the route aggregation rule resource
+     * Equinix auto generated URI to the Route Aggregation Rule resource
      */
     public /*out*/ readonly href!: pulumi.Output<string>;
     /**
-     * Customer provided name of the route aggregation rule
+     * Customer provided name of the Route Aggregation Rule
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Customer-provided route aggregation rule prefix
+     * Customer-provided Route Aggregation Rule prefix
      */
     public readonly prefix!: pulumi.Output<string>;
     /**
-     * UUID of the Route Aggregation to apply this Rule to
+     * UUID of the Route Aggregation that this rule is applied to
      */
     public readonly routeAggregationId!: pulumi.Output<string>;
     /**
-     * Value representing provisioning status for the route aggregation rule resource
+     * Value representing provisioning status for the Route Aggregation Rule resource
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.fabric.RouteAggregationRuleTimeouts | undefined>;
@@ -97,7 +97,7 @@ export class RouteAggregationRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * Equinix-assigned unique id for the route aggregation rule resource
+     * Equinix-assigned unique id for the Route Aggregation Rule resource
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
 
@@ -155,35 +155,35 @@ export class RouteAggregationRule extends pulumi.CustomResource {
  */
 export interface RouteAggregationRuleState {
     /**
-     * Current state of latest route aggregation rule change
+     * Current state of latest Route Aggregation Rule change
      */
     change?: pulumi.Input<inputs.fabric.RouteAggregationRuleChange>;
     /**
-     * Details of the last change on the stream resource
+     * Details of the last change on the resource
      */
     changeLog?: pulumi.Input<inputs.fabric.RouteAggregationRuleChangeLog>;
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      */
     description?: pulumi.Input<string>;
     /**
-     * Equinix auto generated URI to the route aggregation rule resource
+     * Equinix auto generated URI to the Route Aggregation Rule resource
      */
     href?: pulumi.Input<string>;
     /**
-     * Customer provided name of the route aggregation rule
+     * Customer provided name of the Route Aggregation Rule
      */
     name?: pulumi.Input<string>;
     /**
-     * Customer-provided route aggregation rule prefix
+     * Customer-provided Route Aggregation Rule prefix
      */
     prefix?: pulumi.Input<string>;
     /**
-     * UUID of the Route Aggregation to apply this Rule to
+     * UUID of the Route Aggregation that this rule is applied to
      */
     routeAggregationId?: pulumi.Input<string>;
     /**
-     * Value representing provisioning status for the route aggregation rule resource
+     * Value representing provisioning status for the Route Aggregation Rule resource
      */
     state?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.fabric.RouteAggregationRuleTimeouts>;
@@ -192,7 +192,7 @@ export interface RouteAggregationRuleState {
      */
     type?: pulumi.Input<string>;
     /**
-     * Equinix-assigned unique id for the route aggregation rule resource
+     * Equinix-assigned unique id for the Route Aggregation Rule resource
      */
     uuid?: pulumi.Input<string>;
 }
@@ -202,19 +202,19 @@ export interface RouteAggregationRuleState {
  */
 export interface RouteAggregationRuleArgs {
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      */
     description?: pulumi.Input<string>;
     /**
-     * Customer provided name of the route aggregation rule
+     * Customer provided name of the Route Aggregation Rule
      */
     name?: pulumi.Input<string>;
     /**
-     * Customer-provided route aggregation rule prefix
+     * Customer-provided Route Aggregation Rule prefix
      */
     prefix: pulumi.Input<string>;
     /**
-     * UUID of the Route Aggregation to apply this Rule to
+     * UUID of the Route Aggregation that this rule is applied to
      */
     routeAggregationId: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.fabric.RouteAggregationRuleTimeouts>;

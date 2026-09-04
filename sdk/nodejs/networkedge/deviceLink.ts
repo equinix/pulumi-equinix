@@ -16,8 +16,6 @@ import * as utilities from "../utilities";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const test = new equinix.networkedge.DeviceLink("test", {
- *     name: "test-DLG",
- *     projectId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     devices: [
  *         {
  *             id: testEquinixNetworkDevice.uuid,
@@ -42,6 +40,8 @@ import * as utilities from "../utilities";
  *             throughputUnit: "Mbps",
  *         },
  *     ],
+ *     name: "test-DLG",
+ *     projectId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  * });
  * ```
  *

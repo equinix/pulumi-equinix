@@ -104,7 +104,7 @@ public final class GetConnectionResult {
      */
     private GetConnectionProject project;
     /**
-     * @return Connection Redundancy Configuration
+     * @return Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     private GetConnectionRedundancy redundancy;
@@ -243,7 +243,7 @@ public final class GetConnectionResult {
         return this.project;
     }
     /**
-     * @return Connection Redundancy Configuration
+     * @return Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     public GetConnectionRedundancy redundancy() {

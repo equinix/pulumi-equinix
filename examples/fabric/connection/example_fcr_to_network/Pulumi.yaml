@@ -5,23 +5,23 @@ resources:
   fcr2network:
     type: equinix:fabric:Connection
     properties:
-      name: ConnectionName
-      type: IPWAN_VC
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          router:
+            uuid: <cloud_router_uuid>
+          type: CLOUD_ROUTER
+      zSide:
+        accessPoint:
+          network:
+            uuid: <network_uuid>
+          type: NETWORK
       notifications:
         - type: ALL
           emails:
             - example@equinix.com
             - test1@equinix.com
+      name: ConnectionName
+      type: IPWAN_VC
       bandwidth: 50
-      order:
-        purchaseOrderNumber: 1-323292
-      aSide:
-        accessPoint:
-          type: CLOUD_ROUTER
-          router:
-            uuid: <cloud_router_uuid>
-      zSide:
-        accessPoint:
-          type: NETWORK
-          network:
-            uuid: <network_uuid>

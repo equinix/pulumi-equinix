@@ -25,7 +25,19 @@ public class App {
             .metroCode("SV")
             .build());
 
-        var iNFOBLOXSV = new Device("iNFOBLOXSV", DeviceArgs.builder()
+        var infobloxSv = new Device("infobloxSv", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_INFOBLOX-Sec")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("adminPassword", "X.X.X.X"),
+                    Map.entry("ipAddress", "X.X.X.X"),
+                    Map.entry("subnetMaskIp", "X.X.X.X"),
+                    Map.entry("gatewayIp", "X.X.X.X")
+                ))
+                .build())
             .name("TF_INFOBLOX")
             .projectId("XXXXXXXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -45,18 +57,6 @@ public class App {
                 Map.entry("subnetMaskIp", "X.X.X.X"),
                 Map.entry("gatewayIp", "X.X.X.X")
             ))
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("TF_INFOBLOX-Sec")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .notifications("test@eq.com")
-                .vendorConfiguration(Map.ofEntries(
-                    Map.entry("adminPassword", "X.X.X.X"),
-                    Map.entry("ipAddress", "X.X.X.X"),
-                    Map.entry("subnetMaskIp", "X.X.X.X"),
-                    Map.entry("gatewayIp", "X.X.X.X")
-                ))
-                .build())
             .build());
 
     }

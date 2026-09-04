@@ -2584,7 +2584,7 @@ export namespace fabric {
          */
         projects: outputs.fabric.GetConnectionsDataProject[];
         /**
-         * Connection Redundancy Configuration
+         * Connection Redundancy Configuration (applicable only for Azure connections)
          */
         redundancies: outputs.fabric.GetConnectionsDataRedundancy[];
         /**
@@ -3466,7 +3466,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: string;
         /**
@@ -5246,7 +5246,7 @@ export namespace fabric {
 
     export interface GetRouteAggregationRuleChange {
         /**
-         * Equinix auto generated URI to the route aggregation change
+         * Equinix auto generated URI to the Route Aggregation Rule change
          */
         href: string;
         /**
@@ -5261,86 +5261,86 @@ export namespace fabric {
 
     export interface GetRouteAggregationRuleChangeLog {
         /**
-         * User name of creator of the stream resource
+         * User name of creator of the resource
          */
         createdBy: string;
         /**
-         * Email of creator of the stream resource
+         * Email of creator of the resource
          */
         createdByEmail: string;
         /**
-         * Legal name of creator of the stream resource
+         * Legal name of creator of the resource
          */
         createdByFullName: string;
         /**
-         * Creation time of the stream resource
+         * Creation time of the resource
          */
         createdDateTime: string;
         /**
-         * User name of deleter of the stream resource
+         * User name of deleter of the resource
          */
         deletedBy: string;
         /**
-         * Email of deleter of the stream resource
+         * Email of deleter of the resource
          */
         deletedByEmail: string;
         /**
-         * Legal name of deleter of the stream resource
+         * Legal name of deleter of the resource
          */
         deletedByFullName: string;
         /**
-         * Deletion time of the stream resource
+         * Deletion time of the resource
          */
         deletedDateTime: string;
         /**
-         * User name of last updater of the stream resource
+         * User name of last updater of the resource
          */
         updatedBy: string;
         /**
-         * Email of last updater of the stream resource
+         * Email of last updater of the resource
          */
         updatedByEmail: string;
         /**
-         * Legal name of last updater of the stream resource
+         * Legal name of last updater of the resource
          */
         updatedByFullName: string;
         /**
-         * Last update time of the stream resource
+         * Last update time of the resource
          */
         updatedDateTime: string;
     }
 
     export interface GetRouteAggregationRulesData {
         /**
-         * Current state of latest route aggregation rule change
+         * Current state of latest Route Aggregation Rule change
          */
         change: outputs.fabric.GetRouteAggregationRulesDataChange;
         /**
-         * Details of the last change on the stream resource
+         * Details of the last change on the resource
          */
         changeLog: outputs.fabric.GetRouteAggregationRulesDataChangeLog;
         /**
-         * Customer-provided route aggregation rule description
+         * Customer-provided Route Aggregation Rule description
          */
         description?: string;
         /**
-         * Equinix auto generated URI to the route aggregation rule resource
+         * Equinix auto generated URI to the Route Aggregation Rule resource
          */
         href: string;
         /**
-         * Customer provided name of the route aggregation rule
+         * Customer provided name of the Route Aggregation Rule
          */
         name: string;
         /**
-         * Customer-provided route aggregation rule prefix
+         * Customer-provided Route Aggregation Rule prefix
          */
         prefix: string;
         /**
-         * UUID of the Route Aggregation to apply this Rule to
+         * UUID of the Route Aggregation that the rule is applied to
          */
         routeAggregationId: string;
         /**
-         * Value representing provisioning status for the route aggregation rule resource
+         * Value representing provisioning status for the Route Aggregation Rule resource
          */
         state: string;
         /**
@@ -5348,14 +5348,14 @@ export namespace fabric {
          */
         type: string;
         /**
-         * Equinix-assigned unique id for the route aggregation rule resource
+         * Equinix-assigned unique id for the Route Aggregation Rule resource
          */
         uuid: string;
     }
 
     export interface GetRouteAggregationRulesDataChange {
         /**
-         * Equinix auto generated URI to the route aggregation change
+         * Equinix auto generated URI to the Route Aggregation Rule change
          */
         href: string;
         /**
@@ -5370,53 +5370,68 @@ export namespace fabric {
 
     export interface GetRouteAggregationRulesDataChangeLog {
         /**
-         * User name of creator of the stream resource
+         * User name of creator of the resource
          */
         createdBy: string;
         /**
-         * Email of creator of the stream resource
+         * Email of creator of the resource
          */
         createdByEmail: string;
         /**
-         * Legal name of creator of the stream resource
+         * Legal name of creator of the resource
          */
         createdByFullName: string;
         /**
-         * Creation time of the stream resource
+         * Creation time of the resource
          */
         createdDateTime: string;
         /**
-         * User name of deleter of the stream resource
+         * User name of deleter of the resource
          */
         deletedBy: string;
         /**
-         * Email of deleter of the stream resource
+         * Email of deleter of the resource
          */
         deletedByEmail: string;
         /**
-         * Legal name of deleter of the stream resource
+         * Legal name of deleter of the resource
          */
         deletedByFullName: string;
         /**
-         * Deletion time of the stream resource
+         * Deletion time of the resource
          */
         deletedDateTime: string;
         /**
-         * User name of last updater of the stream resource
+         * User name of last updater of the resource
          */
         updatedBy: string;
         /**
-         * Email of last updater of the stream resource
+         * Email of last updater of the resource
          */
         updatedByEmail: string;
         /**
-         * Legal name of last updater of the stream resource
+         * Legal name of last updater of the resource
          */
         updatedByFullName: string;
         /**
-         * Last update time of the stream resource
+         * Last update time of the resource
          */
         updatedDateTime: string;
+    }
+
+    export interface GetRouteAggregationRulesFilter {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
     }
 
     export interface GetRouteAggregationRulesPagination {
@@ -5437,9 +5452,20 @@ export namespace fabric {
          */
         previous: string;
         /**
-         * The total number of route agrgegation rules available to the user making the request
+         * The total number of Route Aggregation Rules available to the user making the request
          */
         total: number;
+    }
+
+    export interface GetRouteAggregationRulesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
     }
 
     export interface GetRouteAggregationsData {
@@ -5864,6 +5890,21 @@ export namespace fabric {
         updatedDateTime: string;
     }
 
+    export interface GetRouteFilterRulesFilter {
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, LIKE, NOT LIKE, IN, NOT IN, ILIKE]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [ /type, /name, /uuid, /state, /prefix]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
     export interface GetRouteFilterRulesPagination {
         /**
          * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
@@ -5885,6 +5926,17 @@ export namespace fabric {
          * Total number of elements returned.
          */
         total: number;
+    }
+
+    export interface GetRouteFilterRulesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/type /uuid /name /state /prefix /prefixMatch /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
     }
 
     export interface GetRouteFiltersData {
@@ -9967,7 +10019,7 @@ export namespace fabric {
 
     export interface RouteAggregationRuleChange {
         /**
-         * Equinix auto generated URI to the route aggregation change
+         * Equinix auto generated URI to the Route Aggregation Rule change
          */
         href: string;
         /**
@@ -9982,51 +10034,51 @@ export namespace fabric {
 
     export interface RouteAggregationRuleChangeLog {
         /**
-         * User name of creator of the stream resource
+         * User name of creator of the resource
          */
         createdBy: string;
         /**
-         * Email of creator of the stream resource
+         * Email of creator of the resource
          */
         createdByEmail: string;
         /**
-         * Legal name of creator of the stream resource
+         * Legal name of creator of the resource
          */
         createdByFullName: string;
         /**
-         * Creation time of the stream resource
+         * Creation time of the resource
          */
         createdDateTime: string;
         /**
-         * User name of deleter of the stream resource
+         * User name of deleter of the resource
          */
         deletedBy: string;
         /**
-         * Email of deleter of the stream resource
+         * Email of deleter of the resource
          */
         deletedByEmail: string;
         /**
-         * Legal name of deleter of the stream resource
+         * Legal name of deleter of the resource
          */
         deletedByFullName: string;
         /**
-         * Deletion time of the stream resource
+         * Deletion time of the resource
          */
         deletedDateTime: string;
         /**
-         * User name of last updater of the stream resource
+         * User name of last updater of the resource
          */
         updatedBy: string;
         /**
-         * Email of last updater of the stream resource
+         * Email of last updater of the resource
          */
         updatedByEmail: string;
         /**
-         * Legal name of last updater of the stream resource
+         * Legal name of last updater of the resource
          */
         updatedByFullName: string;
         /**
-         * Last update time of the stream resource
+         * Last update time of the resource
          */
         updatedDateTime: string;
     }

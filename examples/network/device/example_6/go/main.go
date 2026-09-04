@@ -11,7 +11,7 @@ func main() {
 			Name:      pulumi.String("account-name"),
 			MetroCode: pulumi.String("SV"),
 		}, nil)
-		testPublicKey, err := networkedge.NewSshKey(ctx, "testPublicKey", &networkedge.SshKeyArgs{
+		testPublicKey, err := networkedge.NewSshKey(ctx, "test_public_key", &networkedge.SshKeyArgs{
 			Name:      pulumi.String("key-name"),
 			PublicKey: pulumi.String("ssh-dss key-value"),
 			Type:      pulumi.String("DSA"),
@@ -19,7 +19,25 @@ func main() {
 		if err != nil {
 			return err
 		}
-		_, err = networkedge.NewDevice(ctx, "aristaHa", &networkedge.DeviceArgs{
+		_, err = networkedge.NewDevice(ctx, "arista_ha", &networkedge.DeviceArgs{
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test-username"),
+				KeyName:  testPublicKey.Name,
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("tf-arista-s"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				Hostname: pulumi.String("arista-s"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				AclTemplateId: pulumi.String("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138"),
+			},
 			Name: pulumi.String("tf-arista-p"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 				return &sv.MetroCode, nil
@@ -40,25 +58,7 @@ func main() {
 			CoreCount:           pulumi.Int(4),
 			TermLength:          pulumi.Int(12),
 			AdditionalBandwidth: pulumi.Int(5),
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test-username"),
-				KeyName:  testPublicKey.Name,
-			},
-			AclTemplateId: pulumi.String("c637a17b-7a6a-4486-924b-30e6c36904b0"),
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name: pulumi.String("tf-arista-s"),
-				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.MetroCode, nil
-				}).(pulumi.StringPtrOutput),
-				Hostname: pulumi.String("arista-s"),
-				Notifications: pulumi.StringArray{
-					pulumi.String("test@eq.com"),
-				},
-				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.Number, nil
-				}).(pulumi.StringPtrOutput),
-				AclTemplateId: pulumi.String("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138"),
-			},
+			AclTemplateId:       pulumi.String("c637a17b-7a6a-4486-924b-30e6c36904b0"),
 		})
 		if err != nil {
 			return err

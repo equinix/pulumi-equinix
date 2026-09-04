@@ -74,7 +74,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsDataProjectResult> Projects;
         /// <summary>
-        /// Connection Redundancy Configuration
+        /// Connection Redundancy Configuration (applicable only for Azure connections)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsDataRedundancyResult> Redundancies;
         /// <summary>
