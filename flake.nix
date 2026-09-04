@@ -13,8 +13,6 @@
       devShells.${system} = rec {
         default = mkShell { 
 	shellHook = ''
-	export USER=tng1
-	export HOME=/Users/tng1
 	export SSL_CERT_FILE=/Users/tng1/nix-ca-bundle.pem
 	dotnet nuget update source nuget.org --source https://nexus.equinix.com/repository/nuget.org-proxy/index.json
 	'';
