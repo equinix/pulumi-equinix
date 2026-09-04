@@ -72,35 +72,30 @@ generate_sdks build_sdks: clean build_nodejs build_python build_go build_dotnet 
 build_nodejs: upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	echo "patch_nodejs: find and replace wrong imports in examples" && \
-		find ./sdk/nodejs/ -mindepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
+		find ./sdk/nodejs/ -mindepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
 	echo "patch_nodejs: delete duplicate imports in examples" && \
-		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -exec sed -i.bak '/@${ORG}-labs\/${NODE_PACK}/N;/^\(.*\)\n\1$$/!P; D' {} \;
+		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -exec sed -i '/@${ORG}-labs\/${NODE_PACK}/N;/^\(.*\)\n\1$$/!P; D' {} \;
 	echo "patch_nodejs: fix relative imports in subdirectory modules (codegen bug)" && \
-		find ./sdk/nodejs/ -mindepth 2 -maxdepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
-	echo "patch_nodejs: remove backup files" && \
-		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
+		find ./sdk/nodejs/ -mindepth 2 -maxdepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i 's|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
 	cd sdk/nodejs/ && \
 		printf "module fake_nodejs_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
         yarn install --registry https://nexus.corp.equinix.com/nexus/content/groups/Equinix-NPM-Release/ && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(NODEJS_VERSION)/g" ./bin/package.json
+		sed -i -e "s/\$${VERSION}/$(NODEJS_VERSION)/g" ./bin/package.json
 
 build_python: upstream $(PULUMICTL_BIN)
 	rm -rf sdk/python/
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	echo "patch_python: fix relative _utilities import in subpackage modules (codegen bug)" && \
 		find ./sdk/python/pulumi_equinix -mindepth 2 -maxdepth 2 -type f \( -name "*.py" -o -name "*.pyi" \) -print \
-			-exec sed -i.bak 's/^from \. import _utilities$$/from .. import _utilities/' {} \;
-	echo "patch_python: remove backup files" && \
-		find ./sdk/python/pulumi_equinix -mindepth 2 -maxdepth 2 -type f \( -name "*.py.bak" -o -name "*.pyi.bak" \) -exec /bin/rm {} \;
+			-exec sed -i 's/^from \. import _utilities$$/from .. import _utilities/' {} \;
 	cd sdk/python/ && \
 		printf "module fake_python_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
         cp ../../README.md . && \
         python3 setup.py clean --all 2>/dev/null && \
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-        sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
-        rm ./bin/setup.py.bak && \
+        sed -i -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
         cd ./bin && python3 setup.py build sdist
 
 build_dotnet: upstream $(PULUMICTL_BIN)
@@ -119,37 +114,30 @@ build_java: bin/pulumi-java-gen patch_java_schema upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 	echo "patch_java: find and replace invocations of pulumi:fabric/metal/networkedge" && \
-		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java" -print -exec sed -i.bak 's/pulumi:fabric/equinix:fabric/g; s/pulumi:metal/equinix:metal/g; s/pulumi:networkedge/equinix:networkedge/g' {} \;
-	echo "patch_java: remove backup files" && \
-		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java.bak" -exec /bin/rm {} \;
+		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java" -print -exec sed -i 's/pulumi:fabric/equinix:fabric/g; s/pulumi:metal/equinix:metal/g; s/pulumi:networkedge/equinix:networkedge/g' {} \;
 	echo "patch_java: replace pulumi provider refs added in patch_java_schema" && \
 		cd sdk/java/src/main/java/com/equinix/pulumi/ && \
-		sed -i.bak -e 's/pulumi:providers:pulumi/pulumi:providers:equinix/g' \
+		sed -i -e 's/pulumi:providers:pulumi/pulumi:providers:equinix/g' \
 			-e 's/"pulumi", name/"equinix", name/g' ./Provider.java && \
-		rm -f Provider.java.bak && \
-		sed -i.bak -e 's/"pulumi"/"equinix"/g' ./Config.java && \
-		rm -f Config.java.bak && \
-		sed -i.bak -e 's/pulumi\/pulumi/equinix\/pulumi/g' ./Utilities.java && \
-		rm -f Utilities.java.bak
+		sed -i -e 's/"pulumi"/"equinix"/g' ./Config.java && \
+		sed -i -e 's/pulumi\/pulumi/equinix\/pulumi/g' ./Utilities.java
 	echo "patch_java: update gradle info" && \
 		cd ./sdk/java/ && \
 		awk '/def resolvedVersion/ && !x {print "group = \"$(JAVA_GROUP_ID)\"\n";x=1}1' ./build.gradle > ./build.gradle.tmp && \
 		mv build.gradle.tmp build.gradle && \
-		sed -i.bak -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' \
+		sed -i -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' \
 			-e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' \
 			-e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' \
 			-e 's/inceptionYear = .*/inceptionYear = "2023"/g' \
 			-e 's/description = .*/description = "A Pulumi package for creating and managing equinix cloud resources."/g' ./build.gradle && \
-		sed -i.bak -E '/inceptionYear/,/packaging/s/(name = ).*/\1"$(PACK)"/' ./build.gradle && \
-		rm -f build.gradle.bak
+		sed -i -E '/inceptionYear/,/packaging/s/(name = ).*/\1"$(PACK)"/' ./build.gradle
 	echo "patch_java: add mavenLocal to settings.gradle for local plugin resolution" && \
 		awk '/repositories \{/ && !x {print; print "    mavenLocal()"; x=1; next}1' \
 			./sdk/java/settings.gradle > ./sdk/java/settings.gradle.tmp && \
 		mv ./sdk/java/settings.gradle.tmp ./sdk/java/settings.gradle
 	echo "patch_java: remove nexus publish plugin" && \
-		sed -i.bak '/io.github.gradle-nexus.publish-plugin/d' \
-		sdk/java/build.gradle && \
-		rm -f sdk/java/build.gradle.bak
+		sed -i '/io.github.gradle-nexus.publish-plugin/d' \
+		sdk/java/build.gradle
 	cd sdk/java/ && \
 		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		gradle --console=plain build && \
@@ -159,13 +147,12 @@ patch_java_schema:
 	echo "patch_java_schema: copy schema.json to schema-java.json " && \
 		cp provider/cmd/$(PROVIDER)/schema.json provider/cmd/$(PROVIDER)/schema-java.json
 	echo "patch_java_schema: update schema-java.json to generate the SDK with pulumi as root package" && \
-		sed -i.bak -e 's/"name": "equinix",/"name": "pulumi",/g' \
+		sed -i -e 's/"name": "equinix",/"name": "pulumi",/g' \
 			-e 's/equinix:index/pulumi:index/g' \
 			-e 's/"equinix": "Equinix",/"pulumi": "Pulumi",/g' \
 			-e 's/equinix:metal/pulumi:metal/g' \
 			-e 's/equinix:fabric/pulumi:fabric/g' \
-			-e 's/equinix:networkedge/pulumi:networkedge/g' ./provider/cmd/$(PROVIDER)/schema-java.json && \
-		rm -f ./provider/cmd/$(PROVIDER)/schema-java.json.bak
+			-e 's/equinix:networkedge/pulumi:networkedge/g' ./provider/cmd/$(PROVIDER)/schema-java.json 
 
 lint_provider: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
