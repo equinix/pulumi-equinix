@@ -89,6 +89,11 @@ build_nodejs: upstream $(PULUMICTL_BIN)
 build_python: upstream $(PULUMICTL_BIN)
 	rm -rf sdk/python/
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
+	echo "patch_python: fix relative _utilities import in subpackage modules (codegen bug)" && \
+		find ./sdk/python/pulumi_equinix -mindepth 2 -maxdepth 2 -type f \( -name "*.py" -o -name "*.pyi" \) -print \
+			-exec sed -i.bak 's/^from \. import _utilities$$/from .. import _utilities/' {} \;
+	echo "patch_python: remove backup files" && \
+		find ./sdk/python/pulumi_equinix -mindepth 2 -maxdepth 2 -type f \( -name "*.py.bak" -o -name "*.pyi.bak" \) -exec /bin/rm {} \;
 	cd sdk/python/ && \
 		printf "module fake_python_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
         cp ../../README.md . && \
