@@ -1,13 +1,23 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.202.3/containers/hugo
 {
-  "name": "TFProvider",
+  "name": "Provider Dev Container",
   "build": {
-      "dockerfile": "Dockerfile",
-      "options": ["--platform=linux/amd64" ]
+    "dockerfile": "./Dockerfile",
+    "context": ".."
   },
-  "runArgs": ["--platform=linux/amd64" ],
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": []
+    }
+  },
   "mounts": [
-    "type=bind,source=${localEnv:HOME}/.ssh,target=/root/.ssh,readonly"
-  ]
+    "source=${localWorkspaceFolder}/.devcontainer/pulumi-dev.crt,target=/usr/local/share/ca-certificates/pulumi-dev.crt,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "sudo update-ca-certificates",
+  "remoteUser": "root",
+  "containerEnv": {
+    "NODE_EXTRA_CA_CERTS": "/usr/local/share/ca-certificates/pulumi-dev.crt",
+    "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt",
+    "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt"
+  }
 }
