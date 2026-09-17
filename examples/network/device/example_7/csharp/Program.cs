@@ -11,39 +11,15 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var testPublicKey = new Equinix.NetworkEdge.SshKey("testPublicKey", new()
+    var testPublicKey = new Equinix.NetworkEdge.SshKey("test_public_key", new()
     {
         Name = "key-name",
         PublicKey = "ssh-dss key-value",
         Type = "DSA",
     });
 
-    var bluecatBddsHa = new Equinix.NetworkEdge.Device("bluecatBddsHa", new()
+    var bluecatBddsHa = new Equinix.NetworkEdge.Device("bluecat_bdds_ha", new()
     {
-        Name = "tf-bluecat-bdds-p",
-        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-        TypeCode = "BLUECAT",
-        SelfManaged = true,
-        Connectivity = "PRIVATE",
-        Byol = true,
-        PackageCode = "STD",
-        Notifications = new[]
-        {
-            "test@equinix.com",
-        },
-        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-        Version = "9.6.0",
-        CoreCount = 2,
-        TermLength = 12,
-        VendorConfiguration = 
-        {
-            { "hostname", "test" },
-            { "privateAddress", "x.x.x.x" },
-            { "privateCidrMask", "24" },
-            { "privateGateway", "x.x.x.x" },
-            { "licenseKey", "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" },
-            { "licenseId", "xxxxxxxxxxxxxxx" },
-        },
         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
         {
             Username = "test-username",
@@ -67,6 +43,30 @@ return await Deployment.RunAsync(() =>
                 { "licenseKey", "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" },
                 { "licenseId", "xxxxxxxxxxxxxxx" },
             },
+        },
+        Name = "tf-bluecat-bdds-p",
+        MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+        TypeCode = "BLUECAT",
+        SelfManaged = true,
+        Connectivity = "PRIVATE",
+        Byol = true,
+        PackageCode = "STD",
+        Notifications = new[]
+        {
+            "test@equinix.com",
+        },
+        AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+        Version = "9.6.0",
+        CoreCount = 2,
+        TermLength = 12,
+        VendorConfiguration = 
+        {
+            { "hostname", "test" },
+            { "privateAddress", "x.x.x.x" },
+            { "privateCidrMask", "24" },
+            { "privateGateway", "x.x.x.x" },
+            { "licenseKey", "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" },
+            { "licenseId", "xxxxxxxxxxxxxxx" },
         },
     });
 

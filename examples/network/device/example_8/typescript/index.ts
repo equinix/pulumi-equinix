@@ -7,7 +7,7 @@ const sv = equinix.networkedge.getAccountOutput({
     name: "account-name",
     metroCode: "SV",
 });
-const bluecatEdgeServicePointCloudinitPrimaryFile = new equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitPrimaryFile", {
+const bluecatEdgeServicePointCloudinitPrimaryFile = new equinix.networkedge.NetworkFile("bluecat_edge_service_point_cloudinit_primary_file", {
     fileName: "TF-BLUECAT-ESP-cloud-init-file.txt",
     content: std.fileOutput({
         input: filepath,
@@ -18,7 +18,7 @@ const bluecatEdgeServicePointCloudinitPrimaryFile = new equinix.networkedge.Netw
     selfManaged: true,
     byol: true,
 });
-const bluecatEdgeServicePointCloudinitSecondaryFile = new equinix.networkedge.NetworkFile("bluecatEdgeServicePointCloudinitSecondaryFile", {
+const bluecatEdgeServicePointCloudinitSecondaryFile = new equinix.networkedge.NetworkFile("bluecat_edge_service_point_cloudinit_secondary_file", {
     fileName: "TF-BLUECAT-ESP-cloud-init-file.txt",
     content: std.fileOutput({
         input: filepath,
@@ -29,7 +29,14 @@ const bluecatEdgeServicePointCloudinitSecondaryFile = new equinix.networkedge.Ne
     selfManaged: true,
     byol: true,
 });
-const bluecatEdgeServicePointHa = new equinix.networkedge.Device("bluecatEdgeServicePointHa", {
+const bluecatEdgeServicePointHa = new equinix.networkedge.Device("bluecat_edge_service_point_ha", {
+    secondaryDevice: {
+        name: "tf-bluecat-edge-service-point-s",
+        metroCode: sv.apply(sv => sv.metroCode),
+        notifications: ["test@eq.com"],
+        accountNumber: sv.apply(sv => sv.number),
+        cloudInitFileId: bluecatEdgeServicePointCloudinitSecondaryFile.uuid,
+    },
     name: "tf-bluecat-edge-service-point-p",
     metroCode: sv.apply(sv => sv.metroCode),
     typeCode: "BLUECAT-EDGE-SERVICE-POINT",
@@ -43,11 +50,4 @@ const bluecatEdgeServicePointHa = new equinix.networkedge.Device("bluecatEdgeSer
     version: "4.6.3",
     coreCount: 4,
     termLength: 12,
-    secondaryDevice: {
-        name: "tf-bluecat-edge-service-point-s",
-        metroCode: sv.apply(sv => sv.metroCode),
-        notifications: ["test@eq.com"],
-        accountNumber: sv.apply(sv => sv.number),
-        cloudInitFileId: bluecatEdgeServicePointCloudinitSecondaryFile.uuid,
-    },
 });

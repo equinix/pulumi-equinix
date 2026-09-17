@@ -140,7 +140,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly Outputs.GetConnectionProjectResult Project;
         /// <summary>
-        /// Connection Redundancy Configuration
+        /// Connection Redundancy Configuration (applicable only for Azure connections)
         /// </summary>
         public readonly Outputs.GetConnectionRedundancyResult Redundancy;
         /// <summary>

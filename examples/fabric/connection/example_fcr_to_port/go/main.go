@@ -9,32 +9,19 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := fabric.NewConnection(ctx, "fcr2port", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String("IP_VC"),
-			Notifications: fabric.ConnectionNotificationArray{
-				&fabric.ConnectionNotificationArgs{
-					Type: pulumi.String(fabric.NotificationsTypeAll),
-					Emails: pulumi.StringArray{
-						pulumi.String("example@equinix.com"),
-						pulumi.String("test1@equinix.com"),
-					},
-				},
-			},
-			Bandwidth: pulumi.Int(50),
 			Order: &fabric.ConnectionOrderArgs{
 				PurchaseOrderNumber: pulumi.String("1-323292"),
 			},
 			ASide: &fabric.ConnectionASideArgs{
 				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String("CLOUD_ROUTER"),
 					Router: &fabric.ConnectionASideAccessPointRouterArgs{
 						Uuid: pulumi.String("<cloud_router_uuid>"),
 					},
+					Type: pulumi.String("CLOUD_ROUTER"),
 				},
 			},
 			ZSide: &fabric.ConnectionZSideArgs{
 				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeColo),
 					Port: &fabric.ConnectionZSideAccessPointPortArgs{
 						Uuid: pulumi.String("<port_uuid>"),
 					},
@@ -45,8 +32,21 @@ func main() {
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 						MetroCode: pulumi.String(equinix.MetroSiliconValley),
 					},
+					Type: pulumi.String(fabric.AccessPointTypeColo),
 				},
 			},
+			Notifications: fabric.ConnectionNotificationArray{
+				&fabric.ConnectionNotificationArgs{
+					Type: pulumi.String(fabric.NotificationsTypeAll),
+					Emails: pulumi.StringArray{
+						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
+					},
+				},
+			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String("IP_VC"),
+			Bandwidth: pulumi.Int(50),
 		})
 		if err != nil {
 			return err

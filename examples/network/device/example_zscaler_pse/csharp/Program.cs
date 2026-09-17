@@ -12,6 +12,11 @@ return await Deployment.RunAsync(() =>
 
     var zscalerPseSingle = new Equinix.NetworkEdge.Device("zscaler-pse-single", new()
     {
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test",
+            KeyName = "test-key",
+        },
         Name = "tf-zscaler-pse",
         ProjectId = "XXXXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -35,11 +40,6 @@ return await Deployment.RunAsync(() =>
         {
             { "provisioningKey", "XXXXXXXXXX" },
             { "hostname", "XXXX" },
-        },
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test",
-            KeyName = "test-key",
         },
     });
 

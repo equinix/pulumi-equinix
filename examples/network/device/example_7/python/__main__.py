@@ -3,11 +3,29 @@ import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(name="account-name",
     metro_code="SV")
-test_public_key = equinix.networkedge.SshKey("testPublicKey",
+test_public_key = equinix.networkedge.SshKey("test_public_key",
     name="key-name",
     public_key="ssh-dss key-value",
     type="DSA")
-bluecat_bdds_ha = equinix.networkedge.Device("bluecatBddsHa",
+bluecat_bdds_ha = equinix.networkedge.Device("bluecat_bdds_ha",
+    ssh_key={
+        "username": "test-username",
+        "key_name": test_public_key.name,
+    },
+    secondary_device={
+        "name": "tf-bluecat-bdds-s",
+        "metro_code": sv.metro_code,
+        "notifications": ["test@eq.com"],
+        "account_number": sv.number,
+        "vendor_configuration": {
+            "hostname": "test",
+            "privateAddress": "x.x.x.x",
+            "privateCidrMask": "24",
+            "privateGateway": "x.x.x.x",
+            "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
+            "licenseId": "xxxxxxxxxxxxxxx",
+        },
+    },
     name="tf-bluecat-bdds-p",
     metro_code=sv.metro_code,
     type_code="BLUECAT",
@@ -27,22 +45,4 @@ bluecat_bdds_ha = equinix.networkedge.Device("bluecatBddsHa",
         "privateGateway": "x.x.x.x",
         "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
         "licenseId": "xxxxxxxxxxxxxxx",
-    },
-    ssh_key={
-        "username": "test-username",
-        "key_name": test_public_key.name,
-    },
-    secondary_device={
-        "name": "tf-bluecat-bdds-s",
-        "metro_code": sv.metro_code,
-        "notifications": ["test@eq.com"],
-        "account_number": sv.number,
-        "vendor_configuration": {
-            "hostname": "test",
-            "privateAddress": "x.x.x.x",
-            "privateCidrMask": "24",
-            "privateGateway": "x.x.x.x",
-            "licenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx",
-            "licenseId": "xxxxxxxxxxxxxxx",
-        },
     })

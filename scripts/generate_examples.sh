@@ -283,7 +283,7 @@ generate_examples_and_docs() {
         .pulumi/bin/pulumi convert --cwd "$PULUMI_DIR" --language python --out python --generate-only || true
         .pulumi/bin/pulumi convert --cwd "$PULUMI_DIR" --language typescript --out typescript --generate-only || true
         .pulumi/bin/pulumi convert --cwd "$PULUMI_DIR" --language java --out java --generate-only || true
-        .pulumi/bin/pulumi convert --cwd "$PULUMI_DIR" --language go --out go || true
+        .pulumi/bin/pulumi convert --cwd "$PULUMI_DIR" --language go --out go --generate-only || true
         .pulumi/bin/pulumi convert --cwd "$PULUMI_DIR" --language csharp --out csharp --generate-only || true
 
         if [ -z "$(find $PULUMI_DIR/* -empty -type d 2>/dev/null)" ]; then

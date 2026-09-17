@@ -43,9 +43,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.ServiceProfile;
  * import com.pulumi.equinix.fabric.ServiceProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
  * import com.pulumi.equinix.fabric.inputs.ServiceProfileNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ServiceProfilePortArgs;
- * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,6 +60,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var newServiceProfile = new ServiceProfile("newServiceProfile", ServiceProfileArgs.builder()
+ *             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
+ *                 .type("COLO")
+ *                 .allowRemoteConnections(true)
+ *                 .allowCustomBandwidth(true)
+ *                 .allowBandwidthAutoApproval(false)
+ *                 .connectionRedundancyRequired(false)
+ *                 .connectionLabel("Service Profile Tag1")
+ *                 .bandwidthAlertThreshold(10.0)
+ *                 .supportedBandwidths(                
+ *                     100,
+ *                     500)
+ *                 .build())
  *             .description("Service Profile for Receiving Connections")
  *             .name("Name Of Business + Use Case Tag")
  *             .type("L2_PROFILE")
@@ -74,18 +86,6 @@ import javax.annotation.Nullable;
  *             .ports(ServiceProfilePortArgs.builder()
  *                 .uuid("c791f8cb-5cc9-cc90-8ce0-306a5c00a4ee")
  *                 .type("XF_PORT")
- *                 .build())
- *             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
- *                 .type("COLO")
- *                 .allowRemoteConnections(true)
- *                 .allowCustomBandwidth(true)
- *                 .allowBandwidthAutoApproval(false)
- *                 .connectionRedundancyRequired(false)
- *                 .connectionLabel("Service Profile Tag1")
- *                 .bandwidthAlertThreshold(10.0)
- *                 .supportedBandwidths(                
- *                     100,
- *                     500)
  *                 .build())
  *             .build());
  * 

@@ -11,7 +11,7 @@ func main() {
 			Name:      pulumi.String("account-name"),
 			MetroCode: pulumi.String("SV"),
 		}, nil)
-		testPublicKey, err := networkedge.NewSshKey(ctx, "testPublicKey", &networkedge.SshKeyArgs{
+		testPublicKey, err := networkedge.NewSshKey(ctx, "test_public_key", &networkedge.SshKeyArgs{
 			Name:      pulumi.String("key-name"),
 			PublicKey: pulumi.String("ssh-dss key-value"),
 			Type:      pulumi.String("DSA"),
@@ -19,7 +19,31 @@ func main() {
 		if err != nil {
 			return err
 		}
-		_, err = networkedge.NewDevice(ctx, "bluecatBddsHa", &networkedge.DeviceArgs{
+		_, err = networkedge.NewDevice(ctx, "bluecat_bdds_ha", &networkedge.DeviceArgs{
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test-username"),
+				KeyName:  testPublicKey.Name,
+			},
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("tf-bluecat-bdds-s"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				VendorConfiguration: pulumi.StringMap{
+					"hostname":        pulumi.String("test"),
+					"privateAddress":  pulumi.String("x.x.x.x"),
+					"privateCidrMask": pulumi.String("24"),
+					"privateGateway":  pulumi.String("x.x.x.x"),
+					"licenseKey":      pulumi.String("xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
+					"licenseId":       pulumi.String("xxxxxxxxxxxxxxx"),
+				},
+			},
 			Name: pulumi.String("tf-bluecat-bdds-p"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 				return &sv.MetroCode, nil
@@ -45,30 +69,6 @@ func main() {
 				"privateGateway":  pulumi.String("x.x.x.x"),
 				"licenseKey":      pulumi.String("xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
 				"licenseId":       pulumi.String("xxxxxxxxxxxxxxx"),
-			},
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test-username"),
-				KeyName:  testPublicKey.Name,
-			},
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name: pulumi.String("tf-bluecat-bdds-s"),
-				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.MetroCode, nil
-				}).(pulumi.StringPtrOutput),
-				Notifications: pulumi.StringArray{
-					pulumi.String("test@eq.com"),
-				},
-				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.Number, nil
-				}).(pulumi.StringPtrOutput),
-				VendorConfiguration: pulumi.StringMap{
-					"hostname":        pulumi.String("test"),
-					"privateAddress":  pulumi.String("x.x.x.x"),
-					"privateCidrMask": pulumi.String("24"),
-					"privateGateway":  pulumi.String("x.x.x.x"),
-					"licenseKey":      pulumi.String("xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"),
-					"licenseId":       pulumi.String("xxxxxxxxxxxxxxx"),
-				},
 			},
 		})
 		if err != nil {

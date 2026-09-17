@@ -17,7 +17,7 @@ env:
   PR_COMMIT_SHA: ${{ github.event.client_payload.pull_request.head.sha }}
   DOTNETVERSION: 7.0.x
   JAVAVERSION: "11"
-  NODEVERSION: 20.x
+  NODEVERSION: 22.x
   PYTHONVERSION: "3.9"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # TODO
@@ -53,6 +53,8 @@ jobs:
         cache-dependency-path: |
             sdk/go.sum
         go-version-file: provider/go.mod
+    - name: Install goimports
+      run: go install golang.org/x/tools/cmd/goimports@latest
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:

@@ -16,14 +16,14 @@ public final class GetRouteAggregationRulePlainArgs extends com.pulumi.resources
     public static final GetRouteAggregationRulePlainArgs Empty = new GetRouteAggregationRulePlainArgs();
 
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      * 
      */
     @Import(name="description")
     private @Nullable String description;
 
     /**
-     * @return Customer-provided route aggregation rule description
+     * @return Customer-provided Route Aggregation Rule description
      * 
      */
     public Optional<String> description() {
@@ -31,14 +31,14 @@ public final class GetRouteAggregationRulePlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The uuid of the route aggregation this data source should retrieve
+     * The UUID of the Route Aggregation this data source should retrieve
      * 
      */
     @Import(name="routeAggregationId", required=true)
     private String routeAggregationId;
 
     /**
-     * @return The uuid of the route aggregation this data source should retrieve
+     * @return The UUID of the Route Aggregation this data source should retrieve
      * 
      */
     public String routeAggregationId() {
@@ -46,14 +46,14 @@ public final class GetRouteAggregationRulePlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation Rule this data source should retrieve
      * 
      */
     @Import(name="routeAggregationRuleId", required=true)
     private String routeAggregationRuleId;
 
     /**
-     * @return The uuid of the route aggregation rule this data source should retrieve
+     * @return The UUID of the Route Aggregation Rule this data source should retrieve
      * 
      */
     public String routeAggregationRuleId() {
@@ -87,7 +87,7 @@ public final class GetRouteAggregationRulePlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param description Customer-provided route aggregation rule description
+         * @param description Customer-provided Route Aggregation Rule description
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GetRouteAggregationRulePlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param routeAggregationId The uuid of the route aggregation this data source should retrieve
+         * @param routeAggregationId The UUID of the Route Aggregation this data source should retrieve
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class GetRouteAggregationRulePlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param routeAggregationRuleId The uuid of the route aggregation rule this data source should retrieve
+         * @param routeAggregationRuleId The UUID of the Route Aggregation Rule this data source should retrieve
          * 
          * @return builder
          * 

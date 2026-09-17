@@ -26,7 +26,17 @@ public class App {
             .name("account-name")
             .build());
 
-        var fTNTFIREWALLSV = new Device("fTNTFIREWALLSV", DeviceArgs.builder()
+        var ftntFirewallSv = new Device("ftntFirewallSv", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_FTNT-FIREWALL-secondary")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .hostname("fg-vm-znpd")
+                .notifications(                
+                    "john@equinix.com",
+                    "marry@equinix.com")
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .vendorConfiguration(Map.of("ipAddressType", "NO_IP_ADDRESS"))
+                .build())
             .name("TF_FTNT-FIREWALL")
             .projectId("XXXXXXXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -43,16 +53,6 @@ public class App {
             .coreCount(2)
             .termLength(1)
             .vendorConfiguration(Map.of("ipAddressType", "NO_IP_ADDRESS"))
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("TF_FTNT-FIREWALL-secondary")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .hostname("fg-vm-znpd")
-                .notifications(                
-                    "john@equinix.com",
-                    "marry@equinix.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .vendorConfiguration(Map.of("ipAddressType", "NO_IP_ADDRESS"))
-                .build())
             .build());
 
     }

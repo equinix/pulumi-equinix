@@ -5,6 +5,17 @@ resources:
   FTNT-FIREWALL-SV:
     type: equinix:networkedge:Device
     properties:
+      secondaryDevice:
+        name: TF_FTNT-FIREWALL-secondary
+        metroCode: ${sv.metroCode}
+        hostname: fg-vm-znpd
+        notifications:
+          - john@equinix.com
+          - marry@equinix.com
+        accountNumber: ${sv.number}
+        vendorConfiguration:
+          ipAddressType: DHCP
+          managementInterfaceId: '6'
       name: TF_FTNT-FIREWALL
       projectId: XXXXXXXXXX
       metroCode: ${sv.metroCode}
@@ -24,17 +35,6 @@ resources:
       vendorConfiguration:
         ipAddressType: DHCP
         managementInterfaceId: '6'
-      secondaryDevice:
-        name: TF_FTNT-FIREWALL-secondary
-        metroCode: ${sv.metroCode}
-        hostname: fg-vm-znpd
-        notifications:
-          - john@equinix.com
-          - marry@equinix.com
-        accountNumber: ${sv.number}
-        vendorConfiguration:
-          ipAddressType: DHCP
-          managementInterfaceId: '6'
 variables:
   # Create Fortinet VM firewall ha device with connectivity PRIVATE and IP Address Type as DHCP
   sv:

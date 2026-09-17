@@ -11,6 +11,10 @@ func main() {
 			MetroCode: pulumi.String("SV"),
 		}, nil)
 		_, err := networkedge.NewDevice(ctx, "zscaler-pse-single", &networkedge.DeviceArgs{
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
 			Name:      pulumi.String("tf-zscaler-pse"),
 			ProjectId: pulumi.String("XXXXXX"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -36,10 +40,6 @@ func main() {
 			VendorConfiguration: pulumi.StringMap{
 				"provisioningKey": pulumi.String("XXXXXXXXXX"),
 				"hostname":        pulumi.String("XXXX"),
-			},
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test"),
-				KeyName:  pulumi.String("test-key"),
 			},
 		})
 		if err != nil {

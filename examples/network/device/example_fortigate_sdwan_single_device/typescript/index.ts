@@ -5,7 +5,7 @@ import * as equinix from "@pulumi/equinix";
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const fTNTSDWANSV = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
+const ftntSdwanSv = new equinix.networkedge.Device("FTNT-SDWAN-SV", {
     name: "TF_FTNT-SDWAN",
     projectId: "XXXXXXXXXX",
     metroCode: sv.apply(sv => sv.metroCode),

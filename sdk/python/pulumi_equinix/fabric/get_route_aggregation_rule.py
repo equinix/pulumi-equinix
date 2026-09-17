@@ -69,7 +69,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter
     def change(self) -> 'outputs.GetRouteAggregationRuleChangeResult':
         """
-        Current state of latest route aggregation rule change
+        Current state of latest Route Aggregation Rule change
         """
         return pulumi.get(self, "change")
 
@@ -77,7 +77,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter(name="changeLog")
     def change_log(self) -> 'outputs.GetRouteAggregationRuleChangeLogResult':
         """
-        Details of the last change on the stream resource
+        Details of the last change on the resource
         """
         return pulumi.get(self, "change_log")
 
@@ -85,7 +85,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Customer-provided route aggregation rule description
+        Customer-provided Route Aggregation Rule description
         """
         return pulumi.get(self, "description")
 
@@ -93,7 +93,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter
     def href(self) -> str:
         """
-        Equinix auto generated URI to the route aggregation rule resource
+        Equinix auto generated URI to the Route Aggregation Rule resource
         """
         return pulumi.get(self, "href")
 
@@ -109,7 +109,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Customer provided name of the route aggregation rule
+        Customer provided name of the Route Aggregation Rule
         """
         return pulumi.get(self, "name")
 
@@ -117,7 +117,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter
     def prefix(self) -> str:
         """
-        Customer-provided route aggregation rule prefix
+        Customer-provided Route Aggregation Rule prefix
         """
         return pulumi.get(self, "prefix")
 
@@ -125,7 +125,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter(name="routeAggregationId")
     def route_aggregation_id(self) -> str:
         """
-        The uuid of the route aggregation this data source should retrieve
+        The UUID of the Route Aggregation this data source should retrieve
         """
         return pulumi.get(self, "route_aggregation_id")
 
@@ -133,7 +133,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter(name="routeAggregationRuleId")
     def route_aggregation_rule_id(self) -> str:
         """
-        The uuid of the route aggregation rule this data source should retrieve
+        The UUID of the Route Aggregation Rule this data source should retrieve
         """
         return pulumi.get(self, "route_aggregation_rule_id")
 
@@ -141,7 +141,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        Value representing provisioning status for the route aggregation rule resource
+        Value representing provisioning status for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "state")
 
@@ -157,7 +157,7 @@ class GetRouteAggregationRuleResult:
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned unique id for the route aggregation rule resource
+        Equinix-assigned unique id for the Route Aggregation Rule resource
         """
         return pulumi.get(self, "uuid")
 
@@ -189,7 +189,7 @@ def get_route_aggregation_rule(description: Optional[str] = None,
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
     Additional Documentation:
-    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
 
     ## Example Usage
 
@@ -207,9 +207,9 @@ def get_route_aggregation_rule(description: Optional[str] = None,
     ```
 
 
-    :param str description: Customer-provided route aggregation rule description
-    :param str route_aggregation_id: The uuid of the route aggregation this data source should retrieve
-    :param str route_aggregation_rule_id: The uuid of the route aggregation rule this data source should retrieve
+    :param str description: Customer-provided Route Aggregation Rule description
+    :param str route_aggregation_id: The UUID of the Route Aggregation this data source should retrieve
+    :param str route_aggregation_rule_id: The UUID of the Route Aggregation Rule this data source should retrieve
     """
     __args__ = dict()
     __args__['description'] = description
@@ -238,7 +238,7 @@ def get_route_aggregation_rule_output(description: Optional[pulumi.Input[Optiona
     """
     Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
     Additional Documentation:
-    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+    * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
 
     ## Example Usage
 
@@ -256,9 +256,9 @@ def get_route_aggregation_rule_output(description: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param str description: Customer-provided route aggregation rule description
-    :param str route_aggregation_id: The uuid of the route aggregation this data source should retrieve
-    :param str route_aggregation_rule_id: The uuid of the route aggregation rule this data source should retrieve
+    :param str description: Customer-provided Route Aggregation Rule description
+    :param str route_aggregation_id: The UUID of the Route Aggregation this data source should retrieve
+    :param str route_aggregation_rule_id: The UUID of the Route Aggregation Rule this data source should retrieve
     """
     __args__ = dict()
     __args__['description'] = description

@@ -3,11 +3,14 @@
 
 package com.equinix.pulumi.fabric.inputs;
 
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRulesFilterArgs;
 import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRulesPaginationArgs;
+import com.equinix.pulumi.fabric.inputs.GetRouteAggregationRulesSortArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +21,44 @@ public final class GetRouteAggregationRulesArgs extends com.pulumi.resources.Inv
     public static final GetRouteAggregationRulesArgs Empty = new GetRouteAggregationRulesArgs();
 
     /**
-     * Pagination details for the returned route aggregation rules list
+     * Filters for the Data Source Search Request
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<List<GetRouteAggregationRulesFilterArgs>> filters;
+
+    /**
+     * @return Filters for the Data Source Search Request
+     * 
+     */
+    public Optional<Output<List<GetRouteAggregationRulesFilterArgs>>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    @Import(name="outerOperator", required=true)
+    private Output<String> outerOperator;
+
+    /**
+     * @return Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    public Output<String> outerOperator() {
+        return this.outerOperator;
+    }
+
+    /**
+     * Pagination details for the returned Route Aggregation Rules list
      * 
      */
     @Import(name="pagination")
     private @Nullable Output<GetRouteAggregationRulesPaginationArgs> pagination;
 
     /**
-     * @return Pagination details for the returned route aggregation rules list
+     * @return Pagination details for the returned Route Aggregation Rules list
      * 
      */
     public Optional<Output<GetRouteAggregationRulesPaginationArgs>> pagination() {
@@ -33,25 +66,43 @@ public final class GetRouteAggregationRulesArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation from which this data source retrieves its rules.
      * 
      */
     @Import(name="routeAggregationId", required=true)
     private Output<String> routeAggregationId;
 
     /**
-     * @return The uuid of the route aggregation rule this data source should retrieve
+     * @return The UUID of the Route Aggregation from which this data source retrieves its rules.
      * 
      */
     public Output<String> routeAggregationId() {
         return this.routeAggregationId;
     }
 
+    /**
+     * Sort criteria for the Data Source Search Request
+     * 
+     */
+    @Import(name="sorts")
+    private @Nullable Output<List<GetRouteAggregationRulesSortArgs>> sorts;
+
+    /**
+     * @return Sort criteria for the Data Source Search Request
+     * 
+     */
+    public Optional<Output<List<GetRouteAggregationRulesSortArgs>>> sorts() {
+        return Optional.ofNullable(this.sorts);
+    }
+
     private GetRouteAggregationRulesArgs() {}
 
     private GetRouteAggregationRulesArgs(GetRouteAggregationRulesArgs $) {
+        this.filters = $.filters;
+        this.outerOperator = $.outerOperator;
         this.pagination = $.pagination;
         this.routeAggregationId = $.routeAggregationId;
+        this.sorts = $.sorts;
     }
 
     public static Builder builder() {
@@ -73,7 +124,59 @@ public final class GetRouteAggregationRulesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param pagination Pagination details for the returned route aggregation rules list
+         * @param filters Filters for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<List<GetRouteAggregationRulesFilterArgs>> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters Filters for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(List<GetRouteAggregationRulesFilterArgs> filters) {
+            return filters(Output.of(filters));
+        }
+
+        /**
+         * @param filters Filters for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(GetRouteAggregationRulesFilterArgs... filters) {
+            return filters(List.of(filters));
+        }
+
+        /**
+         * @param outerOperator Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outerOperator(Output<String> outerOperator) {
+            $.outerOperator = outerOperator;
+            return this;
+        }
+
+        /**
+         * @param outerOperator Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outerOperator(String outerOperator) {
+            return outerOperator(Output.of(outerOperator));
+        }
+
+        /**
+         * @param pagination Pagination details for the returned Route Aggregation Rules list
          * 
          * @return builder
          * 
@@ -84,7 +187,7 @@ public final class GetRouteAggregationRulesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param pagination Pagination details for the returned route aggregation rules list
+         * @param pagination Pagination details for the returned Route Aggregation Rules list
          * 
          * @return builder
          * 
@@ -94,7 +197,7 @@ public final class GetRouteAggregationRulesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param routeAggregationId The uuid of the route aggregation rule this data source should retrieve
+         * @param routeAggregationId The UUID of the Route Aggregation from which this data source retrieves its rules.
          * 
          * @return builder
          * 
@@ -105,7 +208,7 @@ public final class GetRouteAggregationRulesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param routeAggregationId The uuid of the route aggregation rule this data source should retrieve
+         * @param routeAggregationId The UUID of the Route Aggregation from which this data source retrieves its rules.
          * 
          * @return builder
          * 
@@ -114,7 +217,41 @@ public final class GetRouteAggregationRulesArgs extends com.pulumi.resources.Inv
             return routeAggregationId(Output.of(routeAggregationId));
         }
 
+        /**
+         * @param sorts Sort criteria for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sorts(@Nullable Output<List<GetRouteAggregationRulesSortArgs>> sorts) {
+            $.sorts = sorts;
+            return this;
+        }
+
+        /**
+         * @param sorts Sort criteria for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sorts(List<GetRouteAggregationRulesSortArgs> sorts) {
+            return sorts(Output.of(sorts));
+        }
+
+        /**
+         * @param sorts Sort criteria for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sorts(GetRouteAggregationRulesSortArgs... sorts) {
+            return sorts(List.of(sorts));
+        }
+
         public GetRouteAggregationRulesArgs build() {
+            if ($.outerOperator == null) {
+                throw new MissingRequiredPropertyException("GetRouteAggregationRulesArgs", "outerOperator");
+            }
             if ($.routeAggregationId == null) {
                 throw new MissingRequiredPropertyException("GetRouteAggregationRulesArgs", "routeAggregationId");
             }

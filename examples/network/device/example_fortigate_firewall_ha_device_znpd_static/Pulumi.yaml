@@ -5,6 +5,20 @@ resources:
   FTNT-FIREWALL-SV:
     type: equinix:networkedge:Device
     properties:
+      secondaryDevice:
+        name: TF_FTNT-FIREWALL-secondary
+        metroCode: ${sv.metroCode}
+        hostname: fg-vm-znpd
+        notifications:
+          - john@equinix.com
+          - marry@equinix.com
+        accountNumber: ${sv.number}
+        vendorConfiguration:
+          gatewayIp: X.X.X.X
+          ipAddress: X.X.X.X
+          ipAddressType: STATIC
+          subnetMaskIp: X.X.X.X
+          managementInterfaceId: '6'
       name: TF_FTNT-FIREWALL
       projectId: XXXXXXXXXX
       metroCode: ${sv.metroCode}
@@ -27,20 +41,6 @@ resources:
         ipAddressType: STATIC
         subnetMaskIp: x.x.x.x
         managementInterfaceId: '6'
-      secondaryDevice:
-        name: TF_FTNT-FIREWALL-secondary
-        metroCode: ${sv.metroCode}
-        hostname: fg-vm-znpd
-        notifications:
-          - john@equinix.com
-          - marry@equinix.com
-        accountNumber: ${sv.number}
-        vendorConfiguration:
-          gatewayIp: X.X.X.X
-          ipAddress: X.X.X.X
-          ipAddressType: STATIC
-          subnetMaskIp: X.X.X.X
-          managementInterfaceId: '6'
 variables:
   # Create FG VM ha device with connectivity PRIVATE and IP Address Type as STATIC
   sv:

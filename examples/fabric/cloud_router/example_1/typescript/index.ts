@@ -1,16 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const newCloudRouter = new equinix.fabric.CloudRouter("newCloudRouter", {
-    name: "Router-SV",
-    type: "XF_ROUTER",
-    notifications: [{
-        type: "ALL",
-        emails: [
-            "example@equinix.com",
-            "test1@equinix.com",
-        ],
-    }],
+const newCloudRouter = new equinix.fabric.CloudRouter("new_cloud_router", {
     order: {
         purchaseOrderNumber: "1-323292",
     },
@@ -26,4 +17,13 @@ const newCloudRouter = new equinix.fabric.CloudRouter("newCloudRouter", {
     account: {
         accountNumber: 203612,
     },
+    notifications: [{
+        type: "ALL",
+        emails: [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name: "Router-SV",
+    type: "XF_ROUTER",
 });

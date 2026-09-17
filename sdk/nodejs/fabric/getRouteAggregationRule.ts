@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
  * Additional Documentation:
- * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
  *
  * ## Example Usage
  *
@@ -43,15 +43,15 @@ export function getRouteAggregationRule(args: GetRouteAggregationRuleArgs, opts?
  */
 export interface GetRouteAggregationRuleArgs {
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      */
     description?: string;
     /**
-     * The uuid of the route aggregation this data source should retrieve
+     * The UUID of the Route Aggregation this data source should retrieve
      */
     routeAggregationId: string;
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation Rule this data source should retrieve
      */
     routeAggregationRuleId: string;
 }
@@ -61,19 +61,19 @@ export interface GetRouteAggregationRuleArgs {
  */
 export interface GetRouteAggregationRuleResult {
     /**
-     * Current state of latest route aggregation rule change
+     * Current state of latest Route Aggregation Rule change
      */
     readonly change: outputs.fabric.GetRouteAggregationRuleChange;
     /**
-     * Details of the last change on the stream resource
+     * Details of the last change on the resource
      */
     readonly changeLog: outputs.fabric.GetRouteAggregationRuleChangeLog;
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      */
     readonly description?: string;
     /**
-     * Equinix auto generated URI to the route aggregation rule resource
+     * Equinix auto generated URI to the Route Aggregation Rule resource
      */
     readonly href: string;
     /**
@@ -81,23 +81,23 @@ export interface GetRouteAggregationRuleResult {
      */
     readonly id: string;
     /**
-     * Customer provided name of the route aggregation rule
+     * Customer provided name of the Route Aggregation Rule
      */
     readonly name: string;
     /**
-     * Customer-provided route aggregation rule prefix
+     * Customer-provided Route Aggregation Rule prefix
      */
     readonly prefix: string;
     /**
-     * The uuid of the route aggregation this data source should retrieve
+     * The UUID of the Route Aggregation this data source should retrieve
      */
     readonly routeAggregationId: string;
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation Rule this data source should retrieve
      */
     readonly routeAggregationRuleId: string;
     /**
-     * Value representing provisioning status for the route aggregation rule resource
+     * Value representing provisioning status for the Route Aggregation Rule resource
      */
     readonly state: string;
     /**
@@ -105,14 +105,14 @@ export interface GetRouteAggregationRuleResult {
      */
     readonly type: string;
     /**
-     * Equinix-assigned unique id for the route aggregation rule resource
+     * Equinix-assigned unique id for the Route Aggregation Rule resource
      */
     readonly uuid: string;
 }
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rule by UUID
  * Additional Documentation:
- * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/getRouteAggregationRuleByUuid
  *
  * ## Example Usage
  *
@@ -145,15 +145,15 @@ export function getRouteAggregationRuleOutput(args: GetRouteAggregationRuleOutpu
  */
 export interface GetRouteAggregationRuleOutputArgs {
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      */
     description?: pulumi.Input<string>;
     /**
-     * The uuid of the route aggregation this data source should retrieve
+     * The UUID of the Route Aggregation this data source should retrieve
      */
     routeAggregationId: pulumi.Input<string>;
     /**
-     * The uuid of the route aggregation rule this data source should retrieve
+     * The UUID of the Route Aggregation Rule this data source should retrieve
      */
     routeAggregationRuleId: pulumi.Input<string>;
 }

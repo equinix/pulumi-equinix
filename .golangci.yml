@@ -1,24 +1,29 @@
+version: "2"
+
 linters:
+  default: none
   enable:
-    - deadcode
     - errcheck
     - goconst
-    - gofmt
-    - golint
     - gosec
     - govet
     - ineffassign
-    - interfacer
     - lll
-    - megacheck
+    - staticcheck   # replaces megacheck
     - misspell
     - nakedret
-    - structcheck
     - unconvert
-    - varcheck
-  enable-all: false
+    - unused        # replaces deadcode, structcheck, varcheck
+
+  exclusions:
+    paths:
+      - schema.go
+      - resources.go
+      - pulumiManifest.go
+
+formatters:
+  enable:
+    - gofmt
+
 run:
-  skip-files:
-    - schema.go
-    - pulumiManifest.go
   timeout: 20m

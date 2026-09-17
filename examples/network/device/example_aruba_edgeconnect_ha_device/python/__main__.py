@@ -2,7 +2,20 @@ import pulumi
 import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+aruba_edgeconnect_am = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
+    secondary_device={
+        "name": "TF_CHECKPOINT",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "acl_template_id": "XXXXXXX",
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "accountKey": "xxxxx",
+            "accountName": "xxxx",
+            "applianceTag": "test",
+            "hostname": "test",
+        },
+    },
     name="TF_Aruba_Edge_Connect",
     project_id="XXXXX",
     metro_code=sv.metro_code,
@@ -23,17 +36,4 @@ a_rubaedgeconnectam = equinix.networkedge.Device("ARUBA-EDGECONNECT-AM",
         "accountName": "xxxx",
         "applianceTag": "tests",
         "hostname": "test",
-    },
-    secondary_device={
-        "name": "TF_CHECKPOINT",
-        "metro_code": sv.metro_code,
-        "account_number": sv.number,
-        "acl_template_id": "XXXXXXX",
-        "notifications": ["test@eq.com"],
-        "vendor_configuration": {
-            "accountKey": "xxxxx",
-            "accountName": "xxxx",
-            "applianceTag": "test",
-            "hostname": "test",
-        },
     })

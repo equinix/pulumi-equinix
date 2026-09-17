@@ -5,25 +5,25 @@ resources:
   epl:
     type: equinix:fabric:Connection
     properties:
-      name: ConnectionName
-      type: EPL_VC
+      order:
+        purchaseOrderNumber: 1-323292
+      aSide:
+        accessPoint:
+          port:
+            uuid: <aside_port_uuid>
+          type: COLO
+      zSide:
+        accessPoint:
+          port:
+            uuid: <zside_port_uuid>
+          location:
+            metroCode: SV
+          type: COLO
       notifications:
         - type: ALL
           emails:
             - example@equinix.com
             - test1@equinix.com
+      name: ConnectionName
+      type: EPL_VC
       bandwidth: 50
-      order:
-        purchaseOrderNumber: 1-323292
-      aSide:
-        accessPoint:
-          type: COLO
-          port:
-            uuid: <aside_port_uuid>
-      zSide:
-        accessPoint:
-          type: COLO
-          port:
-            uuid: <zside_port_uuid>
-          location:
-            metroCode: SV

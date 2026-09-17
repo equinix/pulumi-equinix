@@ -5,7 +5,19 @@ import * as equinix from "@pulumi/equinix";
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const vYOSAM = new equinix.networkedge.Device("VYOS-AM", {
+const vyosAm = new equinix.networkedge.Device("VYOS-AM", {
+    sshKey: {
+        username: "test",
+        keyName: "xxxxxxxx",
+    },
+    secondaryDevice: {
+        name: "TF_CHECKPOINT",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        hostname: "test",
+        aclTemplateId: "XXXXXXXXXXX",
+        notifications: ["test@eq.com"],
+    },
     name: "TF_VYOS",
     projectId: "XXXXXXX",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -21,16 +33,4 @@ const vYOSAM = new equinix.networkedge.Device("VYOS-AM", {
     termLength: 1,
     additionalBandwidth: 50,
     aclTemplateId: "XXXXXXXX",
-    sshKey: {
-        username: "test",
-        keyName: "xxxxxxxx",
-    },
-    secondaryDevice: {
-        name: "TF_CHECKPOINT",
-        metroCode: sv.apply(sv => sv.metroCode),
-        accountNumber: sv.apply(sv => sv.number),
-        hostname: "test",
-        aclTemplateId: "XXXXXXXXXXX",
-        notifications: ["test@eq.com"],
-    },
 });

@@ -9,8 +9,39 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := fabric.NewConnection(ctx, "port2aws", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String(fabric.ConnectionTypeEVPL),
+			Redundancy: &fabric.ConnectionRedundancyArgs{
+				Priority: pulumi.String("PRIMARY"),
+			},
+			Order: &fabric.ConnectionOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323929"),
+			},
+			ASide: &fabric.ConnectionASideArgs{
+				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+					Port: &fabric.ConnectionASideAccessPointPortArgs{
+						Uuid: pulumi.String("<aside_port_uuid>"),
+					},
+					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+						Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeQinQ),
+						VlanSTag: pulumi.Int(2019),
+						VlanCTag: pulumi.Int(2112),
+					},
+					Type: pulumi.String(fabric.AccessPointTypeColo),
+				},
+			},
+			ZSide: &fabric.ConnectionZSideArgs{
+				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+						Type: pulumi.String(fabric.ProfileTypeL2Profile),
+						Uuid: pulumi.String("<service_profile_uuid>"),
+					},
+					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+						MetroCode: pulumi.String(equinix.MetroSiliconValley),
+					},
+					Type:              pulumi.String(fabric.AccessPointTypeSP),
+					AuthenticationKey: pulumi.String("<aws_account_id>"),
+					SellerRegion:      pulumi.String("us-west-1"),
+				},
+			},
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
 					Type: pulumi.String(fabric.NotificationsTypeAll),
@@ -20,48 +51,17 @@ func main() {
 					},
 				},
 			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String(fabric.ConnectionTypeEVPL),
 			Bandwidth: pulumi.Int(50),
-			Redundancy: &fabric.ConnectionRedundancyArgs{
-				Priority: pulumi.String("PRIMARY"),
-			},
-			Order: &fabric.ConnectionOrderArgs{
-				PurchaseOrderNumber: pulumi.String("1-323929"),
-			},
-			ASide: &fabric.ConnectionASideArgs{
-				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeColo),
-					Port: &fabric.ConnectionASideAccessPointPortArgs{
-						Uuid: pulumi.String("<aside_port_uuid>"),
-					},
-					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
-						Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeQinQ),
-						VlanSTag: pulumi.Int(2019),
-						VlanCTag: pulumi.Int(2112),
-					},
+			AdditionalInfo: pulumi.StringMapArray{
+				pulumi.StringMap{
+					"key":   pulumi.String("accessKey"),
+					"value": pulumi.String("<aws_access_key>"),
 				},
-			},
-			ZSide: &fabric.ConnectionZSideArgs{
-				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type:              pulumi.String(fabric.AccessPointTypeSP),
-					AuthenticationKey: pulumi.String("<aws_account_id>"),
-					SellerRegion:      pulumi.String("us-west-1"),
-					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
-						Type: pulumi.String(fabric.ProfileTypeL2Profile),
-						Uuid: pulumi.String("<service_profile_uuid>"),
-					},
-					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
-						MetroCode: pulumi.String(equinix.MetroSiliconValley),
-					},
-				},
-			},
-			AdditionalInfo: pulumi.MapArray{
-				pulumi.Map{
-					"key":   pulumi.Any("accessKey"),
-					"value": pulumi.Any("<aws_access_key>"),
-				},
-				pulumi.Map{
-					"key":   pulumi.Any("secretKey"),
-					"value": pulumi.Any("<aws_secret_key>"),
+				pulumi.StringMap{
+					"key":   pulumi.String("secretKey"),
+					"value": pulumi.String("<aws_secret_key>"),
 				},
 			},
 		})

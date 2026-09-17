@@ -5,9 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
 const myacl = new equinix.networkedge.AclTemplate("myacl", {
-    name: "test",
-    description: "Test ACL template",
-    projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
     inboundRules: [
         {
             subnet: "1.1.1.1/32",
@@ -23,6 +20,9 @@ const myacl = new equinix.networkedge.AclTemplate("myacl", {
             dstPort: "53,1045,2041",
         },
     ],
+    name: "test",
+    description: "Test ACL template",
+    projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
 });
 ```
 ```python
@@ -30,9 +30,6 @@ import pulumi
 import pulumi_equinix as equinix
 
 myacl = equinix.networkedge.AclTemplate("myacl",
-    name="test",
-    description="Test ACL template",
-    project_id="a86d7112-d740-4758-9c9c-31e66373746b",
     inbound_rules=[
         {
             "subnet": "1.1.1.1/32",
@@ -47,7 +44,10 @@ myacl = equinix.networkedge.AclTemplate("myacl",
             "src_port": "any",
             "dst_port": "53,1045,2041",
         },
-    ])
+    ],
+    name="test",
+    description="Test ACL template",
+    project_id="a86d7112-d740-4758-9c9c-31e66373746b")
 ```
 ```go
 package main
@@ -60,9 +60,6 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := networkedge.NewAclTemplate(ctx, "myacl", &networkedge.AclTemplateArgs{
-			Name:        pulumi.String("test"),
-			Description: pulumi.String("Test ACL template"),
-			ProjectId:   pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
 			InboundRules: networkedge.AclTemplateInboundRuleArray{
 				&networkedge.AclTemplateInboundRuleArgs{
 					Subnet:      pulumi.String("1.1.1.1/32"),
@@ -78,6 +75,9 @@ func main() {
 					DstPort:  pulumi.String("53,1045,2041"),
 				},
 			},
+			Name:        pulumi.String("test"),
+			Description: pulumi.String("Test ACL template"),
+			ProjectId:   pulumi.String("a86d7112-d740-4758-9c9c-31e66373746b"),
 		})
 		if err != nil {
 			return err
@@ -96,9 +96,6 @@ return await Deployment.RunAsync(() =>
 {
     var myacl = new Equinix.NetworkEdge.AclTemplate("myacl", new()
     {
-        Name = "test",
-        Description = "Test ACL template",
-        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
         InboundRules = new[]
         {
             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
@@ -117,6 +114,9 @@ return await Deployment.RunAsync(() =>
                 DstPort = "53,1045,2041",
             },
         },
+        Name = "test",
+        Description = "Test ACL template",
+        ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
     });
 
 });
@@ -144,9 +144,6 @@ public class App {
 
     public static void stack(Context ctx) {
         var myacl = new AclTemplate("myacl", AclTemplateArgs.builder()
-            .name("test")
-            .description("Test ACL template")
-            .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
             .inboundRules(            
                 AclTemplateInboundRuleArgs.builder()
                     .subnet("1.1.1.1/32")
@@ -161,6 +158,9 @@ public class App {
                     .srcPort("any")
                     .dstPort("53,1045,2041")
                     .build())
+            .name("test")
+            .description("Test ACL template")
+            .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
             .build());
 
     }
@@ -172,9 +172,6 @@ resources:
   myacl:
     type: equinix:networkedge:AclTemplate
     properties:
-      name: test
-      description: Test ACL template
-      projectId: a86d7112-d740-4758-9c9c-31e66373746b
       inboundRules:
         - subnet: 1.1.1.1/32
           protocol: IP
@@ -185,5 +182,8 @@ resources:
           protocol: UDP
           srcPort: any
           dstPort: 53,1045,2041
+      name: test
+      description: Test ACL template
+      projectId: a86d7112-d740-4758-9c9c-31e66373746b
 ```
 {{% /example %}}

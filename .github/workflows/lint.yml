@@ -21,7 +21,7 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Install go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@v6
       with:
         # The versions of golangci-lint and setup-go here cross-depend and need to update together.
         go-version-file: provider/go.mod
@@ -35,11 +35,11 @@ jobs:
       continue-on-error: true
       run: make upstream
     - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
+      uses: golangci/golangci-lint-action@v9
       with:
-        version: v1.55.2
+        version: v2.13.2
         working-directory: provider
-        args: --timeout=30m --out-format=colored-line-number --skip-dirs "/opt|upstream|go/pkg/mod"
+        args: --timeout=30m --skip-dirs "/opt|upstream|go/pkg/mod"
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3

@@ -6,6 +6,16 @@ const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
 const niosXHa = new equinix.networkedge.Device("nios-x-ha", {
+    secondaryDevice: {
+        name: "TF_INFOBLOX-NIOS-X-Sec",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            hostname: "test",
+            token: "xxxxx",
+        },
+    },
     name: "TF_INFOBLOX-NIOS-X",
     projectId: "xxxxxxx",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -23,15 +33,5 @@ const niosXHa = new equinix.networkedge.Device("nios-x-ha", {
     vendorConfiguration: {
         hostname: "test",
         token: "xxxxx",
-    },
-    secondaryDevice: {
-        name: "TF_INFOBLOX-NIOS-X-Sec",
-        metroCode: sv.apply(sv => sv.metroCode),
-        accountNumber: sv.apply(sv => sv.number),
-        notifications: ["test@eq.com"],
-        vendorConfiguration: {
-            hostname: "test",
-            token: "xxxxx",
-        },
     },
 });

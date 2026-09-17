@@ -8,8 +8,27 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := fabric.NewConnection(ctx, "vd2token", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String(fabric.ConnectionTypeEVPL),
+			Order: &fabric.ConnectionOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323292"),
+			},
+			ASide: &fabric.ConnectionASideArgs{
+				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+					VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
+						Type: pulumi.String("EDGE"),
+						Uuid: pulumi.String("<device_uuid>"),
+					},
+					Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
+						Type: pulumi.String("NETWORK"),
+						Id:   pulumi.Int(7),
+					},
+					Type: pulumi.String(fabric.AccessPointTypeVD),
+				},
+			},
+			ZSide: &fabric.ConnectionZSideArgs{
+				ServiceToken: &fabric.ConnectionZSideServiceTokenArgs{
+					Uuid: pulumi.String("<service_token_uuid>"),
+				},
+			},
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
 					Type: pulumi.String(fabric.NotificationsTypeAll),
@@ -19,28 +38,9 @@ func main() {
 					},
 				},
 			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String(fabric.ConnectionTypeEVPL),
 			Bandwidth: pulumi.Int(50),
-			Order: &fabric.ConnectionOrderArgs{
-				PurchaseOrderNumber: pulumi.String("1-323292"),
-			},
-			ASide: &fabric.ConnectionASideArgs{
-				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeVD),
-					VirtualDevice: &fabric.ConnectionASideAccessPointVirtualDeviceArgs{
-						Type: pulumi.String("EDGE"),
-						Uuid: pulumi.String("<device_uuid>"),
-					},
-					Interface: &fabric.ConnectionASideAccessPointInterfaceArgs{
-						Type: pulumi.String("NETWORK"),
-						Id:   pulumi.Int(7),
-					},
-				},
-			},
-			ZSide: &fabric.ConnectionZSideArgs{
-				ServiceToken: &fabric.ConnectionZSideServiceTokenArgs{
-					Uuid: pulumi.String("<service_token_uuid>"),
-				},
-			},
 		})
 		if err != nil {
 			return err

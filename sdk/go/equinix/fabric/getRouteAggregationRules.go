@@ -13,7 +13,7 @@ import (
 
 // Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
 // Additional Documentation:
-// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
 //
 // ## Example Usage
 //
@@ -60,22 +60,34 @@ func GetRouteAggregationRules(ctx *pulumi.Context, args *GetRouteAggregationRule
 
 // A collection of arguments for invoking getRouteAggregationRules.
 type GetRouteAggregationRulesArgs struct {
-	// Pagination details for the returned route aggregation rules list
+	// Filters for the Data Source Search Request
+	Filters []GetRouteAggregationRulesFilter `pulumi:"filters"`
+	// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+	OuterOperator string `pulumi:"outerOperator"`
+	// Pagination details for the returned Route Aggregation Rules list
 	Pagination *GetRouteAggregationRulesPagination `pulumi:"pagination"`
-	// The uuid of the route aggregation rule this data source should retrieve
+	// The UUID of the Route Aggregation from which this data source retrieves its rules.
 	RouteAggregationId string `pulumi:"routeAggregationId"`
+	// Sort criteria for the Data Source Search Request
+	Sorts []GetRouteAggregationRulesSort `pulumi:"sorts"`
 }
 
 // A collection of values returned by getRouteAggregationRules.
 type GetRouteAggregationRulesResult struct {
-	// Returned list of route aggregation rule objects
+	// Returned list of Route Aggregation Rule objects
 	Datas []GetRouteAggregationRulesData `pulumi:"datas"`
+	// Filters for the Data Source Search Request
+	Filters []GetRouteAggregationRulesFilter `pulumi:"filters"`
 	// The unique identifier of the resource
 	Id string `pulumi:"id"`
-	// Pagination details for the returned route aggregation rules list
+	// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+	OuterOperator string `pulumi:"outerOperator"`
+	// Pagination details for the returned Route Aggregation Rules list
 	Pagination *GetRouteAggregationRulesPagination `pulumi:"pagination"`
-	// The uuid of the route aggregation rule this data source should retrieve
+	// The UUID of the Route Aggregation from which this data source retrieves its rules.
 	RouteAggregationId string `pulumi:"routeAggregationId"`
+	// Sort criteria for the Data Source Search Request
+	Sorts []GetRouteAggregationRulesSort `pulumi:"sorts"`
 }
 
 func GetRouteAggregationRulesOutput(ctx *pulumi.Context, args GetRouteAggregationRulesOutputArgs, opts ...pulumi.InvokeOption) GetRouteAggregationRulesResultOutput {
@@ -89,10 +101,16 @@ func GetRouteAggregationRulesOutput(ctx *pulumi.Context, args GetRouteAggregatio
 
 // A collection of arguments for invoking getRouteAggregationRules.
 type GetRouteAggregationRulesOutputArgs struct {
-	// Pagination details for the returned route aggregation rules list
+	// Filters for the Data Source Search Request
+	Filters GetRouteAggregationRulesFilterArrayInput `pulumi:"filters"`
+	// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+	OuterOperator pulumi.StringInput `pulumi:"outerOperator"`
+	// Pagination details for the returned Route Aggregation Rules list
 	Pagination GetRouteAggregationRulesPaginationPtrInput `pulumi:"pagination"`
-	// The uuid of the route aggregation rule this data source should retrieve
+	// The UUID of the Route Aggregation from which this data source retrieves its rules.
 	RouteAggregationId pulumi.StringInput `pulumi:"routeAggregationId"`
+	// Sort criteria for the Data Source Search Request
+	Sorts GetRouteAggregationRulesSortArrayInput `pulumi:"sorts"`
 }
 
 func (GetRouteAggregationRulesOutputArgs) ElementType() reflect.Type {
@@ -114,9 +132,14 @@ func (o GetRouteAggregationRulesResultOutput) ToGetRouteAggregationRulesResultOu
 	return o
 }
 
-// Returned list of route aggregation rule objects
+// Returned list of Route Aggregation Rule objects
 func (o GetRouteAggregationRulesResultOutput) Datas() GetRouteAggregationRulesDataArrayOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesResult) []GetRouteAggregationRulesData { return v.Datas }).(GetRouteAggregationRulesDataArrayOutput)
+}
+
+// Filters for the Data Source Search Request
+func (o GetRouteAggregationRulesResultOutput) Filters() GetRouteAggregationRulesFilterArrayOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesResult) []GetRouteAggregationRulesFilter { return v.Filters }).(GetRouteAggregationRulesFilterArrayOutput)
 }
 
 // The unique identifier of the resource
@@ -124,14 +147,24 @@ func (o GetRouteAggregationRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Pagination details for the returned route aggregation rules list
+// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+func (o GetRouteAggregationRulesResultOutput) OuterOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesResult) string { return v.OuterOperator }).(pulumi.StringOutput)
+}
+
+// Pagination details for the returned Route Aggregation Rules list
 func (o GetRouteAggregationRulesResultOutput) Pagination() GetRouteAggregationRulesPaginationPtrOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesResult) *GetRouteAggregationRulesPagination { return v.Pagination }).(GetRouteAggregationRulesPaginationPtrOutput)
 }
 
-// The uuid of the route aggregation rule this data source should retrieve
+// The UUID of the Route Aggregation from which this data source retrieves its rules.
 func (o GetRouteAggregationRulesResultOutput) RouteAggregationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteAggregationRulesResult) string { return v.RouteAggregationId }).(pulumi.StringOutput)
+}
+
+// Sort criteria for the Data Source Search Request
+func (o GetRouteAggregationRulesResultOutput) Sorts() GetRouteAggregationRulesSortArrayOutput {
+	return o.ApplyT(func(v GetRouteAggregationRulesResult) []GetRouteAggregationRulesSort { return v.Sorts }).(GetRouteAggregationRulesSortArrayOutput)
 }
 
 func init() {

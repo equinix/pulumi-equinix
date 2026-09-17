@@ -5,6 +5,19 @@ resources:
   ARUBA-EDGECONNECT-AM:
     type: equinix:networkedge:Device
     properties:
+      secondaryDevice:
+        name: TF_CHECKPOINT
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        purchaseOrderNumber: PO-Secondary-Account-123
+        aclTemplateId: XXXXXXX
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          accountKey: xxxxx
+          accountName: xxxx
+          applianceTag: test
+          hostname: test
       name: TF_Aruba_Edge_Connect
       projectId: XXXXX
       metroCode: ${sv.metroCode}
@@ -27,19 +40,6 @@ resources:
         accountName: xxxx
         applianceTag: tests
         hostname: test
-      secondaryDevice:
-        name: TF_CHECKPOINT
-        metroCode: ${sv.metroCode}
-        accountNumber: ${sv.number}
-        purchaseOrderNumber: PO-Secondary-Account-123
-        aclTemplateId: XXXXXXX
-        notifications:
-          - test@eq.com
-        vendorConfiguration:
-          accountKey: xxxxx
-          accountName: xxxx
-          applianceTag: test
-          hostname: test
 variables:
   # Create Aruba Edgeconnect SDWAN HA device with 2different account numbers with purchase orders
   sv:

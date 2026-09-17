@@ -28,9 +28,6 @@ namespace Pulumi.Equinix.Fabric
     /// {
     ///     var direct = new Equinix.Fabric.RoutingProtocol("direct", new()
     ///     {
-    ///         ConnectionUuid = "&lt;some_id&gt;",
-    ///         Type = "DIRECT",
-    ///         Name = "direct_rp",
     ///         DirectIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolDirectIpv4Args
     ///         {
     ///             EquinixIfaceIp = "190.1.1.1/30",
@@ -39,6 +36,9 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             EquinixIfaceIp = "190::1:1/126",
     ///         },
+    ///         ConnectionUuid = "&lt;some_id&gt;",
+    ///         Type = "DIRECT",
+    ///         Name = "direct_rp",
     ///     });
     /// 
     /// });
@@ -54,9 +54,6 @@ namespace Pulumi.Equinix.Fabric
     /// {
     ///     var bgp = new Equinix.Fabric.RoutingProtocol("bgp", new()
     ///     {
-    ///         ConnectionUuid = "&lt;same_connection_id_as_first_equinix_fabric_routing_protocol&gt;",
-    ///         Type = "BGP",
-    ///         Name = "bgp_rp",
     ///         BgpIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolBgpIpv4Args
     ///         {
     ///             CustomerPeerIp = "190.1.1.2",
@@ -67,6 +64,9 @@ namespace Pulumi.Equinix.Fabric
     ///             CustomerPeerIp = "190::1:2",
     ///             Enabled = true,
     ///         },
+    ///         ConnectionUuid = "&lt;same_connection_id_as_first_equinix_fabric_routing_protocol&gt;",
+    ///         Type = "BGP",
+    ///         Name = "bgp_rp",
     ///         CustomerAsn = 4532,
     ///     });
     /// 
@@ -83,9 +83,6 @@ namespace Pulumi.Equinix.Fabric
     /// {
     ///     var direct = new Equinix.Fabric.RoutingProtocol("direct", new()
     ///     {
-    ///         ConnectionUuid = "&lt;some_id&gt;",
-    ///         Type = "DIRECT",
-    ///         Name = "direct_rp",
     ///         DirectIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolDirectIpv4Args
     ///         {
     ///             EquinixIfaceIp = "190.1.1.1/30",
@@ -94,13 +91,13 @@ namespace Pulumi.Equinix.Fabric
     ///         {
     ///             EquinixIfaceIp = "190::1:1/126",
     ///         },
+    ///         ConnectionUuid = "&lt;some_id&gt;",
+    ///         Type = "DIRECT",
+    ///         Name = "direct_rp",
     ///     });
     /// 
     ///     var bgp = new Equinix.Fabric.RoutingProtocol("bgp", new()
     ///     {
-    ///         ConnectionUuid = "&lt;same_connection_id_as_first_equinix_fabric_routing_protocol&gt;",
-    ///         Type = "BGP",
-    ///         Name = "bgp_rp",
     ///         BgpIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolBgpIpv4Args
     ///         {
     ///             CustomerPeerIp = "190.1.1.2",
@@ -111,6 +108,9 @@ namespace Pulumi.Equinix.Fabric
     ///             CustomerPeerIp = "190::1:2",
     ///             Enabled = true,
     ///         },
+    ///         ConnectionUuid = "&lt;same_connection_id_as_first_equinix_fabric_routing_protocol&gt;",
+    ///         Type = "BGP",
+    ///         Name = "bgp_rp",
     ///         CustomerAsn = 4532,
     ///     }, new CustomResourceOptions
     ///     {

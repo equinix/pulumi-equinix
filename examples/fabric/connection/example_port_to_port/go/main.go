@@ -9,24 +9,11 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := fabric.NewConnection(ctx, "port2port", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String(fabric.ConnectionTypeEVPL),
-			Notifications: fabric.ConnectionNotificationArray{
-				&fabric.ConnectionNotificationArgs{
-					Type: pulumi.String(fabric.NotificationsTypeAll),
-					Emails: pulumi.StringArray{
-						pulumi.String("example@equinix.com"),
-						pulumi.String("test1@equinix.com"),
-					},
-				},
-			},
-			Bandwidth: pulumi.Int(50),
 			Order: &fabric.ConnectionOrderArgs{
 				PurchaseOrderNumber: pulumi.String("1-323292"),
 			},
 			ASide: &fabric.ConnectionASideArgs{
 				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeColo),
 					Port: &fabric.ConnectionASideAccessPointPortArgs{
 						Uuid: pulumi.String("<aside_port_uuid>"),
 					},
@@ -34,11 +21,11 @@ func main() {
 						Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeQinQ),
 						VlanSTag: pulumi.Int(1976),
 					},
+					Type: pulumi.String(fabric.AccessPointTypeColo),
 				},
 			},
 			ZSide: &fabric.ConnectionZSideArgs{
 				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeColo),
 					Port: &fabric.ConnectionZSideAccessPointPortArgs{
 						Uuid: pulumi.String("<zside_port_uuid>"),
 					},
@@ -49,8 +36,21 @@ func main() {
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
 						MetroCode: pulumi.String(equinix.MetroSiliconValley),
 					},
+					Type: pulumi.String(fabric.AccessPointTypeColo),
 				},
 			},
+			Notifications: fabric.ConnectionNotificationArray{
+				&fabric.ConnectionNotificationArgs{
+					Type: pulumi.String(fabric.NotificationsTypeAll),
+					Emails: pulumi.StringArray{
+						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
+					},
+				},
+			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String(fabric.ConnectionTypeEVPL),
+			Bandwidth: pulumi.Int(50),
 		})
 		if err != nil {
 			return err

@@ -7,7 +7,7 @@ filepath = config.get("filepath")
 if filepath is None:
     filepath = "cloudInitFileFolder/TF-AVX-cloud-init-file.txt"
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrixCloudinitFile",
+aviatrix_cloudinit_file = equinix.networkedge.NetworkFile("aviatrix_cloudinit_file",
     file_name="TF-AVX-cloud-init-file.txt",
     content=std.file_output(input=filepath).apply(lambda invoke: invoke.result),
     metro_code=sv.metro_code.apply(lambda x: equinix.Metro(x)),

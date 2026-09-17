@@ -37,7 +37,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public string Previous { get; set; } = null!;
 
         /// <summary>
-        /// The total number of route agrgegation rules available to the user making the request
+        /// The total number of Route Aggregation Rules available to the user making the request
         /// </summary>
         [Input("total", required: true)]
         public int Total { get; set; }

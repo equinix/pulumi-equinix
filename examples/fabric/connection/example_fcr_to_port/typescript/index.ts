@@ -2,30 +2,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
 const fcr2Port = new equinix.fabric.Connection("fcr2port", {
-    name: "ConnectionName",
-    type: "IP_VC",
-    notifications: [{
-        type: equinix.fabric.NotificationsType.All,
-        emails: [
-            "example@equinix.com",
-            "test1@equinix.com",
-        ],
-    }],
-    bandwidth: 50,
     order: {
         purchaseOrderNumber: "1-323292",
     },
     aSide: {
         accessPoint: {
-            type: "CLOUD_ROUTER",
             router: {
                 uuid: "<cloud_router_uuid>",
             },
+            type: "CLOUD_ROUTER",
         },
     },
     zSide: {
         accessPoint: {
-            type: equinix.fabric.AccessPointType.Colo,
             port: {
                 uuid: "<port_uuid>",
             },
@@ -36,6 +25,17 @@ const fcr2Port = new equinix.fabric.Connection("fcr2port", {
             location: {
                 metroCode: equinix.index.Metro.SiliconValley,
             },
+            type: equinix.fabric.AccessPointType.Colo,
         },
     },
+    notifications: [{
+        type: equinix.fabric.NotificationsType.All,
+        emails: [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name: "ConnectionName",
+    type: "IP_VC",
+    bandwidth: 50,
 });

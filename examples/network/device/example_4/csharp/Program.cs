@@ -11,8 +11,13 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var c8KvSingle = new Equinix.NetworkEdge.Device("c8kvSingle", new()
+    var c8KvSingle = new Equinix.NetworkEdge.Device("c8kv_single", new()
     {
+        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+        {
+            Username = "test-username",
+            KeyName = "valid-key-name",
+        },
         Name = "tf-c8kv",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
         TypeCode = "C8000V",
@@ -30,11 +35,6 @@ return await Deployment.RunAsync(() =>
         TermLength = 12,
         LicenseToken = "valid-license-token",
         AdditionalBandwidth = 5,
-        SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-        {
-            Username = "test-username",
-            KeyName = "valid-key-name",
-        },
         AclTemplateId = "3e548c02-9164-4197-aa23-05b1f644883c",
     });
 

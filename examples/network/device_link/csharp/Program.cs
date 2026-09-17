@@ -7,8 +7,6 @@ return await Deployment.RunAsync(() =>
 {
     var test = new Equinix.NetworkEdge.DeviceLink("test", new()
     {
-        Name = "test-DLG",
-        ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         Devices = new[]
         {
             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
@@ -39,6 +37,8 @@ return await Deployment.RunAsync(() =>
                 ThroughputUnit = "Mbps",
             },
         },
+        Name = "test-DLG",
+        ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     });
 
 });

@@ -2,16 +2,6 @@ import pulumi
 import pulumi_equinix as equinix
 
 port2_aws = equinix.fabric.Connection("port2aws",
-    name="ConnectionName",
-    type=equinix.fabric.ConnectionType.EVPL,
-    notifications=[{
-        "type": equinix.fabric.NotificationsType.ALL,
-        "emails": [
-            "example@equinix.com",
-            "test1@equinix.com",
-        ],
-    }],
-    bandwidth=50,
     redundancy={
         "priority": "PRIMARY",
     },
@@ -20,7 +10,6 @@ port2_aws = equinix.fabric.Connection("port2aws",
     },
     a_side={
         "access_point": {
-            "type": equinix.fabric.AccessPointType.COLO,
             "port": {
                 "uuid": "<aside_port_uuid>",
             },
@@ -29,13 +18,11 @@ port2_aws = equinix.fabric.Connection("port2aws",
                 "vlan_s_tag": 2019,
                 "vlan_c_tag": 2112,
             },
+            "type": equinix.fabric.AccessPointType.COLO,
         },
     },
     z_side={
         "access_point": {
-            "type": equinix.fabric.AccessPointType.SP,
-            "authentication_key": "<aws_account_id>",
-            "seller_region": "us-west-1",
             "profile": {
                 "type": equinix.fabric.ProfileType.L2_PROFILE,
                 "uuid": "<service_profile_uuid>",
@@ -43,8 +30,21 @@ port2_aws = equinix.fabric.Connection("port2aws",
             "location": {
                 "metro_code": equinix.Metro.SILICON_VALLEY,
             },
+            "type": equinix.fabric.AccessPointType.SP,
+            "authentication_key": "<aws_account_id>",
+            "seller_region": "us-west-1",
         },
     },
+    notifications=[{
+        "type": equinix.fabric.NotificationsType.ALL,
+        "emails": [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name="ConnectionName",
+    type=equinix.fabric.ConnectionType.EVPL,
+    bandwidth=50,
     additional_info=[
         {
             "key": "accessKey",

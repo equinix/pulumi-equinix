@@ -29,8 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkedge.NewDeviceLink(ctx, "test", &networkedge.DeviceLinkArgs{
-//				Name:      pulumi.String("test-DLG"),
-//				ProjectId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Devices: networkedge.DeviceLinkDeviceArray{
 //					&networkedge.DeviceLinkDeviceArgs{
 //						Id:          pulumi.Any(testEquinixNetworkDevice.Uuid),
@@ -55,6 +53,8 @@ import (
 //						ThroughputUnit: pulumi.String("Mbps"),
 //					},
 //				},
+//				Name:      pulumi.String("test-DLG"),
+//				ProjectId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //			})
 //			if err != nil {
 //				return err

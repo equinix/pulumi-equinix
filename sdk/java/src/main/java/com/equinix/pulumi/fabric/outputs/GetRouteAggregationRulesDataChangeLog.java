@@ -11,146 +11,146 @@ import java.util.Objects;
 @CustomType
 public final class GetRouteAggregationRulesDataChangeLog {
     /**
-     * @return User name of creator of the stream resource
+     * @return User name of creator of the resource
      * 
      */
     private String createdBy;
     /**
-     * @return Email of creator of the stream resource
+     * @return Email of creator of the resource
      * 
      */
     private String createdByEmail;
     /**
-     * @return Legal name of creator of the stream resource
+     * @return Legal name of creator of the resource
      * 
      */
     private String createdByFullName;
     /**
-     * @return Creation time of the stream resource
+     * @return Creation time of the resource
      * 
      */
     private String createdDateTime;
     /**
-     * @return User name of deleter of the stream resource
+     * @return User name of deleter of the resource
      * 
      */
     private String deletedBy;
     /**
-     * @return Email of deleter of the stream resource
+     * @return Email of deleter of the resource
      * 
      */
     private String deletedByEmail;
     /**
-     * @return Legal name of deleter of the stream resource
+     * @return Legal name of deleter of the resource
      * 
      */
     private String deletedByFullName;
     /**
-     * @return Deletion time of the stream resource
+     * @return Deletion time of the resource
      * 
      */
     private String deletedDateTime;
     /**
-     * @return User name of last updater of the stream resource
+     * @return User name of last updater of the resource
      * 
      */
     private String updatedBy;
     /**
-     * @return Email of last updater of the stream resource
+     * @return Email of last updater of the resource
      * 
      */
     private String updatedByEmail;
     /**
-     * @return Legal name of last updater of the stream resource
+     * @return Legal name of last updater of the resource
      * 
      */
     private String updatedByFullName;
     /**
-     * @return Last update time of the stream resource
+     * @return Last update time of the resource
      * 
      */
     private String updatedDateTime;
 
     private GetRouteAggregationRulesDataChangeLog() {}
     /**
-     * @return User name of creator of the stream resource
+     * @return User name of creator of the resource
      * 
      */
     public String createdBy() {
         return this.createdBy;
     }
     /**
-     * @return Email of creator of the stream resource
+     * @return Email of creator of the resource
      * 
      */
     public String createdByEmail() {
         return this.createdByEmail;
     }
     /**
-     * @return Legal name of creator of the stream resource
+     * @return Legal name of creator of the resource
      * 
      */
     public String createdByFullName() {
         return this.createdByFullName;
     }
     /**
-     * @return Creation time of the stream resource
+     * @return Creation time of the resource
      * 
      */
     public String createdDateTime() {
         return this.createdDateTime;
     }
     /**
-     * @return User name of deleter of the stream resource
+     * @return User name of deleter of the resource
      * 
      */
     public String deletedBy() {
         return this.deletedBy;
     }
     /**
-     * @return Email of deleter of the stream resource
+     * @return Email of deleter of the resource
      * 
      */
     public String deletedByEmail() {
         return this.deletedByEmail;
     }
     /**
-     * @return Legal name of deleter of the stream resource
+     * @return Legal name of deleter of the resource
      * 
      */
     public String deletedByFullName() {
         return this.deletedByFullName;
     }
     /**
-     * @return Deletion time of the stream resource
+     * @return Deletion time of the resource
      * 
      */
     public String deletedDateTime() {
         return this.deletedDateTime;
     }
     /**
-     * @return User name of last updater of the stream resource
+     * @return User name of last updater of the resource
      * 
      */
     public String updatedBy() {
         return this.updatedBy;
     }
     /**
-     * @return Email of last updater of the stream resource
+     * @return Email of last updater of the resource
      * 
      */
     public String updatedByEmail() {
         return this.updatedByEmail;
     }
     /**
-     * @return Legal name of last updater of the stream resource
+     * @return Legal name of last updater of the resource
      * 
      */
     public String updatedByFullName() {
         return this.updatedByFullName;
     }
     /**
-     * @return Last update time of the stream resource
+     * @return Last update time of the resource
      * 
      */
     public String updatedDateTime() {

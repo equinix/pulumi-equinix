@@ -12,6 +12,24 @@ func main() {
 			Name:      pulumi.String("account-name"),
 		}, nil)
 		_, err := networkedge.NewDevice(ctx, "FTNT-FIREWALL-SV", &networkedge.DeviceArgs{
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				Hostname: pulumi.String("fg-vm-znpd"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("john@equinix.com"),
+					pulumi.String("marry@equinix.com"),
+				},
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				VendorConfiguration: pulumi.StringMap{
+					"ipAddressType":         pulumi.String("DHCP"),
+					"managementInterfaceId": pulumi.String("6"),
+				},
+			},
 			Name:      pulumi.String("TF_FTNT-FIREWALL"),
 			ProjectId: pulumi.String("XXXXXXXXXX"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -36,24 +54,6 @@ func main() {
 			VendorConfiguration: pulumi.StringMap{
 				"ipAddressType":         pulumi.String("DHCP"),
 				"managementInterfaceId": pulumi.String("6"),
-			},
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name: pulumi.String("TF_FTNT-FIREWALL-secondary"),
-				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.MetroCode, nil
-				}).(pulumi.StringPtrOutput),
-				Hostname: pulumi.String("fg-vm-znpd"),
-				Notifications: pulumi.StringArray{
-					pulumi.String("john@equinix.com"),
-					pulumi.String("marry@equinix.com"),
-				},
-				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.Number, nil
-				}).(pulumi.StringPtrOutput),
-				VendorConfiguration: pulumi.StringMap{
-					"ipAddressType":         pulumi.String("DHCP"),
-					"managementInterfaceId": pulumi.String("6"),
-				},
 			},
 		})
 		if err != nil {

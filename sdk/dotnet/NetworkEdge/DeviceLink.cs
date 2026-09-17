@@ -23,8 +23,6 @@ namespace Pulumi.Equinix.NetworkEdge
     /// {
     ///     var test = new Equinix.NetworkEdge.DeviceLink("test", new()
     ///     {
-    ///         Name = "test-DLG",
-    ///         ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         Devices = new[]
     ///         {
     ///             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
@@ -55,6 +53,8 @@ namespace Pulumi.Equinix.NetworkEdge
     ///                 ThroughputUnit = "Mbps",
     ///             },
     ///         },
+    ///         Name = "test-DLG",
+    ///         ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///     });
     /// 
     /// });

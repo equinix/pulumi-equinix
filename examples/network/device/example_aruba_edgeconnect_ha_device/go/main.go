@@ -11,6 +11,25 @@ func main() {
 			MetroCode: pulumi.String("SV"),
 		}, nil)
 		_, err := networkedge.NewDevice(ctx, "ARUBA-EDGECONNECT-AM", &networkedge.DeviceArgs{
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("TF_CHECKPOINT"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				AclTemplateId: pulumi.String("XXXXXXX"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				VendorConfiguration: pulumi.StringMap{
+					"accountKey":   pulumi.String("xxxxx"),
+					"accountName":  pulumi.String("xxxx"),
+					"applianceTag": pulumi.String("test"),
+					"hostname":     pulumi.String("test"),
+				},
+			},
 			Name:      pulumi.String("TF_Aruba_Edge_Connect"),
 			ProjectId: pulumi.String("XXXXX"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -37,25 +56,6 @@ func main() {
 				"accountName":  pulumi.String("xxxx"),
 				"applianceTag": pulumi.String("tests"),
 				"hostname":     pulumi.String("test"),
-			},
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name: pulumi.String("TF_CHECKPOINT"),
-				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.MetroCode, nil
-				}).(pulumi.StringPtrOutput),
-				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.Number, nil
-				}).(pulumi.StringPtrOutput),
-				AclTemplateId: pulumi.String("XXXXXXX"),
-				Notifications: pulumi.StringArray{
-					pulumi.String("test@eq.com"),
-				},
-				VendorConfiguration: pulumi.StringMap{
-					"accountKey":   pulumi.String("xxxxx"),
-					"accountName":  pulumi.String("xxxx"),
-					"applianceTag": pulumi.String("test"),
-					"hostname":     pulumi.String("test"),
-				},
 			},
 		})
 		if err != nil {

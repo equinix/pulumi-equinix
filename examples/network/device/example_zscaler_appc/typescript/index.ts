@@ -6,6 +6,10 @@ const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
 const zscalerAppcSingle = new equinix.networkedge.Device("zscaler-appc-single", {
+    sshKey: {
+        username: "test",
+        keyName: "test-key",
+    },
     name: "tf-zscaler-appc",
     projectId: "XXXXXX",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -27,9 +31,5 @@ const zscalerAppcSingle = new equinix.networkedge.Device("zscaler-appc-single", 
     vendorConfiguration: {
         provisioningKey: "XXXXXXXXXX",
         hostname: "XXXX",
-    },
-    sshKey: {
-        username: "test",
-        keyName: "test-key",
     },
 });

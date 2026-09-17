@@ -27,6 +27,20 @@ public class App {
             .build());
 
         var sixWindVsr = new Device("sixWindVsr", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("xxxx")
+                .keyName("xxxxx")
+                .build())
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("6WIND-VSR-Sec")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("hostname", "test"),
+                    Map.entry("token", "xxxx")
+                ))
+                .build())
             .name("6WIND-VSR")
             .projectId("xxxxxxx")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -44,20 +58,6 @@ public class App {
                 Map.entry("hostname", "test"),
                 Map.entry("token", "xxxx")
             ))
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("xxxx")
-                .keyName("xxxxx")
-                .build())
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("6WIND-VSR-Sec")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .notifications("test@eq.com")
-                .vendorConfiguration(Map.ofEntries(
-                    Map.entry("hostname", "test"),
-                    Map.entry("token", "xxxx")
-                ))
-                .build())
             .build());
 
     }

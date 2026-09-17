@@ -11,6 +11,10 @@ func main() {
 			MetroCode: pulumi.String("SV"),
 		}, nil)
 		_, err := networkedge.NewDevice(ctx, "c8000v-byol-throughput", &networkedge.DeviceArgs{
+			SshKey: &networkedge.DeviceSshKeyArgs{
+				Username: pulumi.String("test"),
+				KeyName:  pulumi.String("test-key"),
+			},
 			Name: pulumi.String("tf-c8000v-byol"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
 				return &sv.MetroCode, nil
@@ -33,11 +37,7 @@ func main() {
 			CoreCount:      pulumi.Int(2),
 			Throughput:     pulumi.Int(100),
 			ThroughputUnit: pulumi.String(networkedge.ThroughputUnitMbps),
-			SshKey: &networkedge.DeviceSshKeyArgs{
-				Username: pulumi.String("test"),
-				KeyName:  pulumi.String("test-key"),
-			},
-			AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
+			AclTemplateId:  pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
 		})
 		if err != nil {
 			return err

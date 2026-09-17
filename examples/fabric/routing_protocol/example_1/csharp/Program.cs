@@ -7,9 +7,6 @@ return await Deployment.RunAsync(() =>
 {
     var direct = new Equinix.Fabric.RoutingProtocol("direct", new()
     {
-        ConnectionUuid = "<some_id>",
-        Type = "DIRECT",
-        Name = "direct_rp",
         DirectIpv4 = new Equinix.Fabric.Inputs.RoutingProtocolDirectIpv4Args
         {
             EquinixIfaceIp = "190.1.1.1/30",
@@ -18,6 +15,9 @@ return await Deployment.RunAsync(() =>
         {
             EquinixIfaceIp = "190::1:1/126",
         },
+        ConnectionUuid = "<some_id>",
+        Type = "DIRECT",
+        Name = "direct_rp",
     });
 
 });

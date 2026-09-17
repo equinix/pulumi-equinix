@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -48,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,31 +62,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var fcr2Azure = new Connection("fcr2Azure", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("IP_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("CLOUD_ROUTER")
  *                     .router(ConnectionASideAccessPointRouterArgs.builder()
  *                         .uuid("<cloud_router_uuid>")
  *                         .build())
+ *                     .type("CLOUD_ROUTER")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
- *                     .peeringType("PRIVATE")
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
  *                         .type("L2_PROFILE")
  *                         .uuid("<Azure_Service_Profile_UUID>")
@@ -94,8 +82,20 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("SP")
+ *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
+ *                     .peeringType("PRIVATE")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("IP_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -112,7 +112,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -120,6 +119,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointNetworkArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -134,34 +134,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var fcr2Network = new Connection("fcr2Network", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("IPWAN_VC")
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .router(ConnectionASideAccessPointRouterArgs.builder()
+ *                         .uuid("<cloud_router_uuid>")
+ *                         .build())
+ *                     .type("CLOUD_ROUTER")
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
+ *                         .uuid("<network_uuid>")
+ *                         .build())
+ *                     .type("NETWORK")
+ *                     .build())
+ *                 .build())
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
  *                     "example}{@literal @}{@code equinix.com",
  *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
+ *             .name("ConnectionName")
+ *             .type("IPWAN_VC")
  *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("CLOUD_ROUTER")
- *                     .router(ConnectionASideAccessPointRouterArgs.builder()
- *                         .uuid("<cloud_router_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("NETWORK")
- *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
- *                         .uuid("<network_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -178,7 +178,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -188,6 +187,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -202,29 +202,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var fcr2Port = new Connection("fcr2Port", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("IP_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("CLOUD_ROUTER")
  *                     .router(ConnectionASideAccessPointRouterArgs.builder()
  *                         .uuid("<cloud_router_uuid>")
  *                         .build())
+ *                     .type("CLOUD_ROUTER")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionZSideAccessPointPortArgs.builder()
  *                         .uuid("<port_uuid>")
  *                         .build())
@@ -235,8 +225,18 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("IP_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -253,7 +253,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
@@ -264,6 +263,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -278,15 +278,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var port2Alibaba = new Connection("port2Alibaba", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .redundancy(ConnectionRedundancyArgs.builder()
  *                 .priority("PRIMARY")
  *                 .build())
@@ -295,7 +286,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid("<aside_port_uuid>")
  *                         .build())
@@ -303,13 +293,11 @@ import javax.annotation.Nullable;
  *                         .type("DOT1Q")
  *                         .vlanTag(2019)
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<alibaba_account_id>")
- *                     .sellerRegion("us-west-1")
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
  *                         .type("L2_PROFILE")
  *                         .uuid("<service_profile_uuid>")
@@ -317,8 +305,20 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("SP")
+ *                     .authenticationKey("<alibaba_account_id>")
+ *                     .sellerRegion("us-west-1")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -335,7 +335,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
@@ -346,6 +345,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -360,15 +360,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var port2Aws = new Connection("port2Aws", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .redundancy(ConnectionRedundancyArgs.builder()
  *                 .priority("PRIMARY")
  *                 .build())
@@ -377,7 +368,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid("<aside_port_uuid>")
  *                         .build())
@@ -386,13 +376,11 @@ import javax.annotation.Nullable;
  *                         .vlanSTag(2019)
  *                         .vlanCTag(2112)
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<aws_account_id>")
- *                     .sellerRegion("us-west-1")
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
  *                         .type("L2_PROFILE")
  *                         .uuid("<service_profile_uuid>")
@@ -400,8 +388,20 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("SP")
+ *                     .authenticationKey("<aws_account_id>")
+ *                     .sellerRegion("us-west-1")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .additionalInfo(            
  *                 Map.ofEntries(
  *                     Map.entry("key", "accessKey"),
@@ -427,7 +427,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -435,6 +434,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointNetworkArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -449,34 +449,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var eplan = new Connection("eplan", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EPLAN_VC")
+ *             .order(ConnectionOrderArgs.builder()
+ *                 .purchaseOrderNumber("1-323292")
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid("<aside_port_uuid>")
+ *                         .build())
+ *                     .type("COLO")
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
+ *                         .uuid("<network_uuid>")
+ *                         .build())
+ *                     .type("NETWORK")
+ *                     .build())
+ *                 .build())
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
  *                 .emails(                
  *                     "example}{@literal @}{@code equinix.com",
  *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EPLAN_VC")
  *             .bandwidth(50)
- *             .order(ConnectionOrderArgs.builder()
- *                 .purchaseOrderNumber("1-323292")
- *                 .build())
- *             .aSide(ConnectionASideArgs.builder()
- *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
- *                     .port(ConnectionASideAccessPointPortArgs.builder()
- *                         .uuid("<aside_port_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .zSide(ConnectionZSideArgs.builder()
- *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("NETWORK")
- *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
- *                         .uuid("<network_uuid>")
- *                         .build())
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -493,7 +493,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -502,6 +501,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointNetworkArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -516,21 +516,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var evplan = new Connection("evplan", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPLAN_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid("<aside_port_uuid>")
  *                         .build())
@@ -538,16 +528,26 @@ import javax.annotation.Nullable;
  *                         .type("DOT1Q")
  *                         .vlanSTag(1976)
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("NETWORK")
  *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
  *                         .uuid("<network_uuid>")
  *                         .build())
+ *                     .type("NETWORK")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPLAN_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -564,7 +564,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -575,6 +574,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -589,21 +589,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var port2Port = new Connection("port2Port", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid("<aside_port_uuid>")
  *                         .build())
@@ -611,11 +601,11 @@ import javax.annotation.Nullable;
  *                         .type("QINQ")
  *                         .vlanSTag(1976)
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionZSideAccessPointPortArgs.builder()
  *                         .uuid("<zside_port_uuid>")
  *                         .build())
@@ -626,8 +616,18 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -644,7 +644,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -654,6 +653,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -668,21 +668,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var accessEplVc = new Connection("accessEplVc", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("ACCESS_EPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid("<aside_port_uuid>")
  *                         .build())
@@ -690,19 +680,29 @@ import javax.annotation.Nullable;
  *                         .type("QINQ")
  *                         .vlanSTag(1976)
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionZSideAccessPointPortArgs.builder()
  *                         .uuid("<zside_port_uuid>")
  *                         .build())
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("ACCESS_EPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -719,7 +719,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -728,6 +727,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -742,37 +742,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var epl = new Connection("epl", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionASideAccessPointPortArgs.builder()
  *                         .uuid("<aside_port_uuid>")
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionZSideAccessPointPortArgs.builder()
  *                         .uuid("<zside_port_uuid>")
  *                         .build())
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -789,7 +789,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -800,6 +799,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointPortArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLinkProtocolArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -814,21 +814,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var vd2Port = new Connection("vd2Port", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
  *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
  *                         .type("EDGE")
  *                         .uuid("<device_uuid>")
@@ -837,11 +827,11 @@ import javax.annotation.Nullable;
  *                         .type("NETWORK")
  *                         .id(7)
  *                         .build())
+ *                     .type("VD")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("COLO")
  *                     .port(ConnectionZSideAccessPointPortArgs.builder()
  *                         .uuid("<zside_port_uuid>")
  *                         .build())
@@ -852,8 +842,18 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("COLO")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -870,7 +870,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideServiceTokenArgs;
@@ -878,6 +877,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -892,15 +892,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var token2Aws = new Connection("token2Aws", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
@@ -911,9 +902,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<aws_account_id>")
- *                     .sellerRegion("us-west-1")
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
  *                         .type("L2_PROFILE")
  *                         .uuid("<service_profile_uuid>")
@@ -921,8 +909,20 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("SP")
+ *                     .authenticationKey("<aws_account_id>")
+ *                     .sellerRegion("us-west-1")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -939,7 +939,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -949,6 +948,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -963,21 +963,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var vd2Azure = new Connection("vd2Azure", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
  *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
  *                         .type("EDGE")
  *                         .uuid("<device_uuid>")
@@ -986,13 +976,11 @@ import javax.annotation.Nullable;
  *                         .type("CLOUD")
  *                         .id(7)
  *                         .build())
+ *                     .type("VD")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
- *                     .peeringType("PRIVATE")
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
  *                         .type("L2_PROFILE")
  *                         .uuid("<Azure_Service_Profile_UUID>")
@@ -1000,8 +988,20 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("SP")
+ *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
+ *                     .peeringType("PRIVATE")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -1019,7 +1019,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -1029,6 +1028,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1043,24 +1043,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var vd2AzurePrimary = new Connection("vd2AzurePrimary", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
  *             .redundancy(ConnectionRedundancyArgs.builder()
  *                 .priority("PRIMARY")
  *                 .build())
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
  *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
  *                         .type("EDGE")
  *                         .uuid("<device_uuid>")
@@ -1069,13 +1059,11 @@ import javax.annotation.Nullable;
  *                         .type("CLOUD")
  *                         .id(7)
  *                         .build())
+ *                     .type("VD")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
- *                     .peeringType("PRIVATE")
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
  *                         .type("L2_PROFILE")
  *                         .uuid("<Azure_Service_Profile_UUID>")
@@ -1083,16 +1071,10 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("SP")
+ *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
+ *                     .peeringType("PRIVATE")
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var vd2AzureSecondary = new Connection("vd2AzureSecondary", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .redundancy(ConnectionRedundancyArgs.builder()
- *                 .priority("SECONDARY")
- *                 .group(vd2AzurePrimary.redundancy().applyValue(_redundancy -> _redundancy.group()))
  *                 .build())
  *             .notifications(ConnectionNotificationArgs.builder()
  *                 .type("ALL")
@@ -1100,13 +1082,21 @@ import javax.annotation.Nullable;
  *                     "example}{@literal @}{@code equinix.com",
  *                     "test1}{@literal @}{@code equinix.com")
  *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
  *             .bandwidth(50)
+ *             .build());
+ * 
+ *         var vd2AzureSecondary = new Connection("vd2AzureSecondary", ConnectionArgs.builder()
+ *             .redundancy(ConnectionRedundancyArgs.builder()
+ *                 .priority("SECONDARY")
+ *                 .group(vd2AzurePrimary.redundancy().applyValue(_redundancy -> _redundancy.group()))
+ *                 .build())
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
  *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
  *                         .type("EDGE")
  *                         .uuid("<device_uuid>")
@@ -1115,13 +1105,11 @@ import javax.annotation.Nullable;
  *                         .type("CLOUD")
  *                         .id(5)
  *                         .build())
+ *                     .type("VD")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("SP")
- *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
- *                     .peeringType("PRIVATE")
  *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
  *                         .type("L2_PROFILE")
  *                         .uuid("<Azure_Service_Profile_UUID>")
@@ -1129,8 +1117,20 @@ import javax.annotation.Nullable;
  *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
  *                         .metroCode("SV")
  *                         .build())
+ *                     .type("SP")
+ *                     .authenticationKey("<Azure_ExpressRouter_Auth_Key>")
+ *                     .peeringType("PRIVATE")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -1147,7 +1147,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -1156,6 +1155,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointNetworkArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1170,21 +1170,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var vd2Network = new Connection("vd2Network", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPLAN_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
  *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
  *                         .type("EDGE")
  *                         .uuid("<device_uuid>")
@@ -1193,16 +1183,26 @@ import javax.annotation.Nullable;
  *                         .type("CLOUD")
  *                         .id(7)
  *                         .build())
+ *                     .type("VD")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
  *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
- *                     .type("NETWORK")
  *                     .network(ConnectionZSideAccessPointNetworkArgs.builder()
  *                         .uuid("<network_uuid>")
  *                         .build())
+ *                     .type("NETWORK")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPLAN_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -1219,7 +1219,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.fabric.Connection;
  * import com.pulumi.equinix.fabric.ConnectionArgs;
- * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionOrderArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
@@ -1227,6 +1226,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointInterfaceArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
  * import com.pulumi.equinix.fabric.inputs.ConnectionZSideServiceTokenArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1241,21 +1241,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var vd2Token = new Connection("vd2Token", ConnectionArgs.builder()
- *             .name("ConnectionName")
- *             .type("EVPL_VC")
- *             .notifications(ConnectionNotificationArgs.builder()
- *                 .type("ALL")
- *                 .emails(                
- *                     "example}{@literal @}{@code equinix.com",
- *                     "test1}{@literal @}{@code equinix.com")
- *                 .build())
- *             .bandwidth(50)
  *             .order(ConnectionOrderArgs.builder()
  *                 .purchaseOrderNumber("1-323292")
  *                 .build())
  *             .aSide(ConnectionASideArgs.builder()
  *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
- *                     .type("VD")
  *                     .virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs.builder()
  *                         .type("EDGE")
  *                         .uuid("<device_uuid>")
@@ -1264,6 +1254,7 @@ import javax.annotation.Nullable;
  *                         .type("NETWORK")
  *                         .id(7)
  *                         .build())
+ *                     .type("VD")
  *                     .build())
  *                 .build())
  *             .zSide(ConnectionZSideArgs.builder()
@@ -1271,6 +1262,15 @@ import javax.annotation.Nullable;
  *                     .uuid("<service_token_uuid>")
  *                     .build())
  *                 .build())
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type("ALL")
+ *                 .emails(                
+ *                     "example}{@literal @}{@code equinix.com",
+ *                     "test1}{@literal @}{@code equinix.com")
+ *                 .build())
+ *             .name("ConnectionName")
+ *             .type("EVPL_VC")
+ *             .bandwidth(50)
  *             .build());
  * 
  *     }}{@code
@@ -1492,14 +1492,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Connection Redundancy Configuration
+     * Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     @Export(name="redundancy", refs={ConnectionRedundancy.class}, tree="[0]")
     private Output</* @Nullable */ ConnectionRedundancy> redundancy;
 
     /**
-     * @return Connection Redundancy Configuration
+     * @return Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     public Output<Optional<ConnectionRedundancy>> redundancy() {

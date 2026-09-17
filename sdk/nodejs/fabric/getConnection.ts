@@ -100,7 +100,7 @@ export interface GetConnectionResult {
      */
     readonly project: outputs.fabric.GetConnectionProject;
     /**
-     * Connection Redundancy Configuration
+     * Connection Redundancy Configuration (applicable only for Azure connections)
      */
     readonly redundancy: outputs.fabric.GetConnectionRedundancy;
     /**

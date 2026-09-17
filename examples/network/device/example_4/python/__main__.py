@@ -3,7 +3,11 @@ import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(name="account-name",
     metro_code="SV")
-c8_kv_single = equinix.networkedge.Device("c8kvSingle",
+c8_kv_single = equinix.networkedge.Device("c8kv_single",
+    ssh_key={
+        "username": "test-username",
+        "key_name": "valid-key-name",
+    },
     name="tf-c8kv",
     metro_code=sv.metro_code,
     type_code="C8000V",
@@ -18,8 +22,4 @@ c8_kv_single = equinix.networkedge.Device("c8kvSingle",
     term_length=12,
     license_token="valid-license-token",
     additional_bandwidth=5,
-    ssh_key={
-        "username": "test-username",
-        "key_name": "valid-key-name",
-    },
     acl_template_id="3e548c02-9164-4197-aa23-05b1f644883c")

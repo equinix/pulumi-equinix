@@ -26,6 +26,10 @@ public class App {
             .build());
 
         var c8000VByolThroughput = new Device("c8000VByolThroughput", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test")
+                .keyName("test-key")
+                .build())
             .name("tf-c8000v-byol")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("C8000V")
@@ -43,10 +47,6 @@ public class App {
             .coreCount(2)
             .throughput(100)
             .throughputUnit("Mbps")
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test")
-                .keyName("test-key")
-                .build())
             .aclTemplateId("0bff6e05-f0e7-44cd-804a-25b92b835f8b")
             .build());
 
