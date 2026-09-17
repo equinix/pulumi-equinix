@@ -79,7 +79,7 @@ build_nodejs: upstream $(PULUMICTL_BIN)
 		find ./sdk/nodejs/ -mindepth 2 -maxdepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i 's|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
 	cd sdk/nodejs/ && \
 		printf "module fake_nodejs_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
-        yarn install --registry https://nexus.corp.equinix.com/nexus/content/groups/Equinix-NPM-Release/ && \
+        yarn install && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i -e "s/\$${VERSION}/$(NODEJS_VERSION)/g" ./bin/package.json
