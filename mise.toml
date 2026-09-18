@@ -1,0 +1,8 @@
+[settings]
+python.github_attestations = false # Work around install failure for python@3.11.8
+
+[tools]
+node = '22.13.1'
+java = 'temurin-17'
+"vfox:version-fox/vfox-dotnet" = "6"
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.2.4"
