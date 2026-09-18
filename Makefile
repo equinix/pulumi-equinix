@@ -146,6 +146,8 @@ build_java: .make/build_java
 .make/generate_java: .make/mise_install bin/$(CODEGEN)
 .make/generate_java: | mise_env
 	$(GEN_ENVS) $(WORKING_DIR)/bin/$(CODEGEN) java --out sdk/java/
+	mv sdk/java/src/main/java/com/equinix/equinix sdk/java/src/main/java/com/equinix/pulumi
+	find sdk/java -type f -exec sed -i.bak s/com\.equinix\.equinix/com\.equinix\.pulumi/g {} \; -exec rm {}.bak \;
 	printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > sdk/java/go.mod
 	@touch $@
 .make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
