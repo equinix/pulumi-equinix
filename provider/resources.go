@@ -1,4 +1,4 @@
-// Copyright 2016-2018, Pulumi Corporation.
+// Copyright 2016-2024, Pulumi Corporation.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,10 +28,9 @@ import (
 	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	tfbridgeTokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	pulumiSchema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -75,15 +74,7 @@ func makeEquinixToken(moduleTitle, res string) string {
 	return strings.Join([]string{equinixPkg, strings.ToLower(moduleTitle) + "/" + fn, res}, ":")
 }
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
-// Provider returns additional overlaid schema and metadata associated with the provider..
+// Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	upstreamProvider := equinixShim.NewUpstreamProvider(version.Version)
@@ -108,7 +99,7 @@ func Provider() tfbridge.ProviderInfo {
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
+		// You may host a logo on a domain you control or add an PNG logo (100x100) for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
 		LogoURL: "https://raw.githubusercontent.com/equinix/pulumi-equinix/main/assets/logo.png",
 		// PluginDownloadURL is an optional URL used to download the Provider
@@ -125,25 +116,12 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/equinix/pulumi-equinix",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:            "equinix",
-		UpstreamRepoPath:     "./upstream",
-		Version:              version.Version,
-		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
-		Config:               map[string]*tfbridge.SchemaInfo{},
-		PreConfigureCallback: preConfigureCallback,
-		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
+		GitHubOrg:        "equinix",
+		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		Config:           map[string]*tfbridge.SchemaInfo{},
 
-		// See pulumi/pulumi-aws#2880
-		SkipValidateProviderConfigForPluginFramework: true,
-
-		IgnoreMappings: []string{
-			"equinix_ecx_l2_connection",          // to be deprecated in terraform. Use equinix_fabric_connection
-			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
-			"equinix_ecx_l2_serviceprofile",      // to be deprecated in tf. Use equinix_fabric_service_profile
-			"equinix_ecx_l2_sellerprofile",       // to be deprecated in tf. Use equinix_fabric_service_profile ds
-			"equinix_ecx_l2_sellerprofiles",      // to be deprecated in tf. Use equinix_fabric_service_profiles ds
-			"equinix_ecx_port",                   // to be deprecated in tf. Use equinix_fabric_port ds
-		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
 			"equinix_fabric_service_token": {
@@ -1481,6 +1459,16 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	// MustComputeTokens maps all resources and datasources from the upstream provider into Pulumi.
+	//
+	// tokens.SingleModule puts every upstream item into your provider's main module.
+	//
+	// You shouldn't need to override anything, but if you do, use the [tfbridge.ProviderInfo.Resources]
+	// and [tfbridge.ProviderInfo.DataSources].
+	prov.MustComputeTokens(tfbridgeTokens.SingleModule("equinix_", equinixMod,
+		tfbridgeTokens.MakeStandard(equinixPkg)))
+
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
