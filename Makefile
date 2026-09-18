@@ -134,6 +134,7 @@ build_go: .make/build_go
 .make/generate_go: .make/mise_install bin/$(CODEGEN)
 .make/generate_go: | mise_env
 	$(GEN_ENVS) $(WORKING_DIR)/bin/$(CODEGEN) go --out sdk/go/
+	go run golang.org/x/tools/cmd/goimports@v0.50.0 -w sdk/go/
 	@touch $@
 .make/build_go: .make/generate_go
 	cd sdk && go list "$$(grep -e "^module" go.mod | cut -d ' ' -f 2)/go/..." | xargs -I {} bash -c 'go build {} && go clean -i {}'
