@@ -24,14 +24,16 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
+
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgeTokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	pulumiSchema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 )
 
 // all of the token components used below.
@@ -78,10 +80,7 @@ func makeEquinixToken(moduleTitle, res string) string {
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	upstreamProvider := equinixShim.NewUpstreamProvider(version.Version)
-	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider,
-		shimv2.WithDiffStrategy(shimv2.PlanState),
-		shimv2.WithPlanResourceChange(func(s string) bool { return true }),
-	)
+	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider)
 	p := pfbridge.MuxShimWithDisjointgPF(context.Background(), v2p, upstreamProvider.PluginFrameworkProvider)
 
 	// Create a Pulumi provider mapping

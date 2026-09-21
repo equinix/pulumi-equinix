@@ -15,8 +15,9 @@
 package main
 
 import (
-	equinix "github.com/equinix/pulumi-equinix/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
+
+	equinix "github.com/equinix/pulumi-equinix/provider"
 )
 
 func main() {
