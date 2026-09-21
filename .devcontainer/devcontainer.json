@@ -11,13 +11,11 @@
     }
   },
   "mounts": [
-    "source=${localWorkspaceFolder}/.devcontainer/pulumi-dev.crt,target=/usr/local/share/ca-certificates/pulumi-dev.crt,type=bind,consistency=cached"
+    {
+      "source": "${localEnv:HOME}/.config/gh",
+      "target": "/root/.config/gh",
+      "type": "bind"
+    }
   ],
-  "postCreateCommand": "sudo update-ca-certificates",
   "remoteUser": "root",
-  "containerEnv": {
-    "NODE_EXTRA_CA_CERTS": "/usr/local/share/ca-certificates/pulumi-dev.crt",
-    "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt",
-    "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt"
-  }
 }
