@@ -9,17 +9,15 @@ plugins {
 
 group = "com.equinix"
 
-group = "com.equinix.pulumi"
-
 def resolvedVersion = System.getenv("PACKAGE_VERSION") ?:
     (project.version == "unspecified"
-         ? "0.0.1"
+         ? "1.0.0-alpha.0+dev"
          : project.version)
 
 def signingKey = System.getenv("SIGNING_KEY")
 def signingPassword = System.getenv("SIGNING_PASSWORD")
-def publishRepoURL = System.getenv("PUBLISH_REPO_URL") ?: "https://central.sonatype.com/repository/maven-snapshots/"
-def publishStagingURL = System.getenv("PUBLISH_STAGING_URL") ?: "https://ossrh-staging-api.central.sonatype.com/service/local/"
+def publishRepoURL = System.getenv("PUBLISH_REPO_URL")
+def publishStagingURL = System.getenv("PUBLISH_STAGING_URL")
 def publishRepoUsername = System.getenv("PUBLISH_REPO_USERNAME")
 def publishRepoPassword = System.getenv("PUBLISH_REPO_PASSWORD")
 
@@ -46,7 +44,7 @@ repositories {
 dependencies {
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation("com.pulumi:pulumi:1.16.0")
+    implementation("com.pulumi:pulumi:1.0.0")
 }
 
 task sourcesJar(type: Jar) {
@@ -70,7 +68,7 @@ def genPulumiResources = tasks.register('genPulumiResources') {
         def builder = new groovy.json.JsonBuilder()
         builder {
             resource true
-            name "pulumi"
+            name "equinix"
             server "github://api.github.com/equinix"
             version resolvedVersion
         }
@@ -86,7 +84,7 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = "com.equinix.pulumi"
+            groupId = "com.equinix"
             artifactId = "equinix"
             version = resolvedVersion
             from components.java
@@ -94,10 +92,10 @@ publishing {
             artifact javadocJar
 
             pom {
-                inceptionYear = "2023"
-                name = "equinix"
+                inceptionYear = ""
+                name = ""
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing equinix cloud resources."
+                description = $/A Pulumi package for creating and managing equinix cloud resources./$
 
                 url = "https://github.com/equinix/pulumi-equinix"
 
@@ -124,6 +122,19 @@ publishing {
             }
         }
     }
+
+    if (publishRepoURL) {
+        repositories {
+            maven {
+                name = "PublishRepo"
+                url = publishRepoURL
+                credentials {
+                    username = publishRepoUsername
+                    password = publishRepoPassword
+                }
+            }
+        }
+    }
 }
 
 javadoc {
@@ -135,19 +146,6 @@ javadoc {
 
 jar {
     zip64 = true
-}
-
-if (publishRepoUsername) {
-    nexusPublishing {
-        repositories {
-            sonatype {
-                nexusUrl.set(uri(publishStagingURL))
-                snapshotRepositoryUrl.set(uri(publishRepoURL))
-                username = publishRepoUsername
-                password = publishRepoPassword
-            }
-        }
-    }
 }
 
 if (signingKey) {
