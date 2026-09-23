@@ -1,4 +1,2526 @@
 {
+    "auto-aliasing": {
+        "resources": {
+            "equinix_fabric_cloud_router": {
+                "current": "equinix:fabric/cloudRouter:CloudRouter",
+                "majorVersion": 1,
+                "fields": {
+                    "account": {
+                        "maxItemsOne": true
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "location": {
+                        "maxItemsOne": true
+                    },
+                    "marketplace_subscription": {
+                        "maxItemsOne": true
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "order": {
+                        "maxItemsOne": true
+                    },
+                    "package": {
+                        "maxItemsOne": true
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_connection": {
+                "current": "equinix:fabric/connection:Connection",
+                "majorVersion": 1,
+                "fields": {
+                    "a_side": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "access_point": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "account": {
+                                                "maxItemsOne": true
+                                            },
+                                            "gateway": {
+                                                "maxItemsOne": true
+                                            },
+                                            "interface": {
+                                                "maxItemsOne": true
+                                            },
+                                            "link_protocol": {
+                                                "maxItemsOne": true
+                                            },
+                                            "location": {
+                                                "maxItemsOne": true
+                                            },
+                                            "network": {
+                                                "maxItemsOne": true
+                                            },
+                                            "port": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "redundancy": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "profile": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "access_point_type_configs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "router": {
+                                                "maxItemsOne": true
+                                            },
+                                            "virtual_device": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "additional_info": {
+                                    "maxItemsOne": false
+                                },
+                                "service_token": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "account": {
+                        "maxItemsOne": true
+                    },
+                    "additional_info": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": true
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "operation": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_info": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "order": {
+                        "maxItemsOne": true
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    },
+                    "redundancy": {
+                        "maxItemsOne": true
+                    },
+                    "z_side": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "access_point": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "account": {
+                                                "maxItemsOne": true
+                                            },
+                                            "gateway": {
+                                                "maxItemsOne": true
+                                            },
+                                            "interface": {
+                                                "maxItemsOne": true
+                                            },
+                                            "link_protocol": {
+                                                "maxItemsOne": true
+                                            },
+                                            "location": {
+                                                "maxItemsOne": true
+                                            },
+                                            "network": {
+                                                "maxItemsOne": true
+                                            },
+                                            "port": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "redundancy": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "profile": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "access_point_type_configs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "router": {
+                                                "maxItemsOne": true
+                                            },
+                                            "virtual_device": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "additional_info": {
+                                    "maxItemsOne": false
+                                },
+                                "service_token": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_connection_route_aggregation": {
+                "current": "equinix:fabric/connectionRouteAggregation:ConnectionRouteAggregation",
+                "majorVersion": 1
+            },
+            "equinix_fabric_connection_route_filter": {
+                "current": "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter",
+                "majorVersion": 1
+            },
+            "equinix_fabric_network": {
+                "current": "equinix:fabric/network:Network",
+                "majorVersion": 1,
+                "fields": {
+                    "change": {
+                        "maxItemsOne": true
+                    },
+                    "change_log": {
+                        "maxItemsOne": true
+                    },
+                    "location": {
+                        "maxItemsOne": true
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "operation": {
+                        "maxItemsOne": true
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_port": {
+                "current": "equinix:fabric/port:Port",
+                "majorVersion": 1,
+                "fields": {
+                    "additional_info": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "registered_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "physical_ports": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_precision_time_service": {
+                "current": "equinix:fabric/precisionTimeService:PrecisionTimeService",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    },
+                    "ntp_advanced_configuration": {
+                        "maxItemsOne": false
+                    },
+                    "precision_time_price": {
+                        "fields": {
+                            "charges": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_route_aggregation": {
+                "current": "equinix:fabric/routeAggregation:RouteAggregation",
+                "majorVersion": 1
+            },
+            "equinix_fabric_route_aggregation_rule": {
+                "current": "equinix:fabric/routeAggregationRule:RouteAggregationRule",
+                "majorVersion": 1
+            },
+            "equinix_fabric_route_filter": {
+                "current": "equinix:fabric/routeFilter:RouteFilter",
+                "majorVersion": 1,
+                "fields": {
+                    "change": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_route_filter_rule": {
+                "current": "equinix:fabric/routeFilterRule:RouteFilterRule",
+                "majorVersion": 1,
+                "fields": {
+                    "change": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_routing_protocol": {
+                "current": "equinix:fabric/routingProtocol:RoutingProtocol",
+                "majorVersion": 1,
+                "fields": {
+                    "bfd": {
+                        "maxItemsOne": true
+                    },
+                    "bgp_ipv4": {
+                        "maxItemsOne": true
+                    },
+                    "bgp_ipv6": {
+                        "maxItemsOne": true
+                    },
+                    "change": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "direct_ipv4": {
+                        "maxItemsOne": true
+                    },
+                    "direct_ipv6": {
+                        "maxItemsOne": true
+                    },
+                    "operation": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_info": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_service_profile": {
+                "current": "equinix:fabric/serviceProfile:ServiceProfile",
+                "majorVersion": 1,
+                "fields": {
+                    "access_point_type_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_config": {
+                                    "maxItemsOne": true
+                                },
+                                "authentication_key": {
+                                    "maxItemsOne": true
+                                },
+                                "link_protocol_config": {
+                                    "maxItemsOne": true
+                                },
+                                "supported_bandwidths": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "account": {
+                        "maxItemsOne": true
+                    },
+                    "allowed_emails": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": true
+                    },
+                    "custom_fields": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "options": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "marketing_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "process_step": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "metros": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ibxs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ports": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "virtual_devices": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_service_token": {
+                "current": "equinix:fabric/serviceToken:ServiceToken",
+                "majorVersion": 1,
+                "fields": {
+                    "account": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    },
+                    "service_token_connection": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "a_side": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_point_selectors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "interface": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "link_protocol": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "port": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "virtual_device": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "supported_bandwidths": {
+                                    "maxItemsOne": false
+                                },
+                                "z_side": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_point_selectors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "interface": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "link_protocol": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "port": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "virtual_device": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_stream": {
+                "current": "equinix:fabric/stream:Stream",
+                "majorVersion": 1
+            },
+            "equinix_fabric_stream_alert_rule": {
+                "current": "equinix:fabric/streamAlertRule:StreamAlertRule",
+                "majorVersion": 1,
+                "fields": {
+                    "metric_selector": {
+                        "fields": {
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "resource_selector": {
+                        "fields": {
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_stream_attachment": {
+                "current": "equinix:fabric/streamAttachment:StreamAttachment",
+                "majorVersion": 1
+            },
+            "equinix_fabric_stream_subscription": {
+                "current": "equinix:fabric/streamSubscription:StreamSubscription",
+                "majorVersion": 1,
+                "fields": {
+                    "event_selector": {
+                        "fields": {
+                            "except": {
+                                "maxItemsOne": false
+                            },
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "metric_selector": {
+                        "fields": {
+                            "except": {
+                                "maxItemsOne": false
+                            },
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_network_acl_template": {
+                "current": "equinix:networkedge/aclTemplate:AclTemplate",
+                "majorVersion": 1,
+                "fields": {
+                    "device_details": {
+                        "maxItemsOne": false
+                    },
+                    "inbound_rule": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_network_bgp": {
+                "current": "equinix:networkedge/bgp:Bgp",
+                "majorVersion": 1
+            },
+            "equinix_network_device": {
+                "current": "equinix:networkedge/device:Device",
+                "majorVersion": 1,
+                "fields": {
+                    "cluster_details": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "node0": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "vendor_configuration": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "node1": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "vendor_configuration": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "interface": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false
+                    },
+                    "secondary_device": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "interface": {
+                                    "maxItemsOne": false
+                                },
+                                "notifications": {
+                                    "maxItemsOne": false
+                                },
+                                "ssh_key": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "ssh_key": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_network_device_link": {
+                "current": "equinix:networkedge/deviceLink:DeviceLink",
+                "majorVersion": 1,
+                "fields": {
+                    "device": {
+                        "maxItemsOne": false
+                    },
+                    "metro_link": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_network_file": {
+                "current": "equinix:networkedge/networkFile:NetworkFile",
+                "majorVersion": 1
+            },
+            "equinix_network_ssh_key": {
+                "current": "equinix:networkedge/sshKey:SshKey",
+                "majorVersion": 1
+            },
+            "equinix_network_ssh_user": {
+                "current": "equinix:networkedge/sshUser:SshUser",
+                "majorVersion": 1,
+                "fields": {
+                    "device_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "equinix_fabric_advertised_routes": {
+                "current": "equinix:fabric/getAdvertisedRoutes:getAdvertisedRoutes",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "as_path": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "fields": {
+                            "values": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_cloud_router": {
+                "current": "equinix:fabric/getCloudRouter:getCloudRouter",
+                "majorVersion": 1,
+                "fields": {
+                    "account": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "location": {
+                        "maxItemsOne": false
+                    },
+                    "marketplace_subscription": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "order": {
+                        "maxItemsOne": false
+                    },
+                    "package": {
+                        "maxItemsOne": false
+                    },
+                    "project": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_cloud_routers": {
+                "current": "equinix:fabric/getCloudRouters:getCloudRouters",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "account": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                },
+                                "location": {
+                                    "maxItemsOne": false
+                                },
+                                "marketplace_subscription": {
+                                    "maxItemsOne": false
+                                },
+                                "notifications": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "emails": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "order": {
+                                    "maxItemsOne": false
+                                },
+                                "package": {
+                                    "maxItemsOne": false
+                                },
+                                "project": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pagination": {
+                        "maxItemsOne": true
+                    },
+                    "sort": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_connection": {
+                "current": "equinix:fabric/getConnection:getConnection",
+                "majorVersion": 1,
+                "fields": {
+                    "a_side": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "access_point": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "account": {
+                                                "maxItemsOne": false
+                                            },
+                                            "gateway": {
+                                                "maxItemsOne": true
+                                            },
+                                            "interface": {
+                                                "maxItemsOne": true
+                                            },
+                                            "link_protocol": {
+                                                "maxItemsOne": true
+                                            },
+                                            "location": {
+                                                "maxItemsOne": true
+                                            },
+                                            "network": {
+                                                "maxItemsOne": true
+                                            },
+                                            "port": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "redundancy": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "profile": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "access_point_type_configs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "router": {
+                                                "maxItemsOne": true
+                                            },
+                                            "virtual_device": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "additional_info": {
+                                    "maxItemsOne": false
+                                },
+                                "service_token": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "account": {
+                        "maxItemsOne": true
+                    },
+                    "additional_info": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": true
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "operation": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_info": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "order": {
+                        "maxItemsOne": true
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    },
+                    "redundancy": {
+                        "maxItemsOne": true
+                    },
+                    "z_side": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "access_point": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "account": {
+                                                "maxItemsOne": false
+                                            },
+                                            "gateway": {
+                                                "maxItemsOne": true
+                                            },
+                                            "interface": {
+                                                "maxItemsOne": true
+                                            },
+                                            "link_protocol": {
+                                                "maxItemsOne": true
+                                            },
+                                            "location": {
+                                                "maxItemsOne": true
+                                            },
+                                            "network": {
+                                                "maxItemsOne": true
+                                            },
+                                            "port": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "redundancy": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "profile": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "access_point_type_configs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "router": {
+                                                "maxItemsOne": true
+                                            },
+                                            "virtual_device": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "additional_info": {
+                                    "maxItemsOne": false
+                                },
+                                "service_token": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_connection_route_aggregation": {
+                "current": "equinix:fabric/getConnectionRouteAggregation:getConnectionRouteAggregation",
+                "majorVersion": 1
+            },
+            "equinix_fabric_connection_route_aggregations": {
+                "current": "equinix:fabric/getConnectionRouteAggregations:getConnectionRouteAggregations",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_connection_route_filter": {
+                "current": "equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter",
+                "majorVersion": 1
+            },
+            "equinix_fabric_connection_route_filters": {
+                "current": "equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false
+                    },
+                    "pagination": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_connections": {
+                "current": "equinix:fabric/getConnections:getConnections",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "a_side": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_point": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "account": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "gateway": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "interface": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "link_protocol": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "location": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "port": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "redundancy": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "profile": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "access_point_type_configs": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "router": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "virtual_device": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "additional_info": {
+                                                "maxItemsOne": false
+                                            },
+                                            "service_token": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "account": {
+                                    "maxItemsOne": false
+                                },
+                                "additional_info": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                },
+                                "notifications": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "emails": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "operation": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "errors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_info": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "order": {
+                                    "maxItemsOne": false
+                                },
+                                "project": {
+                                    "maxItemsOne": false
+                                },
+                                "redundancy": {
+                                    "maxItemsOne": false
+                                },
+                                "z_side": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_point": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "account": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "gateway": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "interface": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "link_protocol": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "location": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "port": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "redundancy": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "profile": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "access_point_type_configs": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "router": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "virtual_device": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "additional_info": {
+                                                "maxItemsOne": false
+                                            },
+                                            "service_token": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pagination": {
+                        "maxItemsOne": true
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_market_place_subscription": {
+                "current": "equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription",
+                "majorVersion": 1,
+                "fields": {
+                    "entitlements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "asset": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "package": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "trial": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_metro": {
+                "current": "equinix:fabric/getMetro:getMetro",
+                "majorVersion": 1,
+                "fields": {
+                    "connected_metros": {
+                        "maxItemsOne": false
+                    },
+                    "geo_scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_metros": {
+                "current": "equinix:fabric/getMetros:getMetros",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "connected_metros": {
+                                    "maxItemsOne": false
+                                },
+                                "geo_scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_network": {
+                "current": "equinix:fabric/getNetwork:getNetwork",
+                "majorVersion": 1,
+                "fields": {
+                    "change": {
+                        "maxItemsOne": true
+                    },
+                    "change_log": {
+                        "maxItemsOne": true
+                    },
+                    "location": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "operation": {
+                        "maxItemsOne": true
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_networks": {
+                "current": "equinix:fabric/getNetworks:getNetworks",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "change": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                },
+                                "location": {
+                                    "maxItemsOne": false
+                                },
+                                "notifications": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "emails": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "operation": {
+                                    "maxItemsOne": false
+                                },
+                                "project": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pagination": {
+                        "maxItemsOne": true
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_port": {
+                "current": "equinix:fabric/getPort:getPort",
+                "majorVersion": 1,
+                "fields": {
+                    "account": {
+                        "maxItemsOne": true
+                    },
+                    "change_log": {
+                        "maxItemsOne": true
+                    },
+                    "device": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "redundancy": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "encapsulation": {
+                        "maxItemsOne": true
+                    },
+                    "location": {
+                        "maxItemsOne": true
+                    },
+                    "operation": {
+                        "maxItemsOne": true
+                    },
+                    "redundancy": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_ports": {
+                "current": "equinix:fabric/getPorts:getPorts",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "account": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                },
+                                "device": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "redundancy": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "encapsulation": {
+                                    "maxItemsOne": false
+                                },
+                                "location": {
+                                    "maxItemsOne": false
+                                },
+                                "operation": {
+                                    "maxItemsOne": false
+                                },
+                                "redundancy": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false
+                    },
+                    "filters": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_precision_time_service": {
+                "current": "equinix:fabric/getPrecisionTimeService:getPrecisionTimeService",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    },
+                    "ntp_advanced_configuration": {
+                        "maxItemsOne": false
+                    },
+                    "precision_time_price": {
+                        "fields": {
+                            "charges": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_precision_time_services": {
+                "current": "equinix:fabric/getPrecisionTimeServices:getPrecisionTimeServices",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "connections": {
+                                    "maxItemsOne": false
+                                },
+                                "ntp_advanced_configuration": {
+                                    "maxItemsOne": false
+                                },
+                                "precision_time_price": {
+                                    "fields": {
+                                        "charges": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_received_routes": {
+                "current": "equinix:fabric/getReceivedRoutes:getReceivedRoutes",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "as_path": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "fields": {
+                            "values": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_route_aggregation": {
+                "current": "equinix:fabric/getRouteAggregation:getRouteAggregation",
+                "majorVersion": 1
+            },
+            "equinix_fabric_route_aggregation_rule": {
+                "current": "equinix:fabric/getRouteAggregationRule:getRouteAggregationRule",
+                "majorVersion": 1
+            },
+            "equinix_fabric_route_aggregation_rules": {
+                "current": "equinix:fabric/getRouteAggregationRules:getRouteAggregationRules",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_route_aggregations": {
+                "current": "equinix:fabric/getRouteAggregations:getRouteAggregations",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "fields": {
+                            "values": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_route_filter": {
+                "current": "equinix:fabric/getRouteFilter:getRouteFilter",
+                "majorVersion": 1,
+                "fields": {
+                    "change": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "project": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_route_filter_rule": {
+                "current": "equinix:fabric/getRouteFilterRule:getRouteFilterRule",
+                "majorVersion": 1,
+                "fields": {
+                    "change": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_route_filter_rules": {
+                "current": "equinix:fabric/getRouteFilterRules:getRouteFilterRules",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "change": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pagination": {
+                        "maxItemsOne": false
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_route_filters": {
+                "current": "equinix:fabric/getRouteFilters:getRouteFilters",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "change": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                },
+                                "project": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pagination": {
+                        "maxItemsOne": true
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_routing_protocol": {
+                "current": "equinix:fabric/getRoutingProtocol:getRoutingProtocol",
+                "majorVersion": 1,
+                "fields": {
+                    "bfd": {
+                        "maxItemsOne": true
+                    },
+                    "bgp_ipv4": {
+                        "maxItemsOne": true
+                    },
+                    "bgp_ipv6": {
+                        "maxItemsOne": true
+                    },
+                    "change": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "direct_ipv4": {
+                        "maxItemsOne": true
+                    },
+                    "direct_ipv6": {
+                        "maxItemsOne": true
+                    },
+                    "operation": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_info": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_service_profile": {
+                "current": "equinix:fabric/getServiceProfile:getServiceProfile",
+                "majorVersion": 1,
+                "fields": {
+                    "access_point_type_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_config": {
+                                    "maxItemsOne": true
+                                },
+                                "authentication_key": {
+                                    "maxItemsOne": true
+                                },
+                                "link_protocol_config": {
+                                    "maxItemsOne": true
+                                },
+                                "supported_bandwidths": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "account": {
+                        "maxItemsOne": true
+                    },
+                    "allowed_emails": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": true
+                    },
+                    "custom_fields": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "options": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "marketing_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "process_step": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "metros": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ibxs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ports": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "project": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "virtual_devices": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_service_profiles": {
+                "current": "equinix:fabric/getServiceProfiles:getServiceProfiles",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "access_point_type_configs": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "api_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "authentication_key": {
+                                                "maxItemsOne": true
+                                            },
+                                            "link_protocol_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "supported_bandwidths": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "account": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_emails": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                },
+                                "custom_fields": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "options": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "marketing_info": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "process_step": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "metros": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ibxs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "notifications": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "emails": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ports": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "location": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "project": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "virtual_devices": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "location": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pagination": {
+                        "maxItemsOne": true
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_service_token": {
+                "current": "equinix:fabric/getServiceToken:getServiceToken",
+                "majorVersion": 1,
+                "fields": {
+                    "account": {
+                        "maxItemsOne": false
+                    },
+                    "change_log": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "project": {
+                        "maxItemsOne": false
+                    },
+                    "service_token_connection": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "a_side": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_point_selectors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "interface": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "link_protocol": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "port": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "virtual_device": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "supported_bandwidths": {
+                                    "maxItemsOne": false
+                                },
+                                "z_side": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_point_selectors": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "interface": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "link_protocol": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "network": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "port": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "location": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "virtual_device": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_service_tokens": {
+                "current": "equinix:fabric/getServiceTokens:getServiceTokens",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "account": {
+                                    "maxItemsOne": false
+                                },
+                                "change_log": {
+                                    "maxItemsOne": false
+                                },
+                                "notifications": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "emails": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "project": {
+                                    "maxItemsOne": false
+                                },
+                                "service_token_connection": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "a_side": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "access_point_selectors": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "interface": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "link_protocol": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "network": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "location": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "port": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "location": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "virtual_device": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "supported_bandwidths": {
+                                                "maxItemsOne": false
+                                            },
+                                            "z_side": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "access_point_selectors": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "interface": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "link_protocol": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "network": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "location": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "port": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "location": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "virtual_device": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pagination": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "equinix_fabric_stream": {
+                "current": "equinix:fabric/getStream:getStream",
+                "majorVersion": 1
+            },
+            "equinix_fabric_stream_alert_rule": {
+                "current": "equinix:fabric/getStreamAlertRule:getStreamAlertRule",
+                "majorVersion": 1,
+                "fields": {
+                    "metric_selector": {
+                        "fields": {
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "resource_selector": {
+                        "fields": {
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_stream_alert_rules": {
+                "current": "equinix:fabric/getStreamAlertRules:getStreamAlertRules",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "metric_selector": {
+                                    "fields": {
+                                        "include": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "resource_selector": {
+                                    "fields": {
+                                        "include": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_stream_attachment": {
+                "current": "equinix:fabric/getStreamAttachment:getStreamAttachment",
+                "majorVersion": 1
+            },
+            "equinix_fabric_stream_attachments": {
+                "current": "equinix:fabric/getStreamAttachments:getStreamAttachments",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false
+                    },
+                    "filters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_stream_subscription": {
+                "current": "equinix:fabric/getStreamSubscription:getStreamSubscription",
+                "majorVersion": 1,
+                "fields": {
+                    "event_selector": {
+                        "fields": {
+                            "except": {
+                                "maxItemsOne": false
+                            },
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "metric_selector": {
+                        "fields": {
+                            "except": {
+                                "maxItemsOne": false
+                            },
+                            "include": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_stream_subscriptions": {
+                "current": "equinix:fabric/getStreamSubscriptions:getStreamSubscriptions",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "event_selector": {
+                                    "fields": {
+                                        "except": {
+                                            "maxItemsOne": false
+                                        },
+                                        "include": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "metric_selector": {
+                                    "fields": {
+                                        "except": {
+                                            "maxItemsOne": false
+                                        },
+                                        "include": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_streams": {
+                "current": "equinix:fabric/getStreams:getStreams",
+                "majorVersion": 1,
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_network_account": {
+                "current": "equinix:networkedge/getAccount:getAccount",
+                "majorVersion": 1
+            },
+            "equinix_network_device": {
+                "current": "equinix:networkedge/getDevice:getDevice",
+                "majorVersion": 1,
+                "fields": {
+                    "cluster_details": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "node0": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "vendor_configuration": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "node1": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "vendor_configuration": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "interface": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false
+                    },
+                    "secondary_device": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "interface": {
+                                    "maxItemsOne": false
+                                },
+                                "notifications": {
+                                    "maxItemsOne": false
+                                },
+                                "ssh_key": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ssh_key": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_network_device_platform": {
+                "current": "equinix:networkedge/getDevicePlatform:getDevicePlatform",
+                "majorVersion": 1,
+                "fields": {
+                    "license_options": {
+                        "maxItemsOne": false
+                    },
+                    "management_types": {
+                        "maxItemsOne": false
+                    },
+                    "packages": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_network_device_software": {
+                "current": "equinix:networkedge/getDeviceSoftware:getDeviceSoftware",
+                "majorVersion": 1,
+                "fields": {
+                    "packages": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_network_device_type": {
+                "current": "equinix:networkedge/getDeviceType:getDeviceType",
+                "majorVersion": 1,
+                "fields": {
+                    "metro_codes": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "equinix_fabric_connection_route_aggregation": {},
+            "equinix_fabric_port": {},
+            "equinix_fabric_precision_time_service": {},
+            "equinix_fabric_route_aggregation": {},
+            "equinix_fabric_route_aggregation_rule": {},
+            "equinix_fabric_stream": {},
+            "equinix_fabric_stream_alert_rule": {},
+            "equinix_fabric_stream_attachment": {},
+            "equinix_fabric_stream_subscription": {}
+        }
+    },
     "mux": {
         "resources": {
             "equinix:fabric/cloudRouter:CloudRouter": 0,
