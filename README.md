@@ -90,7 +90,6 @@ Advanced configuration points:
 - `equinix:requestTimeout` - (Optional) the duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request. Defaults to 30.
 - `equinix:responseMaxPageSize` - (Optional) the maximum number of records in a single response for REST queries that produce paginated responses.
   
-
 ## Reference
 
 For detailed reference documentation, please visit [Equinix API Docs in th Pulumi Registry](https://www.pulumi.com/registry/packages/equinix/api-docs/).
