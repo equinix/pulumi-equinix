@@ -1,6 +1,5 @@
 .idea
 .code
-**/.vscode/
 **/vendor/
 .pulumi
 **/bin/
@@ -13,6 +12,8 @@ Pulumi.*.yaml
 
 .idea/
 *.iml
+*.sln
+.vscode/settings.json
 
 yarn.lock
 **/pulumiManifest.go
@@ -28,5 +29,12 @@ sdk/java/.gradle
 sdk/java/gradle
 sdk/java/gradlew
 sdk/java/gradlew.bat
+
+sdk/python/venv
+
 go.work
 go.work.sum
+
+# Ignore local build tracking directory
+.make
+.devcontainer/*.crt
