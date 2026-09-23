@@ -55,6 +55,13 @@ public class App {
             .build());
 
         var bluecatEdgeServicePointHa = new Device("bluecatEdgeServicePointHa", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("tf-bluecat-edge-service-point-s")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .notifications("test@eq.com")
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
+                .build())
             .name("tf-bluecat-edge-service-point-p")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("BLUECAT-EDGE-SERVICE-POINT")
@@ -68,13 +75,6 @@ public class App {
             .version("4.6.3")
             .coreCount(4)
             .termLength(12)
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("tf-bluecat-edge-service-point-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .cloudInitFileId(bluecatEdgeServicePointCloudinitSecondaryFile.uuid())
-                .build())
             .build());
 
     }

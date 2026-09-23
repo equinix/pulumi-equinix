@@ -99,7 +99,7 @@ public final class GetConnectionsData {
      */
     private List<GetConnectionsDataProject> projects;
     /**
-     * @return Connection Redundancy Configuration
+     * @return Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     private List<GetConnectionsDataRedundancy> redundancies;
@@ -231,7 +231,7 @@ public final class GetConnectionsData {
         return this.projects;
     }
     /**
-     * @return Connection Redundancy Configuration
+     * @return Connection Redundancy Configuration (applicable only for Azure connections)
      * 
      */
     public List<GetConnectionsDataRedundancy> redundancies() {

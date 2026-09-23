@@ -7,8 +7,6 @@ resources:
   test:
     type: equinix:networkedge:DeviceLink
     properties:
-      name: test-DLG
-      projectId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       devices:
         - id: ${testEquinixNetworkDevice.uuid}
           interfaceId: 6
@@ -23,3 +21,5 @@ resources:
           metroCode: ${testEquinixNetworkDevice.secondaryDevice[0].metroCode}
           throughput: '50'
           throughputUnit: Mbps
+      name: test-DLG
+      projectId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx

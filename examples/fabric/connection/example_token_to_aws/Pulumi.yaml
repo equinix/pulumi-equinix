@@ -5,14 +5,6 @@ resources:
   token2aws:
     type: equinix:fabric:Connection
     properties:
-      name: ConnectionName
-      type: EVPL_VC
-      notifications:
-        - type: ALL
-          emails:
-            - example@equinix.com
-            - test1@equinix.com
-      bandwidth: 50
       order:
         purchaseOrderNumber: 1-323292
       aSide:
@@ -20,11 +12,19 @@ resources:
           uuid: <service_token_uuid>
       zSide:
         accessPoint:
-          type: SP
-          authenticationKey: <aws_account_id>
-          sellerRegion: us-west-1
           profile:
             type: L2_PROFILE
             uuid: <service_profile_uuid>
           location:
             metroCode: SV
+          type: SP
+          authenticationKey: <aws_account_id>
+          sellerRegion: us-west-1
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      name: ConnectionName
+      type: EVPL_VC
+      bandwidth: 50

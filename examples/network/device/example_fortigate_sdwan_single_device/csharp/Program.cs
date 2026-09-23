@@ -10,7 +10,7 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var fTNTSDWANSV = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
+    var ftntSdwanSv = new Equinix.NetworkEdge.Device("FTNT-SDWAN-SV", new()
     {
         Name = "TF_FTNT-SDWAN",
         ProjectId = "XXXXXXXXXX",

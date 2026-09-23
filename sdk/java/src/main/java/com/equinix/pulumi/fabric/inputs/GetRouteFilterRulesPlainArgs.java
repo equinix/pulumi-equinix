@@ -3,10 +3,13 @@
 
 package com.equinix.pulumi.fabric.inputs;
 
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterRulesFilter;
+import com.equinix.pulumi.fabric.inputs.GetRouteFilterRulesSort;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +18,21 @@ import javax.annotation.Nullable;
 public final class GetRouteFilterRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRouteFilterRulesPlainArgs Empty = new GetRouteFilterRulesPlainArgs();
+
+    /**
+     * Filters for the Data Source Search Request
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable List<GetRouteFilterRulesFilter> filters;
+
+    /**
+     * @return Filters for the Data Source Search Request
+     * 
+     */
+    public Optional<List<GetRouteFilterRulesFilter>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
 
     /**
      * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
@@ -47,6 +65,21 @@ public final class GetRouteFilterRulesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    @Import(name="outerOperator", required=true)
+    private String outerOperator;
+
+    /**
+     * @return Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    public String outerOperator() {
+        return this.outerOperator;
+    }
+
+    /**
      * UUID of the Route Filter Policy the rule is attached to
      * 
      */
@@ -61,12 +94,30 @@ public final class GetRouteFilterRulesPlainArgs extends com.pulumi.resources.Inv
         return this.routeFilterId;
     }
 
+    /**
+     * Sort criteria for the Data Source Search Request
+     * 
+     */
+    @Import(name="sorts")
+    private @Nullable List<GetRouteFilterRulesSort> sorts;
+
+    /**
+     * @return Sort criteria for the Data Source Search Request
+     * 
+     */
+    public Optional<List<GetRouteFilterRulesSort>> sorts() {
+        return Optional.ofNullable(this.sorts);
+    }
+
     private GetRouteFilterRulesPlainArgs() {}
 
     private GetRouteFilterRulesPlainArgs(GetRouteFilterRulesPlainArgs $) {
+        this.filters = $.filters;
         this.limit = $.limit;
         this.offset = $.offset;
+        this.outerOperator = $.outerOperator;
         this.routeFilterId = $.routeFilterId;
+        this.sorts = $.sorts;
     }
 
     public static Builder builder() {
@@ -85,6 +136,27 @@ public final class GetRouteFilterRulesPlainArgs extends com.pulumi.resources.Inv
 
         public Builder(GetRouteFilterRulesPlainArgs defaults) {
             $ = new GetRouteFilterRulesPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param filters Filters for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable List<GetRouteFilterRulesFilter> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters Filters for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(GetRouteFilterRulesFilter... filters) {
+            return filters(List.of(filters));
         }
 
         /**
@@ -110,6 +182,17 @@ public final class GetRouteFilterRulesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
+         * @param outerOperator Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outerOperator(String outerOperator) {
+            $.outerOperator = outerOperator;
+            return this;
+        }
+
+        /**
          * @param routeFilterId UUID of the Route Filter Policy the rule is attached to
          * 
          * @return builder
@@ -120,7 +203,31 @@ public final class GetRouteFilterRulesPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param sorts Sort criteria for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sorts(@Nullable List<GetRouteFilterRulesSort> sorts) {
+            $.sorts = sorts;
+            return this;
+        }
+
+        /**
+         * @param sorts Sort criteria for the Data Source Search Request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sorts(GetRouteFilterRulesSort... sorts) {
+            return sorts(List.of(sorts));
+        }
+
         public GetRouteFilterRulesPlainArgs build() {
+            if ($.outerOperator == null) {
+                throw new MissingRequiredPropertyException("GetRouteFilterRulesPlainArgs", "outerOperator");
+            }
             if ($.routeFilterId == null) {
                 throw new MissingRequiredPropertyException("GetRouteFilterRulesPlainArgs", "routeFilterId");
             }

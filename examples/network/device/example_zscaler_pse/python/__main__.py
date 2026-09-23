@@ -3,6 +3,10 @@ import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
 zscaler_pse_single = equinix.networkedge.Device("zscaler-pse-single",
+    ssh_key={
+        "username": "test",
+        "key_name": "test-key",
+    },
     name="tf-zscaler-pse",
     project_id="XXXXXX",
     metro_code=sv.metro_code,
@@ -24,8 +28,4 @@ zscaler_pse_single = equinix.networkedge.Device("zscaler-pse-single",
     vendor_configuration={
         "provisioningKey": "XXXXXXXXXX",
         "hostname": "XXXX",
-    },
-    ssh_key={
-        "username": "test",
-        "key_name": "test-key",
     })

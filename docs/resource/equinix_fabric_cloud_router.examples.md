@@ -6,16 +6,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
-const newCloudRouter = new equinix.fabric.CloudRouter("newCloudRouter", {
-    name: "Router-SV",
-    type: "XF_ROUTER",
-    notifications: [{
-        type: "ALL",
-        emails: [
-            "example@equinix.com",
-            "test1@equinix.com",
-        ],
-    }],
+const newCloudRouter = new equinix.fabric.CloudRouter("new_cloud_router", {
     order: {
         purchaseOrderNumber: "1-323292",
     },
@@ -31,22 +22,22 @@ const newCloudRouter = new equinix.fabric.CloudRouter("newCloudRouter", {
     account: {
         accountNumber: 203612,
     },
+    notifications: [{
+        type: "ALL",
+        emails: [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name: "Router-SV",
+    type: "XF_ROUTER",
 });
 ```
 ```python
 import pulumi
 import pulumi_equinix as equinix
 
-new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
-    name="Router-SV",
-    type="XF_ROUTER",
-    notifications=[{
-        "type": "ALL",
-        "emails": [
-            "example@equinix.com",
-            "test1@equinix.com",
-        ],
-    }],
+new_cloud_router = equinix.fabric.CloudRouter("new_cloud_router",
     order={
         "purchase_order_number": "1-323292",
     },
@@ -61,7 +52,16 @@ new_cloud_router = equinix.fabric.CloudRouter("newCloudRouter",
     },
     account={
         "account_number": 203612,
-    })
+    },
+    notifications=[{
+        "type": "ALL",
+        "emails": [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name="Router-SV",
+    type="XF_ROUTER")
 ```
 ```go
 package main
@@ -73,18 +73,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := fabric.NewCloudRouter(ctx, "newCloudRouter", &fabric.CloudRouterArgs{
-			Name: pulumi.String("Router-SV"),
-			Type: pulumi.String("XF_ROUTER"),
-			Notifications: fabric.CloudRouterNotificationArray{
-				&fabric.CloudRouterNotificationArgs{
-					Type: pulumi.String("ALL"),
-					Emails: pulumi.StringArray{
-						pulumi.String("example@equinix.com"),
-						pulumi.String("test1@equinix.com"),
-					},
-				},
-			},
+		_, err := fabric.NewCloudRouter(ctx, "new_cloud_router", &fabric.CloudRouterArgs{
 			Order: &fabric.CloudRouterOrderArgs{
 				PurchaseOrderNumber: pulumi.String("1-323292"),
 			},
@@ -100,6 +89,17 @@ func main() {
 			Account: &fabric.CloudRouterAccountArgs{
 				AccountNumber: pulumi.Int(203612),
 			},
+			Notifications: fabric.CloudRouterNotificationArray{
+				&fabric.CloudRouterNotificationArgs{
+					Type: pulumi.String("ALL"),
+					Emails: pulumi.StringArray{
+						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
+					},
+				},
+			},
+			Name: pulumi.String("Router-SV"),
+			Type: pulumi.String("XF_ROUTER"),
 		})
 		if err != nil {
 			return err
@@ -116,22 +116,8 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var newCloudRouter = new Equinix.Fabric.CloudRouter("newCloudRouter", new()
+    var newCloudRouter = new Equinix.Fabric.CloudRouter("new_cloud_router", new()
     {
-        Name = "Router-SV",
-        Type = "XF_ROUTER",
-        Notifications = new[]
-        {
-            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
-            {
-                Type = "ALL",
-                Emails = new[]
-                {
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                },
-            },
-        },
         Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs
         {
             PurchaseOrderNumber = "1-323292",
@@ -152,6 +138,20 @@ return await Deployment.RunAsync(() =>
         {
             AccountNumber = 203612,
         },
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
+            {
+                Type = "ALL",
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Name = "Router-SV",
+        Type = "XF_ROUTER",
     });
 
 });
@@ -164,12 +164,12 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.fabric.CloudRouter;
 import com.pulumi.equinix.fabric.CloudRouterArgs;
-import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
 import com.pulumi.equinix.fabric.inputs.CloudRouterAccountArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -184,14 +184,6 @@ public class App {
 
     public static void stack(Context ctx) {
         var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
-            .name("Router-SV")
-            .type("XF_ROUTER")
-            .notifications(CloudRouterNotificationArgs.builder()
-                .type("ALL")
-                .emails(                
-                    "example@equinix.com",
-                    "test1@equinix.com")
-                .build())
             .order(CloudRouterOrderArgs.builder()
                 .purchaseOrderNumber("1-323292")
                 .build())
@@ -207,6 +199,14 @@ public class App {
             .account(CloudRouterAccountArgs.builder()
                 .accountNumber(203612)
                 .build())
+            .notifications(CloudRouterNotificationArgs.builder()
+                .type("ALL")
+                .emails(                
+                    "example@equinix.com",
+                    "test1@equinix.com")
+                .build())
+            .name("Router-SV")
+            .type("XF_ROUTER")
             .build());
 
     }
@@ -218,13 +218,6 @@ resources:
     type: equinix:fabric:CloudRouter
     name: new_cloud_router
     properties:
-      name: Router-SV
-      type: XF_ROUTER
-      notifications:
-        - type: ALL
-          emails:
-            - example@equinix.com
-            - test1@equinix.com
       order:
         purchaseOrderNumber: 1-323292
       location:
@@ -235,6 +228,257 @@ resources:
         projectId: '776847000642406'
       account:
         accountNumber: '203612'
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      name: Router-SV
+      type: XF_ROUTER
+```
+{{% /example %}}
+
+{{% example %}}
+### example 2
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix-labs/pulumi-equinix";
+
+const newCloudRouter = new equinix.fabric.CloudRouter("new_cloud_router", {
+    order: {
+        purchaseOrderNumber: "1-323292",
+    },
+    location: {
+        metroCode: "SV",
+    },
+    "package": {
+        code: "STANDARD",
+    },
+    project: {
+        projectId: "776847000642406",
+    },
+    marketplaceSubscription: {
+        type: "AWS_MARKETPLACE_SUBSCRIPTION",
+        uuid: "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
+    },
+    notifications: [{
+        type: "ALL",
+        emails: [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name: "Router-SV",
+    type: "XF_ROUTER",
+});
+```
+```python
+import pulumi
+import pulumi_equinix as equinix
+
+new_cloud_router = equinix.fabric.CloudRouter("new_cloud_router",
+    order={
+        "purchase_order_number": "1-323292",
+    },
+    location={
+        "metro_code": "SV",
+    },
+    package={
+        "code": "STANDARD",
+    },
+    project={
+        "project_id": "776847000642406",
+    },
+    marketplace_subscription={
+        "type": "AWS_MARKETPLACE_SUBSCRIPTION",
+        "uuid": "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
+    },
+    notifications=[{
+        "type": "ALL",
+        "emails": [
+            "example@equinix.com",
+            "test1@equinix.com",
+        ],
+    }],
+    name="Router-SV",
+    type="XF_ROUTER")
+```
+```go
+package main
+
+import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		_, err := fabric.NewCloudRouter(ctx, "new_cloud_router", &fabric.CloudRouterArgs{
+			Order: &fabric.CloudRouterOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323292"),
+			},
+			Location: &fabric.CloudRouterLocationArgs{
+				MetroCode: pulumi.String("SV"),
+			},
+			Package: &fabric.CloudRouterPackageArgs{
+				Code: pulumi.String("STANDARD"),
+			},
+			Project: &fabric.CloudRouterProjectArgs{
+				ProjectId: pulumi.String("776847000642406"),
+			},
+			MarketplaceSubscription: &fabric.CloudRouterMarketplaceSubscriptionArgs{
+				Type: pulumi.String("AWS_MARKETPLACE_SUBSCRIPTION"),
+				Uuid: pulumi.String("2823b8ae07-a2a2-45b4-a658-c3542bb24e9"),
+			},
+			Notifications: fabric.CloudRouterNotificationArray{
+				&fabric.CloudRouterNotificationArgs{
+					Type: pulumi.String("ALL"),
+					Emails: pulumi.StringArray{
+						pulumi.String("example@equinix.com"),
+						pulumi.String("test1@equinix.com"),
+					},
+				},
+			},
+			Name: pulumi.String("Router-SV"),
+			Type: pulumi.String("XF_ROUTER"),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Equinix = Pulumi.Equinix;
+
+return await Deployment.RunAsync(() => 
+{
+    var newCloudRouter = new Equinix.Fabric.CloudRouter("new_cloud_router", new()
+    {
+        Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs
+        {
+            PurchaseOrderNumber = "1-323292",
+        },
+        Location = new Equinix.Fabric.Inputs.CloudRouterLocationArgs
+        {
+            MetroCode = "SV",
+        },
+        Package = new Equinix.Fabric.Inputs.CloudRouterPackageArgs
+        {
+            Code = "STANDARD",
+        },
+        Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs
+        {
+            ProjectId = "776847000642406",
+        },
+        MarketplaceSubscription = new Equinix.Fabric.Inputs.CloudRouterMarketplaceSubscriptionArgs
+        {
+            Type = "AWS_MARKETPLACE_SUBSCRIPTION",
+            Uuid = "2823b8ae07-a2a2-45b4-a658-c3542bb24e9",
+        },
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
+            {
+                Type = "ALL",
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Name = "Router-SV",
+        Type = "XF_ROUTER",
+    });
+
+});
+```
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.fabric.CloudRouter;
+import com.pulumi.equinix.fabric.CloudRouterArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterOrderArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterLocationArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterPackageArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterProjectArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterMarketplaceSubscriptionArgs;
+import com.pulumi.equinix.fabric.inputs.CloudRouterNotificationArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        var newCloudRouter = new CloudRouter("newCloudRouter", CloudRouterArgs.builder()
+            .order(CloudRouterOrderArgs.builder()
+                .purchaseOrderNumber("1-323292")
+                .build())
+            .location(CloudRouterLocationArgs.builder()
+                .metroCode("SV")
+                .build())
+            .package_(CloudRouterPackageArgs.builder()
+                .code("STANDARD")
+                .build())
+            .project(CloudRouterProjectArgs.builder()
+                .projectId("776847000642406")
+                .build())
+            .marketplaceSubscription(CloudRouterMarketplaceSubscriptionArgs.builder()
+                .type("AWS_MARKETPLACE_SUBSCRIPTION")
+                .uuid("2823b8ae07-a2a2-45b4-a658-c3542bb24e9")
+                .build())
+            .notifications(CloudRouterNotificationArgs.builder()
+                .type("ALL")
+                .emails(                
+                    "example@equinix.com",
+                    "test1@equinix.com")
+                .build())
+            .name("Router-SV")
+            .type("XF_ROUTER")
+            .build());
+
+    }
+}
+```
+```yaml
+resources:
+  newCloudRouter:
+    type: equinix:fabric:CloudRouter
+    name: new_cloud_router
+    properties:
+      order:
+        purchaseOrderNumber: 1-323292
+      location:
+        metroCode: SV
+      package:
+        code: STANDARD
+      project:
+        projectId: '776847000642406'
+      marketplaceSubscription:
+        type: AWS_MARKETPLACE_SUBSCRIPTION
+        uuid: 2823b8ae07-a2a2-45b4-a658-c3542bb24e9
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      name: Router-SV
+      type: XF_ROUTER
 ```
 {{% /example %}}
 

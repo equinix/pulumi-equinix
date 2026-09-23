@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
 
 const test = new equinix.networkedge.DeviceLink("test", {
-    name: "test-DLG",
-    projectId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     devices: [
         {
             id: testEquinixNetworkDevice.uuid,
@@ -31,6 +29,8 @@ const test = new equinix.networkedge.DeviceLink("test", {
             throughputUnit: "Mbps",
         },
     ],
+    name: "test-DLG",
+    projectId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 });
 ```
 ```python
@@ -38,8 +38,6 @@ import pulumi
 import pulumi_equinix as equinix
 
 test = equinix.networkedge.DeviceLink("test",
-    name="test-DLG",
-    project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     devices=[
         {
             "id": test_equinix_network_device["uuid"],
@@ -63,7 +61,9 @@ test = equinix.networkedge.DeviceLink("test",
             "throughput": "50",
             "throughput_unit": "Mbps",
         },
-    ])
+    ],
+    name="test-DLG",
+    project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 ```
 ```go
 package main
@@ -76,8 +76,6 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := networkedge.NewDeviceLink(ctx, "test", &networkedge.DeviceLinkArgs{
-			Name:      pulumi.String("test-DLG"),
-			ProjectId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 			Devices: networkedge.DeviceLinkDeviceArray{
 				&networkedge.DeviceLinkDeviceArgs{
 					Id:          pulumi.Any(testEquinixNetworkDevice.Uuid),
@@ -102,6 +100,8 @@ func main() {
 					ThroughputUnit: pulumi.String("Mbps"),
 				},
 			},
+			Name:      pulumi.String("test-DLG"),
+			ProjectId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 		})
 		if err != nil {
 			return err
@@ -120,8 +120,6 @@ return await Deployment.RunAsync(() =>
 {
     var test = new Equinix.NetworkEdge.DeviceLink("test", new()
     {
-        Name = "test-DLG",
-        ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         Devices = new[]
         {
             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
@@ -152,6 +150,8 @@ return await Deployment.RunAsync(() =>
                 ThroughputUnit = "Mbps",
             },
         },
+        Name = "test-DLG",
+        ProjectId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     });
 
 });
@@ -180,8 +180,6 @@ public class App {
 
     public static void stack(Context ctx) {
         var test = new DeviceLink("test", DeviceLinkArgs.builder()
-            .name("test-DLG")
-            .projectId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
             .devices(            
                 DeviceLinkDeviceArgs.builder()
                     .id(testEquinixNetworkDevice.uuid())
@@ -204,6 +202,8 @@ public class App {
                     .throughput("50")
                     .throughputUnit("Mbps")
                     .build())
+            .name("test-DLG")
+            .projectId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
             .build());
 
     }
@@ -216,8 +216,6 @@ resources:
   test:
     type: equinix:networkedge:DeviceLink
     properties:
-      name: test-DLG
-      projectId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       devices:
         - id: ${testEquinixNetworkDevice.uuid}
           interfaceId: 6
@@ -232,5 +230,7 @@ resources:
           metroCode: ${testEquinixNetworkDevice.secondaryDevice[0].metroCode}
           throughput: '50'
           throughputUnit: Mbps
+      name: test-DLG
+      projectId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 {{% /example %}}

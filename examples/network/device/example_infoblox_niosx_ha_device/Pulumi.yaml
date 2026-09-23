@@ -5,6 +5,15 @@ resources:
   nios-x-ha:
     type: equinix:networkedge:Device
     properties:
+      secondaryDevice:
+        name: TF_INFOBLOX-NIOS-X-Sec
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        notifications:
+          - test@eq.com
+        vendorConfiguration:
+          hostname: test
+          token: xxxxx
       name: TF_INFOBLOX-NIOS-X
       projectId: xxxxxxx
       metroCode: ${sv.metroCode}
@@ -23,15 +32,6 @@ resources:
       vendorConfiguration:
         hostname: test
         token: xxxxx
-      secondaryDevice:
-        name: TF_INFOBLOX-NIOS-X-Sec
-        metroCode: ${sv.metroCode}
-        accountNumber: ${sv.number}
-        notifications:
-          - test@eq.com
-        vendorConfiguration:
-          hostname: test
-          token: xxxxx
 variables:
   # Create Infoblox NIOS-X HA device
   sv:

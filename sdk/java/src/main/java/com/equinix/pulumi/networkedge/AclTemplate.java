@@ -47,9 +47,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myacl = new AclTemplate("myacl", AclTemplateArgs.builder()
- *             .name("test")
- *             .description("Test ACL template")
- *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
  *             .inboundRules(            
  *                 AclTemplateInboundRuleArgs.builder()
  *                     .subnet("1.1.1.1/32")
@@ -64,6 +61,9 @@ import javax.annotation.Nullable;
  *                     .srcPort("any")
  *                     .dstPort("53,1045,2041")
  *                     .build())
+ *             .name("test")
+ *             .description("Test ACL template")
+ *             .projectId("a86d7112-d740-4758-9c9c-31e66373746b")
  *             .build());
  * 
  *     }

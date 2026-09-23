@@ -7,21 +7,6 @@ return await Deployment.RunAsync(() =>
 {
     var vd2Port = new Equinix.Fabric.Connection("vd2port", new()
     {
-        Name = "ConnectionName",
-        Type = Equinix.Fabric.ConnectionType.EVPL,
-        Notifications = new[]
-        {
-            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-            {
-                Type = Equinix.Fabric.NotificationsType.All,
-                Emails = new[]
-                {
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                },
-            },
-        },
-        Bandwidth = 50,
         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
         {
             PurchaseOrderNumber = "1-323292",
@@ -30,7 +15,6 @@ return await Deployment.RunAsync(() =>
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.VD,
                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
                 {
                     Type = "EDGE",
@@ -41,13 +25,13 @@ return await Deployment.RunAsync(() =>
                     Type = "NETWORK",
                     Id = 7,
                 },
+                Type = Equinix.Fabric.AccessPointType.VD,
             },
         },
         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.Colo,
                 Port = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointPortArgs
                 {
                     Uuid = "<zside_port_uuid>",
@@ -61,8 +45,24 @@ return await Deployment.RunAsync(() =>
                 {
                     MetroCode = Equinix.Metro.SiliconValley,
                 },
+                Type = Equinix.Fabric.AccessPointType.Colo,
             },
         },
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+            {
+                Type = Equinix.Fabric.NotificationsType.All,
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Name = "ConnectionName",
+        Type = Equinix.Fabric.ConnectionType.EVPL,
+        Bandwidth = 50,
     });
 
 });

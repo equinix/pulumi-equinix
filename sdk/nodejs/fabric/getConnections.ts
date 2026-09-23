@@ -41,7 +41,7 @@ export interface GetConnectionsArgs {
      */
     pagination?: inputs.fabric.GetConnectionsPagination;
     /**
-     * Filters for the Data Source Search Request
+     * Sort criteria for the Data Source Search Request
      */
     sorts?: inputs.fabric.GetConnectionsSort[];
 }
@@ -71,7 +71,7 @@ export interface GetConnectionsResult {
      */
     readonly pagination?: outputs.fabric.GetConnectionsPagination;
     /**
-     * Filters for the Data Source Search Request
+     * Sort criteria for the Data Source Search Request
      */
     readonly sorts?: outputs.fabric.GetConnectionsSort[];
 }
@@ -109,7 +109,7 @@ export interface GetConnectionsOutputArgs {
      */
     pagination?: pulumi.Input<inputs.fabric.GetConnectionsPaginationArgs>;
     /**
-     * Filters for the Data Source Search Request
+     * Sort criteria for the Data Source Search Request
      */
     sorts?: pulumi.Input<pulumi.Input<inputs.fabric.GetConnectionsSortArgs>[]>;
 }

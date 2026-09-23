@@ -25,7 +25,21 @@ public class App {
             .metroCode("SV")
             .build());
 
-        var fTNTSDWANSV = new Device("fTNTSDWANSV", DeviceArgs.builder()
+        var ftntSdwanSv = new Device("ftntSdwanSv", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("Praveena_TF_VERSA")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .aclTemplateId("XXXXXXXX")
+                .notifications("test@eq.com")
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("controller1", "X.X.X.X"),
+                    Map.entry("controller2", "X.X.X.X"),
+                    Map.entry("localId", "test@test.com"),
+                    Map.entry("remoteId", "test@test.com"),
+                    Map.entry("serialNumber", "4")
+                ))
+                .build())
             .name("TF_VERSA-SDWAN")
             .projectId("XXXXXXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -47,20 +61,6 @@ public class App {
                 Map.entry("remoteId", "test@test.com"),
                 Map.entry("serialNumber", "4")
             ))
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("Praveena_TF_VERSA")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .aclTemplateId("XXXXXXXX")
-                .notifications("test@eq.com")
-                .vendorConfiguration(Map.ofEntries(
-                    Map.entry("controller1", "X.X.X.X"),
-                    Map.entry("controller2", "X.X.X.X"),
-                    Map.entry("localId", "test@test.com"),
-                    Map.entry("remoteId", "test@test.com"),
-                    Map.entry("serialNumber", "4")
-                ))
-                .build())
             .build());
 
     }

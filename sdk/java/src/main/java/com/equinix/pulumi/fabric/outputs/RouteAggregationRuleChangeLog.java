@@ -12,146 +12,146 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RouteAggregationRuleChangeLog {
     /**
-     * @return User name of creator of the stream resource
+     * @return User name of creator of the resource
      * 
      */
     private @Nullable String createdBy;
     /**
-     * @return Email of creator of the stream resource
+     * @return Email of creator of the resource
      * 
      */
     private @Nullable String createdByEmail;
     /**
-     * @return Legal name of creator of the stream resource
+     * @return Legal name of creator of the resource
      * 
      */
     private @Nullable String createdByFullName;
     /**
-     * @return Creation time of the stream resource
+     * @return Creation time of the resource
      * 
      */
     private @Nullable String createdDateTime;
     /**
-     * @return User name of deleter of the stream resource
+     * @return User name of deleter of the resource
      * 
      */
     private @Nullable String deletedBy;
     /**
-     * @return Email of deleter of the stream resource
+     * @return Email of deleter of the resource
      * 
      */
     private @Nullable String deletedByEmail;
     /**
-     * @return Legal name of deleter of the stream resource
+     * @return Legal name of deleter of the resource
      * 
      */
     private @Nullable String deletedByFullName;
     /**
-     * @return Deletion time of the stream resource
+     * @return Deletion time of the resource
      * 
      */
     private @Nullable String deletedDateTime;
     /**
-     * @return User name of last updater of the stream resource
+     * @return User name of last updater of the resource
      * 
      */
     private @Nullable String updatedBy;
     /**
-     * @return Email of last updater of the stream resource
+     * @return Email of last updater of the resource
      * 
      */
     private @Nullable String updatedByEmail;
     /**
-     * @return Legal name of last updater of the stream resource
+     * @return Legal name of last updater of the resource
      * 
      */
     private @Nullable String updatedByFullName;
     /**
-     * @return Last update time of the stream resource
+     * @return Last update time of the resource
      * 
      */
     private @Nullable String updatedDateTime;
 
     private RouteAggregationRuleChangeLog() {}
     /**
-     * @return User name of creator of the stream resource
+     * @return User name of creator of the resource
      * 
      */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
     /**
-     * @return Email of creator of the stream resource
+     * @return Email of creator of the resource
      * 
      */
     public Optional<String> createdByEmail() {
         return Optional.ofNullable(this.createdByEmail);
     }
     /**
-     * @return Legal name of creator of the stream resource
+     * @return Legal name of creator of the resource
      * 
      */
     public Optional<String> createdByFullName() {
         return Optional.ofNullable(this.createdByFullName);
     }
     /**
-     * @return Creation time of the stream resource
+     * @return Creation time of the resource
      * 
      */
     public Optional<String> createdDateTime() {
         return Optional.ofNullable(this.createdDateTime);
     }
     /**
-     * @return User name of deleter of the stream resource
+     * @return User name of deleter of the resource
      * 
      */
     public Optional<String> deletedBy() {
         return Optional.ofNullable(this.deletedBy);
     }
     /**
-     * @return Email of deleter of the stream resource
+     * @return Email of deleter of the resource
      * 
      */
     public Optional<String> deletedByEmail() {
         return Optional.ofNullable(this.deletedByEmail);
     }
     /**
-     * @return Legal name of deleter of the stream resource
+     * @return Legal name of deleter of the resource
      * 
      */
     public Optional<String> deletedByFullName() {
         return Optional.ofNullable(this.deletedByFullName);
     }
     /**
-     * @return Deletion time of the stream resource
+     * @return Deletion time of the resource
      * 
      */
     public Optional<String> deletedDateTime() {
         return Optional.ofNullable(this.deletedDateTime);
     }
     /**
-     * @return User name of last updater of the stream resource
+     * @return User name of last updater of the resource
      * 
      */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
     /**
-     * @return Email of last updater of the stream resource
+     * @return Email of last updater of the resource
      * 
      */
     public Optional<String> updatedByEmail() {
         return Optional.ofNullable(this.updatedByEmail);
     }
     /**
-     * @return Legal name of last updater of the stream resource
+     * @return Legal name of last updater of the resource
      * 
      */
     public Optional<String> updatedByFullName() {
         return Optional.ofNullable(this.updatedByFullName);
     }
     /**
-     * @return Last update time of the stream resource
+     * @return Last update time of the resource
      * 
      */
     public Optional<String> updatedDateTime() {

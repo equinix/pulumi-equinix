@@ -2,8 +2,6 @@ import pulumi
 import pulumi_equinix as equinix
 
 test = equinix.networkedge.DeviceLink("test",
-    name="test-DLG",
-    project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     devices=[
         {
             "id": test_equinix_network_device["uuid"],
@@ -27,4 +25,6 @@ test = equinix.networkedge.DeviceLink("test",
             "throughput": "50",
             "throughput_unit": "Mbps",
         },
-    ])
+    ],
+    name="test-DLG",
+    project_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")

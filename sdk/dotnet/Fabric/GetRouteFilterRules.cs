@@ -126,6 +126,18 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetRouteFilterRulesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filters")]
+        private List<Inputs.GetRouteFilterRulesFilterArgs>? _filters;
+
+        /// <summary>
+        /// Filters for the Data Source Search Request
+        /// </summary>
+        public List<Inputs.GetRouteFilterRulesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new List<Inputs.GetRouteFilterRulesFilterArgs>());
+            set => _filters = value;
+        }
+
         /// <summary>
         /// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
         /// </summary>
@@ -139,10 +151,28 @@ namespace Pulumi.Equinix.Fabric
         public int? Offset { get; set; }
 
         /// <summary>
+        /// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        /// </summary>
+        [Input("outerOperator", required: true)]
+        public string OuterOperator { get; set; } = null!;
+
+        /// <summary>
         /// UUID of the Route Filter Policy the rule is attached to
         /// </summary>
         [Input("routeFilterId", required: true)]
         public string RouteFilterId { get; set; } = null!;
+
+        [Input("sorts")]
+        private List<Inputs.GetRouteFilterRulesSortArgs>? _sorts;
+
+        /// <summary>
+        /// Sort criteria for the Data Source Search Request
+        /// </summary>
+        public List<Inputs.GetRouteFilterRulesSortArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new List<Inputs.GetRouteFilterRulesSortArgs>());
+            set => _sorts = value;
+        }
 
         public GetRouteFilterRulesArgs()
         {
@@ -152,6 +182,18 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetRouteFilterRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filters")]
+        private InputList<Inputs.GetRouteFilterRulesFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Filters for the Data Source Search Request
+        /// </summary>
+        public InputList<Inputs.GetRouteFilterRulesFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetRouteFilterRulesFilterInputArgs>());
+            set => _filters = value;
+        }
+
         /// <summary>
         /// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
         /// </summary>
@@ -165,10 +207,28 @@ namespace Pulumi.Equinix.Fabric
         public Input<int>? Offset { get; set; }
 
         /// <summary>
+        /// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        /// </summary>
+        [Input("outerOperator", required: true)]
+        public Input<string> OuterOperator { get; set; } = null!;
+
+        /// <summary>
         /// UUID of the Route Filter Policy the rule is attached to
         /// </summary>
         [Input("routeFilterId", required: true)]
         public Input<string> RouteFilterId { get; set; } = null!;
+
+        [Input("sorts")]
+        private InputList<Inputs.GetRouteFilterRulesSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort criteria for the Data Source Search Request
+        /// </summary>
+        public InputList<Inputs.GetRouteFilterRulesSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetRouteFilterRulesSortInputArgs>());
+            set => _sorts = value;
+        }
 
         public GetRouteFilterRulesInvokeArgs()
         {
@@ -185,6 +245,10 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRouteFilterRulesDataResult> Datas;
         /// <summary>
+        /// Filters for the Data Source Search Request
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRouteFilterRulesFilterResult> Filters;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -197,6 +261,10 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly int? Offset;
         /// <summary>
+        /// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        /// </summary>
+        public readonly string OuterOperator;
+        /// <summary>
         /// Pagination details for the Data Source Search Request
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRouteFilterRulesPaginationResult> Paginations;
@@ -204,10 +272,16 @@ namespace Pulumi.Equinix.Fabric
         /// UUID of the Route Filter Policy the rule is attached to
         /// </summary>
         public readonly string RouteFilterId;
+        /// <summary>
+        /// Sort criteria for the Data Source Search Request
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRouteFilterRulesSortResult> Sorts;
 
         [OutputConstructor]
         private GetRouteFilterRulesResult(
             ImmutableArray<Outputs.GetRouteFilterRulesDataResult> datas,
+
+            ImmutableArray<Outputs.GetRouteFilterRulesFilterResult> filters,
 
             string id,
 
@@ -215,16 +289,23 @@ namespace Pulumi.Equinix.Fabric
 
             int? offset,
 
+            string outerOperator,
+
             ImmutableArray<Outputs.GetRouteFilterRulesPaginationResult> paginations,
 
-            string routeFilterId)
+            string routeFilterId,
+
+            ImmutableArray<Outputs.GetRouteFilterRulesSortResult> sorts)
         {
             Datas = datas;
+            Filters = filters;
             Id = id;
             Limit = limit;
             Offset = offset;
+            OuterOperator = outerOperator;
             Paginations = paginations;
             RouteFilterId = routeFilterId;
+            Sorts = sorts;
         }
     }
 }

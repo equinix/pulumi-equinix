@@ -2,7 +2,19 @@ import pulumi
 import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
+infoblox_sv = equinix.networkedge.Device("INFOBLOX-SV",
+    secondary_device={
+        "name": "TF_INFOBLOX-Sec",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "adminPassword": "X.X.X.X",
+            "ipAddress": "X.X.X.X",
+            "subnetMaskIp": "X.X.X.X",
+            "gatewayIp": "X.X.X.X",
+        },
+    },
     name="TF_INFOBLOX",
     project_id="XXXXXXXXXX",
     metro_code=sv.metro_code,
@@ -21,16 +33,4 @@ i_nfobloxsv = equinix.networkedge.Device("INFOBLOX-SV",
         "ipAddress": "X.X.X.X",
         "subnetMaskIp": "X.X.X.X",
         "gatewayIp": "X.X.X.X",
-    },
-    secondary_device={
-        "name": "TF_INFOBLOX-Sec",
-        "metro_code": sv.metro_code,
-        "account_number": sv.number,
-        "notifications": ["test@eq.com"],
-        "vendor_configuration": {
-            "adminPassword": "X.X.X.X",
-            "ipAddress": "X.X.X.X",
-            "subnetMaskIp": "X.X.X.X",
-            "gatewayIp": "X.X.X.X",
-        },
     })

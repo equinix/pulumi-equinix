@@ -43,7 +43,7 @@ public final class GetConnectionsResult {
      */
     private @Nullable GetConnectionsPagination pagination;
     /**
-     * @return Filters for the Data Source Search Request
+     * @return Sort criteria for the Data Source Search Request
      * 
      */
     private @Nullable List<GetConnectionsSort> sorts;
@@ -85,7 +85,7 @@ public final class GetConnectionsResult {
         return Optional.ofNullable(this.pagination);
     }
     /**
-     * @return Filters for the Data Source Search Request
+     * @return Sort criteria for the Data Source Search Request
      * 
      */
     public List<GetConnectionsSort> sorts() {

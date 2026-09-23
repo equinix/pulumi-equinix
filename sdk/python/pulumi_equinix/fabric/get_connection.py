@@ -224,7 +224,7 @@ class GetConnectionResult:
     @pulumi.getter
     def redundancy(self) -> 'outputs.GetConnectionRedundancyResult':
         """
-        Connection Redundancy Configuration
+        Connection Redundancy Configuration (applicable only for Azure connections)
         """
         return pulumi.get(self, "redundancy")
 

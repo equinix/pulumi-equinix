@@ -19,14 +19,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     public static final RouteAggregationRuleState Empty = new RouteAggregationRuleState();
 
     /**
-     * Current state of latest route aggregation rule change
+     * Current state of latest Route Aggregation Rule change
      * 
      */
     @Import(name="change")
     private @Nullable Output<RouteAggregationRuleChangeArgs> change;
 
     /**
-     * @return Current state of latest route aggregation rule change
+     * @return Current state of latest Route Aggregation Rule change
      * 
      */
     public Optional<Output<RouteAggregationRuleChangeArgs>> change() {
@@ -34,14 +34,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Details of the last change on the stream resource
+     * Details of the last change on the resource
      * 
      */
     @Import(name="changeLog")
     private @Nullable Output<RouteAggregationRuleChangeLogArgs> changeLog;
 
     /**
-     * @return Details of the last change on the stream resource
+     * @return Details of the last change on the resource
      * 
      */
     public Optional<Output<RouteAggregationRuleChangeLogArgs>> changeLog() {
@@ -49,14 +49,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Customer-provided route aggregation rule description
+     * @return Customer-provided Route Aggregation Rule description
      * 
      */
     public Optional<Output<String>> description() {
@@ -64,14 +64,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Equinix auto generated URI to the route aggregation rule resource
+     * Equinix auto generated URI to the Route Aggregation Rule resource
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Equinix auto generated URI to the route aggregation rule resource
+     * @return Equinix auto generated URI to the Route Aggregation Rule resource
      * 
      */
     public Optional<Output<String>> href() {
@@ -79,14 +79,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Customer provided name of the route aggregation rule
+     * Customer provided name of the Route Aggregation Rule
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Customer provided name of the route aggregation rule
+     * @return Customer provided name of the Route Aggregation Rule
      * 
      */
     public Optional<Output<String>> name() {
@@ -94,14 +94,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Customer-provided route aggregation rule prefix
+     * Customer-provided Route Aggregation Rule prefix
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return Customer-provided route aggregation rule prefix
+     * @return Customer-provided Route Aggregation Rule prefix
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -109,14 +109,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * UUID of the Route Aggregation to apply this Rule to
+     * UUID of the Route Aggregation that this rule is applied to
      * 
      */
     @Import(name="routeAggregationId")
     private @Nullable Output<String> routeAggregationId;
 
     /**
-     * @return UUID of the Route Aggregation to apply this Rule to
+     * @return UUID of the Route Aggregation that this rule is applied to
      * 
      */
     public Optional<Output<String>> routeAggregationId() {
@@ -124,14 +124,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Value representing provisioning status for the route aggregation rule resource
+     * Value representing provisioning status for the Route Aggregation Rule resource
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Value representing provisioning status for the route aggregation rule resource
+     * @return Value representing provisioning status for the Route Aggregation Rule resource
      * 
      */
     public Optional<Output<String>> state() {
@@ -161,14 +161,14 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Equinix-assigned unique id for the route aggregation rule resource
+     * Equinix-assigned unique id for the Route Aggregation Rule resource
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix-assigned unique id for the route aggregation rule resource
+     * @return Equinix-assigned unique id for the Route Aggregation Rule resource
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -210,7 +210,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param change Current state of latest route aggregation rule change
+         * @param change Current state of latest Route Aggregation Rule change
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param change Current state of latest route aggregation rule change
+         * @param change Current state of latest Route Aggregation Rule change
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param changeLog Details of the last change on the stream resource
+         * @param changeLog Details of the last change on the resource
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param changeLog Details of the last change on the stream resource
+         * @param changeLog Details of the last change on the resource
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description Customer-provided route aggregation rule description
+         * @param description Customer-provided Route Aggregation Rule description
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description Customer-provided route aggregation rule description
+         * @param description Customer-provided Route Aggregation Rule description
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param href Equinix auto generated URI to the route aggregation rule resource
+         * @param href Equinix auto generated URI to the Route Aggregation Rule resource
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param href Equinix auto generated URI to the route aggregation rule resource
+         * @param href Equinix auto generated URI to the Route Aggregation Rule resource
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Customer provided name of the route aggregation rule
+         * @param name Customer provided name of the Route Aggregation Rule
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Customer provided name of the route aggregation rule
+         * @param name Customer provided name of the Route Aggregation Rule
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param prefix Customer-provided route aggregation rule prefix
+         * @param prefix Customer-provided Route Aggregation Rule prefix
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param prefix Customer-provided route aggregation rule prefix
+         * @param prefix Customer-provided Route Aggregation Rule prefix
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param routeAggregationId UUID of the Route Aggregation to apply this Rule to
+         * @param routeAggregationId UUID of the Route Aggregation that this rule is applied to
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param routeAggregationId UUID of the Route Aggregation to apply this Rule to
+         * @param routeAggregationId UUID of the Route Aggregation that this rule is applied to
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param state Value representing provisioning status for the route aggregation rule resource
+         * @param state Value representing provisioning status for the Route Aggregation Rule resource
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param state Value representing provisioning status for the route aggregation rule resource
+         * @param state Value representing provisioning status for the Route Aggregation Rule resource
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param uuid Equinix-assigned unique id for the route aggregation rule resource
+         * @param uuid Equinix-assigned unique id for the Route Aggregation Rule resource
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class RouteAggregationRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param uuid Equinix-assigned unique id for the route aggregation rule resource
+         * @param uuid Equinix-assigned unique id for the Route Aggregation Rule resource
          * 
          * @return builder
          * 

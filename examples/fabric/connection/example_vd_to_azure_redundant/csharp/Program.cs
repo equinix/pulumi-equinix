@@ -5,27 +5,12 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var vd2AzurePrimary = new Equinix.Fabric.Connection("vd2azurePrimary", new()
+    var vd2AzurePrimary = new Equinix.Fabric.Connection("vd2azure_primary", new()
     {
-        Name = "ConnectionName",
-        Type = Equinix.Fabric.ConnectionType.EVPL,
         Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
         {
             Priority = "PRIMARY",
         },
-        Notifications = new[]
-        {
-            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
-            {
-                Type = Equinix.Fabric.NotificationsType.All,
-                Emails = new[]
-                {
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                },
-            },
-        },
-        Bandwidth = 50,
         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
         {
             PurchaseOrderNumber = "1-323292",
@@ -34,7 +19,6 @@ return await Deployment.RunAsync(() =>
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.VD,
                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
                 {
                     Type = "EDGE",
@@ -45,15 +29,13 @@ return await Deployment.RunAsync(() =>
                     Type = "CLOUD",
                     Id = 7,
                 },
+                Type = Equinix.Fabric.AccessPointType.VD,
             },
         },
         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.SP,
-                AuthenticationKey = "<Azure_ExpressRouter_Auth_Key>",
-                PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
                 {
                     Type = Equinix.Fabric.ProfileType.L2Profile,
@@ -63,18 +45,10 @@ return await Deployment.RunAsync(() =>
                 {
                     MetroCode = Equinix.Metro.SiliconValley,
                 },
+                Type = Equinix.Fabric.AccessPointType.SP,
+                AuthenticationKey = "<Azure_ExpressRouter_Auth_Key>",
+                PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
             },
-        },
-    });
-
-    var vd2AzureSecondary = new Equinix.Fabric.Connection("vd2azureSecondary", new()
-    {
-        Name = "ConnectionName",
-        Type = Equinix.Fabric.ConnectionType.EVPL,
-        Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
-        {
-            Priority = "SECONDARY",
-            Group = vd2AzurePrimary.Redundancy.Apply(redundancy => redundancy?.Group),
         },
         Notifications = new[]
         {
@@ -88,7 +62,18 @@ return await Deployment.RunAsync(() =>
                 },
             },
         },
+        Name = "ConnectionName",
+        Type = Equinix.Fabric.ConnectionType.EVPL,
         Bandwidth = 50,
+    });
+
+    var vd2AzureSecondary = new Equinix.Fabric.Connection("vd2azure_secondary", new()
+    {
+        Redundancy = new Equinix.Fabric.Inputs.ConnectionRedundancyArgs
+        {
+            Priority = "SECONDARY",
+            Group = vd2AzurePrimary.Redundancy.Apply(redundancy => redundancy?.Group),
+        },
         Order = new Equinix.Fabric.Inputs.ConnectionOrderArgs
         {
             PurchaseOrderNumber = "1-323292",
@@ -97,7 +82,6 @@ return await Deployment.RunAsync(() =>
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionASideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.VD,
                 VirtualDevice = new Equinix.Fabric.Inputs.ConnectionASideAccessPointVirtualDeviceArgs
                 {
                     Type = "EDGE",
@@ -108,15 +92,13 @@ return await Deployment.RunAsync(() =>
                     Type = "CLOUD",
                     Id = 5,
                 },
+                Type = Equinix.Fabric.AccessPointType.VD,
             },
         },
         ZSide = new Equinix.Fabric.Inputs.ConnectionZSideArgs
         {
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
             {
-                Type = Equinix.Fabric.AccessPointType.SP,
-                AuthenticationKey = "<Azure_ExpressRouter_Auth_Key>",
-                PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
                 {
                     Type = Equinix.Fabric.ProfileType.L2Profile,
@@ -126,8 +108,26 @@ return await Deployment.RunAsync(() =>
                 {
                     MetroCode = Equinix.Metro.SiliconValley,
                 },
+                Type = Equinix.Fabric.AccessPointType.SP,
+                AuthenticationKey = "<Azure_ExpressRouter_Auth_Key>",
+                PeeringType = Equinix.Fabric.AccessPointPeeringType.Private,
             },
         },
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.ConnectionNotificationArgs
+            {
+                Type = Equinix.Fabric.NotificationsType.All,
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Name = "ConnectionName",
+        Type = Equinix.Fabric.ConnectionType.EVPL,
+        Bandwidth = 50,
     });
 
 });

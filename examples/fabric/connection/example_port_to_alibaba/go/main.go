@@ -9,8 +9,38 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := fabric.NewConnection(ctx, "port2alibaba", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String(fabric.ConnectionTypeEVPL),
+			Redundancy: &fabric.ConnectionRedundancyArgs{
+				Priority: pulumi.String("PRIMARY"),
+			},
+			Order: &fabric.ConnectionOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323929"),
+			},
+			ASide: &fabric.ConnectionASideArgs{
+				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+					Port: &fabric.ConnectionASideAccessPointPortArgs{
+						Uuid: pulumi.String("<aside_port_uuid>"),
+					},
+					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+						Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+						VlanTag: pulumi.Int(2019),
+					},
+					Type: pulumi.String(fabric.AccessPointTypeColo),
+				},
+			},
+			ZSide: &fabric.ConnectionZSideArgs{
+				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
+						Type: pulumi.String(fabric.ProfileTypeL2Profile),
+						Uuid: pulumi.String("<service_profile_uuid>"),
+					},
+					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
+						MetroCode: pulumi.String(equinix.MetroSiliconValley),
+					},
+					Type:              pulumi.String(fabric.AccessPointTypeSP),
+					AuthenticationKey: pulumi.String("<alibaba_account_id>"),
+					SellerRegion:      pulumi.String("us-west-1"),
+				},
+			},
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
 					Type: pulumi.String(fabric.NotificationsTypeAll),
@@ -20,39 +50,9 @@ func main() {
 					},
 				},
 			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String(fabric.ConnectionTypeEVPL),
 			Bandwidth: pulumi.Int(50),
-			Redundancy: &fabric.ConnectionRedundancyArgs{
-				Priority: pulumi.String("PRIMARY"),
-			},
-			Order: &fabric.ConnectionOrderArgs{
-				PurchaseOrderNumber: pulumi.String("1-323929"),
-			},
-			ASide: &fabric.ConnectionASideArgs{
-				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeColo),
-					Port: &fabric.ConnectionASideAccessPointPortArgs{
-						Uuid: pulumi.String("<aside_port_uuid>"),
-					},
-					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
-						Type:    pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
-						VlanTag: pulumi.Int(2019),
-					},
-				},
-			},
-			ZSide: &fabric.ConnectionZSideArgs{
-				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type:              pulumi.String(fabric.AccessPointTypeSP),
-					AuthenticationKey: pulumi.String("<alibaba_account_id>"),
-					SellerRegion:      pulumi.String("us-west-1"),
-					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
-						Type: pulumi.String(fabric.ProfileTypeL2Profile),
-						Uuid: pulumi.String("<service_profile_uuid>"),
-					},
-					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
-						MetroCode: pulumi.String(equinix.MetroSiliconValley),
-					},
-				},
-			},
 		})
 		if err != nil {
 			return err

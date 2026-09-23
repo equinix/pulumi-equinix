@@ -75,14 +75,14 @@ public final class GetRouteAggregationRulesPagination extends com.pulumi.resourc
     }
 
     /**
-     * The total number of route agrgegation rules available to the user making the request
+     * The total number of Route Aggregation Rules available to the user making the request
      * 
      */
     @Import(name="total", required=true)
     private Integer total;
 
     /**
-     * @return The total number of route agrgegation rules available to the user making the request
+     * @return The total number of Route Aggregation Rules available to the user making the request
      * 
      */
     public Integer total() {
@@ -162,7 +162,7 @@ public final class GetRouteAggregationRulesPagination extends com.pulumi.resourc
         }
 
         /**
-         * @param total The total number of route agrgegation rules available to the user making the request
+         * @param total The total number of Route Aggregation Rules available to the user making the request
          * 
          * @return builder
          * 

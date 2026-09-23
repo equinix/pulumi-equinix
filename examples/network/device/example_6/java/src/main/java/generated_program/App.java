@@ -36,6 +36,18 @@ public class App {
             .build());
 
         var aristaHa = new Device("aristaHa", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test-username")
+                .keyName(testPublicKey.name())
+                .build())
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("tf-arista-s")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .hostname("arista-s")
+                .notifications("test@eq.com")
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
+                .build())
             .name("tf-arista-p")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("ARISTA-ROUTER")
@@ -50,19 +62,7 @@ public class App {
             .coreCount(4)
             .termLength(12)
             .additionalBandwidth(5)
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test-username")
-                .keyName(testPublicKey.name())
-                .build())
             .aclTemplateId("c637a17b-7a6a-4486-924b-30e6c36904b0")
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("tf-arista-s")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .hostname("arista-s")
-                .notifications("test@eq.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .aclTemplateId("fee5e2c0-6198-4ce6-9cbd-bbe6c1dbe138")
-                .build())
             .build());
 
     }

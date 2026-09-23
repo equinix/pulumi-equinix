@@ -72,9 +72,11 @@ generate_sdks build_sdks: clean build_nodejs build_python build_go build_dotnet 
 build_nodejs: upstream $(PULUMICTL_BIN)
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	echo "patch_nodejs: find and replace wrong imports in examples" && \
-		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g' {} \;
+		find ./sdk/nodejs/ -mindepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
 	echo "patch_nodejs: delete duplicate imports in examples" && \
 		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -exec sed -i.bak '/@${ORG}-labs\/${NODE_PACK}/N;/^\(.*\)\n\1$$/!P; D' {} \;
+	echo "patch_nodejs: fix relative imports in subdirectory modules (codegen bug)" && \
+		find ./sdk/nodejs/ -mindepth 2 -maxdepth 2 -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's|from "\./utilities"|from "../utilities"|g; s|from "\./types/|from "../types/|g' {} \;
 	echo "patch_nodejs: remove backup files" && \
 		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
 	cd sdk/nodejs/ && \
@@ -87,6 +89,11 @@ build_nodejs: upstream $(PULUMICTL_BIN)
 build_python: upstream $(PULUMICTL_BIN)
 	rm -rf sdk/python/
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
+	echo "patch_python: fix relative _utilities import in subpackage modules (codegen bug)" && \
+		find ./sdk/python/pulumi_equinix -mindepth 2 -maxdepth 2 -type f \( -name "*.py" -o -name "*.pyi" \) -print \
+			-exec sed -i.bak 's/^from \. import _utilities$$/from .. import _utilities/' {} \;
+	echo "patch_python: remove backup files" && \
+		find ./sdk/python/pulumi_equinix -mindepth 2 -maxdepth 2 -type f \( -name "*.py.bak" -o -name "*.pyi.bak" \) -exec /bin/rm {} \;
 	cd sdk/python/ && \
 		printf "module fake_python_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
         cp ../../README.md . && \
@@ -104,8 +111,8 @@ build_dotnet: upstream $(PULUMICTL_BIN)
         dotnet build /p:Version=${DOTNET_VERSION}
 
 build_go:: upstream
+	go env -w GOPROXY=direct
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
-	go install golang.org/x/tools/cmd/goimports@latest
 	cd sdk && goimports -w . && go list "$$(grep -e "^module" go.mod | cut -d ' ' -f 2)/go/..." | xargs go build
 
 build_java: bin/pulumi-java-gen patch_java_schema upstream $(PULUMICTL_BIN)
@@ -139,6 +146,10 @@ build_java: bin/pulumi-java-gen patch_java_schema upstream $(PULUMICTL_BIN)
 		awk '/repositories \{/ && !x {print; print "    mavenLocal()"; x=1; next}1' \
 			./sdk/java/settings.gradle > ./sdk/java/settings.gradle.tmp && \
 		mv ./sdk/java/settings.gradle.tmp ./sdk/java/settings.gradle
+	echo "patch_java: remove nexus publish plugin" && \
+		sed -i.bak '/io.github.gradle-nexus.publish-plugin/d' \
+		sdk/java/build.gradle && \
+		rm -f sdk/java/build.gradle.bak
 	cd sdk/java/ && \
 		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		gradle --console=plain build && \

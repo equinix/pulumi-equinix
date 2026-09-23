@@ -5,22 +5,8 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var newCloudRouter = new Equinix.Fabric.CloudRouter("newCloudRouter", new()
+    var newCloudRouter = new Equinix.Fabric.CloudRouter("new_cloud_router", new()
     {
-        Name = "Router-SV",
-        Type = "XF_ROUTER",
-        Notifications = new[]
-        {
-            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
-            {
-                Type = "ALL",
-                Emails = new[]
-                {
-                    "example@equinix.com",
-                    "test1@equinix.com",
-                },
-            },
-        },
         Order = new Equinix.Fabric.Inputs.CloudRouterOrderArgs
         {
             PurchaseOrderNumber = "1-323292",
@@ -41,6 +27,20 @@ return await Deployment.RunAsync(() =>
         {
             AccountNumber = 203612,
         },
+        Notifications = new[]
+        {
+            new Equinix.Fabric.Inputs.CloudRouterNotificationArgs
+            {
+                Type = "ALL",
+                Emails = new[]
+                {
+                    "example@equinix.com",
+                    "test1@equinix.com",
+                },
+            },
+        },
+        Name = "Router-SV",
+        Type = "XF_ROUTER",
     });
 
 });

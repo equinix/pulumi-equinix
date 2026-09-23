@@ -26,7 +26,20 @@ public class App {
             .name("account-name")
             .build());
 
-        var fTNTFIREWALLSV = new Device("fTNTFIREWALLSV", DeviceArgs.builder()
+        var ftntFirewallSv = new Device("ftntFirewallSv", DeviceArgs.builder()
+            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+                .name("TF_FTNT-FIREWALL-secondary")
+                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
+                .hostname("fg-vm-znpd")
+                .notifications(                
+                    "john@equinix.com",
+                    "marry@equinix.com")
+                .accountNumber(sv.applyValue(_sv -> _sv.number()))
+                .vendorConfiguration(Map.ofEntries(
+                    Map.entry("ipAddressType", "DHCP"),
+                    Map.entry("managementInterfaceId", "6")
+                ))
+                .build())
             .name("TF_FTNT-FIREWALL")
             .projectId("XXXXXXXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
@@ -46,19 +59,6 @@ public class App {
                 Map.entry("ipAddressType", "DHCP"),
                 Map.entry("managementInterfaceId", "6")
             ))
-            .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
-                .name("TF_FTNT-FIREWALL-secondary")
-                .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
-                .hostname("fg-vm-znpd")
-                .notifications(                
-                    "john@equinix.com",
-                    "marry@equinix.com")
-                .accountNumber(sv.applyValue(_sv -> _sv.number()))
-                .vendorConfiguration(Map.ofEntries(
-                    Map.entry("ipAddressType", "DHCP"),
-                    Map.entry("managementInterfaceId", "6")
-                ))
-                .build())
             .build());
 
     }

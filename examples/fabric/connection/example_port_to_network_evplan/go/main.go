@@ -8,8 +8,29 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := fabric.NewConnection(ctx, "evplan", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String("EVPLAN_VC"),
+			Order: &fabric.ConnectionOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323292"),
+			},
+			ASide: &fabric.ConnectionASideArgs{
+				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+					Port: &fabric.ConnectionASideAccessPointPortArgs{
+						Uuid: pulumi.String("<aside_port_uuid>"),
+					},
+					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
+						Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
+						VlanSTag: pulumi.Int(1976),
+					},
+					Type: pulumi.String(fabric.AccessPointTypeColo),
+				},
+			},
+			ZSide: &fabric.ConnectionZSideArgs{
+				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+					Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
+						Uuid: pulumi.String("<network_uuid>"),
+					},
+					Type: pulumi.String(fabric.AccessPointTypeNetwork),
+				},
+			},
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
 					Type: pulumi.String(fabric.NotificationsTypeAll),
@@ -19,30 +40,9 @@ func main() {
 					},
 				},
 			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String("EVPLAN_VC"),
 			Bandwidth: pulumi.Int(50),
-			Order: &fabric.ConnectionOrderArgs{
-				PurchaseOrderNumber: pulumi.String("1-323292"),
-			},
-			ASide: &fabric.ConnectionASideArgs{
-				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeColo),
-					Port: &fabric.ConnectionASideAccessPointPortArgs{
-						Uuid: pulumi.String("<aside_port_uuid>"),
-					},
-					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
-						Type:     pulumi.String(fabric.AccessPointLinkProtocolTypeDot1q),
-						VlanSTag: pulumi.Int(1976),
-					},
-				},
-			},
-			ZSide: &fabric.ConnectionZSideArgs{
-				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeNetwork),
-					Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
-						Uuid: pulumi.String("<network_uuid>"),
-					},
-				},
-			},
 		})
 		if err != nil {
 			return err

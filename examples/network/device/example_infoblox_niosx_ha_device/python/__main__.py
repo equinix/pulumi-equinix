@@ -3,6 +3,16 @@ import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
 nios_x_ha = equinix.networkedge.Device("nios-x-ha",
+    secondary_device={
+        "name": "TF_INFOBLOX-NIOS-X-Sec",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "hostname": "test",
+            "token": "xxxxx",
+        },
+    },
     name="TF_INFOBLOX-NIOS-X",
     project_id="xxxxxxx",
     metro_code=sv.metro_code,
@@ -20,14 +30,4 @@ nios_x_ha = equinix.networkedge.Device("nios-x-ha",
     vendor_configuration={
         "hostname": "test",
         "token": "xxxxx",
-    },
-    secondary_device={
-        "name": "TF_INFOBLOX-NIOS-X-Sec",
-        "metro_code": sv.metro_code,
-        "account_number": sv.number,
-        "notifications": ["test@eq.com"],
-        "vendor_configuration": {
-            "hostname": "test",
-            "token": "xxxxx",
-        },
     })

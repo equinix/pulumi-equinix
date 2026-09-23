@@ -24,7 +24,7 @@ public class App {
             .metroCode("SV")
             .build());
 
-        var fTNTSDWANSV = new Device("fTNTSDWANSV", DeviceArgs.builder()
+        var ftntSdwanSv = new Device("ftntSdwanSv", DeviceArgs.builder()
             .name("TF_FTNT-SDWAN")
             .projectId("XXXXXXXXXX")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))

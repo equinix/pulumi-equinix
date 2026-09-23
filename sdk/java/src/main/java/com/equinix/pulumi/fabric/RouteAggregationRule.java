@@ -18,10 +18,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Route Aggregation Rule
  * 
  * Additional Documentation:
- * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+ * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations-Rules
  * 
  * ## Example Usage
  * 
@@ -69,112 +69,112 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:fabric/routeAggregationRule:RouteAggregationRule")
 public class RouteAggregationRule extends com.pulumi.resources.CustomResource {
     /**
-     * Current state of latest route aggregation rule change
+     * Current state of latest Route Aggregation Rule change
      * 
      */
     @Export(name="change", refs={RouteAggregationRuleChange.class}, tree="[0]")
     private Output<RouteAggregationRuleChange> change;
 
     /**
-     * @return Current state of latest route aggregation rule change
+     * @return Current state of latest Route Aggregation Rule change
      * 
      */
     public Output<RouteAggregationRuleChange> change() {
         return this.change;
     }
     /**
-     * Details of the last change on the stream resource
+     * Details of the last change on the resource
      * 
      */
     @Export(name="changeLog", refs={RouteAggregationRuleChangeLog.class}, tree="[0]")
     private Output<RouteAggregationRuleChangeLog> changeLog;
 
     /**
-     * @return Details of the last change on the stream resource
+     * @return Details of the last change on the resource
      * 
      */
     public Output<RouteAggregationRuleChangeLog> changeLog() {
         return this.changeLog;
     }
     /**
-     * Customer-provided route aggregation rule description
+     * Customer-provided Route Aggregation Rule description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Customer-provided route aggregation rule description
+     * @return Customer-provided Route Aggregation Rule description
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Equinix auto generated URI to the route aggregation rule resource
+     * Equinix auto generated URI to the Route Aggregation Rule resource
      * 
      */
     @Export(name="href", refs={String.class}, tree="[0]")
     private Output<String> href;
 
     /**
-     * @return Equinix auto generated URI to the route aggregation rule resource
+     * @return Equinix auto generated URI to the Route Aggregation Rule resource
      * 
      */
     public Output<String> href() {
         return this.href;
     }
     /**
-     * Customer provided name of the route aggregation rule
+     * Customer provided name of the Route Aggregation Rule
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Customer provided name of the route aggregation rule
+     * @return Customer provided name of the Route Aggregation Rule
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Customer-provided route aggregation rule prefix
+     * Customer-provided Route Aggregation Rule prefix
      * 
      */
     @Export(name="prefix", refs={String.class}, tree="[0]")
     private Output<String> prefix;
 
     /**
-     * @return Customer-provided route aggregation rule prefix
+     * @return Customer-provided Route Aggregation Rule prefix
      * 
      */
     public Output<String> prefix() {
         return this.prefix;
     }
     /**
-     * UUID of the Route Aggregation to apply this Rule to
+     * UUID of the Route Aggregation that this rule is applied to
      * 
      */
     @Export(name="routeAggregationId", refs={String.class}, tree="[0]")
     private Output<String> routeAggregationId;
 
     /**
-     * @return UUID of the Route Aggregation to apply this Rule to
+     * @return UUID of the Route Aggregation that this rule is applied to
      * 
      */
     public Output<String> routeAggregationId() {
         return this.routeAggregationId;
     }
     /**
-     * Value representing provisioning status for the route aggregation rule resource
+     * Value representing provisioning status for the Route Aggregation Rule resource
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Value representing provisioning status for the route aggregation rule resource
+     * @return Value representing provisioning status for the Route Aggregation Rule resource
      * 
      */
     public Output<String> state() {
@@ -201,14 +201,14 @@ public class RouteAggregationRule extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * Equinix-assigned unique id for the route aggregation rule resource
+     * Equinix-assigned unique id for the Route Aggregation Rule resource
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
-     * @return Equinix-assigned unique id for the route aggregation rule resource
+     * @return Equinix-assigned unique id for the Route Aggregation Rule resource
      * 
      */
     public Output<String> uuid() {

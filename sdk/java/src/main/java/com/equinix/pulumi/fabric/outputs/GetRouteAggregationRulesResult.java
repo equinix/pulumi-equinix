@@ -4,7 +4,9 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRulesData;
+import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRulesFilter;
 import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRulesPagination;
+import com.equinix.pulumi.fabric.outputs.GetRouteAggregationRulesSort;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -16,33 +18,55 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRouteAggregationRulesResult {
     /**
-     * @return Returned list of route aggregation rule objects
+     * @return Returned list of Route Aggregation Rule objects
      * 
      */
     private List<GetRouteAggregationRulesData> datas;
+    /**
+     * @return Filters for the Data Source Search Request
+     * 
+     */
+    private @Nullable List<GetRouteAggregationRulesFilter> filters;
     /**
      * @return The unique identifier of the resource
      * 
      */
     private String id;
     /**
-     * @return Pagination details for the returned route aggregation rules list
+     * @return Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    private String outerOperator;
+    /**
+     * @return Pagination details for the returned Route Aggregation Rules list
      * 
      */
     private @Nullable GetRouteAggregationRulesPagination pagination;
     /**
-     * @return The uuid of the route aggregation rule this data source should retrieve
+     * @return The UUID of the Route Aggregation from which this data source retrieves its rules.
      * 
      */
     private String routeAggregationId;
+    /**
+     * @return Sort criteria for the Data Source Search Request
+     * 
+     */
+    private @Nullable List<GetRouteAggregationRulesSort> sorts;
 
     private GetRouteAggregationRulesResult() {}
     /**
-     * @return Returned list of route aggregation rule objects
+     * @return Returned list of Route Aggregation Rule objects
      * 
      */
     public List<GetRouteAggregationRulesData> datas() {
         return this.datas;
+    }
+    /**
+     * @return Filters for the Data Source Search Request
+     * 
+     */
+    public List<GetRouteAggregationRulesFilter> filters() {
+        return this.filters == null ? List.of() : this.filters;
     }
     /**
      * @return The unique identifier of the resource
@@ -52,18 +76,32 @@ public final class GetRouteAggregationRulesResult {
         return this.id;
     }
     /**
-     * @return Pagination details for the returned route aggregation rules list
+     * @return Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+     * 
+     */
+    public String outerOperator() {
+        return this.outerOperator;
+    }
+    /**
+     * @return Pagination details for the returned Route Aggregation Rules list
      * 
      */
     public Optional<GetRouteAggregationRulesPagination> pagination() {
         return Optional.ofNullable(this.pagination);
     }
     /**
-     * @return The uuid of the route aggregation rule this data source should retrieve
+     * @return The UUID of the Route Aggregation from which this data source retrieves its rules.
      * 
      */
     public String routeAggregationId() {
         return this.routeAggregationId;
+    }
+    /**
+     * @return Sort criteria for the Data Source Search Request
+     * 
+     */
+    public List<GetRouteAggregationRulesSort> sorts() {
+        return this.sorts == null ? List.of() : this.sorts;
     }
 
     public static Builder builder() {
@@ -76,16 +114,22 @@ public final class GetRouteAggregationRulesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetRouteAggregationRulesData> datas;
+        private @Nullable List<GetRouteAggregationRulesFilter> filters;
         private String id;
+        private String outerOperator;
         private @Nullable GetRouteAggregationRulesPagination pagination;
         private String routeAggregationId;
+        private @Nullable List<GetRouteAggregationRulesSort> sorts;
         public Builder() {}
         public Builder(GetRouteAggregationRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datas = defaults.datas;
+    	      this.filters = defaults.filters;
     	      this.id = defaults.id;
+    	      this.outerOperator = defaults.outerOperator;
     	      this.pagination = defaults.pagination;
     	      this.routeAggregationId = defaults.routeAggregationId;
+    	      this.sorts = defaults.sorts;
         }
 
         @CustomType.Setter
@@ -100,11 +144,28 @@ public final class GetRouteAggregationRulesResult {
             return datas(List.of(datas));
         }
         @CustomType.Setter
+        public Builder filters(@Nullable List<GetRouteAggregationRulesFilter> filters) {
+
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(GetRouteAggregationRulesFilter... filters) {
+            return filters(List.of(filters));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetRouteAggregationRulesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder outerOperator(String outerOperator) {
+            if (outerOperator == null) {
+              throw new MissingRequiredPropertyException("GetRouteAggregationRulesResult", "outerOperator");
+            }
+            this.outerOperator = outerOperator;
             return this;
         }
         @CustomType.Setter
@@ -121,12 +182,24 @@ public final class GetRouteAggregationRulesResult {
             this.routeAggregationId = routeAggregationId;
             return this;
         }
+        @CustomType.Setter
+        public Builder sorts(@Nullable List<GetRouteAggregationRulesSort> sorts) {
+
+            this.sorts = sorts;
+            return this;
+        }
+        public Builder sorts(GetRouteAggregationRulesSort... sorts) {
+            return sorts(List.of(sorts));
+        }
         public GetRouteAggregationRulesResult build() {
             final var _resultValue = new GetRouteAggregationRulesResult();
             _resultValue.datas = datas;
+            _resultValue.filters = filters;
             _resultValue.id = id;
+            _resultValue.outerOperator = outerOperator;
             _resultValue.pagination = pagination;
             _resultValue.routeAggregationId = routeAggregationId;
+            _resultValue.sorts = sorts;
             return _resultValue;
         }
     }

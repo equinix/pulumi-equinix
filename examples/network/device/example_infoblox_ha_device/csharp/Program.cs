@@ -10,8 +10,25 @@ return await Deployment.RunAsync(() =>
         MetroCode = "SV",
     });
 
-    var iNFOBLOXSV = new Equinix.NetworkEdge.Device("INFOBLOX-SV", new()
+    var infobloxSv = new Equinix.NetworkEdge.Device("INFOBLOX-SV", new()
     {
+        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+        {
+            Name = "TF_INFOBLOX-Sec",
+            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
+            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
+            Notifications = new[]
+            {
+                "test@eq.com",
+            },
+            VendorConfiguration = 
+            {
+                { "adminPassword", "X.X.X.X" },
+                { "ipAddress", "X.X.X.X" },
+                { "subnetMaskIp", "X.X.X.X" },
+                { "gatewayIp", "X.X.X.X" },
+            },
+        },
         Name = "TF_INFOBLOX",
         ProjectId = "XXXXXXXXXX",
         MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
@@ -34,23 +51,6 @@ return await Deployment.RunAsync(() =>
             { "ipAddress", "X.X.X.X" },
             { "subnetMaskIp", "X.X.X.X" },
             { "gatewayIp", "X.X.X.X" },
-        },
-        SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-        {
-            Name = "TF_INFOBLOX-Sec",
-            MetroCode = sv.Apply(getAccountResult => getAccountResult.MetroCode),
-            AccountNumber = sv.Apply(getAccountResult => getAccountResult.Number),
-            Notifications = new[]
-            {
-                "test@eq.com",
-            },
-            VendorConfiguration = 
-            {
-                { "adminPassword", "X.X.X.X" },
-                { "ipAddress", "X.X.X.X" },
-                { "subnetMaskIp", "X.X.X.X" },
-                { "gatewayIp", "X.X.X.X" },
-            },
         },
     });
 

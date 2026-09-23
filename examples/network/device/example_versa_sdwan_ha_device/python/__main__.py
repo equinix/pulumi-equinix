@@ -2,7 +2,21 @@ import pulumi
 import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+ftnt_sdwan_sv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+    secondary_device={
+        "name": "Praveena_TF_VERSA",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "acl_template_id": "XXXXXXXX",
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "controller1": "X.X.X.X",
+            "controller2": "X.X.X.X",
+            "localId": "test@test.com",
+            "remoteId": "test@test.com",
+            "serialNumber": "4",
+        },
+    },
     name="TF_VERSA-SDWAN",
     project_id="XXXXXXXXX",
     metro_code=sv.metro_code,
@@ -23,18 +37,4 @@ f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
         "localId": "test@test.com",
         "remoteId": "test@test.com",
         "serialNumber": "4",
-    },
-    secondary_device={
-        "name": "Praveena_TF_VERSA",
-        "metro_code": sv.metro_code,
-        "account_number": sv.number,
-        "acl_template_id": "XXXXXXXX",
-        "notifications": ["test@eq.com"],
-        "vendor_configuration": {
-            "controller1": "X.X.X.X",
-            "controller2": "X.X.X.X",
-            "localId": "test@test.com",
-            "remoteId": "test@test.com",
-            "serialNumber": "4",
-        },
     })

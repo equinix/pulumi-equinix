@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
         /// Additional Documentation:
-        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +52,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
         /// Additional Documentation:
-        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
         /// 
         /// ## Example Usage
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Equinix Fabric Route Aggregation Rules with pagination details
         /// Additional Documentation:
-        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregations
+        /// * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Route-Aggregation-Rules/operation/searchRouteAggregationRules
         /// 
         /// ## Example Usage
         /// 
@@ -129,17 +129,47 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetRouteAggregationRulesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filters")]
+        private List<Inputs.GetRouteAggregationRulesFilterArgs>? _filters;
+
         /// <summary>
-        /// Pagination details for the returned route aggregation rules list
+        /// Filters for the Data Source Search Request
+        /// </summary>
+        public List<Inputs.GetRouteAggregationRulesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new List<Inputs.GetRouteAggregationRulesFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        /// </summary>
+        [Input("outerOperator", required: true)]
+        public string OuterOperator { get; set; } = null!;
+
+        /// <summary>
+        /// Pagination details for the returned Route Aggregation Rules list
         /// </summary>
         [Input("pagination")]
         public Inputs.GetRouteAggregationRulesPaginationArgs? Pagination { get; set; }
 
         /// <summary>
-        /// The uuid of the route aggregation rule this data source should retrieve
+        /// The UUID of the Route Aggregation from which this data source retrieves its rules.
         /// </summary>
         [Input("routeAggregationId", required: true)]
         public string RouteAggregationId { get; set; } = null!;
+
+        [Input("sorts")]
+        private List<Inputs.GetRouteAggregationRulesSortArgs>? _sorts;
+
+        /// <summary>
+        /// Sort criteria for the Data Source Search Request
+        /// </summary>
+        public List<Inputs.GetRouteAggregationRulesSortArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new List<Inputs.GetRouteAggregationRulesSortArgs>());
+            set => _sorts = value;
+        }
 
         public GetRouteAggregationRulesArgs()
         {
@@ -149,17 +179,47 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetRouteAggregationRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filters")]
+        private InputList<Inputs.GetRouteAggregationRulesFilterInputArgs>? _filters;
+
         /// <summary>
-        /// Pagination details for the returned route aggregation rules list
+        /// Filters for the Data Source Search Request
+        /// </summary>
+        public InputList<Inputs.GetRouteAggregationRulesFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetRouteAggregationRulesFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        /// </summary>
+        [Input("outerOperator", required: true)]
+        public Input<string> OuterOperator { get; set; } = null!;
+
+        /// <summary>
+        /// Pagination details for the returned Route Aggregation Rules list
         /// </summary>
         [Input("pagination")]
         public Input<Inputs.GetRouteAggregationRulesPaginationInputArgs>? Pagination { get; set; }
 
         /// <summary>
-        /// The uuid of the route aggregation rule this data source should retrieve
+        /// The UUID of the Route Aggregation from which this data source retrieves its rules.
         /// </summary>
         [Input("routeAggregationId", required: true)]
         public Input<string> RouteAggregationId { get; set; } = null!;
+
+        [Input("sorts")]
+        private InputList<Inputs.GetRouteAggregationRulesSortInputArgs>? _sorts;
+
+        /// <summary>
+        /// Sort criteria for the Data Source Search Request
+        /// </summary>
+        public InputList<Inputs.GetRouteAggregationRulesSortInputArgs> Sorts
+        {
+            get => _sorts ?? (_sorts = new InputList<Inputs.GetRouteAggregationRulesSortInputArgs>());
+            set => _sorts = value;
+        }
 
         public GetRouteAggregationRulesInvokeArgs()
         {
@@ -172,36 +232,57 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetRouteAggregationRulesResult
     {
         /// <summary>
-        /// Returned list of route aggregation rule objects
+        /// Returned list of Route Aggregation Rule objects
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRouteAggregationRulesDataResult> Datas;
+        /// <summary>
+        /// Filters for the Data Source Search Request
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRouteAggregationRulesFilterResult> Filters;
         /// <summary>
         /// The unique identifier of the resource
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Pagination details for the returned route aggregation rules list
+        /// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+        /// </summary>
+        public readonly string OuterOperator;
+        /// <summary>
+        /// Pagination details for the returned Route Aggregation Rules list
         /// </summary>
         public readonly Outputs.GetRouteAggregationRulesPaginationResult? Pagination;
         /// <summary>
-        /// The uuid of the route aggregation rule this data source should retrieve
+        /// The UUID of the Route Aggregation from which this data source retrieves its rules.
         /// </summary>
         public readonly string RouteAggregationId;
+        /// <summary>
+        /// Sort criteria for the Data Source Search Request
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRouteAggregationRulesSortResult> Sorts;
 
         [OutputConstructor]
         private GetRouteAggregationRulesResult(
             ImmutableArray<Outputs.GetRouteAggregationRulesDataResult> datas,
 
+            ImmutableArray<Outputs.GetRouteAggregationRulesFilterResult> filters,
+
             string id,
+
+            string outerOperator,
 
             Outputs.GetRouteAggregationRulesPaginationResult? pagination,
 
-            string routeAggregationId)
+            string routeAggregationId,
+
+            ImmutableArray<Outputs.GetRouteAggregationRulesSortResult> sorts)
         {
             Datas = datas;
+            Filters = filters;
             Id = id;
+            OuterOperator = outerOperator;
             Pagination = pagination;
             RouteAggregationId = routeAggregationId;
+            Sorts = sorts;
         }
     }
 }

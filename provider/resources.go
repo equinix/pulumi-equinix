@@ -26,7 +26,7 @@ import (
 
 	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
-	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"

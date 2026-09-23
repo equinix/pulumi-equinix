@@ -14,35 +14,35 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetRouteAggregationRulesDataResult
     {
         /// <summary>
-        /// Current state of latest route aggregation rule change
+        /// Current state of latest Route Aggregation Rule change
         /// </summary>
         public readonly Outputs.GetRouteAggregationRulesDataChangeResult Change;
         /// <summary>
-        /// Details of the last change on the stream resource
+        /// Details of the last change on the resource
         /// </summary>
         public readonly Outputs.GetRouteAggregationRulesDataChangeLogResult ChangeLog;
         /// <summary>
-        /// Customer-provided route aggregation rule description
+        /// Customer-provided Route Aggregation Rule description
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Equinix auto generated URI to the route aggregation rule resource
+        /// Equinix auto generated URI to the Route Aggregation Rule resource
         /// </summary>
         public readonly string Href;
         /// <summary>
-        /// Customer provided name of the route aggregation rule
+        /// Customer provided name of the Route Aggregation Rule
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Customer-provided route aggregation rule prefix
+        /// Customer-provided Route Aggregation Rule prefix
         /// </summary>
         public readonly string Prefix;
         /// <summary>
-        /// UUID of the Route Aggregation to apply this Rule to
+        /// UUID of the Route Aggregation that the rule is applied to
         /// </summary>
         public readonly string RouteAggregationId;
         /// <summary>
-        /// Value representing provisioning status for the route aggregation rule resource
+        /// Value representing provisioning status for the Route Aggregation Rule resource
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Equinix-assigned unique id for the route aggregation rule resource
+        /// Equinix-assigned unique id for the Route Aggregation Rule resource
         /// </summary>
         public readonly string Uuid;
 

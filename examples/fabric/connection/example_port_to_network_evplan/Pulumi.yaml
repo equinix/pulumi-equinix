@@ -5,26 +5,26 @@ resources:
   evplan:
     type: equinix:fabric:Connection
     properties:
-      name: ConnectionName
-      type: EVPLAN_VC
-      notifications:
-        - type: ALL
-          emails:
-            - example@equinix.com
-            - test1@equinix.com
-      bandwidth: 50
       order:
         purchaseOrderNumber: 1-323292
       aSide:
         accessPoint:
-          type: COLO
           port:
             uuid: <aside_port_uuid>
           linkProtocol:
             type: DOT1Q
             vlanSTag: '1976'
+          type: COLO
       zSide:
         accessPoint:
-          type: NETWORK
           network:
             uuid: <network_uuid>
+          type: NETWORK
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      name: ConnectionName
+      type: EVPLAN_VC
+      bandwidth: 50

@@ -30,7 +30,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string Previous;
         /// <summary>
-        /// The total number of route agrgegation rules available to the user making the request
+        /// The total number of Route Aggregation Rules available to the user making the request
         /// </summary>
         public readonly int Total;
 

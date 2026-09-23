@@ -3,23 +3,23 @@ name: equinix-fabric-service_token-example_zside_network_service_token
 runtime: yaml
 resources:
   test:
-    type: equinix:fabricServiceToken
+    type: equinix:fabric:ServiceToken
     properties:
-      type: VC_TOKEN
-      description: Zside Network Service Token
-      expirationDateTime: 2025-01-18T06:43:49.986Z
-      serviceTokenConnection:
-        - type: EVPL_VC
-          supportedBandwidths:
-            - 50
-            - 200
-            - 10000
-          zSide:
-            - accessPointSelectors:
-                - type: NETWORK
-                  network:
-                    - uuid: <network_uuid>
       notifications:
         - type: ALL
           emails:
             - example@equinix.com
+      serviceTokenConnections:
+        - zSides:
+            - accessPointSelectors:
+                - network:
+                    uuid: <network_uuid>
+                  type: NETWORK
+          type: EVPL_VC
+          supportedBandwidths:
+            - 50
+            - 200
+            - 10000
+      type: VC_TOKEN
+      description: Zside Network Service Token
+      expirationDateTime: 2025-01-18T06:43:49.986Z

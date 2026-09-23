@@ -27,6 +27,10 @@ public class App {
             .build());
 
         var c8KvSingle = new Device("c8KvSingle", DeviceArgs.builder()
+            .sshKey(DeviceSshKeyArgs.builder()
+                .username("test-username")
+                .keyName("valid-key-name")
+                .build())
             .name("tf-c8kv")
             .metroCode(sv.applyValue(_sv -> _sv.metroCode()))
             .typeCode("C8000V")
@@ -41,10 +45,6 @@ public class App {
             .termLength(12)
             .licenseToken("valid-license-token")
             .additionalBandwidth(5)
-            .sshKey(DeviceSshKeyArgs.builder()
-                .username("test-username")
-                .keyName("valid-key-name")
-                .build())
             .aclTemplateId("3e548c02-9164-4197-aa23-05b1f644883c")
             .build());
 

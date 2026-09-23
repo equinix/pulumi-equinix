@@ -5,6 +5,17 @@ resources:
   VYOS-AM:
     type: equinix:networkedge:Device
     properties:
+      sshKey:
+        username: test
+        keyName: xxxxxxxx
+      secondaryDevice:
+        name: TF_CHECKPOINT
+        metroCode: ${sv.metroCode}
+        accountNumber: ${sv.number}
+        hostname: test
+        aclTemplateId: XXXXXXXXXXX
+        notifications:
+          - test@eq.com
       name: TF_VYOS
       projectId: XXXXXXX
       metroCode: ${sv.metroCode}
@@ -21,17 +32,6 @@ resources:
       termLength: 1
       additionalBandwidth: 50
       aclTemplateId: XXXXXXXX
-      sshKey:
-        username: test
-        keyName: xxxxxxxx
-      secondaryDevice:
-        name: TF_CHECKPOINT
-        metroCode: ${sv.metroCode}
-        accountNumber: ${sv.number}
-        hostname: test
-        aclTemplateId: XXXXXXXXXXX
-        notifications:
-          - test@eq.com
 variables:
   # Create VYos Router HA device
   sv:

@@ -6,13 +6,6 @@ resources:
     type: equinix:fabric:CloudRouter
     name: new_cloud_router
     properties:
-      name: Router-SV
-      type: XF_ROUTER
-      notifications:
-        - type: ALL
-          emails:
-            - example@equinix.com
-            - test1@equinix.com
       order:
         purchaseOrderNumber: 1-323292
       location:
@@ -23,3 +16,10 @@ resources:
         projectId: '776847000642406'
       account:
         accountNumber: '203612'
+      notifications:
+        - type: ALL
+          emails:
+            - example@equinix.com
+            - test1@equinix.com
+      name: Router-SV
+      type: XF_ROUTER

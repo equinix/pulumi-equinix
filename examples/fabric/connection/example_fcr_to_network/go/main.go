@@ -8,8 +8,25 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		_, err := fabric.NewConnection(ctx, "fcr2network", &fabric.ConnectionArgs{
-			Name: pulumi.String("ConnectionName"),
-			Type: pulumi.String("IPWAN_VC"),
+			Order: &fabric.ConnectionOrderArgs{
+				PurchaseOrderNumber: pulumi.String("1-323292"),
+			},
+			ASide: &fabric.ConnectionASideArgs{
+				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
+					Router: &fabric.ConnectionASideAccessPointRouterArgs{
+						Uuid: pulumi.String("<cloud_router_uuid>"),
+					},
+					Type: pulumi.String("CLOUD_ROUTER"),
+				},
+			},
+			ZSide: &fabric.ConnectionZSideArgs{
+				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
+					Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
+						Uuid: pulumi.String("<network_uuid>"),
+					},
+					Type: pulumi.String(fabric.AccessPointTypeNetwork),
+				},
+			},
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
 					Type: pulumi.String(fabric.NotificationsTypeAll),
@@ -19,26 +36,9 @@ func main() {
 					},
 				},
 			},
+			Name:      pulumi.String("ConnectionName"),
+			Type:      pulumi.String("IPWAN_VC"),
 			Bandwidth: pulumi.Int(50),
-			Order: &fabric.ConnectionOrderArgs{
-				PurchaseOrderNumber: pulumi.String("1-323292"),
-			},
-			ASide: &fabric.ConnectionASideArgs{
-				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
-					Type: pulumi.String("CLOUD_ROUTER"),
-					Router: &fabric.ConnectionASideAccessPointRouterArgs{
-						Uuid: pulumi.String("<cloud_router_uuid>"),
-					},
-				},
-			},
-			ZSide: &fabric.ConnectionZSideArgs{
-				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
-					Type: pulumi.String(fabric.AccessPointTypeNetwork),
-					Network: &fabric.ConnectionZSideAccessPointNetworkArgs{
-						Uuid: pulumi.String("<network_uuid>"),
-					},
-				},
-			},
 		})
 		if err != nil {
 			return err

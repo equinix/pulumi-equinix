@@ -15,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRouteAggregationRuleResult {
     /**
-     * @return Current state of latest route aggregation rule change
+     * @return Current state of latest Route Aggregation Rule change
      * 
      */
     private GetRouteAggregationRuleChange change;
     /**
-     * @return Details of the last change on the stream resource
+     * @return Details of the last change on the resource
      * 
      */
     private GetRouteAggregationRuleChangeLog changeLog;
     /**
-     * @return Customer-provided route aggregation rule description
+     * @return Customer-provided Route Aggregation Rule description
      * 
      */
     private @Nullable String description;
     /**
-     * @return Equinix auto generated URI to the route aggregation rule resource
+     * @return Equinix auto generated URI to the Route Aggregation Rule resource
      * 
      */
     private String href;
@@ -40,27 +40,27 @@ public final class GetRouteAggregationRuleResult {
      */
     private String id;
     /**
-     * @return Customer provided name of the route aggregation rule
+     * @return Customer provided name of the Route Aggregation Rule
      * 
      */
     private String name;
     /**
-     * @return Customer-provided route aggregation rule prefix
+     * @return Customer-provided Route Aggregation Rule prefix
      * 
      */
     private String prefix;
     /**
-     * @return The uuid of the route aggregation this data source should retrieve
+     * @return The UUID of the Route Aggregation this data source should retrieve
      * 
      */
     private String routeAggregationId;
     /**
-     * @return The uuid of the route aggregation rule this data source should retrieve
+     * @return The UUID of the Route Aggregation Rule this data source should retrieve
      * 
      */
     private String routeAggregationRuleId;
     /**
-     * @return Value representing provisioning status for the route aggregation rule resource
+     * @return Value representing provisioning status for the Route Aggregation Rule resource
      * 
      */
     private String state;
@@ -70,35 +70,35 @@ public final class GetRouteAggregationRuleResult {
      */
     private String type;
     /**
-     * @return Equinix-assigned unique id for the route aggregation rule resource
+     * @return Equinix-assigned unique id for the Route Aggregation Rule resource
      * 
      */
     private String uuid;
 
     private GetRouteAggregationRuleResult() {}
     /**
-     * @return Current state of latest route aggregation rule change
+     * @return Current state of latest Route Aggregation Rule change
      * 
      */
     public GetRouteAggregationRuleChange change() {
         return this.change;
     }
     /**
-     * @return Details of the last change on the stream resource
+     * @return Details of the last change on the resource
      * 
      */
     public GetRouteAggregationRuleChangeLog changeLog() {
         return this.changeLog;
     }
     /**
-     * @return Customer-provided route aggregation rule description
+     * @return Customer-provided Route Aggregation Rule description
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Equinix auto generated URI to the route aggregation rule resource
+     * @return Equinix auto generated URI to the Route Aggregation Rule resource
      * 
      */
     public String href() {
@@ -112,35 +112,35 @@ public final class GetRouteAggregationRuleResult {
         return this.id;
     }
     /**
-     * @return Customer provided name of the route aggregation rule
+     * @return Customer provided name of the Route Aggregation Rule
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Customer-provided route aggregation rule prefix
+     * @return Customer-provided Route Aggregation Rule prefix
      * 
      */
     public String prefix() {
         return this.prefix;
     }
     /**
-     * @return The uuid of the route aggregation this data source should retrieve
+     * @return The UUID of the Route Aggregation this data source should retrieve
      * 
      */
     public String routeAggregationId() {
         return this.routeAggregationId;
     }
     /**
-     * @return The uuid of the route aggregation rule this data source should retrieve
+     * @return The UUID of the Route Aggregation Rule this data source should retrieve
      * 
      */
     public String routeAggregationRuleId() {
         return this.routeAggregationRuleId;
     }
     /**
-     * @return Value representing provisioning status for the route aggregation rule resource
+     * @return Value representing provisioning status for the Route Aggregation Rule resource
      * 
      */
     public String state() {
@@ -154,7 +154,7 @@ public final class GetRouteAggregationRuleResult {
         return this.type;
     }
     /**
-     * @return Equinix-assigned unique id for the route aggregation rule resource
+     * @return Equinix-assigned unique id for the Route Aggregation Rule resource
      * 
      */
     public String uuid() {

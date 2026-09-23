@@ -60,28 +60,40 @@ func GetRouteFilterRules(ctx *pulumi.Context, args *GetRouteFilterRulesArgs, opt
 
 // A collection of arguments for invoking getRouteFilterRules.
 type GetRouteFilterRulesArgs struct {
+	// Filters for the Data Source Search Request
+	Filters []GetRouteFilterRulesFilter `pulumi:"filters"`
 	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
 	Limit *int `pulumi:"limit"`
 	// The page offset for the pagination request. Index of the first element. Default is 0.
 	Offset *int `pulumi:"offset"`
+	// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+	OuterOperator string `pulumi:"outerOperator"`
 	// UUID of the Route Filter Policy the rule is attached to
 	RouteFilterId string `pulumi:"routeFilterId"`
+	// Sort criteria for the Data Source Search Request
+	Sorts []GetRouteFilterRulesSort `pulumi:"sorts"`
 }
 
 // A collection of values returned by getRouteFilterRules.
 type GetRouteFilterRulesResult struct {
 	// The list of Rules attached to the given Route Filter Policy UUID
 	Datas []GetRouteFilterRulesData `pulumi:"datas"`
+	// Filters for the Data Source Search Request
+	Filters []GetRouteFilterRulesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
 	Limit *int `pulumi:"limit"`
 	// The page offset for the pagination request. Index of the first element. Default is 0.
 	Offset *int `pulumi:"offset"`
+	// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+	OuterOperator string `pulumi:"outerOperator"`
 	// Pagination details for the Data Source Search Request
 	Paginations []GetRouteFilterRulesPagination `pulumi:"paginations"`
 	// UUID of the Route Filter Policy the rule is attached to
 	RouteFilterId string `pulumi:"routeFilterId"`
+	// Sort criteria for the Data Source Search Request
+	Sorts []GetRouteFilterRulesSort `pulumi:"sorts"`
 }
 
 func GetRouteFilterRulesOutput(ctx *pulumi.Context, args GetRouteFilterRulesOutputArgs, opts ...pulumi.InvokeOption) GetRouteFilterRulesResultOutput {
@@ -95,12 +107,18 @@ func GetRouteFilterRulesOutput(ctx *pulumi.Context, args GetRouteFilterRulesOutp
 
 // A collection of arguments for invoking getRouteFilterRules.
 type GetRouteFilterRulesOutputArgs struct {
+	// Filters for the Data Source Search Request
+	Filters GetRouteFilterRulesFilterArrayInput `pulumi:"filters"`
 	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// The page offset for the pagination request. Index of the first element. Default is 0.
 	Offset pulumi.IntPtrInput `pulumi:"offset"`
+	// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+	OuterOperator pulumi.StringInput `pulumi:"outerOperator"`
 	// UUID of the Route Filter Policy the rule is attached to
 	RouteFilterId pulumi.StringInput `pulumi:"routeFilterId"`
+	// Sort criteria for the Data Source Search Request
+	Sorts GetRouteFilterRulesSortArrayInput `pulumi:"sorts"`
 }
 
 func (GetRouteFilterRulesOutputArgs) ElementType() reflect.Type {
@@ -127,6 +145,11 @@ func (o GetRouteFilterRulesResultOutput) Datas() GetRouteFilterRulesDataArrayOut
 	return o.ApplyT(func(v GetRouteFilterRulesResult) []GetRouteFilterRulesData { return v.Datas }).(GetRouteFilterRulesDataArrayOutput)
 }
 
+// Filters for the Data Source Search Request
+func (o GetRouteFilterRulesResultOutput) Filters() GetRouteFilterRulesFilterArrayOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesResult) []GetRouteFilterRulesFilter { return v.Filters }).(GetRouteFilterRulesFilterArrayOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetRouteFilterRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteFilterRulesResult) string { return v.Id }).(pulumi.StringOutput)
@@ -142,6 +165,11 @@ func (o GetRouteFilterRulesResultOutput) Offset() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRouteFilterRulesResult) *int { return v.Offset }).(pulumi.IntPtrOutput)
 }
 
+// Determines if the filter list will be grouped by AND or by OR. One of [AND, OR]
+func (o GetRouteFilterRulesResultOutput) OuterOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesResult) string { return v.OuterOperator }).(pulumi.StringOutput)
+}
+
 // Pagination details for the Data Source Search Request
 func (o GetRouteFilterRulesResultOutput) Paginations() GetRouteFilterRulesPaginationArrayOutput {
 	return o.ApplyT(func(v GetRouteFilterRulesResult) []GetRouteFilterRulesPagination { return v.Paginations }).(GetRouteFilterRulesPaginationArrayOutput)
@@ -150,6 +178,11 @@ func (o GetRouteFilterRulesResultOutput) Paginations() GetRouteFilterRulesPagina
 // UUID of the Route Filter Policy the rule is attached to
 func (o GetRouteFilterRulesResultOutput) RouteFilterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteFilterRulesResult) string { return v.RouteFilterId }).(pulumi.StringOutput)
+}
+
+// Sort criteria for the Data Source Search Request
+func (o GetRouteFilterRulesResultOutput) Sorts() GetRouteFilterRulesSortArrayOutput {
+	return o.ApplyT(func(v GetRouteFilterRulesResult) []GetRouteFilterRulesSort { return v.Sorts }).(GetRouteFilterRulesSortArrayOutput)
 }
 
 func init() {

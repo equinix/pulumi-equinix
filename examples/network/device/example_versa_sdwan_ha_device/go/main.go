@@ -11,6 +11,26 @@ func main() {
 			MetroCode: pulumi.String("SV"),
 		}, nil)
 		_, err := networkedge.NewDevice(ctx, "FTNT-SDWAN-SV", &networkedge.DeviceArgs{
+			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+				Name: pulumi.String("Praveena_TF_VERSA"),
+				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.MetroCode, nil
+				}).(pulumi.StringPtrOutput),
+				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
+					return &sv.Number, nil
+				}).(pulumi.StringPtrOutput),
+				AclTemplateId: pulumi.String("XXXXXXXX"),
+				Notifications: pulumi.StringArray{
+					pulumi.String("test@eq.com"),
+				},
+				VendorConfiguration: pulumi.StringMap{
+					"controller1":  pulumi.String("X.X.X.X"),
+					"controller2":  pulumi.String("X.X.X.X"),
+					"localId":      pulumi.String("test@test.com"),
+					"remoteId":     pulumi.String("test@test.com"),
+					"serialNumber": pulumi.String("4"),
+				},
+			},
 			Name:      pulumi.String("TF_VERSA-SDWAN"),
 			ProjectId: pulumi.String("XXXXXXXXX"),
 			MetroCode: pulumi.String(sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
@@ -37,26 +57,6 @@ func main() {
 				"localId":      pulumi.String("test@test.com"),
 				"remoteId":     pulumi.String("test@test.com"),
 				"serialNumber": pulumi.String("4"),
-			},
-			SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-				Name: pulumi.String("Praveena_TF_VERSA"),
-				MetroCode: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.MetroCode, nil
-				}).(pulumi.StringPtrOutput),
-				AccountNumber: sv.ApplyT(func(sv networkedge.GetAccountResult) (*string, error) {
-					return &sv.Number, nil
-				}).(pulumi.StringPtrOutput),
-				AclTemplateId: pulumi.String("XXXXXXXX"),
-				Notifications: pulumi.StringArray{
-					pulumi.String("test@eq.com"),
-				},
-				VendorConfiguration: pulumi.StringMap{
-					"controller1":  pulumi.String("X.X.X.X"),
-					"controller2":  pulumi.String("X.X.X.X"),
-					"localId":      pulumi.String("test@test.com"),
-					"remoteId":     pulumi.String("test@test.com"),
-					"serialNumber": pulumi.String("4"),
-				},
 			},
 		})
 		if err != nil {

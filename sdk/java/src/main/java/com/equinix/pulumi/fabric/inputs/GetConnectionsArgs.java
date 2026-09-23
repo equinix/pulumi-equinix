@@ -66,14 +66,14 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filters for the Data Source Search Request
+     * Sort criteria for the Data Source Search Request
      * 
      */
     @Import(name="sorts")
     private @Nullable Output<List<GetConnectionsSortArgs>> sorts;
 
     /**
-     * @return Filters for the Data Source Search Request
+     * @return Sort criteria for the Data Source Search Request
      * 
      */
     public Optional<Output<List<GetConnectionsSortArgs>>> sorts() {
@@ -181,7 +181,7 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sorts Filters for the Data Source Search Request
+         * @param sorts Sort criteria for the Data Source Search Request
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sorts Filters for the Data Source Search Request
+         * @param sorts Sort criteria for the Data Source Search Request
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sorts Filters for the Data Source Search Request
+         * @param sorts Sort criteria for the Data Source Search Request
          * 
          * @return builder
          * 

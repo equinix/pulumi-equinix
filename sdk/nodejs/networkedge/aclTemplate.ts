@@ -18,9 +18,6 @@ import * as utilities from "../utilities";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const myacl = new equinix.networkedge.AclTemplate("myacl", {
- *     name: "test",
- *     description: "Test ACL template",
- *     projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
  *     inboundRules: [
  *         {
  *             subnet: "1.1.1.1/32",
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *             dstPort: "53,1045,2041",
  *         },
  *     ],
+ *     name: "test",
+ *     description: "Test ACL template",
+ *     projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
  * });
  * ```
  *

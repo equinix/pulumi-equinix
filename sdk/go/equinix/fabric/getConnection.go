@@ -66,7 +66,7 @@ type LookupConnectionResult struct {
 	Order GetConnectionOrder `pulumi:"order"`
 	// Project information
 	Project GetConnectionProject `pulumi:"project"`
-	// Connection Redundancy Configuration
+	// Connection Redundancy Configuration (applicable only for Azure connections)
 	Redundancy GetConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State string `pulumi:"state"`
@@ -192,7 +192,7 @@ func (o LookupConnectionResultOutput) Project() GetConnectionProjectOutput {
 	return o.ApplyT(func(v LookupConnectionResult) GetConnectionProject { return v.Project }).(GetConnectionProjectOutput)
 }
 
-// Connection Redundancy Configuration
+// Connection Redundancy Configuration (applicable only for Azure connections)
 func (o LookupConnectionResultOutput) Redundancy() GetConnectionRedundancyOutput {
 	return o.ApplyT(func(v LookupConnectionResult) GetConnectionRedundancy { return v.Redundancy }).(GetConnectionRedundancyOutput)
 }

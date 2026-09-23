@@ -1,0 +1,45 @@
+import pulumi
+import pulumi_equinix as equinix
+
+sv = equinix.networkedge.get_account_output(metro_code="SV")
+netskope_npa = equinix.networkedge.Device("netskope-npa",
+    secondary_device={
+        "name": "NETSKOPE-NPA-Sec",
+        "metro_code": sv.metro_code,
+        "account_number": sv.number,
+        "notifications": ["test@eq.com"],
+        "vendor_configuration": {
+            "hostname": "test",
+            "privateCidrMask": "24",
+            "ipAddressType": "STATIC",
+            "ipAddress": "x.x.x.x",
+            "gatewayIp": "x.x.x.x",
+            "primaryNameServer": "x.x.x.x",
+            "secondaryNameServer": "x.x.x.x",
+            "dnsSearchDomain": "xxxxx",
+        },
+    },
+    name="NETSKOPE-NPA",
+    project_id="xxxxxxx",
+    metro_code=sv.metro_code,
+    type_code="NETSKOPE-NPA",
+    self_managed=True,
+    byol=True,
+    interface_count=1,
+    package_code="STD",
+    notifications=["test@eq.com"],
+    connectivity="PRIVATE",
+    account_number=sv.number,
+    version="R138",
+    core_count=2,
+    term_length=1,
+    vendor_configuration={
+        "hostname": "test",
+        "privateCidrMask": "24",
+        "ipAddressType": "STATIC",
+        "ipAddress": "x.x.x.x",
+        "gatewayIp": "x.x.x.x",
+        "primaryNameServer": "x.x.x.x",
+        "secondaryNameServer": "x.x.x.x",
+        "dnsSearchDomain": "xxxxx",
+    })

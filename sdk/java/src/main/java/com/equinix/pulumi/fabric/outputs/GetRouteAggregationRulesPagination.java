@@ -32,7 +32,7 @@ public final class GetRouteAggregationRulesPagination {
      */
     private String previous;
     /**
-     * @return The total number of route agrgegation rules available to the user making the request
+     * @return The total number of Route Aggregation Rules available to the user making the request
      * 
      */
     private Integer total;
@@ -67,7 +67,7 @@ public final class GetRouteAggregationRulesPagination {
         return this.previous;
     }
     /**
-     * @return The total number of route agrgegation rules available to the user making the request
+     * @return The total number of Route Aggregation Rules available to the user making the request
      * 
      */
     public Integer total() {

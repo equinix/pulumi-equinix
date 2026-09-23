@@ -2,7 +2,7 @@ import pulumi
 import pulumi_equinix as equinix
 
 sv = equinix.networkedge.get_account_output(metro_code="SV")
-f_tntsdwansv = equinix.networkedge.Device("FTNT-SDWAN-SV",
+ftnt_sdwan_sv = equinix.networkedge.Device("FTNT-SDWAN-SV",
     name="TF_FTNT-SDWAN",
     project_id="XXXXXXXXXX",
     metro_code=sv.metro_code,

@@ -5,7 +5,20 @@ import * as equinix from "@pulumi/equinix";
 const sv = equinix.networkedge.getAccountOutput({
     metroCode: "SV",
 });
-const aRUBAEDGECONNECTAM = new equinix.networkedge.Device("ARUBA-EDGECONNECT-AM", {
+const arubaEdgeconnectAm = new equinix.networkedge.Device("ARUBA-EDGECONNECT-AM", {
+    secondaryDevice: {
+        name: "TF_CHECKPOINT",
+        metroCode: sv.apply(sv => sv.metroCode),
+        accountNumber: sv.apply(sv => sv.number),
+        aclTemplateId: "XXXXXXX",
+        notifications: ["test@eq.com"],
+        vendorConfiguration: {
+            accountKey: "xxxxx",
+            accountName: "xxxx",
+            applianceTag: "test",
+            hostname: "test",
+        },
+    },
     name: "TF_Aruba_Edge_Connect",
     projectId: "XXXXX",
     metroCode: sv.apply(sv => sv.metroCode),
@@ -26,18 +39,5 @@ const aRUBAEDGECONNECTAM = new equinix.networkedge.Device("ARUBA-EDGECONNECT-AM"
         accountName: "xxxx",
         applianceTag: "tests",
         hostname: "test",
-    },
-    secondaryDevice: {
-        name: "TF_CHECKPOINT",
-        metroCode: sv.apply(sv => sv.metroCode),
-        accountNumber: sv.apply(sv => sv.number),
-        aclTemplateId: "XXXXXXX",
-        notifications: ["test@eq.com"],
-        vendorConfiguration: {
-            accountKey: "xxxxx",
-            accountName: "xxxx",
-            applianceTag: "test",
-            hostname: "test",
-        },
     },
 });
