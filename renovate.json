@@ -4,6 +4,7 @@
     "config:recommended",
     "helpers:pinGitHubActionDigests"
   ],
+
   "ignorePaths": [
     "sdk/**",
     "!sdk/go.mod",
