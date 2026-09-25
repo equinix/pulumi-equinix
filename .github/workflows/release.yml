@@ -7,8 +7,8 @@ env:
   DOTNETVERSION: 7.0.x
   GRADLEVERSION: "7.6"
   JAVAVERSION: "11"
-  NODEVERSION: 20.x
-  PYTHONVERSION: "3.13.12"
+  NODEVERSION: 22.x
+  PYTHONVERSION: "3.9"
   # THIS GITHUB_TOKEN IS A REQUIREMENT TO BE ABLE TO WRITE TO GH RELEASES
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # IF YOU NEED TO PUBLISH A NPM PACKAGE THEN ENSURE A NPM_TOKEN SECRET IS SET
@@ -116,16 +116,16 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/action-install-pulumi-cli@v2.0.0
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODEVERSION }}
           registry-url: ${{env.NPM_REGISTRY_URL}}
       - name: Setup DotNet
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ env.DOTNETVERSION }}
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ env.PYTHONVERSION }}
       - name: Setup Java
@@ -135,7 +135,7 @@ jobs:
           distribution: temurin
           java-version: ${{ env.JAVAVERSION }}
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
+        uses: gradle/actions/setup-gradle@v6
         with:
           # Pin to known good version until #2262 is resolved
           gradle-version: ${{ env.GRADLEVERSION }}
