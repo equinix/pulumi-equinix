@@ -164,9 +164,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_fabric_connection": {
 				Tok: makeEquinixResource(fabricMod, "Connection"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"a_side": {
 						MaxItemsOne: tfbridge.True(),
@@ -411,9 +408,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_fabric_service_profile": {
 				Tok: makeEquinixResource(fabricMod, "ServiceProfile"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
 						Type:     "string",
@@ -481,15 +475,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_fabric_cloud_router": {
 				Tok: makeEquinixResource(fabricMod, "CloudRouter"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 			},
 			"equinix_fabric_routing_protocol": {
 				Tok: makeEquinixResource(fabricMod, "RoutingProtocol"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"direct_ipv4": {
 						MaxItemsOne: tfbridge.True(),
@@ -528,9 +516,6 @@ func Provider() tfbridge.ProviderInfo {
 			// Network Edge v1
 			"equinix_network_acl_template": {
 				Tok: makeEquinixResource(networkEdgeMod, "AclTemplate"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"inbound_rule": {
 						Elem: &tfbridge.SchemaInfo{
@@ -546,15 +531,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_network_bgp": {
 				Tok: makeEquinixResource(networkEdgeMod, "Bgp"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 			},
 			"equinix_network_device": {
 				Tok: makeEquinixResource(networkEdgeMod, "Device"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"throughput_unit": {
 						Type:     "string",
@@ -564,27 +543,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_network_device_link": {
 				Tok: makeEquinixResource(networkEdgeMod, "DeviceLink"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 			},
 			"equinix_network_ssh_key": {
 				Tok: makeEquinixResource(networkEdgeMod, "SshKey"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 			},
 			"equinix_network_ssh_user": {
 				Tok: makeEquinixResource(networkEdgeMod, "SshUser"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 			},
 			"equinix_network_file": {
 				Tok: makeEquinixResource(networkEdgeMod, "NetworkFile"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"metro_code": {
 						Type:     "string",
