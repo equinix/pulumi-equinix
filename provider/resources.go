@@ -817,6 +817,7 @@ func Provider() tfbridge.ProviderInfo {
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
 			// Overlay: &tfbridge.OverlayInfo{},
+			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
 			PackageName: "pulumi_equinix",
@@ -824,6 +825,9 @@ func Provider() tfbridge.ProviderInfo {
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
+			RespectSchemaVersion: true,
+			// Generate pyproject.toml, which carries the package version, instead of setup.py
+			PyProject: struct{ Enabled bool }{true},
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
@@ -833,13 +837,15 @@ func Provider() tfbridge.ProviderInfo {
 				equinixPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			RootNamespace: "Pulumi",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
-			Namespaces: namespaceMap,
+			Namespaces:           namespaceMap,
+			RespectSchemaVersion: true,
 		},
 		Java: &tfbridge.JavaInfo{
 			BasePackage: "com.equinix",
