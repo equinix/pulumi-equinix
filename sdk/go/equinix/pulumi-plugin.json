@@ -1,6 +1,6 @@
 {
   "resource": true,
   "name": "equinix",
-  "version": "0.0.0-alpha.0+dev",
+  "version": "0.33.1",
   "server": "github://api.github.com/equinix"
 }
