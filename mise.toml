@@ -1,0 +1,6 @@
+[tools]
+node = '22.13.1'
+java = 'temurin-17'
+"vfox:version-fox/vfox-dotnet" = "6"
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.2.4"
+golangci-lint = "2.9.0" # Pulumi deps require go1.26, so use a linter that supports it

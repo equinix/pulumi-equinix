@@ -1,4 +1,4 @@
-// Copyright 2016-2018, Pulumi Corporation.
+// Copyright 2016-2024, Pulumi Corporation.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,15 +24,16 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
+
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	tfbridgeTokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	pulumiSchema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 )
 
 // all of the token components used below.
@@ -46,8 +47,12 @@ const (
 	networkEdgeMod = "NetworkEdge" // Equinix Network Edge
 )
 
+// namespaceMap sets the C# namespace for each module. Modules are listed explicitly because
+// computed tokens don't go through makeEquinixResource/makeEquinixDataSource.
 var namespaceMap = map[string]string{
-	"equinix": "Equinix",
+	"equinix":                       "Equinix",
+	strings.ToLower(fabricMod):      fabricMod,
+	strings.ToLower(networkEdgeMod): networkEdgeMod,
 }
 
 // makeEquinixResource
@@ -75,22 +80,11 @@ func makeEquinixToken(moduleTitle, res string) string {
 	return strings.Join([]string{equinixPkg, strings.ToLower(moduleTitle) + "/" + fn, res}, ":")
 }
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
-// Provider returns additional overlaid schema and metadata associated with the provider..
+// Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	upstreamProvider := equinixShim.NewUpstreamProvider(version.Version)
-	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider,
-		shimv2.WithDiffStrategy(shimv2.PlanState),
-		shimv2.WithPlanResourceChange(func(s string) bool { return true }),
-	)
+	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider)
 	p := pfbridge.MuxShimWithDisjointgPF(context.Background(), v2p, upstreamProvider.PluginFrameworkProvider)
 
 	// Create a Pulumi provider mapping
@@ -108,7 +102,7 @@ func Provider() tfbridge.ProviderInfo {
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
+		// You may host a logo on a domain you control or add an PNG logo (100x100) for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
 		LogoURL: "https://raw.githubusercontent.com/equinix/pulumi-equinix/main/assets/logo.png",
 		// PluginDownloadURL is an optional URL used to download the Provider
@@ -125,78 +119,21 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/equinix/pulumi-equinix",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:            "equinix",
-		UpstreamRepoPath:     "./upstream",
-		Version:              version.Version,
-		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
-		Config:               map[string]*tfbridge.SchemaInfo{},
-		PreConfigureCallback: preConfigureCallback,
-		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
+		GitHubOrg:        "equinix",
+		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: docEditRules},
+		Config:           map[string]*tfbridge.SchemaInfo{},
 
-		// See pulumi/pulumi-aws#2880
-		SkipValidateProviderConfigForPluginFramework: true,
-
-		IgnoreMappings: []string{
-			"equinix_ecx_l2_connection",          // to be deprecated in terraform. Use equinix_fabric_connection
-			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
-			"equinix_ecx_l2_serviceprofile",      // to be deprecated in tf. Use equinix_fabric_service_profile
-			"equinix_ecx_l2_sellerprofile",       // to be deprecated in tf. Use equinix_fabric_service_profile ds
-			"equinix_ecx_l2_sellerprofiles",      // to be deprecated in tf. Use equinix_fabric_service_profiles ds
-			"equinix_ecx_port",                   // to be deprecated in tf. Use equinix_fabric_port ds
-		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
-			"equinix_fabric_service_token": {
-				Tok: makeEquinixResource(fabricMod, "ServiceToken"),
-			},
-			"equinix_fabric_connection_route_filter": {
-				Tok: makeEquinixResource(fabricMod, "ConnectionRouteFilter"),
-			},
-			"equinix_fabric_stream": {
-				Tok: makeEquinixResource(fabricMod, "Stream"),
-			},
-			"equinix_fabric_stream_attachment": {
-				Tok: makeEquinixResource(fabricMod, "StreamAttachment"),
-			},
-			"equinix_fabric_stream_subscription": {
-				Tok: makeEquinixResource(fabricMod, "StreamSubscription"),
-			},
-			"equinix_fabric_stream_alert_rule": {
-				Tok: makeEquinixResource(fabricMod, "StreamAlertRule"),
-			},
-			"equinix_fabric_port": {
-				Tok: makeEquinixResource(fabricMod, "Port"),
-			},
-			"equinix_fabric_route_filter": {
-				Tok: makeEquinixResource(fabricMod, "RouteFilter"),
-			},
-			"equinix_fabric_route_filter_rule": {
-				Tok: makeEquinixResource(fabricMod, "RouteFilterRule"),
-			},
-			"equinix_fabric_route_aggregation": {
-				Tok: makeEquinixResource(fabricMod, "RouteAggregation"),
-			},
-			"equinix_fabric_route_aggregation_rule": {
-				Tok: makeEquinixResource(fabricMod, "RouteAggregationRule"),
-			},
-			"equinix_fabric_connection_route_aggregation": {
-				Tok: makeEquinixResource(fabricMod, "ConnectionRouteAggregation"),
-			},
-			"equinix_fabric_precision_time_service": {
-				Tok: makeEquinixResource(fabricMod, "PrecisionTimeService"),
-			},
 			"equinix_fabric_connection": {
-				Tok: makeEquinixResource(fabricMod, "Connection"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"a_side": {
-						MaxItemsOne: tfbridge.True(),
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
 								"access_point": {
-									MaxItemsOne: tfbridge.True(),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"account": {
@@ -212,14 +149,7 @@ func Provider() tfbridge.ProviderInfo {
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 													"AccessPointType")},
 											},
-											"gateway": {
-												MaxItemsOne: tfbridge.True(),
-											},
-											"interface": {
-												MaxItemsOne: tfbridge.True(),
-											},
 											"link_protocol": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
@@ -231,7 +161,6 @@ func Provider() tfbridge.ProviderInfo {
 												},
 											},
 											"location": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
@@ -243,7 +172,6 @@ func Provider() tfbridge.ProviderInfo {
 												},
 											},
 											"port": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"redundancy": {
@@ -253,7 +181,6 @@ func Provider() tfbridge.ProviderInfo {
 												},
 											},
 											"profile": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
@@ -264,9 +191,6 @@ func Provider() tfbridge.ProviderInfo {
 													},
 												},
 											},
-											"virtual_device": {
-												MaxItemsOne: tfbridge.True(),
-											},
 										},
 									},
 								},
@@ -274,7 +198,6 @@ func Provider() tfbridge.ProviderInfo {
 									Name: "additionalInfo",
 								},
 								"service_token": {
-									MaxItemsOne: tfbridge.True(),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"type": {
@@ -304,12 +227,6 @@ func Provider() tfbridge.ProviderInfo {
 					"additional_info": {
 						Name: "additionalInfo",
 					},
-					"order": {
-						MaxItemsOne: tfbridge.True(),
-					},
-					"redundancy": {
-						MaxItemsOne: tfbridge.True(),
-					},
 					"account": {
 						MaxItemsOne: tfbridge.True(),
 					},
@@ -332,15 +249,10 @@ func Provider() tfbridge.ProviderInfo {
 							},
 						},
 					},
-					"project": {
-						MaxItemsOne: tfbridge.True(),
-					},
 					"z_side": {
-						MaxItemsOne: tfbridge.True(),
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
 								"access_point": {
-									MaxItemsOne: tfbridge.True(),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"account": {
@@ -355,14 +267,7 @@ func Provider() tfbridge.ProviderInfo {
 												Type:     "string",
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
 											},
-											"gateway": {
-												MaxItemsOne: tfbridge.True(),
-											},
-											"interface": {
-												MaxItemsOne: tfbridge.True(),
-											},
 											"link_protocol": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
@@ -374,7 +279,6 @@ func Provider() tfbridge.ProviderInfo {
 												},
 											},
 											"location": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
@@ -386,7 +290,6 @@ func Provider() tfbridge.ProviderInfo {
 												},
 											},
 											"port": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"redundancy": {
@@ -396,7 +299,6 @@ func Provider() tfbridge.ProviderInfo {
 												},
 											},
 											"profile": {
-												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
@@ -407,9 +309,6 @@ func Provider() tfbridge.ProviderInfo {
 													},
 												},
 											},
-											"virtual_device": {
-												MaxItemsOne: tfbridge.True(),
-											},
 										},
 									},
 								},
@@ -417,7 +316,6 @@ func Provider() tfbridge.ProviderInfo {
 									Name: "additionalInfo",
 								},
 								"service_token": {
-									MaxItemsOne: tfbridge.True(),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"type": {
@@ -433,10 +331,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"equinix_fabric_service_profile": {
-				Tok: makeEquinixResource(fabricMod, "ServiceProfile"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
 						Type:     "string",
@@ -449,22 +343,10 @@ func Provider() tfbridge.ProviderInfo {
 									Type:     "string",
 									AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileAccessPointType")},
 								},
-								"api_config": {
-									MaxItemsOne: tfbridge.True(),
-								},
-								"authentication_key": {
-									MaxItemsOne: tfbridge.True(),
-								},
-								"link_protocol_config": {
-									MaxItemsOne: tfbridge.True(),
-								},
 							},
 						},
 					},
 					"account": {
-						MaxItemsOne: tfbridge.True(),
-					},
-					"marketing_info": {
 						MaxItemsOne: tfbridge.True(),
 					},
 					"state": {
@@ -485,34 +367,12 @@ func Provider() tfbridge.ProviderInfo {
 							},
 						},
 					},
-					"virtual_devices": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"location": {
-									MaxItemsOne: tfbridge.True(),
-								},
-							},
-						},
-					},
 					"change_log": {
 						MaxItemsOne: tfbridge.True(),
 					},
-					"project": {
-						MaxItemsOne: tfbridge.True(),
-					},
-				},
-			},
-			"equinix_fabric_cloud_router": {
-				Tok: makeEquinixResource(fabricMod, "CloudRouter"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
 				},
 			},
 			"equinix_fabric_routing_protocol": {
-				Tok: makeEquinixResource(fabricMod, "RoutingProtocol"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"direct_ipv4": {
 						MaxItemsOne: tfbridge.True(),
@@ -532,7 +392,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"equinix_fabric_network": {
-				Tok: makeEquinixResource(fabricMod, "Network"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"project": {
 						MaxItemsOne: tfbridge.True(),
@@ -550,10 +409,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			// Network Edge v1
 			"equinix_network_acl_template": {
-				Tok: makeEquinixResource(networkEdgeMod, "AclTemplate"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"inbound_rule": {
 						Elem: &tfbridge.SchemaInfo{
@@ -567,17 +422,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_network_bgp": {
-				Tok: makeEquinixResource(networkEdgeMod, "Bgp"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
-			},
 			"equinix_network_device": {
-				Tok: makeEquinixResource(networkEdgeMod, "Device"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"throughput_unit": {
 						Type:     "string",
@@ -585,29 +430,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_network_device_link": {
-				Tok: makeEquinixResource(networkEdgeMod, "DeviceLink"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
-			},
-			"equinix_network_ssh_key": {
-				Tok: makeEquinixResource(networkEdgeMod, "SshKey"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
-			},
-			"equinix_network_ssh_user": {
-				Tok: makeEquinixResource(networkEdgeMod, "SshUser"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
-			},
 			"equinix_network_file": {
 				Tok: makeEquinixResource(networkEdgeMod, "NetworkFile"),
-				Docs: &tfbridge.DocInfo{
-					ReplaceExamplesSection: true,
-				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"metro_code": {
 						Type:     "string",
@@ -818,151 +642,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Equinix Fabric v4
-			"equinix_fabric_service_token": {
-				Tok: makeEquinixDataSource(fabricMod, "ServiceToken"),
-			},
-			"equinix_fabric_service_tokens": {
-				Tok: makeEquinixDataSource(fabricMod, "ServiceTokens"),
-			},
-			"equinix_fabric_metro": {
-				Tok: makeEquinixDataSource(fabricMod, "Metro"),
-			},
-			"equinix_fabric_metros": {
-				Tok: makeEquinixDataSource(fabricMod, "Metros"),
-			},
-			"equinix_fabric_stream": {
-				Tok: makeEquinixDataSource(fabricMod, "Stream"),
-			},
-			"equinix_fabric_streams": {
-				Tok: makeEquinixDataSource(fabricMod, "Streams"),
-			},
-			"equinix_fabric_stream_attachment": {
-				Tok: makeEquinixDataSource(fabricMod, "StreamAttachment"),
-			},
-			"equinix_fabric_stream_attachments": {
-				Tok: makeEquinixDataSource(fabricMod, "StreamAttachments"),
-			},
-			"equinix_fabric_stream_subscription": {
-				Tok: makeEquinixDataSource(fabricMod, "StreamSubscription"),
-			},
-			"equinix_fabric_stream_subscriptions": {
-				Tok: makeEquinixDataSource(fabricMod, "StreamSubscriptions"),
-			},
-			"equinix_fabric_stream_alert_rule": {
-				Tok: makeEquinixDataSource(fabricMod, "StreamAlertRule"),
-			},
-			"equinix_fabric_stream_alert_rules": {
-				Tok: makeEquinixDataSource(fabricMod, "StreamAlertRules"),
-			},
-			"equinix_fabric_connection_route_filter": {
-				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilter"),
-			},
-			"equinix_fabric_connection_route_filters": {
-				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteFilters"),
-			},
-			"equinix_fabric_received_routes": {
-				Tok: makeEquinixDataSource(fabricMod, "ReceivedRoutes"),
-			},
-			"equinix_fabric_advertised_routes": {
-				Tok: makeEquinixDataSource(fabricMod, "AdvertisedRoutes"),
-			},
-			"equinix_fabric_route_filter": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteFilter"),
-			},
-			"equinix_fabric_route_filters": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteFilters"),
-			},
-			"equinix_fabric_route_filter_rule": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteFilterRule"),
-			},
-			"equinix_fabric_route_filter_rules": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteFilterRules"),
-			},
-			"equinix_fabric_route_aggregation": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteAggregation"),
-			},
-			"equinix_fabric_route_aggregations": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteAggregations"),
-			},
-			"equinix_fabric_route_aggregation_rule": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteAggregationRule"),
-			},
-			"equinix_fabric_route_aggregation_rules": {
-				Tok: makeEquinixDataSource(fabricMod, "RouteAggregationRules"),
-			},
-			"equinix_fabric_connection_route_aggregation": {
-				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteAggregation"),
-			},
-			"equinix_fabric_connection_route_aggregations": {
-				Tok: makeEquinixDataSource(fabricMod, "ConnectionRouteAggregations"),
-			},
-			"equinix_fabric_precision_time_service": {
-				Tok: makeEquinixDataSource(fabricMod, "PrecisionTimeService"),
-			},
-			"equinix_fabric_precision_time_services": {
-				Tok: makeEquinixDataSource(fabricMod, "PrecisionTimeServices"),
-			},
 			"equinix_fabric_connection": {
-				Tok: makeEquinixDataSource(fabricMod, "Connection"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"a_side": {
 						MaxItemsOne: tfbridge.True(),
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"service_token": {
-									MaxItemsOne: tfbridge.True(),
-								},
-								"access_point": {
-									MaxItemsOne: tfbridge.True(),
-									Fields: map[string]*tfbridge.SchemaInfo{
-										"account": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"interface": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"virtual_device": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"link_protocol": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"gateway": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"profile": {
-											MaxItemsOne: tfbridge.True(),
-											Fields: map[string]*tfbridge.SchemaInfo{
-												"access_point_type_configs": {
-													Fields: map[string]*tfbridge.SchemaInfo{
-														"api_config": {
-															MaxItemsOne: tfbridge.True(),
-														},
-														"authentication_key": {
-															MaxItemsOne: tfbridge.True(),
-														},
-														"link_protocol_config": {
-															MaxItemsOne: tfbridge.True(),
-														},
-													},
-												},
-											},
-										},
-										"port": {
-											MaxItemsOne: tfbridge.True(),
-											Fields: map[string]*tfbridge.SchemaInfo{
-												"redundancy": {
-													MaxItemsOne: tfbridge.True(),
-												},
-											},
-										},
-										"location": {
-											MaxItemsOne: tfbridge.True(),
-										},
-									},
-								},
-							},
-						},
 					},
 					"account": {
 						MaxItemsOne: tfbridge.True(),
@@ -987,118 +670,17 @@ func Provider() tfbridge.ProviderInfo {
 					},
 					"z_side": {
 						MaxItemsOne: tfbridge.True(),
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"service_token": {
-									MaxItemsOne: tfbridge.True(),
-								},
-								"access_point": {
-									MaxItemsOne: tfbridge.True(),
-									Fields: map[string]*tfbridge.SchemaInfo{
-										"account": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"interface": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"virtual_device": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"link_protocol": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"gateway": {
-											MaxItemsOne: tfbridge.True(),
-										},
-										"profile": {
-											MaxItemsOne: tfbridge.True(),
-											Fields: map[string]*tfbridge.SchemaInfo{
-												"access_point_type_configs": {
-													Fields: map[string]*tfbridge.SchemaInfo{
-														"api_config": {
-															MaxItemsOne: tfbridge.True(),
-														},
-														"authentication_key": {
-															MaxItemsOne: tfbridge.True(),
-														},
-														"link_protocol_config": {
-															MaxItemsOne: tfbridge.True(),
-														},
-													},
-												},
-											},
-										},
-										"port": {
-											MaxItemsOne: tfbridge.True(),
-											Fields: map[string]*tfbridge.SchemaInfo{
-												"redundancy": {
-													MaxItemsOne: tfbridge.True(),
-												},
-											},
-										},
-										"location": {
-											MaxItemsOne: tfbridge.True(),
-										},
-									},
-								},
-							},
-						},
 					},
 				},
 			},
 			"equinix_fabric_connections": {
-				Tok: makeEquinixDataSource(fabricMod, "Connections"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"data": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"uuid": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
-					"filter": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"property": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"operator": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"values": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"group": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
 					"outer_operator": {
 						MaxItemsOne: tfbridge.True(),
-					},
-					"pagination": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"offset": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"limit": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
-					"sort": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"direction": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"property": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
 					},
 				},
 			},
 			"equinix_fabric_port": {
-				Tok: makeEquinixDataSource(fabricMod, "Port"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"account": {
 						MaxItemsOne: tfbridge.True(),
@@ -1108,16 +690,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 					"device": {
 						MaxItemsOne: tfbridge.True(),
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"redundancy": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
 					},
 					"encapsulation": {
-						MaxItemsOne: tfbridge.True(),
-					},
-					"lag": {
 						MaxItemsOne: tfbridge.True(),
 					},
 					"location": {
@@ -1132,64 +706,17 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"equinix_fabric_ports": {
-				Tok: makeEquinixDataSource(fabricMod, "Ports"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"filters": {
-						Name:        "filter",
-						MaxItemsOne: tfbridge.True(),
+						Name: "filter",
 					},
 					"data": {
 						Name: "data",
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"account": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"change_log": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"device": {
-								MaxItemsOne: tfbridge.True(),
-								Fields: map[string]*tfbridge.SchemaInfo{
-									"redundancy": {
-										MaxItemsOne: tfbridge.True(),
-									},
-								},
-							},
-							"encapsulation": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"lag": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"location": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"operation": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"redundancy": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
 					},
 				},
 			},
 			"equinix_fabric_service_profile": {
-				Tok: makeEquinixDataSource(fabricMod, "ServiceProfile"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"access_point_type_configs": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"api_config": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"authentication_key": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"link_protocol_config": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
 					"account": {
 						MaxItemsOne: tfbridge.True(),
 					},
@@ -1199,20 +726,12 @@ func Provider() tfbridge.ProviderInfo {
 					"marketing_info": {
 						MaxItemsOne: tfbridge.True(),
 					},
-					"ports": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"location": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
 					"project": {
 						MaxItemsOne: tfbridge.True(),
 					},
 				},
 			},
 			"equinix_fabric_service_profiles": {
-				Tok: makeEquinixDataSource(fabricMod, "ServiceProfiles"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"filter": {
 						MaxItemsOne: tfbridge.True(),
@@ -1222,101 +741,17 @@ func Provider() tfbridge.ProviderInfo {
 					},
 					"data": {
 						Name: "data",
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"access_point_type_configs": {
-								Fields: map[string]*tfbridge.SchemaInfo{
-									"api_config": {
-										MaxItemsOne: tfbridge.True(),
-									},
-									"authentication_key": {
-										MaxItemsOne: tfbridge.True(),
-									},
-									"link_protocol_config": {
-										MaxItemsOne: tfbridge.True(),
-									},
-								},
-							},
-							"account": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"change_log": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"marketing_info": {
-								MaxItemsOne: tfbridge.True(),
-								Fields: map[string]*tfbridge.SchemaInfo{
-									"process_step": {
-										MaxItemsOne: tfbridge.True(),
-									},
-								},
-							},
-							"ports": {
-								Fields: map[string]*tfbridge.SchemaInfo{
-									"location": {
-										MaxItemsOne: tfbridge.True(),
-									},
-								},
-							},
-							"project": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
 					},
 				},
 			},
-			"equinix_fabric_cloud_router": {Tok: makeEquinixDataSource(fabricMod, "CloudRouter")},
 			"equinix_fabric_cloud_routers": {
-				Tok: makeEquinixDataSource(fabricMod, "CloudRouters"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"data": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"uuid": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
-					"filter": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"property": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"operator": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"values": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"or": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
-					"pagination": {
-						MaxItemsOne: tfbridge.True(),
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"offset": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"limit": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
 					"sort": {
 						MaxItemsOne: tfbridge.True(),
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"direction": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"property": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
 					},
 				},
 			},
 			"equinix_fabric_routing_protocol": {
-				Tok: makeEquinixDataSource(fabricMod, "RoutingProtocol"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"direct_ipv4": {
 						MaxItemsOne: tfbridge.True(),
@@ -1336,7 +771,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"equinix_fabric_network": {
-				Tok: makeEquinixDataSource(fabricMod, "Network"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"project": {
 						MaxItemsOne: tfbridge.True(),
@@ -1353,53 +787,9 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"equinix_fabric_networks": {
-				Tok: makeEquinixDataSource(fabricMod, "Networks"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"data": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"uuid": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
-					"filter": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"property": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"operator": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"values": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"group": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
 					"outer_operator": {
 						MaxItemsOne: tfbridge.True(),
-					},
-					"pagination": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"offset": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"limit": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
-					},
-					"sort": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"direction": {
-								MaxItemsOne: tfbridge.True(),
-							},
-							"property": {
-								MaxItemsOne: tfbridge.True(),
-							},
-						},
 					},
 				},
 			},
@@ -1409,33 +799,9 @@ func Provider() tfbridge.ProviderInfo {
 					"trial": {
 						MaxItemsOne: tfbridge.True(),
 					},
-					"entitlements": {
-						Fields: map[string]*tfbridge.SchemaInfo{
-							"asset": {
-								MaxItemsOne: tfbridge.True(),
-								Fields: map[string]*tfbridge.SchemaInfo{
-									"package": {
-										MaxItemsOne: tfbridge.True(),
-									},
-								},
-							},
-						},
-					},
 				},
 			},
 			// Network Edge v1
-			"equinix_network_account": {Tok: makeEquinixDataSource(networkEdgeMod, "Account")},
-			"equinix_network_device": {
-				Tok: makeEquinixDataSource(networkEdgeMod, "Device"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"valid_status_list": {
-						Name: "validStatusList",
-					},
-				},
-			},
-			"equinix_network_device_platform": {Tok: makeEquinixDataSource(networkEdgeMod, "DevicePlatform")},
-			"equinix_network_device_software": {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceSoftware")},
-			"equinix_network_device_type":     {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceType")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@equinix-labs/pulumi-equinix",
@@ -1478,9 +844,26 @@ func Provider() tfbridge.ProviderInfo {
 		Java: &tfbridge.JavaInfo{
 			BasePackage: "com.equinix",
 			BuildFiles:  "gradle",
+			// The ci-mgmt publish workflow releases the Java SDK with the Gradle Nexus
+			// plugin's publishToSonatype task.
+			GradleNexusPublishPluginVersion: "2.0.0",
+			Dependencies: map[string]string{
+				"com.pulumi:pulumi": "1.16.0",
+			},
 		},
 	}
 
+	// MustComputeTokens maps upstream resources and datasources that have no explicit entry in
+	// [tfbridge.ProviderInfo.Resources] or [tfbridge.ProviderInfo.DataSources] into Pulumi, e.g.
+	// equinix_fabric_foo => equinix:fabric/foo:Foo. Explicit entries always take precedence.
+	prov.MustComputeTokens(tfbridgeTokens.MappedModules("equinix_", equinixMod,
+		map[string]string{
+			"fabric_":  strings.ToLower(fabricMod),
+			"network_": strings.ToLower(networkEdgeMod),
+		},
+		tfbridgeTokens.MakeStandard(equinixPkg)))
+
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
