@@ -28,12 +28,14 @@
                 "networkedge": "NetworkEdge"
             },
             "compatibility": "tfbridge20",
-            "rootNamespace": "Pulumi"
+            "rootNamespace": "Pulumi",
+            "respectSchemaVersion": true
         },
         "go": {
             "importBasePath": "github.com/equinix/pulumi-equinix/sdk/go/equinix",
             "generateResourceContainerTypes": true,
-            "generateExtraInputTypes": true
+            "generateExtraInputTypes": true,
+            "respectSchemaVersion": true
         },
         "java": {
             "basePackage": "com.equinix",
@@ -56,7 +58,8 @@
                 "@types/node": "^10.0.0"
             },
             "compatibility": "tfbridge20",
-            "disableUnionOutputTypes": true
+            "disableUnionOutputTypes": true,
+            "respectSchemaVersion": true
         },
         "python": {
             "packageName": "pulumi_equinix",
@@ -65,7 +68,10 @@
             },
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/equinix/terraform-provider-equinix)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-equinix` repo](https://github.com/equinix/pulumi-equinix/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-equinix` repo](https://github.com/equinix/terraform-provider-equinix/issues).",
             "compatibility": "tfbridge20",
-            "pyproject": {}
+            "respectSchemaVersion": true,
+            "pyproject": {
+                "enabled": true
+            }
         }
     },
     "config": {
