@@ -71,8 +71,8 @@ bin/$(PROVIDER)-v$(PROVIDER_VERSION)-windows-amd64.tar.gz: bin/windows-amd64/$(P
 bin/$(PROVIDER)-v$(PROVIDER_VERSION)-windows-arm64.tar.gz: bin/windows-arm64/$(PROVIDER).exe
 bin/$(PROVIDER)-v$(PROVIDER_VERSION)-%.tar.gz:
 	@mkdir -p dist
-	@# $< is the last dependency (the binary path from above) e.g. bin/linux-amd64/pulumi-resource-equinix
-	@# $@ is the current target e.g. bin/pulumi-resource-equinix-v1.2.3-linux-amd64.tar.gz
+	@# $< is the last dependency (the binary path from above) e.g. bin/linux-amd64/pulumi-resource-xyz
+	@# $@ is the current target e.g. bin/pulumi-resource-xyz-v1.2.3-linux-amd64.tar.gz
 	tar --gzip -cf $@ README.md LICENSE -C $$(dirname $<) .
 
 provider_dist-linux-amd64: bin/$(PROVIDER)-v$(PROVIDER_VERSION)-linux-amd64.tar.gz

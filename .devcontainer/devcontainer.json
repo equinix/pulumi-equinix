@@ -10,12 +10,5 @@
       "extensions": []
     }
   },
-  "mounts": [
-    {
-      "source": "${localEnv:HOME}/.config/gh",
-      "target": "/root/.config/gh",
-      "type": "bind"
-    }
-  ],
-  "remoteUser": "root",
+  "remoteUser": "root"
 }
