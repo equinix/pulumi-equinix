@@ -5,7 +5,7 @@ organization: equinix
 # The external template only includes workflows relevant for non-Pulumi managed providers.
 template: external-bridged-provider
 # The name of the GitHub organisation or username where the upstream terraform provider lives.
-upstreamProviderOrg: pulumi
+upstreamProviderOrg: equinix
 # major version of the current provider - used in make files
 # This should always be set by all providers as this is key to go module paths.
 major-version: 0
