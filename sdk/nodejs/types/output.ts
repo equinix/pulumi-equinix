@@ -3497,6 +3497,268 @@ export namespace fabric {
         property?: string;
     }
 
+    export interface GetIpBlockAccount {
+        /**
+         * Account number
+         */
+        accountNumber: string;
+    }
+
+    export interface GetIpBlockAsset {
+        /**
+         * URI to the asset resource
+         */
+        href: string;
+        /**
+         * Type of the asset
+         */
+        type: string;
+        /**
+         * Unique identifier of the asset
+         */
+        uuid: string;
+    }
+
+    export interface GetIpBlockChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface GetIpBlockChangeLog {
+        /**
+         * Creation time of the IP block
+         */
+        createdDateTime: string;
+        /**
+         * Deletion time of the IP block
+         */
+        deletedDateTime: string;
+        /**
+         * Last update time of the IP block
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetIpBlockLocation {
+        /**
+         * Two-letter metro code
+         */
+        metroCode: string;
+        /**
+         * URI to the metro resource
+         */
+        metroHref: string;
+    }
+
+    export interface GetIpBlockOrder {
+        /**
+         * URI to the order resource
+         */
+        href: string;
+        /**
+         * Order number
+         */
+        orderNumber: string;
+    }
+
+    export interface GetIpBlockProject {
+        /**
+         * URI to the project resource
+         */
+        href: string;
+        /**
+         * Equinix subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetIpBlocksData {
+        /**
+         * Account associated with the IP block
+         */
+        account: outputs.fabric.GetIpBlocksDataAccount;
+        /**
+         * List of assets (connections or services) using this IP block
+         */
+        assets: outputs.fabric.GetIpBlocksDataAsset[];
+        /**
+         * Current state of the latest change on the IP block
+         */
+        change: outputs.fabric.GetIpBlocksDataChange;
+        /**
+         * Audit log of changes to the IP block
+         */
+        changeLog: outputs.fabric.GetIpBlocksDataChangeLog;
+        /**
+         * Equinix auto generated URI to the IP block resource
+         */
+        href: string;
+        /**
+         * Location of the IP block
+         */
+        location: outputs.fabric.GetIpBlocksDataLocation;
+        /**
+         * Order details for the IP block
+         */
+        order: outputs.fabric.GetIpBlocksDataOrder;
+        /**
+         * Ownership of the IP block. One of: EQUINIX, CUSTOMER
+         */
+        ownership: string;
+        /**
+         * The assigned IP prefix (e.g. 192.0.2.0/24)
+         */
+        prefix: string;
+        /**
+         * Prefix length of the IP block (e.g. 24 for a /24 block)
+         */
+        prefixLength: number;
+        /**
+         * Project associated with the IP block
+         */
+        project: outputs.fabric.GetIpBlocksDataProject;
+        /**
+         * Provisioning state of the IP block
+         */
+        state: string;
+        /**
+         * Type of the IP block product
+         */
+        type: string;
+        /**
+         * Equinix-assigned unique identifier for the IP block
+         */
+        uuid: string;
+    }
+
+    export interface GetIpBlocksDataAccount {
+        /**
+         * Account number
+         */
+        accountNumber: string;
+    }
+
+    export interface GetIpBlocksDataAsset {
+        /**
+         * URI to the asset resource
+         */
+        href: string;
+        /**
+         * Type of the asset
+         */
+        type: string;
+        /**
+         * Unique identifier of the asset
+         */
+        uuid: string;
+    }
+
+    export interface GetIpBlocksDataChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface GetIpBlocksDataChangeLog {
+        /**
+         * Creation time of the IP block
+         */
+        createdDateTime: string;
+        /**
+         * Deletion time of the IP block
+         */
+        deletedDateTime: string;
+        /**
+         * Last update time of the IP block
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetIpBlocksDataLocation {
+        /**
+         * Two-letter metro code
+         */
+        metroCode: string;
+        /**
+         * URI to the metro resource
+         */
+        metroHref: string;
+    }
+
+    export interface GetIpBlocksDataOrder {
+        /**
+         * URI to the order resource
+         */
+        href: string;
+        /**
+         * Order number
+         */
+        orderNumber: string;
+    }
+
+    export interface GetIpBlocksDataProject {
+        /**
+         * URI to the project resource
+         */
+        href: string;
+        /**
+         * Equinix subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetIpBlocksFilter {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+         */
+        operator: string;
+        /**
+         * Field name to use on filters
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetIpBlocksPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of IP blocks available to the user making the request
+         */
+        total: number;
+    }
+
+    export interface GetIpBlocksSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+         */
+        property?: string;
+    }
+
     export interface GetMarketplaceSubscriptionEntitlement {
         /**
          * Asset information
@@ -9280,6 +9542,94 @@ export namespace fabric {
          * The total number of streams available to the user making the request
          */
         total: number;
+    }
+
+    export interface IpBlockAccount {
+        /**
+         * Account number
+         */
+        accountNumber: string;
+    }
+
+    export interface IpBlockAsset {
+        /**
+         * Asset URL
+         */
+        href: string;
+        /**
+         * Asset type
+         */
+        type: string;
+        /**
+         * Asset UUID
+         */
+        uuid: string;
+    }
+
+    export interface IpBlockChange {
+        /**
+         * Change URL
+         */
+        href: string;
+    }
+
+    export interface IpBlockChangeLog {
+        /**
+         * Creation timestamp
+         */
+        createdDateTime: string;
+        /**
+         * Deletion timestamp
+         */
+        deletedDateTime: string;
+        /**
+         * Last update timestamp
+         */
+        updatedDateTime: string;
+    }
+
+    export interface IpBlockLocation {
+        /**
+         * Two-letter metro code (e.g. SV, DC, AM)
+         */
+        metroCode: string;
+        /**
+         * Metro resource URL
+         */
+        metroHref: string;
+    }
+
+    export interface IpBlockOrder {
+        /**
+         * Order URL
+         */
+        href: string;
+        /**
+         * Order number
+         */
+        orderNumber: string;
+    }
+
+    export interface IpBlockProject {
+        /**
+         * Equinix-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface IpBlockTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
     }
 
     export interface NetworkChange {

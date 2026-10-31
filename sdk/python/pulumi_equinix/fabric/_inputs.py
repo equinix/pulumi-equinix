@@ -117,6 +117,22 @@ __all__ = [
     'ConnectionZSideAdditionalInfoArgsDict',
     'ConnectionZSideServiceTokenArgs',
     'ConnectionZSideServiceTokenArgsDict',
+    'IpBlockAccountArgs',
+    'IpBlockAccountArgsDict',
+    'IpBlockAssetArgs',
+    'IpBlockAssetArgsDict',
+    'IpBlockChangeArgs',
+    'IpBlockChangeArgsDict',
+    'IpBlockChangeLogArgs',
+    'IpBlockChangeLogArgsDict',
+    'IpBlockLocationArgs',
+    'IpBlockLocationArgsDict',
+    'IpBlockOrderArgs',
+    'IpBlockOrderArgsDict',
+    'IpBlockProjectArgs',
+    'IpBlockProjectArgsDict',
+    'IpBlockTimeoutsArgs',
+    'IpBlockTimeoutsArgsDict',
     'NetworkChangeArgs',
     'NetworkChangeArgsDict',
     'NetworkChangeLogArgs',
@@ -365,6 +381,12 @@ __all__ = [
     'GetConnectionsPaginationArgsDict',
     'GetConnectionsSortArgs',
     'GetConnectionsSortArgsDict',
+    'GetIpBlocksFilterArgs',
+    'GetIpBlocksFilterArgsDict',
+    'GetIpBlocksPaginationArgs',
+    'GetIpBlocksPaginationArgsDict',
+    'GetIpBlocksSortArgs',
+    'GetIpBlocksSortArgsDict',
     'GetMetrosPaginationArgs',
     'GetMetrosPaginationArgsDict',
     'GetNetworksFilterArgs',
@@ -5184,6 +5206,396 @@ class ConnectionZSideServiceTokenArgs:
     @uuid.setter
     def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
+
+
+class IpBlockAccountArgsDict(TypedDict):
+    account_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Account number
+    """
+
+@pulumi.input_type
+class IpBlockAccountArgs:
+    def __init__(__self__, *,
+                 account_number: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] account_number: Account number
+        """
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Account number
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_number", value)
+
+
+class IpBlockAssetArgsDict(TypedDict):
+    href: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Asset URL
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Asset type
+    """
+    uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Asset UUID
+    """
+
+@pulumi.input_type
+class IpBlockAssetArgs:
+    def __init__(__self__, *,
+                 href: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] href: Asset URL
+        :param pulumi.Input[_builtins.str] type: Asset type
+        :param pulumi.Input[_builtins.str] uuid: Asset UUID
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Asset URL
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "href", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Asset type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Asset UUID
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+class IpBlockChangeArgsDict(TypedDict):
+    href: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Change URL
+    """
+
+@pulumi.input_type
+class IpBlockChangeArgs:
+    def __init__(__self__, *,
+                 href: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] href: Change URL
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Change URL
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "href", value)
+
+
+class IpBlockChangeLogArgsDict(TypedDict):
+    created_date_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Creation timestamp
+    """
+    deleted_date_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Deletion timestamp
+    """
+    updated_date_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Last update timestamp
+    """
+
+@pulumi.input_type
+class IpBlockChangeLogArgs:
+    def __init__(__self__, *,
+                 created_date_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deleted_date_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_date_time: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_date_time: Creation timestamp
+        :param pulumi.Input[_builtins.str] deleted_date_time: Deletion timestamp
+        :param pulumi.Input[_builtins.str] updated_date_time: Last update timestamp
+        """
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Creation timestamp
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @created_date_time.setter
+    def created_date_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "created_date_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deletion timestamp
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @deleted_date_time.setter
+    def deleted_date_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deleted_date_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Last update timestamp
+        """
+        return pulumi.get(self, "updated_date_time")
+
+    @updated_date_time.setter
+    def updated_date_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "updated_date_time", value)
+
+
+class IpBlockLocationArgsDict(TypedDict):
+    metro_code: pulumi.Input[_builtins.str]
+    """
+    Two-letter metro code (e.g. SV, DC, AM)
+    """
+    metro_href: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Metro resource URL
+    """
+
+@pulumi.input_type
+class IpBlockLocationArgs:
+    def __init__(__self__, *,
+                 metro_code: pulumi.Input[_builtins.str],
+                 metro_href: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] metro_code: Two-letter metro code (e.g. SV, DC, AM)
+        :param pulumi.Input[_builtins.str] metro_href: Metro resource URL
+        """
+        pulumi.set(__self__, "metro_code", metro_code)
+        if metro_href is not None:
+            pulumi.set(__self__, "metro_href", metro_href)
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        Two-letter metro code (e.g. SV, DC, AM)
+        """
+        return pulumi.get(self, "metro_code")
+
+    @metro_code.setter
+    def metro_code(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "metro_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Metro resource URL
+        """
+        return pulumi.get(self, "metro_href")
+
+    @metro_href.setter
+    def metro_href(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metro_href", value)
+
+
+class IpBlockOrderArgsDict(TypedDict):
+    href: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Order URL
+    """
+    order_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Order number
+    """
+
+@pulumi.input_type
+class IpBlockOrderArgs:
+    def __init__(__self__, *,
+                 href: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_number: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] href: Order URL
+        :param pulumi.Input[_builtins.str] order_number: Order number
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if order_number is not None:
+            pulumi.set(__self__, "order_number", order_number)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Order URL
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "href", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Order number
+        """
+        return pulumi.get(self, "order_number")
+
+    @order_number.setter
+    def order_number(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "order_number", value)
+
+
+class IpBlockProjectArgsDict(TypedDict):
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Equinix-assigned project ID
+    """
+
+@pulumi.input_type
+class IpBlockProjectArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] project_id: Equinix-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Equinix-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+
+class IpBlockTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+
+@pulumi.input_type
+class IpBlockTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read", value)
 
 
 class NetworkChangeArgsDict(TypedDict):
@@ -17607,6 +18019,225 @@ class GetConnectionsSortArgs:
     def property(self) -> Optional[_builtins.str]:
         """
         The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "property", value)
+
+
+class GetIpBlocksFilterArgsDict(TypedDict):
+    operator: _builtins.str
+    """
+    Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+    """
+    property: _builtins.str
+    """
+    Field name to use on filters
+    """
+    values: Sequence[_builtins.str]
+    """
+    The values that you want to apply the property+operator combination to in order to filter your data search
+    """
+
+@pulumi.input_type
+class GetIpBlocksFilterArgs:
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 property: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+        :param _builtins.str property: Field name to use on filters
+        :param Sequence[_builtins.str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: _builtins.str):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> _builtins.str:
+        """
+        Field name to use on filters
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: _builtins.str):
+        pulumi.set(self, "property", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+
+class GetIpBlocksPaginationArgsDict(TypedDict):
+    limit: _builtins.int
+    """
+    Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+    """
+    next: _builtins.str
+    """
+    The URL relative to the next item in the response
+    """
+    offset: _builtins.int
+    """
+    Index of the first item returned in the response. The default is 0
+    """
+    previous: _builtins.str
+    """
+    The URL relative to the previous item in the response
+    """
+    total: _builtins.int
+    """
+    The total number of IP blocks available to the user making the request
+    """
+
+@pulumi.input_type
+class GetIpBlocksPaginationArgs:
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 next: _builtins.str,
+                 offset: _builtins.int,
+                 previous: _builtins.str,
+                 total: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param _builtins.str next: The URL relative to the next item in the response
+        :param _builtins.int offset: Index of the first item returned in the response. The default is 0
+        :param _builtins.str previous: The URL relative to the previous item in the response
+        :param _builtins.int total: The total number of IP blocks available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: _builtins.int):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def next(self) -> _builtins.str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @next.setter
+    def next(self, value: _builtins.str):
+        pulumi.set(self, "next", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> _builtins.int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: _builtins.int):
+        pulumi.set(self, "offset", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def previous(self) -> _builtins.str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @previous.setter
+    def previous(self, value: _builtins.str):
+        pulumi.set(self, "previous", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def total(self) -> _builtins.int:
+        """
+        The total number of IP blocks available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: _builtins.int):
+        pulumi.set(self, "total", value)
+
+
+class GetIpBlocksSortArgsDict(TypedDict):
+    direction: NotRequired[_builtins.str]
+    """
+    The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+    """
+    property: NotRequired[_builtins.str]
+    """
+    The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+    """
+
+@pulumi.input_type
+class GetIpBlocksSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 property: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param _builtins.str property: The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> Optional[_builtins.str]:
+        """
+        The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
         """
         return pulumi.get(self, "property")
 

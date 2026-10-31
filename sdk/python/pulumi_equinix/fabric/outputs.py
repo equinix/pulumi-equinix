@@ -68,6 +68,14 @@ __all__ = [
     'ConnectionZSideAccessPointVirtualDevice',
     'ConnectionZSideAdditionalInfo',
     'ConnectionZSideServiceToken',
+    'IpBlockAccount',
+    'IpBlockAsset',
+    'IpBlockChange',
+    'IpBlockChangeLog',
+    'IpBlockLocation',
+    'IpBlockOrder',
+    'IpBlockProject',
+    'IpBlockTimeouts',
     'NetworkChange',
     'NetworkChangeLog',
     'NetworkLocation',
@@ -298,6 +306,24 @@ __all__ = [
     'GetConnectionsFilterResult',
     'GetConnectionsPaginationResult',
     'GetConnectionsSortResult',
+    'GetIpBlockAccountResult',
+    'GetIpBlockAssetResult',
+    'GetIpBlockChangeResult',
+    'GetIpBlockChangeLogResult',
+    'GetIpBlockLocationResult',
+    'GetIpBlockOrderResult',
+    'GetIpBlockProjectResult',
+    'GetIpBlocksDataResult',
+    'GetIpBlocksDataAccountResult',
+    'GetIpBlocksDataAssetResult',
+    'GetIpBlocksDataChangeResult',
+    'GetIpBlocksDataChangeLogResult',
+    'GetIpBlocksDataLocationResult',
+    'GetIpBlocksDataOrderResult',
+    'GetIpBlocksDataProjectResult',
+    'GetIpBlocksFilterResult',
+    'GetIpBlocksPaginationResult',
+    'GetIpBlocksSortResult',
     'GetMarketplaceSubscriptionEntitlementResult',
     'GetMarketplaceSubscriptionEntitlementAssetResult',
     'GetMarketplaceSubscriptionEntitlementAssetPackageResult',
@@ -4035,6 +4061,343 @@ class ConnectionZSideServiceToken(dict):
         Equinix-assigned service token identifier
         """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class IpBlockAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountNumber":
+            suggest = "account_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpBlockAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpBlockAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpBlockAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_number: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str account_number: Account number
+        """
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[_builtins.str]:
+        """
+        Account number
+        """
+        return pulumi.get(self, "account_number")
+
+
+@pulumi.output_type
+class IpBlockAsset(dict):
+    def __init__(__self__, *,
+                 href: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str href: Asset URL
+        :param _builtins.str type: Asset type
+        :param _builtins.str uuid: Asset UUID
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        Asset URL
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Asset type
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        Asset UUID
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class IpBlockChange(dict):
+    def __init__(__self__, *,
+                 href: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str href: Change URL
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        Change URL
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class IpBlockChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpBlockChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpBlockChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpBlockChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_date_time: Optional[_builtins.str] = None,
+                 deleted_date_time: Optional[_builtins.str] = None,
+                 updated_date_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_date_time: Creation timestamp
+        :param _builtins.str deleted_date_time: Deletion timestamp
+        :param _builtins.str updated_date_time: Last update timestamp
+        """
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[_builtins.str]:
+        """
+        Creation timestamp
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[_builtins.str]:
+        """
+        Deletion timestamp
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[_builtins.str]:
+        """
+        Last update timestamp
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class IpBlockLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metroCode":
+            suggest = "metro_code"
+        elif key == "metroHref":
+            suggest = "metro_href"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpBlockLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpBlockLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpBlockLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metro_code: _builtins.str,
+                 metro_href: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str metro_code: Two-letter metro code (e.g. SV, DC, AM)
+        :param _builtins.str metro_href: Metro resource URL
+        """
+        pulumi.set(__self__, "metro_code", metro_code)
+        if metro_href is not None:
+            pulumi.set(__self__, "metro_href", metro_href)
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Two-letter metro code (e.g. SV, DC, AM)
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> Optional[_builtins.str]:
+        """
+        Metro resource URL
+        """
+        return pulumi.get(self, "metro_href")
+
+
+@pulumi.output_type
+class IpBlockOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "orderNumber":
+            suggest = "order_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpBlockOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpBlockOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpBlockOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 href: Optional[_builtins.str] = None,
+                 order_number: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str href: Order URL
+        :param _builtins.str order_number: Order number
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if order_number is not None:
+            pulumi.set(__self__, "order_number", order_number)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        Order URL
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> Optional[_builtins.str]:
+        """
+        Order number
+        """
+        return pulumi.get(self, "order_number")
+
+
+@pulumi.output_type
+class IpBlockProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpBlockProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpBlockProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpBlockProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str project_id: Equinix-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Equinix-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class IpBlockTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -19807,6 +20170,706 @@ class GetConnectionsSortResult(dict):
     def property(self) -> Optional[_builtins.str]:
         """
         The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetIpBlockAccountResult(dict):
+    def __init__(__self__, *,
+                 account_number: _builtins.str):
+        """
+        :param _builtins.str account_number: Account number
+        """
+        pulumi.set(__self__, "account_number", account_number)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> _builtins.str:
+        """
+        Account number
+        """
+        return pulumi.get(self, "account_number")
+
+
+@pulumi.output_type
+class GetIpBlockAssetResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 type: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the asset resource
+        :param _builtins.str type: Type of the asset
+        :param _builtins.str uuid: Unique identifier of the asset
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the asset resource
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the asset
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the asset
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetIpBlockChangeResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetIpBlockChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_date_time: _builtins.str,
+                 deleted_date_time: _builtins.str,
+                 updated_date_time: _builtins.str):
+        """
+        :param _builtins.str created_date_time: Creation time of the IP block
+        :param _builtins.str deleted_date_time: Deletion time of the IP block
+        :param _builtins.str updated_date_time: Last update time of the IP block
+        """
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> _builtins.str:
+        """
+        Creation time of the IP block
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> _builtins.str:
+        """
+        Deletion time of the IP block
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> _builtins.str:
+        """
+        Last update time of the IP block
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetIpBlockLocationResult(dict):
+    def __init__(__self__, *,
+                 metro_code: _builtins.str,
+                 metro_href: _builtins.str):
+        """
+        :param _builtins.str metro_code: Two-letter metro code
+        :param _builtins.str metro_href: URI to the metro resource
+        """
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_href", metro_href)
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Two-letter metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> _builtins.str:
+        """
+        URI to the metro resource
+        """
+        return pulumi.get(self, "metro_href")
+
+
+@pulumi.output_type
+class GetIpBlockOrderResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 order_number: _builtins.str):
+        """
+        :param _builtins.str href: URI to the order resource
+        :param _builtins.str order_number: Order number
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "order_number", order_number)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the order resource
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> _builtins.str:
+        """
+        Order number
+        """
+        return pulumi.get(self, "order_number")
+
+
+@pulumi.output_type
+class GetIpBlockProjectResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str href: URI to the project resource
+        :param _builtins.str project_id: Equinix subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the project resource
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Equinix subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetIpBlocksDataResult(dict):
+    def __init__(__self__, *,
+                 account: 'outputs.GetIpBlocksDataAccountResult',
+                 assets: Sequence['outputs.GetIpBlocksDataAssetResult'],
+                 change: 'outputs.GetIpBlocksDataChangeResult',
+                 change_log: 'outputs.GetIpBlocksDataChangeLogResult',
+                 href: _builtins.str,
+                 location: 'outputs.GetIpBlocksDataLocationResult',
+                 order: 'outputs.GetIpBlocksDataOrderResult',
+                 ownership: _builtins.str,
+                 prefix: _builtins.str,
+                 prefix_length: _builtins.int,
+                 project: 'outputs.GetIpBlocksDataProjectResult',
+                 state: _builtins.str,
+                 type: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param 'GetIpBlocksDataAccountArgs' account: Account associated with the IP block
+        :param Sequence['GetIpBlocksDataAssetArgs'] assets: List of assets (connections or services) using this IP block
+        :param 'GetIpBlocksDataChangeArgs' change: Current state of the latest change on the IP block
+        :param 'GetIpBlocksDataChangeLogArgs' change_log: Audit log of changes to the IP block
+        :param _builtins.str href: Equinix auto generated URI to the IP block resource
+        :param 'GetIpBlocksDataLocationArgs' location: Location of the IP block
+        :param 'GetIpBlocksDataOrderArgs' order: Order details for the IP block
+        :param _builtins.str ownership: Ownership of the IP block. One of: EQUINIX, CUSTOMER
+        :param _builtins.str prefix: The assigned IP prefix (e.g. 192.0.2.0/24)
+        :param _builtins.int prefix_length: Prefix length of the IP block (e.g. 24 for a /24 block)
+        :param 'GetIpBlocksDataProjectArgs' project: Project associated with the IP block
+        :param _builtins.str state: Provisioning state of the IP block
+        :param _builtins.str type: Type of the IP block product
+        :param _builtins.str uuid: Equinix-assigned unique identifier for the IP block
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "assets", assets)
+        pulumi.set(__self__, "change", change)
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "ownership", ownership)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "prefix_length", prefix_length)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def account(self) -> 'outputs.GetIpBlocksDataAccountResult':
+        """
+        Account associated with the IP block
+        """
+        return pulumi.get(self, "account")
+
+    @_builtins.property
+    @pulumi.getter
+    def assets(self) -> Sequence['outputs.GetIpBlocksDataAssetResult']:
+        """
+        List of assets (connections or services) using this IP block
+        """
+        return pulumi.get(self, "assets")
+
+    @_builtins.property
+    @pulumi.getter
+    def change(self) -> 'outputs.GetIpBlocksDataChangeResult':
+        """
+        Current state of the latest change on the IP block
+        """
+        return pulumi.get(self, "change")
+
+    @_builtins.property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetIpBlocksDataChangeLogResult':
+        """
+        Audit log of changes to the IP block
+        """
+        return pulumi.get(self, "change_log")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        Equinix auto generated URI to the IP block resource
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetIpBlocksDataLocationResult':
+        """
+        Location of the IP block
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> 'outputs.GetIpBlocksDataOrderResult':
+        """
+        Order details for the IP block
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter
+    def ownership(self) -> _builtins.str:
+        """
+        Ownership of the IP block. One of: EQUINIX, CUSTOMER
+        """
+        return pulumi.get(self, "ownership")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        The assigned IP prefix (e.g. 192.0.2.0/24)
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> _builtins.int:
+        """
+        Prefix length of the IP block (e.g. 24 for a /24 block)
+        """
+        return pulumi.get(self, "prefix_length")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> 'outputs.GetIpBlocksDataProjectResult':
+        """
+        Project associated with the IP block
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Provisioning state of the IP block
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the IP block product
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Equinix-assigned unique identifier for the IP block
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetIpBlocksDataAccountResult(dict):
+    def __init__(__self__, *,
+                 account_number: _builtins.str):
+        """
+        :param _builtins.str account_number: Account number
+        """
+        pulumi.set(__self__, "account_number", account_number)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> _builtins.str:
+        """
+        Account number
+        """
+        return pulumi.get(self, "account_number")
+
+
+@pulumi.output_type
+class GetIpBlocksDataAssetResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 type: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the asset resource
+        :param _builtins.str type: Type of the asset
+        :param _builtins.str uuid: Unique identifier of the asset
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the asset resource
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the asset
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the asset
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetIpBlocksDataChangeResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetIpBlocksDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_date_time: _builtins.str,
+                 deleted_date_time: _builtins.str,
+                 updated_date_time: _builtins.str):
+        """
+        :param _builtins.str created_date_time: Creation time of the IP block
+        :param _builtins.str deleted_date_time: Deletion time of the IP block
+        :param _builtins.str updated_date_time: Last update time of the IP block
+        """
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> _builtins.str:
+        """
+        Creation time of the IP block
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> _builtins.str:
+        """
+        Deletion time of the IP block
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> _builtins.str:
+        """
+        Last update time of the IP block
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetIpBlocksDataLocationResult(dict):
+    def __init__(__self__, *,
+                 metro_code: _builtins.str,
+                 metro_href: _builtins.str):
+        """
+        :param _builtins.str metro_code: Two-letter metro code
+        :param _builtins.str metro_href: URI to the metro resource
+        """
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_href", metro_href)
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Two-letter metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> _builtins.str:
+        """
+        URI to the metro resource
+        """
+        return pulumi.get(self, "metro_href")
+
+
+@pulumi.output_type
+class GetIpBlocksDataOrderResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 order_number: _builtins.str):
+        """
+        :param _builtins.str href: URI to the order resource
+        :param _builtins.str order_number: Order number
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "order_number", order_number)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the order resource
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> _builtins.str:
+        """
+        Order number
+        """
+        return pulumi.get(self, "order_number")
+
+
+@pulumi.output_type
+class GetIpBlocksDataProjectResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str href: URI to the project resource
+        :param _builtins.str project_id: Equinix subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the project resource
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Equinix subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetIpBlocksFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 property: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+        :param _builtins.str property: Field name to use on filters
+        :param Sequence[_builtins.str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> _builtins.str:
+        """
+        Field name to use on filters
+        """
+        return pulumi.get(self, "property")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetIpBlocksPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 next: _builtins.str,
+                 offset: _builtins.int,
+                 previous: _builtins.str,
+                 total: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param _builtins.str next: The URL relative to the next item in the response
+        :param _builtins.int offset: Index of the first item returned in the response. The default is 0
+        :param _builtins.str previous: The URL relative to the previous item in the response
+        :param _builtins.int total: The total number of IP blocks available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def next(self) -> _builtins.str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> _builtins.int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @_builtins.property
+    @pulumi.getter
+    def previous(self) -> _builtins.str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @_builtins.property
+    @pulumi.getter
+    def total(self) -> _builtins.int:
+        """
+        The total number of IP blocks available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetIpBlocksSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 property: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param _builtins.str property: The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> Optional[_builtins.str]:
+        """
+        The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
         """
         return pulumi.get(self, "property")
 
