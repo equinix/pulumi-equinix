@@ -9408,6 +9408,1194 @@ func (o ConnectionZSideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type IpBlockAccount struct {
+	// Account number
+	AccountNumber *string `pulumi:"accountNumber"`
+}
+
+// IpBlockAccountInput is an input type that accepts IpBlockAccountArgs and IpBlockAccountOutput values.
+// You can construct a concrete instance of `IpBlockAccountInput` via:
+//
+//	IpBlockAccountArgs{...}
+type IpBlockAccountInput interface {
+	pulumi.Input
+
+	ToIpBlockAccountOutput() IpBlockAccountOutput
+	ToIpBlockAccountOutputWithContext(context.Context) IpBlockAccountOutput
+}
+
+type IpBlockAccountArgs struct {
+	// Account number
+	AccountNumber pulumi.StringPtrInput `pulumi:"accountNumber"`
+}
+
+func (IpBlockAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockAccount)(nil)).Elem()
+}
+
+func (i IpBlockAccountArgs) ToIpBlockAccountOutput() IpBlockAccountOutput {
+	return i.ToIpBlockAccountOutputWithContext(context.Background())
+}
+
+func (i IpBlockAccountArgs) ToIpBlockAccountOutputWithContext(ctx context.Context) IpBlockAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockAccountOutput)
+}
+
+func (i IpBlockAccountArgs) ToIpBlockAccountPtrOutput() IpBlockAccountPtrOutput {
+	return i.ToIpBlockAccountPtrOutputWithContext(context.Background())
+}
+
+func (i IpBlockAccountArgs) ToIpBlockAccountPtrOutputWithContext(ctx context.Context) IpBlockAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockAccountOutput).ToIpBlockAccountPtrOutputWithContext(ctx)
+}
+
+// IpBlockAccountPtrInput is an input type that accepts IpBlockAccountArgs, IpBlockAccountPtr and IpBlockAccountPtrOutput values.
+// You can construct a concrete instance of `IpBlockAccountPtrInput` via:
+//
+//	        IpBlockAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpBlockAccountPtrInput interface {
+	pulumi.Input
+
+	ToIpBlockAccountPtrOutput() IpBlockAccountPtrOutput
+	ToIpBlockAccountPtrOutputWithContext(context.Context) IpBlockAccountPtrOutput
+}
+
+type ipBlockAccountPtrType IpBlockAccountArgs
+
+func IpBlockAccountPtr(v *IpBlockAccountArgs) IpBlockAccountPtrInput {
+	return (*ipBlockAccountPtrType)(v)
+}
+
+func (*ipBlockAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockAccount)(nil)).Elem()
+}
+
+func (i *ipBlockAccountPtrType) ToIpBlockAccountPtrOutput() IpBlockAccountPtrOutput {
+	return i.ToIpBlockAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *ipBlockAccountPtrType) ToIpBlockAccountPtrOutputWithContext(ctx context.Context) IpBlockAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockAccountPtrOutput)
+}
+
+type IpBlockAccountOutput struct{ *pulumi.OutputState }
+
+func (IpBlockAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockAccount)(nil)).Elem()
+}
+
+func (o IpBlockAccountOutput) ToIpBlockAccountOutput() IpBlockAccountOutput {
+	return o
+}
+
+func (o IpBlockAccountOutput) ToIpBlockAccountOutputWithContext(ctx context.Context) IpBlockAccountOutput {
+	return o
+}
+
+func (o IpBlockAccountOutput) ToIpBlockAccountPtrOutput() IpBlockAccountPtrOutput {
+	return o.ToIpBlockAccountPtrOutputWithContext(context.Background())
+}
+
+func (o IpBlockAccountOutput) ToIpBlockAccountPtrOutputWithContext(ctx context.Context) IpBlockAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpBlockAccount) *IpBlockAccount {
+		return &v
+	}).(IpBlockAccountPtrOutput)
+}
+
+// Account number
+func (o IpBlockAccountOutput) AccountNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockAccount) *string { return v.AccountNumber }).(pulumi.StringPtrOutput)
+}
+
+type IpBlockAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (IpBlockAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockAccount)(nil)).Elem()
+}
+
+func (o IpBlockAccountPtrOutput) ToIpBlockAccountPtrOutput() IpBlockAccountPtrOutput {
+	return o
+}
+
+func (o IpBlockAccountPtrOutput) ToIpBlockAccountPtrOutputWithContext(ctx context.Context) IpBlockAccountPtrOutput {
+	return o
+}
+
+func (o IpBlockAccountPtrOutput) Elem() IpBlockAccountOutput {
+	return o.ApplyT(func(v *IpBlockAccount) IpBlockAccount {
+		if v != nil {
+			return *v
+		}
+		var ret IpBlockAccount
+		return ret
+	}).(IpBlockAccountOutput)
+}
+
+// Account number
+func (o IpBlockAccountPtrOutput) AccountNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpBlockAsset struct {
+	// Asset URL
+	Href *string `pulumi:"href"`
+	// Asset type
+	Type *string `pulumi:"type"`
+	// Asset UUID
+	Uuid *string `pulumi:"uuid"`
+}
+
+// IpBlockAssetInput is an input type that accepts IpBlockAssetArgs and IpBlockAssetOutput values.
+// You can construct a concrete instance of `IpBlockAssetInput` via:
+//
+//	IpBlockAssetArgs{...}
+type IpBlockAssetInput interface {
+	pulumi.Input
+
+	ToIpBlockAssetOutput() IpBlockAssetOutput
+	ToIpBlockAssetOutputWithContext(context.Context) IpBlockAssetOutput
+}
+
+type IpBlockAssetArgs struct {
+	// Asset URL
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Asset type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Asset UUID
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (IpBlockAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockAsset)(nil)).Elem()
+}
+
+func (i IpBlockAssetArgs) ToIpBlockAssetOutput() IpBlockAssetOutput {
+	return i.ToIpBlockAssetOutputWithContext(context.Background())
+}
+
+func (i IpBlockAssetArgs) ToIpBlockAssetOutputWithContext(ctx context.Context) IpBlockAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockAssetOutput)
+}
+
+// IpBlockAssetArrayInput is an input type that accepts IpBlockAssetArray and IpBlockAssetArrayOutput values.
+// You can construct a concrete instance of `IpBlockAssetArrayInput` via:
+//
+//	IpBlockAssetArray{ IpBlockAssetArgs{...} }
+type IpBlockAssetArrayInput interface {
+	pulumi.Input
+
+	ToIpBlockAssetArrayOutput() IpBlockAssetArrayOutput
+	ToIpBlockAssetArrayOutputWithContext(context.Context) IpBlockAssetArrayOutput
+}
+
+type IpBlockAssetArray []IpBlockAssetInput
+
+func (IpBlockAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpBlockAsset)(nil)).Elem()
+}
+
+func (i IpBlockAssetArray) ToIpBlockAssetArrayOutput() IpBlockAssetArrayOutput {
+	return i.ToIpBlockAssetArrayOutputWithContext(context.Background())
+}
+
+func (i IpBlockAssetArray) ToIpBlockAssetArrayOutputWithContext(ctx context.Context) IpBlockAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockAssetArrayOutput)
+}
+
+type IpBlockAssetOutput struct{ *pulumi.OutputState }
+
+func (IpBlockAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockAsset)(nil)).Elem()
+}
+
+func (o IpBlockAssetOutput) ToIpBlockAssetOutput() IpBlockAssetOutput {
+	return o
+}
+
+func (o IpBlockAssetOutput) ToIpBlockAssetOutputWithContext(ctx context.Context) IpBlockAssetOutput {
+	return o
+}
+
+// Asset URL
+func (o IpBlockAssetOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockAsset) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Asset type
+func (o IpBlockAssetOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockAsset) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Asset UUID
+func (o IpBlockAssetOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockAsset) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type IpBlockAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (IpBlockAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpBlockAsset)(nil)).Elem()
+}
+
+func (o IpBlockAssetArrayOutput) ToIpBlockAssetArrayOutput() IpBlockAssetArrayOutput {
+	return o
+}
+
+func (o IpBlockAssetArrayOutput) ToIpBlockAssetArrayOutputWithContext(ctx context.Context) IpBlockAssetArrayOutput {
+	return o
+}
+
+func (o IpBlockAssetArrayOutput) Index(i pulumi.IntInput) IpBlockAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpBlockAsset {
+		return vs[0].([]IpBlockAsset)[vs[1].(int)]
+	}).(IpBlockAssetOutput)
+}
+
+type IpBlockChange struct {
+	// Change URL
+	Href *string `pulumi:"href"`
+}
+
+// IpBlockChangeInput is an input type that accepts IpBlockChangeArgs and IpBlockChangeOutput values.
+// You can construct a concrete instance of `IpBlockChangeInput` via:
+//
+//	IpBlockChangeArgs{...}
+type IpBlockChangeInput interface {
+	pulumi.Input
+
+	ToIpBlockChangeOutput() IpBlockChangeOutput
+	ToIpBlockChangeOutputWithContext(context.Context) IpBlockChangeOutput
+}
+
+type IpBlockChangeArgs struct {
+	// Change URL
+	Href pulumi.StringPtrInput `pulumi:"href"`
+}
+
+func (IpBlockChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockChange)(nil)).Elem()
+}
+
+func (i IpBlockChangeArgs) ToIpBlockChangeOutput() IpBlockChangeOutput {
+	return i.ToIpBlockChangeOutputWithContext(context.Background())
+}
+
+func (i IpBlockChangeArgs) ToIpBlockChangeOutputWithContext(ctx context.Context) IpBlockChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockChangeOutput)
+}
+
+func (i IpBlockChangeArgs) ToIpBlockChangePtrOutput() IpBlockChangePtrOutput {
+	return i.ToIpBlockChangePtrOutputWithContext(context.Background())
+}
+
+func (i IpBlockChangeArgs) ToIpBlockChangePtrOutputWithContext(ctx context.Context) IpBlockChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockChangeOutput).ToIpBlockChangePtrOutputWithContext(ctx)
+}
+
+// IpBlockChangePtrInput is an input type that accepts IpBlockChangeArgs, IpBlockChangePtr and IpBlockChangePtrOutput values.
+// You can construct a concrete instance of `IpBlockChangePtrInput` via:
+//
+//	        IpBlockChangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpBlockChangePtrInput interface {
+	pulumi.Input
+
+	ToIpBlockChangePtrOutput() IpBlockChangePtrOutput
+	ToIpBlockChangePtrOutputWithContext(context.Context) IpBlockChangePtrOutput
+}
+
+type ipBlockChangePtrType IpBlockChangeArgs
+
+func IpBlockChangePtr(v *IpBlockChangeArgs) IpBlockChangePtrInput {
+	return (*ipBlockChangePtrType)(v)
+}
+
+func (*ipBlockChangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockChange)(nil)).Elem()
+}
+
+func (i *ipBlockChangePtrType) ToIpBlockChangePtrOutput() IpBlockChangePtrOutput {
+	return i.ToIpBlockChangePtrOutputWithContext(context.Background())
+}
+
+func (i *ipBlockChangePtrType) ToIpBlockChangePtrOutputWithContext(ctx context.Context) IpBlockChangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockChangePtrOutput)
+}
+
+type IpBlockChangeOutput struct{ *pulumi.OutputState }
+
+func (IpBlockChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockChange)(nil)).Elem()
+}
+
+func (o IpBlockChangeOutput) ToIpBlockChangeOutput() IpBlockChangeOutput {
+	return o
+}
+
+func (o IpBlockChangeOutput) ToIpBlockChangeOutputWithContext(ctx context.Context) IpBlockChangeOutput {
+	return o
+}
+
+func (o IpBlockChangeOutput) ToIpBlockChangePtrOutput() IpBlockChangePtrOutput {
+	return o.ToIpBlockChangePtrOutputWithContext(context.Background())
+}
+
+func (o IpBlockChangeOutput) ToIpBlockChangePtrOutputWithContext(ctx context.Context) IpBlockChangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpBlockChange) *IpBlockChange {
+		return &v
+	}).(IpBlockChangePtrOutput)
+}
+
+// Change URL
+func (o IpBlockChangeOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockChange) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+type IpBlockChangePtrOutput struct{ *pulumi.OutputState }
+
+func (IpBlockChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockChange)(nil)).Elem()
+}
+
+func (o IpBlockChangePtrOutput) ToIpBlockChangePtrOutput() IpBlockChangePtrOutput {
+	return o
+}
+
+func (o IpBlockChangePtrOutput) ToIpBlockChangePtrOutputWithContext(ctx context.Context) IpBlockChangePtrOutput {
+	return o
+}
+
+func (o IpBlockChangePtrOutput) Elem() IpBlockChangeOutput {
+	return o.ApplyT(func(v *IpBlockChange) IpBlockChange {
+		if v != nil {
+			return *v
+		}
+		var ret IpBlockChange
+		return ret
+	}).(IpBlockChangeOutput)
+}
+
+// Change URL
+func (o IpBlockChangePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpBlockChangeLog struct {
+	// Creation timestamp
+	CreatedDateTime *string `pulumi:"createdDateTime"`
+	// Deletion timestamp
+	DeletedDateTime *string `pulumi:"deletedDateTime"`
+	// Last update timestamp
+	UpdatedDateTime *string `pulumi:"updatedDateTime"`
+}
+
+// IpBlockChangeLogInput is an input type that accepts IpBlockChangeLogArgs and IpBlockChangeLogOutput values.
+// You can construct a concrete instance of `IpBlockChangeLogInput` via:
+//
+//	IpBlockChangeLogArgs{...}
+type IpBlockChangeLogInput interface {
+	pulumi.Input
+
+	ToIpBlockChangeLogOutput() IpBlockChangeLogOutput
+	ToIpBlockChangeLogOutputWithContext(context.Context) IpBlockChangeLogOutput
+}
+
+type IpBlockChangeLogArgs struct {
+	// Creation timestamp
+	CreatedDateTime pulumi.StringPtrInput `pulumi:"createdDateTime"`
+	// Deletion timestamp
+	DeletedDateTime pulumi.StringPtrInput `pulumi:"deletedDateTime"`
+	// Last update timestamp
+	UpdatedDateTime pulumi.StringPtrInput `pulumi:"updatedDateTime"`
+}
+
+func (IpBlockChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockChangeLog)(nil)).Elem()
+}
+
+func (i IpBlockChangeLogArgs) ToIpBlockChangeLogOutput() IpBlockChangeLogOutput {
+	return i.ToIpBlockChangeLogOutputWithContext(context.Background())
+}
+
+func (i IpBlockChangeLogArgs) ToIpBlockChangeLogOutputWithContext(ctx context.Context) IpBlockChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockChangeLogOutput)
+}
+
+func (i IpBlockChangeLogArgs) ToIpBlockChangeLogPtrOutput() IpBlockChangeLogPtrOutput {
+	return i.ToIpBlockChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i IpBlockChangeLogArgs) ToIpBlockChangeLogPtrOutputWithContext(ctx context.Context) IpBlockChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockChangeLogOutput).ToIpBlockChangeLogPtrOutputWithContext(ctx)
+}
+
+// IpBlockChangeLogPtrInput is an input type that accepts IpBlockChangeLogArgs, IpBlockChangeLogPtr and IpBlockChangeLogPtrOutput values.
+// You can construct a concrete instance of `IpBlockChangeLogPtrInput` via:
+//
+//	        IpBlockChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpBlockChangeLogPtrInput interface {
+	pulumi.Input
+
+	ToIpBlockChangeLogPtrOutput() IpBlockChangeLogPtrOutput
+	ToIpBlockChangeLogPtrOutputWithContext(context.Context) IpBlockChangeLogPtrOutput
+}
+
+type ipBlockChangeLogPtrType IpBlockChangeLogArgs
+
+func IpBlockChangeLogPtr(v *IpBlockChangeLogArgs) IpBlockChangeLogPtrInput {
+	return (*ipBlockChangeLogPtrType)(v)
+}
+
+func (*ipBlockChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockChangeLog)(nil)).Elem()
+}
+
+func (i *ipBlockChangeLogPtrType) ToIpBlockChangeLogPtrOutput() IpBlockChangeLogPtrOutput {
+	return i.ToIpBlockChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *ipBlockChangeLogPtrType) ToIpBlockChangeLogPtrOutputWithContext(ctx context.Context) IpBlockChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockChangeLogPtrOutput)
+}
+
+type IpBlockChangeLogOutput struct{ *pulumi.OutputState }
+
+func (IpBlockChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockChangeLog)(nil)).Elem()
+}
+
+func (o IpBlockChangeLogOutput) ToIpBlockChangeLogOutput() IpBlockChangeLogOutput {
+	return o
+}
+
+func (o IpBlockChangeLogOutput) ToIpBlockChangeLogOutputWithContext(ctx context.Context) IpBlockChangeLogOutput {
+	return o
+}
+
+func (o IpBlockChangeLogOutput) ToIpBlockChangeLogPtrOutput() IpBlockChangeLogPtrOutput {
+	return o.ToIpBlockChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o IpBlockChangeLogOutput) ToIpBlockChangeLogPtrOutputWithContext(ctx context.Context) IpBlockChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpBlockChangeLog) *IpBlockChangeLog {
+		return &v
+	}).(IpBlockChangeLogPtrOutput)
+}
+
+// Creation timestamp
+func (o IpBlockChangeLogOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockChangeLog) *string { return v.CreatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Deletion timestamp
+func (o IpBlockChangeLogOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockChangeLog) *string { return v.DeletedDateTime }).(pulumi.StringPtrOutput)
+}
+
+// Last update timestamp
+func (o IpBlockChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
+}
+
+type IpBlockChangeLogPtrOutput struct{ *pulumi.OutputState }
+
+func (IpBlockChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockChangeLog)(nil)).Elem()
+}
+
+func (o IpBlockChangeLogPtrOutput) ToIpBlockChangeLogPtrOutput() IpBlockChangeLogPtrOutput {
+	return o
+}
+
+func (o IpBlockChangeLogPtrOutput) ToIpBlockChangeLogPtrOutputWithContext(ctx context.Context) IpBlockChangeLogPtrOutput {
+	return o
+}
+
+func (o IpBlockChangeLogPtrOutput) Elem() IpBlockChangeLogOutput {
+	return o.ApplyT(func(v *IpBlockChangeLog) IpBlockChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret IpBlockChangeLog
+		return ret
+	}).(IpBlockChangeLogOutput)
+}
+
+// Creation timestamp
+func (o IpBlockChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deletion timestamp
+func (o IpBlockChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last update timestamp
+func (o IpBlockChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpBlockLocation struct {
+	// Two-letter metro code (e.g. SV, DC, AM)
+	MetroCode string `pulumi:"metroCode"`
+	// Metro resource URL
+	MetroHref *string `pulumi:"metroHref"`
+}
+
+// IpBlockLocationInput is an input type that accepts IpBlockLocationArgs and IpBlockLocationOutput values.
+// You can construct a concrete instance of `IpBlockLocationInput` via:
+//
+//	IpBlockLocationArgs{...}
+type IpBlockLocationInput interface {
+	pulumi.Input
+
+	ToIpBlockLocationOutput() IpBlockLocationOutput
+	ToIpBlockLocationOutputWithContext(context.Context) IpBlockLocationOutput
+}
+
+type IpBlockLocationArgs struct {
+	// Two-letter metro code (e.g. SV, DC, AM)
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// Metro resource URL
+	MetroHref pulumi.StringPtrInput `pulumi:"metroHref"`
+}
+
+func (IpBlockLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockLocation)(nil)).Elem()
+}
+
+func (i IpBlockLocationArgs) ToIpBlockLocationOutput() IpBlockLocationOutput {
+	return i.ToIpBlockLocationOutputWithContext(context.Background())
+}
+
+func (i IpBlockLocationArgs) ToIpBlockLocationOutputWithContext(ctx context.Context) IpBlockLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockLocationOutput)
+}
+
+func (i IpBlockLocationArgs) ToIpBlockLocationPtrOutput() IpBlockLocationPtrOutput {
+	return i.ToIpBlockLocationPtrOutputWithContext(context.Background())
+}
+
+func (i IpBlockLocationArgs) ToIpBlockLocationPtrOutputWithContext(ctx context.Context) IpBlockLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockLocationOutput).ToIpBlockLocationPtrOutputWithContext(ctx)
+}
+
+// IpBlockLocationPtrInput is an input type that accepts IpBlockLocationArgs, IpBlockLocationPtr and IpBlockLocationPtrOutput values.
+// You can construct a concrete instance of `IpBlockLocationPtrInput` via:
+//
+//	        IpBlockLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpBlockLocationPtrInput interface {
+	pulumi.Input
+
+	ToIpBlockLocationPtrOutput() IpBlockLocationPtrOutput
+	ToIpBlockLocationPtrOutputWithContext(context.Context) IpBlockLocationPtrOutput
+}
+
+type ipBlockLocationPtrType IpBlockLocationArgs
+
+func IpBlockLocationPtr(v *IpBlockLocationArgs) IpBlockLocationPtrInput {
+	return (*ipBlockLocationPtrType)(v)
+}
+
+func (*ipBlockLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockLocation)(nil)).Elem()
+}
+
+func (i *ipBlockLocationPtrType) ToIpBlockLocationPtrOutput() IpBlockLocationPtrOutput {
+	return i.ToIpBlockLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *ipBlockLocationPtrType) ToIpBlockLocationPtrOutputWithContext(ctx context.Context) IpBlockLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockLocationPtrOutput)
+}
+
+type IpBlockLocationOutput struct{ *pulumi.OutputState }
+
+func (IpBlockLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockLocation)(nil)).Elem()
+}
+
+func (o IpBlockLocationOutput) ToIpBlockLocationOutput() IpBlockLocationOutput {
+	return o
+}
+
+func (o IpBlockLocationOutput) ToIpBlockLocationOutputWithContext(ctx context.Context) IpBlockLocationOutput {
+	return o
+}
+
+func (o IpBlockLocationOutput) ToIpBlockLocationPtrOutput() IpBlockLocationPtrOutput {
+	return o.ToIpBlockLocationPtrOutputWithContext(context.Background())
+}
+
+func (o IpBlockLocationOutput) ToIpBlockLocationPtrOutputWithContext(ctx context.Context) IpBlockLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpBlockLocation) *IpBlockLocation {
+		return &v
+	}).(IpBlockLocationPtrOutput)
+}
+
+// Two-letter metro code (e.g. SV, DC, AM)
+func (o IpBlockLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v IpBlockLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// Metro resource URL
+func (o IpBlockLocationOutput) MetroHref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockLocation) *string { return v.MetroHref }).(pulumi.StringPtrOutput)
+}
+
+type IpBlockLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (IpBlockLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockLocation)(nil)).Elem()
+}
+
+func (o IpBlockLocationPtrOutput) ToIpBlockLocationPtrOutput() IpBlockLocationPtrOutput {
+	return o
+}
+
+func (o IpBlockLocationPtrOutput) ToIpBlockLocationPtrOutputWithContext(ctx context.Context) IpBlockLocationPtrOutput {
+	return o
+}
+
+func (o IpBlockLocationPtrOutput) Elem() IpBlockLocationOutput {
+	return o.ApplyT(func(v *IpBlockLocation) IpBlockLocation {
+		if v != nil {
+			return *v
+		}
+		var ret IpBlockLocation
+		return ret
+	}).(IpBlockLocationOutput)
+}
+
+// Two-letter metro code (e.g. SV, DC, AM)
+func (o IpBlockLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metro resource URL
+func (o IpBlockLocationPtrOutput) MetroHref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroHref
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpBlockOrder struct {
+	// Order URL
+	Href *string `pulumi:"href"`
+	// Order number
+	OrderNumber *string `pulumi:"orderNumber"`
+}
+
+// IpBlockOrderInput is an input type that accepts IpBlockOrderArgs and IpBlockOrderOutput values.
+// You can construct a concrete instance of `IpBlockOrderInput` via:
+//
+//	IpBlockOrderArgs{...}
+type IpBlockOrderInput interface {
+	pulumi.Input
+
+	ToIpBlockOrderOutput() IpBlockOrderOutput
+	ToIpBlockOrderOutputWithContext(context.Context) IpBlockOrderOutput
+}
+
+type IpBlockOrderArgs struct {
+	// Order URL
+	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Order number
+	OrderNumber pulumi.StringPtrInput `pulumi:"orderNumber"`
+}
+
+func (IpBlockOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockOrder)(nil)).Elem()
+}
+
+func (i IpBlockOrderArgs) ToIpBlockOrderOutput() IpBlockOrderOutput {
+	return i.ToIpBlockOrderOutputWithContext(context.Background())
+}
+
+func (i IpBlockOrderArgs) ToIpBlockOrderOutputWithContext(ctx context.Context) IpBlockOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockOrderOutput)
+}
+
+func (i IpBlockOrderArgs) ToIpBlockOrderPtrOutput() IpBlockOrderPtrOutput {
+	return i.ToIpBlockOrderPtrOutputWithContext(context.Background())
+}
+
+func (i IpBlockOrderArgs) ToIpBlockOrderPtrOutputWithContext(ctx context.Context) IpBlockOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockOrderOutput).ToIpBlockOrderPtrOutputWithContext(ctx)
+}
+
+// IpBlockOrderPtrInput is an input type that accepts IpBlockOrderArgs, IpBlockOrderPtr and IpBlockOrderPtrOutput values.
+// You can construct a concrete instance of `IpBlockOrderPtrInput` via:
+//
+//	        IpBlockOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpBlockOrderPtrInput interface {
+	pulumi.Input
+
+	ToIpBlockOrderPtrOutput() IpBlockOrderPtrOutput
+	ToIpBlockOrderPtrOutputWithContext(context.Context) IpBlockOrderPtrOutput
+}
+
+type ipBlockOrderPtrType IpBlockOrderArgs
+
+func IpBlockOrderPtr(v *IpBlockOrderArgs) IpBlockOrderPtrInput {
+	return (*ipBlockOrderPtrType)(v)
+}
+
+func (*ipBlockOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockOrder)(nil)).Elem()
+}
+
+func (i *ipBlockOrderPtrType) ToIpBlockOrderPtrOutput() IpBlockOrderPtrOutput {
+	return i.ToIpBlockOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *ipBlockOrderPtrType) ToIpBlockOrderPtrOutputWithContext(ctx context.Context) IpBlockOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockOrderPtrOutput)
+}
+
+type IpBlockOrderOutput struct{ *pulumi.OutputState }
+
+func (IpBlockOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockOrder)(nil)).Elem()
+}
+
+func (o IpBlockOrderOutput) ToIpBlockOrderOutput() IpBlockOrderOutput {
+	return o
+}
+
+func (o IpBlockOrderOutput) ToIpBlockOrderOutputWithContext(ctx context.Context) IpBlockOrderOutput {
+	return o
+}
+
+func (o IpBlockOrderOutput) ToIpBlockOrderPtrOutput() IpBlockOrderPtrOutput {
+	return o.ToIpBlockOrderPtrOutputWithContext(context.Background())
+}
+
+func (o IpBlockOrderOutput) ToIpBlockOrderPtrOutputWithContext(ctx context.Context) IpBlockOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpBlockOrder) *IpBlockOrder {
+		return &v
+	}).(IpBlockOrderPtrOutput)
+}
+
+// Order URL
+func (o IpBlockOrderOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockOrder) *string { return v.Href }).(pulumi.StringPtrOutput)
+}
+
+// Order number
+func (o IpBlockOrderOutput) OrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockOrder) *string { return v.OrderNumber }).(pulumi.StringPtrOutput)
+}
+
+type IpBlockOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (IpBlockOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockOrder)(nil)).Elem()
+}
+
+func (o IpBlockOrderPtrOutput) ToIpBlockOrderPtrOutput() IpBlockOrderPtrOutput {
+	return o
+}
+
+func (o IpBlockOrderPtrOutput) ToIpBlockOrderPtrOutputWithContext(ctx context.Context) IpBlockOrderPtrOutput {
+	return o
+}
+
+func (o IpBlockOrderPtrOutput) Elem() IpBlockOrderOutput {
+	return o.ApplyT(func(v *IpBlockOrder) IpBlockOrder {
+		if v != nil {
+			return *v
+		}
+		var ret IpBlockOrder
+		return ret
+	}).(IpBlockOrderOutput)
+}
+
+// Order URL
+func (o IpBlockOrderPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Order number
+func (o IpBlockOrderPtrOutput) OrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpBlockProject struct {
+	// Equinix-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// IpBlockProjectInput is an input type that accepts IpBlockProjectArgs and IpBlockProjectOutput values.
+// You can construct a concrete instance of `IpBlockProjectInput` via:
+//
+//	IpBlockProjectArgs{...}
+type IpBlockProjectInput interface {
+	pulumi.Input
+
+	ToIpBlockProjectOutput() IpBlockProjectOutput
+	ToIpBlockProjectOutputWithContext(context.Context) IpBlockProjectOutput
+}
+
+type IpBlockProjectArgs struct {
+	// Equinix-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (IpBlockProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockProject)(nil)).Elem()
+}
+
+func (i IpBlockProjectArgs) ToIpBlockProjectOutput() IpBlockProjectOutput {
+	return i.ToIpBlockProjectOutputWithContext(context.Background())
+}
+
+func (i IpBlockProjectArgs) ToIpBlockProjectOutputWithContext(ctx context.Context) IpBlockProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockProjectOutput)
+}
+
+func (i IpBlockProjectArgs) ToIpBlockProjectPtrOutput() IpBlockProjectPtrOutput {
+	return i.ToIpBlockProjectPtrOutputWithContext(context.Background())
+}
+
+func (i IpBlockProjectArgs) ToIpBlockProjectPtrOutputWithContext(ctx context.Context) IpBlockProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockProjectOutput).ToIpBlockProjectPtrOutputWithContext(ctx)
+}
+
+// IpBlockProjectPtrInput is an input type that accepts IpBlockProjectArgs, IpBlockProjectPtr and IpBlockProjectPtrOutput values.
+// You can construct a concrete instance of `IpBlockProjectPtrInput` via:
+//
+//	        IpBlockProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpBlockProjectPtrInput interface {
+	pulumi.Input
+
+	ToIpBlockProjectPtrOutput() IpBlockProjectPtrOutput
+	ToIpBlockProjectPtrOutputWithContext(context.Context) IpBlockProjectPtrOutput
+}
+
+type ipBlockProjectPtrType IpBlockProjectArgs
+
+func IpBlockProjectPtr(v *IpBlockProjectArgs) IpBlockProjectPtrInput {
+	return (*ipBlockProjectPtrType)(v)
+}
+
+func (*ipBlockProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockProject)(nil)).Elem()
+}
+
+func (i *ipBlockProjectPtrType) ToIpBlockProjectPtrOutput() IpBlockProjectPtrOutput {
+	return i.ToIpBlockProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *ipBlockProjectPtrType) ToIpBlockProjectPtrOutputWithContext(ctx context.Context) IpBlockProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockProjectPtrOutput)
+}
+
+type IpBlockProjectOutput struct{ *pulumi.OutputState }
+
+func (IpBlockProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockProject)(nil)).Elem()
+}
+
+func (o IpBlockProjectOutput) ToIpBlockProjectOutput() IpBlockProjectOutput {
+	return o
+}
+
+func (o IpBlockProjectOutput) ToIpBlockProjectOutputWithContext(ctx context.Context) IpBlockProjectOutput {
+	return o
+}
+
+func (o IpBlockProjectOutput) ToIpBlockProjectPtrOutput() IpBlockProjectPtrOutput {
+	return o.ToIpBlockProjectPtrOutputWithContext(context.Background())
+}
+
+func (o IpBlockProjectOutput) ToIpBlockProjectPtrOutputWithContext(ctx context.Context) IpBlockProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpBlockProject) *IpBlockProject {
+		return &v
+	}).(IpBlockProjectPtrOutput)
+}
+
+// Equinix-assigned project ID
+func (o IpBlockProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v IpBlockProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type IpBlockProjectPtrOutput struct{ *pulumi.OutputState }
+
+func (IpBlockProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockProject)(nil)).Elem()
+}
+
+func (o IpBlockProjectPtrOutput) ToIpBlockProjectPtrOutput() IpBlockProjectPtrOutput {
+	return o
+}
+
+func (o IpBlockProjectPtrOutput) ToIpBlockProjectPtrOutputWithContext(ctx context.Context) IpBlockProjectPtrOutput {
+	return o
+}
+
+func (o IpBlockProjectPtrOutput) Elem() IpBlockProjectOutput {
+	return o.ApplyT(func(v *IpBlockProject) IpBlockProject {
+		if v != nil {
+			return *v
+		}
+		var ret IpBlockProject
+		return ret
+	}).(IpBlockProjectOutput)
+}
+
+// Equinix-assigned project ID
+func (o IpBlockProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpBlockTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// IpBlockTimeoutsInput is an input type that accepts IpBlockTimeoutsArgs and IpBlockTimeoutsOutput values.
+// You can construct a concrete instance of `IpBlockTimeoutsInput` via:
+//
+//	IpBlockTimeoutsArgs{...}
+type IpBlockTimeoutsInput interface {
+	pulumi.Input
+
+	ToIpBlockTimeoutsOutput() IpBlockTimeoutsOutput
+	ToIpBlockTimeoutsOutputWithContext(context.Context) IpBlockTimeoutsOutput
+}
+
+type IpBlockTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (IpBlockTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockTimeouts)(nil)).Elem()
+}
+
+func (i IpBlockTimeoutsArgs) ToIpBlockTimeoutsOutput() IpBlockTimeoutsOutput {
+	return i.ToIpBlockTimeoutsOutputWithContext(context.Background())
+}
+
+func (i IpBlockTimeoutsArgs) ToIpBlockTimeoutsOutputWithContext(ctx context.Context) IpBlockTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockTimeoutsOutput)
+}
+
+func (i IpBlockTimeoutsArgs) ToIpBlockTimeoutsPtrOutput() IpBlockTimeoutsPtrOutput {
+	return i.ToIpBlockTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i IpBlockTimeoutsArgs) ToIpBlockTimeoutsPtrOutputWithContext(ctx context.Context) IpBlockTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockTimeoutsOutput).ToIpBlockTimeoutsPtrOutputWithContext(ctx)
+}
+
+// IpBlockTimeoutsPtrInput is an input type that accepts IpBlockTimeoutsArgs, IpBlockTimeoutsPtr and IpBlockTimeoutsPtrOutput values.
+// You can construct a concrete instance of `IpBlockTimeoutsPtrInput` via:
+//
+//	        IpBlockTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpBlockTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToIpBlockTimeoutsPtrOutput() IpBlockTimeoutsPtrOutput
+	ToIpBlockTimeoutsPtrOutputWithContext(context.Context) IpBlockTimeoutsPtrOutput
+}
+
+type ipBlockTimeoutsPtrType IpBlockTimeoutsArgs
+
+func IpBlockTimeoutsPtr(v *IpBlockTimeoutsArgs) IpBlockTimeoutsPtrInput {
+	return (*ipBlockTimeoutsPtrType)(v)
+}
+
+func (*ipBlockTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockTimeouts)(nil)).Elem()
+}
+
+func (i *ipBlockTimeoutsPtrType) ToIpBlockTimeoutsPtrOutput() IpBlockTimeoutsPtrOutput {
+	return i.ToIpBlockTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *ipBlockTimeoutsPtrType) ToIpBlockTimeoutsPtrOutputWithContext(ctx context.Context) IpBlockTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpBlockTimeoutsPtrOutput)
+}
+
+type IpBlockTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (IpBlockTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpBlockTimeouts)(nil)).Elem()
+}
+
+func (o IpBlockTimeoutsOutput) ToIpBlockTimeoutsOutput() IpBlockTimeoutsOutput {
+	return o
+}
+
+func (o IpBlockTimeoutsOutput) ToIpBlockTimeoutsOutputWithContext(ctx context.Context) IpBlockTimeoutsOutput {
+	return o
+}
+
+func (o IpBlockTimeoutsOutput) ToIpBlockTimeoutsPtrOutput() IpBlockTimeoutsPtrOutput {
+	return o.ToIpBlockTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o IpBlockTimeoutsOutput) ToIpBlockTimeoutsPtrOutputWithContext(ctx context.Context) IpBlockTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpBlockTimeouts) *IpBlockTimeouts {
+		return &v
+	}).(IpBlockTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o IpBlockTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o IpBlockTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IpBlockTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpBlockTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type IpBlockTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (IpBlockTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpBlockTimeouts)(nil)).Elem()
+}
+
+func (o IpBlockTimeoutsPtrOutput) ToIpBlockTimeoutsPtrOutput() IpBlockTimeoutsPtrOutput {
+	return o
+}
+
+func (o IpBlockTimeoutsPtrOutput) ToIpBlockTimeoutsPtrOutputWithContext(ctx context.Context) IpBlockTimeoutsPtrOutput {
+	return o
+}
+
+func (o IpBlockTimeoutsPtrOutput) Elem() IpBlockTimeoutsOutput {
+	return o.ApplyT(func(v *IpBlockTimeouts) IpBlockTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret IpBlockTimeouts
+		return ret
+	}).(IpBlockTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o IpBlockTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o IpBlockTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o IpBlockTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpBlockTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type NetworkChange struct {
 	// Absolute URL that returns the details of the given change.
 	// Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
@@ -48436,6 +49624,1603 @@ func (o GetConnectionsSortArrayOutput) Index(i pulumi.IntInput) GetConnectionsSo
 	}).(GetConnectionsSortOutput)
 }
 
+type GetIpBlockAccount struct {
+	// Account number
+	AccountNumber string `pulumi:"accountNumber"`
+}
+
+// GetIpBlockAccountInput is an input type that accepts GetIpBlockAccountArgs and GetIpBlockAccountOutput values.
+// You can construct a concrete instance of `GetIpBlockAccountInput` via:
+//
+//	GetIpBlockAccountArgs{...}
+type GetIpBlockAccountInput interface {
+	pulumi.Input
+
+	ToGetIpBlockAccountOutput() GetIpBlockAccountOutput
+	ToGetIpBlockAccountOutputWithContext(context.Context) GetIpBlockAccountOutput
+}
+
+type GetIpBlockAccountArgs struct {
+	// Account number
+	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
+}
+
+func (GetIpBlockAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockAccount)(nil)).Elem()
+}
+
+func (i GetIpBlockAccountArgs) ToGetIpBlockAccountOutput() GetIpBlockAccountOutput {
+	return i.ToGetIpBlockAccountOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockAccountArgs) ToGetIpBlockAccountOutputWithContext(ctx context.Context) GetIpBlockAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockAccountOutput)
+}
+
+type GetIpBlockAccountOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockAccount)(nil)).Elem()
+}
+
+func (o GetIpBlockAccountOutput) ToGetIpBlockAccountOutput() GetIpBlockAccountOutput {
+	return o
+}
+
+func (o GetIpBlockAccountOutput) ToGetIpBlockAccountOutputWithContext(ctx context.Context) GetIpBlockAccountOutput {
+	return o
+}
+
+// Account number
+func (o GetIpBlockAccountOutput) AccountNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockAccount) string { return v.AccountNumber }).(pulumi.StringOutput)
+}
+
+type GetIpBlockAsset struct {
+	// URI to the asset resource
+	Href string `pulumi:"href"`
+	// Type of the asset
+	Type string `pulumi:"type"`
+	// Unique identifier of the asset
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetIpBlockAssetInput is an input type that accepts GetIpBlockAssetArgs and GetIpBlockAssetOutput values.
+// You can construct a concrete instance of `GetIpBlockAssetInput` via:
+//
+//	GetIpBlockAssetArgs{...}
+type GetIpBlockAssetInput interface {
+	pulumi.Input
+
+	ToGetIpBlockAssetOutput() GetIpBlockAssetOutput
+	ToGetIpBlockAssetOutputWithContext(context.Context) GetIpBlockAssetOutput
+}
+
+type GetIpBlockAssetArgs struct {
+	// URI to the asset resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of the asset
+	Type pulumi.StringInput `pulumi:"type"`
+	// Unique identifier of the asset
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetIpBlockAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockAsset)(nil)).Elem()
+}
+
+func (i GetIpBlockAssetArgs) ToGetIpBlockAssetOutput() GetIpBlockAssetOutput {
+	return i.ToGetIpBlockAssetOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockAssetArgs) ToGetIpBlockAssetOutputWithContext(ctx context.Context) GetIpBlockAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockAssetOutput)
+}
+
+// GetIpBlockAssetArrayInput is an input type that accepts GetIpBlockAssetArray and GetIpBlockAssetArrayOutput values.
+// You can construct a concrete instance of `GetIpBlockAssetArrayInput` via:
+//
+//	GetIpBlockAssetArray{ GetIpBlockAssetArgs{...} }
+type GetIpBlockAssetArrayInput interface {
+	pulumi.Input
+
+	ToGetIpBlockAssetArrayOutput() GetIpBlockAssetArrayOutput
+	ToGetIpBlockAssetArrayOutputWithContext(context.Context) GetIpBlockAssetArrayOutput
+}
+
+type GetIpBlockAssetArray []GetIpBlockAssetInput
+
+func (GetIpBlockAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpBlockAsset)(nil)).Elem()
+}
+
+func (i GetIpBlockAssetArray) ToGetIpBlockAssetArrayOutput() GetIpBlockAssetArrayOutput {
+	return i.ToGetIpBlockAssetArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockAssetArray) ToGetIpBlockAssetArrayOutputWithContext(ctx context.Context) GetIpBlockAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockAssetArrayOutput)
+}
+
+type GetIpBlockAssetOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockAsset)(nil)).Elem()
+}
+
+func (o GetIpBlockAssetOutput) ToGetIpBlockAssetOutput() GetIpBlockAssetOutput {
+	return o
+}
+
+func (o GetIpBlockAssetOutput) ToGetIpBlockAssetOutputWithContext(ctx context.Context) GetIpBlockAssetOutput {
+	return o
+}
+
+// URI to the asset resource
+func (o GetIpBlockAssetOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockAsset) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of the asset
+func (o GetIpBlockAssetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockAsset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the asset
+func (o GetIpBlockAssetOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockAsset) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetIpBlockAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpBlockAsset)(nil)).Elem()
+}
+
+func (o GetIpBlockAssetArrayOutput) ToGetIpBlockAssetArrayOutput() GetIpBlockAssetArrayOutput {
+	return o
+}
+
+func (o GetIpBlockAssetArrayOutput) ToGetIpBlockAssetArrayOutputWithContext(ctx context.Context) GetIpBlockAssetArrayOutput {
+	return o
+}
+
+func (o GetIpBlockAssetArrayOutput) Index(i pulumi.IntInput) GetIpBlockAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpBlockAsset {
+		return vs[0].([]GetIpBlockAsset)[vs[1].(int)]
+	}).(GetIpBlockAssetOutput)
+}
+
+type GetIpBlockChange struct {
+	// URI to the change resource
+	Href string `pulumi:"href"`
+}
+
+// GetIpBlockChangeInput is an input type that accepts GetIpBlockChangeArgs and GetIpBlockChangeOutput values.
+// You can construct a concrete instance of `GetIpBlockChangeInput` via:
+//
+//	GetIpBlockChangeArgs{...}
+type GetIpBlockChangeInput interface {
+	pulumi.Input
+
+	ToGetIpBlockChangeOutput() GetIpBlockChangeOutput
+	ToGetIpBlockChangeOutputWithContext(context.Context) GetIpBlockChangeOutput
+}
+
+type GetIpBlockChangeArgs struct {
+	// URI to the change resource
+	Href pulumi.StringInput `pulumi:"href"`
+}
+
+func (GetIpBlockChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockChange)(nil)).Elem()
+}
+
+func (i GetIpBlockChangeArgs) ToGetIpBlockChangeOutput() GetIpBlockChangeOutput {
+	return i.ToGetIpBlockChangeOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockChangeArgs) ToGetIpBlockChangeOutputWithContext(ctx context.Context) GetIpBlockChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockChangeOutput)
+}
+
+type GetIpBlockChangeOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockChange)(nil)).Elem()
+}
+
+func (o GetIpBlockChangeOutput) ToGetIpBlockChangeOutput() GetIpBlockChangeOutput {
+	return o
+}
+
+func (o GetIpBlockChangeOutput) ToGetIpBlockChangeOutputWithContext(ctx context.Context) GetIpBlockChangeOutput {
+	return o
+}
+
+// URI to the change resource
+func (o GetIpBlockChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+type GetIpBlockChangeLog struct {
+	// Creation time of the IP block
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deletion time of the IP block
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Last update time of the IP block
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetIpBlockChangeLogInput is an input type that accepts GetIpBlockChangeLogArgs and GetIpBlockChangeLogOutput values.
+// You can construct a concrete instance of `GetIpBlockChangeLogInput` via:
+//
+//	GetIpBlockChangeLogArgs{...}
+type GetIpBlockChangeLogInput interface {
+	pulumi.Input
+
+	ToGetIpBlockChangeLogOutput() GetIpBlockChangeLogOutput
+	ToGetIpBlockChangeLogOutputWithContext(context.Context) GetIpBlockChangeLogOutput
+}
+
+type GetIpBlockChangeLogArgs struct {
+	// Creation time of the IP block
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deletion time of the IP block
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Last update time of the IP block
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetIpBlockChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockChangeLog)(nil)).Elem()
+}
+
+func (i GetIpBlockChangeLogArgs) ToGetIpBlockChangeLogOutput() GetIpBlockChangeLogOutput {
+	return i.ToGetIpBlockChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockChangeLogArgs) ToGetIpBlockChangeLogOutputWithContext(ctx context.Context) GetIpBlockChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockChangeLogOutput)
+}
+
+type GetIpBlockChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockChangeLog)(nil)).Elem()
+}
+
+func (o GetIpBlockChangeLogOutput) ToGetIpBlockChangeLogOutput() GetIpBlockChangeLogOutput {
+	return o
+}
+
+func (o GetIpBlockChangeLogOutput) ToGetIpBlockChangeLogOutputWithContext(ctx context.Context) GetIpBlockChangeLogOutput {
+	return o
+}
+
+// Creation time of the IP block
+func (o GetIpBlockChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deletion time of the IP block
+func (o GetIpBlockChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Last update time of the IP block
+func (o GetIpBlockChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetIpBlockLocation struct {
+	// Two-letter metro code
+	MetroCode string `pulumi:"metroCode"`
+	// URI to the metro resource
+	MetroHref string `pulumi:"metroHref"`
+}
+
+// GetIpBlockLocationInput is an input type that accepts GetIpBlockLocationArgs and GetIpBlockLocationOutput values.
+// You can construct a concrete instance of `GetIpBlockLocationInput` via:
+//
+//	GetIpBlockLocationArgs{...}
+type GetIpBlockLocationInput interface {
+	pulumi.Input
+
+	ToGetIpBlockLocationOutput() GetIpBlockLocationOutput
+	ToGetIpBlockLocationOutputWithContext(context.Context) GetIpBlockLocationOutput
+}
+
+type GetIpBlockLocationArgs struct {
+	// Two-letter metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// URI to the metro resource
+	MetroHref pulumi.StringInput `pulumi:"metroHref"`
+}
+
+func (GetIpBlockLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockLocation)(nil)).Elem()
+}
+
+func (i GetIpBlockLocationArgs) ToGetIpBlockLocationOutput() GetIpBlockLocationOutput {
+	return i.ToGetIpBlockLocationOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockLocationArgs) ToGetIpBlockLocationOutputWithContext(ctx context.Context) GetIpBlockLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockLocationOutput)
+}
+
+type GetIpBlockLocationOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockLocation)(nil)).Elem()
+}
+
+func (o GetIpBlockLocationOutput) ToGetIpBlockLocationOutput() GetIpBlockLocationOutput {
+	return o
+}
+
+func (o GetIpBlockLocationOutput) ToGetIpBlockLocationOutputWithContext(ctx context.Context) GetIpBlockLocationOutput {
+	return o
+}
+
+// Two-letter metro code
+func (o GetIpBlockLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// URI to the metro resource
+func (o GetIpBlockLocationOutput) MetroHref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockLocation) string { return v.MetroHref }).(pulumi.StringOutput)
+}
+
+type GetIpBlockOrder struct {
+	// URI to the order resource
+	Href string `pulumi:"href"`
+	// Order number
+	OrderNumber string `pulumi:"orderNumber"`
+}
+
+// GetIpBlockOrderInput is an input type that accepts GetIpBlockOrderArgs and GetIpBlockOrderOutput values.
+// You can construct a concrete instance of `GetIpBlockOrderInput` via:
+//
+//	GetIpBlockOrderArgs{...}
+type GetIpBlockOrderInput interface {
+	pulumi.Input
+
+	ToGetIpBlockOrderOutput() GetIpBlockOrderOutput
+	ToGetIpBlockOrderOutputWithContext(context.Context) GetIpBlockOrderOutput
+}
+
+type GetIpBlockOrderArgs struct {
+	// URI to the order resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Order number
+	OrderNumber pulumi.StringInput `pulumi:"orderNumber"`
+}
+
+func (GetIpBlockOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockOrder)(nil)).Elem()
+}
+
+func (i GetIpBlockOrderArgs) ToGetIpBlockOrderOutput() GetIpBlockOrderOutput {
+	return i.ToGetIpBlockOrderOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockOrderArgs) ToGetIpBlockOrderOutputWithContext(ctx context.Context) GetIpBlockOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockOrderOutput)
+}
+
+type GetIpBlockOrderOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockOrder)(nil)).Elem()
+}
+
+func (o GetIpBlockOrderOutput) ToGetIpBlockOrderOutput() GetIpBlockOrderOutput {
+	return o
+}
+
+func (o GetIpBlockOrderOutput) ToGetIpBlockOrderOutputWithContext(ctx context.Context) GetIpBlockOrderOutput {
+	return o
+}
+
+// URI to the order resource
+func (o GetIpBlockOrderOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockOrder) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Order number
+func (o GetIpBlockOrderOutput) OrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockOrder) string { return v.OrderNumber }).(pulumi.StringOutput)
+}
+
+type GetIpBlockProject struct {
+	// URI to the project resource
+	Href string `pulumi:"href"`
+	// Equinix subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetIpBlockProjectInput is an input type that accepts GetIpBlockProjectArgs and GetIpBlockProjectOutput values.
+// You can construct a concrete instance of `GetIpBlockProjectInput` via:
+//
+//	GetIpBlockProjectArgs{...}
+type GetIpBlockProjectInput interface {
+	pulumi.Input
+
+	ToGetIpBlockProjectOutput() GetIpBlockProjectOutput
+	ToGetIpBlockProjectOutputWithContext(context.Context) GetIpBlockProjectOutput
+}
+
+type GetIpBlockProjectArgs struct {
+	// URI to the project resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetIpBlockProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockProject)(nil)).Elem()
+}
+
+func (i GetIpBlockProjectArgs) ToGetIpBlockProjectOutput() GetIpBlockProjectOutput {
+	return i.ToGetIpBlockProjectOutputWithContext(context.Background())
+}
+
+func (i GetIpBlockProjectArgs) ToGetIpBlockProjectOutputWithContext(ctx context.Context) GetIpBlockProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlockProjectOutput)
+}
+
+type GetIpBlockProjectOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlockProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlockProject)(nil)).Elem()
+}
+
+func (o GetIpBlockProjectOutput) ToGetIpBlockProjectOutput() GetIpBlockProjectOutput {
+	return o
+}
+
+func (o GetIpBlockProjectOutput) ToGetIpBlockProjectOutputWithContext(ctx context.Context) GetIpBlockProjectOutput {
+	return o
+}
+
+// URI to the project resource
+func (o GetIpBlockProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix subscriber-assigned project ID
+func (o GetIpBlockProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlockProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksData struct {
+	// Account associated with the IP block
+	Account GetIpBlocksDataAccount `pulumi:"account"`
+	// List of assets (connections or services) using this IP block
+	Assets []GetIpBlocksDataAsset `pulumi:"assets"`
+	// Current state of the latest change on the IP block
+	Change GetIpBlocksDataChange `pulumi:"change"`
+	// Audit log of changes to the IP block
+	ChangeLog GetIpBlocksDataChangeLog `pulumi:"changeLog"`
+	// Equinix auto generated URI to the IP block resource
+	Href string `pulumi:"href"`
+	// Location of the IP block
+	Location GetIpBlocksDataLocation `pulumi:"location"`
+	// Order details for the IP block
+	Order GetIpBlocksDataOrder `pulumi:"order"`
+	// Ownership of the IP block. One of: EQUINIX, CUSTOMER
+	Ownership string `pulumi:"ownership"`
+	// The assigned IP prefix (e.g. 192.0.2.0/24)
+	Prefix string `pulumi:"prefix"`
+	// Prefix length of the IP block (e.g. 24 for a /24 block)
+	PrefixLength int `pulumi:"prefixLength"`
+	// Project associated with the IP block
+	Project GetIpBlocksDataProject `pulumi:"project"`
+	// Provisioning state of the IP block
+	State string `pulumi:"state"`
+	// Type of the IP block product
+	Type string `pulumi:"type"`
+	// Equinix-assigned unique identifier for the IP block
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetIpBlocksDataInput is an input type that accepts GetIpBlocksDataArgs and GetIpBlocksDataOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataInput` via:
+//
+//	GetIpBlocksDataArgs{...}
+type GetIpBlocksDataInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataOutput() GetIpBlocksDataOutput
+	ToGetIpBlocksDataOutputWithContext(context.Context) GetIpBlocksDataOutput
+}
+
+type GetIpBlocksDataArgs struct {
+	// Account associated with the IP block
+	Account GetIpBlocksDataAccountInput `pulumi:"account"`
+	// List of assets (connections or services) using this IP block
+	Assets GetIpBlocksDataAssetArrayInput `pulumi:"assets"`
+	// Current state of the latest change on the IP block
+	Change GetIpBlocksDataChangeInput `pulumi:"change"`
+	// Audit log of changes to the IP block
+	ChangeLog GetIpBlocksDataChangeLogInput `pulumi:"changeLog"`
+	// Equinix auto generated URI to the IP block resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Location of the IP block
+	Location GetIpBlocksDataLocationInput `pulumi:"location"`
+	// Order details for the IP block
+	Order GetIpBlocksDataOrderInput `pulumi:"order"`
+	// Ownership of the IP block. One of: EQUINIX, CUSTOMER
+	Ownership pulumi.StringInput `pulumi:"ownership"`
+	// The assigned IP prefix (e.g. 192.0.2.0/24)
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Prefix length of the IP block (e.g. 24 for a /24 block)
+	PrefixLength pulumi.IntInput `pulumi:"prefixLength"`
+	// Project associated with the IP block
+	Project GetIpBlocksDataProjectInput `pulumi:"project"`
+	// Provisioning state of the IP block
+	State pulumi.StringInput `pulumi:"state"`
+	// Type of the IP block product
+	Type pulumi.StringInput `pulumi:"type"`
+	// Equinix-assigned unique identifier for the IP block
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetIpBlocksDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksData)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataArgs) ToGetIpBlocksDataOutput() GetIpBlocksDataOutput {
+	return i.ToGetIpBlocksDataOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataArgs) ToGetIpBlocksDataOutputWithContext(ctx context.Context) GetIpBlocksDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataOutput)
+}
+
+// GetIpBlocksDataArrayInput is an input type that accepts GetIpBlocksDataArray and GetIpBlocksDataArrayOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataArrayInput` via:
+//
+//	GetIpBlocksDataArray{ GetIpBlocksDataArgs{...} }
+type GetIpBlocksDataArrayInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataArrayOutput() GetIpBlocksDataArrayOutput
+	ToGetIpBlocksDataArrayOutputWithContext(context.Context) GetIpBlocksDataArrayOutput
+}
+
+type GetIpBlocksDataArray []GetIpBlocksDataInput
+
+func (GetIpBlocksDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpBlocksData)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataArray) ToGetIpBlocksDataArrayOutput() GetIpBlocksDataArrayOutput {
+	return i.ToGetIpBlocksDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataArray) ToGetIpBlocksDataArrayOutputWithContext(ctx context.Context) GetIpBlocksDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataArrayOutput)
+}
+
+type GetIpBlocksDataOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksData)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataOutput) ToGetIpBlocksDataOutput() GetIpBlocksDataOutput {
+	return o
+}
+
+func (o GetIpBlocksDataOutput) ToGetIpBlocksDataOutputWithContext(ctx context.Context) GetIpBlocksDataOutput {
+	return o
+}
+
+// Account associated with the IP block
+func (o GetIpBlocksDataOutput) Account() GetIpBlocksDataAccountOutput {
+	return o.ApplyT(func(v GetIpBlocksData) GetIpBlocksDataAccount { return v.Account }).(GetIpBlocksDataAccountOutput)
+}
+
+// List of assets (connections or services) using this IP block
+func (o GetIpBlocksDataOutput) Assets() GetIpBlocksDataAssetArrayOutput {
+	return o.ApplyT(func(v GetIpBlocksData) []GetIpBlocksDataAsset { return v.Assets }).(GetIpBlocksDataAssetArrayOutput)
+}
+
+// Current state of the latest change on the IP block
+func (o GetIpBlocksDataOutput) Change() GetIpBlocksDataChangeOutput {
+	return o.ApplyT(func(v GetIpBlocksData) GetIpBlocksDataChange { return v.Change }).(GetIpBlocksDataChangeOutput)
+}
+
+// Audit log of changes to the IP block
+func (o GetIpBlocksDataOutput) ChangeLog() GetIpBlocksDataChangeLogOutput {
+	return o.ApplyT(func(v GetIpBlocksData) GetIpBlocksDataChangeLog { return v.ChangeLog }).(GetIpBlocksDataChangeLogOutput)
+}
+
+// Equinix auto generated URI to the IP block resource
+func (o GetIpBlocksDataOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksData) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Location of the IP block
+func (o GetIpBlocksDataOutput) Location() GetIpBlocksDataLocationOutput {
+	return o.ApplyT(func(v GetIpBlocksData) GetIpBlocksDataLocation { return v.Location }).(GetIpBlocksDataLocationOutput)
+}
+
+// Order details for the IP block
+func (o GetIpBlocksDataOutput) Order() GetIpBlocksDataOrderOutput {
+	return o.ApplyT(func(v GetIpBlocksData) GetIpBlocksDataOrder { return v.Order }).(GetIpBlocksDataOrderOutput)
+}
+
+// Ownership of the IP block. One of: EQUINIX, CUSTOMER
+func (o GetIpBlocksDataOutput) Ownership() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksData) string { return v.Ownership }).(pulumi.StringOutput)
+}
+
+// The assigned IP prefix (e.g. 192.0.2.0/24)
+func (o GetIpBlocksDataOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksData) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Prefix length of the IP block (e.g. 24 for a /24 block)
+func (o GetIpBlocksDataOutput) PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpBlocksData) int { return v.PrefixLength }).(pulumi.IntOutput)
+}
+
+// Project associated with the IP block
+func (o GetIpBlocksDataOutput) Project() GetIpBlocksDataProjectOutput {
+	return o.ApplyT(func(v GetIpBlocksData) GetIpBlocksDataProject { return v.Project }).(GetIpBlocksDataProjectOutput)
+}
+
+// Provisioning state of the IP block
+func (o GetIpBlocksDataOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksData) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Type of the IP block product
+func (o GetIpBlocksDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned unique identifier for the IP block
+func (o GetIpBlocksDataOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksData) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpBlocksData)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataArrayOutput) ToGetIpBlocksDataArrayOutput() GetIpBlocksDataArrayOutput {
+	return o
+}
+
+func (o GetIpBlocksDataArrayOutput) ToGetIpBlocksDataArrayOutputWithContext(ctx context.Context) GetIpBlocksDataArrayOutput {
+	return o
+}
+
+func (o GetIpBlocksDataArrayOutput) Index(i pulumi.IntInput) GetIpBlocksDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpBlocksData {
+		return vs[0].([]GetIpBlocksData)[vs[1].(int)]
+	}).(GetIpBlocksDataOutput)
+}
+
+type GetIpBlocksDataAccount struct {
+	// Account number
+	AccountNumber string `pulumi:"accountNumber"`
+}
+
+// GetIpBlocksDataAccountInput is an input type that accepts GetIpBlocksDataAccountArgs and GetIpBlocksDataAccountOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataAccountInput` via:
+//
+//	GetIpBlocksDataAccountArgs{...}
+type GetIpBlocksDataAccountInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataAccountOutput() GetIpBlocksDataAccountOutput
+	ToGetIpBlocksDataAccountOutputWithContext(context.Context) GetIpBlocksDataAccountOutput
+}
+
+type GetIpBlocksDataAccountArgs struct {
+	// Account number
+	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
+}
+
+func (GetIpBlocksDataAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataAccount)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataAccountArgs) ToGetIpBlocksDataAccountOutput() GetIpBlocksDataAccountOutput {
+	return i.ToGetIpBlocksDataAccountOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataAccountArgs) ToGetIpBlocksDataAccountOutputWithContext(ctx context.Context) GetIpBlocksDataAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataAccountOutput)
+}
+
+type GetIpBlocksDataAccountOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataAccount)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataAccountOutput) ToGetIpBlocksDataAccountOutput() GetIpBlocksDataAccountOutput {
+	return o
+}
+
+func (o GetIpBlocksDataAccountOutput) ToGetIpBlocksDataAccountOutputWithContext(ctx context.Context) GetIpBlocksDataAccountOutput {
+	return o
+}
+
+// Account number
+func (o GetIpBlocksDataAccountOutput) AccountNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataAccount) string { return v.AccountNumber }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksDataAsset struct {
+	// URI to the asset resource
+	Href string `pulumi:"href"`
+	// Type of the asset
+	Type string `pulumi:"type"`
+	// Unique identifier of the asset
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetIpBlocksDataAssetInput is an input type that accepts GetIpBlocksDataAssetArgs and GetIpBlocksDataAssetOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataAssetInput` via:
+//
+//	GetIpBlocksDataAssetArgs{...}
+type GetIpBlocksDataAssetInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataAssetOutput() GetIpBlocksDataAssetOutput
+	ToGetIpBlocksDataAssetOutputWithContext(context.Context) GetIpBlocksDataAssetOutput
+}
+
+type GetIpBlocksDataAssetArgs struct {
+	// URI to the asset resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Type of the asset
+	Type pulumi.StringInput `pulumi:"type"`
+	// Unique identifier of the asset
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetIpBlocksDataAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataAsset)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataAssetArgs) ToGetIpBlocksDataAssetOutput() GetIpBlocksDataAssetOutput {
+	return i.ToGetIpBlocksDataAssetOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataAssetArgs) ToGetIpBlocksDataAssetOutputWithContext(ctx context.Context) GetIpBlocksDataAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataAssetOutput)
+}
+
+// GetIpBlocksDataAssetArrayInput is an input type that accepts GetIpBlocksDataAssetArray and GetIpBlocksDataAssetArrayOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataAssetArrayInput` via:
+//
+//	GetIpBlocksDataAssetArray{ GetIpBlocksDataAssetArgs{...} }
+type GetIpBlocksDataAssetArrayInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataAssetArrayOutput() GetIpBlocksDataAssetArrayOutput
+	ToGetIpBlocksDataAssetArrayOutputWithContext(context.Context) GetIpBlocksDataAssetArrayOutput
+}
+
+type GetIpBlocksDataAssetArray []GetIpBlocksDataAssetInput
+
+func (GetIpBlocksDataAssetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpBlocksDataAsset)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataAssetArray) ToGetIpBlocksDataAssetArrayOutput() GetIpBlocksDataAssetArrayOutput {
+	return i.ToGetIpBlocksDataAssetArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataAssetArray) ToGetIpBlocksDataAssetArrayOutputWithContext(ctx context.Context) GetIpBlocksDataAssetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataAssetArrayOutput)
+}
+
+type GetIpBlocksDataAssetOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataAsset)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataAssetOutput) ToGetIpBlocksDataAssetOutput() GetIpBlocksDataAssetOutput {
+	return o
+}
+
+func (o GetIpBlocksDataAssetOutput) ToGetIpBlocksDataAssetOutputWithContext(ctx context.Context) GetIpBlocksDataAssetOutput {
+	return o
+}
+
+// URI to the asset resource
+func (o GetIpBlocksDataAssetOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataAsset) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Type of the asset
+func (o GetIpBlocksDataAssetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataAsset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the asset
+func (o GetIpBlocksDataAssetOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataAsset) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksDataAssetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataAssetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpBlocksDataAsset)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataAssetArrayOutput) ToGetIpBlocksDataAssetArrayOutput() GetIpBlocksDataAssetArrayOutput {
+	return o
+}
+
+func (o GetIpBlocksDataAssetArrayOutput) ToGetIpBlocksDataAssetArrayOutputWithContext(ctx context.Context) GetIpBlocksDataAssetArrayOutput {
+	return o
+}
+
+func (o GetIpBlocksDataAssetArrayOutput) Index(i pulumi.IntInput) GetIpBlocksDataAssetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpBlocksDataAsset {
+		return vs[0].([]GetIpBlocksDataAsset)[vs[1].(int)]
+	}).(GetIpBlocksDataAssetOutput)
+}
+
+type GetIpBlocksDataChange struct {
+	// URI to the change resource
+	Href string `pulumi:"href"`
+}
+
+// GetIpBlocksDataChangeInput is an input type that accepts GetIpBlocksDataChangeArgs and GetIpBlocksDataChangeOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataChangeInput` via:
+//
+//	GetIpBlocksDataChangeArgs{...}
+type GetIpBlocksDataChangeInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataChangeOutput() GetIpBlocksDataChangeOutput
+	ToGetIpBlocksDataChangeOutputWithContext(context.Context) GetIpBlocksDataChangeOutput
+}
+
+type GetIpBlocksDataChangeArgs struct {
+	// URI to the change resource
+	Href pulumi.StringInput `pulumi:"href"`
+}
+
+func (GetIpBlocksDataChangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataChange)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataChangeArgs) ToGetIpBlocksDataChangeOutput() GetIpBlocksDataChangeOutput {
+	return i.ToGetIpBlocksDataChangeOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataChangeArgs) ToGetIpBlocksDataChangeOutputWithContext(ctx context.Context) GetIpBlocksDataChangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataChangeOutput)
+}
+
+type GetIpBlocksDataChangeOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataChange)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataChangeOutput) ToGetIpBlocksDataChangeOutput() GetIpBlocksDataChangeOutput {
+	return o
+}
+
+func (o GetIpBlocksDataChangeOutput) ToGetIpBlocksDataChangeOutputWithContext(ctx context.Context) GetIpBlocksDataChangeOutput {
+	return o
+}
+
+// URI to the change resource
+func (o GetIpBlocksDataChangeOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataChange) string { return v.Href }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksDataChangeLog struct {
+	// Creation time of the IP block
+	CreatedDateTime string `pulumi:"createdDateTime"`
+	// Deletion time of the IP block
+	DeletedDateTime string `pulumi:"deletedDateTime"`
+	// Last update time of the IP block
+	UpdatedDateTime string `pulumi:"updatedDateTime"`
+}
+
+// GetIpBlocksDataChangeLogInput is an input type that accepts GetIpBlocksDataChangeLogArgs and GetIpBlocksDataChangeLogOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataChangeLogInput` via:
+//
+//	GetIpBlocksDataChangeLogArgs{...}
+type GetIpBlocksDataChangeLogInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataChangeLogOutput() GetIpBlocksDataChangeLogOutput
+	ToGetIpBlocksDataChangeLogOutputWithContext(context.Context) GetIpBlocksDataChangeLogOutput
+}
+
+type GetIpBlocksDataChangeLogArgs struct {
+	// Creation time of the IP block
+	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
+	// Deletion time of the IP block
+	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
+	// Last update time of the IP block
+	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetIpBlocksDataChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataChangeLog)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataChangeLogArgs) ToGetIpBlocksDataChangeLogOutput() GetIpBlocksDataChangeLogOutput {
+	return i.ToGetIpBlocksDataChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataChangeLogArgs) ToGetIpBlocksDataChangeLogOutputWithContext(ctx context.Context) GetIpBlocksDataChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataChangeLogOutput)
+}
+
+type GetIpBlocksDataChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataChangeLog)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataChangeLogOutput) ToGetIpBlocksDataChangeLogOutput() GetIpBlocksDataChangeLogOutput {
+	return o
+}
+
+func (o GetIpBlocksDataChangeLogOutput) ToGetIpBlocksDataChangeLogOutputWithContext(ctx context.Context) GetIpBlocksDataChangeLogOutput {
+	return o
+}
+
+// Creation time of the IP block
+func (o GetIpBlocksDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+// Deletion time of the IP block
+func (o GetIpBlocksDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+// Last update time of the IP block
+func (o GetIpBlocksDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksDataLocation struct {
+	// Two-letter metro code
+	MetroCode string `pulumi:"metroCode"`
+	// URI to the metro resource
+	MetroHref string `pulumi:"metroHref"`
+}
+
+// GetIpBlocksDataLocationInput is an input type that accepts GetIpBlocksDataLocationArgs and GetIpBlocksDataLocationOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataLocationInput` via:
+//
+//	GetIpBlocksDataLocationArgs{...}
+type GetIpBlocksDataLocationInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataLocationOutput() GetIpBlocksDataLocationOutput
+	ToGetIpBlocksDataLocationOutputWithContext(context.Context) GetIpBlocksDataLocationOutput
+}
+
+type GetIpBlocksDataLocationArgs struct {
+	// Two-letter metro code
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// URI to the metro resource
+	MetroHref pulumi.StringInput `pulumi:"metroHref"`
+}
+
+func (GetIpBlocksDataLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataLocation)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataLocationArgs) ToGetIpBlocksDataLocationOutput() GetIpBlocksDataLocationOutput {
+	return i.ToGetIpBlocksDataLocationOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataLocationArgs) ToGetIpBlocksDataLocationOutputWithContext(ctx context.Context) GetIpBlocksDataLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataLocationOutput)
+}
+
+type GetIpBlocksDataLocationOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataLocation)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataLocationOutput) ToGetIpBlocksDataLocationOutput() GetIpBlocksDataLocationOutput {
+	return o
+}
+
+func (o GetIpBlocksDataLocationOutput) ToGetIpBlocksDataLocationOutputWithContext(ctx context.Context) GetIpBlocksDataLocationOutput {
+	return o
+}
+
+// Two-letter metro code
+func (o GetIpBlocksDataLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// URI to the metro resource
+func (o GetIpBlocksDataLocationOutput) MetroHref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataLocation) string { return v.MetroHref }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksDataOrder struct {
+	// URI to the order resource
+	Href string `pulumi:"href"`
+	// Order number
+	OrderNumber string `pulumi:"orderNumber"`
+}
+
+// GetIpBlocksDataOrderInput is an input type that accepts GetIpBlocksDataOrderArgs and GetIpBlocksDataOrderOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataOrderInput` via:
+//
+//	GetIpBlocksDataOrderArgs{...}
+type GetIpBlocksDataOrderInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataOrderOutput() GetIpBlocksDataOrderOutput
+	ToGetIpBlocksDataOrderOutputWithContext(context.Context) GetIpBlocksDataOrderOutput
+}
+
+type GetIpBlocksDataOrderArgs struct {
+	// URI to the order resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Order number
+	OrderNumber pulumi.StringInput `pulumi:"orderNumber"`
+}
+
+func (GetIpBlocksDataOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataOrder)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataOrderArgs) ToGetIpBlocksDataOrderOutput() GetIpBlocksDataOrderOutput {
+	return i.ToGetIpBlocksDataOrderOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataOrderArgs) ToGetIpBlocksDataOrderOutputWithContext(ctx context.Context) GetIpBlocksDataOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataOrderOutput)
+}
+
+type GetIpBlocksDataOrderOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataOrder)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataOrderOutput) ToGetIpBlocksDataOrderOutput() GetIpBlocksDataOrderOutput {
+	return o
+}
+
+func (o GetIpBlocksDataOrderOutput) ToGetIpBlocksDataOrderOutputWithContext(ctx context.Context) GetIpBlocksDataOrderOutput {
+	return o
+}
+
+// URI to the order resource
+func (o GetIpBlocksDataOrderOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataOrder) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Order number
+func (o GetIpBlocksDataOrderOutput) OrderNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataOrder) string { return v.OrderNumber }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksDataProject struct {
+	// URI to the project resource
+	Href string `pulumi:"href"`
+	// Equinix subscriber-assigned project ID
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetIpBlocksDataProjectInput is an input type that accepts GetIpBlocksDataProjectArgs and GetIpBlocksDataProjectOutput values.
+// You can construct a concrete instance of `GetIpBlocksDataProjectInput` via:
+//
+//	GetIpBlocksDataProjectArgs{...}
+type GetIpBlocksDataProjectInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksDataProjectOutput() GetIpBlocksDataProjectOutput
+	ToGetIpBlocksDataProjectOutputWithContext(context.Context) GetIpBlocksDataProjectOutput
+}
+
+type GetIpBlocksDataProjectArgs struct {
+	// URI to the project resource
+	Href pulumi.StringInput `pulumi:"href"`
+	// Equinix subscriber-assigned project ID
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetIpBlocksDataProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataProject)(nil)).Elem()
+}
+
+func (i GetIpBlocksDataProjectArgs) ToGetIpBlocksDataProjectOutput() GetIpBlocksDataProjectOutput {
+	return i.ToGetIpBlocksDataProjectOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksDataProjectArgs) ToGetIpBlocksDataProjectOutputWithContext(ctx context.Context) GetIpBlocksDataProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksDataProjectOutput)
+}
+
+type GetIpBlocksDataProjectOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksDataProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksDataProject)(nil)).Elem()
+}
+
+func (o GetIpBlocksDataProjectOutput) ToGetIpBlocksDataProjectOutput() GetIpBlocksDataProjectOutput {
+	return o
+}
+
+func (o GetIpBlocksDataProjectOutput) ToGetIpBlocksDataProjectOutputWithContext(ctx context.Context) GetIpBlocksDataProjectOutput {
+	return o
+}
+
+// URI to the project resource
+func (o GetIpBlocksDataProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataProject) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// Equinix subscriber-assigned project ID
+func (o GetIpBlocksDataProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetIpBlocksFilter struct {
+	// Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+	Operator string `pulumi:"operator"`
+	// Field name to use on filters
+	Property string `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values []string `pulumi:"values"`
+}
+
+// GetIpBlocksFilterInput is an input type that accepts GetIpBlocksFilterArgs and GetIpBlocksFilterOutput values.
+// You can construct a concrete instance of `GetIpBlocksFilterInput` via:
+//
+//	GetIpBlocksFilterArgs{...}
+type GetIpBlocksFilterInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksFilterOutput() GetIpBlocksFilterOutput
+	ToGetIpBlocksFilterOutputWithContext(context.Context) GetIpBlocksFilterOutput
+}
+
+type GetIpBlocksFilterArgs struct {
+	// Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Field name to use on filters
+	Property pulumi.StringInput `pulumi:"property"`
+	// The values that you want to apply the property+operator combination to in order to filter your data search
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetIpBlocksFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksFilter)(nil)).Elem()
+}
+
+func (i GetIpBlocksFilterArgs) ToGetIpBlocksFilterOutput() GetIpBlocksFilterOutput {
+	return i.ToGetIpBlocksFilterOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksFilterArgs) ToGetIpBlocksFilterOutputWithContext(ctx context.Context) GetIpBlocksFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksFilterOutput)
+}
+
+type GetIpBlocksFilterOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksFilter)(nil)).Elem()
+}
+
+func (o GetIpBlocksFilterOutput) ToGetIpBlocksFilterOutput() GetIpBlocksFilterOutput {
+	return o
+}
+
+func (o GetIpBlocksFilterOutput) ToGetIpBlocksFilterOutputWithContext(ctx context.Context) GetIpBlocksFilterOutput {
+	return o
+}
+
+// Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+func (o GetIpBlocksFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Field name to use on filters
+func (o GetIpBlocksFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// The values that you want to apply the property+operator combination to in order to filter your data search
+func (o GetIpBlocksFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpBlocksFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetIpBlocksPagination struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit int `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next string `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset int `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous string `pulumi:"previous"`
+	// The total number of IP blocks available to the user making the request
+	Total int `pulumi:"total"`
+}
+
+// GetIpBlocksPaginationInput is an input type that accepts GetIpBlocksPaginationArgs and GetIpBlocksPaginationOutput values.
+// You can construct a concrete instance of `GetIpBlocksPaginationInput` via:
+//
+//	GetIpBlocksPaginationArgs{...}
+type GetIpBlocksPaginationInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksPaginationOutput() GetIpBlocksPaginationOutput
+	ToGetIpBlocksPaginationOutputWithContext(context.Context) GetIpBlocksPaginationOutput
+}
+
+type GetIpBlocksPaginationArgs struct {
+	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The URL relative to the next item in the response
+	Next pulumi.StringInput `pulumi:"next"`
+	// Index of the first item returned in the response. The default is 0
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// The URL relative to the previous item in the response
+	Previous pulumi.StringInput `pulumi:"previous"`
+	// The total number of IP blocks available to the user making the request
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetIpBlocksPaginationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksPagination)(nil)).Elem()
+}
+
+func (i GetIpBlocksPaginationArgs) ToGetIpBlocksPaginationOutput() GetIpBlocksPaginationOutput {
+	return i.ToGetIpBlocksPaginationOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksPaginationArgs) ToGetIpBlocksPaginationOutputWithContext(ctx context.Context) GetIpBlocksPaginationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksPaginationOutput)
+}
+
+func (i GetIpBlocksPaginationArgs) ToGetIpBlocksPaginationPtrOutput() GetIpBlocksPaginationPtrOutput {
+	return i.ToGetIpBlocksPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksPaginationArgs) ToGetIpBlocksPaginationPtrOutputWithContext(ctx context.Context) GetIpBlocksPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksPaginationOutput).ToGetIpBlocksPaginationPtrOutputWithContext(ctx)
+}
+
+// GetIpBlocksPaginationPtrInput is an input type that accepts GetIpBlocksPaginationArgs, GetIpBlocksPaginationPtr and GetIpBlocksPaginationPtrOutput values.
+// You can construct a concrete instance of `GetIpBlocksPaginationPtrInput` via:
+//
+//	        GetIpBlocksPaginationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetIpBlocksPaginationPtrInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksPaginationPtrOutput() GetIpBlocksPaginationPtrOutput
+	ToGetIpBlocksPaginationPtrOutputWithContext(context.Context) GetIpBlocksPaginationPtrOutput
+}
+
+type getIpBlocksPaginationPtrType GetIpBlocksPaginationArgs
+
+func GetIpBlocksPaginationPtr(v *GetIpBlocksPaginationArgs) GetIpBlocksPaginationPtrInput {
+	return (*getIpBlocksPaginationPtrType)(v)
+}
+
+func (*getIpBlocksPaginationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIpBlocksPagination)(nil)).Elem()
+}
+
+func (i *getIpBlocksPaginationPtrType) ToGetIpBlocksPaginationPtrOutput() GetIpBlocksPaginationPtrOutput {
+	return i.ToGetIpBlocksPaginationPtrOutputWithContext(context.Background())
+}
+
+func (i *getIpBlocksPaginationPtrType) ToGetIpBlocksPaginationPtrOutputWithContext(ctx context.Context) GetIpBlocksPaginationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksPaginationPtrOutput)
+}
+
+type GetIpBlocksPaginationOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksPaginationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksPagination)(nil)).Elem()
+}
+
+func (o GetIpBlocksPaginationOutput) ToGetIpBlocksPaginationOutput() GetIpBlocksPaginationOutput {
+	return o
+}
+
+func (o GetIpBlocksPaginationOutput) ToGetIpBlocksPaginationOutputWithContext(ctx context.Context) GetIpBlocksPaginationOutput {
+	return o
+}
+
+func (o GetIpBlocksPaginationOutput) ToGetIpBlocksPaginationPtrOutput() GetIpBlocksPaginationPtrOutput {
+	return o.ToGetIpBlocksPaginationPtrOutputWithContext(context.Background())
+}
+
+func (o GetIpBlocksPaginationOutput) ToGetIpBlocksPaginationPtrOutputWithContext(ctx context.Context) GetIpBlocksPaginationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIpBlocksPagination) *GetIpBlocksPagination {
+		return &v
+	}).(GetIpBlocksPaginationPtrOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetIpBlocksPaginationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpBlocksPagination) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetIpBlocksPaginationOutput) Next() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksPagination) string { return v.Next }).(pulumi.StringOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetIpBlocksPaginationOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpBlocksPagination) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetIpBlocksPaginationOutput) Previous() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpBlocksPagination) string { return v.Previous }).(pulumi.StringOutput)
+}
+
+// The total number of IP blocks available to the user making the request
+func (o GetIpBlocksPaginationOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpBlocksPagination) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetIpBlocksPaginationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksPaginationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIpBlocksPagination)(nil)).Elem()
+}
+
+func (o GetIpBlocksPaginationPtrOutput) ToGetIpBlocksPaginationPtrOutput() GetIpBlocksPaginationPtrOutput {
+	return o
+}
+
+func (o GetIpBlocksPaginationPtrOutput) ToGetIpBlocksPaginationPtrOutputWithContext(ctx context.Context) GetIpBlocksPaginationPtrOutput {
+	return o
+}
+
+func (o GetIpBlocksPaginationPtrOutput) Elem() GetIpBlocksPaginationOutput {
+	return o.ApplyT(func(v *GetIpBlocksPagination) GetIpBlocksPagination {
+		if v != nil {
+			return *v
+		}
+		var ret GetIpBlocksPagination
+		return ret
+	}).(GetIpBlocksPaginationOutput)
+}
+
+// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+func (o GetIpBlocksPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetIpBlocksPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the next item in the response
+func (o GetIpBlocksPaginationPtrOutput) Next() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIpBlocksPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Next
+	}).(pulumi.StringPtrOutput)
+}
+
+// Index of the first item returned in the response. The default is 0
+func (o GetIpBlocksPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetIpBlocksPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL relative to the previous item in the response
+func (o GetIpBlocksPaginationPtrOutput) Previous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIpBlocksPagination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Previous
+	}).(pulumi.StringPtrOutput)
+}
+
+// The total number of IP blocks available to the user making the request
+func (o GetIpBlocksPaginationPtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetIpBlocksPagination) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Total
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetIpBlocksSort struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction *string `pulumi:"direction"`
+	// The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+	Property *string `pulumi:"property"`
+}
+
+// GetIpBlocksSortInput is an input type that accepts GetIpBlocksSortArgs and GetIpBlocksSortOutput values.
+// You can construct a concrete instance of `GetIpBlocksSortInput` via:
+//
+//	GetIpBlocksSortArgs{...}
+type GetIpBlocksSortInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksSortOutput() GetIpBlocksSortOutput
+	ToGetIpBlocksSortOutputWithContext(context.Context) GetIpBlocksSortOutput
+}
+
+type GetIpBlocksSortArgs struct {
+	// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+	Property pulumi.StringPtrInput `pulumi:"property"`
+}
+
+func (GetIpBlocksSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksSort)(nil)).Elem()
+}
+
+func (i GetIpBlocksSortArgs) ToGetIpBlocksSortOutput() GetIpBlocksSortOutput {
+	return i.ToGetIpBlocksSortOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksSortArgs) ToGetIpBlocksSortOutputWithContext(ctx context.Context) GetIpBlocksSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksSortOutput)
+}
+
+func (i GetIpBlocksSortArgs) ToGetIpBlocksSortPtrOutput() GetIpBlocksSortPtrOutput {
+	return i.ToGetIpBlocksSortPtrOutputWithContext(context.Background())
+}
+
+func (i GetIpBlocksSortArgs) ToGetIpBlocksSortPtrOutputWithContext(ctx context.Context) GetIpBlocksSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksSortOutput).ToGetIpBlocksSortPtrOutputWithContext(ctx)
+}
+
+// GetIpBlocksSortPtrInput is an input type that accepts GetIpBlocksSortArgs, GetIpBlocksSortPtr and GetIpBlocksSortPtrOutput values.
+// You can construct a concrete instance of `GetIpBlocksSortPtrInput` via:
+//
+//	        GetIpBlocksSortArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetIpBlocksSortPtrInput interface {
+	pulumi.Input
+
+	ToGetIpBlocksSortPtrOutput() GetIpBlocksSortPtrOutput
+	ToGetIpBlocksSortPtrOutputWithContext(context.Context) GetIpBlocksSortPtrOutput
+}
+
+type getIpBlocksSortPtrType GetIpBlocksSortArgs
+
+func GetIpBlocksSortPtr(v *GetIpBlocksSortArgs) GetIpBlocksSortPtrInput {
+	return (*getIpBlocksSortPtrType)(v)
+}
+
+func (*getIpBlocksSortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIpBlocksSort)(nil)).Elem()
+}
+
+func (i *getIpBlocksSortPtrType) ToGetIpBlocksSortPtrOutput() GetIpBlocksSortPtrOutput {
+	return i.ToGetIpBlocksSortPtrOutputWithContext(context.Background())
+}
+
+func (i *getIpBlocksSortPtrType) ToGetIpBlocksSortPtrOutputWithContext(ctx context.Context) GetIpBlocksSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpBlocksSortPtrOutput)
+}
+
+type GetIpBlocksSortOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpBlocksSort)(nil)).Elem()
+}
+
+func (o GetIpBlocksSortOutput) ToGetIpBlocksSortOutput() GetIpBlocksSortOutput {
+	return o
+}
+
+func (o GetIpBlocksSortOutput) ToGetIpBlocksSortOutputWithContext(ctx context.Context) GetIpBlocksSortOutput {
+	return o
+}
+
+func (o GetIpBlocksSortOutput) ToGetIpBlocksSortPtrOutput() GetIpBlocksSortPtrOutput {
+	return o.ToGetIpBlocksSortPtrOutputWithContext(context.Background())
+}
+
+func (o GetIpBlocksSortOutput) ToGetIpBlocksSortPtrOutputWithContext(ctx context.Context) GetIpBlocksSortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIpBlocksSort) *GetIpBlocksSort {
+		return &v
+	}).(GetIpBlocksSortPtrOutput)
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetIpBlocksSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpBlocksSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+func (o GetIpBlocksSortOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpBlocksSort) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+type GetIpBlocksSortPtrOutput struct{ *pulumi.OutputState }
+
+func (GetIpBlocksSortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIpBlocksSort)(nil)).Elem()
+}
+
+func (o GetIpBlocksSortPtrOutput) ToGetIpBlocksSortPtrOutput() GetIpBlocksSortPtrOutput {
+	return o
+}
+
+func (o GetIpBlocksSortPtrOutput) ToGetIpBlocksSortPtrOutputWithContext(ctx context.Context) GetIpBlocksSortPtrOutput {
+	return o
+}
+
+func (o GetIpBlocksSortPtrOutput) Elem() GetIpBlocksSortOutput {
+	return o.ApplyT(func(v *GetIpBlocksSort) GetIpBlocksSort {
+		if v != nil {
+			return *v
+		}
+		var ret GetIpBlocksSort
+		return ret
+	}).(GetIpBlocksSortOutput)
+}
+
+// The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+func (o GetIpBlocksSortPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIpBlocksSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+func (o GetIpBlocksSortPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIpBlocksSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetMarketplaceSubscriptionEntitlement struct {
 	// Asset information
 	Assets []GetMarketplaceSubscriptionEntitlementAsset `pulumi:"assets"`
@@ -74599,3989 +77384,6 @@ func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetwor
 	}).(pulumi.StringOutput)
 }
 
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation struct {
-	// IBX Code
-	Ibx string `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode string `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName string `pulumi:"metroName"`
-	// Access point region
-	Region string `pulumi:"region"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...}
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs struct {
-	// IBX Code
-	Ibx pulumi.StringInput `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode pulumi.StringInput `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName pulumi.StringInput `pulumi:"metroName"`
-	// Access point region
-	Region pulumi.StringInput `pulumi:"region"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{ GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{...} }
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
-	return o
-}
-
-// IBX Code
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
-		return v.Ibx
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro code
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
-		return v.MetroCode
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
-		return v.MetroName
-	}).(pulumi.StringOutput)
-}
-
-// Access point region
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation) string {
-		return v.Region
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation {
-		return vs[0].([]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocation)[vs[1].(int)]
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort struct {
-	// Account Name
-	AccountName string `pulumi:"accountName"`
-	// Port Bandwidth
-	Bandwidth int `pulumi:"bandwidth"`
-	// Customer virtual port Id
-	CvpId int `pulumi:"cvpId"`
-	// Port Encapsulation
-	EncapsulationProtocolType string `pulumi:"encapsulationProtocolType"`
-	// Unique Resource Identifier
-	Href string `pulumi:"href"`
-	// Port Location
-	Locations []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation `pulumi:"locations"`
-	// Port Name
-	PortName string `pulumi:"portName"`
-	// Port Priority
-	Priority string `pulumi:"priority"`
-	// Type of Port
-	Type string `pulumi:"type"`
-	// Equinix-assigned Port identifier
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs{...}
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs struct {
-	// Account Name
-	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// Port Bandwidth
-	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// Customer virtual port Id
-	CvpId pulumi.IntInput `pulumi:"cvpId"`
-	// Port Encapsulation
-	EncapsulationProtocolType pulumi.StringInput `pulumi:"encapsulationProtocolType"`
-	// Unique Resource Identifier
-	Href pulumi.StringInput `pulumi:"href"`
-	// Port Location
-	Locations GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
-	// Port Name
-	PortName pulumi.StringInput `pulumi:"portName"`
-	// Port Priority
-	Priority pulumi.StringInput `pulumi:"priority"`
-	// Type of Port
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned Port identifier
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput)
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput).ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx)
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs, GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtr and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrInput` via:
-//
-//	        GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput
-}
-
-type getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrType GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs
-
-func GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtr(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrInput {
-	return (*getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrType)(v)
-}
-
-func (*getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrType) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrType) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return o.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort {
-		return &v
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput)
-}
-
-// Account Name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
-		return v.AccountName
-	}).(pulumi.StringOutput)
-}
-
-// Port Bandwidth
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) int { return v.Bandwidth }).(pulumi.IntOutput)
-}
-
-// Customer virtual port Id
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) CvpId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) int { return v.CvpId }).(pulumi.IntOutput)
-}
-
-// Port Encapsulation
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
-		return v.EncapsulationProtocolType
-	}).(pulumi.StringOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Href }).(pulumi.StringOutput)
-}
-
-// Port Location
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Locations() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation {
-		return v.Locations
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
-}
-
-// Port Name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) PortName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
-		return v.PortName
-	}).(pulumi.StringOutput)
-}
-
-// Port Priority
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Priority() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string {
-		return v.Priority
-	}).(pulumi.StringOutput)
-}
-
-// Type of Port
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Equinix-assigned Port identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort
-		return ret
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput)
-}
-
-// Account Name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) AccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port Bandwidth
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Bandwidth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Bandwidth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Customer virtual port Id
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) CvpId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.CvpId
-	}).(pulumi.IntPtrOutput)
-}
-
-// Port Encapsulation
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) EncapsulationProtocolType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EncapsulationProtocolType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Href() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Href
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port Location
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Locations() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation {
-		if v == nil {
-			return nil
-		}
-		return v.Locations
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
-}
-
-// Port Name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PortName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port Priority
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Priority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Priority
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of Port
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Equinix-assigned Port identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uuid
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation struct {
-	// IBX Code
-	Ibx string `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode string `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName string `pulumi:"metroName"`
-	// Access point region
-	Region string `pulumi:"region"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...}
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs struct {
-	// IBX Code
-	Ibx pulumi.StringInput `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode pulumi.StringInput `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName pulumi.StringInput `pulumi:"metroName"`
-	// Access point region
-	Region pulumi.StringInput `pulumi:"region"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray{ GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{...} }
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray []GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
-	return o
-}
-
-// IBX Code
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
-		return v.Ibx
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro code
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
-		return v.MetroCode
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
-		return v.MetroName
-	}).(pulumi.StringOutput)
-}
-
-// Access point region
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation) string {
-		return v.Region
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation {
-		return vs[0].([]GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocation)[vs[1].(int)]
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice struct {
-	// Virtual Device Cluster Information
-	Cluster string `pulumi:"cluster"`
-	// Unique Resource Identifier
-	Href string `pulumi:"href"`
-	// Customer-assigned Virtual Device Name
-	Name string `pulumi:"name"`
-	// Virtual Device type
-	Type string `pulumi:"type"`
-	// Equinix-assigned Virtual Device identifier
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs struct {
-	// Virtual Device Cluster Information
-	Cluster pulumi.StringInput `pulumi:"cluster"`
-	// Unique Resource Identifier
-	Href pulumi.StringInput `pulumi:"href"`
-	// Customer-assigned Virtual Device Name
-	Name pulumi.StringInput `pulumi:"name"`
-	// Virtual Device type
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput).ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
-}
-
-// GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs, GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr and GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput` via:
-//
-//	        GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
-	ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput
-}
-
-type getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs
-
-func GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtr(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput {
-	return (*getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType)(v)
-}
-
-func (*getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return o.ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
-		return &v
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput)
-}
-
-// Virtual Device Cluster Information
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
-		return v.Cluster
-	}).(pulumi.StringOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
-		return v.Href
-	}).(pulumi.StringOutput)
-}
-
-// Customer-assigned Virtual Device Name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
-		return v.Name
-	}).(pulumi.StringOutput)
-}
-
-// Virtual Device type
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
-		return v.Type
-	}).(pulumi.StringOutput)
-}
-
-// Equinix-assigned Virtual Device identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) string {
-		return v.Uuid
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice
-		return ret
-	}).(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput)
-}
-
-// Virtual Device Cluster Information
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Cluster
-	}).(pulumi.StringPtrOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Href
-	}).(pulumi.StringPtrOutput)
-}
-
-// Customer-assigned Virtual Device Name
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Virtual Device type
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Equinix-assigned Virtual Device identifier
-func (o GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uuid
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSide struct {
-	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
-	AccessPointSelectors []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector `pulumi:"accessPointSelectors"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideArgs and GetServiceTokensDataServiceTokenConnectionZSideOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideOutput() GetServiceTokensDataServiceTokenConnectionZSideOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideArgs struct {
-	// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
-	AccessPointSelectors GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput `pulumi:"accessPointSelectors"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideArgs) ToGetServiceTokensDataServiceTokenConnectionZSideOutput() GetServiceTokensDataServiceTokenConnectionZSideOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideArgs) ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideOutput)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideArray and GetServiceTokensDataServiceTokenConnectionZSideArrayOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideArrayInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideArray{ GetServiceTokensDataServiceTokenConnectionZSideArgs{...} }
-type GetServiceTokensDataServiceTokenConnectionZSideArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideArrayOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideArrayOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideArray []GetServiceTokensDataServiceTokenConnectionZSideInput
-
-func (GetServiceTokensDataServiceTokenConnectionZSideArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideArray) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideArray) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideArrayOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideOutput) ToGetServiceTokensDataServiceTokenConnectionZSideOutput() GetServiceTokensDataServiceTokenConnectionZSideOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideOutput) ToGetServiceTokensDataServiceTokenConnectionZSideOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideOutput {
-	return o
-}
-
-// List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability
-func (o GetServiceTokensDataServiceTokenConnectionZSideOutput) AccessPointSelectors() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSide) []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector {
-		return v.AccessPointSelectors
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSide)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSide {
-		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSide)[vs[1].(int)]
-	}).(GetServiceTokensDataServiceTokenConnectionZSideOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector struct {
-	// Virtual Device Interface Configuration
-	Interface *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface `pulumi:"interface"`
-	// Link protocol Configuration
-	LinkProtocol *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol `pulumi:"linkProtocol"`
-	// Network Configuration
-	Network GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork `pulumi:"network"`
-	// Port Configuration
-	Port *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort `pulumi:"port"`
-	// Type of Access point; COLO, VD, NETWORK
-	Type string `pulumi:"type"`
-	// Virtual Device Configuration
-	VirtualDevice *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice `pulumi:"virtualDevice"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs struct {
-	// Virtual Device Interface Configuration
-	Interface GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput `pulumi:"interface"`
-	// Link protocol Configuration
-	LinkProtocol GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput `pulumi:"linkProtocol"`
-	// Network Configuration
-	Network GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput `pulumi:"network"`
-	// Port Configuration
-	Port GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrInput `pulumi:"port"`
-	// Type of Access point; COLO, VD, NETWORK
-	Type pulumi.StringInput `pulumi:"type"`
-	// Virtual Device Configuration
-	VirtualDevice GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput `pulumi:"virtualDevice"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray{ GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs{...} }
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
-	return o
-}
-
-// Virtual Device Interface Configuration
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Interface() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface {
-		return v.Interface
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput)
-}
-
-// Link protocol Configuration
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) LinkProtocol() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
-		return v.LinkProtocol
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput)
-}
-
-// Network Configuration
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Network() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork {
-		return v.Network
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
-}
-
-// Port Configuration
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Port() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort {
-		return v.Port
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput)
-}
-
-// Type of Access point; COLO, VD, NETWORK
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Virtual Device Configuration
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput) VirtualDevice() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
-		return v.VirtualDevice
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector {
-		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelector)[vs[1].(int)]
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface struct {
-	// id
-	Id int `pulumi:"id"`
-	// Interface type
-	Type string `pulumi:"type"`
-	// Equinix-assigned interface identifier
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs struct {
-	// id
-	Id pulumi.IntInput `pulumi:"id"`
-	// Interface type
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned interface identifier
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput).ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs, GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtr and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput` via:
-//
-//	        GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput
-}
-
-type getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs
-
-func GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtr(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput {
-	return (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType)(v)
-}
-
-func (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return o.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface {
-		return &v
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput)
-}
-
-// id
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// Interface type
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) string {
-		return v.Type
-	}).(pulumi.StringOutput)
-}
-
-// Equinix-assigned interface identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) string {
-		return v.Uuid
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface
-		return ret
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput)
-}
-
-// id
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.IntPtrOutput)
-}
-
-// Interface type
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Equinix-assigned interface identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterface) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uuid
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol struct {
-	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
-	Type string `pulumi:"type"`
-	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
-	VlanCTag int `pulumi:"vlanCTag"`
-	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
-	VlanSTag int `pulumi:"vlanSTag"`
-	// Vlan Tag information, vlanTag value specified for DOT1Q connections
-	VlanTag int `pulumi:"vlanTag"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs struct {
-	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
-	Type pulumi.StringInput `pulumi:"type"`
-	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
-	VlanCTag pulumi.IntInput `pulumi:"vlanCTag"`
-	// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
-	VlanSTag pulumi.IntInput `pulumi:"vlanSTag"`
-	// Vlan Tag information, vlanTag value specified for DOT1Q connections
-	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput).ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs, GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtr and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput` via:
-//
-//	        GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput
-}
-
-type getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs
-
-func GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtr(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput {
-	return (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType)(v)
-}
-
-func (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return o.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
-		return &v
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput)
-}
-
-// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) string {
-		return v.Type
-	}).(pulumi.StringOutput)
-}
-
-// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanCTag() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
-		return v.VlanCTag
-	}).(pulumi.IntOutput)
-}
-
-// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanSTag() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
-		return v.VlanSTag
-	}).(pulumi.IntOutput)
-}
-
-// Vlan Tag information, vlanTag value specified for DOT1Q connections
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput) VlanTag() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) int {
-		return v.VlanTag
-	}).(pulumi.IntOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol
-		return ret
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput)
-}
-
-// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) VlanCTag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.VlanCTag
-	}).(pulumi.IntPtrOutput)
-}
-
-// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) VlanSTag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.VlanSTag
-	}).(pulumi.IntPtrOutput)
-}
-
-// Vlan Tag information, vlanTag value specified for DOT1Q connections
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput) VlanTag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocol) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.VlanTag
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork struct {
-	// Unique Resource Identifier
-	Href string `pulumi:"href"`
-	// Location
-	Locations []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation `pulumi:"locations"`
-	// Network Name
-	Name string `pulumi:"name"`
-	// Scope of Network
-	Scope string `pulumi:"scope"`
-	// Type of Network
-	Type string `pulumi:"type"`
-	// Equinix-assigned Network identifier
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs struct {
-	// Unique Resource Identifier
-	Href pulumi.StringInput `pulumi:"href"`
-	// Location
-	Locations GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput `pulumi:"locations"`
-	// Network Name
-	Name pulumi.StringInput `pulumi:"name"`
-	// Scope of Network
-	Scope pulumi.StringInput `pulumi:"scope"`
-	// Type of Network
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned Network identifier
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput {
-	return o
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
-		return v.Href
-	}).(pulumi.StringOutput)
-}
-
-// Location
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Locations() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
-		return v.Locations
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
-}
-
-// Network Name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
-		return v.Name
-	}).(pulumi.StringOutput)
-}
-
-// Scope of Network
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Scope() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
-		return v.Scope
-	}).(pulumi.StringOutput)
-}
-
-// Type of Network
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
-		return v.Type
-	}).(pulumi.StringOutput)
-}
-
-// Equinix-assigned Network identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetwork) string {
-		return v.Uuid
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation struct {
-	// IBX Code
-	Ibx string `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode string `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName string `pulumi:"metroName"`
-	// Access point region
-	Region string `pulumi:"region"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs struct {
-	// IBX Code
-	Ibx pulumi.StringInput `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode pulumi.StringInput `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName pulumi.StringInput `pulumi:"metroName"`
-	// Access point region
-	Region pulumi.StringInput `pulumi:"region"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{ GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{...} }
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
-	return o
-}
-
-// IBX Code
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Ibx() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
-		return v.Ibx
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro code
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
-		return v.MetroCode
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) MetroName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
-		return v.MetroName
-	}).(pulumi.StringOutput)
-}
-
-// Access point region
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation) string {
-		return v.Region
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation {
-		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocation)[vs[1].(int)]
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort struct {
-	// Account Name
-	AccountName string `pulumi:"accountName"`
-	// Port Bandwidth
-	Bandwidth int `pulumi:"bandwidth"`
-	// Customer virtual port Id
-	CvpId int `pulumi:"cvpId"`
-	// Port Encapsulation
-	EncapsulationProtocolType string `pulumi:"encapsulationProtocolType"`
-	// Unique Resource Identifier
-	Href string `pulumi:"href"`
-	// Port Location
-	Locations []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation `pulumi:"locations"`
-	// Port Name
-	PortName string `pulumi:"portName"`
-	// Port Priority
-	Priority string `pulumi:"priority"`
-	// Type of Port
-	Type string `pulumi:"type"`
-	// Equinix-assigned Port identifier
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs struct {
-	// Account Name
-	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// Port Bandwidth
-	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// Customer virtual port Id
-	CvpId pulumi.IntInput `pulumi:"cvpId"`
-	// Port Encapsulation
-	EncapsulationProtocolType pulumi.StringInput `pulumi:"encapsulationProtocolType"`
-	// Unique Resource Identifier
-	Href pulumi.StringInput `pulumi:"href"`
-	// Port Location
-	Locations GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput `pulumi:"locations"`
-	// Port Name
-	PortName pulumi.StringInput `pulumi:"portName"`
-	// Port Priority
-	Priority pulumi.StringInput `pulumi:"priority"`
-	// Type of Port
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned Port identifier
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput)
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput).ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs, GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtr and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrInput` via:
-//
-//	        GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput
-}
-
-type getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrType GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs
-
-func GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtr(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrInput {
-	return (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrType)(v)
-}
-
-func (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return o.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort {
-		return &v
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput)
-}
-
-// Account Name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
-		return v.AccountName
-	}).(pulumi.StringOutput)
-}
-
-// Port Bandwidth
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) int { return v.Bandwidth }).(pulumi.IntOutput)
-}
-
-// Customer virtual port Id
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) CvpId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) int { return v.CvpId }).(pulumi.IntOutput)
-}
-
-// Port Encapsulation
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) EncapsulationProtocolType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
-		return v.EncapsulationProtocolType
-	}).(pulumi.StringOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Href }).(pulumi.StringOutput)
-}
-
-// Port Location
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Locations() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation {
-		return v.Locations
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
-}
-
-// Port Name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) PortName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
-		return v.PortName
-	}).(pulumi.StringOutput)
-}
-
-// Port Priority
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Priority() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string {
-		return v.Priority
-	}).(pulumi.StringOutput)
-}
-
-// Type of Port
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Equinix-assigned Port identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort
-		return ret
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput)
-}
-
-// Account Name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) AccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port Bandwidth
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Bandwidth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Bandwidth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Customer virtual port Id
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) CvpId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.CvpId
-	}).(pulumi.IntPtrOutput)
-}
-
-// Port Encapsulation
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) EncapsulationProtocolType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EncapsulationProtocolType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Href() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Href
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port Location
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Locations() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation {
-		if v == nil {
-			return nil
-		}
-		return v.Locations
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
-}
-
-// Port Name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PortName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port Priority
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Priority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Priority
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of Port
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Equinix-assigned Port identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPort) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uuid
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation struct {
-	// IBX Code
-	Ibx string `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode string `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName string `pulumi:"metroName"`
-	// Access point region
-	Region string `pulumi:"region"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs struct {
-	// IBX Code
-	Ibx pulumi.StringInput `pulumi:"ibx"`
-	// Access point metro code
-	MetroCode pulumi.StringInput `pulumi:"metroCode"`
-	// Access point metro name
-	MetroName pulumi.StringInput `pulumi:"metroName"`
-	// Access point region
-	Region pulumi.StringInput `pulumi:"region"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{ GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{...} }
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray []GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
-	return o
-}
-
-// IBX Code
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Ibx() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
-		return v.Ibx
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro code
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
-		return v.MetroCode
-	}).(pulumi.StringOutput)
-}
-
-// Access point metro name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) MetroName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
-		return v.MetroName
-	}).(pulumi.StringOutput)
-}
-
-// Access point region
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation) string {
-		return v.Region
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation {
-		return vs[0].([]GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocation)[vs[1].(int)]
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice struct {
-	// Virtual Device Cluster Information
-	Cluster string `pulumi:"cluster"`
-	// Unique Resource Identifier
-	Href string `pulumi:"href"`
-	// Customer-assigned Virtual Device Name
-	Name string `pulumi:"name"`
-	// Virtual Device type
-	Type string `pulumi:"type"`
-	// Equinix-assigned Virtual Device identifier
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput` via:
-//
-//	GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs struct {
-	// Virtual Device Cluster Information
-	Cluster pulumi.StringInput `pulumi:"cluster"`
-	// Unique Resource Identifier
-	Href pulumi.StringInput `pulumi:"href"`
-	// Customer-assigned Virtual Device Name
-	Name pulumi.StringInput `pulumi:"name"`
-	// Virtual Device type
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned Virtual Device identifier
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput).ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx)
-}
-
-// GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput is an input type that accepts GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs, GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr and GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput values.
-// You can construct a concrete instance of `GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput` via:
-//
-//	        GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
-	ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput
-}
-
-type getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs
-
-func GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtr(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput {
-	return (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType)(v)
-}
-
-func (*getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return i.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrType) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return o.ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
-		return &v
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput)
-}
-
-// Virtual Device Cluster Information
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
-		return v.Cluster
-	}).(pulumi.StringOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
-		return v.Href
-	}).(pulumi.StringOutput)
-}
-
-// Customer-assigned Virtual Device Name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
-		return v.Name
-	}).(pulumi.StringOutput)
-}
-
-// Virtual Device type
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
-		return v.Type
-	}).(pulumi.StringOutput)
-}
-
-// Equinix-assigned Virtual Device identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) string {
-		return v.Uuid
-	}).(pulumi.StringOutput)
-}
-
-type GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice)(nil)).Elem()
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) ToGetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutputWithContext(ctx context.Context) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput {
-	return o
-}
-
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Elem() GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice
-		return ret
-	}).(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput)
-}
-
-// Virtual Device Cluster Information
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Cluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Cluster
-	}).(pulumi.StringPtrOutput)
-}
-
-// Unique Resource Identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Href
-	}).(pulumi.StringPtrOutput)
-}
-
-// Customer-assigned Virtual Device Name
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Virtual Device type
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Equinix-assigned Virtual Device identifier
-func (o GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevice) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uuid
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetServiceTokensFilter struct {
-	// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
-	Operator string `pulumi:"operator"`
-	// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
-	Property string `pulumi:"property"`
-	// The values that you want to apply the property+operator combination to in order to filter your data search
-	Values []string `pulumi:"values"`
-}
-
-// GetServiceTokensFilterInput is an input type that accepts GetServiceTokensFilterArgs and GetServiceTokensFilterOutput values.
-// You can construct a concrete instance of `GetServiceTokensFilterInput` via:
-//
-//	GetServiceTokensFilterArgs{...}
-type GetServiceTokensFilterInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensFilterOutput() GetServiceTokensFilterOutput
-	ToGetServiceTokensFilterOutputWithContext(context.Context) GetServiceTokensFilterOutput
-}
-
-type GetServiceTokensFilterArgs struct {
-	// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
-	Property pulumi.StringInput `pulumi:"property"`
-	// The values that you want to apply the property+operator combination to in order to filter your data search
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetServiceTokensFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensFilter)(nil)).Elem()
-}
-
-func (i GetServiceTokensFilterArgs) ToGetServiceTokensFilterOutput() GetServiceTokensFilterOutput {
-	return i.ToGetServiceTokensFilterOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensFilterArgs) ToGetServiceTokensFilterOutputWithContext(ctx context.Context) GetServiceTokensFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensFilterOutput)
-}
-
-// GetServiceTokensFilterArrayInput is an input type that accepts GetServiceTokensFilterArray and GetServiceTokensFilterArrayOutput values.
-// You can construct a concrete instance of `GetServiceTokensFilterArrayInput` via:
-//
-//	GetServiceTokensFilterArray{ GetServiceTokensFilterArgs{...} }
-type GetServiceTokensFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensFilterArrayOutput() GetServiceTokensFilterArrayOutput
-	ToGetServiceTokensFilterArrayOutputWithContext(context.Context) GetServiceTokensFilterArrayOutput
-}
-
-type GetServiceTokensFilterArray []GetServiceTokensFilterInput
-
-func (GetServiceTokensFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensFilter)(nil)).Elem()
-}
-
-func (i GetServiceTokensFilterArray) ToGetServiceTokensFilterArrayOutput() GetServiceTokensFilterArrayOutput {
-	return i.ToGetServiceTokensFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensFilterArray) ToGetServiceTokensFilterArrayOutputWithContext(ctx context.Context) GetServiceTokensFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensFilterArrayOutput)
-}
-
-type GetServiceTokensFilterOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensFilter)(nil)).Elem()
-}
-
-func (o GetServiceTokensFilterOutput) ToGetServiceTokensFilterOutput() GetServiceTokensFilterOutput {
-	return o
-}
-
-func (o GetServiceTokensFilterOutput) ToGetServiceTokensFilterOutputWithContext(ctx context.Context) GetServiceTokensFilterOutput {
-	return o
-}
-
-// Possible operators to use on the filter property. Can be one of the following: [ "=", "!=", "[NOT] LIKE", "[NOT] IN", "ILIKE" ]
-func (o GetServiceTokensFilterOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensFilter) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// The API response property which you want to filter your request on. Can be one of the following: "/type", "/name", "/project/projectId", "/uuid", "/state"
-func (o GetServiceTokensFilterOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensFilter) string { return v.Property }).(pulumi.StringOutput)
-}
-
-// The values that you want to apply the property+operator combination to in order to filter your data search
-func (o GetServiceTokensFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceTokensFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetServiceTokensFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceTokensFilter)(nil)).Elem()
-}
-
-func (o GetServiceTokensFilterArrayOutput) ToGetServiceTokensFilterArrayOutput() GetServiceTokensFilterArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensFilterArrayOutput) ToGetServiceTokensFilterArrayOutputWithContext(ctx context.Context) GetServiceTokensFilterArrayOutput {
-	return o
-}
-
-func (o GetServiceTokensFilterArrayOutput) Index(i pulumi.IntInput) GetServiceTokensFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTokensFilter {
-		return vs[0].([]GetServiceTokensFilter)[vs[1].(int)]
-	}).(GetServiceTokensFilterOutput)
-}
-
-type GetServiceTokensPagination struct {
-	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
-	Limit int `pulumi:"limit"`
-	// URL relative to the last item in the response.
-	Next string `pulumi:"next"`
-	// The page offset for the pagination request. Index of the first element. Default is 0.
-	Offset int `pulumi:"offset"`
-	// URL relative to the first item in the response.
-	Previous string `pulumi:"previous"`
-	// Total number of elements returned.
-	Total int `pulumi:"total"`
-}
-
-// GetServiceTokensPaginationInput is an input type that accepts GetServiceTokensPaginationArgs and GetServiceTokensPaginationOutput values.
-// You can construct a concrete instance of `GetServiceTokensPaginationInput` via:
-//
-//	GetServiceTokensPaginationArgs{...}
-type GetServiceTokensPaginationInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensPaginationOutput() GetServiceTokensPaginationOutput
-	ToGetServiceTokensPaginationOutputWithContext(context.Context) GetServiceTokensPaginationOutput
-}
-
-type GetServiceTokensPaginationArgs struct {
-	// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
-	Limit pulumi.IntInput `pulumi:"limit"`
-	// URL relative to the last item in the response.
-	Next pulumi.StringInput `pulumi:"next"`
-	// The page offset for the pagination request. Index of the first element. Default is 0.
-	Offset pulumi.IntInput `pulumi:"offset"`
-	// URL relative to the first item in the response.
-	Previous pulumi.StringInput `pulumi:"previous"`
-	// Total number of elements returned.
-	Total pulumi.IntInput `pulumi:"total"`
-}
-
-func (GetServiceTokensPaginationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensPagination)(nil)).Elem()
-}
-
-func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationOutput() GetServiceTokensPaginationOutput {
-	return i.ToGetServiceTokensPaginationOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationOutputWithContext(ctx context.Context) GetServiceTokensPaginationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensPaginationOutput)
-}
-
-func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
-	return i.ToGetServiceTokensPaginationPtrOutputWithContext(context.Background())
-}
-
-func (i GetServiceTokensPaginationArgs) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensPaginationOutput).ToGetServiceTokensPaginationPtrOutputWithContext(ctx)
-}
-
-// GetServiceTokensPaginationPtrInput is an input type that accepts GetServiceTokensPaginationArgs, GetServiceTokensPaginationPtr and GetServiceTokensPaginationPtrOutput values.
-// You can construct a concrete instance of `GetServiceTokensPaginationPtrInput` via:
-//
-//	        GetServiceTokensPaginationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetServiceTokensPaginationPtrInput interface {
-	pulumi.Input
-
-	ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput
-	ToGetServiceTokensPaginationPtrOutputWithContext(context.Context) GetServiceTokensPaginationPtrOutput
-}
-
-type getServiceTokensPaginationPtrType GetServiceTokensPaginationArgs
-
-func GetServiceTokensPaginationPtr(v *GetServiceTokensPaginationArgs) GetServiceTokensPaginationPtrInput {
-	return (*getServiceTokensPaginationPtrType)(v)
-}
-
-func (*getServiceTokensPaginationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensPagination)(nil)).Elem()
-}
-
-func (i *getServiceTokensPaginationPtrType) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
-	return i.ToGetServiceTokensPaginationPtrOutputWithContext(context.Background())
-}
-
-func (i *getServiceTokensPaginationPtrType) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTokensPaginationPtrOutput)
-}
-
-type GetServiceTokensPaginationOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensPaginationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceTokensPagination)(nil)).Elem()
-}
-
-func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationOutput() GetServiceTokensPaginationOutput {
-	return o
-}
-
-func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationOutputWithContext(ctx context.Context) GetServiceTokensPaginationOutput {
-	return o
-}
-
-func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
-	return o.ToGetServiceTokensPaginationPtrOutputWithContext(context.Background())
-}
-
-func (o GetServiceTokensPaginationOutput) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceTokensPagination) *GetServiceTokensPagination {
-		return &v
-	}).(GetServiceTokensPaginationPtrOutput)
-}
-
-// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
-func (o GetServiceTokensPaginationOutput) Limit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensPagination) int { return v.Limit }).(pulumi.IntOutput)
-}
-
-// URL relative to the last item in the response.
-func (o GetServiceTokensPaginationOutput) Next() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensPagination) string { return v.Next }).(pulumi.StringOutput)
-}
-
-// The page offset for the pagination request. Index of the first element. Default is 0.
-func (o GetServiceTokensPaginationOutput) Offset() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensPagination) int { return v.Offset }).(pulumi.IntOutput)
-}
-
-// URL relative to the first item in the response.
-func (o GetServiceTokensPaginationOutput) Previous() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceTokensPagination) string { return v.Previous }).(pulumi.StringOutput)
-}
-
-// Total number of elements returned.
-func (o GetServiceTokensPaginationOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceTokensPagination) int { return v.Total }).(pulumi.IntOutput)
-}
-
-type GetServiceTokensPaginationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetServiceTokensPaginationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetServiceTokensPagination)(nil)).Elem()
-}
-
-func (o GetServiceTokensPaginationPtrOutput) ToGetServiceTokensPaginationPtrOutput() GetServiceTokensPaginationPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensPaginationPtrOutput) ToGetServiceTokensPaginationPtrOutputWithContext(ctx context.Context) GetServiceTokensPaginationPtrOutput {
-	return o
-}
-
-func (o GetServiceTokensPaginationPtrOutput) Elem() GetServiceTokensPaginationOutput {
-	return o.ApplyT(func(v *GetServiceTokensPagination) GetServiceTokensPagination {
-		if v != nil {
-			return *v
-		}
-		var ret GetServiceTokensPagination
-		return ret
-	}).(GetServiceTokensPaginationOutput)
-}
-
-// Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
-func (o GetServiceTokensPaginationPtrOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensPagination) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Limit
-	}).(pulumi.IntPtrOutput)
-}
-
-// URL relative to the last item in the response.
-func (o GetServiceTokensPaginationPtrOutput) Next() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensPagination) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Next
-	}).(pulumi.StringPtrOutput)
-}
-
-// The page offset for the pagination request. Index of the first element. Default is 0.
-func (o GetServiceTokensPaginationPtrOutput) Offset() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensPagination) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Offset
-	}).(pulumi.IntPtrOutput)
-}
-
-// URL relative to the first item in the response.
-func (o GetServiceTokensPaginationPtrOutput) Previous() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensPagination) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Previous
-	}).(pulumi.StringPtrOutput)
-}
-
-// Total number of elements returned.
-func (o GetServiceTokensPaginationPtrOutput) Total() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetServiceTokensPagination) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Total
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetStreamAlertRuleChangeLog struct {
-	// User name of creator of the stream resource
-	CreatedBy string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime string `pulumi:"updatedDateTime"`
-}
-
-// GetStreamAlertRuleChangeLogInput is an input type that accepts GetStreamAlertRuleChangeLogArgs and GetStreamAlertRuleChangeLogOutput values.
-// You can construct a concrete instance of `GetStreamAlertRuleChangeLogInput` via:
-//
-//	GetStreamAlertRuleChangeLogArgs{...}
-type GetStreamAlertRuleChangeLogInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRuleChangeLogOutput() GetStreamAlertRuleChangeLogOutput
-	ToGetStreamAlertRuleChangeLogOutputWithContext(context.Context) GetStreamAlertRuleChangeLogOutput
-}
-
-type GetStreamAlertRuleChangeLogArgs struct {
-	// User name of creator of the stream resource
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
-}
-
-func (GetStreamAlertRuleChangeLogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleChangeLog)(nil)).Elem()
-}
-
-func (i GetStreamAlertRuleChangeLogArgs) ToGetStreamAlertRuleChangeLogOutput() GetStreamAlertRuleChangeLogOutput {
-	return i.ToGetStreamAlertRuleChangeLogOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRuleChangeLogArgs) ToGetStreamAlertRuleChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRuleChangeLogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleChangeLogOutput)
-}
-
-type GetStreamAlertRuleChangeLogOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRuleChangeLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleChangeLog)(nil)).Elem()
-}
-
-func (o GetStreamAlertRuleChangeLogOutput) ToGetStreamAlertRuleChangeLogOutput() GetStreamAlertRuleChangeLogOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleChangeLogOutput) ToGetStreamAlertRuleChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRuleChangeLogOutput {
-	return o
-}
-
-// User name of creator of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// Email of creator of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of creator of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
-}
-
-// Creation time of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of deleter of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) DeletedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
-}
-
-// Email of deleter of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of deleter of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
-}
-
-// Deletion time of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of last updater of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// Email of last updater of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of last updater of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
-}
-
-// Last update time of the stream resource
-func (o GetStreamAlertRuleChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
-}
-
-type GetStreamAlertRuleDetectionMethod struct {
-	// Stream alert rule metric critical threshold
-	CriticalThreshold string `pulumi:"criticalThreshold"`
-	// Stream alert rule metric operand
-	Operand string `pulumi:"operand"`
-	// Stream Alert Rule detection method type
-	Type string `pulumi:"type"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold string `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize string `pulumi:"windowSize"`
-}
-
-// GetStreamAlertRuleDetectionMethodInput is an input type that accepts GetStreamAlertRuleDetectionMethodArgs and GetStreamAlertRuleDetectionMethodOutput values.
-// You can construct a concrete instance of `GetStreamAlertRuleDetectionMethodInput` via:
-//
-//	GetStreamAlertRuleDetectionMethodArgs{...}
-type GetStreamAlertRuleDetectionMethodInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRuleDetectionMethodOutput() GetStreamAlertRuleDetectionMethodOutput
-	ToGetStreamAlertRuleDetectionMethodOutputWithContext(context.Context) GetStreamAlertRuleDetectionMethodOutput
-}
-
-type GetStreamAlertRuleDetectionMethodArgs struct {
-	// Stream alert rule metric critical threshold
-	CriticalThreshold pulumi.StringInput `pulumi:"criticalThreshold"`
-	// Stream alert rule metric operand
-	Operand pulumi.StringInput `pulumi:"operand"`
-	// Stream Alert Rule detection method type
-	Type pulumi.StringInput `pulumi:"type"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold pulumi.StringInput `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize pulumi.StringInput `pulumi:"windowSize"`
-}
-
-func (GetStreamAlertRuleDetectionMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleDetectionMethod)(nil)).Elem()
-}
-
-func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodOutput() GetStreamAlertRuleDetectionMethodOutput {
-	return i.ToGetStreamAlertRuleDetectionMethodOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleDetectionMethodOutput)
-}
-
-func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
-	return i.ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRuleDetectionMethodArgs) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleDetectionMethodOutput).ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx)
-}
-
-// GetStreamAlertRuleDetectionMethodPtrInput is an input type that accepts GetStreamAlertRuleDetectionMethodArgs, GetStreamAlertRuleDetectionMethodPtr and GetStreamAlertRuleDetectionMethodPtrOutput values.
-// You can construct a concrete instance of `GetStreamAlertRuleDetectionMethodPtrInput` via:
-//
-//	        GetStreamAlertRuleDetectionMethodArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetStreamAlertRuleDetectionMethodPtrInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput
-	ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Context) GetStreamAlertRuleDetectionMethodPtrOutput
-}
-
-type getStreamAlertRuleDetectionMethodPtrType GetStreamAlertRuleDetectionMethodArgs
-
-func GetStreamAlertRuleDetectionMethodPtr(v *GetStreamAlertRuleDetectionMethodArgs) GetStreamAlertRuleDetectionMethodPtrInput {
-	return (*getStreamAlertRuleDetectionMethodPtrType)(v)
-}
-
-func (*getStreamAlertRuleDetectionMethodPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetStreamAlertRuleDetectionMethod)(nil)).Elem()
-}
-
-func (i *getStreamAlertRuleDetectionMethodPtrType) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
-	return i.ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
-}
-
-func (i *getStreamAlertRuleDetectionMethodPtrType) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleDetectionMethodPtrOutput)
-}
-
-type GetStreamAlertRuleDetectionMethodOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRuleDetectionMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleDetectionMethod)(nil)).Elem()
-}
-
-func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodOutput() GetStreamAlertRuleDetectionMethodOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
-	return o.ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(context.Background())
-}
-
-func (o GetStreamAlertRuleDetectionMethodOutput) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetStreamAlertRuleDetectionMethod) *GetStreamAlertRuleDetectionMethod {
-		return &v
-	}).(GetStreamAlertRuleDetectionMethodPtrOutput)
-}
-
-// Stream alert rule metric critical threshold
-func (o GetStreamAlertRuleDetectionMethodOutput) CriticalThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.CriticalThreshold }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric operand
-func (o GetStreamAlertRuleDetectionMethodOutput) Operand() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.Operand }).(pulumi.StringOutput)
-}
-
-// Stream Alert Rule detection method type
-func (o GetStreamAlertRuleDetectionMethodOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric warning threshold
-func (o GetStreamAlertRuleDetectionMethodOutput) WarningThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.WarningThreshold }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric window size
-func (o GetStreamAlertRuleDetectionMethodOutput) WindowSize() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleDetectionMethod) string { return v.WindowSize }).(pulumi.StringOutput)
-}
-
-type GetStreamAlertRuleDetectionMethodPtrOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRuleDetectionMethodPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetStreamAlertRuleDetectionMethod)(nil)).Elem()
-}
-
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) ToGetStreamAlertRuleDetectionMethodPtrOutput() GetStreamAlertRuleDetectionMethodPtrOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) ToGetStreamAlertRuleDetectionMethodPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleDetectionMethodPtrOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) Elem() GetStreamAlertRuleDetectionMethodOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) GetStreamAlertRuleDetectionMethod {
-		if v != nil {
-			return *v
-		}
-		var ret GetStreamAlertRuleDetectionMethod
-		return ret
-	}).(GetStreamAlertRuleDetectionMethodOutput)
-}
-
-// Stream alert rule metric critical threshold
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) CriticalThreshold() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CriticalThreshold
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stream alert rule metric operand
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) Operand() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Operand
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stream Alert Rule detection method type
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stream alert rule metric warning threshold
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) WarningThreshold() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WarningThreshold
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stream alert rule metric window size
-func (o GetStreamAlertRuleDetectionMethodPtrOutput) WindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleDetectionMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WindowSize
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetStreamAlertRuleMetricSelector struct {
-	// List of metrics to include
-	Includes []string `pulumi:"includes"`
-}
-
-// GetStreamAlertRuleMetricSelectorInput is an input type that accepts GetStreamAlertRuleMetricSelectorArgs and GetStreamAlertRuleMetricSelectorOutput values.
-// You can construct a concrete instance of `GetStreamAlertRuleMetricSelectorInput` via:
-//
-//	GetStreamAlertRuleMetricSelectorArgs{...}
-type GetStreamAlertRuleMetricSelectorInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRuleMetricSelectorOutput() GetStreamAlertRuleMetricSelectorOutput
-	ToGetStreamAlertRuleMetricSelectorOutputWithContext(context.Context) GetStreamAlertRuleMetricSelectorOutput
-}
-
-type GetStreamAlertRuleMetricSelectorArgs struct {
-	// List of metrics to include
-	Includes pulumi.StringArrayInput `pulumi:"includes"`
-}
-
-func (GetStreamAlertRuleMetricSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleMetricSelector)(nil)).Elem()
-}
-
-func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorOutput() GetStreamAlertRuleMetricSelectorOutput {
-	return i.ToGetStreamAlertRuleMetricSelectorOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleMetricSelectorOutput)
-}
-
-func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
-	return i.ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRuleMetricSelectorArgs) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleMetricSelectorOutput).ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx)
-}
-
-// GetStreamAlertRuleMetricSelectorPtrInput is an input type that accepts GetStreamAlertRuleMetricSelectorArgs, GetStreamAlertRuleMetricSelectorPtr and GetStreamAlertRuleMetricSelectorPtrOutput values.
-// You can construct a concrete instance of `GetStreamAlertRuleMetricSelectorPtrInput` via:
-//
-//	        GetStreamAlertRuleMetricSelectorArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetStreamAlertRuleMetricSelectorPtrInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput
-	ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Context) GetStreamAlertRuleMetricSelectorPtrOutput
-}
-
-type getStreamAlertRuleMetricSelectorPtrType GetStreamAlertRuleMetricSelectorArgs
-
-func GetStreamAlertRuleMetricSelectorPtr(v *GetStreamAlertRuleMetricSelectorArgs) GetStreamAlertRuleMetricSelectorPtrInput {
-	return (*getStreamAlertRuleMetricSelectorPtrType)(v)
-}
-
-func (*getStreamAlertRuleMetricSelectorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetStreamAlertRuleMetricSelector)(nil)).Elem()
-}
-
-func (i *getStreamAlertRuleMetricSelectorPtrType) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
-	return i.ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
-}
-
-func (i *getStreamAlertRuleMetricSelectorPtrType) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleMetricSelectorPtrOutput)
-}
-
-type GetStreamAlertRuleMetricSelectorOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRuleMetricSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleMetricSelector)(nil)).Elem()
-}
-
-func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorOutput() GetStreamAlertRuleMetricSelectorOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
-	return o.ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(context.Background())
-}
-
-func (o GetStreamAlertRuleMetricSelectorOutput) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetStreamAlertRuleMetricSelector) *GetStreamAlertRuleMetricSelector {
-		return &v
-	}).(GetStreamAlertRuleMetricSelectorPtrOutput)
-}
-
-// List of metrics to include
-func (o GetStreamAlertRuleMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type GetStreamAlertRuleMetricSelectorPtrOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRuleMetricSelectorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetStreamAlertRuleMetricSelector)(nil)).Elem()
-}
-
-func (o GetStreamAlertRuleMetricSelectorPtrOutput) ToGetStreamAlertRuleMetricSelectorPtrOutput() GetStreamAlertRuleMetricSelectorPtrOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleMetricSelectorPtrOutput) ToGetStreamAlertRuleMetricSelectorPtrOutputWithContext(ctx context.Context) GetStreamAlertRuleMetricSelectorPtrOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleMetricSelectorPtrOutput) Elem() GetStreamAlertRuleMetricSelectorOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleMetricSelector) GetStreamAlertRuleMetricSelector {
-		if v != nil {
-			return *v
-		}
-		var ret GetStreamAlertRuleMetricSelector
-		return ret
-	}).(GetStreamAlertRuleMetricSelectorOutput)
-}
-
-// List of metrics to include
-func (o GetStreamAlertRuleMetricSelectorPtrOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetStreamAlertRuleMetricSelector) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Includes
-	}).(pulumi.StringArrayOutput)
-}
-
-type GetStreamAlertRuleResourceSelector struct {
-	// List of metrics to include
-	Includes []string `pulumi:"includes"`
-}
-
-// GetStreamAlertRuleResourceSelectorInput is an input type that accepts GetStreamAlertRuleResourceSelectorArgs and GetStreamAlertRuleResourceSelectorOutput values.
-// You can construct a concrete instance of `GetStreamAlertRuleResourceSelectorInput` via:
-//
-//	GetStreamAlertRuleResourceSelectorArgs{...}
-type GetStreamAlertRuleResourceSelectorInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRuleResourceSelectorOutput() GetStreamAlertRuleResourceSelectorOutput
-	ToGetStreamAlertRuleResourceSelectorOutputWithContext(context.Context) GetStreamAlertRuleResourceSelectorOutput
-}
-
-type GetStreamAlertRuleResourceSelectorArgs struct {
-	// List of metrics to include
-	Includes pulumi.StringArrayInput `pulumi:"includes"`
-}
-
-func (GetStreamAlertRuleResourceSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleResourceSelector)(nil)).Elem()
-}
-
-func (i GetStreamAlertRuleResourceSelectorArgs) ToGetStreamAlertRuleResourceSelectorOutput() GetStreamAlertRuleResourceSelectorOutput {
-	return i.ToGetStreamAlertRuleResourceSelectorOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRuleResourceSelectorArgs) ToGetStreamAlertRuleResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleResourceSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRuleResourceSelectorOutput)
-}
-
-type GetStreamAlertRuleResourceSelectorOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRuleResourceSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRuleResourceSelector)(nil)).Elem()
-}
-
-func (o GetStreamAlertRuleResourceSelectorOutput) ToGetStreamAlertRuleResourceSelectorOutput() GetStreamAlertRuleResourceSelectorOutput {
-	return o
-}
-
-func (o GetStreamAlertRuleResourceSelectorOutput) ToGetStreamAlertRuleResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRuleResourceSelectorOutput {
-	return o
-}
-
-// List of metrics to include
-func (o GetStreamAlertRuleResourceSelectorOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetStreamAlertRuleResourceSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type GetStreamAlertRulesData struct {
-	// Details of the last change on the stream resource
-	ChangeLog GetStreamAlertRulesDataChangeLog `pulumi:"changeLog"`
-	// Customer-provided stream alert rule description
-	Description string `pulumi:"description"`
-	// Detection method for stream alert rule
-	DetectionMethod GetStreamAlertRulesDataDetectionMethod `pulumi:"detectionMethod"`
-	// Stream subscription enabled status
-	Enabled bool `pulumi:"enabled"`
-	// Equinix assigned URI of the stream alert rule resource
-	Href string `pulumi:"href"`
-	// Metric selector for the stream alert rule
-	MetricSelector GetStreamAlertRulesDataMetricSelector `pulumi:"metricSelector"`
-	// Customer-provided stream alert rule name
-	Name string `pulumi:"name"`
-	// Lists of metrics to be included/excluded on the stream alert rule
-	ResourceSelector GetStreamAlertRulesDataResourceSelector `pulumi:"resourceSelector"`
-	// Value representing provisioning status for the stream resource
-	State string `pulumi:"state"`
-	// Type of the stream alert rule
-	Type string `pulumi:"type"`
-	// Equinix assigned unique identifier of the stream subscription resource
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetStreamAlertRulesDataInput is an input type that accepts GetStreamAlertRulesDataArgs and GetStreamAlertRulesDataOutput values.
-// You can construct a concrete instance of `GetStreamAlertRulesDataInput` via:
-//
-//	GetStreamAlertRulesDataArgs{...}
-type GetStreamAlertRulesDataInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRulesDataOutput() GetStreamAlertRulesDataOutput
-	ToGetStreamAlertRulesDataOutputWithContext(context.Context) GetStreamAlertRulesDataOutput
-}
-
-type GetStreamAlertRulesDataArgs struct {
-	// Details of the last change on the stream resource
-	ChangeLog GetStreamAlertRulesDataChangeLogInput `pulumi:"changeLog"`
-	// Customer-provided stream alert rule description
-	Description pulumi.StringInput `pulumi:"description"`
-	// Detection method for stream alert rule
-	DetectionMethod GetStreamAlertRulesDataDetectionMethodInput `pulumi:"detectionMethod"`
-	// Stream subscription enabled status
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Equinix assigned URI of the stream alert rule resource
-	Href pulumi.StringInput `pulumi:"href"`
-	// Metric selector for the stream alert rule
-	MetricSelector GetStreamAlertRulesDataMetricSelectorInput `pulumi:"metricSelector"`
-	// Customer-provided stream alert rule name
-	Name pulumi.StringInput `pulumi:"name"`
-	// Lists of metrics to be included/excluded on the stream alert rule
-	ResourceSelector GetStreamAlertRulesDataResourceSelectorInput `pulumi:"resourceSelector"`
-	// Value representing provisioning status for the stream resource
-	State pulumi.StringInput `pulumi:"state"`
-	// Type of the stream alert rule
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix assigned unique identifier of the stream subscription resource
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetStreamAlertRulesDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesData)(nil)).Elem()
-}
-
-func (i GetStreamAlertRulesDataArgs) ToGetStreamAlertRulesDataOutput() GetStreamAlertRulesDataOutput {
-	return i.ToGetStreamAlertRulesDataOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRulesDataArgs) ToGetStreamAlertRulesDataOutputWithContext(ctx context.Context) GetStreamAlertRulesDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataOutput)
-}
-
-// GetStreamAlertRulesDataArrayInput is an input type that accepts GetStreamAlertRulesDataArray and GetStreamAlertRulesDataArrayOutput values.
-// You can construct a concrete instance of `GetStreamAlertRulesDataArrayInput` via:
-//
-//	GetStreamAlertRulesDataArray{ GetStreamAlertRulesDataArgs{...} }
-type GetStreamAlertRulesDataArrayInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRulesDataArrayOutput() GetStreamAlertRulesDataArrayOutput
-	ToGetStreamAlertRulesDataArrayOutputWithContext(context.Context) GetStreamAlertRulesDataArrayOutput
-}
-
-type GetStreamAlertRulesDataArray []GetStreamAlertRulesDataInput
-
-func (GetStreamAlertRulesDataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAlertRulesData)(nil)).Elem()
-}
-
-func (i GetStreamAlertRulesDataArray) ToGetStreamAlertRulesDataArrayOutput() GetStreamAlertRulesDataArrayOutput {
-	return i.ToGetStreamAlertRulesDataArrayOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRulesDataArray) ToGetStreamAlertRulesDataArrayOutputWithContext(ctx context.Context) GetStreamAlertRulesDataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataArrayOutput)
-}
-
-type GetStreamAlertRulesDataOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRulesDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesData)(nil)).Elem()
-}
-
-func (o GetStreamAlertRulesDataOutput) ToGetStreamAlertRulesDataOutput() GetStreamAlertRulesDataOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesDataOutput) ToGetStreamAlertRulesDataOutputWithContext(ctx context.Context) GetStreamAlertRulesDataOutput {
-	return o
-}
-
-// Details of the last change on the stream resource
-func (o GetStreamAlertRulesDataOutput) ChangeLog() GetStreamAlertRulesDataChangeLogOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataChangeLog { return v.ChangeLog }).(GetStreamAlertRulesDataChangeLogOutput)
-}
-
-// Customer-provided stream alert rule description
-func (o GetStreamAlertRulesDataOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Detection method for stream alert rule
-func (o GetStreamAlertRulesDataOutput) DetectionMethod() GetStreamAlertRulesDataDetectionMethodOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataDetectionMethod { return v.DetectionMethod }).(GetStreamAlertRulesDataDetectionMethodOutput)
-}
-
-// Stream subscription enabled status
-func (o GetStreamAlertRulesDataOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Equinix assigned URI of the stream alert rule resource
-func (o GetStreamAlertRulesDataOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Href }).(pulumi.StringOutput)
-}
-
-// Metric selector for the stream alert rule
-func (o GetStreamAlertRulesDataOutput) MetricSelector() GetStreamAlertRulesDataMetricSelectorOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataMetricSelector { return v.MetricSelector }).(GetStreamAlertRulesDataMetricSelectorOutput)
-}
-
-// Customer-provided stream alert rule name
-func (o GetStreamAlertRulesDataOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Lists of metrics to be included/excluded on the stream alert rule
-func (o GetStreamAlertRulesDataOutput) ResourceSelector() GetStreamAlertRulesDataResourceSelectorOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) GetStreamAlertRulesDataResourceSelector { return v.ResourceSelector }).(GetStreamAlertRulesDataResourceSelectorOutput)
-}
-
-// Value representing provisioning status for the stream resource
-func (o GetStreamAlertRulesDataOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Type of the stream alert rule
-func (o GetStreamAlertRulesDataOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Equinix assigned unique identifier of the stream subscription resource
-func (o GetStreamAlertRulesDataOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesData) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetStreamAlertRulesDataArrayOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRulesDataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAlertRulesData)(nil)).Elem()
-}
-
-func (o GetStreamAlertRulesDataArrayOutput) ToGetStreamAlertRulesDataArrayOutput() GetStreamAlertRulesDataArrayOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesDataArrayOutput) ToGetStreamAlertRulesDataArrayOutputWithContext(ctx context.Context) GetStreamAlertRulesDataArrayOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesDataArrayOutput) Index(i pulumi.IntInput) GetStreamAlertRulesDataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAlertRulesData {
-		return vs[0].([]GetStreamAlertRulesData)[vs[1].(int)]
-	}).(GetStreamAlertRulesDataOutput)
-}
-
-type GetStreamAlertRulesDataChangeLog struct {
-	// User name of creator of the stream resource
-	CreatedBy string `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail string `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName string `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime string `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy string `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail string `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName string `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime string `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy string `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail string `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName string `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime string `pulumi:"updatedDateTime"`
-}
-
-// GetStreamAlertRulesDataChangeLogInput is an input type that accepts GetStreamAlertRulesDataChangeLogArgs and GetStreamAlertRulesDataChangeLogOutput values.
-// You can construct a concrete instance of `GetStreamAlertRulesDataChangeLogInput` via:
-//
-//	GetStreamAlertRulesDataChangeLogArgs{...}
-type GetStreamAlertRulesDataChangeLogInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRulesDataChangeLogOutput() GetStreamAlertRulesDataChangeLogOutput
-	ToGetStreamAlertRulesDataChangeLogOutputWithContext(context.Context) GetStreamAlertRulesDataChangeLogOutput
-}
-
-type GetStreamAlertRulesDataChangeLogArgs struct {
-	// User name of creator of the stream resource
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// Email of creator of the stream resource
-	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
-	// Legal name of creator of the stream resource
-	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
-	// Creation time of the stream resource
-	CreatedDateTime pulumi.StringInput `pulumi:"createdDateTime"`
-	// User name of deleter of the stream resource
-	DeletedBy pulumi.StringInput `pulumi:"deletedBy"`
-	// Email of deleter of the stream resource
-	DeletedByEmail pulumi.StringInput `pulumi:"deletedByEmail"`
-	// Legal name of deleter of the stream resource
-	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
-	// Deletion time of the stream resource
-	DeletedDateTime pulumi.StringInput `pulumi:"deletedDateTime"`
-	// User name of last updater of the stream resource
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// Email of last updater of the stream resource
-	UpdatedByEmail pulumi.StringInput `pulumi:"updatedByEmail"`
-	// Legal name of last updater of the stream resource
-	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
-	// Last update time of the stream resource
-	UpdatedDateTime pulumi.StringInput `pulumi:"updatedDateTime"`
-}
-
-func (GetStreamAlertRulesDataChangeLogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataChangeLog)(nil)).Elem()
-}
-
-func (i GetStreamAlertRulesDataChangeLogArgs) ToGetStreamAlertRulesDataChangeLogOutput() GetStreamAlertRulesDataChangeLogOutput {
-	return i.ToGetStreamAlertRulesDataChangeLogOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRulesDataChangeLogArgs) ToGetStreamAlertRulesDataChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRulesDataChangeLogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataChangeLogOutput)
-}
-
-type GetStreamAlertRulesDataChangeLogOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRulesDataChangeLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataChangeLog)(nil)).Elem()
-}
-
-func (o GetStreamAlertRulesDataChangeLogOutput) ToGetStreamAlertRulesDataChangeLogOutput() GetStreamAlertRulesDataChangeLogOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesDataChangeLogOutput) ToGetStreamAlertRulesDataChangeLogOutputWithContext(ctx context.Context) GetStreamAlertRulesDataChangeLogOutput {
-	return o
-}
-
-// User name of creator of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// Email of creator of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of creator of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
-}
-
-// Creation time of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of deleter of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
-}
-
-// Email of deleter of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of deleter of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
-}
-
-// Deletion time of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
-}
-
-// User name of last updater of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// Email of last updater of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
-}
-
-// Legal name of last updater of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
-}
-
-// Last update time of the stream resource
-func (o GetStreamAlertRulesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
-}
-
-type GetStreamAlertRulesDataDetectionMethod struct {
-	// Stream alert rule metric critical threshold
-	CriticalThreshold string `pulumi:"criticalThreshold"`
-	// Stream alert rule metric operand
-	Operand string `pulumi:"operand"`
-	// Stream Alert Rule detection method type
-	Type string `pulumi:"type"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold string `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize string `pulumi:"windowSize"`
-}
-
-// GetStreamAlertRulesDataDetectionMethodInput is an input type that accepts GetStreamAlertRulesDataDetectionMethodArgs and GetStreamAlertRulesDataDetectionMethodOutput values.
-// You can construct a concrete instance of `GetStreamAlertRulesDataDetectionMethodInput` via:
-//
-//	GetStreamAlertRulesDataDetectionMethodArgs{...}
-type GetStreamAlertRulesDataDetectionMethodInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRulesDataDetectionMethodOutput() GetStreamAlertRulesDataDetectionMethodOutput
-	ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(context.Context) GetStreamAlertRulesDataDetectionMethodOutput
-}
-
-type GetStreamAlertRulesDataDetectionMethodArgs struct {
-	// Stream alert rule metric critical threshold
-	CriticalThreshold pulumi.StringInput `pulumi:"criticalThreshold"`
-	// Stream alert rule metric operand
-	Operand pulumi.StringInput `pulumi:"operand"`
-	// Stream Alert Rule detection method type
-	Type pulumi.StringInput `pulumi:"type"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold pulumi.StringInput `pulumi:"warningThreshold"`
-	// Stream alert rule metric window size
-	WindowSize pulumi.StringInput `pulumi:"windowSize"`
-}
-
-func (GetStreamAlertRulesDataDetectionMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataDetectionMethod)(nil)).Elem()
-}
-
-func (i GetStreamAlertRulesDataDetectionMethodArgs) ToGetStreamAlertRulesDataDetectionMethodOutput() GetStreamAlertRulesDataDetectionMethodOutput {
-	return i.ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRulesDataDetectionMethodArgs) ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRulesDataDetectionMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataDetectionMethodOutput)
-}
-
-type GetStreamAlertRulesDataDetectionMethodOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRulesDataDetectionMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataDetectionMethod)(nil)).Elem()
-}
-
-func (o GetStreamAlertRulesDataDetectionMethodOutput) ToGetStreamAlertRulesDataDetectionMethodOutput() GetStreamAlertRulesDataDetectionMethodOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesDataDetectionMethodOutput) ToGetStreamAlertRulesDataDetectionMethodOutputWithContext(ctx context.Context) GetStreamAlertRulesDataDetectionMethodOutput {
-	return o
-}
-
-// Stream alert rule metric critical threshold
-func (o GetStreamAlertRulesDataDetectionMethodOutput) CriticalThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.CriticalThreshold }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric operand
-func (o GetStreamAlertRulesDataDetectionMethodOutput) Operand() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.Operand }).(pulumi.StringOutput)
-}
-
-// Stream Alert Rule detection method type
-func (o GetStreamAlertRulesDataDetectionMethodOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric warning threshold
-func (o GetStreamAlertRulesDataDetectionMethodOutput) WarningThreshold() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.WarningThreshold }).(pulumi.StringOutput)
-}
-
-// Stream alert rule metric window size
-func (o GetStreamAlertRulesDataDetectionMethodOutput) WindowSize() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataDetectionMethod) string { return v.WindowSize }).(pulumi.StringOutput)
-}
-
-type GetStreamAlertRulesDataMetricSelector struct {
-	// List of metrics to include
-	Includes []string `pulumi:"includes"`
-}
-
-// GetStreamAlertRulesDataMetricSelectorInput is an input type that accepts GetStreamAlertRulesDataMetricSelectorArgs and GetStreamAlertRulesDataMetricSelectorOutput values.
-// You can construct a concrete instance of `GetStreamAlertRulesDataMetricSelectorInput` via:
-//
-//	GetStreamAlertRulesDataMetricSelectorArgs{...}
-type GetStreamAlertRulesDataMetricSelectorInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRulesDataMetricSelectorOutput() GetStreamAlertRulesDataMetricSelectorOutput
-	ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(context.Context) GetStreamAlertRulesDataMetricSelectorOutput
-}
-
-type GetStreamAlertRulesDataMetricSelectorArgs struct {
-	// List of metrics to include
-	Includes pulumi.StringArrayInput `pulumi:"includes"`
-}
-
-func (GetStreamAlertRulesDataMetricSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataMetricSelector)(nil)).Elem()
-}
-
-func (i GetStreamAlertRulesDataMetricSelectorArgs) ToGetStreamAlertRulesDataMetricSelectorOutput() GetStreamAlertRulesDataMetricSelectorOutput {
-	return i.ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRulesDataMetricSelectorArgs) ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataMetricSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataMetricSelectorOutput)
-}
-
-type GetStreamAlertRulesDataMetricSelectorOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRulesDataMetricSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataMetricSelector)(nil)).Elem()
-}
-
-func (o GetStreamAlertRulesDataMetricSelectorOutput) ToGetStreamAlertRulesDataMetricSelectorOutput() GetStreamAlertRulesDataMetricSelectorOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesDataMetricSelectorOutput) ToGetStreamAlertRulesDataMetricSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataMetricSelectorOutput {
-	return o
-}
-
-// List of metrics to include
-func (o GetStreamAlertRulesDataMetricSelectorOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataMetricSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type GetStreamAlertRulesDataResourceSelector struct {
-	// List of metrics to include
-	Includes []string `pulumi:"includes"`
-}
-
-// GetStreamAlertRulesDataResourceSelectorInput is an input type that accepts GetStreamAlertRulesDataResourceSelectorArgs and GetStreamAlertRulesDataResourceSelectorOutput values.
-// You can construct a concrete instance of `GetStreamAlertRulesDataResourceSelectorInput` via:
-//
-//	GetStreamAlertRulesDataResourceSelectorArgs{...}
-type GetStreamAlertRulesDataResourceSelectorInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRulesDataResourceSelectorOutput() GetStreamAlertRulesDataResourceSelectorOutput
-	ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(context.Context) GetStreamAlertRulesDataResourceSelectorOutput
-}
-
-type GetStreamAlertRulesDataResourceSelectorArgs struct {
-	// List of metrics to include
-	Includes pulumi.StringArrayInput `pulumi:"includes"`
-}
-
-func (GetStreamAlertRulesDataResourceSelectorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataResourceSelector)(nil)).Elem()
-}
-
-func (i GetStreamAlertRulesDataResourceSelectorArgs) ToGetStreamAlertRulesDataResourceSelectorOutput() GetStreamAlertRulesDataResourceSelectorOutput {
-	return i.ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRulesDataResourceSelectorArgs) ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataResourceSelectorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesDataResourceSelectorOutput)
-}
-
-type GetStreamAlertRulesDataResourceSelectorOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRulesDataResourceSelectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesDataResourceSelector)(nil)).Elem()
-}
-
-func (o GetStreamAlertRulesDataResourceSelectorOutput) ToGetStreamAlertRulesDataResourceSelectorOutput() GetStreamAlertRulesDataResourceSelectorOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesDataResourceSelectorOutput) ToGetStreamAlertRulesDataResourceSelectorOutputWithContext(ctx context.Context) GetStreamAlertRulesDataResourceSelectorOutput {
-	return o
-}
-
-// List of metrics to include
-func (o GetStreamAlertRulesDataResourceSelectorOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesDataResourceSelector) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type GetStreamAlertRulesPagination struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit int `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next string `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset int `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous string `pulumi:"previous"`
-	// The total number of alert rules available to the user making the request
-	Total int `pulumi:"total"`
-}
-
-// GetStreamAlertRulesPaginationInput is an input type that accepts GetStreamAlertRulesPaginationArgs and GetStreamAlertRulesPaginationOutput values.
-// You can construct a concrete instance of `GetStreamAlertRulesPaginationInput` via:
-//
-//	GetStreamAlertRulesPaginationArgs{...}
-type GetStreamAlertRulesPaginationInput interface {
-	pulumi.Input
-
-	ToGetStreamAlertRulesPaginationOutput() GetStreamAlertRulesPaginationOutput
-	ToGetStreamAlertRulesPaginationOutputWithContext(context.Context) GetStreamAlertRulesPaginationOutput
-}
-
-type GetStreamAlertRulesPaginationArgs struct {
-	// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-	Limit pulumi.IntInput `pulumi:"limit"`
-	// The URL relative to the next item in the response
-	Next pulumi.StringInput `pulumi:"next"`
-	// Index of the first item returned in the response. The default is 0
-	Offset pulumi.IntInput `pulumi:"offset"`
-	// The URL relative to the previous item in the response
-	Previous pulumi.StringInput `pulumi:"previous"`
-	// The total number of alert rules available to the user making the request
-	Total pulumi.IntInput `pulumi:"total"`
-}
-
-func (GetStreamAlertRulesPaginationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesPagination)(nil)).Elem()
-}
-
-func (i GetStreamAlertRulesPaginationArgs) ToGetStreamAlertRulesPaginationOutput() GetStreamAlertRulesPaginationOutput {
-	return i.ToGetStreamAlertRulesPaginationOutputWithContext(context.Background())
-}
-
-func (i GetStreamAlertRulesPaginationArgs) ToGetStreamAlertRulesPaginationOutputWithContext(ctx context.Context) GetStreamAlertRulesPaginationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAlertRulesPaginationOutput)
-}
-
-type GetStreamAlertRulesPaginationOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAlertRulesPaginationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAlertRulesPagination)(nil)).Elem()
-}
-
-func (o GetStreamAlertRulesPaginationOutput) ToGetStreamAlertRulesPaginationOutput() GetStreamAlertRulesPaginationOutput {
-	return o
-}
-
-func (o GetStreamAlertRulesPaginationOutput) ToGetStreamAlertRulesPaginationOutputWithContext(ctx context.Context) GetStreamAlertRulesPaginationOutput {
-	return o
-}
-
-// Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
-func (o GetStreamAlertRulesPaginationOutput) Limit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesPagination) int { return v.Limit }).(pulumi.IntOutput)
-}
-
-// The URL relative to the next item in the response
-func (o GetStreamAlertRulesPaginationOutput) Next() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesPagination) string { return v.Next }).(pulumi.StringOutput)
-}
-
-// Index of the first item returned in the response. The default is 0
-func (o GetStreamAlertRulesPaginationOutput) Offset() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesPagination) int { return v.Offset }).(pulumi.IntOutput)
-}
-
-// The URL relative to the previous item in the response
-func (o GetStreamAlertRulesPaginationOutput) Previous() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesPagination) string { return v.Previous }).(pulumi.StringOutput)
-}
-
-// The total number of alert rules available to the user making the request
-func (o GetStreamAlertRulesPaginationOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func(v GetStreamAlertRulesPagination) int { return v.Total }).(pulumi.IntOutput)
-}
-
-type GetStreamAttachmentsData struct {
-	// Value representing status for the stream attachment
-	AttachmentStatus string `pulumi:"attachmentStatus"`
-	// Equinix auto generated URI to the stream attachment in Equinix Portal
-	Href string `pulumi:"href"`
-	// Boolean value indicating enablement of metrics for this asset stream attachment
-	MetricsEnabled bool `pulumi:"metricsEnabled"`
-	// Equinix defined type for the asset stream attachment
-	Type string `pulumi:"type"`
-	// Equinix-assigned unique id for the stream attachment
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetStreamAttachmentsDataInput is an input type that accepts GetStreamAttachmentsDataArgs and GetStreamAttachmentsDataOutput values.
-// You can construct a concrete instance of `GetStreamAttachmentsDataInput` via:
-//
-//	GetStreamAttachmentsDataArgs{...}
-type GetStreamAttachmentsDataInput interface {
-	pulumi.Input
-
-	ToGetStreamAttachmentsDataOutput() GetStreamAttachmentsDataOutput
-	ToGetStreamAttachmentsDataOutputWithContext(context.Context) GetStreamAttachmentsDataOutput
-}
-
-type GetStreamAttachmentsDataArgs struct {
-	// Value representing status for the stream attachment
-	AttachmentStatus pulumi.StringInput `pulumi:"attachmentStatus"`
-	// Equinix auto generated URI to the stream attachment in Equinix Portal
-	Href pulumi.StringInput `pulumi:"href"`
-	// Boolean value indicating enablement of metrics for this asset stream attachment
-	MetricsEnabled pulumi.BoolInput `pulumi:"metricsEnabled"`
-	// Equinix defined type for the asset stream attachment
-	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned unique id for the stream attachment
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetStreamAttachmentsDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsData)(nil)).Elem()
-}
-
-func (i GetStreamAttachmentsDataArgs) ToGetStreamAttachmentsDataOutput() GetStreamAttachmentsDataOutput {
-	return i.ToGetStreamAttachmentsDataOutputWithContext(context.Background())
-}
-
-func (i GetStreamAttachmentsDataArgs) ToGetStreamAttachmentsDataOutputWithContext(ctx context.Context) GetStreamAttachmentsDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsDataOutput)
-}
-
-// GetStreamAttachmentsDataArrayInput is an input type that accepts GetStreamAttachmentsDataArray and GetStreamAttachmentsDataArrayOutput values.
-// You can construct a concrete instance of `GetStreamAttachmentsDataArrayInput` via:
-//
-//	GetStreamAttachmentsDataArray{ GetStreamAttachmentsDataArgs{...} }
-type GetStreamAttachmentsDataArrayInput interface {
-	pulumi.Input
-
-	ToGetStreamAttachmentsDataArrayOutput() GetStreamAttachmentsDataArrayOutput
-	ToGetStreamAttachmentsDataArrayOutputWithContext(context.Context) GetStreamAttachmentsDataArrayOutput
-}
-
-type GetStreamAttachmentsDataArray []GetStreamAttachmentsDataInput
-
-func (GetStreamAttachmentsDataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAttachmentsData)(nil)).Elem()
-}
-
-func (i GetStreamAttachmentsDataArray) ToGetStreamAttachmentsDataArrayOutput() GetStreamAttachmentsDataArrayOutput {
-	return i.ToGetStreamAttachmentsDataArrayOutputWithContext(context.Background())
-}
-
-func (i GetStreamAttachmentsDataArray) ToGetStreamAttachmentsDataArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsDataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStreamAttachmentsDataArrayOutput)
-}
-
-type GetStreamAttachmentsDataOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAttachmentsDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStreamAttachmentsData)(nil)).Elem()
-}
-
-func (o GetStreamAttachmentsDataOutput) ToGetStreamAttachmentsDataOutput() GetStreamAttachmentsDataOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsDataOutput) ToGetStreamAttachmentsDataOutputWithContext(ctx context.Context) GetStreamAttachmentsDataOutput {
-	return o
-}
-
-// Value representing status for the stream attachment
-func (o GetStreamAttachmentsDataOutput) AttachmentStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.AttachmentStatus }).(pulumi.StringOutput)
-}
-
-// Equinix auto generated URI to the stream attachment in Equinix Portal
-func (o GetStreamAttachmentsDataOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.Href }).(pulumi.StringOutput)
-}
-
-// Boolean value indicating enablement of metrics for this asset stream attachment
-func (o GetStreamAttachmentsDataOutput) MetricsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsData) bool { return v.MetricsEnabled }).(pulumi.BoolOutput)
-}
-
-// Equinix defined type for the asset stream attachment
-func (o GetStreamAttachmentsDataOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Equinix-assigned unique id for the stream attachment
-func (o GetStreamAttachmentsDataOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStreamAttachmentsData) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetStreamAttachmentsDataArrayOutput struct{ *pulumi.OutputState }
-
-func (GetStreamAttachmentsDataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStreamAttachmentsData)(nil)).Elem()
-}
-
-func (o GetStreamAttachmentsDataArrayOutput) ToGetStreamAttachmentsDataArrayOutput() GetStreamAttachmentsDataArrayOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsDataArrayOutput) ToGetStreamAttachmentsDataArrayOutputWithContext(ctx context.Context) GetStreamAttachmentsDataArrayOutput {
-	return o
-}
-
-func (o GetStreamAttachmentsDataArrayOutput) Index(i pulumi.IntInput) GetStreamAttachmentsDataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStreamAttachmentsData {
-		return vs[0].([]GetStreamAttachmentsData)[vs[1].(int)]
-	}).(GetStreamAttachmentsDataOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountInput)(nil)).Elem(), CloudRouterAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterAccountPtrInput)(nil)).Elem(), CloudRouterAccountArgs{})
@@ -78683,6 +77485,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAdditionalInfoArrayInput)(nil)).Elem(), ConnectionZSideAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideServiceTokenInput)(nil)).Elem(), ConnectionZSideServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideServiceTokenPtrInput)(nil)).Elem(), ConnectionZSideServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockAccountInput)(nil)).Elem(), IpBlockAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockAccountPtrInput)(nil)).Elem(), IpBlockAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockAssetInput)(nil)).Elem(), IpBlockAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockAssetArrayInput)(nil)).Elem(), IpBlockAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockChangeInput)(nil)).Elem(), IpBlockChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockChangePtrInput)(nil)).Elem(), IpBlockChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockChangeLogInput)(nil)).Elem(), IpBlockChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockChangeLogPtrInput)(nil)).Elem(), IpBlockChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockLocationInput)(nil)).Elem(), IpBlockLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockLocationPtrInput)(nil)).Elem(), IpBlockLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockOrderInput)(nil)).Elem(), IpBlockOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockOrderPtrInput)(nil)).Elem(), IpBlockOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockProjectInput)(nil)).Elem(), IpBlockProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockProjectPtrInput)(nil)).Elem(), IpBlockProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockTimeoutsInput)(nil)).Elem(), IpBlockTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockTimeoutsPtrInput)(nil)).Elem(), IpBlockTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkChangeInput)(nil)).Elem(), NetworkChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkChangePtrInput)(nil)).Elem(), NetworkChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkChangeLogInput)(nil)).Elem(), NetworkChangeLogArgs{})
@@ -79130,6 +77948,29 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsPaginationPtrInput)(nil)).Elem(), GetConnectionsPaginationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsSortInput)(nil)).Elem(), GetConnectionsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsSortArrayInput)(nil)).Elem(), GetConnectionsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockAccountInput)(nil)).Elem(), GetIpBlockAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockAssetInput)(nil)).Elem(), GetIpBlockAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockAssetArrayInput)(nil)).Elem(), GetIpBlockAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockChangeInput)(nil)).Elem(), GetIpBlockChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockChangeLogInput)(nil)).Elem(), GetIpBlockChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockLocationInput)(nil)).Elem(), GetIpBlockLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockOrderInput)(nil)).Elem(), GetIpBlockOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlockProjectInput)(nil)).Elem(), GetIpBlockProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataInput)(nil)).Elem(), GetIpBlocksDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataArrayInput)(nil)).Elem(), GetIpBlocksDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataAccountInput)(nil)).Elem(), GetIpBlocksDataAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataAssetInput)(nil)).Elem(), GetIpBlocksDataAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataAssetArrayInput)(nil)).Elem(), GetIpBlocksDataAssetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataChangeInput)(nil)).Elem(), GetIpBlocksDataChangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataChangeLogInput)(nil)).Elem(), GetIpBlocksDataChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataLocationInput)(nil)).Elem(), GetIpBlocksDataLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataOrderInput)(nil)).Elem(), GetIpBlocksDataOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksDataProjectInput)(nil)).Elem(), GetIpBlocksDataProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksFilterInput)(nil)).Elem(), GetIpBlocksFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksPaginationInput)(nil)).Elem(), GetIpBlocksPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksPaginationPtrInput)(nil)).Elem(), GetIpBlocksPaginationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksSortInput)(nil)).Elem(), GetIpBlocksSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpBlocksSortPtrInput)(nil)).Elem(), GetIpBlocksSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementArrayInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMarketplaceSubscriptionEntitlementAssetInput)(nil)).Elem(), GetMarketplaceSubscriptionEntitlementAssetArgs{})
@@ -79462,50 +78303,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrInput)(nil)).Elem(), GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensFilterInput)(nil)).Elem(), GetServiceTokensFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensFilterArrayInput)(nil)).Elem(), GetServiceTokensFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTokensPaginationPtrInput)(nil)).Elem(), GetServiceTokensPaginationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleChangeLogInput)(nil)).Elem(), GetStreamAlertRuleChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleDetectionMethodInput)(nil)).Elem(), GetStreamAlertRuleDetectionMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleDetectionMethodPtrInput)(nil)).Elem(), GetStreamAlertRuleDetectionMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleMetricSelectorInput)(nil)).Elem(), GetStreamAlertRuleMetricSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleMetricSelectorPtrInput)(nil)).Elem(), GetStreamAlertRuleMetricSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRuleResourceSelectorInput)(nil)).Elem(), GetStreamAlertRuleResourceSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataInput)(nil)).Elem(), GetStreamAlertRulesDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataArrayInput)(nil)).Elem(), GetStreamAlertRulesDataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataChangeLogInput)(nil)).Elem(), GetStreamAlertRulesDataChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataDetectionMethodInput)(nil)).Elem(), GetStreamAlertRulesDataDetectionMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataMetricSelectorInput)(nil)).Elem(), GetStreamAlertRulesDataMetricSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesDataResourceSelectorInput)(nil)).Elem(), GetStreamAlertRulesDataResourceSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAlertRulesPaginationInput)(nil)).Elem(), GetStreamAlertRulesPaginationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataInput)(nil)).Elem(), GetStreamAttachmentsDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAttachmentsDataArrayInput)(nil)).Elem(), GetStreamAttachmentsDataArray{})
 	pulumi.RegisterOutputType(CloudRouterAccountOutput{})
 	pulumi.RegisterOutputType(CloudRouterAccountPtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterChangeLogOutput{})
@@ -79606,6 +78403,22 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionZSideAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideServiceTokenOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideServiceTokenPtrOutput{})
+	pulumi.RegisterOutputType(IpBlockAccountOutput{})
+	pulumi.RegisterOutputType(IpBlockAccountPtrOutput{})
+	pulumi.RegisterOutputType(IpBlockAssetOutput{})
+	pulumi.RegisterOutputType(IpBlockAssetArrayOutput{})
+	pulumi.RegisterOutputType(IpBlockChangeOutput{})
+	pulumi.RegisterOutputType(IpBlockChangePtrOutput{})
+	pulumi.RegisterOutputType(IpBlockChangeLogOutput{})
+	pulumi.RegisterOutputType(IpBlockChangeLogPtrOutput{})
+	pulumi.RegisterOutputType(IpBlockLocationOutput{})
+	pulumi.RegisterOutputType(IpBlockLocationPtrOutput{})
+	pulumi.RegisterOutputType(IpBlockOrderOutput{})
+	pulumi.RegisterOutputType(IpBlockOrderPtrOutput{})
+	pulumi.RegisterOutputType(IpBlockProjectOutput{})
+	pulumi.RegisterOutputType(IpBlockProjectPtrOutput{})
+	pulumi.RegisterOutputType(IpBlockTimeoutsOutput{})
+	pulumi.RegisterOutputType(IpBlockTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(NetworkChangeOutput{})
 	pulumi.RegisterOutputType(NetworkChangePtrOutput{})
 	pulumi.RegisterOutputType(NetworkChangeLogOutput{})
@@ -80053,6 +78866,29 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionsPaginationPtrOutput{})
 	pulumi.RegisterOutputType(GetConnectionsSortOutput{})
 	pulumi.RegisterOutputType(GetConnectionsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetIpBlockAccountOutput{})
+	pulumi.RegisterOutputType(GetIpBlockAssetOutput{})
+	pulumi.RegisterOutputType(GetIpBlockAssetArrayOutput{})
+	pulumi.RegisterOutputType(GetIpBlockChangeOutput{})
+	pulumi.RegisterOutputType(GetIpBlockChangeLogOutput{})
+	pulumi.RegisterOutputType(GetIpBlockLocationOutput{})
+	pulumi.RegisterOutputType(GetIpBlockOrderOutput{})
+	pulumi.RegisterOutputType(GetIpBlockProjectOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataArrayOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataAccountOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataAssetOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataAssetArrayOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataChangeOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataChangeLogOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataLocationOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataOrderOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksDataProjectOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksFilterOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksPaginationOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksPaginationPtrOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksSortOutput{})
+	pulumi.RegisterOutputType(GetIpBlocksSortPtrOutput{})
 	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementOutput{})
 	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementArrayOutput{})
 	pulumi.RegisterOutputType(GetMarketplaceSubscriptionEntitlementAssetOutput{})
@@ -80385,48 +79221,4 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorLinkProtocolPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorNetworkLocationArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortPtrOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorPortLocationArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDeviceOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionASideAccessPointSelectorVirtualDevicePtrOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfaceOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorInterfacePtrOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorLinkProtocolPtrOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorNetworkLocationArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortPtrOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorPortLocationArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDeviceOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensDataServiceTokenConnectionZSideAccessPointSelectorVirtualDevicePtrOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensFilterOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensPaginationOutput{})
-	pulumi.RegisterOutputType(GetServiceTokensPaginationPtrOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRuleChangeLogOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRuleDetectionMethodOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRuleDetectionMethodPtrOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRuleMetricSelectorOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRuleMetricSelectorPtrOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRuleResourceSelectorOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRulesDataOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRulesDataArrayOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRulesDataChangeLogOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRulesDataDetectionMethodOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRulesDataMetricSelectorOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRulesDataResourceSelectorOutput{})
-	pulumi.RegisterOutputType(GetStreamAlertRulesPaginationOutput{})
-	pulumi.RegisterOutputType(GetStreamAttachmentsDataOutput{})
-	pulumi.RegisterOutputType(GetStreamAttachmentsDataArrayOutput{})
 }

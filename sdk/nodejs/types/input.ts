@@ -1329,6 +1329,104 @@ export namespace fabric {
         property?: pulumi.Input<string | undefined>;
     }
 
+    export interface GetIpBlocksFilter {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+         */
+        operator: string;
+        /**
+         * Field name to use on filters
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetIpBlocksFilterArgs {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Field name to use on filters
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetIpBlocksPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of IP blocks available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetIpBlocksPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number | undefined>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string | undefined>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number | undefined>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string | undefined>;
+        /**
+         * The total number of IP blocks available to the user making the request
+         */
+        total?: pulumi.Input<number | undefined>;
+    }
+
+    export interface GetIpBlocksSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+         */
+        property?: string;
+    }
+
+    export interface GetIpBlocksSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: pulumi.Input<string | undefined>;
+        /**
+         * The property name to use in sorting. One of "/uuid" "/state" "/prefixLength" "/changeLog/createdDateTime" "/changeLog/updatedDateTime". Defaults to "/changeLog/updatedDateTime"
+         */
+        property?: pulumi.Input<string | undefined>;
+    }
+
     export interface GetMetrosPagination {
         /**
          * Maximum number of search results returned per page.
@@ -2575,6 +2673,94 @@ export namespace fabric {
          * The total number of streams available to the user making the request
          */
         total?: pulumi.Input<number | undefined>;
+    }
+
+    export interface IpBlockAccount {
+        /**
+         * Account number
+         */
+        accountNumber?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IpBlockAsset {
+        /**
+         * Asset URL
+         */
+        href?: pulumi.Input<string | undefined>;
+        /**
+         * Asset type
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * Asset UUID
+         */
+        uuid?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IpBlockChange {
+        /**
+         * Change URL
+         */
+        href?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IpBlockChangeLog {
+        /**
+         * Creation timestamp
+         */
+        createdDateTime?: pulumi.Input<string | undefined>;
+        /**
+         * Deletion timestamp
+         */
+        deletedDateTime?: pulumi.Input<string | undefined>;
+        /**
+         * Last update timestamp
+         */
+        updatedDateTime?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IpBlockLocation {
+        /**
+         * Two-letter metro code (e.g. SV, DC, AM)
+         */
+        metroCode: pulumi.Input<string>;
+        /**
+         * Metro resource URL
+         */
+        metroHref?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IpBlockOrder {
+        /**
+         * Order URL
+         */
+        href?: pulumi.Input<string | undefined>;
+        /**
+         * Order number
+         */
+        orderNumber?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IpBlockProject {
+        /**
+         * Equinix-assigned project ID
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface IpBlockTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string | undefined>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string | undefined>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string | undefined>;
     }
 
     export interface NetworkChange {

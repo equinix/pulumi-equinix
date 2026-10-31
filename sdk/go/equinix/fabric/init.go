@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionRouteAggregation{}
 	case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
 		r = &ConnectionRouteFilter{}
+	case "equinix:fabric/ipBlock:IpBlock":
+		r = &IpBlock{}
 	case "equinix:fabric/network:Network":
 		r = &Network{}
 	case "equinix:fabric/port:Port":
@@ -88,6 +90,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"fabric/connectionRouteFilter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/ipBlock",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

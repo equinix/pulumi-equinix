@@ -221,6 +221,14 @@
             "equinix_fabric_connection_route_filter": {
                 "current": "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter"
             },
+            "equinix_fabric_ip_block": {
+                "current": "equinix:fabric/ipBlock:IpBlock",
+                "fields": {
+                    "assets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "equinix_fabric_network": {
                 "current": "equinix:fabric/network:Network",
                 "fields": {
@@ -1249,6 +1257,36 @@
                     },
                     "sort": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_ip_block": {
+                "current": "equinix:fabric/getIpBlock:getIpBlock",
+                "fields": {
+                    "assets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_ip_blocks": {
+                "current": "equinix:fabric/getIpBlocks:getIpBlocks",
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "assets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "fields": {
+                            "values": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -2441,6 +2479,7 @@
     "default-resource-schema-fixups": {
         "resources": {
             "equinix_fabric_connection_route_aggregation": {},
+            "equinix_fabric_ip_block": {},
             "equinix_fabric_port": {},
             "equinix_fabric_precision_time_service": {},
             "equinix_fabric_route_aggregation": {},
@@ -2457,6 +2496,7 @@
             "equinix:fabric/connection:Connection": 0,
             "equinix:fabric/connectionRouteAggregation:ConnectionRouteAggregation": 1,
             "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter": 0,
+            "equinix:fabric/ipBlock:IpBlock": 1,
             "equinix:fabric/network:Network": 0,
             "equinix:fabric/port:Port": 1,
             "equinix:fabric/precisionTimeService:PrecisionTimeService": 1,
@@ -2489,6 +2529,8 @@
             "equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter": 0,
             "equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters": 0,
             "equinix:fabric/getConnections:getConnections": 0,
+            "equinix:fabric/getIpBlock:getIpBlock": 1,
+            "equinix:fabric/getIpBlocks:getIpBlocks": 1,
             "equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription": 0,
             "equinix:fabric/getMetro:getMetro": 1,
             "equinix:fabric/getMetros:getMetros": 1,
