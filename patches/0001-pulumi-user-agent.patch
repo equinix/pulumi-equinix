@@ -6,10 +6,10 @@ Subject: [PATCH] pulumi user agent
 Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
 
 diff --git a/internal/config/config.go b/internal/config/config.go
-index 628aa0a..894a0db 100644
+index bbe0a957..aaa8622f 100644
 --- a/internal/config/config.go
 +++ b/internal/config/config.go
-@@ -341,20 +341,20 @@ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string)
+@@ -302,20 +302,20 @@ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string)
  }
  
  func (c *Config) tfSdkUserAgent(suffix string) string {

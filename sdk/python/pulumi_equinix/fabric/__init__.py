@@ -20,6 +20,8 @@ from .get_connection_route_aggregations import *
 from .get_connection_route_filter import *
 from .get_connection_route_filters import *
 from .get_connections import *
+from .get_ip_block import *
+from .get_ip_blocks import *
 from .get_marketplace_subscription import *
 from .get_metro import *
 from .get_metros import *
@@ -51,6 +53,7 @@ from .get_stream_attachments import *
 from .get_stream_subscription import *
 from .get_stream_subscriptions import *
 from .get_streams import *
+from .ip_block import *
 from .network import *
 from .port import *
 from .precision_time_service import *

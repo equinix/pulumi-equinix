@@ -1810,6 +1810,164 @@
                 }
             }
         },
+        "equinix:fabric/IpBlockAccount:IpBlockAccount": {
+            "properties": {
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Account number\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accountNumber"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/IpBlockAsset:IpBlockAsset": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "Asset URL\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Asset type\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Asset UUID\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "href",
+                        "type",
+                        "uuid"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/IpBlockChange:IpBlockChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "Change URL\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "href"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/IpBlockChangeLog:IpBlockChangeLog": {
+            "properties": {
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation timestamp\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion timestamp\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update timestamp\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdDateTime",
+                        "deletedDateTime",
+                        "updatedDateTime"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/IpBlockLocation:IpBlockLocation": {
+            "properties": {
+                "metroCode": {
+                    "type": "string",
+                    "description": "Two-letter metro code (e.g. SV, DC, AM)\n"
+                },
+                "metroHref": {
+                    "type": "string",
+                    "description": "Metro resource URL\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "metroCode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "metroCode",
+                        "metroHref"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/IpBlockOrder:IpBlockOrder": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "Order URL\n"
+                },
+                "orderNumber": {
+                    "type": "string",
+                    "description": "Order number\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "href",
+                        "orderNumber"
+                    ]
+                }
+            }
+        },
+        "equinix:fabric/IpBlockProject:IpBlockProject": {
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "Equinix-assigned project ID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId"
+            ]
+        },
+        "equinix:fabric/IpBlockTimeouts:IpBlockTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
         "equinix:fabric/NetworkChange:NetworkChange": {
             "properties": {
                 "href": {
@@ -9647,6 +9805,474 @@
                 "property": {
                     "type": "string",
                     "description": "The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime\n"
+                }
+            },
+            "type": "object"
+        },
+        "equinix:fabric/getIpBlockAccount:getIpBlockAccount": {
+            "properties": {
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Account number\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountNumber"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlockAsset:getIpBlockAsset": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the asset resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the asset\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the asset\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlockChange:getIpBlockChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the change resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlockChangeLog:getIpBlockChangeLog": {
+            "properties": {
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the IP block\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the IP block\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the IP block\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdDateTime",
+                "deletedDateTime",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlockLocation:getIpBlockLocation": {
+            "properties": {
+                "metroCode": {
+                    "type": "string",
+                    "description": "Two-letter metro code\n"
+                },
+                "metroHref": {
+                    "type": "string",
+                    "description": "URI to the metro resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "metroCode",
+                "metroHref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlockOrder:getIpBlockOrder": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the order resource\n"
+                },
+                "orderNumber": {
+                    "type": "string",
+                    "description": "Order number\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "orderNumber"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlockProject:getIpBlockProject": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the project resource\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Equinix subscriber-assigned project ID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "projectId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksData:getIpBlocksData": {
+            "properties": {
+                "account": {
+                    "$ref": "#/types/equinix:fabric/getIpBlocksDataAccount:getIpBlocksDataAccount",
+                    "description": "Account associated with the IP block\n"
+                },
+                "assets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getIpBlocksDataAsset:getIpBlocksDataAsset"
+                    },
+                    "description": "List of assets (connections or services) using this IP block\n"
+                },
+                "change": {
+                    "$ref": "#/types/equinix:fabric/getIpBlocksDataChange:getIpBlocksDataChange",
+                    "description": "Current state of the latest change on the IP block\n"
+                },
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/getIpBlocksDataChangeLog:getIpBlocksDataChangeLog",
+                    "description": "Audit log of changes to the IP block\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Equinix auto generated URI to the IP block resource\n"
+                },
+                "location": {
+                    "$ref": "#/types/equinix:fabric/getIpBlocksDataLocation:getIpBlocksDataLocation",
+                    "description": "Location of the IP block\n"
+                },
+                "order": {
+                    "$ref": "#/types/equinix:fabric/getIpBlocksDataOrder:getIpBlocksDataOrder",
+                    "description": "Order details for the IP block\n"
+                },
+                "ownership": {
+                    "type": "string",
+                    "description": "Ownership of the IP block. One of: EQUINIX, CUSTOMER\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The assigned IP prefix (e.g. 192.0.2.0/24)\n"
+                },
+                "prefixLength": {
+                    "type": "integer",
+                    "description": "Prefix length of the IP block (e.g. 24 for a /24 block)\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/getIpBlocksDataProject:getIpBlocksDataProject",
+                    "description": "Project associated with the IP block\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Provisioning state of the IP block\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the IP block product\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix-assigned unique identifier for the IP block\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "account",
+                "assets",
+                "change",
+                "changeLog",
+                "href",
+                "location",
+                "order",
+                "ownership",
+                "prefix",
+                "prefixLength",
+                "project",
+                "state",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksDataAccount:getIpBlocksDataAccount": {
+            "properties": {
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Account number\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountNumber"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksDataAsset:getIpBlocksDataAsset": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the asset resource\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the asset\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the asset\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "type",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksDataChange:getIpBlocksDataChange": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the change resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksDataChangeLog:getIpBlocksDataChangeLog": {
+            "properties": {
+                "createdDateTime": {
+                    "type": "string",
+                    "description": "Creation time of the IP block\n"
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "description": "Deletion time of the IP block\n"
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "description": "Last update time of the IP block\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdDateTime",
+                "deletedDateTime",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksDataLocation:getIpBlocksDataLocation": {
+            "properties": {
+                "metroCode": {
+                    "type": "string",
+                    "description": "Two-letter metro code\n"
+                },
+                "metroHref": {
+                    "type": "string",
+                    "description": "URI to the metro resource\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "metroCode",
+                "metroHref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksDataOrder:getIpBlocksDataOrder": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the order resource\n"
+                },
+                "orderNumber": {
+                    "type": "string",
+                    "description": "Order number\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "orderNumber"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksDataProject:getIpBlocksDataProject": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URI to the project resource\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Equinix subscriber-assigned project ID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "projectId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksFilter:getIpBlocksFilter": {
+            "properties": {
+                "operator": {
+                    "type": "string",
+                    "description": "Operator to use on your filtered field with the values given. One of: [=, !=, \u003e, \u003e=, \u003c, \u003c=, IN, NOT IN, LIKE, NOT LIKE, IS NOT NULL, IS NULL]\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "Field name to use on filters\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values that you want to apply the property+operator combination to in order to filter your data search\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "property",
+                "values"
+            ]
+        },
+        "equinix:fabric/getIpBlocksPagination:getIpBlocksPagination": {
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20\n"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "The URL relative to the next item in the response\n"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Index of the first item returned in the response. The default is 0\n"
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "The URL relative to the previous item in the response\n"
+                },
+                "total": {
+                    "type": "integer",
+                    "description": "The total number of IP blocks available to the user making the request\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "limit",
+                "next",
+                "offset",
+                "previous",
+                "total"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getIpBlocksSort:getIpBlocksSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property name to use in sorting. One of \"/uuid\" \"/state\" \"/prefixLength\" \"/changeLog/createdDateTime\" \"/changeLog/updatedDateTime\". Defaults to \"/changeLog/updatedDateTime\"\n"
                 }
             },
             "type": "object"
@@ -21387,6 +22013,190 @@
                 "type": "object"
             }
         },
+        "equinix:fabric/ipBlock:IpBlock": {
+            "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric IP Blocks.\n\nAdditional Documentation:\n* API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks\n",
+            "properties": {
+                "account": {
+                    "$ref": "#/types/equinix:fabric/IpBlockAccount:IpBlockAccount",
+                    "description": "Billing account for the IP block\n"
+                },
+                "assets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/IpBlockAsset:IpBlockAsset"
+                    },
+                    "description": "Resources currently using this IP block\n"
+                },
+                "change": {
+                    "$ref": "#/types/equinix:fabric/IpBlockChange:IpBlockChange",
+                    "description": "Current pending change on this IP block\n"
+                },
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/IpBlockChangeLog:IpBlockChangeLog",
+                    "description": "Timestamps tracking resource lifecycle\n"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "URL of the IP block resource\n"
+                },
+                "location": {
+                    "$ref": "#/types/equinix:fabric/IpBlockLocation:IpBlockLocation",
+                    "description": "Metro location for the IP block\n"
+                },
+                "order": {
+                    "$ref": "#/types/equinix:fabric/IpBlockOrder:IpBlockOrder",
+                    "description": "Order details for this IP block\n"
+                },
+                "ownership": {
+                    "type": "string",
+                    "description": "Ownership type; EQUINIX or CUSTOMER\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "CIDR prefix (e.g. 192.0.2.0/28)\n"
+                },
+                "prefixLength": {
+                    "type": "integer",
+                    "description": "CIDR prefix length (e.g. 28 for a /28 block)\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/IpBlockProject:IpBlockProject",
+                    "description": "Project this IP block belongs to\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Provisioning state of the IP block (PENDING, ACTIVE, DELETING, DELETED, FAILED)\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/equinix:fabric/IpBlockTimeouts:IpBlockTimeouts"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "IP block type; IPV4*IP*BLOCK or IPV6*IP*BLOCK\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Equinix-assigned UUID of the IP block\n"
+                }
+            },
+            "required": [
+                "account",
+                "assets",
+                "change",
+                "changeLog",
+                "href",
+                "location",
+                "order",
+                "ownership",
+                "prefix",
+                "prefixLength",
+                "project",
+                "state",
+                "type",
+                "uuid"
+            ],
+            "inputProperties": {
+                "account": {
+                    "$ref": "#/types/equinix:fabric/IpBlockAccount:IpBlockAccount",
+                    "description": "Billing account for the IP block\n"
+                },
+                "location": {
+                    "$ref": "#/types/equinix:fabric/IpBlockLocation:IpBlockLocation",
+                    "description": "Metro location for the IP block\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "CIDR prefix (e.g. 192.0.2.0/28)\n"
+                },
+                "prefixLength": {
+                    "type": "integer",
+                    "description": "CIDR prefix length (e.g. 28 for a /28 block)\n"
+                },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/IpBlockProject:IpBlockProject",
+                    "description": "Project this IP block belongs to\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/equinix:fabric/IpBlockTimeouts:IpBlockTimeouts"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "IP block type; IPV4*IP*BLOCK or IPV6*IP*BLOCK\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IpBlock resources.\n",
+                "properties": {
+                    "account": {
+                        "$ref": "#/types/equinix:fabric/IpBlockAccount:IpBlockAccount",
+                        "description": "Billing account for the IP block\n"
+                    },
+                    "assets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/IpBlockAsset:IpBlockAsset"
+                        },
+                        "description": "Resources currently using this IP block\n"
+                    },
+                    "change": {
+                        "$ref": "#/types/equinix:fabric/IpBlockChange:IpBlockChange",
+                        "description": "Current pending change on this IP block\n"
+                    },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/IpBlockChangeLog:IpBlockChangeLog",
+                        "description": "Timestamps tracking resource lifecycle\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "URL of the IP block resource\n"
+                    },
+                    "location": {
+                        "$ref": "#/types/equinix:fabric/IpBlockLocation:IpBlockLocation",
+                        "description": "Metro location for the IP block\n"
+                    },
+                    "order": {
+                        "$ref": "#/types/equinix:fabric/IpBlockOrder:IpBlockOrder",
+                        "description": "Order details for this IP block\n"
+                    },
+                    "ownership": {
+                        "type": "string",
+                        "description": "Ownership type; EQUINIX or CUSTOMER\n"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "description": "CIDR prefix (e.g. 192.0.2.0/28)\n"
+                    },
+                    "prefixLength": {
+                        "type": "integer",
+                        "description": "CIDR prefix length (e.g. 28 for a /28 block)\n"
+                    },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/IpBlockProject:IpBlockProject",
+                        "description": "Project this IP block belongs to\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Provisioning state of the IP block (PENDING, ACTIVE, DELETING, DELETED, FAILED)\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/equinix:fabric/IpBlockTimeouts:IpBlockTimeouts"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "IP block type; IPV4*IP*BLOCK or IPV6*IP*BLOCK\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix-assigned UUID of the IP block\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "equinix:fabric/network:Network": {
             "description": "Fabric V4 API compatible resource allows creation and management of Equinix Fabric Network\n\nAdditional documentation:\n* Getting Started: https://docs.equinix.com/fabric/multipoint-connections/multipoint-networks/\n* API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Networks\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst newNetwork = new equinix.fabric.Network(\"new_network\", {\n    name: \"Network-SV\",\n    type: \"EVPLAN\",\n    scope: \"GLOBAL\",\n    notifications: [{\n        type: \"ALL\",\n        emails: [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    project: {\n        projectId: \"776847000642406\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nnew_network = equinix.fabric.Network(\"new_network\",\n    name=\"Network-SV\",\n    type=\"EVPLAN\",\n    scope=\"GLOBAL\",\n    notifications=[{\n        \"type\": \"ALL\",\n        \"emails\": [\n            \"example@equinix.com\",\n            \"test1@equinix.com\",\n        ],\n    }],\n    project={\n        \"project_id\": \"776847000642406\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var newNetwork = new Equinix.Fabric.Network(\"new_network\", new()\n    {\n        Name = \"Network-SV\",\n        Type = \"EVPLAN\",\n        Scope = \"GLOBAL\",\n        Notifications = new[]\n        {\n            new Equinix.Fabric.Inputs.NetworkNotificationArgs\n            {\n                Type = \"ALL\",\n                Emails = new[]\n                {\n                    \"example@equinix.com\",\n                    \"test1@equinix.com\",\n                },\n            },\n        },\n        Project = new Equinix.Fabric.Inputs.NetworkProjectArgs\n        {\n            ProjectId = \"776847000642406\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fabric.NewNetwork(ctx, \"new_network\", \u0026fabric.NetworkArgs{\n\t\t\tName:  pulumi.String(\"Network-SV\"),\n\t\t\tType:  pulumi.String(\"EVPLAN\"),\n\t\t\tScope: pulumi.String(\"GLOBAL\"),\n\t\t\tNotifications: fabric.NetworkNotificationArray{\n\t\t\t\t\u0026fabric.NetworkNotificationArgs{\n\t\t\t\t\tType: pulumi.String(\"ALL\"),\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"example@equinix.com\"),\n\t\t\t\t\t\tpulumi.String(\"test1@equinix.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tProject: \u0026fabric.NetworkProjectArgs{\n\t\t\t\tProjectId: pulumi.String(\"776847000642406\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    equinix = {\n      source = \"pulumi/equinix\"\n    }\n  }\n}\n\nresource \"equinix_fabric_network\" \"new_network\" {\n  name  = \"Network-SV\"\n  type  = \"EVPLAN\"\n  scope = \"GLOBAL\"\n  notifications {\n    type   = \"ALL\"\n    emails = [\"example@equinix.com\", \"test1@equinix.com\"]\n  }\n  project = {\n    project_id = \"776847000642406\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.equinix.equinix.fabric.Network;\nimport com.equinix.equinix.fabric.NetworkArgs;\nimport com.pulumi.equinix.fabric.inputs.NetworkNotificationArgs;\nimport com.pulumi.equinix.fabric.inputs.NetworkProjectArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var newNetwork = new Network(\"newNetwork\", NetworkArgs.builder()\n            .name(\"Network-SV\")\n            .type(\"EVPLAN\")\n            .scope(\"GLOBAL\")\n            .notifications(NetworkNotificationArgs.builder()\n                .type(\"ALL\")\n                .emails(                \n                    \"example@equinix.com\",\n                    \"test1@equinix.com\")\n                .build())\n            .project(NetworkProjectArgs.builder()\n                .projectId(\"776847000642406\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  newNetwork:\n    type: equinix:fabric:Network\n    name: new_network\n    properties:\n      name: Network-SV\n      type: EVPLAN\n      scope: GLOBAL\n      notifications:\n        - type: ALL\n          emails:\n            - example@equinix.com\n            - test1@equinix.com\n      project:\n        projectId: '776847000642406'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -26223,6 +27033,171 @@
                     "datas",
                     "filters",
                     "outerOperator",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "equinix:fabric/getIpBlock:getIpBlock": {
+            "description": "Fabric V4 API compatible data resource that allows users to fetch an Equinix Fabric IP Block by UUID.\n\nAdditional Documentation:\n* API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIpBlock.\n",
+                "properties": {
+                    "ipBlockId": {
+                        "type": "string",
+                        "description": "The UUID of the IP block this data source should retrieve\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ipBlockId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIpBlock.\n",
+                "properties": {
+                    "account": {
+                        "$ref": "#/types/equinix:fabric/getIpBlockAccount:getIpBlockAccount",
+                        "description": "Account associated with the IP block\n"
+                    },
+                    "assets": {
+                        "description": "List of assets (connections or services) using this IP block\n",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getIpBlockAsset:getIpBlockAsset"
+                        },
+                        "type": "array"
+                    },
+                    "change": {
+                        "$ref": "#/types/equinix:fabric/getIpBlockChange:getIpBlockChange",
+                        "description": "Current state of the latest change on the IP block\n"
+                    },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/getIpBlockChangeLog:getIpBlockChangeLog",
+                        "description": "Audit log of changes to the IP block\n"
+                    },
+                    "href": {
+                        "description": "Equinix auto generated URI to the IP block resource\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique identifier of the resource\n",
+                        "type": "string"
+                    },
+                    "ipBlockId": {
+                        "description": "The UUID of the IP block this data source should retrieve\n",
+                        "type": "string"
+                    },
+                    "location": {
+                        "$ref": "#/types/equinix:fabric/getIpBlockLocation:getIpBlockLocation",
+                        "description": "Location of the IP block\n"
+                    },
+                    "order": {
+                        "$ref": "#/types/equinix:fabric/getIpBlockOrder:getIpBlockOrder",
+                        "description": "Order details for the IP block\n"
+                    },
+                    "ownership": {
+                        "description": "Ownership of the IP block. One of: EQUINIX, CUSTOMER\n",
+                        "type": "string"
+                    },
+                    "prefix": {
+                        "description": "The assigned IP prefix (e.g. 192.0.2.0/24)\n",
+                        "type": "string"
+                    },
+                    "prefixLength": {
+                        "description": "Prefix length of the IP block (e.g. 24 for a /24 block)\n",
+                        "type": "integer"
+                    },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/getIpBlockProject:getIpBlockProject",
+                        "description": "Project associated with the IP block\n"
+                    },
+                    "state": {
+                        "description": "Provisioning state of the IP block\n",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "Type of the IP block product\n",
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "description": "Equinix-assigned unique identifier for the IP block\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "account",
+                    "assets",
+                    "change",
+                    "changeLog",
+                    "href",
+                    "id",
+                    "ipBlockId",
+                    "location",
+                    "order",
+                    "ownership",
+                    "prefix",
+                    "prefixLength",
+                    "project",
+                    "state",
+                    "type",
+                    "uuid"
+                ],
+                "type": "object"
+            }
+        },
+        "equinix:fabric/getIpBlocks:getIpBlocks": {
+            "description": "Fabric V4 API compatible data resource that allows users to search for Equinix Fabric IP Blocks with pagination details.\n\nAdditional Documentation:\n* API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIpBlocks.\n",
+                "properties": {
+                    "filter": {
+                        "$ref": "#/types/equinix:fabric/getIpBlocksFilter:getIpBlocksFilter",
+                        "description": "Filters for the Data Source Search Request\n"
+                    },
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getIpBlocksPagination:getIpBlocksPagination",
+                        "description": "Pagination details for the returned IP blocks list\n"
+                    },
+                    "sort": {
+                        "$ref": "#/types/equinix:fabric/getIpBlocksSort:getIpBlocksSort",
+                        "description": "Sort criteria for the Data Source Search Request\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "filter"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIpBlocks.\n",
+                "properties": {
+                    "datas": {
+                        "description": "Returned list of IP block objects\n",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getIpBlocksData:getIpBlocksData"
+                        },
+                        "type": "array"
+                    },
+                    "filter": {
+                        "$ref": "#/types/equinix:fabric/getIpBlocksFilter:getIpBlocksFilter",
+                        "description": "Filters for the Data Source Search Request\n"
+                    },
+                    "id": {
+                        "description": "The unique identifier of the resource\n",
+                        "type": "string"
+                    },
+                    "pagination": {
+                        "$ref": "#/types/equinix:fabric/getIpBlocksPagination:getIpBlocksPagination",
+                        "description": "Pagination details for the returned IP blocks list\n"
+                    },
+                    "sort": {
+                        "$ref": "#/types/equinix:fabric/getIpBlocksSort:getIpBlocksSort",
+                        "description": "Sort criteria for the Data Source Search Request\n"
+                    }
+                },
+                "required": [
+                    "datas",
+                    "filter",
                     "id"
                 ],
                 "type": "object"

@@ -22,6 +22,10 @@ import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFiltersArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFiltersPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetIpBlockArgs;
+import com.equinix.pulumi.fabric.inputs.GetIpBlockPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetIpBlocksArgs;
+import com.equinix.pulumi.fabric.inputs.GetIpBlocksPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetMarketplaceSubscriptionArgs;
 import com.equinix.pulumi.fabric.inputs.GetMarketplaceSubscriptionPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetMetroArgs;
@@ -93,6 +97,8 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionRouteAggregationsResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFilterResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFiltersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsResult;
+import com.equinix.pulumi.fabric.outputs.GetIpBlockResult;
+import com.equinix.pulumi.fabric.outputs.GetIpBlocksResult;
 import com.equinix.pulumi.fabric.outputs.GetMarketplaceSubscriptionResult;
 import com.equinix.pulumi.fabric.outputs.GetMetroResult;
 import com.equinix.pulumi.fabric.outputs.GetMetrosResult;
@@ -1141,6 +1147,106 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Fabric IP Block by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static Output<GetIpBlockResult> getIpBlock(GetIpBlockArgs args) {
+        return getIpBlock(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Fabric IP Block by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static CompletableFuture<GetIpBlockResult> getIpBlockPlain(GetIpBlockPlainArgs args) {
+        return getIpBlockPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Fabric IP Block by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static Output<GetIpBlockResult> getIpBlock(GetIpBlockArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getIpBlock:getIpBlock", TypeShape.of(GetIpBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Fabric IP Block by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static Output<GetIpBlockResult> getIpBlock(GetIpBlockArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getIpBlock:getIpBlock", TypeShape.of(GetIpBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Fabric IP Block by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static CompletableFuture<GetIpBlockResult> getIpBlockPlain(GetIpBlockPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getIpBlock:getIpBlock", TypeShape.of(GetIpBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Fabric IP Blocks with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static Output<GetIpBlocksResult> getIpBlocks(GetIpBlocksArgs args) {
+        return getIpBlocks(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Fabric IP Blocks with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static CompletableFuture<GetIpBlocksResult> getIpBlocksPlain(GetIpBlocksPlainArgs args) {
+        return getIpBlocksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Fabric IP Blocks with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static Output<GetIpBlocksResult> getIpBlocks(GetIpBlocksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getIpBlocks:getIpBlocks", TypeShape.of(GetIpBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Fabric IP Blocks with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static Output<GetIpBlocksResult> getIpBlocks(GetIpBlocksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getIpBlocks:getIpBlocks", TypeShape.of(GetIpBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Fabric IP Blocks with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/IP-Blocks
+     * 
+     */
+    public static CompletableFuture<GetIpBlocksResult> getIpBlocksPlain(GetIpBlocksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getIpBlocks:getIpBlocks", TypeShape.of(GetIpBlocksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Marketplace Subscription detail for a given UUID

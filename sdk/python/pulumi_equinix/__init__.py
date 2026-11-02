@@ -59,6 +59,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/ipBlock",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/ipBlock:IpBlock": "IpBlock"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/network",
   "fqn": "pulumi_equinix.fabric",
   "classes": {
