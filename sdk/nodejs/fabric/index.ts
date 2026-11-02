@@ -70,6 +70,16 @@ export const getConnections: typeof import("./getConnections").getConnections = 
 export const getConnectionsOutput: typeof import("./getConnections").getConnectionsOutput = null as any;
 utilities.lazyLoad(exports, ["getConnections","getConnectionsOutput"], () => require("./getConnections"));
 
+export { GetIpBlockArgs, GetIpBlockResult, GetIpBlockOutputArgs } from "./getIpBlock";
+export const getIpBlock: typeof import("./getIpBlock").getIpBlock = null as any;
+export const getIpBlockOutput: typeof import("./getIpBlock").getIpBlockOutput = null as any;
+utilities.lazyLoad(exports, ["getIpBlock","getIpBlockOutput"], () => require("./getIpBlock"));
+
+export { GetIpBlocksArgs, GetIpBlocksResult, GetIpBlocksOutputArgs } from "./getIpBlocks";
+export const getIpBlocks: typeof import("./getIpBlocks").getIpBlocks = null as any;
+export const getIpBlocksOutput: typeof import("./getIpBlocks").getIpBlocksOutput = null as any;
+utilities.lazyLoad(exports, ["getIpBlocks","getIpBlocksOutput"], () => require("./getIpBlocks"));
+
 export { GetMarketplaceSubscriptionArgs, GetMarketplaceSubscriptionResult, GetMarketplaceSubscriptionOutputArgs } from "./getMarketplaceSubscription";
 export const getMarketplaceSubscription: typeof import("./getMarketplaceSubscription").getMarketplaceSubscription = null as any;
 export const getMarketplaceSubscriptionOutput: typeof import("./getMarketplaceSubscription").getMarketplaceSubscriptionOutput = null as any;
@@ -225,6 +235,11 @@ export const getStreams: typeof import("./getStreams").getStreams = null as any;
 export const getStreamsOutput: typeof import("./getStreams").getStreamsOutput = null as any;
 utilities.lazyLoad(exports, ["getStreams","getStreamsOutput"], () => require("./getStreams"));
 
+export { IpBlockArgs, IpBlockState } from "./ipBlock";
+export type IpBlock = import("./ipBlock").IpBlock;
+export const IpBlock: typeof import("./ipBlock").IpBlock = null as any;
+utilities.lazyLoad(exports, ["IpBlock"], () => require("./ipBlock"));
+
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
@@ -311,6 +326,8 @@ const _module = {
                 return new ConnectionRouteAggregation(name, <any>undefined, { urn })
             case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
                 return new ConnectionRouteFilter(name, <any>undefined, { urn })
+            case "equinix:fabric/ipBlock:IpBlock":
+                return new IpBlock(name, <any>undefined, { urn })
             case "equinix:fabric/network:Network":
                 return new Network(name, <any>undefined, { urn })
             case "equinix:fabric/port:Port":
@@ -348,6 +365,7 @@ pulumi.runtime.registerResourceModule("equinix", "fabric/cloudRouter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connection", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteAggregation", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteFilter", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/ipBlock", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/network", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/port", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/precisionTimeService", _module)
