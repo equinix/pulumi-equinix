@@ -194,8 +194,8 @@ import (
 //			}
 //			aviatrix_cloudinit_file, err := networkedge.NewNetworkFile(ctx, "aviatrix-cloudinit-file", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
-//				Content:        invokeFile.Result,
-//				MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+//				Content:        invokeFile.Result.(pulumi.String),
+//				MetroCode:      pulumi.String(sv.MetroCode),
 //				DeviceTypeCode: pulumi.String("AVIATRIX_EDGE_10"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 //				SelfManaged:    pulumi.Bool(true),
@@ -516,8 +516,8 @@ import (
 //			}
 //			bluecat_edge_service_point_cloudinit_primary_file, err := networkedge.NewNetworkFile(ctx, "bluecat-edge-service-point-cloudinit-primary-file", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-//				Content:        invokeFile.Result,
-//				MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+//				Content:        invokeFile.Result.(pulumi.String),
+//				MetroCode:      pulumi.String(sv.MetroCode),
 //				DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 //				SelfManaged:    pulumi.Bool(true),
@@ -534,8 +534,8 @@ import (
 //			}
 //			bluecat_edge_service_point_cloudinit_secondary_file, err := networkedge.NewNetworkFile(ctx, "bluecat-edge-service-point-cloudinit-secondary-file", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("TF-BLUECAT-ESP-cloud-init-file.txt"),
-//				Content:        invokeFile1.Result,
-//				MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+//				Content:        invokeFile1.Result.(pulumi.String),
+//				MetroCode:      pulumi.String(sv.MetroCode),
 //				DeviceTypeCode: pulumi.String("BLUECAT-EDGE-SERVICE-POINT"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 //				SelfManaged:    pulumi.Bool(true),
@@ -790,8 +790,8 @@ import (
 //			}
 //			aviatrix_cloudinit_file, err := networkedge.NewNetworkFile(ctx, "aviatrix-cloudinit-file", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("TF-AVX-cloud-init-file.txt"),
-//				Content:        invokeFile.Result,
-//				MetroCode:      sv.MetroCode.ApplyT(func(x *string) equinix.Metro { return equinix.Metro(*x) }).(equinix.MetroOutput),
+//				Content:        invokeFile.Result.(pulumi.String),
+//				MetroCode:      pulumi.String(sv.MetroCode),
 //				DeviceTypeCode: pulumi.String("AVIATRIX_TRANSIT_EDGE"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),
 //				SelfManaged:    pulumi.Bool(true),

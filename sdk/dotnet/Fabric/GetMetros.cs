@@ -33,7 +33,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length(),
+        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length,
         ///         ["firstMetroType"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Type),
         ///         ["firstMetroCode"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Code),
         ///         ["firstMetroRegion"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Region),
@@ -72,7 +72,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length(),
+        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length,
         ///         ["firstMetroType"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Type),
         ///         ["firstMetroCode"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Code),
         ///         ["firstMetroRegion"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Region),
@@ -111,7 +111,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length(),
+        ///         ["numberOfReturnedMetros"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas).Length,
         ///         ["firstMetroType"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Type),
         ///         ["firstMetroCode"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Code),
         ///         ["firstMetroRegion"] = metros.Apply(getMetrosResult =&gt; getMetrosResult.Datas[0]?.Region),

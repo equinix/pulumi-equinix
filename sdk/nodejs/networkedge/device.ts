@@ -131,7 +131,7 @@ import * as utilities from "../utilities";
  *     content: std.file({
  *         input: filepath,
  *     }).result,
- *     metroCode: equinix.Metro[sv.then(sv => sv.metroCode)],
+ *     metroCode: sv.then(sv => sv.metroCode),
  *     deviceTypeCode: "AVIATRIX_EDGE_10",
  *     processType: equinix.networkedge.FileType.CloudInit,
  *     selfManaged: true,
@@ -335,7 +335,7 @@ import * as utilities from "../utilities";
  *     content: std.file({
  *         input: filepath,
  *     }).result,
- *     metroCode: equinix.Metro[sv.then(sv => sv.metroCode)],
+ *     metroCode: sv.then(sv => sv.metroCode),
  *     deviceTypeCode: "BLUECAT-EDGE-SERVICE-POINT",
  *     processType: equinix.networkedge.FileType.CloudInit,
  *     selfManaged: true,
@@ -346,7 +346,7 @@ import * as utilities from "../utilities";
  *     content: std.file({
  *         input: filepath,
  *     }).result,
- *     metroCode: equinix.Metro[sv.then(sv => sv.metroCode)],
+ *     metroCode: sv.then(sv => sv.metroCode),
  *     deviceTypeCode: "BLUECAT-EDGE-SERVICE-POINT",
  *     processType: equinix.networkedge.FileType.CloudInit,
  *     selfManaged: true,
@@ -514,7 +514,7 @@ import * as utilities from "../utilities";
  *     content: std.file({
  *         input: filepath,
  *     }).result,
- *     metroCode: equinix.Metro[sv.then(sv => sv.metroCode)],
+ *     metroCode: sv.then(sv => sv.metroCode),
  *     deviceTypeCode: "AVIATRIX_TRANSIT_EDGE",
  *     processType: equinix.networkedge.FileType.CloudInit,
  *     selfManaged: true,

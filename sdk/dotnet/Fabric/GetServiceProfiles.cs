@@ -66,7 +66,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedServiceProfiles"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data).Length(),
+        ///         ["numberOfReturnedServiceProfiles"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data).Length,
         ///         ["firstServiceProfileName"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Name),
         ///         ["firstServiceProfileUuid"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Uuid),
         ///         ["firstServiceProfileDescription"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Description),
@@ -138,7 +138,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedServiceProfiles"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data).Length(),
+        ///         ["numberOfReturnedServiceProfiles"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data).Length,
         ///         ["firstServiceProfileName"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Name),
         ///         ["firstServiceProfileUuid"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Uuid),
         ///         ["firstServiceProfileDescription"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Description),
@@ -210,7 +210,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedServiceProfiles"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data).Length(),
+        ///         ["numberOfReturnedServiceProfiles"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data).Length,
         ///         ["firstServiceProfileName"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Name),
         ///         ["firstServiceProfileUuid"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Uuid),
         ///         ["firstServiceProfileDescription"] = test.Apply(getServiceProfilesResult =&gt; getServiceProfilesResult.Data[0]?.Description),

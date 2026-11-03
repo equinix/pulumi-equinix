@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *         property: "/name",
  *     }],
  * });
- * export const numberOfReturnedServiceProfiles = test.then(test => test.data).length;
+ * export const numberOfReturnedServiceProfiles = test.then(test => test.data.length);
  * export const firstServiceProfileName = test.then(test => test.data?.[0]?.name);
  * export const firstServiceProfileUuid = test.then(test => test.data?.[0]?.uuid);
  * export const firstServiceProfileDescription = test.then(test => test.data?.[0]?.description);
@@ -157,7 +157,7 @@ export interface GetServiceProfilesResult {
  *         property: "/name",
  *     }],
  * });
- * export const numberOfReturnedServiceProfiles = test.then(test => test.data).length;
+ * export const numberOfReturnedServiceProfiles = test.then(test => test.data.length);
  * export const firstServiceProfileName = test.then(test => test.data?.[0]?.name);
  * export const firstServiceProfileUuid = test.then(test => test.data?.[0]?.uuid);
  * export const firstServiceProfileDescription = test.then(test => test.data?.[0]?.description);
