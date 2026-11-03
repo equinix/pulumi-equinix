@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = networkedge.NewNetworkFile(ctx, "test-file", &networkedge.NetworkFileArgs{
 //				FileName:       pulumi.String("fileName.txt"),
-//				Content:        invokeFile.Result,
+//				Content:        invokeFile.Result.(pulumi.String),
 //				MetroCode:      pulumi.String(equinix.MetroSiliconValley),
 //				DeviceTypeCode: pulumi.String("AVIATRIX_EDGE_10"),
 //				ProcessType:    pulumi.String(networkedge.FileTypeCloudInit),

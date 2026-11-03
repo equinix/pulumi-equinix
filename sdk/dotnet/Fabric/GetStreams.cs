@@ -39,7 +39,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedStreams"] = dataStreams.Apply(getStreamsResult =&gt; getStreamsResult.Datas).Length(),
+        ///         ["numberOfReturnedStreams"] = dataStreams.Apply(getStreamsResult =&gt; getStreamsResult.Datas).Length,
         ///     };
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedStreams"] = dataStreams.Apply(getStreamsResult =&gt; getStreamsResult.Datas).Length(),
+        ///         ["numberOfReturnedStreams"] = dataStreams.Apply(getStreamsResult =&gt; getStreamsResult.Datas).Length,
         ///     };
         /// });
         /// ```
@@ -111,7 +111,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["numberOfReturnedStreams"] = dataStreams.Apply(getStreamsResult =&gt; getStreamsResult.Datas).Length(),
+        ///         ["numberOfReturnedStreams"] = dataStreams.Apply(getStreamsResult =&gt; getStreamsResult.Datas).Length,
         ///     };
         /// });
         /// ```

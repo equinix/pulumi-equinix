@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *         offset: 1,
  *     },
  * });
- * export const numberOfReturnedStreams = dataStreams.then(dataStreams => dataStreams.datas).length;
+ * export const numberOfReturnedStreams = dataStreams.then(dataStreams => dataStreams.datas.length);
  * ```
  */
 export function getStreams(args: GetStreamsArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamsResult> {
@@ -82,7 +82,7 @@ export interface GetStreamsResult {
  *         offset: 1,
  *     },
  * });
- * export const numberOfReturnedStreams = dataStreams.then(dataStreams => dataStreams.datas).length;
+ * export const numberOfReturnedStreams = dataStreams.then(dataStreams => dataStreams.datas.length);
  * ```
  */
 export function getStreamsOutput(args: GetStreamsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamsResult> {

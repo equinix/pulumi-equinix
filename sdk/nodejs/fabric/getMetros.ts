@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         offset: 6,
  *     },
  * });
- * export const numberOfReturnedMetros = metros.then(metros => metros.datas).length;
+ * export const numberOfReturnedMetros = metros.then(metros => metros.datas.length);
  * export const firstMetroType = metros.then(metros => metros.datas?.[0]?.type);
  * export const firstMetroCode = metros.then(metros => metros.datas?.[0]?.code);
  * export const firstMetroRegion = metros.then(metros => metros.datas?.[0]?.region);
@@ -88,7 +88,7 @@ export interface GetMetrosResult {
  *         offset: 6,
  *     },
  * });
- * export const numberOfReturnedMetros = metros.then(metros => metros.datas).length;
+ * export const numberOfReturnedMetros = metros.then(metros => metros.datas.length);
  * export const firstMetroType = metros.then(metros => metros.datas?.[0]?.type);
  * export const firstMetroCode = metros.then(metros => metros.datas?.[0]?.code);
  * export const firstMetroRegion = metros.then(metros => metros.datas?.[0]?.region);

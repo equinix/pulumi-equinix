@@ -171,7 +171,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         {
     ///             Input = filepath,
     ///         }).Result,
-    ///         MetroCode = Output.Create(sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode)).Apply(System.Enum.Parse&lt;Equinix.Metro&gt;),
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
     ///         DeviceTypeCode = "AVIATRIX_EDGE_10",
     ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
     ///         SelfManaged = true,
@@ -456,7 +456,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         {
     ///             Input = filepath,
     ///         }).Result,
-    ///         MetroCode = Output.Create(sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode)).Apply(System.Enum.Parse&lt;Equinix.Metro&gt;),
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
     ///         DeviceTypeCode = "BLUECAT-EDGE-SERVICE-POINT",
     ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
     ///         SelfManaged = true,
@@ -470,7 +470,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         {
     ///             Input = filepath,
     ///         }).Result,
-    ///         MetroCode = Output.Create(sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode)).Apply(System.Enum.Parse&lt;Equinix.Metro&gt;),
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
     ///         DeviceTypeCode = "BLUECAT-EDGE-SERVICE-POINT",
     ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
     ///         SelfManaged = true,
@@ -695,7 +695,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         {
     ///             Input = filepath,
     ///         }).Result,
-    ///         MetroCode = Output.Create(sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode)).Apply(System.Enum.Parse&lt;Equinix.Metro&gt;),
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
     ///         DeviceTypeCode = "AVIATRIX_TRANSIT_EDGE",
     ///         ProcessType = Equinix.NetworkEdge.FileType.CloudInit,
     ///         SelfManaged = true,
