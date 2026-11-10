@@ -270,6 +270,10 @@ namespace Pulumi.Equinix.Fabric
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/equinix",
+                AdditionalSecretOutputs =
+                {
+                    "bgpAuthKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -305,11 +309,21 @@ namespace Pulumi.Equinix.Fabric
         [Input("bfd")]
         public Input<Inputs.RoutingProtocolBfdArgs>? Bfd { get; set; }
 
+        [Input("bgpAuthKey")]
+        private Input<string>? _bgpAuthKey;
+
         /// <summary>
         /// BGP authorization key
         /// </summary>
-        [Input("bgpAuthKey")]
-        public Input<string>? BgpAuthKey { get; set; }
+        public Input<string>? BgpAuthKey
+        {
+            get => _bgpAuthKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _bgpAuthKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Routing Protocol BGP IPv4
@@ -391,11 +405,21 @@ namespace Pulumi.Equinix.Fabric
         [Input("bfd")]
         public Input<Inputs.RoutingProtocolBfdGetArgs>? Bfd { get; set; }
 
+        [Input("bgpAuthKey")]
+        private Input<string>? _bgpAuthKey;
+
         /// <summary>
         /// BGP authorization key
         /// </summary>
-        [Input("bgpAuthKey")]
-        public Input<string>? BgpAuthKey { get; set; }
+        public Input<string>? BgpAuthKey
+        {
+            get => _bgpAuthKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _bgpAuthKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Routing Protocol BGP IPv4

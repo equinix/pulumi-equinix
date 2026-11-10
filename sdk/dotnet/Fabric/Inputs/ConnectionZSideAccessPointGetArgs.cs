@@ -18,11 +18,21 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("account")]
         public Input<Inputs.ConnectionZSideAccessPointAccountGetArgs>? Account { get; set; }
 
+        [Input("authenticationKey")]
+        private Input<string>? _authenticationKey;
+
         /// <summary>
         /// Authentication key for provider based connections or Metal-Fabric Integration connections
         /// </summary>
-        [Input("authenticationKey")]
-        public Input<string>? AuthenticationKey { get; set; }
+        public Input<string>? AuthenticationKey
+        {
+            get => _authenticationKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authenticationKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// **Deprecated** `Gateway` Use `Router` attribute instead

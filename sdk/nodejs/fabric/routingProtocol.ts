@@ -236,7 +236,7 @@ export class RoutingProtocol extends pulumi.CustomResource {
             }
             resourceInputs["asOverrideEnabled"] = args?.asOverrideEnabled;
             resourceInputs["bfd"] = args?.bfd;
-            resourceInputs["bgpAuthKey"] = args?.bgpAuthKey;
+            resourceInputs["bgpAuthKey"] = args?.bgpAuthKey ? pulumi.secret(args.bgpAuthKey) : undefined;
             resourceInputs["bgpIpv4"] = args?.bgpIpv4;
             resourceInputs["bgpIpv6"] = args?.bgpIpv6;
             resourceInputs["connectionUuid"] = args?.connectionUuid;
@@ -255,6 +255,8 @@ export class RoutingProtocol extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["bgpAuthKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RoutingProtocol.__pulumiType, name, resourceInputs, opts);
     }
 }
