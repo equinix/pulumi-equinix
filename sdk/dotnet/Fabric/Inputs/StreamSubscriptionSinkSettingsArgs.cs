@@ -13,7 +13,16 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class StreamSubscriptionSinkSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("applicationKey")]
-        public Input<string>? ApplicationKey { get; set; }
+        private Input<string>? _applicationKey;
+        public Input<string>? ApplicationKey
+        {
+            get => _applicationKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _applicationKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("eventIndex")]
         public Input<string>? EventIndex { get; set; }

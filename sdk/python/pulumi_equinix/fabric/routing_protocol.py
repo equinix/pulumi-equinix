@@ -790,7 +790,7 @@ class RoutingProtocol(pulumi.CustomResource):
 
             __props__.__dict__["as_override_enabled"] = as_override_enabled
             __props__.__dict__["bfd"] = bfd
-            __props__.__dict__["bgp_auth_key"] = bgp_auth_key
+            __props__.__dict__["bgp_auth_key"] = None if bgp_auth_key is None else pulumi.Output.secret(bgp_auth_key)
             __props__.__dict__["bgp_ipv4"] = bgp_ipv4
             __props__.__dict__["bgp_ipv6"] = bgp_ipv6
             if connection_uuid is None and not opts.urn:
@@ -809,6 +809,8 @@ class RoutingProtocol(pulumi.CustomResource):
             __props__.__dict__["href"] = None
             __props__.__dict__["operations"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["bgpAuthKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RoutingProtocol, __self__).__init__(
             'equinix:fabric/routingProtocol:RoutingProtocol',
             resource_name,
