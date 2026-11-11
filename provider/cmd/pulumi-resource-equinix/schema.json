@@ -385,7 +385,8 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n"
+                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n",
+                    "secret": true
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointGateway:ConnectionASideAccessPointGateway",
@@ -1285,7 +1286,8 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n"
+                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n",
+                    "secret": true
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointGateway:ConnectionZSideAccessPointGateway",
@@ -5629,19 +5631,23 @@
             "properties": {
                 "accessToken": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "apiKey": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "integrationKey": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "type": {
                     "type": "string",
@@ -5672,7 +5678,8 @@
         "equinix:fabric/StreamSubscriptionSinkSettings:StreamSubscriptionSinkSettings": {
             "properties": {
                 "applicationKey": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "eventIndex": {
                     "type": "string"
@@ -6791,7 +6798,8 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n"
+                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n",
+                    "secret": true
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionASideAccessPointGateway:getConnectionASideAccessPointGateway",
@@ -7783,7 +7791,8 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n"
+                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n",
+                    "secret": true
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionZSideAccessPointGateway:getConnectionZSideAccessPointGateway",
@@ -8437,7 +8446,8 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n"
+                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n",
+                    "secret": true
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataASideAccessPointGateway:getConnectionsDataASideAccessPointGateway",
@@ -9276,7 +9286,8 @@
                 },
                 "authenticationKey": {
                     "type": "string",
-                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n"
+                    "description": "Authentication key for provider based connections or Metal-Fabric Integration connections\n",
+                    "secret": true
                 },
                 "gateway": {
                     "$ref": "#/types/equinix:fabric/getConnectionsDataZSideAccessPointGateway:getConnectionsDataZSideAccessPointGateway",
@@ -18823,19 +18834,23 @@
             "properties": {
                 "accessToken": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "apiKey": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "integrationKey": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "type": {
                     "type": "string",
@@ -18864,7 +18879,8 @@
         "equinix:fabric/getStreamSubscriptionSinkSettings:getStreamSubscriptionSinkSettings": {
             "properties": {
                 "applicationKey": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "eventIndex": {
                     "type": "string"
@@ -19152,19 +19168,23 @@
             "properties": {
                 "accessToken": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "apiKey": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "integrationKey": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "Passed as Authorization header value\n"
+                    "description": "Passed as Authorization header value\n",
+                    "secret": true
                 },
                 "type": {
                     "type": "string",
@@ -19193,7 +19213,8 @@
         "equinix:fabric/getStreamSubscriptionsDataSinkSettings:getStreamSubscriptionsDataSinkSettings": {
             "properties": {
                 "applicationKey": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "eventIndex": {
                     "type": "string"
@@ -23508,7 +23529,8 @@
                 },
                 "bgpAuthKey": {
                     "type": "string",
-                    "description": "BGP authorization key\n"
+                    "description": "BGP authorization key\n",
+                    "secret": true
                 },
                 "bgpIpv4": {
                     "$ref": "#/types/equinix:fabric/RoutingProtocolBgpIpv4:RoutingProtocolBgpIpv4",
@@ -23616,7 +23638,8 @@
                 },
                 "bgpAuthKey": {
                     "type": "string",
-                    "description": "BGP authorization key\n"
+                    "description": "BGP authorization key\n",
+                    "secret": true
                 },
                 "bgpIpv4": {
                     "$ref": "#/types/equinix:fabric/RoutingProtocolBgpIpv4:RoutingProtocolBgpIpv4",
@@ -23675,7 +23698,8 @@
                     },
                     "bgpAuthKey": {
                         "type": "string",
-                        "description": "BGP authorization key\n"
+                        "description": "BGP authorization key\n",
+                        "secret": true
                     },
                     "bgpIpv4": {
                         "$ref": "#/types/equinix:fabric/RoutingProtocolBgpIpv4:RoutingProtocolBgpIpv4",
@@ -28771,6 +28795,7 @@
                     },
                     "bgpAuthKey": {
                         "description": "BGP authorization key\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "bgpIpv4": {

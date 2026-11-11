@@ -197,6 +197,13 @@ func NewRoutingProtocol(ctx *pulumi.Context,
 	if args.ConnectionUuid == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionUuid'")
 	}
+	if args.BgpAuthKey != nil {
+		args.BgpAuthKey = pulumi.ToSecret(args.BgpAuthKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"bgpAuthKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RoutingProtocol
 	err := ctx.RegisterResource("equinix:fabric/routingProtocol:RoutingProtocol", name, args, &resource, opts...)

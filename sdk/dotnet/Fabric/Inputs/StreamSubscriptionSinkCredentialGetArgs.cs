@@ -12,29 +12,69 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class StreamSubscriptionSinkCredentialGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Passed as Authorization header value
-        /// </summary>
         [Input("accessToken")]
-        public Input<string>? AccessToken { get; set; }
+        private Input<string>? _accessToken;
 
         /// <summary>
         /// Passed as Authorization header value
         /// </summary>
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
+        private Input<string>? _apiKey;
 
         /// <summary>
         /// Passed as Authorization header value
         /// </summary>
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("integrationKey")]
-        public Input<string>? IntegrationKey { get; set; }
+        private Input<string>? _integrationKey;
 
         /// <summary>
         /// Passed as Authorization header value
         /// </summary>
+        public Input<string>? IntegrationKey
+        {
+            get => _integrationKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _integrationKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+
+        /// <summary>
+        /// Passed as Authorization header value
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Type of the credential being passed
