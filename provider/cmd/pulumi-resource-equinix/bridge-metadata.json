@@ -1,6 +1,21 @@
 {
     "auto-aliasing": {
         "resources": {
+            "equinix_fabric_asn": {
+                "current": "equinix:fabric/asn:Asn",
+                "fields": {
+                    "assets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_blocks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "equinix_fabric_cloud_router": {
                 "current": "equinix:fabric/cloudRouter:CloudRouter",
                 "fields": {
@@ -220,6 +235,24 @@
             },
             "equinix_fabric_connection_route_filter": {
                 "current": "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter"
+            },
+            "equinix_fabric_internet_access_service": {
+                "current": "equinix:fabric/internetAccessService:InternetAccessService",
+                "fields": {
+                    "locations": {
+                        "maxItemsOne": false
+                    },
+                    "routing_protocol": {
+                        "fields": {
+                            "connections": {
+                                "maxItemsOne": false
+                            },
+                            "customer_routes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "equinix_fabric_ip_block": {
                 "current": "equinix:fabric/ipBlock:IpBlock",
@@ -761,6 +794,50 @@
                     }
                 }
             },
+            "equinix_fabric_asn": {
+                "current": "equinix:fabric/getAsn:getAsn",
+                "fields": {
+                    "assets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_blocks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_asns": {
+                "current": "equinix:fabric/getAsns:getAsns",
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "assets": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ip_blocks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "fields": {
+                            "values": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "equinix_fabric_cloud_router": {
                 "current": "equinix:fabric/getCloudRouter:getCloudRouter",
                 "fields": {
@@ -1257,6 +1334,56 @@
                     },
                     "sort": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "equinix_fabric_internet_access_service": {
+                "current": "equinix:fabric/getInternetAccessService:getInternetAccessService",
+                "fields": {
+                    "locations": {
+                        "maxItemsOne": false
+                    },
+                    "routing_protocol": {
+                        "fields": {
+                            "connections": {
+                                "maxItemsOne": false
+                            },
+                            "customer_routes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "equinix_fabric_internet_access_services": {
+                "current": "equinix:fabric/getInternetAccessServices:getInternetAccessServices",
+                "fields": {
+                    "data": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "locations": {
+                                    "maxItemsOne": false
+                                },
+                                "routing_protocol": {
+                                    "fields": {
+                                        "connections": {
+                                            "maxItemsOne": false
+                                        },
+                                        "customer_routes": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "fields": {
+                            "values": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -2478,7 +2605,9 @@
     "auto-settings": {},
     "default-resource-schema-fixups": {
         "resources": {
+            "equinix_fabric_asn": {},
             "equinix_fabric_connection_route_aggregation": {},
+            "equinix_fabric_internet_access_service": {},
             "equinix_fabric_ip_block": {},
             "equinix_fabric_port": {},
             "equinix_fabric_precision_time_service": {},
@@ -2492,10 +2621,12 @@
     },
     "mux": {
         "resources": {
+            "equinix:fabric/asn:Asn": 1,
             "equinix:fabric/cloudRouter:CloudRouter": 0,
             "equinix:fabric/connection:Connection": 0,
             "equinix:fabric/connectionRouteAggregation:ConnectionRouteAggregation": 1,
             "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter": 0,
+            "equinix:fabric/internetAccessService:InternetAccessService": 1,
             "equinix:fabric/ipBlock:IpBlock": 1,
             "equinix:fabric/network:Network": 0,
             "equinix:fabric/port:Port": 1,
@@ -2521,6 +2652,8 @@
         },
         "functions": {
             "equinix:fabric/getAdvertisedRoutes:getAdvertisedRoutes": 1,
+            "equinix:fabric/getAsn:getAsn": 1,
+            "equinix:fabric/getAsns:getAsns": 1,
             "equinix:fabric/getCloudRouter:getCloudRouter": 0,
             "equinix:fabric/getCloudRouters:getCloudRouters": 0,
             "equinix:fabric/getConnection:getConnection": 0,
@@ -2529,6 +2662,8 @@
             "equinix:fabric/getConnectionRouteFilter:getConnectionRouteFilter": 0,
             "equinix:fabric/getConnectionRouteFilters:getConnectionRouteFilters": 0,
             "equinix:fabric/getConnections:getConnections": 0,
+            "equinix:fabric/getInternetAccessService:getInternetAccessService": 1,
+            "equinix:fabric/getInternetAccessServices:getInternetAccessServices": 1,
             "equinix:fabric/getIpBlock:getIpBlock": 1,
             "equinix:fabric/getIpBlocks:getIpBlocks": 1,
             "equinix:fabric/getMarketplaceSubscription:getMarketplaceSubscription": 0,
