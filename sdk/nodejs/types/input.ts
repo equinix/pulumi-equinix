@@ -7,6 +7,125 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
 export namespace fabric {
+    export interface AsnAsset {
+        /**
+         * Metro announcing the ASN
+         */
+        announcingMetro?: pulumi.Input<string | undefined>;
+        /**
+         * IP blocks announced with the ASN
+         */
+        ipBlocks?: pulumi.Input<pulumi.Input<inputs.fabric.AsnAssetIpBlock>[] | undefined>;
+        /**
+         * Service the ASN is attached to
+         */
+        service?: pulumi.Input<inputs.fabric.AsnAssetService | undefined>;
+        /**
+         * Asset identifier
+         */
+        uuid?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AsnAssetIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href?: pulumi.Input<string | undefined>;
+        /**
+         * IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * IP block identifier
+         */
+        uuid?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AsnAssetService {
+        /**
+         * URI to the service
+         */
+        href?: pulumi.Input<string | undefined>;
+        /**
+         * Service type. One of: IA
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * Service identifier
+         */
+        uuid?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AsnChange {
+        /**
+         * URI to the change resource
+         */
+        href?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AsnChangeLog {
+        /**
+         * Creation date and time
+         */
+        createdDateTime?: pulumi.Input<string | undefined>;
+        /**
+         * Deletion date and time
+         */
+        deletedDateTime?: pulumi.Input<string | undefined>;
+        /**
+         * Last update date and time
+         */
+        updatedDateTime?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AsnLocation {
+        /**
+         * Two-letter metro code (e.g. SV, DC, AM)
+         */
+        metroCode: pulumi.Input<string>;
+    }
+
+    export interface AsnOwnershipChallengeDetails {
+        /**
+         * Challenge message to sign
+         */
+        message?: pulumi.Input<string | undefined>;
+        /**
+         * Signed challenge value. Can be set at creation or updated in place
+         */
+        signature?: pulumi.Input<string | undefined>;
+        /**
+         * Ownership challenge type. One of: RPKI, LOA
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AsnProject {
+        /**
+         * Equinix-assigned project ID
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface AsnTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string | undefined>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string | undefined>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string | undefined>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string | undefined>;
+    }
+
     export interface CloudRouterAccount {
         /**
          * Account Number
@@ -1119,6 +1238,104 @@ export namespace fabric {
         property?: pulumi.Input<string | undefined>;
     }
 
+    export interface GetAsnsFilter {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+         */
+        operator: string;
+        /**
+         * Field name to use on filters, e.g. "/project/projectId", "/uuid", "/state", "/type"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetAsnsFilterArgs {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Field name to use on filters, e.g. "/project/projectId", "/uuid", "/state", "/type"
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetAsnsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of ASNs available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetAsnsPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number | undefined>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string | undefined>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number | undefined>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string | undefined>;
+        /**
+         * The total number of ASNs available to the user making the request
+         */
+        total?: pulumi.Input<number | undefined>;
+    }
+
+    export interface GetAsnsSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting, e.g. "/state". Allowed values: /changeLog/createdDateTime, /uuid, /state, /project/projectId, /type
+         */
+        property?: string;
+    }
+
+    export interface GetAsnsSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+         */
+        direction?: pulumi.Input<string | undefined>;
+        /**
+         * The property name to use in sorting, e.g. "/state". Allowed values: /changeLog/createdDateTime, /uuid, /state, /project/projectId, /type
+         */
+        property?: pulumi.Input<string | undefined>;
+    }
+
     export interface GetCloudRoutersFilter {
         /**
          * Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
@@ -1257,7 +1474,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/interconnect/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /redundancy/name /redundancy/description /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: string;
         /**
@@ -1276,7 +1493,7 @@ export namespace fabric {
          */
         operator: pulumi.Input<string>;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/interconnect/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /redundancy/name /redundancy/description /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: pulumi.Input<string>;
         /**
@@ -1313,7 +1530,7 @@ export namespace fabric {
          */
         direction?: string;
         /**
-         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
          */
         property?: string;
     }
@@ -1324,7 +1541,105 @@ export namespace fabric {
          */
         direction?: pulumi.Input<string | undefined>;
         /**
-         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetInternetAccessServicesFilter {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+         */
+        operator: string;
+        /**
+         * Field name to use on filters, e.g. "/project/projectId", "/name", "/state", "/type"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetInternetAccessServicesFilterArgs {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Field name to use on filters, e.g. "/project/projectId", "/name", "/state", "/type"
+         */
+        property: pulumi.Input<string>;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetInternetAccessServicesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: string;
+        /**
+         * The total number of Internet Access services available to the user making the request
+         */
+        total?: number;
+    }
+
+    export interface GetInternetAccessServicesPaginationArgs {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit?: pulumi.Input<number | undefined>;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next?: pulumi.Input<string | undefined>;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset?: pulumi.Input<number | undefined>;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous?: pulumi.Input<string | undefined>;
+        /**
+         * The total number of Internet Access services available to the user making the request
+         */
+        total?: pulumi.Input<number | undefined>;
+    }
+
+    export interface GetInternetAccessServicesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting, e.g. "/name". Defaults to "/name". Note: sorting by "/changeLog/createdDateTime" currently makes the API return a server error
+         */
+        property?: string;
+    }
+
+    export interface GetInternetAccessServicesSortArgs {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+         */
+        direction?: pulumi.Input<string | undefined>;
+        /**
+         * The property name to use in sorting, e.g. "/name". Defaults to "/name". Note: sorting by "/changeLog/createdDateTime" currently makes the API return a server error
          */
         property?: pulumi.Input<string | undefined>;
     }
@@ -2673,6 +2988,259 @@ export namespace fabric {
          * The total number of streams available to the user making the request
          */
         total?: pulumi.Input<number | undefined>;
+    }
+
+    export interface InternetAccessServiceAccount {
+        /**
+         * Account number
+         */
+        accountNumber: pulumi.Input<string>;
+        /**
+         * URI to the account
+         */
+        href?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InternetAccessServiceBilling {
+        /**
+         * Whether billing is enabled
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Start date of the billing period
+         */
+        startDate?: pulumi.Input<string | undefined>;
+        /**
+         * Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface InternetAccessServiceChange {
+        /**
+         * URI to the change resource
+         */
+        href?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InternetAccessServiceChangeLog {
+        /**
+         * Creation time of the service
+         */
+        createdDateTime?: pulumi.Input<string | undefined>;
+        /**
+         * Deletion time of the service
+         */
+        deletedDateTime?: pulumi.Input<string | undefined>;
+        /**
+         * Last update time of the service
+         */
+        updatedDateTime?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InternetAccessServiceLocation {
+        /**
+         * IBX data center code
+         */
+        ibx?: pulumi.Input<string | undefined>;
+        /**
+         * Two-letter metro code
+         */
+        metroCode?: pulumi.Input<string | undefined>;
+        /**
+         * URI to the metro resource
+         */
+        metroHref?: pulumi.Input<string | undefined>;
+        /**
+         * Region of the location. One of: AMER, EMEA, APAC
+         */
+        region?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InternetAccessServiceOrder {
+        /**
+         * Billing tier for the connection bandwidth
+         */
+        billingTier?: pulumi.Input<string | undefined>;
+        /**
+         * Contracted bandwidth
+         */
+        contractedBandwidth?: pulumi.Input<number | undefined>;
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber?: pulumi.Input<string | undefined>;
+        /**
+         * URI to the order
+         */
+        href?: pulumi.Input<string | undefined>;
+        /**
+         * Order identification
+         */
+        orderId?: pulumi.Input<string | undefined>;
+        /**
+         * Order reference number
+         */
+        orderNumber?: pulumi.Input<string | undefined>;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber?: pulumi.Input<string | undefined>;
+        /**
+         * Term length in months
+         */
+        termLength?: pulumi.Input<number | undefined>;
+    }
+
+    export interface InternetAccessServiceProject {
+        /**
+         * Equinix subscriber-assigned project ID
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface InternetAccessServiceRoutingProtocol {
+        /**
+         * BGP only. Equinix ASN resource used on the customer side. Not read back from the API
+         */
+        asn?: pulumi.Input<inputs.fabric.InternetAccessServiceRoutingProtocolAsn | undefined>;
+        /**
+         * BGP only. BGP authentication key. Not read back from the API
+         */
+        bgpAuthKey?: pulumi.Input<string | undefined>;
+        /**
+         * Fabric IA*VC connections attached to the service
+         */
+        connections: pulumi.Input<pulumi.Input<inputs.fabric.InternetAccessServiceRoutingProtocolConnection>[]>;
+        /**
+         * BGP only. Customer ASN number. Not read back from the API
+         */
+        customerAsn?: pulumi.Input<number | undefined>;
+        /**
+         * BGP only. Customer ASN range. One of: BITS*16, BITS*32. Not read back from the API
+         */
+        customerAsnRange?: pulumi.Input<string | undefined>;
+        /**
+         * Customer routes announced through the service, given as IP blocks
+         */
+        customerRoutes?: pulumi.Input<pulumi.Input<inputs.fabric.InternetAccessServiceRoutingProtocolCustomerRoute>[] | undefined>;
+        /**
+         * BGP only. Export policy. One of: FULL, DEFAULT, FULL_DEFAULT, PARTIAL. Not read back from the API
+         */
+        exportPolicy?: pulumi.Input<string | undefined>;
+        /**
+         * Routing protocol type. One of: BGP, DIRECT, STATIC
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolAsn {
+        /**
+         * Unique identifier of the ASN, e.g. of an equinix*fabric*asn
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolConnection {
+        /**
+         * URI to the connection
+         */
+        href?: pulumi.Input<string | undefined>;
+        /**
+         * IPv4 peering details of the connection
+         */
+        peeringIpv4?: pulumi.Input<inputs.fabric.InternetAccessServiceRoutingProtocolConnectionPeeringIpv4 | undefined>;
+        /**
+         * IPv6 peering details of the connection
+         */
+        peeringIpv6?: pulumi.Input<inputs.fabric.InternetAccessServiceRoutingProtocolConnectionPeeringIpv6 | undefined>;
+        /**
+         * Unique identifier of the connection
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolConnectionPeeringIpv4 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp?: pulumi.Input<string | undefined>;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp?: pulumi.Input<string | undefined>;
+        /**
+         * Peering IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixPeerIp?: pulumi.Input<string | undefined>;
+        /**
+         * VRRP IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixVrrpIp?: pulumi.Input<string | undefined>;
+        /**
+         * IPv4 prefix for the peering connection
+         */
+        prefix?: pulumi.Input<string | undefined>;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength?: pulumi.Input<number | undefined>;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolConnectionPeeringIpv6 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp?: pulumi.Input<string | undefined>;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp?: pulumi.Input<string | undefined>;
+        /**
+         * Peering IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixPeerIp?: pulumi.Input<string | undefined>;
+        /**
+         * VRRP IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixVrrpIp?: pulumi.Input<string | undefined>;
+        /**
+         * IPv6 prefix for the peering connection
+         */
+        prefix?: pulumi.Input<string | undefined>;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength?: pulumi.Input<number | undefined>;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolCustomerRoute {
+        /**
+         * IP block of the route
+         */
+        ipBlock: pulumi.Input<inputs.fabric.InternetAccessServiceRoutingProtocolCustomerRouteIpBlock>;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolCustomerRouteIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href?: pulumi.Input<string | undefined>;
+        /**
+         * Unique identifier of the IP block, e.g. of an equinix*fabric*ip_block
+         */
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface InternetAccessServiceTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string | undefined>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string | undefined>;
     }
 
     export interface IpBlockAccount {

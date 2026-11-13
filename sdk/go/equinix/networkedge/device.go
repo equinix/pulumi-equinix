@@ -2430,6 +2430,59 @@ import (
 //
 // ```
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create Thales HA device
+//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
+//				MetroCode: "SV",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkedge.NewDevice(ctx, "thales-ha", &networkedge.DeviceArgs{
+//				Name:           pulumi.String("Thales"),
+//				ProjectId:      pulumi.String("xxxxxxx"),
+//				MetroCode:      pulumi.String(sv.MetroCode),
+//				TypeCode:       pulumi.String("THALES"),
+//				SelfManaged:    pulumi.Bool(true),
+//				Byol:           pulumi.Bool(true),
+//				InterfaceCount: pulumi.Int(3),
+//				PackageCode:    pulumi.String("STD"),
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("test@eq.com"),
+//				},
+//				AccountNumber: pulumi.String(sv.Number),
+//				Version:       pulumi.String("5.6.4.D31681"),
+//				CoreCount:     pulumi.Int(4),
+//				TermLength:    pulumi.Int(1),
+//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
+//					Name:          pulumi.String("Thales-Sec"),
+//					MetroCode:     pulumi.String(sv.MetroCode),
+//					AccountNumber: pulumi.String(sv.Number),
+//					Notifications: pulumi.StringArray{
+//						pulumi.String("test@eq.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Example: Add a Secondary Device to a Primary Network Device
 //
 // Use the `secondaryDevice` block inside `networkedge.Device` to define the secondary node for a redundant pair.

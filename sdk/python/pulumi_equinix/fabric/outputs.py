@@ -18,6 +18,15 @@ from .. import _enums as _root_enums
 from ._enums import *
 
 __all__ = [
+    'AsnAsset',
+    'AsnAssetIpBlock',
+    'AsnAssetService',
+    'AsnChange',
+    'AsnChangeLog',
+    'AsnLocation',
+    'AsnOwnershipChallengeDetails',
+    'AsnProject',
+    'AsnTimeouts',
     'CloudRouterAccount',
     'CloudRouterChangeLog',
     'CloudRouterLocation',
@@ -68,6 +77,21 @@ __all__ = [
     'ConnectionZSideAccessPointVirtualDevice',
     'ConnectionZSideAdditionalInfo',
     'ConnectionZSideServiceToken',
+    'InternetAccessServiceAccount',
+    'InternetAccessServiceBilling',
+    'InternetAccessServiceChange',
+    'InternetAccessServiceChangeLog',
+    'InternetAccessServiceLocation',
+    'InternetAccessServiceOrder',
+    'InternetAccessServiceProject',
+    'InternetAccessServiceRoutingProtocol',
+    'InternetAccessServiceRoutingProtocolAsn',
+    'InternetAccessServiceRoutingProtocolConnection',
+    'InternetAccessServiceRoutingProtocolConnectionPeeringIpv4',
+    'InternetAccessServiceRoutingProtocolConnectionPeeringIpv6',
+    'InternetAccessServiceRoutingProtocolCustomerRoute',
+    'InternetAccessServiceRoutingProtocolCustomerRouteIpBlock',
+    'InternetAccessServiceTimeouts',
     'IpBlockAccount',
     'IpBlockAsset',
     'IpBlockChange',
@@ -196,6 +220,26 @@ __all__ = [
     'GetAdvertisedRoutesFilterResult',
     'GetAdvertisedRoutesPaginationResult',
     'GetAdvertisedRoutesSortResult',
+    'GetAsnAssetResult',
+    'GetAsnAssetIpBlockResult',
+    'GetAsnAssetServiceResult',
+    'GetAsnChangeResult',
+    'GetAsnChangeLogResult',
+    'GetAsnLocationResult',
+    'GetAsnOwnershipChallengeDetailsResult',
+    'GetAsnProjectResult',
+    'GetAsnsDataResult',
+    'GetAsnsDataAssetResult',
+    'GetAsnsDataAssetIpBlockResult',
+    'GetAsnsDataAssetServiceResult',
+    'GetAsnsDataChangeResult',
+    'GetAsnsDataChangeLogResult',
+    'GetAsnsDataLocationResult',
+    'GetAsnsDataOwnershipChallengeDetailsResult',
+    'GetAsnsDataProjectResult',
+    'GetAsnsFilterResult',
+    'GetAsnsPaginationResult',
+    'GetAsnsSortResult',
     'GetCloudRouterAccountResult',
     'GetCloudRouterChangeLogResult',
     'GetCloudRouterLocationResult',
@@ -306,6 +350,36 @@ __all__ = [
     'GetConnectionsFilterResult',
     'GetConnectionsPaginationResult',
     'GetConnectionsSortResult',
+    'GetInternetAccessServiceAccountResult',
+    'GetInternetAccessServiceBillingResult',
+    'GetInternetAccessServiceChangeResult',
+    'GetInternetAccessServiceChangeLogResult',
+    'GetInternetAccessServiceLocationResult',
+    'GetInternetAccessServiceOrderResult',
+    'GetInternetAccessServiceProjectResult',
+    'GetInternetAccessServiceRoutingProtocolResult',
+    'GetInternetAccessServiceRoutingProtocolConnectionResult',
+    'GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv4Result',
+    'GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv6Result',
+    'GetInternetAccessServiceRoutingProtocolCustomerRouteResult',
+    'GetInternetAccessServiceRoutingProtocolCustomerRouteIpBlockResult',
+    'GetInternetAccessServicesDataResult',
+    'GetInternetAccessServicesDataAccountResult',
+    'GetInternetAccessServicesDataBillingResult',
+    'GetInternetAccessServicesDataChangeResult',
+    'GetInternetAccessServicesDataChangeLogResult',
+    'GetInternetAccessServicesDataLocationResult',
+    'GetInternetAccessServicesDataOrderResult',
+    'GetInternetAccessServicesDataProjectResult',
+    'GetInternetAccessServicesDataRoutingProtocolResult',
+    'GetInternetAccessServicesDataRoutingProtocolConnectionResult',
+    'GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv4Result',
+    'GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv6Result',
+    'GetInternetAccessServicesDataRoutingProtocolCustomerRouteResult',
+    'GetInternetAccessServicesDataRoutingProtocolCustomerRouteIpBlockResult',
+    'GetInternetAccessServicesFilterResult',
+    'GetInternetAccessServicesPaginationResult',
+    'GetInternetAccessServicesSortResult',
     'GetIpBlockAccountResult',
     'GetIpBlockAssetResult',
     'GetIpBlockChangeResult',
@@ -568,6 +642,416 @@ __all__ = [
     'GetStreamsDataProjectResult',
     'GetStreamsPaginationResult',
 ]
+
+@pulumi.output_type
+class AsnAsset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "announcingMetro":
+            suggest = "announcing_metro"
+        elif key == "ipBlocks":
+            suggest = "ip_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AsnAsset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AsnAsset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AsnAsset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 announcing_metro: Optional[_builtins.str] = None,
+                 ip_blocks: Optional[Sequence['outputs.AsnAssetIpBlock']] = None,
+                 service: Optional['outputs.AsnAssetService'] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str announcing_metro: Metro announcing the ASN
+        :param Sequence['AsnAssetIpBlockArgs'] ip_blocks: IP blocks announced with the ASN
+        :param 'AsnAssetServiceArgs' service: Service the ASN is attached to
+        :param _builtins.str uuid: Asset identifier
+        """
+        if announcing_metro is not None:
+            pulumi.set(__self__, "announcing_metro", announcing_metro)
+        if ip_blocks is not None:
+            pulumi.set(__self__, "ip_blocks", ip_blocks)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="announcingMetro")
+    def announcing_metro(self) -> Optional[_builtins.str]:
+        """
+        Metro announcing the ASN
+        """
+        return pulumi.get(self, "announcing_metro")
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> Optional[Sequence['outputs.AsnAssetIpBlock']]:
+        """
+        IP blocks announced with the ASN
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional['outputs.AsnAssetService']:
+        """
+        Service the ASN is attached to
+        """
+        return pulumi.get(self, "service")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        Asset identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class AsnAssetIpBlock(dict):
+    def __init__(__self__, *,
+                 href: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str href: URI to the IP block
+        :param _builtins.str type: IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+        :param _builtins.str uuid: IP block identifier
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the IP block
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        IP block identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class AsnAssetService(dict):
+    def __init__(__self__, *,
+                 href: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str href: URI to the service
+        :param _builtins.str type: Service type. One of: IA
+        :param _builtins.str uuid: Service identifier
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the service
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Service type. One of: IA
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        Service identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class AsnChange(dict):
+    def __init__(__self__, *,
+                 href: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class AsnChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AsnChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AsnChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AsnChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_date_time: Optional[_builtins.str] = None,
+                 deleted_date_time: Optional[_builtins.str] = None,
+                 updated_date_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_date_time: Creation date and time
+        :param _builtins.str deleted_date_time: Deletion date and time
+        :param _builtins.str updated_date_time: Last update date and time
+        """
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[_builtins.str]:
+        """
+        Creation date and time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[_builtins.str]:
+        """
+        Deletion date and time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[_builtins.str]:
+        """
+        Last update date and time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class AsnLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metroCode":
+            suggest = "metro_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AsnLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AsnLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AsnLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metro_code: _builtins.str):
+        """
+        :param _builtins.str metro_code: Two-letter metro code (e.g. SV, DC, AM)
+        """
+        pulumi.set(__self__, "metro_code", metro_code)
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Two-letter metro code (e.g. SV, DC, AM)
+        """
+        return pulumi.get(self, "metro_code")
+
+
+@pulumi.output_type
+class AsnOwnershipChallengeDetails(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 message: Optional[_builtins.str] = None,
+                 signature: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Ownership challenge type. One of: RPKI, LOA
+        :param _builtins.str message: Challenge message to sign
+        :param _builtins.str signature: Signed challenge value. Can be set at creation or updated in place
+        """
+        pulumi.set(__self__, "type", type)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if signature is not None:
+            pulumi.set(__self__, "signature", signature)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Ownership challenge type. One of: RPKI, LOA
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Challenge message to sign
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def signature(self) -> Optional[_builtins.str]:
+        """
+        Signed challenge value. Can be set at creation or updated in place
+        """
+        return pulumi.get(self, "signature")
+
+
+@pulumi.output_type
+class AsnProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AsnProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AsnProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AsnProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str project_id: Equinix-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Equinix-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class AsnTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
 
 @pulumi.output_type
 class CloudRouterAccount(dict):
@@ -4061,6 +4545,957 @@ class ConnectionZSideServiceToken(dict):
         Equinix-assigned service token identifier
         """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class InternetAccessServiceAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountNumber":
+            suggest = "account_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_number: _builtins.str,
+                 href: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str account_number: Account number
+        :param _builtins.str href: URI to the account
+        """
+        pulumi.set(__self__, "account_number", account_number)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> _builtins.str:
+        """
+        Account number
+        """
+        return pulumi.get(self, "account_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the account
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class InternetAccessServiceBilling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startDate":
+            suggest = "start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceBilling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceBilling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceBilling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 enabled: Optional[_builtins.bool] = None,
+                 start_date: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+        :param _builtins.bool enabled: Whether billing is enabled
+        :param _builtins.str start_date: Start date of the billing period
+        """
+        pulumi.set(__self__, "type", type)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether billing is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[_builtins.str]:
+        """
+        Start date of the billing period
+        """
+        return pulumi.get(self, "start_date")
+
+
+@pulumi.output_type
+class InternetAccessServiceChange(dict):
+    def __init__(__self__, *,
+                 href: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class InternetAccessServiceChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_date_time: Optional[_builtins.str] = None,
+                 deleted_date_time: Optional[_builtins.str] = None,
+                 updated_date_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_date_time: Creation time of the service
+        :param _builtins.str deleted_date_time: Deletion time of the service
+        :param _builtins.str updated_date_time: Last update time of the service
+        """
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[_builtins.str]:
+        """
+        Creation time of the service
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[_builtins.str]:
+        """
+        Deletion time of the service
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[_builtins.str]:
+        """
+        Last update time of the service
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class InternetAccessServiceLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metroCode":
+            suggest = "metro_code"
+        elif key == "metroHref":
+            suggest = "metro_href"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ibx: Optional[_builtins.str] = None,
+                 metro_code: Optional[_builtins.str] = None,
+                 metro_href: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ibx: IBX data center code
+        :param _builtins.str metro_code: Two-letter metro code
+        :param _builtins.str metro_href: URI to the metro resource
+        :param _builtins.str region: Region of the location. One of: AMER, EMEA, APAC
+        """
+        if ibx is not None:
+            pulumi.set(__self__, "ibx", ibx)
+        if metro_code is not None:
+            pulumi.set(__self__, "metro_code", metro_code)
+        if metro_href is not None:
+            pulumi.set(__self__, "metro_href", metro_href)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def ibx(self) -> Optional[_builtins.str]:
+        """
+        IBX data center code
+        """
+        return pulumi.get(self, "ibx")
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> Optional[_builtins.str]:
+        """
+        Two-letter metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> Optional[_builtins.str]:
+        """
+        URI to the metro resource
+        """
+        return pulumi.get(self, "metro_href")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region of the location. One of: AMER, EMEA, APAC
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class InternetAccessServiceOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "billingTier":
+            suggest = "billing_tier"
+        elif key == "contractedBandwidth":
+            suggest = "contracted_bandwidth"
+        elif key == "customerReferenceNumber":
+            suggest = "customer_reference_number"
+        elif key == "orderId":
+            suggest = "order_id"
+        elif key == "orderNumber":
+            suggest = "order_number"
+        elif key == "purchaseOrderNumber":
+            suggest = "purchase_order_number"
+        elif key == "termLength":
+            suggest = "term_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 billing_tier: Optional[_builtins.str] = None,
+                 contracted_bandwidth: Optional[_builtins.int] = None,
+                 customer_reference_number: Optional[_builtins.str] = None,
+                 href: Optional[_builtins.str] = None,
+                 order_id: Optional[_builtins.str] = None,
+                 order_number: Optional[_builtins.str] = None,
+                 purchase_order_number: Optional[_builtins.str] = None,
+                 term_length: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str billing_tier: Billing tier for the connection bandwidth
+        :param _builtins.int contracted_bandwidth: Contracted bandwidth
+        :param _builtins.str customer_reference_number: Customer reference number
+        :param _builtins.str href: URI to the order
+        :param _builtins.str order_id: Order identification
+        :param _builtins.str order_number: Order reference number
+        :param _builtins.str purchase_order_number: Purchase order number
+        :param _builtins.int term_length: Term length in months
+        """
+        if billing_tier is not None:
+            pulumi.set(__self__, "billing_tier", billing_tier)
+        if contracted_bandwidth is not None:
+            pulumi.set(__self__, "contracted_bandwidth", contracted_bandwidth)
+        if customer_reference_number is not None:
+            pulumi.set(__self__, "customer_reference_number", customer_reference_number)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+        if order_number is not None:
+            pulumi.set(__self__, "order_number", order_number)
+        if purchase_order_number is not None:
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+        if term_length is not None:
+            pulumi.set(__self__, "term_length", term_length)
+
+    @_builtins.property
+    @pulumi.getter(name="billingTier")
+    def billing_tier(self) -> Optional[_builtins.str]:
+        """
+        Billing tier for the connection bandwidth
+        """
+        return pulumi.get(self, "billing_tier")
+
+    @_builtins.property
+    @pulumi.getter(name="contractedBandwidth")
+    def contracted_bandwidth(self) -> Optional[_builtins.int]:
+        """
+        Contracted bandwidth
+        """
+        return pulumi.get(self, "contracted_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="customerReferenceNumber")
+    def customer_reference_number(self) -> Optional[_builtins.str]:
+        """
+        Customer reference number
+        """
+        return pulumi.get(self, "customer_reference_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the order
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[_builtins.str]:
+        """
+        Order identification
+        """
+        return pulumi.get(self, "order_id")
+
+    @_builtins.property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> Optional[_builtins.str]:
+        """
+        Order reference number
+        """
+        return pulumi.get(self, "order_number")
+
+    @_builtins.property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> Optional[_builtins.str]:
+        """
+        Purchase order number
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+    @_builtins.property
+    @pulumi.getter(name="termLength")
+    def term_length(self) -> Optional[_builtins.int]:
+        """
+        Term length in months
+        """
+        return pulumi.get(self, "term_length")
+
+
+@pulumi.output_type
+class InternetAccessServiceProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str project_id: Equinix subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Equinix subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class InternetAccessServiceRoutingProtocol(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bgpAuthKey":
+            suggest = "bgp_auth_key"
+        elif key == "customerAsn":
+            suggest = "customer_asn"
+        elif key == "customerAsnRange":
+            suggest = "customer_asn_range"
+        elif key == "customerRoutes":
+            suggest = "customer_routes"
+        elif key == "exportPolicy":
+            suggest = "export_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceRoutingProtocol. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceRoutingProtocol.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceRoutingProtocol.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connections: Sequence['outputs.InternetAccessServiceRoutingProtocolConnection'],
+                 type: _builtins.str,
+                 asn: Optional['outputs.InternetAccessServiceRoutingProtocolAsn'] = None,
+                 bgp_auth_key: Optional[_builtins.str] = None,
+                 customer_asn: Optional[_builtins.int] = None,
+                 customer_asn_range: Optional[_builtins.str] = None,
+                 customer_routes: Optional[Sequence['outputs.InternetAccessServiceRoutingProtocolCustomerRoute']] = None,
+                 export_policy: Optional[_builtins.str] = None):
+        """
+        :param Sequence['InternetAccessServiceRoutingProtocolConnectionArgs'] connections: Fabric IA*VC connections attached to the service
+        :param _builtins.str type: Routing protocol type. One of: BGP, DIRECT, STATIC
+        :param 'InternetAccessServiceRoutingProtocolAsnArgs' asn: BGP only. Equinix ASN resource used on the customer side. Not read back from the API
+        :param _builtins.str bgp_auth_key: BGP only. BGP authentication key. Not read back from the API
+        :param _builtins.int customer_asn: BGP only. Customer ASN number. Not read back from the API
+        :param _builtins.str customer_asn_range: BGP only. Customer ASN range. One of: BITS*16, BITS*32. Not read back from the API
+        :param Sequence['InternetAccessServiceRoutingProtocolCustomerRouteArgs'] customer_routes: Customer routes announced through the service, given as IP blocks
+        :param _builtins.str export_policy: BGP only. Export policy. One of: FULL, DEFAULT, FULL_DEFAULT, PARTIAL. Not read back from the API
+        """
+        pulumi.set(__self__, "connections", connections)
+        pulumi.set(__self__, "type", type)
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
+        if bgp_auth_key is not None:
+            pulumi.set(__self__, "bgp_auth_key", bgp_auth_key)
+        if customer_asn is not None:
+            pulumi.set(__self__, "customer_asn", customer_asn)
+        if customer_asn_range is not None:
+            pulumi.set(__self__, "customer_asn_range", customer_asn_range)
+        if customer_routes is not None:
+            pulumi.set(__self__, "customer_routes", customer_routes)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.InternetAccessServiceRoutingProtocolConnection']:
+        """
+        Fabric IA*VC connections attached to the service
+        """
+        return pulumi.get(self, "connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Routing protocol type. One of: BGP, DIRECT, STATIC
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def asn(self) -> Optional['outputs.InternetAccessServiceRoutingProtocolAsn']:
+        """
+        BGP only. Equinix ASN resource used on the customer side. Not read back from the API
+        """
+        return pulumi.get(self, "asn")
+
+    @_builtins.property
+    @pulumi.getter(name="bgpAuthKey")
+    def bgp_auth_key(self) -> Optional[_builtins.str]:
+        """
+        BGP only. BGP authentication key. Not read back from the API
+        """
+        return pulumi.get(self, "bgp_auth_key")
+
+    @_builtins.property
+    @pulumi.getter(name="customerAsn")
+    def customer_asn(self) -> Optional[_builtins.int]:
+        """
+        BGP only. Customer ASN number. Not read back from the API
+        """
+        return pulumi.get(self, "customer_asn")
+
+    @_builtins.property
+    @pulumi.getter(name="customerAsnRange")
+    def customer_asn_range(self) -> Optional[_builtins.str]:
+        """
+        BGP only. Customer ASN range. One of: BITS*16, BITS*32. Not read back from the API
+        """
+        return pulumi.get(self, "customer_asn_range")
+
+    @_builtins.property
+    @pulumi.getter(name="customerRoutes")
+    def customer_routes(self) -> Optional[Sequence['outputs.InternetAccessServiceRoutingProtocolCustomerRoute']]:
+        """
+        Customer routes announced through the service, given as IP blocks
+        """
+        return pulumi.get(self, "customer_routes")
+
+    @_builtins.property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[_builtins.str]:
+        """
+        BGP only. Export policy. One of: FULL, DEFAULT, FULL_DEFAULT, PARTIAL. Not read back from the API
+        """
+        return pulumi.get(self, "export_policy")
+
+
+@pulumi.output_type
+class InternetAccessServiceRoutingProtocolAsn(dict):
+    def __init__(__self__, *,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str uuid: Unique identifier of the ASN, e.g. of an equinix*fabric*asn
+        """
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the ASN, e.g. of an equinix*fabric*asn
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class InternetAccessServiceRoutingProtocolConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "peeringIpv4":
+            suggest = "peering_ipv4"
+        elif key == "peeringIpv6":
+            suggest = "peering_ipv6"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceRoutingProtocolConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceRoutingProtocolConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceRoutingProtocolConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uuid: _builtins.str,
+                 href: Optional[_builtins.str] = None,
+                 peering_ipv4: Optional['outputs.InternetAccessServiceRoutingProtocolConnectionPeeringIpv4'] = None,
+                 peering_ipv6: Optional['outputs.InternetAccessServiceRoutingProtocolConnectionPeeringIpv6'] = None):
+        """
+        :param _builtins.str uuid: Unique identifier of the connection
+        :param _builtins.str href: URI to the connection
+        :param 'InternetAccessServiceRoutingProtocolConnectionPeeringIpv4Args' peering_ipv4: IPv4 peering details of the connection
+        :param 'InternetAccessServiceRoutingProtocolConnectionPeeringIpv6Args' peering_ipv6: IPv6 peering details of the connection
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if peering_ipv4 is not None:
+            pulumi.set(__self__, "peering_ipv4", peering_ipv4)
+        if peering_ipv6 is not None:
+            pulumi.set(__self__, "peering_ipv6", peering_ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the connection
+        """
+        return pulumi.get(self, "uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the connection
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="peeringIpv4")
+    def peering_ipv4(self) -> Optional['outputs.InternetAccessServiceRoutingProtocolConnectionPeeringIpv4']:
+        """
+        IPv4 peering details of the connection
+        """
+        return pulumi.get(self, "peering_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="peeringIpv6")
+    def peering_ipv6(self) -> Optional['outputs.InternetAccessServiceRoutingProtocolConnectionPeeringIpv6']:
+        """
+        IPv6 peering details of the connection
+        """
+        return pulumi.get(self, "peering_ipv6")
+
+
+@pulumi.output_type
+class InternetAccessServiceRoutingProtocolConnectionPeeringIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerPeerIp":
+            suggest = "customer_peer_ip"
+        elif key == "customerVrrpIp":
+            suggest = "customer_vrrp_ip"
+        elif key == "equinixPeerIp":
+            suggest = "equinix_peer_ip"
+        elif key == "equinixVrrpIp":
+            suggest = "equinix_vrrp_ip"
+        elif key == "prefixLength":
+            suggest = "prefix_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceRoutingProtocolConnectionPeeringIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceRoutingProtocolConnectionPeeringIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceRoutingProtocolConnectionPeeringIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_peer_ip: Optional[_builtins.str] = None,
+                 customer_vrrp_ip: Optional[_builtins.str] = None,
+                 equinix_peer_ip: Optional[_builtins.str] = None,
+                 equinix_vrrp_ip: Optional[_builtins.str] = None,
+                 prefix: Optional[_builtins.str] = None,
+                 prefix_length: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str customer_peer_ip: Peering IP address on the customer side
+        :param _builtins.str customer_vrrp_ip: VRRP IP address on the customer side
+        :param _builtins.str equinix_peer_ip: Peering IP address on the Equinix side. Assigned by Equinix when not set
+        :param _builtins.str equinix_vrrp_ip: VRRP IP address on the Equinix side. Assigned by Equinix when not set
+        :param _builtins.str prefix: IPv4 prefix for the peering connection
+        :param _builtins.int prefix_length: Determines the size of the subnet
+        """
+        if customer_peer_ip is not None:
+            pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        if customer_vrrp_ip is not None:
+            pulumi.set(__self__, "customer_vrrp_ip", customer_vrrp_ip)
+        if equinix_peer_ip is not None:
+            pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        if equinix_vrrp_ip is not None:
+            pulumi.set(__self__, "equinix_vrrp_ip", equinix_vrrp_ip)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if prefix_length is not None:
+            pulumi.set(__self__, "prefix_length", prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="customerPeerIp")
+    def customer_peer_ip(self) -> Optional[_builtins.str]:
+        """
+        Peering IP address on the customer side
+        """
+        return pulumi.get(self, "customer_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVrrpIp")
+    def customer_vrrp_ip(self) -> Optional[_builtins.str]:
+        """
+        VRRP IP address on the customer side
+        """
+        return pulumi.get(self, "customer_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixPeerIp")
+    def equinix_peer_ip(self) -> Optional[_builtins.str]:
+        """
+        Peering IP address on the Equinix side. Assigned by Equinix when not set
+        """
+        return pulumi.get(self, "equinix_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixVrrpIp")
+    def equinix_vrrp_ip(self) -> Optional[_builtins.str]:
+        """
+        VRRP IP address on the Equinix side. Assigned by Equinix when not set
+        """
+        return pulumi.get(self, "equinix_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        """
+        IPv4 prefix for the peering connection
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> Optional[_builtins.int]:
+        """
+        Determines the size of the subnet
+        """
+        return pulumi.get(self, "prefix_length")
+
+
+@pulumi.output_type
+class InternetAccessServiceRoutingProtocolConnectionPeeringIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerPeerIp":
+            suggest = "customer_peer_ip"
+        elif key == "customerVrrpIp":
+            suggest = "customer_vrrp_ip"
+        elif key == "equinixPeerIp":
+            suggest = "equinix_peer_ip"
+        elif key == "equinixVrrpIp":
+            suggest = "equinix_vrrp_ip"
+        elif key == "prefixLength":
+            suggest = "prefix_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceRoutingProtocolConnectionPeeringIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceRoutingProtocolConnectionPeeringIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceRoutingProtocolConnectionPeeringIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_peer_ip: Optional[_builtins.str] = None,
+                 customer_vrrp_ip: Optional[_builtins.str] = None,
+                 equinix_peer_ip: Optional[_builtins.str] = None,
+                 equinix_vrrp_ip: Optional[_builtins.str] = None,
+                 prefix: Optional[_builtins.str] = None,
+                 prefix_length: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str customer_peer_ip: Peering IP address on the customer side
+        :param _builtins.str customer_vrrp_ip: VRRP IP address on the customer side
+        :param _builtins.str equinix_peer_ip: Peering IP address on the Equinix side. Assigned by Equinix when not set
+        :param _builtins.str equinix_vrrp_ip: VRRP IP address on the Equinix side. Assigned by Equinix when not set
+        :param _builtins.str prefix: IPv6 prefix for the peering connection
+        :param _builtins.int prefix_length: Determines the size of the subnet
+        """
+        if customer_peer_ip is not None:
+            pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        if customer_vrrp_ip is not None:
+            pulumi.set(__self__, "customer_vrrp_ip", customer_vrrp_ip)
+        if equinix_peer_ip is not None:
+            pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        if equinix_vrrp_ip is not None:
+            pulumi.set(__self__, "equinix_vrrp_ip", equinix_vrrp_ip)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if prefix_length is not None:
+            pulumi.set(__self__, "prefix_length", prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="customerPeerIp")
+    def customer_peer_ip(self) -> Optional[_builtins.str]:
+        """
+        Peering IP address on the customer side
+        """
+        return pulumi.get(self, "customer_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVrrpIp")
+    def customer_vrrp_ip(self) -> Optional[_builtins.str]:
+        """
+        VRRP IP address on the customer side
+        """
+        return pulumi.get(self, "customer_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixPeerIp")
+    def equinix_peer_ip(self) -> Optional[_builtins.str]:
+        """
+        Peering IP address on the Equinix side. Assigned by Equinix when not set
+        """
+        return pulumi.get(self, "equinix_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixVrrpIp")
+    def equinix_vrrp_ip(self) -> Optional[_builtins.str]:
+        """
+        VRRP IP address on the Equinix side. Assigned by Equinix when not set
+        """
+        return pulumi.get(self, "equinix_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        """
+        IPv6 prefix for the peering connection
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> Optional[_builtins.int]:
+        """
+        Determines the size of the subnet
+        """
+        return pulumi.get(self, "prefix_length")
+
+
+@pulumi.output_type
+class InternetAccessServiceRoutingProtocolCustomerRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipBlock":
+            suggest = "ip_block"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternetAccessServiceRoutingProtocolCustomerRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternetAccessServiceRoutingProtocolCustomerRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternetAccessServiceRoutingProtocolCustomerRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_block: 'outputs.InternetAccessServiceRoutingProtocolCustomerRouteIpBlock'):
+        """
+        :param 'InternetAccessServiceRoutingProtocolCustomerRouteIpBlockArgs' ip_block: IP block of the route
+        """
+        pulumi.set(__self__, "ip_block", ip_block)
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlock")
+    def ip_block(self) -> 'outputs.InternetAccessServiceRoutingProtocolCustomerRouteIpBlock':
+        """
+        IP block of the route
+        """
+        return pulumi.get(self, "ip_block")
+
+
+@pulumi.output_type
+class InternetAccessServiceRoutingProtocolCustomerRouteIpBlock(dict):
+    def __init__(__self__, *,
+                 uuid: _builtins.str,
+                 href: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str uuid: Unique identifier of the IP block, e.g. of an equinix*fabric*ip_block
+        :param _builtins.str href: URI to the IP block
+        """
+        pulumi.set(__self__, "uuid", uuid)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the IP block, e.g. of an equinix*fabric*ip_block
+        """
+        return pulumi.get(self, "uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> Optional[_builtins.str]:
+        """
+        URI to the IP block
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class InternetAccessServiceTimeouts(dict):
+    def __init__(__self__, *,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -13830,6 +15265,852 @@ class GetAdvertisedRoutesSortResult(dict):
 
 
 @pulumi.output_type
+class GetAsnAssetResult(dict):
+    def __init__(__self__, *,
+                 announcing_metro: _builtins.str,
+                 ip_blocks: Sequence['outputs.GetAsnAssetIpBlockResult'],
+                 service: 'outputs.GetAsnAssetServiceResult',
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str announcing_metro: Metro announcing the ASN
+        :param Sequence['GetAsnAssetIpBlockArgs'] ip_blocks: IP blocks announced with the ASN
+        :param 'GetAsnAssetServiceArgs' service: Service the ASN is attached to
+        :param _builtins.str uuid: Asset identifier
+        """
+        pulumi.set(__self__, "announcing_metro", announcing_metro)
+        pulumi.set(__self__, "ip_blocks", ip_blocks)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="announcingMetro")
+    def announcing_metro(self) -> _builtins.str:
+        """
+        Metro announcing the ASN
+        """
+        return pulumi.get(self, "announcing_metro")
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> Sequence['outputs.GetAsnAssetIpBlockResult']:
+        """
+        IP blocks announced with the ASN
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> 'outputs.GetAsnAssetServiceResult':
+        """
+        Service the ASN is attached to
+        """
+        return pulumi.get(self, "service")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Asset identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetAsnAssetIpBlockResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 type: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the IP block
+        :param _builtins.str type: IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+        :param _builtins.str uuid: IP block identifier
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the IP block
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        IP block identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetAsnAssetServiceResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 type: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the service
+        :param _builtins.str type: Service type. One of: IA
+        :param _builtins.str uuid: Service identifier
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the service
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Service type. One of: IA
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Service identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetAsnChangeResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetAsnChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_date_time: _builtins.str,
+                 deleted_date_time: _builtins.str,
+                 updated_date_time: _builtins.str):
+        """
+        :param _builtins.str created_date_time: Creation date and time
+        :param _builtins.str deleted_date_time: Deletion date and time
+        :param _builtins.str updated_date_time: Last update date and time
+        """
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> _builtins.str:
+        """
+        Creation date and time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> _builtins.str:
+        """
+        Deletion date and time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> _builtins.str:
+        """
+        Last update date and time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetAsnLocationResult(dict):
+    def __init__(__self__, *,
+                 ibx: _builtins.str,
+                 metro_code: _builtins.str,
+                 metro_href: _builtins.str,
+                 metro_name: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str ibx: IBX site code (deprecated)
+        :param _builtins.str metro_code: Metro code
+        :param _builtins.str metro_href: URI to the metro
+        :param _builtins.str metro_name: Metro name
+        :param _builtins.str region: Region of the metro
+        """
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_href", metro_href)
+        pulumi.set(__self__, "metro_name", metro_name)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def ibx(self) -> _builtins.str:
+        """
+        IBX site code (deprecated)
+        """
+        return pulumi.get(self, "ibx")
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> _builtins.str:
+        """
+        URI to the metro
+        """
+        return pulumi.get(self, "metro_href")
+
+    @_builtins.property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> _builtins.str:
+        """
+        Metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the metro
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetAsnOwnershipChallengeDetailsResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: Ownership challenge type. One of: LOA, RPKI
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Ownership challenge type. One of: LOA, RPKI
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetAsnProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str project_id: Project identifier
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project identifier
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetAsnsDataResult(dict):
+    def __init__(__self__, *,
+                 assets: Sequence['outputs.GetAsnsDataAssetResult'],
+                 change: 'outputs.GetAsnsDataChangeResult',
+                 change_log: 'outputs.GetAsnsDataChangeLogResult',
+                 href: _builtins.str,
+                 location: 'outputs.GetAsnsDataLocationResult',
+                 number: _builtins.int,
+                 ownership_challenge_details: 'outputs.GetAsnsDataOwnershipChallengeDetailsResult',
+                 project: 'outputs.GetAsnsDataProjectResult',
+                 range: _builtins.str,
+                 rir_region: _builtins.str,
+                 state: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param Sequence['GetAsnsDataAssetArgs'] assets: Assets (services) the ASN is attached to
+        :param 'GetAsnsDataChangeArgs' change: Current state of the latest change on the ASN
+        :param 'GetAsnsDataChangeLogArgs' change_log: Details of the last change on the ASN
+        :param _builtins.str href: Equinix auto generated URI to the ASN
+        :param 'GetAsnsDataLocationArgs' location: Location of the ASN
+        :param _builtins.int number: Autonomous System Number
+        :param 'GetAsnsDataOwnershipChallengeDetailsArgs' ownership_challenge_details: Details of the ASN ownership challenge
+        :param 'GetAsnsDataProjectArgs' project: Project the ASN belongs to
+        :param _builtins.str range: Range of the ASN. One of: 16*BIT, 32*BIT
+        :param _builtins.str rir_region: Regional Internet Registry region of the ASN. One of: AFRINIC, APNIC, ARIN, LACNIC, RIPE_NCC
+        :param _builtins.str state: State of the ASN. One of: REQUESTED, PROVISIONING, PENDING, PROVISIONED, ATTACHED, FAILED, PROVISIONING*FAILED, DEPROVISIONING, DEPROVISIONING*FAILED, DEPROVISIONED
+        :param _builtins.str uuid: Equinix-assigned unique identifier for the ASN record
+        """
+        pulumi.set(__self__, "assets", assets)
+        pulumi.set(__self__, "change", change)
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "number", number)
+        pulumi.set(__self__, "ownership_challenge_details", ownership_challenge_details)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "rir_region", rir_region)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def assets(self) -> Sequence['outputs.GetAsnsDataAssetResult']:
+        """
+        Assets (services) the ASN is attached to
+        """
+        return pulumi.get(self, "assets")
+
+    @_builtins.property
+    @pulumi.getter
+    def change(self) -> 'outputs.GetAsnsDataChangeResult':
+        """
+        Current state of the latest change on the ASN
+        """
+        return pulumi.get(self, "change")
+
+    @_builtins.property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetAsnsDataChangeLogResult':
+        """
+        Details of the last change on the ASN
+        """
+        return pulumi.get(self, "change_log")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        Equinix auto generated URI to the ASN
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetAsnsDataLocationResult':
+        """
+        Location of the ASN
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def number(self) -> _builtins.int:
+        """
+        Autonomous System Number
+        """
+        return pulumi.get(self, "number")
+
+    @_builtins.property
+    @pulumi.getter(name="ownershipChallengeDetails")
+    def ownership_challenge_details(self) -> 'outputs.GetAsnsDataOwnershipChallengeDetailsResult':
+        """
+        Details of the ASN ownership challenge
+        """
+        return pulumi.get(self, "ownership_challenge_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> 'outputs.GetAsnsDataProjectResult':
+        """
+        Project the ASN belongs to
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        Range of the ASN. One of: 16*BIT, 32*BIT
+        """
+        return pulumi.get(self, "range")
+
+    @_builtins.property
+    @pulumi.getter(name="rirRegion")
+    def rir_region(self) -> _builtins.str:
+        """
+        Regional Internet Registry region of the ASN. One of: AFRINIC, APNIC, ARIN, LACNIC, RIPE_NCC
+        """
+        return pulumi.get(self, "rir_region")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        State of the ASN. One of: REQUESTED, PROVISIONING, PENDING, PROVISIONED, ATTACHED, FAILED, PROVISIONING*FAILED, DEPROVISIONING, DEPROVISIONING*FAILED, DEPROVISIONED
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Equinix-assigned unique identifier for the ASN record
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetAsnsDataAssetResult(dict):
+    def __init__(__self__, *,
+                 announcing_metro: _builtins.str,
+                 ip_blocks: Sequence['outputs.GetAsnsDataAssetIpBlockResult'],
+                 service: 'outputs.GetAsnsDataAssetServiceResult',
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str announcing_metro: Metro announcing the ASN
+        :param Sequence['GetAsnsDataAssetIpBlockArgs'] ip_blocks: IP blocks announced with the ASN
+        :param 'GetAsnsDataAssetServiceArgs' service: Service the ASN is attached to
+        :param _builtins.str uuid: Asset identifier
+        """
+        pulumi.set(__self__, "announcing_metro", announcing_metro)
+        pulumi.set(__self__, "ip_blocks", ip_blocks)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="announcingMetro")
+    def announcing_metro(self) -> _builtins.str:
+        """
+        Metro announcing the ASN
+        """
+        return pulumi.get(self, "announcing_metro")
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> Sequence['outputs.GetAsnsDataAssetIpBlockResult']:
+        """
+        IP blocks announced with the ASN
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> 'outputs.GetAsnsDataAssetServiceResult':
+        """
+        Service the ASN is attached to
+        """
+        return pulumi.get(self, "service")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Asset identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetAsnsDataAssetIpBlockResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 type: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the IP block
+        :param _builtins.str type: IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+        :param _builtins.str uuid: IP block identifier
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the IP block
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        IP block identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetAsnsDataAssetServiceResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 type: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the service
+        :param _builtins.str type: Service type. One of: IA
+        :param _builtins.str uuid: Service identifier
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the service
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Service type. One of: IA
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Service identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetAsnsDataChangeResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetAsnsDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_date_time: _builtins.str,
+                 deleted_date_time: _builtins.str,
+                 updated_date_time: _builtins.str):
+        """
+        :param _builtins.str created_date_time: Creation date and time
+        :param _builtins.str deleted_date_time: Deletion date and time
+        :param _builtins.str updated_date_time: Last update date and time
+        """
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> _builtins.str:
+        """
+        Creation date and time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> _builtins.str:
+        """
+        Deletion date and time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> _builtins.str:
+        """
+        Last update date and time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetAsnsDataLocationResult(dict):
+    def __init__(__self__, *,
+                 ibx: _builtins.str,
+                 metro_code: _builtins.str,
+                 metro_href: _builtins.str,
+                 metro_name: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str ibx: IBX site code (deprecated)
+        :param _builtins.str metro_code: Metro code
+        :param _builtins.str metro_href: URI to the metro
+        :param _builtins.str metro_name: Metro name
+        :param _builtins.str region: Region of the metro
+        """
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_href", metro_href)
+        pulumi.set(__self__, "metro_name", metro_name)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def ibx(self) -> _builtins.str:
+        """
+        IBX site code (deprecated)
+        """
+        return pulumi.get(self, "ibx")
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> _builtins.str:
+        """
+        URI to the metro
+        """
+        return pulumi.get(self, "metro_href")
+
+    @_builtins.property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> _builtins.str:
+        """
+        Metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the metro
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetAsnsDataOwnershipChallengeDetailsResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: Ownership challenge type. One of: LOA, RPKI
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Ownership challenge type. One of: LOA, RPKI
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetAsnsDataProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str project_id: Project identifier
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project identifier
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetAsnsFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 property: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+        :param _builtins.str property: Field name to use on filters, e.g. "/project/projectId", "/uuid", "/state", "/type"
+        :param Sequence[_builtins.str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> _builtins.str:
+        """
+        Field name to use on filters, e.g. "/project/projectId", "/uuid", "/state", "/type"
+        """
+        return pulumi.get(self, "property")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetAsnsPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 next: _builtins.str,
+                 offset: _builtins.int,
+                 previous: _builtins.str,
+                 total: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param _builtins.str next: The URL relative to the next item in the response
+        :param _builtins.int offset: Index of the first item returned in the response. The default is 0
+        :param _builtins.str previous: The URL relative to the previous item in the response
+        :param _builtins.int total: The total number of ASNs available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def next(self) -> _builtins.str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> _builtins.int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @_builtins.property
+    @pulumi.getter
+    def previous(self) -> _builtins.str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @_builtins.property
+    @pulumi.getter
+    def total(self) -> _builtins.int:
+        """
+        The total number of ASNs available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetAsnsSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 property: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+        :param _builtins.str property: The property name to use in sorting, e.g. "/state". Allowed values: /changeLog/createdDateTime, /uuid, /state, /project/projectId, /type
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> Optional[_builtins.str]:
+        """
+        The property name to use in sorting, e.g. "/state". Allowed values: /changeLog/createdDateTime, /uuid, /state, /project/projectId, /type
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
 class GetCloudRouterAccountResult(dict):
     def __init__(__self__, *,
                  account_number: _builtins.int):
@@ -20069,7 +22350,7 @@ class GetConnectionsFilterResult(dict):
                  group: Optional[_builtins.str] = None):
         """
         :param _builtins.str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
-        :param _builtins.str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+        :param _builtins.str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/interconnect/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /redundancy/name /redundancy/description /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         :param Sequence[_builtins.str] values: The values that you want to apply the property+operator combination to in order to filter your data search
         :param _builtins.str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
         """
@@ -20091,7 +22372,7 @@ class GetConnectionsFilterResult(dict):
     @pulumi.getter
     def property(self) -> _builtins.str:
         """
-        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/interconnect/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /redundancy/name /redundancy/description /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
         """
         return pulumi.get(self, "property")
 
@@ -20150,7 +22431,7 @@ class GetConnectionsSortResult(dict):
                  property: Optional[_builtins.str] = None):
         """
         :param _builtins.str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
-        :param _builtins.str property: The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        :param _builtins.str property: The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
@@ -20169,7 +22450,1473 @@ class GetConnectionsSortResult(dict):
     @pulumi.getter
     def property(self) -> Optional[_builtins.str]:
         """
-        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceAccountResult(dict):
+    def __init__(__self__, *,
+                 account_number: _builtins.str,
+                 href: _builtins.str):
+        """
+        :param _builtins.str account_number: Account number
+        :param _builtins.str href: URI to the account
+        """
+        pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> _builtins.str:
+        """
+        Account number
+        """
+        return pulumi.get(self, "account_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the account
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceBillingResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 start_date: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether billing is enabled
+        :param _builtins.str start_date: Start date of the billing period
+        :param _builtins.str type: Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether billing is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> _builtins.str:
+        """
+        Start date of the billing period
+        """
+        return pulumi.get(self, "start_date")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceChangeResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_date_time: _builtins.str,
+                 deleted_date_time: _builtins.str,
+                 updated_date_time: _builtins.str):
+        """
+        :param _builtins.str created_date_time: Creation time of the service
+        :param _builtins.str deleted_date_time: Deletion time of the service
+        :param _builtins.str updated_date_time: Last update time of the service
+        """
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> _builtins.str:
+        """
+        Creation time of the service
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> _builtins.str:
+        """
+        Deletion time of the service
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> _builtins.str:
+        """
+        Last update time of the service
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceLocationResult(dict):
+    def __init__(__self__, *,
+                 ibx: _builtins.str,
+                 metro_code: _builtins.str,
+                 metro_href: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str ibx: IBX data center code
+        :param _builtins.str metro_code: Two-letter metro code
+        :param _builtins.str metro_href: URI to the metro resource
+        :param _builtins.str region: Region of the location. One of: AMER, EMEA, APAC
+        """
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_href", metro_href)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def ibx(self) -> _builtins.str:
+        """
+        IBX data center code
+        """
+        return pulumi.get(self, "ibx")
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Two-letter metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> _builtins.str:
+        """
+        URI to the metro resource
+        """
+        return pulumi.get(self, "metro_href")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the location. One of: AMER, EMEA, APAC
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceOrderResult(dict):
+    def __init__(__self__, *,
+                 billing_tier: _builtins.str,
+                 contracted_bandwidth: _builtins.int,
+                 customer_reference_number: _builtins.str,
+                 href: _builtins.str,
+                 order_id: _builtins.str,
+                 order_number: _builtins.str,
+                 purchase_order_number: _builtins.str,
+                 term_length: _builtins.int):
+        """
+        :param _builtins.str billing_tier: Billing tier for the connection bandwidth
+        :param _builtins.int contracted_bandwidth: Contracted bandwidth
+        :param _builtins.str customer_reference_number: Customer reference number
+        :param _builtins.str href: URI to the order
+        :param _builtins.str order_id: Order identification
+        :param _builtins.str order_number: Order reference number
+        :param _builtins.str purchase_order_number: Purchase order number
+        :param _builtins.int term_length: Term length in months
+        """
+        pulumi.set(__self__, "billing_tier", billing_tier)
+        pulumi.set(__self__, "contracted_bandwidth", contracted_bandwidth)
+        pulumi.set(__self__, "customer_reference_number", customer_reference_number)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "order_id", order_id)
+        pulumi.set(__self__, "order_number", order_number)
+        pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+        pulumi.set(__self__, "term_length", term_length)
+
+    @_builtins.property
+    @pulumi.getter(name="billingTier")
+    def billing_tier(self) -> _builtins.str:
+        """
+        Billing tier for the connection bandwidth
+        """
+        return pulumi.get(self, "billing_tier")
+
+    @_builtins.property
+    @pulumi.getter(name="contractedBandwidth")
+    def contracted_bandwidth(self) -> _builtins.int:
+        """
+        Contracted bandwidth
+        """
+        return pulumi.get(self, "contracted_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="customerReferenceNumber")
+    def customer_reference_number(self) -> _builtins.str:
+        """
+        Customer reference number
+        """
+        return pulumi.get(self, "customer_reference_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the order
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> _builtins.str:
+        """
+        Order identification
+        """
+        return pulumi.get(self, "order_id")
+
+    @_builtins.property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> _builtins.str:
+        """
+        Order reference number
+        """
+        return pulumi.get(self, "order_number")
+
+    @_builtins.property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> _builtins.str:
+        """
+        Purchase order number
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+    @_builtins.property
+    @pulumi.getter(name="termLength")
+    def term_length(self) -> _builtins.int:
+        """
+        Term length in months
+        """
+        return pulumi.get(self, "term_length")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str project_id: Equinix subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Equinix subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceRoutingProtocolResult(dict):
+    def __init__(__self__, *,
+                 connections: Sequence['outputs.GetInternetAccessServiceRoutingProtocolConnectionResult'],
+                 customer_routes: Sequence['outputs.GetInternetAccessServiceRoutingProtocolCustomerRouteResult'],
+                 type: _builtins.str):
+        """
+        :param Sequence['GetInternetAccessServiceRoutingProtocolConnectionArgs'] connections: Fabric connections attached to the service
+        :param Sequence['GetInternetAccessServiceRoutingProtocolCustomerRouteArgs'] customer_routes: Customer routes announced through the service
+        :param _builtins.str type: Routing protocol type. One of: BGP, DIRECT, STATIC
+        """
+        pulumi.set(__self__, "connections", connections)
+        pulumi.set(__self__, "customer_routes", customer_routes)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.GetInternetAccessServiceRoutingProtocolConnectionResult']:
+        """
+        Fabric connections attached to the service
+        """
+        return pulumi.get(self, "connections")
+
+    @_builtins.property
+    @pulumi.getter(name="customerRoutes")
+    def customer_routes(self) -> Sequence['outputs.GetInternetAccessServiceRoutingProtocolCustomerRouteResult']:
+        """
+        Customer routes announced through the service
+        """
+        return pulumi.get(self, "customer_routes")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Routing protocol type. One of: BGP, DIRECT, STATIC
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceRoutingProtocolConnectionResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 peering_ipv4: 'outputs.GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv4Result',
+                 peering_ipv6: 'outputs.GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv6Result',
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the connection
+        :param 'GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv4Args' peering_ipv4: IPv4 peering details of the connection
+        :param 'GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv6Args' peering_ipv6: IPv6 peering details of the connection
+        :param _builtins.str uuid: Unique identifier of the connection
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "peering_ipv4", peering_ipv4)
+        pulumi.set(__self__, "peering_ipv6", peering_ipv6)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the connection
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="peeringIpv4")
+    def peering_ipv4(self) -> 'outputs.GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv4Result':
+        """
+        IPv4 peering details of the connection
+        """
+        return pulumi.get(self, "peering_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="peeringIpv6")
+    def peering_ipv6(self) -> 'outputs.GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv6Result':
+        """
+        IPv6 peering details of the connection
+        """
+        return pulumi.get(self, "peering_ipv6")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the connection
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv4Result(dict):
+    def __init__(__self__, *,
+                 customer_peer_ip: _builtins.str,
+                 customer_vrrp_ip: _builtins.str,
+                 equinix_peer_ip: _builtins.str,
+                 equinix_vrrp_ip: _builtins.str,
+                 prefix: _builtins.str,
+                 prefix_length: _builtins.int):
+        """
+        :param _builtins.str customer_peer_ip: Peering IP address on the customer side
+        :param _builtins.str customer_vrrp_ip: VRRP IP address on the customer side
+        :param _builtins.str equinix_peer_ip: Peering IP address on the Equinix side
+        :param _builtins.str equinix_vrrp_ip: VRRP IP address on the Equinix side
+        :param _builtins.str prefix: IPv4 prefix for the peering connection
+        :param _builtins.int prefix_length: Determines the size of the subnet
+        """
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "customer_vrrp_ip", customer_vrrp_ip)
+        pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        pulumi.set(__self__, "equinix_vrrp_ip", equinix_vrrp_ip)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "prefix_length", prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="customerPeerIp")
+    def customer_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the customer side
+        """
+        return pulumi.get(self, "customer_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVrrpIp")
+    def customer_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the customer side
+        """
+        return pulumi.get(self, "customer_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixPeerIp")
+    def equinix_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixVrrpIp")
+    def equinix_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        IPv4 prefix for the peering connection
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> _builtins.int:
+        """
+        Determines the size of the subnet
+        """
+        return pulumi.get(self, "prefix_length")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv6Result(dict):
+    def __init__(__self__, *,
+                 customer_peer_ip: _builtins.str,
+                 customer_vrrp_ip: _builtins.str,
+                 equinix_peer_ip: _builtins.str,
+                 equinix_vrrp_ip: _builtins.str,
+                 prefix: _builtins.str,
+                 prefix_length: _builtins.int):
+        """
+        :param _builtins.str customer_peer_ip: Peering IP address on the customer side
+        :param _builtins.str customer_vrrp_ip: VRRP IP address on the customer side
+        :param _builtins.str equinix_peer_ip: Peering IP address on the Equinix side
+        :param _builtins.str equinix_vrrp_ip: VRRP IP address on the Equinix side
+        :param _builtins.str prefix: IPv6 prefix for the peering connection
+        :param _builtins.int prefix_length: Determines the size of the subnet
+        """
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "customer_vrrp_ip", customer_vrrp_ip)
+        pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        pulumi.set(__self__, "equinix_vrrp_ip", equinix_vrrp_ip)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "prefix_length", prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="customerPeerIp")
+    def customer_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the customer side
+        """
+        return pulumi.get(self, "customer_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVrrpIp")
+    def customer_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the customer side
+        """
+        return pulumi.get(self, "customer_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixPeerIp")
+    def equinix_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixVrrpIp")
+    def equinix_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        IPv6 prefix for the peering connection
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> _builtins.int:
+        """
+        Determines the size of the subnet
+        """
+        return pulumi.get(self, "prefix_length")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceRoutingProtocolCustomerRouteResult(dict):
+    def __init__(__self__, *,
+                 ip_block: 'outputs.GetInternetAccessServiceRoutingProtocolCustomerRouteIpBlockResult'):
+        """
+        :param 'GetInternetAccessServiceRoutingProtocolCustomerRouteIpBlockArgs' ip_block: IP block of the route
+        """
+        pulumi.set(__self__, "ip_block", ip_block)
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlock")
+    def ip_block(self) -> 'outputs.GetInternetAccessServiceRoutingProtocolCustomerRouteIpBlockResult':
+        """
+        IP block of the route
+        """
+        return pulumi.get(self, "ip_block")
+
+
+@pulumi.output_type
+class GetInternetAccessServiceRoutingProtocolCustomerRouteIpBlockResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the IP block
+        :param _builtins.str uuid: Unique identifier of the IP block
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the IP block
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the IP block
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataResult(dict):
+    def __init__(__self__, *,
+                 account: 'outputs.GetInternetAccessServicesDataAccountResult',
+                 bandwidth: _builtins.int,
+                 bandwidth_commit: _builtins.int,
+                 billing: 'outputs.GetInternetAccessServicesDataBillingResult',
+                 change: 'outputs.GetInternetAccessServicesDataChangeResult',
+                 change_log: 'outputs.GetInternetAccessServicesDataChangeLogResult',
+                 href: _builtins.str,
+                 locations: Sequence['outputs.GetInternetAccessServicesDataLocationResult'],
+                 name: _builtins.str,
+                 order: 'outputs.GetInternetAccessServicesDataOrderResult',
+                 project: 'outputs.GetInternetAccessServicesDataProjectResult',
+                 routing_protocol: 'outputs.GetInternetAccessServicesDataRoutingProtocolResult',
+                 state: _builtins.str,
+                 type: _builtins.str,
+                 use_case: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param 'GetInternetAccessServicesDataAccountArgs' account: Account associated with the service
+        :param _builtins.int bandwidth: Bandwidth of the service
+        :param _builtins.int bandwidth_commit: Minimum bandwidth commit for the burst billing variant of the service
+        :param 'GetInternetAccessServicesDataBillingArgs' billing: Billing details of the service
+        :param 'GetInternetAccessServicesDataChangeArgs' change: Current state of the latest change on the service
+        :param 'GetInternetAccessServicesDataChangeLogArgs' change_log: Audit log of changes to the service
+        :param _builtins.str href: Equinix auto generated URI to the Internet Access service
+        :param Sequence['GetInternetAccessServicesDataLocationArgs'] locations: Locations associated with the service
+        :param _builtins.str name: Name of the Internet Access service
+        :param 'GetInternetAccessServicesDataOrderArgs' order: Order details of the service
+        :param 'GetInternetAccessServicesDataProjectArgs' project: Project associated with the service
+        :param 'GetInternetAccessServicesDataRoutingProtocolArgs' routing_protocol: Routing protocol configuration of the service
+        :param _builtins.str state: Provisioning state of the service. One of: PROVISIONING, PROVISIONED, FAILED, DEPROVISIONING, DEPROVISIONED
+        :param _builtins.str type: Type of the Internet Access service. One of: SINGLE*IA, DUAL*IA
+        :param _builtins.str use_case: Use case of the service. One of: MAIN, MANAGEMENT_ACCESS
+        :param _builtins.str uuid: Equinix-assigned unique identifier for the Internet Access service
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_commit", bandwidth_commit)
+        pulumi.set(__self__, "billing", billing)
+        pulumi.set(__self__, "change", change)
+        pulumi.set(__self__, "change_log", change_log)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "locations", locations)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "routing_protocol", routing_protocol)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "use_case", use_case)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def account(self) -> 'outputs.GetInternetAccessServicesDataAccountResult':
+        """
+        Account associated with the service
+        """
+        return pulumi.get(self, "account")
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> _builtins.int:
+        """
+        Bandwidth of the service
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthCommit")
+    def bandwidth_commit(self) -> _builtins.int:
+        """
+        Minimum bandwidth commit for the burst billing variant of the service
+        """
+        return pulumi.get(self, "bandwidth_commit")
+
+    @_builtins.property
+    @pulumi.getter
+    def billing(self) -> 'outputs.GetInternetAccessServicesDataBillingResult':
+        """
+        Billing details of the service
+        """
+        return pulumi.get(self, "billing")
+
+    @_builtins.property
+    @pulumi.getter
+    def change(self) -> 'outputs.GetInternetAccessServicesDataChangeResult':
+        """
+        Current state of the latest change on the service
+        """
+        return pulumi.get(self, "change")
+
+    @_builtins.property
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetInternetAccessServicesDataChangeLogResult':
+        """
+        Audit log of changes to the service
+        """
+        return pulumi.get(self, "change_log")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        Equinix auto generated URI to the Internet Access service
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> Sequence['outputs.GetInternetAccessServicesDataLocationResult']:
+        """
+        Locations associated with the service
+        """
+        return pulumi.get(self, "locations")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the Internet Access service
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> 'outputs.GetInternetAccessServicesDataOrderResult':
+        """
+        Order details of the service
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> 'outputs.GetInternetAccessServicesDataProjectResult':
+        """
+        Project associated with the service
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="routingProtocol")
+    def routing_protocol(self) -> 'outputs.GetInternetAccessServicesDataRoutingProtocolResult':
+        """
+        Routing protocol configuration of the service
+        """
+        return pulumi.get(self, "routing_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Provisioning state of the service. One of: PROVISIONING, PROVISIONED, FAILED, DEPROVISIONING, DEPROVISIONED
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the Internet Access service. One of: SINGLE*IA, DUAL*IA
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="useCase")
+    def use_case(self) -> _builtins.str:
+        """
+        Use case of the service. One of: MAIN, MANAGEMENT_ACCESS
+        """
+        return pulumi.get(self, "use_case")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Equinix-assigned unique identifier for the Internet Access service
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataAccountResult(dict):
+    def __init__(__self__, *,
+                 account_number: _builtins.str,
+                 href: _builtins.str):
+        """
+        :param _builtins.str account_number: Account number
+        :param _builtins.str href: URI to the account
+        """
+        pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> _builtins.str:
+        """
+        Account number
+        """
+        return pulumi.get(self, "account_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the account
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataBillingResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 start_date: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether billing is enabled
+        :param _builtins.str start_date: Start date of the billing period
+        :param _builtins.str type: Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether billing is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> _builtins.str:
+        """
+        Start date of the billing period
+        """
+        return pulumi.get(self, "start_date")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataChangeResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str):
+        """
+        :param _builtins.str href: URI to the change resource
+        """
+        pulumi.set(__self__, "href", href)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the change resource
+        """
+        return pulumi.get(self, "href")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_date_time: _builtins.str,
+                 deleted_date_time: _builtins.str,
+                 updated_date_time: _builtins.str):
+        """
+        :param _builtins.str created_date_time: Creation time of the service
+        :param _builtins.str deleted_date_time: Deletion time of the service
+        :param _builtins.str updated_date_time: Last update time of the service
+        """
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> _builtins.str:
+        """
+        Creation time of the service
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> _builtins.str:
+        """
+        Deletion time of the service
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> _builtins.str:
+        """
+        Last update time of the service
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataLocationResult(dict):
+    def __init__(__self__, *,
+                 ibx: _builtins.str,
+                 metro_code: _builtins.str,
+                 metro_href: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str ibx: IBX data center code
+        :param _builtins.str metro_code: Two-letter metro code
+        :param _builtins.str metro_href: URI to the metro resource
+        :param _builtins.str region: Region of the location. One of: AMER, EMEA, APAC
+        """
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_href", metro_href)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def ibx(self) -> _builtins.str:
+        """
+        IBX data center code
+        """
+        return pulumi.get(self, "ibx")
+
+    @_builtins.property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> _builtins.str:
+        """
+        Two-letter metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @_builtins.property
+    @pulumi.getter(name="metroHref")
+    def metro_href(self) -> _builtins.str:
+        """
+        URI to the metro resource
+        """
+        return pulumi.get(self, "metro_href")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the location. One of: AMER, EMEA, APAC
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataOrderResult(dict):
+    def __init__(__self__, *,
+                 billing_tier: _builtins.str,
+                 contracted_bandwidth: _builtins.int,
+                 customer_reference_number: _builtins.str,
+                 href: _builtins.str,
+                 order_id: _builtins.str,
+                 order_number: _builtins.str,
+                 purchase_order_number: _builtins.str,
+                 term_length: _builtins.int):
+        """
+        :param _builtins.str billing_tier: Billing tier for the connection bandwidth
+        :param _builtins.int contracted_bandwidth: Contracted bandwidth
+        :param _builtins.str customer_reference_number: Customer reference number
+        :param _builtins.str href: URI to the order
+        :param _builtins.str order_id: Order identification
+        :param _builtins.str order_number: Order reference number
+        :param _builtins.str purchase_order_number: Purchase order number
+        :param _builtins.int term_length: Term length in months
+        """
+        pulumi.set(__self__, "billing_tier", billing_tier)
+        pulumi.set(__self__, "contracted_bandwidth", contracted_bandwidth)
+        pulumi.set(__self__, "customer_reference_number", customer_reference_number)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "order_id", order_id)
+        pulumi.set(__self__, "order_number", order_number)
+        pulumi.set(__self__, "purchase_order_number", purchase_order_number)
+        pulumi.set(__self__, "term_length", term_length)
+
+    @_builtins.property
+    @pulumi.getter(name="billingTier")
+    def billing_tier(self) -> _builtins.str:
+        """
+        Billing tier for the connection bandwidth
+        """
+        return pulumi.get(self, "billing_tier")
+
+    @_builtins.property
+    @pulumi.getter(name="contractedBandwidth")
+    def contracted_bandwidth(self) -> _builtins.int:
+        """
+        Contracted bandwidth
+        """
+        return pulumi.get(self, "contracted_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="customerReferenceNumber")
+    def customer_reference_number(self) -> _builtins.str:
+        """
+        Customer reference number
+        """
+        return pulumi.get(self, "customer_reference_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the order
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> _builtins.str:
+        """
+        Order identification
+        """
+        return pulumi.get(self, "order_id")
+
+    @_builtins.property
+    @pulumi.getter(name="orderNumber")
+    def order_number(self) -> _builtins.str:
+        """
+        Order reference number
+        """
+        return pulumi.get(self, "order_number")
+
+    @_builtins.property
+    @pulumi.getter(name="purchaseOrderNumber")
+    def purchase_order_number(self) -> _builtins.str:
+        """
+        Purchase order number
+        """
+        return pulumi.get(self, "purchase_order_number")
+
+    @_builtins.property
+    @pulumi.getter(name="termLength")
+    def term_length(self) -> _builtins.int:
+        """
+        Term length in months
+        """
+        return pulumi.get(self, "term_length")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: _builtins.str):
+        """
+        :param _builtins.str project_id: Equinix subscriber-assigned project ID
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Equinix subscriber-assigned project ID
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataRoutingProtocolResult(dict):
+    def __init__(__self__, *,
+                 connections: Sequence['outputs.GetInternetAccessServicesDataRoutingProtocolConnectionResult'],
+                 customer_routes: Sequence['outputs.GetInternetAccessServicesDataRoutingProtocolCustomerRouteResult'],
+                 type: _builtins.str):
+        """
+        :param Sequence['GetInternetAccessServicesDataRoutingProtocolConnectionArgs'] connections: Fabric connections attached to the service
+        :param Sequence['GetInternetAccessServicesDataRoutingProtocolCustomerRouteArgs'] customer_routes: Customer routes announced through the service
+        :param _builtins.str type: Routing protocol type. One of: BGP, DIRECT, STATIC
+        """
+        pulumi.set(__self__, "connections", connections)
+        pulumi.set(__self__, "customer_routes", customer_routes)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.GetInternetAccessServicesDataRoutingProtocolConnectionResult']:
+        """
+        Fabric connections attached to the service
+        """
+        return pulumi.get(self, "connections")
+
+    @_builtins.property
+    @pulumi.getter(name="customerRoutes")
+    def customer_routes(self) -> Sequence['outputs.GetInternetAccessServicesDataRoutingProtocolCustomerRouteResult']:
+        """
+        Customer routes announced through the service
+        """
+        return pulumi.get(self, "customer_routes")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Routing protocol type. One of: BGP, DIRECT, STATIC
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataRoutingProtocolConnectionResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 peering_ipv4: 'outputs.GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv4Result',
+                 peering_ipv6: 'outputs.GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv6Result',
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the connection
+        :param 'GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv4Args' peering_ipv4: IPv4 peering details of the connection
+        :param 'GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv6Args' peering_ipv6: IPv6 peering details of the connection
+        :param _builtins.str uuid: Unique identifier of the connection
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "peering_ipv4", peering_ipv4)
+        pulumi.set(__self__, "peering_ipv6", peering_ipv6)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the connection
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter(name="peeringIpv4")
+    def peering_ipv4(self) -> 'outputs.GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv4Result':
+        """
+        IPv4 peering details of the connection
+        """
+        return pulumi.get(self, "peering_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="peeringIpv6")
+    def peering_ipv6(self) -> 'outputs.GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv6Result':
+        """
+        IPv6 peering details of the connection
+        """
+        return pulumi.get(self, "peering_ipv6")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the connection
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv4Result(dict):
+    def __init__(__self__, *,
+                 customer_peer_ip: _builtins.str,
+                 customer_vrrp_ip: _builtins.str,
+                 equinix_peer_ip: _builtins.str,
+                 equinix_vrrp_ip: _builtins.str,
+                 prefix: _builtins.str,
+                 prefix_length: _builtins.int):
+        """
+        :param _builtins.str customer_peer_ip: Peering IP address on the customer side
+        :param _builtins.str customer_vrrp_ip: VRRP IP address on the customer side
+        :param _builtins.str equinix_peer_ip: Peering IP address on the Equinix side
+        :param _builtins.str equinix_vrrp_ip: VRRP IP address on the Equinix side
+        :param _builtins.str prefix: IPv4 prefix for the peering connection
+        :param _builtins.int prefix_length: Determines the size of the subnet
+        """
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "customer_vrrp_ip", customer_vrrp_ip)
+        pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        pulumi.set(__self__, "equinix_vrrp_ip", equinix_vrrp_ip)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "prefix_length", prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="customerPeerIp")
+    def customer_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the customer side
+        """
+        return pulumi.get(self, "customer_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVrrpIp")
+    def customer_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the customer side
+        """
+        return pulumi.get(self, "customer_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixPeerIp")
+    def equinix_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixVrrpIp")
+    def equinix_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        IPv4 prefix for the peering connection
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> _builtins.int:
+        """
+        Determines the size of the subnet
+        """
+        return pulumi.get(self, "prefix_length")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv6Result(dict):
+    def __init__(__self__, *,
+                 customer_peer_ip: _builtins.str,
+                 customer_vrrp_ip: _builtins.str,
+                 equinix_peer_ip: _builtins.str,
+                 equinix_vrrp_ip: _builtins.str,
+                 prefix: _builtins.str,
+                 prefix_length: _builtins.int):
+        """
+        :param _builtins.str customer_peer_ip: Peering IP address on the customer side
+        :param _builtins.str customer_vrrp_ip: VRRP IP address on the customer side
+        :param _builtins.str equinix_peer_ip: Peering IP address on the Equinix side
+        :param _builtins.str equinix_vrrp_ip: VRRP IP address on the Equinix side
+        :param _builtins.str prefix: IPv6 prefix for the peering connection
+        :param _builtins.int prefix_length: Determines the size of the subnet
+        """
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "customer_vrrp_ip", customer_vrrp_ip)
+        pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
+        pulumi.set(__self__, "equinix_vrrp_ip", equinix_vrrp_ip)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "prefix_length", prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="customerPeerIp")
+    def customer_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the customer side
+        """
+        return pulumi.get(self, "customer_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="customerVrrpIp")
+    def customer_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the customer side
+        """
+        return pulumi.get(self, "customer_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixPeerIp")
+    def equinix_peer_ip(self) -> _builtins.str:
+        """
+        Peering IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_peer_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="equinixVrrpIp")
+    def equinix_vrrp_ip(self) -> _builtins.str:
+        """
+        VRRP IP address on the Equinix side
+        """
+        return pulumi.get(self, "equinix_vrrp_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        IPv6 prefix for the peering connection
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> _builtins.int:
+        """
+        Determines the size of the subnet
+        """
+        return pulumi.get(self, "prefix_length")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataRoutingProtocolCustomerRouteResult(dict):
+    def __init__(__self__, *,
+                 ip_block: 'outputs.GetInternetAccessServicesDataRoutingProtocolCustomerRouteIpBlockResult'):
+        """
+        :param 'GetInternetAccessServicesDataRoutingProtocolCustomerRouteIpBlockArgs' ip_block: IP block of the route
+        """
+        pulumi.set(__self__, "ip_block", ip_block)
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlock")
+    def ip_block(self) -> 'outputs.GetInternetAccessServicesDataRoutingProtocolCustomerRouteIpBlockResult':
+        """
+        IP block of the route
+        """
+        return pulumi.get(self, "ip_block")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesDataRoutingProtocolCustomerRouteIpBlockResult(dict):
+    def __init__(__self__, *,
+                 href: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str href: URI to the IP block
+        :param _builtins.str uuid: Unique identifier of the IP block
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> _builtins.str:
+        """
+        URI to the IP block
+        """
+        return pulumi.get(self, "href")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the IP block
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesFilterResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 property: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+        :param _builtins.str property: Field name to use on filters, e.g. "/project/projectId", "/name", "/state", "/type"
+        :param Sequence[_builtins.str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> _builtins.str:
+        """
+        Field name to use on filters, e.g. "/project/projectId", "/name", "/state", "/type"
+        """
+        return pulumi.get(self, "property")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesPaginationResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 next: _builtins.str,
+                 offset: _builtins.int,
+                 previous: _builtins.str,
+                 total: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        :param _builtins.str next: The URL relative to the next item in the response
+        :param _builtins.int offset: Index of the first item returned in the response. The default is 0
+        :param _builtins.str previous: The URL relative to the previous item in the response
+        :param _builtins.int total: The total number of Internet Access services available to the user making the request
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "total", total)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def next(self) -> _builtins.str:
+        """
+        The URL relative to the next item in the response
+        """
+        return pulumi.get(self, "next")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> _builtins.int:
+        """
+        Index of the first item returned in the response. The default is 0
+        """
+        return pulumi.get(self, "offset")
+
+    @_builtins.property
+    @pulumi.getter
+    def previous(self) -> _builtins.str:
+        """
+        The URL relative to the previous item in the response
+        """
+        return pulumi.get(self, "previous")
+
+    @_builtins.property
+    @pulumi.getter
+    def total(self) -> _builtins.int:
+        """
+        The total number of Internet Access services available to the user making the request
+        """
+        return pulumi.get(self, "total")
+
+
+@pulumi.output_type
+class GetInternetAccessServicesSortResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 property: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+        :param _builtins.str property: The property name to use in sorting, e.g. "/name". Defaults to "/name". Note: sorting by "/changeLog/createdDateTime" currently makes the API return a server error
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> Optional[_builtins.str]:
+        """
+        The property name to use in sorting, e.g. "/name". Defaults to "/name". Note: sorting by "/changeLog/createdDateTime" currently makes the API return a server error
         """
         return pulumi.get(self, "property")
 

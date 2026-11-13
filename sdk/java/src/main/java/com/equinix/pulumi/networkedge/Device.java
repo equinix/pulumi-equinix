@@ -2625,6 +2625,63 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkedgeFunctions;
+ * import com.pulumi.equinix.networkedge.inputs.GetAccountArgs;
+ * import com.equinix.pulumi.networkedge.Device;
+ * import com.equinix.pulumi.networkedge.DeviceArgs;
+ * import com.pulumi.equinix.networkedge.inputs.DeviceSecondaryDeviceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Create Thales HA device
+ *         final var sv = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .metroCode("SV")
+ *             .build());
+ * 
+ *         var thales_ha = new Device("thales-ha", DeviceArgs.builder()
+ *             .name("Thales")
+ *             .projectId("xxxxxxx")
+ *             .metroCode(sv.metroCode())
+ *             .typeCode("THALES")
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .interfaceCount(3)
+ *             .packageCode("STD")
+ *             .notifications("test}{@literal @}{@code eq.com")
+ *             .accountNumber(sv.number())
+ *             .version("5.6.4.D31681")
+ *             .coreCount(4)
+ *             .termLength(1)
+ *             .secondaryDevice(DeviceSecondaryDeviceArgs.builder()
+ *                 .name("Thales-Sec")
+ *                 .metroCode(sv.metroCode())
+ *                 .accountNumber(sv.number())
+ *                 .notifications("test}{@literal @}{@code eq.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Example: Add a Secondary Device to a Primary Network Device
  * 
  * Use the `secondaryDevice` block inside `equinix.networkedge.Device` to define the secondary node for a redundant pair.

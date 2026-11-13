@@ -1643,6 +1643,37 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * // Create Thales HA device
+ * const sv = equinix.networkedge.getAccount({
+ *     metroCode: "SV",
+ * });
+ * const thales_ha = new equinix.networkedge.Device("thales-ha", {
+ *     name: "Thales",
+ *     projectId: "xxxxxxx",
+ *     metroCode: sv.then(sv => sv.metroCode),
+ *     typeCode: "THALES",
+ *     selfManaged: true,
+ *     byol: true,
+ *     interfaceCount: 3,
+ *     packageCode: "STD",
+ *     notifications: ["test@eq.com"],
+ *     accountNumber: sv.then(sv => sv.number),
+ *     version: "5.6.4.D31681",
+ *     coreCount: 4,
+ *     termLength: 1,
+ *     secondaryDevice: {
+ *         name: "Thales-Sec",
+ *         metroCode: sv.then(sv => sv.metroCode),
+ *         accountNumber: sv.then(sv => sv.number),
+ *         notifications: ["test@eq.com"],
+ *     },
+ * });
+ * ```
+ *
  * ## Example: Add a Secondary Device to a Primary Network Device
  *
  * Use the `secondaryDevice` block inside `equinix.networkedge.Device` to define the secondary node for a redundant pair.

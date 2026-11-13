@@ -2887,6 +2887,34 @@ class Device(pulumi.CustomResource):
             })
         ```
 
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        # Create Thales HA device
+        sv = equinix.networkedge.get_account(metro_code="SV")
+        thales_ha = equinix.networkedge.Device("thales-ha",
+            name="Thales",
+            project_id="xxxxxxx",
+            metro_code=sv.metro_code,
+            type_code="THALES",
+            self_managed=True,
+            byol=True,
+            interface_count=3,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="5.6.4.D31681",
+            core_count=4,
+            term_length=1,
+            secondary_device={
+                "name": "Thales-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
+            })
+        ```
+
         ## Example: Add a Secondary Device to a Primary Network Device
 
         Use the `secondary_device` block inside `networkedge.Device` to define the secondary node for a redundant pair.
@@ -4518,6 +4546,34 @@ class Device(pulumi.CustomResource):
                     "secondaryNameServer": "x.x.x.x",
                     "dnsSearchDomain": "xxxxx",
                 },
+            })
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        # Create Thales HA device
+        sv = equinix.networkedge.get_account(metro_code="SV")
+        thales_ha = equinix.networkedge.Device("thales-ha",
+            name="Thales",
+            project_id="xxxxxxx",
+            metro_code=sv.metro_code,
+            type_code="THALES",
+            self_managed=True,
+            byol=True,
+            interface_count=3,
+            package_code="STD",
+            notifications=["test@eq.com"],
+            account_number=sv.number,
+            version="5.6.4.D31681",
+            core_count=4,
+            term_length=1,
+            secondary_device={
+                "name": "Thales-Sec",
+                "metro_code": sv.metro_code,
+                "account_number": sv.number,
+                "notifications": ["test@eq.com"],
             })
         ```
 

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AsnArgs, AsnState } from "./asn";
+export type Asn = import("./asn").Asn;
+export const Asn: typeof import("./asn").Asn = null as any;
+utilities.lazyLoad(exports, ["Asn"], () => require("./asn"));
+
 export { CloudRouterArgs, CloudRouterState } from "./cloudRouter";
 export type CloudRouter = import("./cloudRouter").CloudRouter;
 export const CloudRouter: typeof import("./cloudRouter").CloudRouter = null as any;
@@ -29,6 +34,16 @@ export { GetAdvertisedRoutesArgs, GetAdvertisedRoutesResult, GetAdvertisedRoutes
 export const getAdvertisedRoutes: typeof import("./getAdvertisedRoutes").getAdvertisedRoutes = null as any;
 export const getAdvertisedRoutesOutput: typeof import("./getAdvertisedRoutes").getAdvertisedRoutesOutput = null as any;
 utilities.lazyLoad(exports, ["getAdvertisedRoutes","getAdvertisedRoutesOutput"], () => require("./getAdvertisedRoutes"));
+
+export { GetAsnArgs, GetAsnResult, GetAsnOutputArgs } from "./getAsn";
+export const getAsn: typeof import("./getAsn").getAsn = null as any;
+export const getAsnOutput: typeof import("./getAsn").getAsnOutput = null as any;
+utilities.lazyLoad(exports, ["getAsn","getAsnOutput"], () => require("./getAsn"));
+
+export { GetAsnsArgs, GetAsnsResult, GetAsnsOutputArgs } from "./getAsns";
+export const getAsns: typeof import("./getAsns").getAsns = null as any;
+export const getAsnsOutput: typeof import("./getAsns").getAsnsOutput = null as any;
+utilities.lazyLoad(exports, ["getAsns","getAsnsOutput"], () => require("./getAsns"));
 
 export { GetCloudRouterArgs, GetCloudRouterResult, GetCloudRouterOutputArgs } from "./getCloudRouter";
 export const getCloudRouter: typeof import("./getCloudRouter").getCloudRouter = null as any;
@@ -69,6 +84,16 @@ export { GetConnectionsArgs, GetConnectionsResult, GetConnectionsOutputArgs } fr
 export const getConnections: typeof import("./getConnections").getConnections = null as any;
 export const getConnectionsOutput: typeof import("./getConnections").getConnectionsOutput = null as any;
 utilities.lazyLoad(exports, ["getConnections","getConnectionsOutput"], () => require("./getConnections"));
+
+export { GetInternetAccessServiceArgs, GetInternetAccessServiceResult, GetInternetAccessServiceOutputArgs } from "./getInternetAccessService";
+export const getInternetAccessService: typeof import("./getInternetAccessService").getInternetAccessService = null as any;
+export const getInternetAccessServiceOutput: typeof import("./getInternetAccessService").getInternetAccessServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getInternetAccessService","getInternetAccessServiceOutput"], () => require("./getInternetAccessService"));
+
+export { GetInternetAccessServicesArgs, GetInternetAccessServicesResult, GetInternetAccessServicesOutputArgs } from "./getInternetAccessServices";
+export const getInternetAccessServices: typeof import("./getInternetAccessServices").getInternetAccessServices = null as any;
+export const getInternetAccessServicesOutput: typeof import("./getInternetAccessServices").getInternetAccessServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getInternetAccessServices","getInternetAccessServicesOutput"], () => require("./getInternetAccessServices"));
 
 export { GetIpBlockArgs, GetIpBlockResult, GetIpBlockOutputArgs } from "./getIpBlock";
 export const getIpBlock: typeof import("./getIpBlock").getIpBlock = null as any;
@@ -235,6 +260,11 @@ export const getStreams: typeof import("./getStreams").getStreams = null as any;
 export const getStreamsOutput: typeof import("./getStreams").getStreamsOutput = null as any;
 utilities.lazyLoad(exports, ["getStreams","getStreamsOutput"], () => require("./getStreams"));
 
+export { InternetAccessServiceArgs, InternetAccessServiceState } from "./internetAccessService";
+export type InternetAccessService = import("./internetAccessService").InternetAccessService;
+export const InternetAccessService: typeof import("./internetAccessService").InternetAccessService = null as any;
+utilities.lazyLoad(exports, ["InternetAccessService"], () => require("./internetAccessService"));
+
 export { IpBlockArgs, IpBlockState } from "./ipBlock";
 export type IpBlock = import("./ipBlock").IpBlock;
 export const IpBlock: typeof import("./ipBlock").IpBlock = null as any;
@@ -318,6 +348,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "equinix:fabric/asn:Asn":
+                return new Asn(name, <any>undefined, { urn })
             case "equinix:fabric/cloudRouter:CloudRouter":
                 return new CloudRouter(name, <any>undefined, { urn })
             case "equinix:fabric/connection:Connection":
@@ -326,6 +358,8 @@ const _module = {
                 return new ConnectionRouteAggregation(name, <any>undefined, { urn })
             case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
                 return new ConnectionRouteFilter(name, <any>undefined, { urn })
+            case "equinix:fabric/internetAccessService:InternetAccessService":
+                return new InternetAccessService(name, <any>undefined, { urn })
             case "equinix:fabric/ipBlock:IpBlock":
                 return new IpBlock(name, <any>undefined, { urn })
             case "equinix:fabric/network:Network":
@@ -361,10 +395,12 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("equinix", "fabric/asn", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/cloudRouter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connection", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteAggregation", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connectionRouteFilter", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/internetAccessService", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/ipBlock", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/network", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/port", _module)

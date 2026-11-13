@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "equinix:fabric/asn:Asn":
+		r = &Asn{}
 	case "equinix:fabric/cloudRouter:CloudRouter":
 		r = &CloudRouter{}
 	case "equinix:fabric/connection:Connection":
@@ -29,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionRouteAggregation{}
 	case "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter":
 		r = &ConnectionRouteFilter{}
+	case "equinix:fabric/internetAccessService:InternetAccessService":
+		r = &InternetAccessService{}
 	case "equinix:fabric/ipBlock:IpBlock":
 		r = &IpBlock{}
 	case "equinix:fabric/network:Network":
@@ -74,6 +78,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"equinix",
+		"fabric/asn",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
 		"fabric/cloudRouter",
 		&module{version},
 	)
@@ -90,6 +99,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"fabric/connectionRouteFilter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/internetAccessService",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
