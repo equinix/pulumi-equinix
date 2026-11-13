@@ -7,6 +7,125 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
 export namespace fabric {
+    export interface AsnAsset {
+        /**
+         * Metro announcing the ASN
+         */
+        announcingMetro: string;
+        /**
+         * IP blocks announced with the ASN
+         */
+        ipBlocks: outputs.fabric.AsnAssetIpBlock[];
+        /**
+         * Service the ASN is attached to
+         */
+        service: outputs.fabric.AsnAssetService;
+        /**
+         * Asset identifier
+         */
+        uuid: string;
+    }
+
+    export interface AsnAssetIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href: string;
+        /**
+         * IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+         */
+        type: string;
+        /**
+         * IP block identifier
+         */
+        uuid: string;
+    }
+
+    export interface AsnAssetService {
+        /**
+         * URI to the service
+         */
+        href: string;
+        /**
+         * Service type. One of: IA
+         */
+        type: string;
+        /**
+         * Service identifier
+         */
+        uuid: string;
+    }
+
+    export interface AsnChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface AsnChangeLog {
+        /**
+         * Creation date and time
+         */
+        createdDateTime: string;
+        /**
+         * Deletion date and time
+         */
+        deletedDateTime: string;
+        /**
+         * Last update date and time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface AsnLocation {
+        /**
+         * Two-letter metro code (e.g. SV, DC, AM)
+         */
+        metroCode: string;
+    }
+
+    export interface AsnOwnershipChallengeDetails {
+        /**
+         * Challenge message to sign
+         */
+        message: string;
+        /**
+         * Signed challenge value. Can be set at creation or updated in place
+         */
+        signature: string;
+        /**
+         * Ownership challenge type. One of: RPKI, LOA
+         */
+        type: string;
+    }
+
+    export interface AsnProject {
+        /**
+         * Equinix-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface AsnTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
     export interface CloudRouterAccount {
         /**
          * Account Number
@@ -1175,6 +1294,322 @@ export namespace fabric {
         direction?: string;
         /**
          * Property name to sort by
+         */
+        property?: string;
+    }
+
+    export interface GetAsnAsset {
+        /**
+         * Metro announcing the ASN
+         */
+        announcingMetro: string;
+        /**
+         * IP blocks announced with the ASN
+         */
+        ipBlocks: outputs.fabric.GetAsnAssetIpBlock[];
+        /**
+         * Service the ASN is attached to
+         */
+        service: outputs.fabric.GetAsnAssetService;
+        /**
+         * Asset identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetAsnAssetIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href: string;
+        /**
+         * IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+         */
+        type: string;
+        /**
+         * IP block identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetAsnAssetService {
+        /**
+         * URI to the service
+         */
+        href: string;
+        /**
+         * Service type. One of: IA
+         */
+        type: string;
+        /**
+         * Service identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetAsnChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface GetAsnChangeLog {
+        /**
+         * Creation date and time
+         */
+        createdDateTime: string;
+        /**
+         * Deletion date and time
+         */
+        deletedDateTime: string;
+        /**
+         * Last update date and time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetAsnLocation {
+        /**
+         * IBX site code (deprecated)
+         */
+        ibx: string;
+        /**
+         * Metro code
+         */
+        metroCode: string;
+        /**
+         * URI to the metro
+         */
+        metroHref: string;
+        /**
+         * Metro name
+         */
+        metroName: string;
+        /**
+         * Region of the metro
+         */
+        region: string;
+    }
+
+    export interface GetAsnOwnershipChallengeDetails {
+        /**
+         * Ownership challenge type. One of: LOA, RPKI
+         */
+        type: string;
+    }
+
+    export interface GetAsnProject {
+        /**
+         * Project identifier
+         */
+        projectId: string;
+    }
+
+    export interface GetAsnsData {
+        /**
+         * Assets (services) the ASN is attached to
+         */
+        assets: outputs.fabric.GetAsnsDataAsset[];
+        /**
+         * Current state of the latest change on the ASN
+         */
+        change: outputs.fabric.GetAsnsDataChange;
+        /**
+         * Details of the last change on the ASN
+         */
+        changeLog: outputs.fabric.GetAsnsDataChangeLog;
+        /**
+         * Equinix auto generated URI to the ASN
+         */
+        href: string;
+        /**
+         * Location of the ASN
+         */
+        location: outputs.fabric.GetAsnsDataLocation;
+        /**
+         * Autonomous System Number
+         */
+        number: number;
+        /**
+         * Details of the ASN ownership challenge
+         */
+        ownershipChallengeDetails: outputs.fabric.GetAsnsDataOwnershipChallengeDetails;
+        /**
+         * Project the ASN belongs to
+         */
+        project: outputs.fabric.GetAsnsDataProject;
+        /**
+         * Range of the ASN. One of: 16*BIT, 32*BIT
+         */
+        range: string;
+        /**
+         * Regional Internet Registry region of the ASN. One of: AFRINIC, APNIC, ARIN, LACNIC, RIPE_NCC
+         */
+        rirRegion: string;
+        /**
+         * State of the ASN. One of: REQUESTED, PROVISIONING, PENDING, PROVISIONED, ATTACHED, FAILED, PROVISIONING*FAILED, DEPROVISIONING, DEPROVISIONING*FAILED, DEPROVISIONED
+         */
+        state: string;
+        /**
+         * Equinix-assigned unique identifier for the ASN record
+         */
+        uuid: string;
+    }
+
+    export interface GetAsnsDataAsset {
+        /**
+         * Metro announcing the ASN
+         */
+        announcingMetro: string;
+        /**
+         * IP blocks announced with the ASN
+         */
+        ipBlocks: outputs.fabric.GetAsnsDataAssetIpBlock[];
+        /**
+         * Service the ASN is attached to
+         */
+        service: outputs.fabric.GetAsnsDataAssetService;
+        /**
+         * Asset identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetAsnsDataAssetIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href: string;
+        /**
+         * IP block reference type. One of: IPV4*IP*BLOCK, IPV6*IP*BLOCK
+         */
+        type: string;
+        /**
+         * IP block identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetAsnsDataAssetService {
+        /**
+         * URI to the service
+         */
+        href: string;
+        /**
+         * Service type. One of: IA
+         */
+        type: string;
+        /**
+         * Service identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetAsnsDataChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface GetAsnsDataChangeLog {
+        /**
+         * Creation date and time
+         */
+        createdDateTime: string;
+        /**
+         * Deletion date and time
+         */
+        deletedDateTime: string;
+        /**
+         * Last update date and time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetAsnsDataLocation {
+        /**
+         * IBX site code (deprecated)
+         */
+        ibx: string;
+        /**
+         * Metro code
+         */
+        metroCode: string;
+        /**
+         * URI to the metro
+         */
+        metroHref: string;
+        /**
+         * Metro name
+         */
+        metroName: string;
+        /**
+         * Region of the metro
+         */
+        region: string;
+    }
+
+    export interface GetAsnsDataOwnershipChallengeDetails {
+        /**
+         * Ownership challenge type. One of: LOA, RPKI
+         */
+        type: string;
+    }
+
+    export interface GetAsnsDataProject {
+        /**
+         * Project identifier
+         */
+        projectId: string;
+    }
+
+    export interface GetAsnsFilter {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+         */
+        operator: string;
+        /**
+         * Field name to use on filters, e.g. "/project/projectId", "/uuid", "/state", "/type"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetAsnsPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of ASNs available to the user making the request
+         */
+        total: number;
+    }
+
+    export interface GetAsnsSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting, e.g. "/state". Allowed values: /changeLog/createdDateTime, /uuid, /state, /project/projectId, /type
          */
         property?: string;
     }
@@ -3466,7 +3901,7 @@ export namespace fabric {
          */
         operator: string;
         /**
-         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/interconnect/uuid /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /bandwidth /change/status /changeLog/createdBy /changeLog/createdDateTime /changeLog/deletedBy /changeLog/deletedDateTime /changeLog/lastUpdatedBy /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /operation/lockEnabled /project/projectId /redundancy/group /redundancy/priority /redundancy/name /redundancy/description /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/sellerRegion /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid /zSide/internetAccess/uuid /state]
          */
         property: string;
         /**
@@ -3492,7 +3927,553 @@ export namespace fabric {
          */
         direction?: string;
         /**
-         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/role /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /operation/maintenanceStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
+    export interface GetInternetAccessServiceAccount {
+        /**
+         * Account number
+         */
+        accountNumber: string;
+        /**
+         * URI to the account
+         */
+        href: string;
+    }
+
+    export interface GetInternetAccessServiceBilling {
+        /**
+         * Whether billing is enabled
+         */
+        enabled: boolean;
+        /**
+         * Start date of the billing period
+         */
+        startDate: string;
+        /**
+         * Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+         */
+        type: string;
+    }
+
+    export interface GetInternetAccessServiceChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface GetInternetAccessServiceChangeLog {
+        /**
+         * Creation time of the service
+         */
+        createdDateTime: string;
+        /**
+         * Deletion time of the service
+         */
+        deletedDateTime: string;
+        /**
+         * Last update time of the service
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetInternetAccessServiceLocation {
+        /**
+         * IBX data center code
+         */
+        ibx: string;
+        /**
+         * Two-letter metro code
+         */
+        metroCode: string;
+        /**
+         * URI to the metro resource
+         */
+        metroHref: string;
+        /**
+         * Region of the location. One of: AMER, EMEA, APAC
+         */
+        region: string;
+    }
+
+    export interface GetInternetAccessServiceOrder {
+        /**
+         * Billing tier for the connection bandwidth
+         */
+        billingTier: string;
+        /**
+         * Contracted bandwidth
+         */
+        contractedBandwidth: number;
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber: string;
+        /**
+         * URI to the order
+         */
+        href: string;
+        /**
+         * Order identification
+         */
+        orderId: string;
+        /**
+         * Order reference number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+        /**
+         * Term length in months
+         */
+        termLength: number;
+    }
+
+    export interface GetInternetAccessServiceProject {
+        /**
+         * Equinix subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetInternetAccessServiceRoutingProtocol {
+        /**
+         * Fabric connections attached to the service
+         */
+        connections: outputs.fabric.GetInternetAccessServiceRoutingProtocolConnection[];
+        /**
+         * Customer routes announced through the service
+         */
+        customerRoutes: outputs.fabric.GetInternetAccessServiceRoutingProtocolCustomerRoute[];
+        /**
+         * Routing protocol type. One of: BGP, DIRECT, STATIC
+         */
+        type: string;
+    }
+
+    export interface GetInternetAccessServiceRoutingProtocolConnection {
+        /**
+         * URI to the connection
+         */
+        href: string;
+        /**
+         * IPv4 peering details of the connection
+         */
+        peeringIpv4: outputs.fabric.GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv4;
+        /**
+         * IPv6 peering details of the connection
+         */
+        peeringIpv6: outputs.fabric.GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv6;
+        /**
+         * Unique identifier of the connection
+         */
+        uuid: string;
+    }
+
+    export interface GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv4 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp: string;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp: string;
+        /**
+         * Peering IP address on the Equinix side
+         */
+        equinixPeerIp: string;
+        /**
+         * VRRP IP address on the Equinix side
+         */
+        equinixVrrpIp: string;
+        /**
+         * IPv4 prefix for the peering connection
+         */
+        prefix: string;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength: number;
+    }
+
+    export interface GetInternetAccessServiceRoutingProtocolConnectionPeeringIpv6 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp: string;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp: string;
+        /**
+         * Peering IP address on the Equinix side
+         */
+        equinixPeerIp: string;
+        /**
+         * VRRP IP address on the Equinix side
+         */
+        equinixVrrpIp: string;
+        /**
+         * IPv6 prefix for the peering connection
+         */
+        prefix: string;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength: number;
+    }
+
+    export interface GetInternetAccessServiceRoutingProtocolCustomerRoute {
+        /**
+         * IP block of the route
+         */
+        ipBlock: outputs.fabric.GetInternetAccessServiceRoutingProtocolCustomerRouteIpBlock;
+    }
+
+    export interface GetInternetAccessServiceRoutingProtocolCustomerRouteIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href: string;
+        /**
+         * Unique identifier of the IP block
+         */
+        uuid: string;
+    }
+
+    export interface GetInternetAccessServicesData {
+        /**
+         * Account associated with the service
+         */
+        account: outputs.fabric.GetInternetAccessServicesDataAccount;
+        /**
+         * Bandwidth of the service
+         */
+        bandwidth: number;
+        /**
+         * Minimum bandwidth commit for the burst billing variant of the service
+         */
+        bandwidthCommit: number;
+        /**
+         * Billing details of the service
+         */
+        billing: outputs.fabric.GetInternetAccessServicesDataBilling;
+        /**
+         * Current state of the latest change on the service
+         */
+        change: outputs.fabric.GetInternetAccessServicesDataChange;
+        /**
+         * Audit log of changes to the service
+         */
+        changeLog: outputs.fabric.GetInternetAccessServicesDataChangeLog;
+        /**
+         * Equinix auto generated URI to the Internet Access service
+         */
+        href: string;
+        /**
+         * Locations associated with the service
+         */
+        locations: outputs.fabric.GetInternetAccessServicesDataLocation[];
+        /**
+         * Name of the Internet Access service
+         */
+        name: string;
+        /**
+         * Order details of the service
+         */
+        order: outputs.fabric.GetInternetAccessServicesDataOrder;
+        /**
+         * Project associated with the service
+         */
+        project: outputs.fabric.GetInternetAccessServicesDataProject;
+        /**
+         * Routing protocol configuration of the service
+         */
+        routingProtocol: outputs.fabric.GetInternetAccessServicesDataRoutingProtocol;
+        /**
+         * Provisioning state of the service. One of: PROVISIONING, PROVISIONED, FAILED, DEPROVISIONING, DEPROVISIONED
+         */
+        state: string;
+        /**
+         * Type of the Internet Access service. One of: SINGLE*IA, DUAL*IA
+         */
+        type: string;
+        /**
+         * Use case of the service. One of: MAIN, MANAGEMENT_ACCESS
+         */
+        useCase: string;
+        /**
+         * Equinix-assigned unique identifier for the Internet Access service
+         */
+        uuid: string;
+    }
+
+    export interface GetInternetAccessServicesDataAccount {
+        /**
+         * Account number
+         */
+        accountNumber: string;
+        /**
+         * URI to the account
+         */
+        href: string;
+    }
+
+    export interface GetInternetAccessServicesDataBilling {
+        /**
+         * Whether billing is enabled
+         */
+        enabled: boolean;
+        /**
+         * Start date of the billing period
+         */
+        startDate: string;
+        /**
+         * Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+         */
+        type: string;
+    }
+
+    export interface GetInternetAccessServicesDataChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface GetInternetAccessServicesDataChangeLog {
+        /**
+         * Creation time of the service
+         */
+        createdDateTime: string;
+        /**
+         * Deletion time of the service
+         */
+        deletedDateTime: string;
+        /**
+         * Last update time of the service
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetInternetAccessServicesDataLocation {
+        /**
+         * IBX data center code
+         */
+        ibx: string;
+        /**
+         * Two-letter metro code
+         */
+        metroCode: string;
+        /**
+         * URI to the metro resource
+         */
+        metroHref: string;
+        /**
+         * Region of the location. One of: AMER, EMEA, APAC
+         */
+        region: string;
+    }
+
+    export interface GetInternetAccessServicesDataOrder {
+        /**
+         * Billing tier for the connection bandwidth
+         */
+        billingTier: string;
+        /**
+         * Contracted bandwidth
+         */
+        contractedBandwidth: number;
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber: string;
+        /**
+         * URI to the order
+         */
+        href: string;
+        /**
+         * Order identification
+         */
+        orderId: string;
+        /**
+         * Order reference number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+        /**
+         * Term length in months
+         */
+        termLength: number;
+    }
+
+    export interface GetInternetAccessServicesDataProject {
+        /**
+         * Equinix subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface GetInternetAccessServicesDataRoutingProtocol {
+        /**
+         * Fabric connections attached to the service
+         */
+        connections: outputs.fabric.GetInternetAccessServicesDataRoutingProtocolConnection[];
+        /**
+         * Customer routes announced through the service
+         */
+        customerRoutes: outputs.fabric.GetInternetAccessServicesDataRoutingProtocolCustomerRoute[];
+        /**
+         * Routing protocol type. One of: BGP, DIRECT, STATIC
+         */
+        type: string;
+    }
+
+    export interface GetInternetAccessServicesDataRoutingProtocolConnection {
+        /**
+         * URI to the connection
+         */
+        href: string;
+        /**
+         * IPv4 peering details of the connection
+         */
+        peeringIpv4: outputs.fabric.GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv4;
+        /**
+         * IPv6 peering details of the connection
+         */
+        peeringIpv6: outputs.fabric.GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv6;
+        /**
+         * Unique identifier of the connection
+         */
+        uuid: string;
+    }
+
+    export interface GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv4 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp: string;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp: string;
+        /**
+         * Peering IP address on the Equinix side
+         */
+        equinixPeerIp: string;
+        /**
+         * VRRP IP address on the Equinix side
+         */
+        equinixVrrpIp: string;
+        /**
+         * IPv4 prefix for the peering connection
+         */
+        prefix: string;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength: number;
+    }
+
+    export interface GetInternetAccessServicesDataRoutingProtocolConnectionPeeringIpv6 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp: string;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp: string;
+        /**
+         * Peering IP address on the Equinix side
+         */
+        equinixPeerIp: string;
+        /**
+         * VRRP IP address on the Equinix side
+         */
+        equinixVrrpIp: string;
+        /**
+         * IPv6 prefix for the peering connection
+         */
+        prefix: string;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength: number;
+    }
+
+    export interface GetInternetAccessServicesDataRoutingProtocolCustomerRoute {
+        /**
+         * IP block of the route
+         */
+        ipBlock: outputs.fabric.GetInternetAccessServicesDataRoutingProtocolCustomerRouteIpBlock;
+    }
+
+    export interface GetInternetAccessServicesDataRoutingProtocolCustomerRouteIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href: string;
+        /**
+         * Unique identifier of the IP block
+         */
+        uuid: string;
+    }
+
+    export interface GetInternetAccessServicesFilter {
+        /**
+         * Operator to use on your filtered field with the values given. One of: [=, !=, IN, NOT IN, LIKE, ILIKE, BETWEEN, >, >=, <, <=, ~*]
+         */
+        operator: string;
+        /**
+         * Field name to use on filters, e.g. "/project/projectId", "/name", "/state", "/type"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetInternetAccessServicesPagination {
+        /**
+         * Maximum number of search results returned per page. Number must be between 1 and 100, and the default is 20
+         */
+        limit: number;
+        /**
+         * The URL relative to the next item in the response
+         */
+        next: string;
+        /**
+         * Index of the first item returned in the response. The default is 0
+         */
+        offset: number;
+        /**
+         * The URL relative to the previous item in the response
+         */
+        previous: string;
+        /**
+         * The total number of Internet Access services available to the user making the request
+         */
+        total: number;
+    }
+
+    export interface GetInternetAccessServicesSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to ASC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting, e.g. "/name". Defaults to "/name". Note: sorting by "/changeLog/createdDateTime" currently makes the API return a server error
          */
         property?: string;
     }
@@ -9542,6 +10523,259 @@ export namespace fabric {
          * The total number of streams available to the user making the request
          */
         total: number;
+    }
+
+    export interface InternetAccessServiceAccount {
+        /**
+         * Account number
+         */
+        accountNumber: string;
+        /**
+         * URI to the account
+         */
+        href: string;
+    }
+
+    export interface InternetAccessServiceBilling {
+        /**
+         * Whether billing is enabled
+         */
+        enabled: boolean;
+        /**
+         * Start date of the billing period
+         */
+        startDate: string;
+        /**
+         * Billing type. One of: FIXED, USAGE*BASED, BURST*BASED
+         */
+        type: string;
+    }
+
+    export interface InternetAccessServiceChange {
+        /**
+         * URI to the change resource
+         */
+        href: string;
+    }
+
+    export interface InternetAccessServiceChangeLog {
+        /**
+         * Creation time of the service
+         */
+        createdDateTime: string;
+        /**
+         * Deletion time of the service
+         */
+        deletedDateTime: string;
+        /**
+         * Last update time of the service
+         */
+        updatedDateTime: string;
+    }
+
+    export interface InternetAccessServiceLocation {
+        /**
+         * IBX data center code
+         */
+        ibx: string;
+        /**
+         * Two-letter metro code
+         */
+        metroCode: string;
+        /**
+         * URI to the metro resource
+         */
+        metroHref: string;
+        /**
+         * Region of the location. One of: AMER, EMEA, APAC
+         */
+        region: string;
+    }
+
+    export interface InternetAccessServiceOrder {
+        /**
+         * Billing tier for the connection bandwidth
+         */
+        billingTier: string;
+        /**
+         * Contracted bandwidth
+         */
+        contractedBandwidth: number;
+        /**
+         * Customer reference number
+         */
+        customerReferenceNumber: string;
+        /**
+         * URI to the order
+         */
+        href: string;
+        /**
+         * Order identification
+         */
+        orderId: string;
+        /**
+         * Order reference number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+        /**
+         * Term length in months
+         */
+        termLength: number;
+    }
+
+    export interface InternetAccessServiceProject {
+        /**
+         * Equinix subscriber-assigned project ID
+         */
+        projectId: string;
+    }
+
+    export interface InternetAccessServiceRoutingProtocol {
+        /**
+         * BGP only. Equinix ASN resource used on the customer side. Not read back from the API
+         */
+        asn?: outputs.fabric.InternetAccessServiceRoutingProtocolAsn;
+        /**
+         * BGP only. BGP authentication key. Not read back from the API
+         */
+        bgpAuthKey?: string;
+        /**
+         * Fabric IA*VC connections attached to the service
+         */
+        connections: outputs.fabric.InternetAccessServiceRoutingProtocolConnection[];
+        /**
+         * BGP only. Customer ASN number. Not read back from the API
+         */
+        customerAsn?: number;
+        /**
+         * BGP only. Customer ASN range. One of: BITS*16, BITS*32. Not read back from the API
+         */
+        customerAsnRange?: string;
+        /**
+         * Customer routes announced through the service, given as IP blocks
+         */
+        customerRoutes: outputs.fabric.InternetAccessServiceRoutingProtocolCustomerRoute[];
+        /**
+         * BGP only. Export policy. One of: FULL, DEFAULT, FULL_DEFAULT, PARTIAL. Not read back from the API
+         */
+        exportPolicy?: string;
+        /**
+         * Routing protocol type. One of: BGP, DIRECT, STATIC
+         */
+        type: string;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolAsn {
+        /**
+         * Unique identifier of the ASN, e.g. of an equinix*fabric*asn
+         */
+        uuid: string;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolConnection {
+        /**
+         * URI to the connection
+         */
+        href: string;
+        /**
+         * IPv4 peering details of the connection
+         */
+        peeringIpv4: outputs.fabric.InternetAccessServiceRoutingProtocolConnectionPeeringIpv4;
+        /**
+         * IPv6 peering details of the connection
+         */
+        peeringIpv6: outputs.fabric.InternetAccessServiceRoutingProtocolConnectionPeeringIpv6;
+        /**
+         * Unique identifier of the connection
+         */
+        uuid: string;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolConnectionPeeringIpv4 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp: string;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp: string;
+        /**
+         * Peering IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixPeerIp: string;
+        /**
+         * VRRP IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixVrrpIp: string;
+        /**
+         * IPv4 prefix for the peering connection
+         */
+        prefix: string;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength: number;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolConnectionPeeringIpv6 {
+        /**
+         * Peering IP address on the customer side
+         */
+        customerPeerIp: string;
+        /**
+         * VRRP IP address on the customer side
+         */
+        customerVrrpIp: string;
+        /**
+         * Peering IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixPeerIp: string;
+        /**
+         * VRRP IP address on the Equinix side. Assigned by Equinix when not set
+         */
+        equinixVrrpIp: string;
+        /**
+         * IPv6 prefix for the peering connection
+         */
+        prefix: string;
+        /**
+         * Determines the size of the subnet
+         */
+        prefixLength: number;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolCustomerRoute {
+        /**
+         * IP block of the route
+         */
+        ipBlock: outputs.fabric.InternetAccessServiceRoutingProtocolCustomerRouteIpBlock;
+    }
+
+    export interface InternetAccessServiceRoutingProtocolCustomerRouteIpBlock {
+        /**
+         * URI to the IP block
+         */
+        href: string;
+        /**
+         * Unique identifier of the IP block, e.g. of an equinix*fabric*ip_block
+         */
+        uuid: string;
+    }
+
+    export interface InternetAccessServiceTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
     }
 
     export interface IpBlockAccount {

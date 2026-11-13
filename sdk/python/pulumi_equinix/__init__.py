@@ -27,6 +27,14 @@ _utilities.register(
 [
  {
   "pkg": "equinix",
+  "mod": "fabric/asn",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/asn:Asn": "Asn"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/cloudRouter",
   "fqn": "pulumi_equinix.fabric",
   "classes": {
@@ -55,6 +63,14 @@ _utilities.register(
   "fqn": "pulumi_equinix.fabric",
   "classes": {
    "equinix:fabric/connectionRouteFilter:ConnectionRouteFilter": "ConnectionRouteFilter"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/internetAccessService",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/internetAccessService:InternetAccessService": "InternetAccessService"
   }
  },
  {

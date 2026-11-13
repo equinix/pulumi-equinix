@@ -7,11 +7,14 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .asn import *
 from .cloud_router import *
 from .connection import *
 from .connection_route_aggregation import *
 from .connection_route_filter import *
 from .get_advertised_routes import *
+from .get_asn import *
+from .get_asns import *
 from .get_cloud_router import *
 from .get_cloud_routers import *
 from .get_connection import *
@@ -20,6 +23,8 @@ from .get_connection_route_aggregations import *
 from .get_connection_route_filter import *
 from .get_connection_route_filters import *
 from .get_connections import *
+from .get_internet_access_service import *
+from .get_internet_access_services import *
 from .get_ip_block import *
 from .get_ip_blocks import *
 from .get_marketplace_subscription import *
@@ -53,6 +58,7 @@ from .get_stream_attachments import *
 from .get_stream_subscription import *
 from .get_stream_subscriptions import *
 from .get_streams import *
+from .internet_access_service import *
 from .ip_block import *
 from .network import *
 from .port import *

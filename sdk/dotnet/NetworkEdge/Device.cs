@@ -2218,6 +2218,53 @@ namespace Pulumi.Equinix.NetworkEdge
     /// });
     /// ```
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create Thales HA device
+    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         MetroCode = "SV",
+    ///     });
+    /// 
+    ///     var thales_ha = new Equinix.NetworkEdge.Device("thales-ha", new()
+    ///     {
+    ///         Name = "Thales",
+    ///         ProjectId = "xxxxxxx",
+    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///         TypeCode = "THALES",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         InterfaceCount = 3,
+    ///         PackageCode = "STD",
+    ///         Notifications = new[]
+    ///         {
+    ///             "test@eq.com",
+    ///         },
+    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///         Version = "5.6.4.D31681",
+    ///         CoreCount = 4,
+    ///         TermLength = 1,
+    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
+    ///         {
+    ///             Name = "Thales-Sec",
+    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
+    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
+    ///             Notifications = new[]
+    ///             {
+    ///                 "test@eq.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Example: Add a Secondary Device to a Primary Network Device
     /// 
     /// Use the `SecondaryDevice` block inside `equinix.networkedge.Device` to define the secondary node for a redundant pair.

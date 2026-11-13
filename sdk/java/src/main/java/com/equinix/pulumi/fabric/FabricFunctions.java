@@ -6,6 +6,10 @@ package com.equinix.pulumi.fabric;
 import com.equinix.pulumi.Utilities;
 import com.equinix.pulumi.fabric.inputs.GetAdvertisedRoutesArgs;
 import com.equinix.pulumi.fabric.inputs.GetAdvertisedRoutesPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetAsnArgs;
+import com.equinix.pulumi.fabric.inputs.GetAsnPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetAsnsArgs;
+import com.equinix.pulumi.fabric.inputs.GetAsnsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRouterArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRouterPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRoutersArgs;
@@ -22,6 +26,10 @@ import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFiltersArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionRouteFiltersPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionsPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetInternetAccessServiceArgs;
+import com.equinix.pulumi.fabric.inputs.GetInternetAccessServicePlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetInternetAccessServicesArgs;
+import com.equinix.pulumi.fabric.inputs.GetInternetAccessServicesPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetIpBlockArgs;
 import com.equinix.pulumi.fabric.inputs.GetIpBlockPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetIpBlocksArgs;
@@ -89,6 +97,8 @@ import com.equinix.pulumi.fabric.inputs.GetStreamSubscriptionsPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamsArgs;
 import com.equinix.pulumi.fabric.inputs.GetStreamsPlainArgs;
 import com.equinix.pulumi.fabric.outputs.GetAdvertisedRoutesResult;
+import com.equinix.pulumi.fabric.outputs.GetAsnResult;
+import com.equinix.pulumi.fabric.outputs.GetAsnsResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetCloudRoutersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
@@ -97,6 +107,8 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionRouteAggregationsResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFilterResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionRouteFiltersResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionsResult;
+import com.equinix.pulumi.fabric.outputs.GetInternetAccessServiceResult;
+import com.equinix.pulumi.fabric.outputs.GetInternetAccessServicesResult;
 import com.equinix.pulumi.fabric.outputs.GetIpBlockResult;
 import com.equinix.pulumi.fabric.outputs.GetIpBlocksResult;
 import com.equinix.pulumi.fabric.outputs.GetMarketplaceSubscriptionResult;
@@ -152,6 +164,106 @@ public final class FabricFunctions {
     }
     public static CompletableFuture<GetAdvertisedRoutesResult> getAdvertisedRoutesPlain(GetAdvertisedRoutesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getAdvertisedRoutes:getAdvertisedRoutes", TypeShape.of(GetAdvertisedRoutesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Autonomous System Number (ASN) by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static Output<GetAsnResult> getAsn(GetAsnArgs args) {
+        return getAsn(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Autonomous System Number (ASN) by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static CompletableFuture<GetAsnResult> getAsnPlain(GetAsnPlainArgs args) {
+        return getAsnPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Autonomous System Number (ASN) by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static Output<GetAsnResult> getAsn(GetAsnArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getAsn:getAsn", TypeShape.of(GetAsnResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Autonomous System Number (ASN) by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static Output<GetAsnResult> getAsn(GetAsnArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getAsn:getAsn", TypeShape.of(GetAsnResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Autonomous System Number (ASN) by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static CompletableFuture<GetAsnResult> getAsnPlain(GetAsnPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getAsn:getAsn", TypeShape.of(GetAsnResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Autonomous System Numbers (ASNs) with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static Output<GetAsnsResult> getAsns(GetAsnsArgs args) {
+        return getAsns(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Autonomous System Numbers (ASNs) with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static CompletableFuture<GetAsnsResult> getAsnsPlain(GetAsnsPlainArgs args) {
+        return getAsnsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Autonomous System Numbers (ASNs) with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static Output<GetAsnsResult> getAsns(GetAsnsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getAsns:getAsns", TypeShape.of(GetAsnsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Autonomous System Numbers (ASNs) with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static Output<GetAsnsResult> getAsns(GetAsnsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getAsns:getAsns", TypeShape.of(GetAsnsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Autonomous System Numbers (ASNs) with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/ASNs
+     * 
+     */
+    public static CompletableFuture<GetAsnsResult> getAsnsPlain(GetAsnsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getAsns:getAsns", TypeShape.of(GetAsnsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
@@ -1147,6 +1259,106 @@ public final class FabricFunctions {
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Internet Access (EIA) service by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static Output<GetInternetAccessServiceResult> getInternetAccessService(GetInternetAccessServiceArgs args) {
+        return getInternetAccessService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Internet Access (EIA) service by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static CompletableFuture<GetInternetAccessServiceResult> getInternetAccessServicePlain(GetInternetAccessServicePlainArgs args) {
+        return getInternetAccessServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Internet Access (EIA) service by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static Output<GetInternetAccessServiceResult> getInternetAccessService(GetInternetAccessServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getInternetAccessService:getInternetAccessService", TypeShape.of(GetInternetAccessServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Internet Access (EIA) service by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static Output<GetInternetAccessServiceResult> getInternetAccessService(GetInternetAccessServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getInternetAccessService:getInternetAccessService", TypeShape.of(GetInternetAccessServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to fetch an Equinix Internet Access (EIA) service by UUID.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static CompletableFuture<GetInternetAccessServiceResult> getInternetAccessServicePlain(GetInternetAccessServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getInternetAccessService:getInternetAccessService", TypeShape.of(GetInternetAccessServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Internet Access (EIA) services with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static Output<GetInternetAccessServicesResult> getInternetAccessServices(GetInternetAccessServicesArgs args) {
+        return getInternetAccessServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Internet Access (EIA) services with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static CompletableFuture<GetInternetAccessServicesResult> getInternetAccessServicesPlain(GetInternetAccessServicesPlainArgs args) {
+        return getInternetAccessServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Internet Access (EIA) services with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static Output<GetInternetAccessServicesResult> getInternetAccessServices(GetInternetAccessServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getInternetAccessServices:getInternetAccessServices", TypeShape.of(GetInternetAccessServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Internet Access (EIA) services with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static Output<GetInternetAccessServicesResult> getInternetAccessServices(GetInternetAccessServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getInternetAccessServices:getInternetAccessServices", TypeShape.of(GetInternetAccessServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allows users to search for Equinix Internet Access (EIA) services with pagination details.
+     * 
+     * Additional Documentation:
+     * * API: https://docs.equinix.com/api-catalog/fabricv4/#tag/Internet-Access
+     * 
+     */
+    public static CompletableFuture<GetInternetAccessServicesResult> getInternetAccessServicesPlain(GetInternetAccessServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getInternetAccessServices:getInternetAccessServices", TypeShape.of(GetInternetAccessServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allows users to fetch an Equinix Fabric IP Block by UUID.
